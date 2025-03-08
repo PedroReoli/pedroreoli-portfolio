@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
 import LazySection from "@/components/LazySection"
 import Home from "./Home"
@@ -17,6 +17,8 @@ import SpaceBackground from "./SpaceBackground"
 
 const MainPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
+  // State to track screen width
+  const [screenWidth, setScreenWidth] = useState(0)
 
   // Motion values for mouse parallax
   const mouseX = useMotionValue(0)
@@ -43,7 +45,7 @@ const MainPage = () => {
   const mouseParallax3 = useTransform(smoothMouseX, [-500, 500], [-30, 30])
   const mouseParallax4 = useTransform(smoothMouseY, [-500, 500], [-30, 30])
 
-  // Handle mouse movement for parallax effect
+  // Handle mouse movement for parallax effect and detect screen width
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e
@@ -57,10 +59,20 @@ const MainPage = () => {
       mouseY.set(normalizedY)
     }
 
+    // Set initial screen width
+    setScreenWidth(window.innerWidth)
+
+    // Update screen width on resize
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+    }
+
     window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("resize", handleResize)
     }
   }, [mouseX, mouseY])
 
@@ -457,8 +469,8 @@ const MainPage = () => {
           ))}
         </AnimatePresence>
 
-        {/* Adicione o componente SpaceSceneWithPlanets aqui */}
-        <SpaceBackground />
+        {/* Conditionally render SpaceBackground based on screen width */}
+        {screenWidth > 1024 && <SpaceBackground />}
       </div>
 
       {/* Content sections with parallax effect */}
