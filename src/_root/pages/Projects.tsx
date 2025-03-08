@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 import { projectsData, type Project } from "@/constants/projectsData"
 import { useSwipeable } from "react-swipeable"
-import ProjectModal from "@/components/ProjectModal"
+import ProjectModal from "@/components/ui/ProjectModal"
 
 const Projects = () => {
   // State for image navigation and expanded projects
