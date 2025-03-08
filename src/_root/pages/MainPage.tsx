@@ -12,6 +12,8 @@ import FAQ from "./FAQ"
 import BlogSection from "./BlogSection"
 import End from "./End"
 import Timeline from "./Timeline"
+// Importe o componente SpaceSceneWithPlanets
+import SpaceBackground from "./SpaceBackground"
 
 const MainPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -454,6 +456,9 @@ const MainPage = () => {
             </motion.div>
           ))}
         </AnimatePresence>
+
+        {/* Adicione o componente SpaceSceneWithPlanets aqui */}
+        <SpaceBackground />
       </div>
 
       {/* Content sections with parallax effect */}
