@@ -105,7 +105,7 @@ const End = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-12 xxs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden flex flex-col items-center justify-center"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden flex flex-col items-center justify-center"
       onMouseMove={handleMouseMove}
     >
       {/* Enhanced background with depth */}
@@ -303,7 +303,7 @@ const End = () => {
       </div>
 
       <motion.div
-        className="text-center w-full max-w-[280px] xxs:max-w-[320px] xs:max-w-[400px] sm:max-w-2xl relative z-10"
+        className="text-center w-full max-w-[260px] xxs:max-w-[300px] xs:max-w-[360px] sm:max-w-[420px] md:max-w-2xl relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
@@ -359,14 +359,14 @@ const End = () => {
             <img
               src="/assets/Eu.svg"
               alt="Despedida"
-              className="relative w-28 h-28 xxs:w-32 xxs:h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 rounded-full object-cover border-2 border-cosmic-border group-hover:border-cosmic-accent transition-colors duration-300"
+              className="relative w-24 h-24 xxs:w-28 xxs:h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full object-cover border-2 border-cosmic-border group-hover:border-cosmic-accent transition-colors duration-300"
             />
           </div>
         </motion.div>
 
         {/* Enhanced title with animated accent */}
         <motion.h2
-          className="text-2xl xxs:text-3xl xs:text-3xl sm:text-4xl font-bold mb-3 xxs:mb-4"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold mb-2 xxs:mb-3 sm:mb-4"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -390,7 +390,7 @@ const End = () => {
 
         {/* Enhanced text with better typography */}
         <motion.p
-          className="text-cosmic-text text-sm xxs:text-base xs:text-lg mb-10 xxs:mb-12 xs:mb-14 leading-relaxed"
+          className="text-cosmic-text text-xs xxs:text-sm xs:text-base sm:text-lg mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -431,7 +431,7 @@ const End = () => {
           />
 
           {/* Button background with subtle animation */}
-          <div className="relative px-4 xxs:px-5 xs:px-6 py-2.5 xxs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover:border-cosmic-accent transition-all duration-300 overflow-hidden">
+          <div className="relative px-3 xxs:px-4 xs:px-5 sm:px-6 py-2 xxs:py-2.5 xs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover:border-cosmic-accent transition-all duration-300 overflow-hidden">
             {/* Subtle background animation */}
             <motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-20"

@@ -32,13 +32,13 @@ const defaultTiltOptions = {
 // Function to get icon based on tags and company name
 const getEventIcon = (tags: string[], empresa: string) => {
   // AutoCom3 should always have a work/briefcase icon
-  if (empresa === "AutoCom3") return <Briefcase className="w-5 h-5" />
+  if (empresa === "AutoCom3") return <Briefcase className="w-4 h-4 xxs:w-5 xxs:h-5" />
 
   // For other companies, determine by tags
-  if (tags.includes("Educação")) return <GraduationCap className="w-5 h-5" />
-  if (tags.includes("Programação") || tags.includes("Blog")) return <Code className="w-5 h-5" />
-  if (tags.includes("Banco de Dados")) return <Database className="w-5 h-5" />
-  return <Briefcase className="w-5 h-5" />
+  if (tags.includes("Educação")) return <GraduationCap className="w-4 h-4 xxs:w-5 xxs:h-5" />
+  if (tags.includes("Programação") || tags.includes("Blog")) return <Code className="w-4 h-4 xxs:w-5 xxs:h-5" />
+  if (tags.includes("Banco de Dados")) return <Database className="w-4 h-4 xxs:w-5 xxs:h-5" />
+  return <Briefcase className="w-4 h-4 xxs:w-5 xxs:h-5" />
 }
 
 const Timeline = () => {
@@ -71,7 +71,7 @@ const Timeline = () => {
   return (
     <section
       ref={containerRef}
-      className="py-16 sm:py-20 overflow-hidden min-h-screen relative"
+      className="py-10 xxs:py-12 xs:py-14 sm:py-16 md:py-20 overflow-hidden min-h-screen relative"
       onMouseLeave={() => setActiveEvent(null)}
     >
       {/* Section background with enhanced cosmic theme */}
@@ -161,18 +161,18 @@ const Timeline = () => {
         })}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 xxs:px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8 xxs:mb-10 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+          <h2 className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-white">
             Jornada Profissional<span className="text-cosmic-accent">;</span>
           </h2>
           <motion.p
-            className="mt-4 text-cosmic-text max-w-2xl mx-auto"
+            className="mt-3 xxs:mt-4 text-cosmic-text max-w-2xl mx-auto text-sm xxs:text-base"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -237,7 +237,7 @@ const Timeline = () => {
             ))}
           </div>
 
-          <div className="relative z-10 space-y-12 md:space-y-20">
+          <div className="relative z-10 space-y-8 xxs:space-y-10 sm:space-y-12 md:space-y-20">
             {timelineEvents.map((event, index) => (
               <TimelineEvent
                 key={event.empresa}
@@ -327,7 +327,7 @@ function TimelineEvent({
 
       {/* Mobile timeline node */}
       <div
-        className="absolute left-4 top-8 w-4 h-4 rounded-full border-2 border-cosmic-accent bg-cosmic-bg md:hidden"
+        className="absolute left-4 top-8 w-3 h-3 xxs:w-4 xxs:h-4 rounded-full border-2 border-cosmic-accent bg-cosmic-bg md:hidden"
         style={{
           transform: "translateX(-50%)",
           boxShadow: "0 0 10px 2px rgba(96, 165, 250, 0.3)",
@@ -338,7 +338,7 @@ function TimelineEvent({
       <div className="hidden md:block md:w-5/12" />
 
       {/* Event card */}
-      <div className="w-full pl-10 md:pl-0 md:w-5/12">
+      <div className="w-full pl-8 xxs:pl-10 md:pl-0 md:w-5/12">
         <Tilt options={defaultTiltOptions}>
           <motion.div
             className="group relative"
@@ -378,13 +378,13 @@ function TimelineEvent({
             />
 
             <div className="relative bg-cosmic-card rounded-2xl border border-cosmic-border overflow-hidden z-10">
-              <div className="p-5">
+              <div className="p-3 xxs:p-4 sm:p-5">
                 {/* Header with company and role */}
-                <div className="mb-4">
+                <div className="mb-3 xxs:mb-4">
                   {/* Header with icon and title */}
-                  <div className="flex items-start gap-3 mb-2">
+                  <div className="flex items-start gap-2 xxs:gap-3 mb-2">
                     {/* Icon with animated background */}
-                    <div className="relative shrink-0 w-10 h-10 rounded-full overflow-hidden">
+                    <div className="relative shrink-0 w-8 h-8 xxs:w-10 xxs:h-10 rounded-full overflow-hidden">
                       <motion.div
                         className="absolute inset-0 bg-cosmic-accent opacity-20"
                         animate={{
@@ -403,18 +403,20 @@ function TimelineEvent({
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-cosmic-accent transition-colors">
+                      <h3 className="text-base xxs:text-lg sm:text-xl font-bold text-white group-hover:text-cosmic-accent transition-colors">
                         {event.empresa}
                       </h3>
-                      <p className="text-cosmic-accent/80 font-medium mt-1">{event.cargo}</p>
+                      <p className="text-cosmic-accent/80 font-medium mt-0.5 xxs:mt-1 text-sm xxs:text-base">
+                        {event.cargo}
+                      </p>
                     </div>
                   </div>
 
                   {/* Status and period in the same row */}
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 ml-13">
+                  <div className="flex flex-wrap items-center gap-x-3 xxs:gap-x-4 gap-y-1.5 xxs:gap-y-2 ml-10 xxs:ml-13">
                     {/* Enhanced status badge */}
                     <motion.span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      className={`inline-flex items-center gap-1 xxs:gap-1.5 px-2 xxs:px-2.5 py-0.5 xxs:py-1 rounded-full text-[10px] xxs:text-xs font-semibold ${
                         event.status === "Finalizado"
                           ? "bg-green-500/10 text-green-400 border border-green-500/20"
                           : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
@@ -439,27 +441,31 @@ function TimelineEvent({
                         repeatType: "reverse",
                       }}
                     >
-                      {event.status === "Finalizado" ? <Star className="w-3 h-3" /> : <Clock className="w-3 h-3" />}
+                      {event.status === "Finalizado" ? (
+                        <Star className="w-2.5 h-2.5 xxs:w-3 xxs:h-3" />
+                      ) : (
+                        <Clock className="w-2.5 h-2.5 xxs:w-3 xxs:h-3" />
+                      )}
                       <span>{event.status}</span>
                     </motion.span>
 
                     {/* Period with enhanced icon */}
-                    <div className="flex items-center gap-2 text-cosmic-text">
-                      <div className="flex items-center justify-center w-4 h-4 rounded-full bg-cosmic-accent/10">
-                        <Calendar className="w-3 h-3 text-cosmic-accent" />
+                    <div className="flex items-center gap-1.5 xxs:gap-2 text-cosmic-text">
+                      <div className="flex items-center justify-center w-3.5 h-3.5 xxs:w-4 xxs:h-4 rounded-full bg-cosmic-accent/10">
+                        <Calendar className="w-2.5 h-2.5 xxs:w-3 xxs:h-3 text-cosmic-accent" />
                       </div>
-                      <span className="text-xs">{event.periodo}</span>
+                      <span className="text-[10px] xxs:text-xs">{event.periodo}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-cosmic-text mb-4 text-sm leading-relaxed">{event.descricao}</p>
+                <p className="text-cosmic-text mb-3 xxs:mb-4 text-xs xxs:text-sm leading-relaxed">{event.descricao}</p>
 
                 {/* Enhanced toggle button with microinteractions */}
                 <motion.button
                   onClick={onToggle}
-                  className="w-full flex items-center justify-center gap-2 text-xs font-medium text-cosmic-accent hover:text-white transition-colors py-1"
+                  className="w-full flex items-center justify-center gap-1.5 xxs:gap-2 text-[10px] xxs:text-xs font-medium text-cosmic-accent hover:text-white transition-colors py-1"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -478,7 +484,11 @@ function TimelineEvent({
                       },
                     }}
                   >
-                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    {isExpanded ? (
+                      <ChevronUp className="w-3 h-3 xxs:w-4 xxs:h-4" />
+                    ) : (
+                      <ChevronDown className="w-3 h-3 xxs:w-4 xxs:h-4" />
+                    )}
                   </motion.div>
                 </motion.button>
 
@@ -506,14 +516,14 @@ function TimelineEvent({
                       className="overflow-hidden"
                     >
                       <motion.div
-                        className="pt-4 space-y-4 border-t border-cosmic-border mt-3"
+                        className="pt-3 xxs:pt-4 space-y-3 xxs:space-y-4 border-t border-cosmic-border mt-2 xxs:mt-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
                         {/* Details with subtle animation */}
                         <motion.p
-                          className="text-cosmic-text text-sm leading-relaxed"
+                          className="text-cosmic-text text-xs xxs:text-sm leading-relaxed"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.3, delay: 0.3 }}
@@ -523,7 +533,7 @@ function TimelineEvent({
 
                         {/* Tags with staggered animation */}
                         <motion.div
-                          className="flex flex-wrap gap-2"
+                          className="flex flex-wrap gap-1.5 xxs:gap-2"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.3, delay: 0.4 }}
@@ -531,7 +541,7 @@ function TimelineEvent({
                           {event.tags.map((tag, idx) => (
                             <motion.span
                               key={idx}
-                              className="px-3 py-1.5 rounded-full text-xs font-medium bg-cosmic-accent/5 text-cosmic-accent border border-cosmic-accent/20"
+                              className="px-2 xxs:px-3 py-1 xxs:py-1.5 rounded-full text-[10px] xxs:text-xs font-medium bg-cosmic-accent/5 text-cosmic-accent border border-cosmic-accent/20"
                               initial={{ opacity: 0, scale: 0.8 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.3, delay: 0.4 + idx * 0.1 }}
@@ -557,7 +567,7 @@ function TimelineEvent({
                               href={event.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium text-cosmic-accent hover:text-white transition-colors relative group/link"
+                              className="inline-flex items-center gap-1.5 xxs:gap-2 text-xs xxs:text-sm font-medium text-cosmic-accent hover:text-white transition-colors relative group/link"
                               whileHover={{ x: 4 }}
                               whileTap={{ scale: 0.98 }}
                             >
@@ -570,7 +580,7 @@ function TimelineEvent({
                                   transition={{ duration: 0.3 }}
                                 />
                               </span>
-                              <ExternalLink className="w-4 h-4" />
+                              <ExternalLink className="w-3 h-3 xxs:w-4 xxs:h-4" />
                             </motion.a>
                           </motion.div>
                         )}

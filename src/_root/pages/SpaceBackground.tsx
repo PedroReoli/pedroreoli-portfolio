@@ -56,7 +56,7 @@ export default function SpaceBackground() {
           far: 1000,
         }}
         style={{ background: "transparent" }}
-        className="xxs:opacity-80 xs:opacity-90 sm:opacity-100" // Ajuste de opacidade para telas menores
+        className="xxs:opacity-80 xs:opacity-90 sm:opacity-100" // Adjust opacity for smaller screens
       >
         {/* Enhanced camera controller */}
         <CameraController mouseX={mouseX} mouseY={mouseY} scrollY={scrollY} />
@@ -399,4 +399,3 @@ function TexturedPlanet({
     </group>
   )
 }
-

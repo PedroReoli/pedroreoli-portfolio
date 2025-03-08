@@ -63,7 +63,7 @@ const Projects = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-16 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
       id="projects"
     >
       {/* Enhanced cosmic background with parallax */}
@@ -151,15 +151,15 @@ const Projects = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 xxs:mb-10 sm:mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+          <h2 className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-white">
             Meus Projetos<span className="text-cosmic-accent">;</span>
           </h2>
-          <p className="mt-4 text-cosmic-text max-w-2xl mx-auto">
+          <p className="mt-3 xxs:mt-4 text-cosmic-text max-w-2xl mx-auto text-sm xxs:text-base">
             Conheça alguns dos projetos que desenvolvi, desde aplicações web até plataformas educacionais.
           </p>
         </motion.div>
@@ -172,7 +172,7 @@ const Projects = () => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-4 xxs:gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-6"
         >
           {projectsData.map((project, index) => (
             <ProjectCard
@@ -268,12 +268,12 @@ const ProjectCard = ({
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "Colaborativo":
-        return <Users className="w-4 h-4" />
+        return <Users className="w-3.5 h-3.5 xxs:w-4 xxs:h-4" />
       case "Freelance":
-        return <GitBranch className="w-4 h-4" />
+        return <GitBranch className="w-3.5 h-3.5 xxs:w-4 xxs:h-4" />
       case "Pessoal":
       default:
-        return <Tag className="w-4 h-4" />
+        return <Tag className="w-3.5 h-3.5 xxs:w-4 xxs:h-4" />
     }
   }
 
@@ -327,38 +327,38 @@ const ProjectCard = ({
           {/* Navigation arrows */}
           {project.thumbnails.length > 1 && (
             <>
-              <div className="absolute inset-0 flex items-center justify-between px-3">
+              <div className="absolute inset-0 flex items-center justify-between px-2 xxs:px-3">
                 <motion.button
                   onClick={(e) => {
                     e.preventDefault()
                     onImageNavigation("prev")
                   }}
-                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
+                  className="p-1.5 xxs:p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ArrowLeft className="w-3.5 h-3.5 text-white" />
+                  <ArrowLeft className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-white" />
                 </motion.button>
                 <motion.button
                   onClick={(e) => {
                     e.preventDefault()
                     onImageNavigation("next")
                   }}
-                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
+                  className="p-1.5 xxs:p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  <ArrowRight className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-white" />
                 </motion.button>
               </div>
 
               {/* Image indicators */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              <div className="absolute bottom-2 xxs:bottom-3 left-1/2 -translate-x-1/2 flex gap-1 xxs:gap-1.5">
                 {project.thumbnails.map((_, idx) => (
                   <motion.div
                     key={idx}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      idx === currentImageIndex ? "w-6 bg-cosmic-accent" : "w-1.5 bg-white/40"
+                    className={`h-1 xxs:h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex ? "w-4 xxs:w-6 bg-cosmic-accent" : "w-1 xxs:w-1.5 bg-white/40"
                     }`}
                     whileHover={{ scale: 1.2 }}
                     onClick={() => {
@@ -376,9 +376,9 @@ const ProjectCard = ({
           )}
 
           {/* Status badge */}
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-2 xxs:top-3 right-2 xxs:right-3">
             <motion.span
-              className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium border ${statusInfo.color}`}
+              className={`inline-flex items-center gap-1 xxs:gap-1.5 px-1.5 xxs:px-2 py-0.5 xxs:py-1 rounded-md text-[10px] xxs:text-xs font-medium border ${statusInfo.color}`}
               whileHover={{ scale: 1.05 }}
               animate={
                 isHovered
@@ -399,33 +399,33 @@ const ProjectCard = ({
           </div>
 
           {/* Project type badge */}
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-2 xxs:top-3 left-2 xxs:left-3">
             <motion.span
-              className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-black/40 backdrop-blur-sm text-white border border-white/10"
+              className="inline-flex items-center gap-1 xxs:gap-1.5 px-1.5 xxs:px-2 py-0.5 xxs:py-1 rounded-md text-[10px] xxs:text-xs font-medium bg-black/40 backdrop-blur-sm text-white border border-white/10"
               whileHover={{ scale: 1.05 }}
             >
               {getTypeIcon(project.type)}
-              <span className="ml-1">{project.type}</span>
+              <span className="ml-0.5 xxs:ml-1">{project.type}</span>
             </motion.span>
           </div>
 
           {/* Project title overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-4">
-            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cosmic-accent transition-colors duration-300">
+          <div className="absolute bottom-0 left-0 right-0 p-3 xxs:p-4">
+            <h3 className="text-base xxs:text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-cosmic-accent transition-colors duration-300">
               {project.title}
             </h3>
 
             {/* Category badge */}
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
-                <Folder className="w-3.5 h-3.5" />
-                <span className="ml-1">{project.category}</span>
+            <div className="flex flex-wrap items-center gap-1.5 xxs:gap-2">
+              <span className="inline-flex items-center gap-0.5 xxs:gap-1 px-1.5 xxs:px-2 py-0.5 rounded-md text-[10px] xxs:text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
+                <Folder className="w-3 h-3 xxs:w-3.5 xxs:h-3.5" />
+                <span className="ml-0.5 xxs:ml-1">{project.category}</span>
               </span>
 
               {project.duration && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span className="ml-1">{project.duration}</span>
+                <span className="inline-flex items-center gap-0.5 xxs:gap-1 px-1.5 xxs:px-2 py-0.5 rounded-md text-[10px] xxs:text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
+                  <Calendar className="w-3 h-3 xxs:w-3.5 xxs:h-3.5" />
+                  <span className="ml-0.5 xxs:ml-1">{project.duration}</span>
                 </span>
               )}
             </div>
@@ -433,23 +433,23 @@ const ProjectCard = ({
         </div>
 
         {/* Content section */}
-        <div className="p-4">
+        <div className="p-3 xxs:p-4">
           {/* Description - truncated */}
-          <p className="text-sm text-cosmic-text line-clamp-2 mb-4">{project.description}</p>
+          <p className="text-xs xxs:text-sm text-cosmic-text line-clamp-2 mb-3 xxs:mb-4">{project.description}</p>
 
           {/* Tech stack */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.techStack.slice(0, 4).map((tech, idx) => (
+          <div className="flex flex-wrap gap-1 xxs:gap-1.5 mb-3 xxs:mb-4">
+            {project.techStack.slice(0, 3).map((tech, idx) => (
               <span
                 key={idx}
-                className="px-2 py-1 text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent rounded-md border border-cosmic-accent/20"
+                className="px-1.5 xxs:px-2 py-0.5 xxs:py-1 text-[10px] xxs:text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent rounded-md border border-cosmic-accent/20"
               >
                 {tech}
               </span>
             ))}
-            {project.techStack.length > 4 && (
-              <span className="px-2 py-1 text-xs font-medium bg-cosmic-text/5 text-cosmic-text rounded-md border border-cosmic-text/10">
-                +{project.techStack.length - 4}
+            {project.techStack.length > 3 && (
+              <span className="px-1.5 xxs:px-2 py-0.5 xxs:py-1 text-[10px] xxs:text-xs font-medium bg-cosmic-text/5 text-cosmic-text rounded-md border border-cosmic-text/10">
+                +{project.techStack.length - 3}
               </span>
             )}
           </div>
@@ -458,35 +458,35 @@ const ProjectCard = ({
           <div className="flex items-center justify-between">
             <motion.button
               onClick={onToggleExpand}
-              className="flex items-center gap-1.5 text-xs font-medium text-cosmic-accent hover:text-white transition-colors duration-300"
+              className="flex items-center gap-1 xxs:gap-1.5 text-[10px] xxs:text-xs font-medium text-cosmic-accent hover:text-white transition-colors duration-300"
               whileHover={{ scale: 1.05, x: 2 }}
               whileTap={{ scale: 0.95 }}
             >
               Ver detalhes
-              <ChevronDown className="w-3.5 h-3.5" />
+              <ChevronDown className="w-3 h-3 xxs:w-3.5 xxs:h-3.5" />
             </motion.button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 xxs:gap-2">
               <motion.a
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md bg-cosmic-text/5 text-cosmic-text hover:bg-cosmic-text/10 transition-colors duration-300"
+                className="p-1.5 xxs:p-2 rounded-md bg-cosmic-text/5 text-cosmic-text hover:bg-cosmic-text/10 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <GitBranch className="w-3.5 h-3.5" />
+                <GitBranch className="w-3 h-3 xxs:w-3.5 xxs:h-3.5" />
               </motion.a>
 
               <motion.a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md bg-cosmic-accent/10 text-cosmic-accent hover:bg-cosmic-accent/20 transition-colors duration-300"
+                className="p-1.5 xxs:p-2 rounded-md bg-cosmic-accent/10 text-cosmic-accent hover:bg-cosmic-accent/20 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Eye className="w-3.5 h-3.5" />
+                <Eye className="w-3 h-3 xxs:w-3.5 xxs:h-3.5" />
               </motion.a>
             </div>
           </div>
@@ -496,13 +496,13 @@ const ProjectCard = ({
         {project.highlight && (
           <div className="absolute -top-1 -right-1">
             <div
-              className="w-16 h-16 overflow-hidden"
+              className="w-12 xxs:w-16 h-12 xxs:h-16 overflow-hidden"
               style={{
                 clipPath: "polygon(0 0, 100% 100%, 100% 0)",
               }}
             >
               <div className="w-full h-full transform rotate-45 origin-top-right flex items-center justify-center bg-cosmic-accent">
-                <Star className="w-3 h-3 text-white transform -rotate-45" />
+                <Star className="w-2.5 h-2.5 xxs:w-3 xxs:h-3 text-white transform -rotate-45" />
               </div>
             </div>
           </div>

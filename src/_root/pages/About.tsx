@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion"
-import {  Code, Music, BookOpen, Sparkles } from "lucide-react"
+import { Code, Music, BookOpen, Sparkles } from "lucide-react"
 
 const About = () => {
   const ref = useRef(null)
@@ -27,7 +27,7 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-12 xxs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
     >
       {/* Section background with cosmic theme */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
@@ -93,7 +93,7 @@ const About = () => {
       {/* Content container */}
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-2xl xxs:text-3xl sm:text-4xl font-bold mb-8 xxs:mb-10 sm:mb-12 text-center"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold mb-6 xxs:mb-8 sm:mb-10 md:mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={mainControls}
           transition={{ duration: 0.5 }}
@@ -104,10 +104,10 @@ const About = () => {
           Sobre Mim <span className="text-cosmic-accent">;</span>
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row items-start gap-8 xxs:gap-10 sm:gap-12">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 xxs:gap-8 sm:gap-10 lg:gap-12">
           {/* Imagem com efeitos aprimorados */}
           <motion.div
-            className="w-full lg:w-1/3 max-w-[280px] xxs:max-w-[320px] sm:max-w-sm mx-auto lg:mx-0"
+            className="w-full max-w-[240px] xxs:max-w-[280px] xs:max-w-[320px] sm:max-w-sm mx-auto lg:mx-0 lg:w-1/3"
             initial={{ opacity: 0, y: 50 }}
             animate={mainControls}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -260,7 +260,7 @@ const About = () => {
             </motion.div>
 
             {/* Skills badges */}
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <div className="mt-3 xxs:mt-4 flex flex-wrap justify-center gap-1.5 xxs:gap-2">
               {highlights.map((highlight, index) => (
                 <motion.div
                   key={index}
@@ -302,7 +302,7 @@ const About = () => {
 
           {/* Texto "Sobre Mim" com melhorias */}
           <motion.div
-            className="w-full lg:w-2/3"
+            className="w-full mt-6 lg:mt-0 lg:w-2/3"
             initial={{ opacity: 0, y: 50 }}
             animate={mainControls}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -322,7 +322,7 @@ const About = () => {
                   }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
-                <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-cosmic-text">
+                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
                   Sou <span className="text-cosmic-accent font-medium">Pedro Lucas</span>,{" "}
                   <span className="text-cosmic-accent font-medium">programador júnior</span> movido pela{" "}
                   <span className="text-cosmic-accent font-medium">gana por aprender</span> e pela busca contínua por{" "}
@@ -351,7 +351,7 @@ const About = () => {
                   }}
                   transition={{ duration: 0.8, delay: 0.7 }}
                 />
-                <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-cosmic-text">
+                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
                   Atualmente, atuo na <span className="text-cosmic-accent font-medium">Autocom3</span>, com foco em{" "}
                   <span className="text-cosmic-accent font-medium">.NET</span>,{" "}
                   <span className="text-cosmic-accent font-medium">C#</span> e{" "}
@@ -378,7 +378,7 @@ const About = () => {
                   }}
                   transition={{ duration: 0.8, delay: 0.9 }}
                 />
-                <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-cosmic-text">
+                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
                   Meu diferencial é unir <span className="text-cosmic-accent font-medium">arte</span>,{" "}
                   <span className="text-cosmic-accent font-medium">tecnologia</span> e{" "}
                   <span className="text-cosmic-accent font-medium">criatividade</span> para criar{" "}
@@ -399,8 +399,7 @@ const About = () => {
                   visible: { opacity: 1 },
                 }}
                 transition={{ duration: 0.5, delay: 1.1 }}
-              >
-              </motion.div>
+              ></motion.div>
             </div>
           </motion.div>
         </div>

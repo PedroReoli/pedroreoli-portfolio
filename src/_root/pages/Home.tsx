@@ -22,7 +22,7 @@ const Home = () => {
       <div className="absolute inset-0 bg-[#0A1120]/60 backdrop-blur-sm"></div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xxs:px-4 xs:px-5 sm:px-6 py-12 xxs:py-16 xs:py-20">
         {/* Floating elements with 3D effect */}
         <motion.div
           className="flex flex-col items-center justify-center gap-20 md:gap-28"
@@ -43,7 +43,10 @@ const Home = () => {
             className="text-center"
             variants={{
               hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0 },
+              visible: {
+                opacity: 1,
+                y: 0,
+              },
             }}
             transition={{
               duration: 1,
@@ -51,7 +54,7 @@ const Home = () => {
             }}
           >
             <motion.h1
-              className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight"
+              className="text-3xl xxs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -111,7 +114,7 @@ const Home = () => {
               }}
             >
               <motion.span
-                className="relative z-10 text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
+                className="relative z-10 text-3xl xxs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -159,7 +162,7 @@ const Home = () => {
 
             {/* Role with typing effect */}
             <motion.div
-              className="mt-8 h-[40px] xs:h-[48px] sm:h-[60px] md:h-[72px] overflow-hidden"
+              className="mt-4 xxs:mt-6 xs:mt-8 h-[32px] xxs:h-[36px] xs:h-[40px] sm:h-[48px] md:h-[60px] lg:h-[72px] overflow-hidden"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
@@ -214,7 +217,7 @@ const Home = () => {
             ></motion.div>
 
             {/* Social icons container */}
-            <motion.div className="relative flex flex-wrap justify-center items-center gap-5 xs:gap-6 sm:gap-7 md:gap-9">
+            <motion.div className="relative flex flex-wrap justify-center items-center gap-3 xxs:gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-9">
               {socialLinks.map((link, index) => (
                 <SocialIcon key={index} {...link} index={index} />
               ))}
@@ -233,7 +236,7 @@ const Home = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-4 xxs:bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
@@ -295,7 +298,7 @@ const TypewriterEffect: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className="flex items-center h-full">
       <motion.p
-        className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-light"
+        className="text-base xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
@@ -374,7 +377,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative block p-4 sm:p-5"
+        className="relative block p-3 xxs:p-3.5 xs:p-4 sm:p-5"
         whileHover={{
           scale: 1.1,
           y: -3,
@@ -408,7 +411,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
 
         {/* Icon */}
         <motion.div
-          className="relative z-10 text-2xl sm:text-3xl text-white"
+          className="relative z-10 text-xl xxs:text-xl xs:text-2xl sm:text-3xl text-white"
           animate={{
             color: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.9)",
             scale: isHovered ? [1, 1.1, 1] : 1,

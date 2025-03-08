@@ -75,7 +75,7 @@ const BlogSection = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-12 xxs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
     >
       {/* Section background with subtle glow */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
@@ -113,7 +113,7 @@ const BlogSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-center mb-12 xxs:mb-14 sm:mb-16"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-8 xxs:mb-10 xs:mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
@@ -123,7 +123,7 @@ const BlogSection = () => {
 
         <LayoutGroup>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xxs:gap-7 sm:gap-8"
+            className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -184,7 +184,7 @@ const BlogSection = () => {
                     </div>
 
                     {/* Card content with improved glass effect */}
-                    <div className="relative z-10 flex flex-col h-full p-5 xxs:p-6 sm:p-7 rounded-xl xxs:rounded-2xl border border-cosmic-border backdrop-blur-xl bg-cosmic-card/90 transition-all duration-300 group-hover:bg-cosmic-card/95">
+                    <div className="relative z-10 flex flex-col h-full p-4 xxs:p-5 xs:p-6 sm:p-7 rounded-xl xxs:rounded-2xl border border-cosmic-border backdrop-blur-xl bg-cosmic-card/90 transition-all duration-300 group-hover:bg-cosmic-card/95">
                       {/* Subtle ambient glow inside the card */}
                       <div className="absolute inset-0 rounded-xl xxs:rounded-2xl overflow-hidden">
                         <div className="absolute -inset-[100%] opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-cosmic-accent blur-[80px]" />
@@ -199,12 +199,12 @@ const BlogSection = () => {
                         </div>
 
                         {/* Title with improved hover effect */}
-                        <h3 className="text-xl xxs:text-2xl font-bold mb-3 xxs:mb-4 text-cosmic-accent group-hover:text-white transition-colors duration-300">
+                        <h3 className="text-lg xxs:text-xl xs:text-2xl font-bold mb-2 xxs:mb-3 xs:mb-4 text-cosmic-accent group-hover:text-white transition-colors duration-300">
                           {blog.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-sm xxs:text-base text-cosmic-text mb-6 xxs:mb-8 group-hover:text-cosmic-text/90 transition-colors duration-300">
+                        <p className="text-xs xxs:text-sm xs:text-base text-cosmic-text mb-4 xxs:mb-5 xs:mb-6 sm:mb-8 group-hover:text-cosmic-text/90 transition-colors duration-300">
                           {blog.description}
                         </p>
 
@@ -240,7 +240,7 @@ const BlogSection = () => {
                             </div>
 
                             {/* Button content */}
-                            <div className="relative py-2.5 xxs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover/link:border-cosmic-accent transition-all duration-300">
+                            <div className="relative py-2 xxs:py-2.5 xs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover/link:border-cosmic-accent transition-all duration-300">
                               <div className="flex items-center justify-center gap-2 text-cosmic-accent text-sm xxs:text-base font-medium">
                                 Ler mais
                                 <ExternalLink className="w-3.5 h-3.5 xxs:w-4 xxs:h-4" />

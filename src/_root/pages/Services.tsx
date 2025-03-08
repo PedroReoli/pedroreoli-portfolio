@@ -66,7 +66,7 @@ const Services = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-16 sm:py-20 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
       id="services"
     >
       {/* Enhanced background with parallax effect */}
@@ -159,7 +159,7 @@ const Services = () => {
             className="inline-block"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl font-bold relative inline-block"
+              className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold relative inline-block"
               animate={isInView ? { 
                 transition: { staggerChildren: 0.1 }
               } : {}}
@@ -183,7 +183,7 @@ const Services = () => {
           </motion.div>
           
           <motion.p
-            className="mt-4 text-cosmic-text max-w-2xl mx-auto text-base sm:text-lg"
+            className="mt-4 text-cosmic-text max-w-2xl mx-auto text-sm xxs:text-base sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -194,7 +194,7 @@ const Services = () => {
 
         {/* Enhanced services grid with improved layout */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"
+          className="grid grid-cols-1 gap-6 xxs:gap-7 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={controls}
@@ -276,7 +276,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
           {/* Card content with improved layout */}
           <div className="relative flex flex-col h-full p-6 sm:p-8 bg-cosmic-card rounded-2xl border border-cosmic-border backdrop-blur-xl z-10">
             {/* Enhanced icon container with animated glow */}
-            <div className="relative w-16 h-16 mx-auto mb-6">
+            <div className="relative w-14 xxs:w-16 h-14 xxs:h-16 mx-auto mb-4 xxs:mb-5 sm:mb-6">
               <motion.div
                 className="absolute inset-0 rounded-xl blur-md bg-cosmic-accent"
                 animate={{
@@ -312,7 +312,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
 
             {/* Enhanced title with animation */}
             <motion.h3
-              className="text-xl sm:text-2xl font-bold text-center text-white mb-3 group-hover:text-cosmic-accent transition-colors duration-300"
+              className="text-lg xxs:text-xl sm:text-2xl font-bold text-center text-white mb-2 xxs:mb-3 group-hover:text-cosmic-accent transition-colors duration-300"
               animate={isHovered ? { y: -3 } : { y: 0 }}
               transition={{ duration: 0.3 }}
             >
@@ -320,14 +320,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
             </motion.h3>
 
             {/* Enhanced description */}
-            <p className="text-base text-cosmic-text text-center leading-relaxed mb-6">{description}</p>
+            <p className="text-sm xxs:text-base text-cosmic-text text-center leading-relaxed mb-4 xxs:mb-5 sm:mb-6">{description}</p>
 
             {/* Added features list with staggered animation */}
             <div className="mt-auto">
               <AnimatePresence>
                 {isHovered && (
                   <motion.div
-                    className="grid grid-cols-2 gap-2 mt-2"
+                    className="grid grid-cols-1 xxs:grid-cols-2 gap-2 mt-2"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -392,4 +392,3 @@ const cardVariants = {
 }
 
 export default Services
-

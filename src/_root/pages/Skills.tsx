@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useInView, useMotionValue } from "framer-motion"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Database, Server, Globe, Workflow, ExternalLink, Star, BookOpen, ChevronRight } from "lucide-react"
+import { Database, Server, Globe, Workflow, ExternalLink, Star, BookOpen, ChevronRight } from 'lucide-react'
 import { Tilt } from "react-tilt"
 import { skillsData, type Skill } from "@/constants/skillsData"
 
@@ -119,7 +119,7 @@ const Skills = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-16 sm:py-20 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
       id="skills"
       onMouseMove={handleMouseMove}
     >
@@ -233,14 +233,10 @@ const Skills = () => {
               }}
             />
             <motion.h2
-              className="text-3xl sm:text-4xl font-bold relative inline-block"
-              animate={
-                isInView
-                  ? {
-                      transition: { staggerChildren: 0.1 },
-                    }
-                  : {}
-              }
+              className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold relative inline-block"
+              animate={isInView ? {
+                transition: { staggerChildren: 0.1 },
+              } : {}}
             >
               <span className="relative">
                 Habilidades
@@ -274,7 +270,7 @@ const Skills = () => {
 
         {/* Ultra modern skills grid */}
         <motion.div
-          className="grid gap-8 sm:gap-10 sm:grid-cols-2"
+          className="grid gap-6 xxs:gap-7 sm:gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -337,7 +333,7 @@ const Skills = () => {
                   />
 
                   {/* Card content with glassmorphism effect */}
-                  <div className="relative flex flex-col h-full p-6 sm:p-8 bg-cosmic-card/80 backdrop-blur-xl rounded-2xl border border-cosmic-border/50 z-10 overflow-hidden">
+                  <div className="relative flex flex-col h-full p-4 xxs:p-5 xs:p-6 sm:p-8 bg-cosmic-card/80 backdrop-blur-xl rounded-2xl border border-cosmic-border/50 z-10 overflow-hidden">
                     {/* Animated background pattern */}
                     <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
                       <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -366,7 +362,7 @@ const Skills = () => {
                     </div>
 
                     {/* Enhanced category header with icon */}
-                    <div className="relative flex items-center gap-3 mb-6">
+                    <div className="relative flex items-center gap-2 xxs:gap-3 mb-4 xxs:mb-5 sm:mb-6">
                       <div className="relative w-12 h-12">
                         <motion.div
                           className="absolute inset-0 rounded-xl blur-md"
@@ -417,7 +413,7 @@ const Skills = () => {
                     </div>
 
                     {/* Enhanced skills grid with hover effects */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 xxs:grid-cols-2 gap-2 xxs:gap-3">
                       {tech.skills.map((skill, skillIndex) => {
                         const SkillIcon = skill.icon
                         return (
@@ -577,7 +573,7 @@ const Skills = () => {
                     </DialogTitle>
                   </DialogHeader>
 
-                  <div className="space-y-6 mt-6">
+                  <div className="space-y-4 xxs:space-y-5 sm:space-y-6 mt-4 xxs:mt-5 sm:mt-6">
                     {/* Description with animated underline */}
                     {selectedSkill.description && (
                       <motion.div
@@ -665,4 +661,3 @@ const Skills = () => {
 }
 
 export default Skills
-

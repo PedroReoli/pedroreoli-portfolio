@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { Tilt } from "react-tilt"
-import { Mail, Instagram, ChevronDown, ChevronUp } from 'lucide-react'
+import { Mail, Instagram, ChevronDown, ChevronUp } from "lucide-react"
 
 const faqs = [
   {
@@ -58,20 +58,20 @@ const FAQ = () => {
   }
 
   return (
-    <section 
+    <section
       ref={ref}
-      className="text-white min-h-screen py-12 xxs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
     >
       {/* Section background with subtle glow */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
-      
+
       {/* Animated stars */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 50 }).map((_, i) => {
           const size = Math.random() * 2 + 1
           const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
           const color = colors[i % colors.length]
-          
+
           return (
             <motion.div
               key={`faq-star-${i}`}
@@ -86,15 +86,11 @@ const FAQ = () => {
                 opacity: Math.random() * 0.7 + 0.3,
               }}
               animate={{
-                opacity: [
-                  Math.random() * 0.7 + 0.3,
-                  Math.random() * 0.9 + 0.5,
-                  Math.random() * 0.7 + 0.3,
-                ],
+                opacity: [Math.random() * 0.7 + 0.3, Math.random() * 0.9 + 0.5, Math.random() * 0.7 + 0.3],
               }}
               transition={{
                 duration: Math.random() * 4 + 2,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 repeatType: "reverse",
                 ease: "easeInOut",
                 delay: Math.random() * 5,
@@ -106,7 +102,7 @@ const FAQ = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-center mb-12 xxs:mb-14 sm:mb-16"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-8 xxs:mb-10 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
@@ -115,7 +111,7 @@ const FAQ = () => {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 xxs:gap-7 sm:gap-8"
+          className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:grid-cols-2 md:gap-6 lg:gap-8"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -131,14 +127,14 @@ const FAQ = () => {
               key={index}
               variants={{
                 hidden: { opacity: 0, y: 30 },
-                visible: { 
-                  opacity: 1, 
+                visible: {
+                  opacity: 1,
                   y: 0,
                   transition: {
                     duration: 0.6,
                     ease: "easeOut",
-                    delay: index * 0.1
-                  }
+                    delay: index * 0.1,
+                  },
                 },
               }}
             >
@@ -148,13 +144,13 @@ const FAQ = () => {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-xl xxs:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
 
                   {/* Card content */}
-                  <div className="relative flex flex-col p-5 xxs:p-6 sm:p-7 bg-cosmic-card rounded-xl xxs:rounded-2xl border border-cosmic-border hover:border-cosmic-accent/50 transition-colors duration-300">
+                  <div className="relative flex flex-col p-4 xxs:p-5 xs:p-6 sm:p-7 bg-cosmic-card rounded-xl xxs:rounded-2xl border border-cosmic-border hover:border-cosmic-accent/50 transition-colors duration-300">
                     {/* Question with toggle */}
-                    <button 
+                    <button
                       className="flex items-center justify-between gap-3 text-left mb-3 xxs:mb-4 group/question"
                       onClick={() => toggleFaq(index)}
                     >
-                      <h3 className="text-base xxs:text-lg sm:text-xl font-bold text-cosmic-accent group-hover/question:text-white transition-colors duration-300">
+                      <h3 className="text-sm xxs:text-base xs:text-lg sm:text-xl font-bold text-cosmic-accent group-hover/question:text-white transition-colors duration-300">
                         {faq.question}
                       </h3>
                       <div className="shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-cosmic-border bg-cosmic-bg/50">
@@ -181,7 +177,7 @@ const FAQ = () => {
                         {faq.contacts && (
                           <div className="mt-auto">
                             {/* Mobile Version (até 425px) */}
-                            <div className="flex justify-center gap-3 xs:hidden">
+                            <div className="flex justify-center gap-2 xxs:gap-3 xs:hidden">
                               {faq.contacts.map((contact, idx) => (
                                 <motion.a
                                   key={idx}
@@ -193,7 +189,7 @@ const FAQ = () => {
                                   whileTap={{ scale: 0.95 }}
                                 >
                                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
-                                  <div className="relative flex items-center justify-center w-11 xxs:w-12 h-11 xxs:h-12 bg-cosmic-card rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
+                                  <div className="relative flex items-center justify-center w-10 xxs:w-11 xs:w-12 h-10 xxs:h-11 xs:h-12 bg-cosmic-card rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
                                     <div className="text-cosmic-accent w-5 xxs:w-6 h-5 xxs:h-6 group-hover/contact:text-white transition-colors duration-300">
                                       {contact.icon}
                                     </div>
@@ -244,3 +240,4 @@ const FAQ = () => {
 }
 
 export default FAQ
+
