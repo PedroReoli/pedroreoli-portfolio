@@ -19,6 +19,8 @@ export interface Skill {
   courses: string[]
   coursesLinks: string[]
   icon: React.FC<{ className?: string }> | LucideIcon
+  description?: string // Descrição curta da habilidade
+  color?: string // Cor personalizada para cada habilidade
 }
 
 export const skillsData: Skill[] = [
@@ -32,6 +34,8 @@ export const skillsData: Skill[] = [
       "https://www.udemy.com/course/curso-web-design-fundamentos-aprenda-html-css-e-javascript",
       "https://www.udemy.com/course/html-semantico",
     ],
+    description: "Linguagem de marcação para estruturar conteúdo web",
+    color: "#E34F26",
   },
   {
     title: "CSS",
@@ -40,6 +44,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("css3/css3-original.svg"),
     courses: ["CSS Moderno", "CSS Flexbox e Grid"],
     coursesLinks: ["https://www.udemy.com/course/css-moderno", "https://www.udemy.com/course/css-flexbox-grid"],
+    description: "Linguagem de estilização para design web",
+    color: "#1572B6",
   },
   {
     title: "JS",
@@ -48,6 +54,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("javascript/javascript-original.svg"),
     courses: ["JavaScript Completo", "JavaScript ES6+"],
     coursesLinks: ["https://www.udemy.com/course/javascript-completo", "https://www.udemy.com/course/javascript-es6"],
+    description: "Linguagem de programação para web interativa",
+    color: "#F7DF1E",
   },
   {
     title: "React",
@@ -56,6 +64,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("react/react-original.svg"),
     courses: ["React do Zero", "React Avançado"],
     coursesLinks: ["https://www.udemy.com/course/react-do-zero", "https://www.udemy.com/course/react-avancado"],
+    description: "Biblioteca JavaScript para construção de interfaces",
+    color: "#61DAFB",
   },
   {
     title: "Next",
@@ -64,6 +74,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("nextjs/nextjs-original.svg"),
     courses: ["Next.js na Prática", "Next.js com TypeScript"],
     coursesLinks: ["https://www.udemy.com/course/nextjs-na-pratica", "https://www.udemy.com/course/nextjs-typescript"],
+    description: "Framework React para aplicações web completas",
+    color: "#000000",
   },
   {
     title: "Node",
@@ -72,6 +84,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("nodejs/nodejs-original.svg"),
     courses: ["Node.js Básico", "Node.js com Express"],
     coursesLinks: ["https://www.udemy.com/course/nodejs-basico", "https://www.udemy.com/course/nodejs-express"],
+    description: "Ambiente de execução JavaScript server-side",
+    color: "#339933",
   },
   {
     title: "C#",
@@ -80,6 +94,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("csharp/csharp-original.svg"),
     courses: ["C# Completo", "C# Avançado"],
     coursesLinks: ["https://www.udemy.com/course/csharp-completo", "https://www.udemy.com/course/csharp-avancado"],
+    description: "Linguagem de programação orientada a objetos",
+    color: "#239120",
   },
   {
     title: "SQL",
@@ -88,6 +104,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("mysql/mysql-original.svg"),
     courses: ["SQL Básico", "SQL Avançado"],
     coursesLinks: ["https://www.udemy.com/course/sql-basico", "https://www.udemy.com/course/sql-avancado"],
+    description: "Linguagem para gerenciamento de bancos de dados",
+    color: "#4479A1",
   },
   {
     title: "Git",
@@ -96,6 +114,8 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("git/git-original.svg"),
     courses: ["Git Essencial", "Git Avançado"],
     coursesLinks: ["https://www.udemy.com/course/git-essencial", "https://www.udemy.com/course/git-avancado"],
+    description: "Sistema de controle de versão distribuído",
+    color: "#F05032",
   },
   {
     title: "Docker",
@@ -104,6 +124,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("docker/docker-original.svg"),
     courses: ["Docker Básico", "Docker na Prática"],
     coursesLinks: ["https://www.udemy.com/course/docker-basico", "https://www.udemy.com/course/docker-na-pratica"],
+    description: "Plataforma para desenvolvimento e implantação em contêineres",
+    color: "#2496ED",
   },
 ]
-

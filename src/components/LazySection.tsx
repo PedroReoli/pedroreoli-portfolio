@@ -1,50 +1,64 @@
-// src/components/LazySection.tsx
+"use client"
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import type { ReactNode } from "react"
 
 interface LazySectionProps {
-  children: React.ReactNode;
-  className?: string;
+  children: ReactNode
+  parallaxFactor?: number
 }
 
-const LazySection: React.FC<LazySectionProps> = ({ children, className }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+const LazySection = ({ children, parallaxFactor = 0.2 }: LazySectionProps) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [100 * parallaxFactor, -100 * parallaxFactor])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true); // Marca como visível quando entra no viewport
-          observer.disconnect(); // Desconecta para evitar múltiplos disparos
+          setIsVisible(true)
+          observer.disconnect()
         }
       },
       {
-        threshold: 0.1, // Ativa quando 10% do componente entra na tela
-      }
-    );
+        rootMargin: "200px 0px",
+        threshold: 0.01,
+      },
+    )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (ref.current) {
+      observer.observe(ref.current)
     }
 
     return () => {
-      observer.disconnect();
-    };
-  }, []);
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <motion.div
-      ref={sectionRef}
-      className={className}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      ref={ref}
+      style={{
+        y,
+        opacity,
+        position: "relative",
+        zIndex: 10,
+      }}
+      className="relative"
     >
-      {children}
+      {isVisible && children}
     </motion.div>
-  );
-};
+  )
+}
 
-export default LazySection;
+export default LazySection
+

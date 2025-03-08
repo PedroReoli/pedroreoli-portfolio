@@ -78,6 +78,14 @@ module.exports = {
         'purple-500': '#a855f7',
         'yellow-500': '#eab308',
         'pink-500': '#ec4899',
+        // Cosmic theme colors
+        'cosmic-bg': '#0A1120',
+        'cosmic-card': '#0F172A',
+        'cosmic-border': '#1E293B',
+        'cosmic-text': '#94A3B8',
+        'cosmic-accent': '#60A5FA',
+        'cosmic-accent-hover': '#3B82F6',
+        'cosmic-glow': 'rgba(96, 165, 250, 0.2)',
       },
       screens: {
         xxs: '320px',
@@ -128,13 +136,30 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: 0.6 },
+          '50%': { opacity: 1 },
+        },
+        'shimmer': {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+        'shimmer': 'shimmer 8s ease-in-out infinite',
       },
       backgroundImage: {
         'background-wallpaper': "url('/assets/wallpaper.svg')",
+        'cosmic-gradient': 'linear-gradient(to bottom right, #040D21, #0A1A35, #061529)',
+        'cosmic-glow-gradient': 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, rgba(96, 165, 250, 0.1) 40%, transparent 70%)',
       },
     },
   },

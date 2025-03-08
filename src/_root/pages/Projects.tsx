@@ -1,15 +1,47 @@
 "use client"
 
-import { useState, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Eye, ArrowRight, ArrowLeft, Calendar, GitBranch, Folder, Tag } from "lucide-react"
-import { projectsData, type Project } from "@/constants"
+import { useState, useCallback, useRef, useEffect } from "react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import {
+  Eye,
+  ArrowRight,
+  ArrowLeft,
+  Calendar,
+  GitBranch,
+  Folder,
+  Tag,
+  Users,
+  ChevronDown,
+  CheckCircle2,
+  Star,
+  Clock,
+} from "lucide-react"
+import { projectsData, type Project } from "@/constants/projectsData"
+import { useSwipeable } from "react-swipeable"
+import ProjectModal from "@/components/ProjectModal"
 
 const Projects = () => {
+  // State for image navigation and expanded projects
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>(
     projectsData.reduce((acc, _, index) => ({ ...acc, [index]: 0 }), {}),
   )
+  const [expandedProject, setExpandedProject] = useState<number | null>(null)
+  const [scrollY, setScrollY] = useState(0)
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
+
+  // Parallax effect for background elements
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Handle image navigation
   const handleImageNavigation = useCallback((projectIndex: number, direction: "next" | "prev") => {
     setCurrentImageIndices((prev) => {
       const thumbnails = projectsData[projectIndex].thumbnails
@@ -23,28 +55,124 @@ const Projects = () => {
     })
   }, [])
 
+  // Toggle project expansion
+  const toggleProjectExpand = (index: number) => {
+    setExpandedProject(expandedProject === index ? null : index)
+  }
+
   return (
-    <section className="bg-[#111111] min-h-screen py-12 sm:py-16 lg:py-24">
-      <div className="max-w-[1400px] mx-auto px-3 xxs:px-4 sm:px-6 lg:px-8">
+    <section
+      ref={ref}
+      className="text-white min-h-screen py-16 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      id="projects"
+    >
+      {/* Enhanced cosmic background with parallax */}
+      <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
+
+      {/* Animated nebula clouds with parallax */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 4 }).map((_, i) => {
+          const colors = [
+            "radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, rgba(96, 165, 250, 0.05) 50%, transparent 80%)",
+            "radial-gradient(circle, rgba(196, 181, 253, 0.15) 0%, rgba(167, 139, 250, 0.05) 50%, transparent 80%)",
+            "radial-gradient(circle, rgba(249, 168, 212, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%)",
+            "radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 80%)",
+          ]
+
+          const parallaxFactor = 0.05 * ((i % 4) + 1)
+
+          return (
+            <motion.div
+              key={`project-nebula-${i}`}
+              className="absolute rounded-full"
+              style={{
+                background: colors[i % colors.length],
+                width: Math.random() * 600 + 400,
+                height: Math.random() * 600 + 400,
+                top: `${20 + i * 20}%`,
+                left: `${20 + i * 20}%`,
+                opacity: 0.4,
+                filter: "blur(80px)",
+                transform: `translateY(${scrollY * parallaxFactor}px)`,
+              }}
+              animate={{
+                scale: [1, 1.1, 0.95, 1.05, 1],
+                x: [0, 30, -20, 10, 0],
+                y: [0, -30, 20, -10, 0],
+                opacity: [0.4, 0.5, 0.3, 0.45, 0.4],
+              }}
+              transition={{
+                duration: 25 + i * 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+          )
+        })}
+      </div>
+
+      {/* Animated stars with parallax */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 50 }).map((_, i) => {
+          const size = Math.random() * 2 + 1
+          const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
+          const color = colors[i % colors.length]
+          const parallaxFactor = 0.02 * ((i % 3) + 1)
+
+          return (
+            <motion.div
+              key={`project-star-${i}`}
+              className="absolute rounded-full"
+              style={{
+                width: size,
+                height: size,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                backgroundColor: color,
+                boxShadow: `0 0 ${size * 3}px ${size}px ${color}`,
+                opacity: Math.random() * 0.7 + 0.3,
+                transform: `translateY(${scrollY * parallaxFactor}px)`,
+              }}
+              animate={{
+                opacity: [Math.random() * 0.7 + 0.3, Math.random() * 0.9 + 0.5, Math.random() * 0.7 + 0.3],
+              }}
+              transition={{
+                duration: Math.random() * 4 + 2,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                delay: Math.random() * 5,
+              }}
+            />
+          )
+        })}
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-white">
-            Meus Projetos<span className="text-[#60A5FA]">;</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            Meus Projetos<span className="text-cosmic-accent">;</span>
           </h2>
+          <p className="mt-4 text-cosmic-text max-w-2xl mx-auto">
+            Conheça alguns dos projetos que desenvolvi, desde aplicações web até plataformas educacionais.
+          </p>
         </motion.div>
 
+        {/* Projects grid */}
         <motion.div
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
           }}
-          className="space-y-6 sm:space-y-8 lg:space-y-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {projectsData.map((project, index) => (
             <ProjectCard
@@ -52,10 +180,27 @@ const Projects = () => {
               project={project}
               currentImageIndex={currentImageIndices[index]}
               onImageNavigation={(direction) => handleImageNavigation(index, direction)}
+              index={index}
+              isExpanded={expandedProject === index}
+              onToggleExpand={() => toggleProjectExpand(index)}
+              isHovered={hoveredProject === index}
+              onHover={() => setHoveredProject(index)}
+              onLeave={() => setHoveredProject(null)}
             />
           ))}
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      {expandedProject !== null && (
+        <ProjectModal
+          project={projectsData[expandedProject]}
+          isOpen={expandedProject !== null}
+          onClose={() => setExpandedProject(null)}
+          currentImageIndex={currentImageIndices[expandedProject]}
+          onImageNavigation={(direction) => handleImageNavigation(expandedProject, direction)}
+        />
+      )}
     </section>
   )
 }
@@ -64,183 +209,305 @@ const ProjectCard = ({
   project,
   currentImageIndex,
   onImageNavigation,
+  index,
+  onToggleExpand,
+  isHovered,
+  onHover,
+  onLeave,
 }: {
   project: Project
   currentImageIndex: number
   onImageNavigation: (direction: "next" | "prev") => void
+  index: number
+  isExpanded: boolean
+  onToggleExpand: () => void
+  isHovered: boolean
+  onHover: () => void
+  onLeave: () => void
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  // Swipe handlers for mobile image navigation
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => onImageNavigation("next"),
+    onSwipedRight: () => onImageNavigation("prev"),
+    trackMouse: true,
+  })
+
+  // Status color and icon mapping
+  const getStatusInfo = (status: string) => {
+    switch (status) {
+      case "Finalizado":
+        return {
+          color: "bg-green-500/10 text-green-400 border-green-500/20",
+          icon: <CheckCircle2 className="w-3 h-3" />,
+          glow: "rgba(74, 222, 128, 0.5)",
+        }
+      case "Beta":
+        return {
+          color: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+          icon: <Star className="w-3 h-3" />,
+          glow: "rgba(96, 165, 250, 0.5)",
+        }
+      case "Em Desenvolvimento":
+        return {
+          color: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+          icon: <Clock className="w-3 h-3" />,
+          glow: "rgba(250, 204, 21, 0.5)",
+        }
+      default:
+        return {
+          color: "bg-gray-500/10 text-gray-400 border-gray-500/20",
+          icon: <Tag className="w-3 h-3" />,
+          glow: "rgba(156, 163, 175, 0.5)",
+        }
+    }
+  }
+
+  // Type icon mapping
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case "Colaborativo":
+        return <Users className="w-4 h-4" />
+      case "Freelance":
+        return <GitBranch className="w-4 h-4" />
+      case "Pessoal":
+      default:
+        return <Tag className="w-4 h-4" />
+    }
+  }
+
+  const statusInfo = getStatusInfo(project.status)
+
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.6,
+            ease: "easeOut",
+            delay: index * 0.1,
+          },
+        },
       }}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.4 }}
-      className="group relative bg-gradient-to-br from-[#0A1120] to-[#111827] rounded-xl xxs:rounded-2xl overflow-hidden border border-[#1E293B] hover:border-[#60A5FA]/30"
+      className="group relative h-full"
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      ref={cardRef}
     >
-      <div className="flex flex-col lg:flex-row h-full">
-        {/* Seção de Imagem */}
-        <div className="relative w-full lg:w-[45%] aspect-[4/3] xxs:aspect-video lg:aspect-auto">
+      {/* Card with hover effects */}
+      <motion.div
+        className="relative h-full bg-cosmic-card/80 backdrop-blur-sm rounded-xl overflow-hidden border border-cosmic-border hover:border-cosmic-accent/50 transition-all duration-500"
+        whileHover={{
+          y: -8,
+          boxShadow: "0 10px 30px -10px rgba(96, 165, 250, 0.2)",
+        }}
+      >
+        {/* Image section */}
+        <div className="relative aspect-video overflow-hidden" {...swipeHandlers}>
           <AnimatePresence mode="wait">
             <motion.img
               key={currentImageIndex}
               src={project.thumbnails[currentImageIndex]}
               alt={project.title}
               className="w-full h-full object-cover"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4 }}
             />
           </AnimatePresence>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120] via-transparent to-transparent opacity-60" />
+          {/* Image overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-cosmic-card via-cosmic-card/20 to-transparent opacity-80" />
 
+          {/* Navigation arrows */}
           {project.thumbnails.length > 1 && (
             <>
-              <div className="absolute inset-0 flex items-center justify-between px-2 xxs:px-4">
+              <div className="absolute inset-0 flex items-center justify-between px-3">
                 <motion.button
                   onClick={(e) => {
                     e.preventDefault()
                     onImageNavigation("prev")
                   }}
-                  className="p-1.5 xxs:p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
+                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ArrowLeft className="w-3 h-3 xxs:w-4 xxs:h-4 text-white" />
+                  <ArrowLeft className="w-3.5 h-3.5 text-white" />
                 </motion.button>
                 <motion.button
                   onClick={(e) => {
                     e.preventDefault()
                     onImageNavigation("next")
                   }}
-                  className="p-1.5 xxs:p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
+                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ArrowRight className="w-3 h-3 xxs:w-4 xxs:h-4 text-white" />
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </motion.button>
               </div>
 
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 hidden xxs:flex gap-1">
+              {/* Image indicators */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                 {project.thumbnails.map((_, idx) => (
-                  <div
+                  <motion.div
                     key={idx}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      idx === currentImageIndex ? "w-5 xxs:w-6 bg-[#60A5FA]" : "w-1 xxs:w-1.5 bg-white/50"
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex ? "w-6 bg-cosmic-accent" : "w-1.5 bg-white/40"
                     }`}
+                    whileHover={{ scale: 1.2 }}
+                    onClick={() => {
+                      const direction = idx > currentImageIndex ? "next" : "prev"
+                      // Navigate to the specific index by calling onImageNavigation multiple times
+                      for (let i = 0; i < Math.abs(idx - currentImageIndex); i++) {
+                        onImageNavigation(direction)
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
                   />
                 ))}
               </div>
             </>
           )}
-        </div>
 
-        {/* Conteúdo */}
-        <div className="relative flex-1 p-4 xxs:p-5 sm:p-6 lg:p-8 flex flex-col">
-          <div className="flex-1 space-y-3 xxs:space-y-4 sm:space-y-6">
-            {/* Cabeçalho */}
-            <div className="flex flex-col space-y-3 xxs:space-y-4">
-              <div className="flex justify-between items-start gap-3 xxs:gap-4">
-                <h3 className="text-lg xxs:text-xl sm:text-2xl font-bold text-white group-hover:text-[#60A5FA] transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <span
-                  className={`shrink-0 px-2 xxs:px-2.5 sm:px-3 py-1 rounded-full text-[10px] xxs:text-xs font-medium ${
-                    project.status === "Finalizado"
-                      ? "bg-green-500/10 text-green-400 border border-green-500/20"
-                      : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
-                  }`}
-                >
-                  {project.status}
-                </span>
-              </div>
-
-              {/* Metadados - Mobile */}
-              <div className="flex flex-wrap gap-2 xxs:gap-3 sm:hidden text-[10px] xxs:text-xs">
-                <div className="flex items-center gap-1 xxs:gap-1.5 text-[#94A3B8]">
-                  <Calendar className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-[#60A5FA]" />
-                  <span>{project.duration}</span>
-                </div>
-                <div className="flex items-center gap-1 xxs:gap-1.5 text-[#94A3B8]">
-                  <Folder className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-[#60A5FA]" />
-                  <span>{project.category}</span>
-                </div>
-                <div className="flex items-center gap-1 xxs:gap-1.5 text-[#94A3B8]">
-                  <Tag className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-[#60A5FA]" />
-                  <span>{project.type}</span>
-                </div>
-              </div>
-
-              {/* Metadados - Desktop */}
-              <div className="hidden sm:grid grid-cols-3 gap-4 text-sm">
-                <div className="flex items-center gap-2 text-[#94A3B8]">
-                  <Calendar className="w-4 h-4 text-[#60A5FA]" />
-                  <span>{project.duration}</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#94A3B8]">
-                  <Folder className="w-4 h-4 text-[#60A5FA]" />
-                  <span>{project.category}</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#94A3B8]">
-                  <Tag className="w-4 h-4 text-[#60A5FA]" />
-                  <span>{project.type}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Descrição */}
-            <p className="text-xs xxs:text-sm text-[#94A3B8] leading-relaxed">{project.description}</p>
-
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-1 xxs:gap-1.5 sm:gap-2">
-              {project.techStack.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="px-1.5 xxs:px-2 sm:px-3 py-0.5 xxs:py-1 text-[10px] xxs:text-xs font-medium text-[#60A5FA] bg-[#60A5FA]/5 rounded-full border border-[#60A5FA]/10"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+          {/* Status badge */}
+          <div className="absolute top-3 right-3">
+            <motion.span
+              className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium border ${statusInfo.color}`}
+              whileHover={{ scale: 1.05 }}
+              animate={
+                isHovered
+                  ? {
+                      boxShadow: ["0 0 0 rgba(0, 0, 0, 0)", `0 0 8px ${statusInfo.glow}`, "0 0 0 rgba(0, 0, 0, 0)"],
+                    }
+                  : {}
+              }
+              transition={{
+                duration: 2,
+                repeat: isHovered ? Number.POSITIVE_INFINITY : 0,
+                repeatType: "reverse",
+              }}
+            >
+              {statusInfo.icon}
+              <span>{project.status}</span>
+            </motion.span>
           </div>
 
-          {/* Links */}
-          <div className="mt-4 xxs:mt-6 pt-3 xxs:pt-4 sm:mt-8 sm:pt-6 border-t border-[#1E293B] flex items-center justify-between">
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link inline-flex items-center"
-              whileHover={{ x: 4 }}
+          {/* Project type badge */}
+          <div className="absolute top-3 left-3">
+            <motion.span
+              className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-black/40 backdrop-blur-sm text-white border border-white/10"
+              whileHover={{ scale: 1.05 }}
             >
-              <div className="flex items-center gap-1.5 xxs:gap-2 text-[#60A5FA] group-hover/link:text-white transition-colors duration-300">
-                <div className="p-1 xxs:p-1.5 sm:p-2 rounded-full bg-[#60A5FA]/5 group-hover/link:bg-[#60A5FA]/10 transition-colors duration-300">
-                  <Eye className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 sm:w-4 sm:h-4" />
-                </div>
-                <span className="text-[10px] xxs:text-xs sm:text-sm font-medium">Visualizar</span>
-              </div>
-            </motion.a>
+              {getTypeIcon(project.type)}
+              <span className="ml-1">{project.type}</span>
+            </motion.span>
+          </div>
 
-            <motion.a
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/repo inline-flex items-center"
-              whileHover={{ x: -4 }}
-            >
-              <div className="flex items-center gap-1.5 xxs:gap-2 text-[#94A3B8] group-hover/repo:text-white transition-colors duration-300">
-                <span className="text-[10px] xxs:text-xs sm:text-sm font-medium">Repositório</span>
-                <div className="p-1 xxs:p-1.5 sm:p-2 rounded-full bg-[#94A3B8]/5 group-hover/repo:bg-[#94A3B8]/10 transition-colors duration-300">
-                  <GitBranch className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 sm:w-4 sm:h-4" />
-                </div>
-              </div>
-            </motion.a>
+          {/* Project title overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cosmic-accent transition-colors duration-300">
+              {project.title}
+            </h3>
+
+            {/* Category badge */}
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
+                <Folder className="w-3.5 h-3.5" />
+                <span className="ml-1">{project.category}</span>
+              </span>
+
+              {project.duration && (
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/10">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span className="ml-1">{project.duration}</span>
+                </span>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+
+        {/* Content section */}
+        <div className="p-4">
+          {/* Description - truncated */}
+          <p className="text-sm text-cosmic-text line-clamp-2 mb-4">{project.description}</p>
+
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.techStack.slice(0, 4).map((tech, idx) => (
+              <span
+                key={idx}
+                className="px-2 py-1 text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent rounded-md border border-cosmic-accent/20"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.techStack.length > 4 && (
+              <span className="px-2 py-1 text-xs font-medium bg-cosmic-text/5 text-cosmic-text rounded-md border border-cosmic-text/10">
+                +{project.techStack.length - 4}
+              </span>
+            )}
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex items-center justify-between">
+            <motion.button
+              onClick={onToggleExpand}
+              className="flex items-center gap-1.5 text-xs font-medium text-cosmic-accent hover:text-white transition-colors duration-300"
+              whileHover={{ scale: 1.05, x: 2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Ver detalhes
+              <ChevronDown className="w-3.5 h-3.5" />
+            </motion.button>
+
+            <div className="flex items-center gap-2">
+              <motion.a
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-md bg-cosmic-text/5 text-cosmic-text hover:bg-cosmic-text/10 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <GitBranch className="w-3.5 h-3.5" />
+              </motion.a>
+
+              <motion.a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-md bg-cosmic-accent/10 text-cosmic-accent hover:bg-cosmic-accent/20 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Eye className="w-3.5 h-3.5" />
+              </motion.a>
+            </div>
+          </div>
+        </div>
+
+        {/* Highlight indicator for featured projects */}
+        {project.highlight && (
+          <div className="absolute -top-1 -right-1">
+            <div
+              className="w-16 h-16 overflow-hidden"
+              style={{
+                clipPath: "polygon(0 0, 100% 100%, 100% 0)",
+              }}
+            >
+              <div className="w-full h-full transform rotate-45 origin-top-right flex items-center justify-center bg-cosmic-accent">
+                <Star className="w-3 h-3 text-white transform -rotate-45" />
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
     </motion.div>
   )
 }

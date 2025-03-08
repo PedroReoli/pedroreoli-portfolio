@@ -1,9 +1,9 @@
 export interface Project {
   title: string
   description: string
-  detailedDescription?: string // Descrição expandida para mais detalhes
+  detailedDescription?: string
   link: string
-  repo: string // Link do repositório
+  repo: string
   techStack: string[]
   status: "Finalizado" | "Beta" | "Em Desenvolvimento"
   thumbnails: string[]
@@ -11,9 +11,12 @@ export interface Project {
   duration: string
   category: "Web" | "Mobile" | "Desktop" | "Blog" | "E-commerce"
   difficulty: "Iniciante" | "Intermediário" | "Avançado"
-  features?: string[] // Lista de funcionalidades principais
-  teamSize?: number // Tamanho da equipe (para projetos colaborativos)
-  role?: string // Função no projeto
+  features?: string[]
+  teamSize?: number
+  role?: string
+  color?: string // Added for custom project color theming
+  year?: string // Added to show project year
+  highlight?: boolean // Added to mark featured projects
 }
 
 export const projectsData: Project[] = [
@@ -41,6 +44,9 @@ export const projectsData: Project[] = [
     ],
     teamSize: 4,
     role: "Tech Lead & Desenvolvedor Full Stack",
+    color: "#8C429D",
+    year: "2024",
+    highlight: true
   },
   {
     title: "Peoplelly",
@@ -64,6 +70,9 @@ export const projectsData: Project[] = [
       "Sistema de grupos",
       "Compartilhamento de conteúdo",
     ],
+    color: "#60A5FA",
+    year: "2023",
+    highlight: true
   },
   {
     title: "DevEmDesenvolvimento",
@@ -71,7 +80,7 @@ export const projectsData: Project[] = [
       "Blog técnico e plataforma educacional focada em compartilhar conhecimento sobre desenvolvimento de software e tecnologia.",
     detailedDescription:
       "Espaço dedicado ao compartilhamento de conhecimento em programação, com artigos técnicos, tutoriais práticos e recursos educacionais. Inclui sistema de newsletter, área de membros e conteúdo premium.",
-    link: "https://devemdesenvolvimento.netlify.app",
+    link: "https://devemdesenvolvimento.com.br",
     repo: "https://github.com/PedroReoli/BlogDevInDevelopment",
     techStack: ["React", "Tailwind CSS", "AppwriteDB", "JavaScript", "MDX", "Next.js"],
     status: "Beta",
@@ -87,6 +96,8 @@ export const projectsData: Project[] = [
       "Conteúdo premium",
       "Integração com redes sociais",
     ],
+    color: "#F59E0B",
+    year: "2023",
+    highlight: false
   },
 ]
-
