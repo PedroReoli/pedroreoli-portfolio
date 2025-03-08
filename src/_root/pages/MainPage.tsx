@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback, Suspense, lazy } from "react"
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
 import LazySection from "@/components/LazySection"
 import Home from "./Home"
@@ -8,17 +8,24 @@ import About from "./About"
 import Projects from "./Projects"
 import Services from "./Services"
 import Skills from "./Skills"
-import FAQ from "./FAQ"
-import BlogSection from "./BlogSection"
-import End from "./End"
 import Timeline from "./Timeline"
-// Importe o componente SpaceSceneWithPlanets
 import SpaceBackground from "./SpaceBackground"
+import { useThrottle } from "@/hooks/use-throttle"
+
+const BlogSection = lazy(() => import('./BlogSection'))
+const FAQ = lazy(() => import('./FAQ'))
+const End = lazy(() => import('./End'))
 
 const MainPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
-  // State to track screen width
   const [screenWidth, setScreenWidth] = useState(0)
+  const [isClient, setIsClient] = useState(false)
+  const [isLowPerfDevice, setIsLowPerfDevice] = useState(false)
+  const [fullyLoaded, setFullyLoaded] = useState(false)
+
+  // Add this to your component
+  const fpsLimit = 30 // Limit to 30 FPS for smoother performance
+  const lastFrameTime = useRef(0)
 
   // Motion values for mouse parallax
   const mouseX = useMotionValue(0)
@@ -32,6 +39,7 @@ const MainPage = () => {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
+    layoutEffect: false, // Add this line
   })
 
   // Background parallax elements with different speeds
@@ -45,39 +53,71 @@ const MainPage = () => {
   const mouseParallax3 = useTransform(smoothMouseX, [-500, 500], [-30, 30])
   const mouseParallax4 = useTransform(smoothMouseY, [-500, 500], [-30, 30])
 
+  // Throttled mouse move and resize handlers using useCallback and useThrottle
+  const throttledMouseMove = useThrottle(
+    useCallback(
+      (e: MouseEvent) => {
+        const { clientX, clientY } = e
+        const { innerWidth, innerHeight } = window
+
+        // Normalize mouse position to be centered (0,0) at the middle of the screen
+        const normalizedX = clientX - innerWidth / 2
+        const normalizedY = clientY - innerHeight / 2
+
+        mouseX.set(normalizedX)
+        mouseY.set(normalizedY)
+      },
+      [mouseX, mouseY],
+    ),
+    16,
+  )
+
+  const throttledResize = useThrottle(
+    useCallback(() => {
+      setScreenWidth(window.innerWidth)
+    }, []),
+    100,
+  )
+
   // Handle mouse movement for parallax effect and detect screen width
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e
-      const { innerWidth, innerHeight } = window
-
-      // Normalize mouse position to be centered (0,0) at the middle of the screen
-      const normalizedX = clientX - innerWidth / 2
-      const normalizedY = clientY - innerHeight / 2
-
-      mouseX.set(normalizedX)
-      mouseY.set(normalizedY)
-    }
-
-    // Set initial screen width
+    setIsClient(true)
     setScreenWidth(window.innerWidth)
 
-    // Update screen width on resize
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth)
+    // Check if device is likely low performance
+    const checkPerformance = () => {
+      // Mobile devices or devices with small screens are likely lower performance
+      if (
+        window.innerWidth < 768 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      ) {
+        setIsLowPerfDevice(true)
+      }
+
+      // You could also check for CPU cores if available
+      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+        setIsLowPerfDevice(true)
+      }
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    window.addEventListener("resize", handleResize)
+    checkPerformance()
+
+    window.addEventListener("mousemove", throttledMouseMove)
+    window.addEventListener("resize", throttledResize)
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("mousemove", throttledMouseMove)
+      window.removeEventListener("resize", throttledResize)
     }
-  }, [mouseX, mouseY])
+  }, [throttledMouseMove, throttledResize])
+
+  // Fix for opacity animation issues - ensure we're using integer values for opacity
+  const fixOpacityValue = (value: number) => {
+    return Math.round(value * 100) / 100
+  }
 
   // Generate meteor data
-  const meteors = Array.from({ length: 10 }).map((_, i) => {
+  const meteors = Array.from({ length: 5 }).map((_, i) => {
     const size = Math.random() * 2 + 1
     const opacity = Math.random() * 0.7 + 0.3
     const duration = Math.random() * 5 + 8
@@ -130,10 +170,10 @@ const MainPage = () => {
     })
   }
 
-  // Generate stars for each layer
-  const starsLayer1 = generateStars(100, 1) // Distant stars (slow parallax)
-  const starsLayer2 = generateStars(70, 2) // Mid-distance stars
-  const starsLayer3 = generateStars(40, 3) // Close stars (fast parallax)
+  // Generate stars for each layer - reduce count for better performance
+  const starsLayer1 = generateStars(30, 1) // Reduced from 100
+  const starsLayer2 = generateStars(20, 2) // Reduced from 70
+  const starsLayer3 = generateStars(10, 3) // Reduced from 40
 
   // Generate nebula data
   const nebulae = [
@@ -190,8 +230,8 @@ const MainPage = () => {
     },
   ]
 
-  // Generate cosmic dust particles
-  const cosmicDust = Array.from({ length: 30 }).map((_, i) => {
+  // Generate cosmic dust particles - reduced count for better performance
+  const cosmicDust = Array.from({ length: 8 }).map((_, i) => {
     const size = Math.random() * 4 + 2
     const colors = ["rgba(147, 197, 253, 0.2)", "rgba(196, 181, 253, 0.2)", "rgba(249, 168, 212, 0.2)"]
     const color = colors[Math.floor(Math.random() * colors.length)]
@@ -217,55 +257,117 @@ const MainPage = () => {
     }
   })
 
+  // Then in your animation frames or motion components:
+  useEffect(() => {
+    let animationFrameId: number
+
+    const animate = (time: number) => {
+      animationFrameId = requestAnimationFrame(animate)
+
+      // Limit frame rate
+      if (time - lastFrameTime.current < 1000 / fpsLimit) {
+        return
+      }
+
+      lastFrameTime.current = time
+
+      // Your animation code here
+      // ...
+    }
+
+    animationFrameId = requestAnimationFrame(animate)
+
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  useEffect(() => {
+    // Start with basic elements, then progressively add more complex ones
+    const timer = setTimeout(() => {
+      setFullyLoaded(true)
+    }, 1000) // Wait 1 second after initial render to add complex elements
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (!isClient) {
+    return null // Prevent hydration mismatch
+  }
+
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative w-full h-full">
       {/* Deep space background with enhanced gradient */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none deep-space-bg">
         {/* Base gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#040D21] via-[#0A1A35] to-[#061529] opacity-90"></div>
 
         {/* Layer 1: Distant stars (slow parallax) */}
-        <motion.div
-          className="absolute inset-0 parallax-layer-1"
-          style={{
-            y: bgParallax1,
-            x: mouseParallax1,
-          }}
-        >
-          {starsLayer1.map((star) => (
-            <motion.div
-              key={star.id}
-              className={`absolute rounded-full ${star.twinkle ? "animate-twinkle" : ""}`}
-              style={
-                {
-                  width: star.size,
-                  height: star.size,
-                  top: star.top,
-                  left: star.left,
-                  backgroundColor: star.color,
-                  boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
-                  opacity: star.baseOpacity,
-                  "--base-opacity": star.baseOpacity,
-                  "--peak-opacity": star.peakOpacity,
-                  "--peak-scale": star.peakScale,
-                  "--twinkle-duration": `${star.twinkleDuration}s`,
-                  "--twinkle-delay": `${star.twinkleDelay}s`,
-                } as any
-              }
-            />
-          ))}
-        </motion.div>
+        {isLowPerfDevice ? (
+          // Simpler version with fewer stars
+          <div className="absolute inset-0">
+            {starsLayer1.slice(0, 10).map((star) => (
+              <div
+                key={star.id}
+                className={`absolute rounded-full`}
+                style={
+                  {
+                    width: star.size,
+                    height: star.size,
+                    top: star.top,
+                    left: star.left,
+                    backgroundColor: star.color,
+                    boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
+                    opacity: fixOpacityValue(star.baseOpacity),
+                  } as any
+                }
+              />
+            ))}
+          </div>
+        ) : (
+          // Full version with all effects
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              y: bgParallax1,
+              x: mouseParallax1,
+            }}
+          >
+            {starsLayer1.map((star) => (
+              <div
+                key={star.id}
+                className={`absolute rounded-full ${star.twinkle ? "animate-twinkle" : ""}`}
+                style={
+                  {
+                    width: star.size,
+                    height: star.size,
+                    top: star.top,
+                    left: star.left,
+                    backgroundColor: star.color,
+                    boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
+                    opacity: fixOpacityValue(star.baseOpacity),
+                    "--base-opacity": fixOpacityValue(star.baseOpacity),
+                    "--peak-opacity": fixOpacityValue(star.peakOpacity),
+                    "--peak-scale": star.peakScale.toFixed(2),
+                    "--twinkle-duration": `${star.twinkleDuration}s`,
+                    "--twinkle-delay": `${star.twinkleDelay}s`,
+                  } as any
+                }
+              />
+            ))}
+          </motion.div>
+        )}
 
         {/* Layer 2: Mid-distance stars */}
         <motion.div
-          className="absolute inset-0 parallax-layer-2"
+          className="absolute inset-0"
           style={{
             y: bgParallax2,
             x: mouseParallax2,
           }}
         >
           {starsLayer2.map((star) => (
-            <motion.div
+            <div
               key={star.id}
               className={`absolute rounded-full ${star.twinkle ? "animate-twinkle" : ""}`}
               style={
@@ -276,10 +378,10 @@ const MainPage = () => {
                   left: star.left,
                   backgroundColor: star.color,
                   boxShadow: `0 0 ${star.size * 3}px ${star.size}px ${star.color}`,
-                  opacity: star.baseOpacity,
-                  "--base-opacity": star.baseOpacity,
-                  "--peak-opacity": star.peakOpacity,
-                  "--peak-scale": star.peakScale,
+                  opacity: fixOpacityValue(star.baseOpacity),
+                  "--base-opacity": fixOpacityValue(star.baseOpacity),
+                  "--peak-opacity": fixOpacityValue(star.peakOpacity),
+                  "--peak-scale": star.peakScale.toFixed(2),
                   "--twinkle-duration": `${star.twinkleDuration}s`,
                   "--twinkle-delay": `${star.twinkleDelay}s`,
                 } as any
@@ -288,38 +390,42 @@ const MainPage = () => {
           ))}
 
           {/* Mid-distance nebulae */}
-          {nebulae
-            .filter((n) => n.layer === 2)
-            .map((nebula) => (
-              <motion.div
-                key={nebula.id}
-                className="absolute rounded-full animate-nebula-pulse"
-                style={
-                  {
-                    width: nebula.width,
-                    height: nebula.height,
-                    background: nebula.background,
-                    top: nebula.top,
-                    left: nebula.left,
-                    opacity: nebula.minOpacity,
-                    filter: `blur(${nebula.minBlur}px)`,
-                    "--nebula-min-opacity": nebula.minOpacity,
-                    "--nebula-max-opacity": nebula.maxOpacity,
-                    "--nebula-min-scale": nebula.minScale,
-                    "--nebula-max-scale": nebula.maxScale,
-                    "--nebula-min-blur": `${nebula.minBlur}px`,
-                    "--nebula-max-blur": `${nebula.maxBlur}px`,
-                    "--nebula-duration": `${nebula.duration}s`,
-                    "--nebula-delay": `${nebula.delay}s`,
-                  } as any
-                }
-              />
-            ))}
+          {fullyLoaded && (
+            <>
+              {nebulae
+                .filter((n) => n.layer === 2)
+                .map((nebula) => (
+                  <motion.div
+                    key={nebula.id}
+                    className="absolute rounded-full animate-nebula-pulse"
+                    style={
+                      {
+                        width: nebula.width,
+                        height: nebula.height,
+                        background: nebula.background,
+                        top: nebula.top,
+                        left: nebula.left,
+                        opacity: fixOpacityValue(nebula.minOpacity),
+                        filter: `blur(${nebula.minBlur}px)`,
+                        "--nebula-min-opacity": fixOpacityValue(nebula.minOpacity),
+                        "--nebula-max-opacity": fixOpacityValue(nebula.maxOpacity),
+                        "--nebula-min-scale": nebula.minScale.toFixed(2),
+                        "--nebula-max-scale": nebula.maxScale.toFixed(2),
+                        "--nebula-min-blur": `${nebula.minBlur}px`,
+                        "--nebula-max-blur": `${nebula.maxBlur}px`,
+                        "--nebula-duration": `${nebula.duration}s`,
+                        "--nebula-delay": `${nebula.delay}s`,
+                      } as any
+                    }
+                  />
+                ))}
+            </>
+          )}
         </motion.div>
 
         {/* Layer 3: Close stars and elements (fast parallax) */}
         <motion.div
-          className="absolute inset-0 parallax-layer-3"
+          className="absolute inset-0"
           style={{
             y: bgParallax3,
             x: mouseParallax3,
@@ -327,7 +433,7 @@ const MainPage = () => {
           }}
         >
           {starsLayer3.map((star) => (
-            <motion.div
+            <div
               key={star.id}
               className={`absolute rounded-full ${star.twinkle ? "animate-twinkle" : ""}`}
               style={
@@ -338,10 +444,10 @@ const MainPage = () => {
                   left: star.left,
                   backgroundColor: star.color,
                   boxShadow: `0 0 ${star.size * 4}px ${star.size * 1.5}px ${star.color}`,
-                  opacity: star.baseOpacity,
-                  "--base-opacity": star.baseOpacity,
-                  "--peak-opacity": star.peakOpacity,
-                  "--peak-scale": star.peakScale,
+                  opacity: fixOpacityValue(star.baseOpacity),
+                  "--base-opacity": fixOpacityValue(star.baseOpacity),
+                  "--peak-opacity": fixOpacityValue(star.peakOpacity),
+                  "--peak-scale": star.peakScale.toFixed(2),
                   "--twinkle-duration": `${star.twinkleDuration}s`,
                   "--twinkle-delay": `${star.twinkleDelay}s`,
                 } as any
@@ -350,33 +456,37 @@ const MainPage = () => {
           ))}
 
           {/* Close nebulae */}
-          {nebulae
-            .filter((n) => n.layer === 3)
-            .map((nebula) => (
-              <motion.div
-                key={nebula.id}
-                className="absolute rounded-full animate-nebula-pulse"
-                style={
-                  {
-                    width: nebula.width,
-                    height: nebula.height,
-                    background: nebula.background,
-                    top: nebula.top,
-                    left: nebula.left,
-                    opacity: nebula.minOpacity,
-                    filter: `blur(${nebula.minBlur}px)`,
-                    "--nebula-min-opacity": nebula.minOpacity,
-                    "--nebula-max-opacity": nebula.maxOpacity,
-                    "--nebula-min-scale": nebula.minScale,
-                    "--nebula-max-scale": nebula.maxScale,
-                    "--nebula-min-blur": `${nebula.minBlur}px`,
-                    "--nebula-max-blur": `${nebula.maxBlur}px`,
-                    "--nebula-duration": `${nebula.duration}s`,
-                    "--nebula-delay": `${nebula.delay}s`,
-                  } as any
-                }
-              />
-            ))}
+          {fullyLoaded && (
+            <>
+              {nebulae
+                .filter((n) => n.layer === 3)
+                .map((nebula) => (
+                  <motion.div
+                    key={nebula.id}
+                    className="absolute rounded-full animate-nebula-pulse"
+                    style={
+                      {
+                        width: nebula.width,
+                        height: nebula.height,
+                        background: nebula.background,
+                        top: nebula.top,
+                        left: nebula.left,
+                        opacity: fixOpacityValue(nebula.minOpacity),
+                        filter: `blur(${nebula.minBlur}px)`,
+                        "--nebula-min-opacity": fixOpacityValue(nebula.minOpacity),
+                        "--nebula-max-opacity": fixOpacityValue(nebula.maxOpacity),
+                        "--nebula-min-scale": nebula.minScale.toFixed(2),
+                        "--nebula-max-scale": nebula.maxScale.toFixed(2),
+                        "--nebula-min-blur": `${nebula.minBlur}px`,
+                        "--nebula-max-blur": `${nebula.maxBlur}px`,
+                        "--nebula-duration": `${nebula.duration}s`,
+                        "--nebula-delay": `${nebula.delay}s`,
+                      } as any
+                    }
+                  />
+                ))}
+            </>
+          )}
         </motion.div>
 
         {/* Distant nebulae (slowest parallax) */}
@@ -386,33 +496,37 @@ const MainPage = () => {
             y: bgParallax1,
           }}
         >
-          {nebulae
-            .filter((n) => n.layer === 1)
-            .map((nebula) => (
-              <motion.div
-                key={nebula.id}
-                className="absolute rounded-full animate-nebula-pulse"
-                style={
-                  {
-                    width: nebula.width,
-                    height: nebula.height,
-                    background: nebula.background,
-                    top: nebula.top,
-                    left: nebula.left,
-                    opacity: nebula.minOpacity,
-                    filter: `blur(${nebula.minBlur}px)`,
-                    "--nebula-min-opacity": nebula.minOpacity,
-                    "--nebula-max-opacity": nebula.maxOpacity,
-                    "--nebula-min-scale": nebula.minScale,
-                    "--nebula-max-scale": nebula.maxScale,
-                    "--nebula-min-blur": `${nebula.minBlur}px`,
-                    "--nebula-max-blur": `${nebula.maxBlur}px`,
-                    "--nebula-duration": `${nebula.duration}s`,
-                    "--nebula-delay": `${nebula.delay}s`,
-                  } as any
-                }
-              />
-            ))}
+          {fullyLoaded && (
+            <>
+              {nebulae
+                .filter((n) => n.layer === 1)
+                .map((nebula) => (
+                  <motion.div
+                    key={nebula.id}
+                    className="absolute rounded-full animate-nebula-pulse"
+                    style={
+                      {
+                        width: nebula.width,
+                        height: nebula.height,
+                        background: nebula.background,
+                        top: nebula.top,
+                        left: nebula.left,
+                        opacity: fixOpacityValue(nebula.minOpacity),
+                        filter: `blur(${nebula.minBlur}px)`,
+                        "--nebula-min-opacity": fixOpacityValue(nebula.minOpacity),
+                        "--nebula-max-opacity": fixOpacityValue(nebula.maxOpacity),
+                        "--nebula-min-scale": nebula.minScale.toFixed(2),
+                        "--nebula-max-scale": nebula.maxScale.toFixed(2),
+                        "--nebula-min-blur": `${nebula.minBlur}px`,
+                        "--nebula-max-blur": `${nebula.maxBlur}px`,
+                        "--nebula-duration": `${nebula.duration}s`,
+                        "--nebula-delay": `${nebula.delay}s`,
+                      } as any
+                    }
+                  />
+                ))}
+            </>
+          )}
         </motion.div>
 
         {/* Cosmic dust particles with floating animation */}
@@ -441,33 +555,35 @@ const MainPage = () => {
           ))}
         </div>
 
-        {/* Meteors with dynamic animation */}
-        <AnimatePresence>
-          {meteors.map((meteor) => (
-            <motion.div
-              key={`meteor-${meteor.id}`}
-              className="animate-meteor"
-              style={
-                {
-                  top: `${meteor.startPositionY}%`,
-                  left: `${meteor.startPositionX}%`,
-                  width: meteor.size,
-                  height: meteor.size,
-                  opacity: meteor.opacity,
-                  "--meteor-duration": `${meteor.duration}s`,
-                  "--meteor-delay": `${meteor.delay}s`,
-                  "--tail-length": `${meteor.tailLength}px`,
-                  "--tail-blur": `${meteor.tailBlur}px`,
-                } as any
-              }
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <div className="meteor-tail"></div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {/* Meteors with dynamic animation - using integer values for opacity */}
+        {fullyLoaded && !isLowPerfDevice && (
+          <AnimatePresence>
+            {meteors.map((meteor) => (
+              <motion.div
+                key={`meteor-${meteor.id}`}
+                className="animate-meteor"
+                style={
+                  {
+                    top: `${meteor.startPositionY}%`,
+                    left: `${meteor.startPositionX}%`,
+                    width: meteor.size,
+                    height: meteor.size,
+                    opacity: fixOpacityValue(meteor.opacity),
+                    "--meteor-duration": `${meteor.duration}s`,
+                    "--meteor-delay": `${meteor.delay}s`,
+                    "--tail-length": `${meteor.tailLength}px`,
+                    "--tail-blur": `${meteor.tailBlur}px`,
+                  } as any
+                }
+                initial={{ opacity: 0 }}
+                animate={{ opacity: fixOpacityValue(meteor.opacity) }}
+                exit={{ opacity: 0 }}
+              >
+                <div className="meteor-tail"></div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        )}
 
         {/* Conditionally render SpaceBackground based on screen width */}
         {screenWidth > 1024 && <SpaceBackground />}
@@ -500,15 +616,21 @@ const MainPage = () => {
         </LazySection>
 
         <LazySection parallaxFactor={0.2}>
-          <BlogSection />
+          <Suspense fallback={<div>Carregando...</div>}>
+            <BlogSection />
+          </Suspense>
         </LazySection>
 
         <LazySection parallaxFactor={0.15}>
-          <FAQ />
+          <Suspense fallback={<div>Carregando...</div>}>
+            <FAQ />
+          </Suspense>
         </LazySection>
 
         <LazySection parallaxFactor={0.1}>
-          <End />
+          <Suspense fallback={<div>Carregando...</div>}>
+            <End />
+          </Suspense>
         </LazySection>
       </div>
     </div>
