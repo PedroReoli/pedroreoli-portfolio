@@ -585,8 +585,9 @@ const MainPage = () => {
           </AnimatePresence>
         )}
 
-        {/* Conditionally render SpaceBackground based on screen width */}
+        {/* Conditionally render SpaceBackground based on screen width  */}
         {screenWidth > 1024 && <SpaceBackground />}
+       
       </div>
 
       {/* Content sections with parallax effect */}
