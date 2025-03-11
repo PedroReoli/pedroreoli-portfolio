@@ -1,4 +1,3 @@
-/* src\globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,12 +34,12 @@
 
     --radius: 0.5rem;
 
-    /* Cosmic theme colors */
-    --cosmic-bg-rgb: 10, 17, 32;
-    --cosmic-card-rgb: 15, 23, 42;
-    --cosmic-border-rgb: 30, 41, 59;
+    /* Cosmic theme colors - deep space dark blue */
+    --cosmic-bg-rgb: 4, 13, 33;
+    --cosmic-card-rgb: 6, 21, 41;
+    --cosmic-border-rgb: 15, 23, 42;
     --cosmic-text-rgb: 148, 163, 184;
-    --cosmic-accent-rgb: 96, 165, 250;
+    --cosmic-accent-rgb: 59, 130, 246;
 
     --cosmic-bg: rgb(var(--cosmic-bg-rgb));
     --cosmic-card: rgb(var(--cosmic-card-rgb));
@@ -48,16 +47,17 @@
     --cosmic-text: rgb(var(--cosmic-text-rgb));
     --cosmic-accent: rgb(var(--cosmic-accent-rgb));
 
-    /* Cosmic theme star colors */
+    /* Cosmic theme star colors - authentic space */
     --star-blue: #93c5fd;
     --star-purple: #c4b5fd;
-    --star-pink: #f9a8d4;
+    --star-pink: #f0abfc;
     --star-white: #ffffff;
 
-    /* Nebula colors */
-    --nebula-blue: rgba(96, 165, 250, 0.3);
-    --nebula-purple: rgba(167, 139, 250, 0.25);
-    --nebula-pink: rgba(236, 72, 153, 0.2);
+    /* Nebula colors - deeper space colors */
+    --nebula-blue: rgba(37, 99, 235, 0.25);
+    --nebula-purple: rgba(109, 40, 217, 0.25);
+    --nebula-pink: rgba(190, 24, 93, 0.25);
+    --nebula-teal: rgba(15, 118, 110, 0.25);
   }
 }
 
@@ -94,13 +94,13 @@
   }
 
   .cosmic-shimmer {
-    background: linear-gradient(90deg, rgba(96, 165, 250, 0.1), rgba(96, 165, 250, 0.2), rgba(96, 165, 250, 0.1));
+    background: linear-gradient(90deg, rgba(96, 165, 250, 0.2), rgba(96, 165, 250, 0.4), rgba(96, 165, 250, 0.2));
     background-size: 200% 100%;
     animation: shimmer 8s ease-in-out infinite;
   }
 
   .cosmic-glow {
-    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.7));
   }
 
   .cosmic-text-gradient {
@@ -113,11 +113,11 @@
   }
 
   .cosmic-glow {
-    --glow-color: rgba(var(--cosmic-accent-rgb), 0.5);
-    box-shadow: 0 0 15px var(--glow-color), 0 0 30px var(--glow-color);
+    --glow-color: rgba(var(--cosmic-accent-rgb), 0.7);
+    box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
   }
 
-  /* Meteor animations */
+  /* Meteor animations - fixed direction */
   @keyframes meteor {
     0% {
       transform: translate(calc(-100% - 50px), calc(-100% - 50px)) rotate(215deg);
@@ -147,18 +147,7 @@
     z-index: 1;
   }
 
-  .meteor-tail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--tail-length, 50px);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, white);
-    transform: translateX(-100%);
-    filter: blur(var(--tail-blur, 0.3px));
-  }
-
-  /* Star twinkle animation */
+  /* Star twinkle animation - more dramatic */
   @keyframes twinkle {
     0%,
     100% {
@@ -167,7 +156,7 @@
     }
     50% {
       opacity: var(--peak-opacity, 1);
-      transform: scale(var(--peak-scale, 1.2));
+      transform: scale(var(--peak-scale, 1.3));
     }
   }
 
@@ -198,7 +187,7 @@
     animation-delay: var(--float-delay, 0s);
   }
 
-  /* Nebula pulse animation */
+  /* Nebula pulse animation - more dramatic */
   @keyframes nebula-pulse {
     0%,
     100% {
@@ -207,7 +196,7 @@
       filter: blur(var(--nebula-min-blur, 80px));
     }
     50% {
-      opacity: var(--nebula-max-opacity, 0.3);
+      opacity: var(--nebula-max-opacity, 0.4);
       transform: scale(var(--nebula-max-scale, 1.05));
       filter: blur(var(--nebula-max-blur, 100px));
     }
@@ -231,9 +220,9 @@
     }
   }
 
-  /* Deep space background */
+  /* Deep space background - darker */
   .deep-space-bg {
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%);
     background-attachment: fixed;
   }
 
