@@ -1,18 +1,23 @@
 // src/App.tsx
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import RootLayout from '@/_root/RootLayout';
-import MainPage from '@/_root/pages/MainPage';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import RootLayout from "@/_root/RootLayout"
+import MainPage from "@/_root/pages/MainPage"
 
 const App = () => {
+  // Adicionando um wrapper com overflow-x-hidden para prevenir scroll lateral
+  // Isso garante que nenhum elemento filho cause overflow horizontal
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<MainPage />} />
-        </Route>
-      </Routes>
-    </Router>
-  );
-};
+    <div className="relative overflow-x-hidden w-full">
+      <Router>
+        <Routes>
+          <Route path="/" element={<RootLayout />}>
+            <Route index element={<MainPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
+  )
+}
 
-export default App;
+export default App
+

@@ -15,15 +15,17 @@ const FAQ = lazy(() => import("./FAQ"))
 const End = lazy(() => import("./End"))
 
 const MainPage = () => {
+  // Ref para o container principal - necessário para cálculos de scroll corretos
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    // Removido width: 100vw implícito e garantido que o container tem position: relative
+    <div ref={containerRef} className="relative w-full h-full overflow-x-hidden">
       {/* Space background component */}
       <SpaceBackground />
 
       {/* Content sections with parallax effect */}
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-full">
         <LazySection parallaxFactor={0.1}>
           <Home />
         </LazySection>
@@ -49,19 +51,19 @@ const MainPage = () => {
         </LazySection>
 
         <LazySection parallaxFactor={0.2}>
-          <Suspense fallback={<div>Carregando...</div>}>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
             <BlogSection />
           </Suspense>
         </LazySection>
 
         <LazySection parallaxFactor={0.15}>
-          <Suspense fallback={<div>Carregando...</div>}>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
             <FAQ />
           </Suspense>
         </LazySection>
 
         <LazySection parallaxFactor={0.1}>
-          <Suspense fallback={<div>Carregando...</div>}>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
             <End />
           </Suspense>
         </LazySection>

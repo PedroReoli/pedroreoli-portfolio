@@ -17,15 +17,18 @@ const Home = () => {
   }, [controls, isInView])
 
   return (
-    <section ref={ref} className="text-white min-h-screen relative flex flex-col justify-center items-center">
+    <section
+      ref={ref}
+      className="text-white min-h-screen relative flex flex-col justify-center items-center overflow-hidden"
+    >
       {/* Local section background with subtle glow */}
       <div className="absolute inset-0 bg-[#0A1120]/60 backdrop-blur-sm"></div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xxs:px-4 xs:px-5 sm:px-6 py-12 xxs:py-16 xs:py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 xxs:py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24">
         {/* Floating elements with 3D effect */}
         <motion.div
-          className="flex flex-col items-center justify-center gap-20 md:gap-28"
+          className="flex flex-col items-center justify-center gap-12 xxs:gap-14 xs:gap-16 sm:gap-18 md:gap-20 lg:gap-24 xl:gap-28"
           initial="hidden"
           animate={controls}
           variants={{
@@ -54,7 +57,7 @@ const Home = () => {
             }}
           >
             <motion.h1
-              className="text-3xl xxs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+              className="text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -83,7 +86,7 @@ const Home = () => {
                   }}
                 ></motion.span>
               </span>{" "}
-              <span className="inline-block relative mt-2 md:mt-4">
+              <span className="inline-block relative mt-1 xxs:mt-1.5 xs:mt-2 sm:mt-3 md:mt-4">
                 <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-white text-transparent bg-clip-text">
                   eu sou o{" "}
                 </span>
@@ -104,7 +107,7 @@ const Home = () => {
 
             {/* Name with enhanced special effects */}
             <motion.div
-              className="mt-4 relative inline-block"
+              className="mt-2 xxs:mt-3 xs:mt-4 relative inline-block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -114,7 +117,7 @@ const Home = () => {
               }}
             >
               <motion.span
-                className="relative z-10 text-3xl xxs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
+                className="relative z-10 text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -123,27 +126,19 @@ const Home = () => {
                   repeat: Number.POSITIVE_INFINITY,
                   ease: "linear",
                 }}
+                style={{
+                  backgroundSize: "200% auto", // Corrigido para evitar conflito com backgroundPosition
+                }}
               >
                 Pedro
               </motion.span>
               <motion.div
                 className="absolute -inset-4 rounded-2xl blur-xl"
-                style={{
-                  background:
-                    "linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.6), rgba(59, 130, 246, 0.3))",
-                  backgroundSize: "200% 200%",
-                }}
                 animate={{
-                  backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
                   opacity: [0.6, 0.8, 0.6],
                   scale: [1, 1.05, 0.98, 1.02, 1],
                 }}
                 transition={{
-                  backgroundPosition: {
-                    duration: 5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  },
                   opacity: {
                     duration: 3,
                     repeat: Number.POSITIVE_INFINITY,
@@ -157,12 +152,17 @@ const Home = () => {
                     ease: "easeInOut",
                   },
                 }}
+                style={{
+                  background:
+                    "linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.6), rgba(59, 130, 246, 0.3))",
+                  // Removido backgroundSize para evitar conflito com backgroundPosition
+                }}
               ></motion.div>
             </motion.div>
 
             {/* Role with typing effect */}
             <motion.div
-              className="mt-4 xxs:mt-6 xs:mt-8 h-[32px] xxs:h-[36px] xs:h-[40px] sm:h-[48px] md:h-[60px] lg:h-[72px] overflow-hidden"
+              className="mt-3 xxs:mt-4 xs:mt-6 sm:mt-8 h-[24px] xxs:h-[28px] xs:h-[32px] sm:h-[40px] md:h-[48px] lg:h-[60px] xl:h-[72px] overflow-hidden"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
@@ -217,7 +217,7 @@ const Home = () => {
             ></motion.div>
 
             {/* Social icons container */}
-            <motion.div className="relative flex flex-wrap justify-center items-center gap-3 xxs:gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-9">
+            <motion.div className="relative flex flex-wrap justify-center items-center gap-2 xxs:gap-2.5 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8">
               {socialLinks.map((link, index) => (
                 <SocialIcon key={index} {...link} index={index} />
               ))}
@@ -236,14 +236,14 @@ const Home = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-4 xxs:bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-3 xxs:bottom-4 xs:bottom-5 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <p className="text-sm text-gray-400 mb-2">Scroll para explorar</p>
+        <p className="text-xs xxs:text-sm text-gray-400 mb-1 xxs:mb-2">Scroll para explorar</p>
         <motion.div
-          className="w-6 h-10 border-2 border-[#60A5FA]/50 rounded-full flex justify-center"
+          className="w-5 xxs:w-6 h-8 xxs:h-10 border-2 border-[#60A5FA]/50 rounded-full flex justify-center"
           animate={{ y: [0, 8, 0] }}
           transition={{
             duration: 1.5,
@@ -253,7 +253,7 @@ const Home = () => {
           }}
         >
           <motion.div
-            className="w-1.5 h-1.5 bg-[#60A5FA] rounded-full mt-2"
+            className="w-1 xxs:w-1.5 h-1 xxs:h-1.5 bg-[#60A5FA] rounded-full mt-2"
             animate={{
               y: [0, 12, 0],
               opacity: [0, 1, 0],
@@ -377,7 +377,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative block p-3 xxs:p-3.5 xs:p-4 sm:p-5"
+        className="relative block p-2 xxs:p-2.5 xs:p-3 sm:p-3.5 md:p-4 lg:p-5"
         whileHover={{
           scale: 1.1,
           y: -3,
@@ -411,7 +411,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
 
         {/* Icon */}
         <motion.div
-          className="relative z-10 text-xl xxs:text-xl xs:text-2xl sm:text-3xl text-white"
+          className="relative z-10 text-lg xxs:text-xl xs:text-2xl sm:text-2xl md:text-3xl text-white"
           animate={{
             color: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.9)",
             scale: isHovered ? [1, 1.1, 1] : 1,
@@ -457,14 +457,14 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+            className="absolute -bottom-6 xxs:-bottom-7 xs:-bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
             transition={{ duration: 0.2 }}
           >
             <motion.span
-              className="block text-xs sm:text-sm text-white px-3 py-1.5 rounded-full"
+              className="block text-[10px] xxs:text-xs sm:text-sm text-white px-2 xxs:px-2.5 xs:px-3 py-1 xxs:py-1.5 rounded-full"
               style={{
                 background: "rgba(15, 23, 42, 0.8)",
                 backdropFilter: "blur(8px)",

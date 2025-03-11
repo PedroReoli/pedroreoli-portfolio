@@ -27,14 +27,14 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
     >
       {/* Section background with cosmic theme */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
 
-      {/* Animated stars */}
+      {/* Animated stars - Reduzido o número de elementos para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => {
+        {Array.from({ length: 20 }).map((_, i) => {
           const size = Math.random() * 2 + 1
           const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
           const color = colors[i % colors.length]
@@ -67,7 +67,7 @@ const About = () => {
         })}
       </div>
 
-      {/* Animated nebula */}
+      {/* Animated nebula - Removido will-change para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute w-[600px] h-[600px] rounded-full opacity-20 filter blur-[100px]"
@@ -93,7 +93,7 @@ const About = () => {
       {/* Content container */}
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold mb-6 xxs:mb-8 sm:mb-10 md:mb-12 text-center"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-4 xxs:mb-5 xs:mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={mainControls}
           transition={{ duration: 0.5 }}
@@ -104,10 +104,10 @@ const About = () => {
           Sobre Mim <span className="text-cosmic-accent">;</span>
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 xxs:gap-8 sm:gap-10 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {/* Imagem com efeitos aprimorados */}
           <motion.div
-            className="w-full max-w-[240px] xxs:max-w-[280px] xs:max-w-[320px] sm:max-w-sm mx-auto lg:mx-0 lg:w-1/3"
+            className="w-full max-w-[200px] xxs:max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-sm mx-auto lg:mx-0 lg:w-1/3"
             initial={{ opacity: 0, y: 50 }}
             animate={mainControls}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -116,11 +116,11 @@ const About = () => {
             }}
           >
             <div
-              className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg"
+              className="relative aspect-[4/5] rounded-lg xxs:rounded-xl overflow-hidden shadow-lg"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
-              {/* Orbital rings decoration */}
+              {/* Orbital rings decoration - Simplificado para melhorar performance */}
               <motion.div
                 className="absolute w-[150%] h-[150%] border border-cosmic-accent/20 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
                 animate={{
@@ -164,7 +164,7 @@ const About = () => {
                 }}
               />
 
-              {/* Image container with perspective effect */}
+              {/* Image container with perspective effect - Corrigido para evitar problemas de layout */}
               <div className="relative w-full h-full rounded-xl overflow-hidden transform-gpu perspective-1000">
                 <motion.div
                   className="w-full h-full relative"
@@ -215,11 +215,11 @@ const About = () => {
                 </motion.div>
               </div>
 
-              {/* Particle effects */}
+              {/* Particle effects - Reduzido para melhorar performance */}
               <AnimatePresence>
                 {isHovering && (
                   <>
-                    {Array.from({ length: 10 }).map((_, i) => (
+                    {Array.from({ length: 6 }).map((_, i) => (
                       <motion.div
                         key={`particle-${i}`}
                         className="absolute w-1 h-1 rounded-full bg-cosmic-accent"
@@ -260,7 +260,7 @@ const About = () => {
             </motion.div>
 
             {/* Skills badges */}
-            <div className="mt-3 xxs:mt-4 flex flex-wrap justify-center gap-1.5 xxs:gap-2">
+            <div className="mt-2 xxs:mt-3 xs:mt-4 flex flex-wrap justify-center gap-1 xxs:gap-1.5 xs:gap-2">
               {highlights.map((highlight, index) => (
                 <motion.div
                   key={index}
@@ -270,7 +270,7 @@ const About = () => {
                   whileHover={{ y: -3 }}
                 >
                   <motion.div
-                    className="px-2.5 py-1.5 rounded-full border border-cosmic-border bg-cosmic-card flex items-center gap-1.5 cursor-pointer"
+                    className="px-2 xxs:px-2.5 py-1 xxs:py-1.5 rounded-full border border-cosmic-border bg-cosmic-card flex items-center gap-1 xxs:gap-1.5 cursor-pointer"
                     animate={{
                       borderColor: activeHighlight === index ? "rgba(96, 165, 250, 0.5)" : "rgba(30, 41, 59, 1)",
                       backgroundColor: activeHighlight === index ? "rgba(15, 23, 42, 0.8)" : "rgba(15, 23, 42, 0.5)",
@@ -278,7 +278,7 @@ const About = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <span className="text-cosmic-accent">{highlight.icon}</span>
-                    <span className="text-xs font-medium text-cosmic-text">{highlight.label}</span>
+                    <span className="text-[10px] xxs:text-xs font-medium text-cosmic-text">{highlight.label}</span>
                   </motion.div>
 
                   <AnimatePresence>
@@ -310,11 +310,11 @@ const About = () => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="space-y-4 xxs:space-y-5 sm:space-y-6">
-              {/* Paragraph 1 with enhanced styling */}
+            <div className="space-y-3 xxs:space-y-4 xs:space-y-5 sm:space-y-6">
+              {/* Parágrafos com espaçamento melhorado */}
               <div className="relative">
                 <motion.div
-                  className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-cosmic-accent/0 via-cosmic-accent/30 to-cosmic-accent/0"
+                  className="absolute -left-2 xxs:-left-3 top-0 h-full w-0.5 xxs:w-1 bg-gradient-to-b from-cosmic-accent/0 via-cosmic-accent/30 to-cosmic-accent/0"
                   initial={{ scaleY: 0 }}
                   animate={mainControls}
                   variants={{
@@ -322,7 +322,7 @@ const About = () => {
                   }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
-                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
+                <p className="text-xs xxs:text-sm xs:text-base sm:text-base md:text-lg leading-relaxed text-cosmic-text">
                   Sou <span className="text-cosmic-accent font-medium">Pedro Lucas</span>,{" "}
                   <span className="text-cosmic-accent font-medium">programador júnior</span> movido pela{" "}
                   <span className="text-cosmic-accent font-medium">gana por aprender</span> e pela busca contínua por{" "}

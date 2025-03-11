@@ -18,11 +18,11 @@ const SpaceBackground = () => {
   const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 })
   const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 })
 
-  // Scroll progress
+  // Scroll progress com layoutEffect: false para evitar erros de hidratação
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
-    layoutEffect: false,
+    : false, // Adicionado para evitar erros de hidratação
   })
 
   // Background parallax elements with different speeds
@@ -36,7 +36,7 @@ const SpaceBackground = () => {
   const mouseParallax3 = useTransform(smoothMouseX, [-500, 500], [-30, 30])
   const mouseParallax4 = useTransform(smoothMouseY, [-500, 500], [-30, 30])
 
-  // Throttled mouse move handler
+  // Throttled mouse move handler otimizado com requestAnimationFrame
   const throttledMouseMove = useThrottle(
     useCallback(
       (e: MouseEvent) => {
@@ -47,12 +47,15 @@ const SpaceBackground = () => {
         const normalizedX = clientX - innerWidth / 2
         const normalizedY = clientY - innerHeight / 2
 
-        mouseX.set(normalizedX)
-        mouseY.set(normalizedY)
+        // Usando requestAnimationFrame para otimizar atualizações
+        requestAnimationFrame(() => {
+          mouseX.set(normalizedX)
+          mouseY.set(normalizedY)
+        })
       },
       [mouseX, mouseY],
     ),
-    16,
+    16, // 60fps throttle
   )
 
   // Fix for opacity animation issues - ensure we're using integer values for opacity
@@ -79,7 +82,7 @@ const SpaceBackground = () => {
     }
 
     checkPerformance()
-    window.addEventListener("mousemove", throttledMouseMove)
+    window.addEventListener("mousemove", throttledMouseMove, { passive: true }) // Adicionado passive: true para melhor performance
 
     return () => {
       window.removeEventListener("mousemove", throttledMouseMove)
@@ -95,7 +98,7 @@ const SpaceBackground = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  // Generate star data with different layers for parallax
+  // Generate star data with different layers for parallax - Reduzido número de estrelas para melhor performance
   const generateStars = (count: number, layer: number) => {
     return Array.from({ length: count }).map((_, i) => {
       const size = Math.random() * (layer === 1 ? 2 : layer === 2 ? 3 : 4) + 1
@@ -133,10 +136,10 @@ const SpaceBackground = () => {
     })
   }
 
-  // Generate stars for each layer
-  const starsLayer1 = generateStars(80, 1)
-  const starsLayer2 = generateStars(50, 2)
-  const starsLayer3 = generateStars(30, 3)
+  // Generate stars for each layer - Reduzido número de estrelas para melhor performance
+  const starsLayer1 = generateStars(60, 1) // Reduzido de 80 para 60
+  const starsLayer2 = generateStars(40, 2) // Reduzido de 50 para 40
+  const starsLayer3 = generateStars(20, 3) // Reduzido de 30 para 20
 
   // Generate nebula data with more vivid colors
   const nebulae = [
@@ -144,8 +147,9 @@ const SpaceBackground = () => {
       id: 1,
       width: 800,
       height: 800,
-      // Deeper blue nebula
-      background: "radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)",
+      // Deeper blue nebula - Separando backgroundImage para evitar conflitos
+      backgroundImage:
+        "radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)",
       top: "10%",
       left: "20%",
       duration: 25,
@@ -162,8 +166,9 @@ const SpaceBackground = () => {
       id: 2,
       width: 600,
       height: 600,
-      // Deeper purple nebula
-      background: "radial-gradient(circle, rgba(109, 40, 217, 0.25) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%)",
+      // Deeper purple nebula - Separando backgroundImage para evitar conflitos
+      backgroundImage:
+        "radial-gradient(circle, rgba(109, 40, 217, 0.25) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%)",
       top: "60%",
       left: "70%",
       duration: 30,
@@ -180,8 +185,9 @@ const SpaceBackground = () => {
       id: 3,
       width: 500,
       height: 500,
-      // Deeper pink/red nebula
-      background: "radial-gradient(circle, rgba(190, 24, 93, 0.25) 0%, rgba(236, 72, 153, 0.1) 40%, transparent 70%)",
+      // Deeper pink/red nebula - Separando backgroundImage para evitar conflitos
+      backgroundImage:
+        "radial-gradient(circle, rgba(190, 24, 93, 0.25) 0%, rgba(236, 72, 153, 0.1) 40%, transparent 70%)",
       top: "30%",
       left: "80%",
       duration: 20,
@@ -198,8 +204,9 @@ const SpaceBackground = () => {
       id: 4,
       width: 700,
       height: 700,
-      // Deep teal nebula
-      background: "radial-gradient(circle, rgba(15, 118, 110, 0.25) 0%, rgba(20, 184, 166, 0.1) 40%, transparent 70%)",
+      // Deep teal nebula - Separando backgroundImage para evitar conflitos
+      backgroundImage:
+        "radial-gradient(circle, rgba(15, 118, 110, 0.25) 0%, rgba(20, 184, 166, 0.1) 40%, transparent 70%)",
       top: "75%",
       left: "25%",
       duration: 28,
@@ -214,8 +221,9 @@ const SpaceBackground = () => {
     },
   ]
 
-  // Generate cosmic dust particles with more vivid colors
-  const cosmicDust = Array.from({ length: 15 }).map((_, i) => {
+  // Generate cosmic dust particles with more vivid colors - Reduzido para melhor performance
+  const cosmicDust = Array.from({ length: 10 }).map((_, i) => {
+    // Reduzido de 15 para 10
     const size = Math.random() * 4 + 2
     // More vivid dust colors
     const colors = [
@@ -249,8 +257,9 @@ const SpaceBackground = () => {
     }
   })
 
-  // Generate meteor data with improved appearance and animation
-  const meteors = Array.from({ length: 8 }).map((_, i) => {
+  // Generate meteor data with improved appearance and animation - Reduzido para melhor performance
+  const meteors = Array.from({ length: 5 }).map((_, i) => {
+    // Reduzido de 8 para 5
     const size = Math.random() * 2.5 + 1.5 // Slightly larger meteors
     const opacity = Math.random() * 0.3 + 0.7 // Higher base opacity
     const duration = Math.random() * 4 + 6 // Slightly faster
@@ -285,30 +294,34 @@ const SpaceBackground = () => {
 
   return (
     <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none">
-      {/* Deep space background with more vivid gradient */}
+      {/* Deep space background com gradient otimizado */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#040D21] via-[#061529] to-[#050B18] opacity-100"></div>
 
       {/* Layer 1: Distant stars (slow parallax) */}
       {isLowPerfDevice ? (
         // Simpler version with fewer stars
         <div className="absolute inset-0">
-          {starsLayer1.slice(0, 20).map((star) => (
-            <div
-              key={star.id}
-              className="absolute rounded-full"
-              style={
-                {
-                  width: star.size,
-                  height: star.size,
-                  top: star.top,
-                  left: star.left,
-                  backgroundColor: star.color,
-                  boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
-                  opacity: fixOpacityValue(star.baseOpacity),
-                } as any
-              }
-            />
-          ))}
+          {starsLayer1.slice(0, 15).map(
+            (
+              star, // Reduzido de 20 para 15
+            ) => (
+              <div
+                key={star.id}
+                className="absolute rounded-full"
+                style={
+                  {
+                    width: star.size,
+                    height: star.size,
+                    top: star.top,
+                    left: star.left,
+                    backgroundColor: star.color,
+                    boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
+                    opacity: fixOpacityValue(star.baseOpacity),
+                  } as any
+                }
+              />
+            ),
+          )}
         </div>
       ) : (
         // Full version with all effects
@@ -388,7 +401,8 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      background: nebula.background,
+                      // Usando backgroundImage em vez de background para evitar conflitos
+                      backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
                       opacity: fixOpacityValue(nebula.minOpacity),
@@ -454,7 +468,8 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      background: nebula.background,
+                      // Usando backgroundImage em vez de background para evitar conflitos
+                      backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
                       opacity: fixOpacityValue(nebula.minOpacity),
@@ -494,7 +509,8 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      background: nebula.background,
+                      // Usando backgroundImage em vez de background para evitar conflitos
+                      backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
                       opacity: fixOpacityValue(nebula.minOpacity),

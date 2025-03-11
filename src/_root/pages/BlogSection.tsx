@@ -75,12 +75,12 @@ const BlogSection = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
     >
       {/* Section background with subtle glow */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds - Pré-calculados */}
+      {/* Animated nebula clouds - Pré-calculados e reduzidos para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {nebulaProps.map((props, i) => (
           <motion.div
@@ -94,6 +94,7 @@ const BlogSection = () => {
               left: props.left,
               opacity: 0.4,
               filter: "blur(80px)",
+              // Removido will-change para melhorar performance
             }}
             animate={{
               scale: [1, 1.1, 0.95, 1.05, 1],
@@ -113,7 +114,7 @@ const BlogSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-8 xxs:mb-10 xs:mb-12 sm:mb-16"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
@@ -123,7 +124,7 @@ const BlogSection = () => {
 
         <LayoutGroup>
           <motion.div
-            className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
+            className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-6 xl:gap-8"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -158,7 +159,7 @@ const BlogSection = () => {
                   <div className="relative group h-full">
                     {/* Improved card glow effect - consistent across all cards */}
                     <div
-                      className="absolute -inset-[1px] rounded-xl xxs:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 overflow-hidden"
+                      className="absolute -inset-[1px] rounded-lg xxs:rounded-xl xs:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 overflow-hidden"
                       style={{
                         background:
                           "linear-gradient(120deg, rgba(0,0,0,0) 20%, rgba(var(--cosmic-accent-rgb), 0.3) 50%, rgba(0,0,0,0) 80%)",
@@ -184,7 +185,7 @@ const BlogSection = () => {
                     </div>
 
                     {/* Card content with improved glass effect */}
-                    <div className="relative z-10 flex flex-col h-full p-4 xxs:p-5 xs:p-6 sm:p-7 rounded-xl xxs:rounded-2xl border border-cosmic-border backdrop-blur-xl bg-cosmic-card/90 transition-all duration-300 group-hover:bg-cosmic-card/95">
+                    <div className="relative z-10 flex flex-col h-full p-3 xxs:p-4 xs:p-5 sm:p-6 md:p-5 lg:p-6 rounded-lg xxs:rounded-xl xs:rounded-2xl border border-cosmic-border backdrop-blur-xl bg-cosmic-card/90 transition-all duration-300 group-hover:bg-cosmic-card/95">
                       {/* Subtle ambient glow inside the card */}
                       <div className="absolute inset-0 rounded-xl xxs:rounded-2xl overflow-hidden">
                         <div className="absolute -inset-[100%] opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-cosmic-accent blur-[80px]" />
@@ -193,18 +194,18 @@ const BlogSection = () => {
                       {/* Content container with z-index to appear above effects */}
                       <div className="relative z-10 flex flex-col h-full">
                         {/* Date */}
-                        <div className="flex items-center gap-2 mb-3 text-cosmic-text">
-                          <Calendar className="w-3.5 h-3.5 text-cosmic-accent" />
-                          <span className="text-xs">{blog.date}</span>
+                        <div className="flex items-center gap-1.5 xxs:gap-2 mb-2 xxs:mb-3 text-cosmic-text">
+                          <Calendar className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-cosmic-accent" />
+                          <span className="text-[10px] xxs:text-xs">{blog.date}</span>
                         </div>
 
                         {/* Title with improved hover effect */}
-                        <h3 className="text-lg xxs:text-xl xs:text-2xl font-bold mb-2 xxs:mb-3 xs:mb-4 text-cosmic-accent group-hover:text-white transition-colors duration-300">
+                        <h3 className="text-base xxs:text-lg xs:text-xl sm:text-xl md:text-lg lg:text-xl font-bold mb-2 xxs:mb-3 text-cosmic-accent group-hover:text-white transition-colors duration-300">
                           {blog.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-xs xxs:text-sm xs:text-base text-cosmic-text mb-4 xxs:mb-5 xs:mb-6 sm:mb-8 group-hover:text-cosmic-text/90 transition-colors duration-300">
+                        <p className="text-xs xxs:text-sm xs:text-base text-cosmic-text mb-3 xxs:mb-4 xs:mb-5 sm:mb-6 group-hover:text-cosmic-text/90 transition-colors duration-300">
                           {blog.description}
                         </p>
 
@@ -240,10 +241,10 @@ const BlogSection = () => {
                             </div>
 
                             {/* Button content */}
-                            <div className="relative py-2 xxs:py-2.5 xs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover/link:border-cosmic-accent transition-all duration-300">
-                              <div className="flex items-center justify-center gap-2 text-cosmic-accent text-sm xxs:text-base font-medium">
+                            <div className="relative py-1.5 xxs:py-2 xs:py-2.5 sm:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover/link:border-cosmic-accent transition-all duration-300">
+                              <div className="flex items-center justify-center gap-1.5 xxs:gap-2 text-cosmic-accent text-xs xxs:text-sm xs:text-base font-medium">
                                 Ler mais
-                                <ExternalLink className="w-3.5 h-3.5 xxs:w-4 xxs:h-4" />
+                                <ExternalLink className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 xs:w-4 xs:h-4" />
                               </div>
                             </div>
                           </motion.a>

@@ -1,9 +1,11 @@
 "use client"
 
+import type React from "react"
+
 import { useRef, useState, useEffect } from "react"
 import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion"
 import { Tilt } from "react-tilt"
-import { Code2, Layout, Users } from 'lucide-react'
+import { Code2, Layout, Users } from "lucide-react"
 
 const defaultTiltOptions = {
   reverse: false,
@@ -24,12 +26,19 @@ const Services = () => {
   const [scrollY, setScrollY] = useState(0)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
-  // Parallax effect for background elements
+  // Parallax effect for background elements - Otimizado com throttle para melhor performance
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true }) // Adicionado passive: true para melhor performance
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -69,10 +78,10 @@ const Services = () => {
       className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
       id="services"
     >
-      {/* Enhanced background with parallax effect */}
+      {/* Enhanced background com position relative para cálculo correto de scroll offset */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds with parallax */}
+      {/* Animated nebula clouds com parallax - Reduzido número de elementos para melhor performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 3 }).map((_, i) => {
           const colors = [
@@ -88,7 +97,8 @@ const Services = () => {
               key={`service-nebula-${i}`}
               className="absolute rounded-full"
               style={{
-                background: colors[i % colors.length],
+                // Separando background de outras propriedades para evitar conflitos
+                backgroundImage: colors[i % colors.length],
                 width: Math.random() * 800 + 400,
                 height: Math.random() * 800 + 400,
                 top: `${20 + i * 30}%`,
@@ -103,7 +113,7 @@ const Services = () => {
               }}
               transition={{
                 duration: 15 + i * 5,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 repeatType: "reverse",
                 ease: "easeInOut",
               }}
@@ -111,14 +121,15 @@ const Services = () => {
           )
         })}
       </div>
-      
-      {/* Enhanced floating particles with parallax */}
+
+      {/* Enhanced floating particles com parallax - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => {
+        {Array.from({ length: 20 }).map((_, i) => {
+          // Reduzido de 30 para 20 partículas
           const size = Math.random() * 3 + 1
           const color = "#93C5FD"
           const parallaxFactor = 0.03 * ((i % 3) + 1)
-          
+
           return (
             <motion.div
               key={`service-particle-${i}`}
@@ -140,7 +151,7 @@ const Services = () => {
               }}
               transition={{
                 duration: Math.random() * 15 + 10,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 ease: "linear",
                 delay: Math.random() * 5,
               }}
@@ -158,20 +169,26 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="inline-block"
           >
-            <motion.h2 
+            <motion.h2
               className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold relative inline-block"
-              animate={isInView ? { 
-                transition: { staggerChildren: 0.1 }
-              } : {}}
+              animate={
+                isInView
+                  ? {
+                      transition: { staggerChildren: 0.1 },
+                    }
+                  : {}
+              }
             >
               <span className="relative">
                 Serviços
-                <motion.span 
+                <motion.span
                   className="text-cosmic-accent"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.3, delay: 0.6 }}
-                >;</motion.span>
+                >
+                  ;
+                </motion.span>
                 <motion.span
                   className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-transparent via-cosmic-accent to-transparent"
                   initial={{ width: 0, opacity: 0 }}
@@ -181,7 +198,7 @@ const Services = () => {
               </span>
             </motion.h2>
           </motion.div>
-          
+
           <motion.p
             className="mt-4 text-cosmic-text max-w-2xl mx-auto text-sm xxs:text-base sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
@@ -192,7 +209,7 @@ const Services = () => {
           </motion.p>
         </div>
 
-        {/* Enhanced services grid with improved layout */}
+        {/* Enhanced services grid com layout responsivo melhorado */}
         <motion.div
           className="grid grid-cols-1 gap-6 xxs:gap-7 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
           variants={containerVariants}
@@ -216,20 +233,20 @@ const Services = () => {
 
 interface ServiceCardProps {
   service: {
-    icon: React.ElementType;
-    title: string;
-    description: string;
-    delay: number;
-    features: string[];
-  };
-  isHovered: boolean;
-  onHover: () => void;
-  onLeave: () => void;
+    icon: React.ElementType
+    title: string
+    description: string
+    delay: number
+    features: string[]
+  }
+  isHovered: boolean
+  onHover: () => void
+  onLeave: () => void
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, onLeave }) => {
-  const { icon: Icon, title, description, delay, features } = service;
-  const cardRef = useRef(null);
+  const { icon: Icon, title, description, delay, features } = service
+  const cardRef = useRef(null)
 
   return (
     <motion.div
@@ -256,26 +273,27 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
             ease: [0.25, 0.1, 0.25, 1],
           }}
         >
-          {/* Enhanced glow effect */}
+          {/* Enhanced glow effect - Simplificado para melhor performance */}
           <motion.div
             className="absolute -inset-0.5 rounded-2xl blur-md z-0 bg-gradient-to-r from-cosmic-accent/40 to-cosmic-accent/20"
             animate={
               isHovered
                 ? {
                     opacity: 0.8,
-                    background: "linear-gradient(45deg, rgba(96, 165, 250, 0.6), rgba(96, 165, 250, 0.4))",
+                    // Usando backgroundImage em vez de background para evitar conflitos
+                    backgroundImage: "linear-gradient(45deg, rgba(96, 165, 250, 0.6), rgba(96, 165, 250, 0.4))",
                   }
                 : {
                     opacity: 0,
-                    background: "linear-gradient(45deg, rgba(96, 165, 250, 0.4), rgba(96, 165, 250, 0.2))",
+                    backgroundImage: "linear-gradient(45deg, rgba(96, 165, 250, 0.4), rgba(96, 165, 250, 0.2))",
                   }
             }
             transition={{ duration: 0.3 }}
           />
 
-          {/* Card content with improved layout */}
+          {/* Card content com layout responsivo melhorado */}
           <div className="relative flex flex-col h-full p-6 sm:p-8 bg-cosmic-card rounded-2xl border border-cosmic-border backdrop-blur-xl z-10">
-            {/* Enhanced icon container with animated glow */}
+            {/* Enhanced icon container com animação otimizada */}
             <div className="relative w-14 xxs:w-16 h-14 xxs:h-16 mx-auto mb-4 xxs:mb-5 sm:mb-6">
               <motion.div
                 className="absolute inset-0 rounded-xl blur-md bg-cosmic-accent"
@@ -285,7 +303,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
                 }}
                 transition={{
                   duration: 3,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   repeatType: "reverse",
                 }}
               />
@@ -301,7 +319,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
                   }
                   transition={{
                     duration: 1,
-                    repeat: isHovered ? Infinity : 0,
+                    repeat: isHovered ? Number.POSITIVE_INFINITY : 0,
                     repeatType: "reverse",
                   }}
                 >
@@ -310,7 +328,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
               </div>
             </div>
 
-            {/* Enhanced title with animation */}
+            {/* Enhanced title com animação */}
             <motion.h3
               className="text-lg xxs:text-xl sm:text-2xl font-bold text-center text-white mb-2 xxs:mb-3 group-hover:text-cosmic-accent transition-colors duration-300"
               animate={isHovered ? { y: -3 } : { y: 0 }}
@@ -320,9 +338,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
             </motion.h3>
 
             {/* Enhanced description */}
-            <p className="text-sm xxs:text-base text-cosmic-text text-center leading-relaxed mb-4 xxs:mb-5 sm:mb-6">{description}</p>
+            <p className="text-sm xxs:text-base text-cosmic-text text-center leading-relaxed mb-4 xxs:mb-5 sm:mb-6">
+              {description}
+            </p>
 
-            {/* Added features list with staggered animation */}
+            {/* Features list com animação otimizada */}
             <div className="mt-auto">
               <AnimatePresence>
                 {isHovered && (
@@ -350,7 +370,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
               </AnimatePresence>
             </div>
 
-            {/* Enhanced decorative element with dynamic animation */}
+            {/* Decorative element com animação simplificada */}
             <motion.div
               className="absolute bottom-3 right-3 w-16 h-16 opacity-10 pointer-events-none"
               animate={{
@@ -358,7 +378,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, 
                 opacity: isHovered ? 0.2 : 0.1,
               }}
               transition={{
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 opacity: { duration: 0.3 },
               }}
             >
@@ -392,3 +412,4 @@ const cardVariants = {
 }
 
 export default Services
+

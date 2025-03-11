@@ -60,14 +60,14 @@ const FAQ = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
     >
       {/* Section background with subtle glow */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
 
-      {/* Animated stars */}
+      {/* Animated stars - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 50 }).map((_, i) => {
+        {Array.from({ length: 25 }).map((_, i) => {
           const size = Math.random() * 2 + 1
           const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
           const color = colors[i % colors.length]
@@ -102,7 +102,7 @@ const FAQ = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-8 xxs:mb-10 sm:mb-12 md:mb-16"
+          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
@@ -111,7 +111,7 @@ const FAQ = () => {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:grid-cols-2 md:gap-6 lg:gap-8"
+          className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-6 md:grid-cols-2 md:gap-5 lg:gap-6 xl:gap-8"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -141,23 +141,23 @@ const FAQ = () => {
               <Tilt options={defaultTiltOptions}>
                 <div className="relative group">
                   {/* Card glow effect */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-xl xxs:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
 
                   {/* Card content */}
-                  <div className="relative flex flex-col p-4 xxs:p-5 xs:p-6 sm:p-7 bg-cosmic-card rounded-xl xxs:rounded-2xl border border-cosmic-border hover:border-cosmic-accent/50 transition-colors duration-300">
+                  <div className="relative flex flex-col p-3 xxs:p-4 xs:p-5 sm:p-6 md:p-5 lg:p-6 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border hover:border-cosmic-accent/50 transition-colors duration-300">
                     {/* Question with toggle */}
                     <button
-                      className="flex items-center justify-between gap-3 text-left mb-3 xxs:mb-4 group/question"
+                      className="flex items-center justify-between gap-2 xxs:gap-3 text-left mb-2 xxs:mb-3 group/question"
                       onClick={() => toggleFaq(index)}
                     >
-                      <h3 className="text-sm xxs:text-base xs:text-lg sm:text-xl font-bold text-cosmic-accent group-hover/question:text-white transition-colors duration-300">
+                      <h3 className="text-sm xxs:text-base xs:text-lg sm:text-lg md:text-base lg:text-lg xl:text-xl font-bold text-cosmic-accent group-hover/question:text-white transition-colors duration-300">
                         {faq.question}
                       </h3>
-                      <div className="shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-cosmic-border bg-cosmic-bg/50">
+                      <div className="shrink-0 w-5 h-5 xxs:w-6 xxs:h-6 flex items-center justify-center rounded-full border border-cosmic-border bg-cosmic-bg/50">
                         {expandedFaq === index ? (
-                          <ChevronUp className="w-4 h-4 text-cosmic-accent" />
+                          <ChevronUp className="w-3 h-3 xxs:w-4 xxs:h-4 text-cosmic-accent" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-cosmic-accent" />
+                          <ChevronDown className="w-3 h-3 xxs:w-4 xxs:h-4 text-cosmic-accent" />
                         )}
                       </div>
                     </button>
@@ -171,13 +171,13 @@ const FAQ = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-xs xxs:text-sm sm:text-base text-cosmic-text mb-4 xxs:mb-5">{faq.answer}</p>
+                        <p className="text-xs xxs:text-sm sm:text-base text-cosmic-text mb-3 xxs:mb-4">{faq.answer}</p>
 
                         {/* Contacts Section */}
                         {faq.contacts && (
                           <div className="mt-auto">
                             {/* Mobile Version (até 425px) */}
-                            <div className="flex justify-center gap-2 xxs:gap-3 xs:hidden">
+                            <div className="flex justify-center gap-2 xxs:gap-3 sm:hidden">
                               {faq.contacts.map((contact, idx) => (
                                 <motion.a
                                   key={idx}
@@ -188,9 +188,9 @@ const FAQ = () => {
                                   whileHover={{ scale: 1.05 }}
                                   whileTap={{ scale: 0.95 }}
                                 >
-                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
-                                  <div className="relative flex items-center justify-center w-10 xxs:w-11 xs:w-12 h-10 xxs:h-11 xs:h-12 bg-cosmic-card rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
-                                    <div className="text-cosmic-accent w-5 xxs:w-6 h-5 xxs:h-6 group-hover/contact:text-white transition-colors duration-300">
+                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
+                                  <div className="relative flex items-center justify-center w-9 xxs:w-10 xs:w-11 h-9 xxs:h-10 xs:h-11 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
+                                    <div className="text-cosmic-accent w-4 xxs:w-5 xs:w-5 h-4 xxs:h-5 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
                                       {contact.icon}
                                     </div>
                                   </div>
@@ -199,7 +199,7 @@ const FAQ = () => {
                             </div>
 
                             {/* Tablet/Desktop Version (425px+) */}
-                            <div className="hidden xs:flex xs:flex-col xs:space-y-2.5">
+                            <div className="hidden sm:flex sm:flex-col sm:space-y-2">
                               {faq.contacts.map((contact, idx) => (
                                 <motion.a
                                   key={idx}
@@ -210,14 +210,14 @@ const FAQ = () => {
                                   whileHover={{ scale: 1.02 }}
                                   whileTap={{ scale: 0.98 }}
                                 >
-                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
-                                  <div className="relative flex items-center gap-3 p-2 xs:p-3 bg-cosmic-card rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
-                                    <div className="flex items-center justify-center w-8 xs:w-9 h-8 xs:h-9">
-                                      <div className="text-cosmic-accent w-4 xs:w-5 h-4 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
+                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
+                                  <div className="relative flex items-center gap-2 xxs:gap-3 p-2 xs:p-3 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
+                                    <div className="flex items-center justify-center w-7 xxs:w-8 xs:w-9 h-7 xxs:h-8 xs:h-9">
+                                      <div className="text-cosmic-accent w-4 xxs:w-4.5 xs:w-5 h-4 xxs:h-4.5 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
                                         {contact.icon}
                                       </div>
                                     </div>
-                                    <span className="text-sm xs:text-base text-cosmic-text group-hover/contact:text-cosmic-accent transition-colors duration-300 truncate">
+                                    <span className="text-xs xxs:text-sm xs:text-base text-cosmic-text group-hover/contact:text-cosmic-accent transition-colors duration-300 truncate">
                                       {contact.label}
                                     </span>
                                   </div>

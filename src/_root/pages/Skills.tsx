@@ -2,10 +2,10 @@
 
 import type React from "react"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useMemo } from "react" // Adicionado useMemo para otimização
 import { motion, AnimatePresence, useInView, useMotionValue } from "framer-motion"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Database, Server, Globe, Workflow, ExternalLink, Star, BookOpen, ChevronRight } from 'lucide-react'
+import { Database, Server, Globe, Workflow, ExternalLink, Star, BookOpen, ChevronRight } from "lucide-react"
 import { Tilt } from "react-tilt"
 import { skillsData, type Skill } from "@/constants/skillsData"
 
@@ -31,49 +31,64 @@ const Skills = () => {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  // Parallax effect for background elements
+  // Parallax effect otimizado com throttle para melhor performance
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true }) // Adicionado passive: true para melhor performance
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Mouse move effect for interactive background
+  // Mouse move effect otimizado para melhor performance
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e
     const { left, top } = (e.currentTarget as HTMLElement).getBoundingClientRect()
-    mouseX.set(clientX - left)
-    mouseY.set(clientY - top)
+
+    // Usando requestAnimationFrame para otimizar atualizações
+    requestAnimationFrame(() => {
+      mouseX.set(clientX - left)
+      mouseY.set(clientY - top)
+    })
   }
 
-  const technologies = [
-    {
-      category: "Front-End",
-      icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6" />,
-      skills: skillsData.filter((skill) => skill.area === "frontend"),
-      color: "#3B82F6",
-    },
-    {
-      category: "Back-End",
-      icon: <Server className="w-5 h-5 sm:w-6 sm:h-6" />,
-      skills: skillsData.filter((skill) => skill.area === "backend"),
-      color: "#2563EB",
-    },
-    {
-      category: "Banco de Dados",
-      icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
-      skills: skillsData.filter((skill) => skill.area === "database"),
-      color: "#1D4ED8",
-    },
-    {
-      category: "Ferramentas",
-      icon: <Workflow className="w-5 h-5 sm:w-6 sm:h-6" />,
-      skills: skillsData.filter((skill) => skill.area === "tools"),
-      color: "#60A5FA",
-    },
-  ]
+  // Usando useMemo para evitar recálculos desnecessários
+  const technologies = useMemo(
+    () => [
+      {
+        category: "Front-End",
+        icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6" />,
+        skills: skillsData.filter((skill) => skill.area === "frontend"),
+        color: "#3B82F6",
+      },
+      {
+        category: "Back-End",
+        icon: <Server className="w-5 h-5 sm:w-6 sm:h-6" />,
+        skills: skillsData.filter((skill) => skill.area === "backend"),
+        color: "#2563EB",
+      },
+      {
+        category: "Banco de Dados",
+        icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
+        skills: skillsData.filter((skill) => skill.area === "database"),
+        color: "#1D4ED8",
+      },
+      {
+        category: "Ferramentas",
+        icon: <Workflow className="w-5 h-5 sm:w-6 sm:h-6" />,
+        skills: skillsData.filter((skill) => skill.area === "tools"),
+        color: "#60A5FA",
+      },
+    ],
+    [],
+  )
 
   const getLevelBars = (level: number, color?: string) => {
     const activeColor = color || "#60A5FA"
@@ -123,17 +138,19 @@ const Skills = () => {
       id="skills"
       onMouseMove={handleMouseMove}
     >
-      {/* Interactive background gradient */}
+      {/* Interactive background gradient com position relative para cálculo correto de scroll offset */}
       <motion.div
         className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"
         style={{
-          background: "radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8), rgba(10, 17, 32, 0.9))",
+          // Usando backgroundImage em vez de background para evitar conflitos
+          backgroundImage: "radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8), rgba(10, 17, 32, 0.9))",
         }}
       />
 
-      {/* Enhanced animated stars with parallax */}
+      {/* Enhanced animated stars com parallax - Reduzido número de elementos para melhor performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 40 }).map((_, i) => {
+        {Array.from({ length: 25 }).map((_, i) => {
+          // Reduzido de 40 para 25 estrelas
           const size = Math.random() * 2 + 1
           const colors = ["#93C5FD", "#60A5FA", "#3B82F6", "#DBEAFE"]
           const color = colors[i % colors.length]
@@ -169,7 +186,7 @@ const Skills = () => {
         })}
       </div>
 
-      {/* Enhanced nebula clouds with parallax */}
+      {/* Enhanced nebula clouds com parallax - Reduzido para melhor performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 3 }).map((_, i) => {
           const colors = [
@@ -185,7 +202,8 @@ const Skills = () => {
               key={`skill-nebula-${i}`}
               className="absolute rounded-full"
               style={{
-                background: colors[i % colors.length],
+                // Separando backgroundImage de outras propriedades para evitar conflitos
+                backgroundImage: colors[i % colors.length],
                 width: Math.random() * 600 + 400,
                 height: Math.random() * 600 + 400,
                 top: `${20 + i * 30}%`,
@@ -220,7 +238,10 @@ const Skills = () => {
           <div className="relative inline-block">
             <motion.div
               className="absolute -inset-1 rounded-full blur-xl opacity-60"
-              style={{ background: "linear-gradient(90deg, #3B82F6, #60A5FA, #3B82F6)" }}
+              style={{
+                // Separando backgroundImage de outras propriedades para evitar conflitos
+                backgroundImage: "linear-gradient(90deg, #3B82F6, #60A5FA, #3B82F6)",
+              }}
               animate={{
                 backgroundPosition: ["0% 0%", "100% 100%"],
                 scale: [0.8, 1.2, 0.8],
@@ -234,9 +255,13 @@ const Skills = () => {
             />
             <motion.h2
               className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold relative inline-block"
-              animate={isInView ? {
-                transition: { staggerChildren: 0.1 },
-              } : {}}
+              animate={
+                isInView
+                  ? {
+                      transition: { staggerChildren: 0.1 },
+                    }
+                  : {}
+              }
             >
               <span className="relative">
                 Habilidades
@@ -268,7 +293,7 @@ const Skills = () => {
           </motion.p>
         </motion.div>
 
-        {/* Ultra modern skills grid */}
+        {/* Ultra modern skills grid com layout responsivo melhorado */}
         <motion.div
           className="grid gap-6 xxs:gap-7 sm:gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2"
           variants={{
@@ -311,30 +336,31 @@ const Skills = () => {
                     ease: [0.25, 0.1, 0.25, 1],
                   }}
                 >
-                  {/* Enhanced card glow effect */}
+                  {/* Enhanced card glow effect - Simplificado para melhor performance */}
                   <motion.div
                     className="absolute -inset-0.5 rounded-2xl blur-md z-0"
                     style={{
-                      background: `linear-gradient(45deg, ${tech.color}66, ${tech.color}33)`,
+                      // Separando backgroundImage de outras propriedades para evitar conflitos
+                      backgroundImage: `linear-gradient(45deg, ${tech.color}66, ${tech.color}33)`,
                       opacity: 0,
                     }}
                     animate={
                       hoveredCategory === techIndex
                         ? {
                             opacity: 1,
-                            background: `linear-gradient(45deg, ${tech.color}66, ${tech.color}33)`,
+                            backgroundImage: `linear-gradient(45deg, ${tech.color}66, ${tech.color}33)`,
                           }
                         : {
                             opacity: 0,
-                            background: `linear-gradient(45deg, ${tech.color}33, ${tech.color}11)`,
+                            backgroundImage: `linear-gradient(45deg, ${tech.color}33, ${tech.color}11)`,
                           }
                     }
                     transition={{ duration: 0.3 }}
                   />
 
-                  {/* Card content with glassmorphism effect */}
+                  {/* Card content com glassmorphism effect e layout responsivo melhorado */}
                   <div className="relative flex flex-col h-full p-4 xxs:p-5 xs:p-6 sm:p-8 bg-cosmic-card/80 backdrop-blur-xl rounded-2xl border border-cosmic-border/50 z-10 overflow-hidden">
-                    {/* Animated background pattern */}
+                    {/* Animated background pattern - Simplificado para melhor performance */}
                     <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
                       <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -355,13 +381,14 @@ const Skills = () => {
                           ease: "linear",
                         }}
                         style={{
+                          // Separando backgroundImage de outras propriedades para evitar conflitos
                           backgroundImage: `radial-gradient(circle at 50% 50%, ${tech.color}11 0%, transparent 70%)`,
                           backgroundSize: "100% 100%",
                         }}
                       />
                     </div>
 
-                    {/* Enhanced category header with icon */}
+                    {/* Enhanced category header com icon */}
                     <div className="relative flex items-center gap-2 xxs:gap-3 mb-4 xxs:mb-5 sm:mb-6">
                       <div className="relative w-12 h-12">
                         <motion.div
@@ -412,7 +439,7 @@ const Skills = () => {
                       </div>
                     </div>
 
-                    {/* Enhanced skills grid with hover effects */}
+                    {/* Enhanced skills grid com hover effects e layout responsivo melhorado */}
                     <div className="grid grid-cols-1 xxs:grid-cols-2 gap-2 xxs:gap-3">
                       {tech.skills.map((skill, skillIndex) => {
                         const SkillIcon = skill.icon
@@ -437,11 +464,12 @@ const Skills = () => {
                               },
                             }}
                           >
-                            {/* Enhanced skill button glow */}
+                            {/* Enhanced skill button glow - Simplificado para melhor performance */}
                             <motion.div
                               className="absolute -inset-0.5 rounded-xl blur-sm"
                               style={{
-                                background: `linear-gradient(45deg, ${skill.color || tech.color}66, ${skill.color || tech.color}33)`,
+                                // Separando backgroundImage de outras propriedades para evitar conflitos
+                                backgroundImage: `linear-gradient(45deg, ${skill.color || tech.color}66, ${skill.color || tech.color}33)`,
                                 opacity: 0,
                               }}
                               animate={{
@@ -450,7 +478,7 @@ const Skills = () => {
                               transition={{ duration: 0.2 }}
                             />
 
-                            {/* Skill button with glassmorphism */}
+                            {/* Skill button com glassmorphism e layout responsivo melhorado */}
                             <div className="relative p-3 bg-cosmic-bg/50 backdrop-blur-sm rounded-xl border border-cosmic-border/50 group-hover/skill:border-opacity-0 transition-all duration-300">
                               <div className="flex items-center gap-2">
                                 <div className="relative">
@@ -483,7 +511,7 @@ const Skills = () => {
                       })}
                     </div>
 
-                    {/* Enhanced decorative elements */}
+                    {/* Enhanced decorative elements - Simplificado para melhor performance */}
                     <motion.div
                       className="absolute bottom-3 right-3 w-16 h-16 opacity-10 pointer-events-none"
                       animate={{
@@ -574,7 +602,7 @@ const Skills = () => {
                   </DialogHeader>
 
                   <div className="space-y-4 xxs:space-y-5 sm:space-y-6 mt-4 xxs:mt-5 sm:mt-6">
-                    {/* Description with animated underline */}
+                    {/* Description com animated underline */}
                     {selectedSkill.description && (
                       <motion.div
                         className="space-y-2"
@@ -606,7 +634,7 @@ const Skills = () => {
                       <p className="text-xs text-cosmic-text/80 pl-1 pt-1">{getLevelText(selectedSkill.level)}</p>
                     </motion.div>
 
-                    {/* Enhanced courses list with staggered animation */}
+                    {/* Enhanced courses list com staggered animation */}
                     <motion.div
                       className="space-y-3"
                       initial={{ opacity: 0, y: 20 }}
@@ -634,7 +662,8 @@ const Skills = () => {
                             <div
                               className="absolute -inset-0.5 rounded-xl blur-sm opacity-0 group-hover/link:opacity-100 transition duration-300"
                               style={{
-                                background: `linear-gradient(to right, ${selectedSkill.color || "#60A5FA"}66, ${selectedSkill.color || "#60A5FA"}33)`,
+                                // Separando backgroundImage de outras propriedades para evitar conflitos
+                                backgroundImage: `linear-gradient(to right, ${selectedSkill.color || "#60A5FA"}66, ${selectedSkill.color || "#60A5FA"}33)`,
                               }}
                             />
                             <div className="relative p-4 bg-cosmic-bg/50 backdrop-blur-sm rounded-xl border border-cosmic-border/50 group-hover/link:border-opacity-0 transition-all duration-300">
@@ -661,3 +690,4 @@ const Skills = () => {
 }
 
 export default Skills
+

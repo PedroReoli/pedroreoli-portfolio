@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useRef, useMemo, useState } from "react"
-import { motion, useInView, useMotionValue, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useInView, useMotionValue, AnimatePresence } from "framer-motion"
 import { ArrowUp } from "lucide-react"
 
 const End = () => {
@@ -15,6 +15,10 @@ const End = () => {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
+  // Parallax values for nebulae
+  const [parallaxX, setParallaxX] = useState(0)
+  const [parallaxY, setParallaxY] = useState(0)
+
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
@@ -23,11 +27,16 @@ const End = () => {
 
     mouseX.set(x)
     mouseY.set(y)
+
+    // Set parallax values directly
+    setParallaxX(x * -2)
+    setParallaxY(y * -2)
   }
 
   // Pre-calculate stars for better performance
   const starsData = useMemo(() => {
-    return Array.from({ length: 100 }).map((_, i) => {
+    // Reduzido o número de estrelas para melhorar performance
+    return Array.from({ length: 50 }).map((_, i) => {
       const size = Math.random() * 2 + 1
       const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
       const color = colors[i % colors.length]
@@ -48,7 +57,7 @@ const End = () => {
     })
   }, [])
 
-  // Pre-calculate nebula effects
+  // Pre-calculate nebula effects - Reduzido para melhorar performance
   const nebulae = useMemo(() => {
     return [
       {
@@ -67,15 +76,6 @@ const End = () => {
         x: 150,
         y: 100,
         duration: 18,
-      },
-      {
-        width: 400,
-        height: 400,
-        background:
-          "radial-gradient(circle, rgba(249, 168, 212, 0.2) 0%, rgba(249, 168, 212, 0.07) 40%, transparent 70%)",
-        x: 50,
-        y: -150,
-        duration: 20,
       },
     ]
   }, [])
@@ -98,22 +98,19 @@ const End = () => {
     return points
   }, [])
 
-  // Nebula parallax effects
-  const nebulaParallaxX = useTransform(mouseX, [0, 1], [0, -2])
-  const nebulaParallaxY = useTransform(mouseY, [0, 1], [0, -2])
-
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden flex flex-col items-center justify-center"
+      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden flex flex-col items-center justify-center"
       onMouseMove={handleMouseMove}
+      style={{ position: "relative" }} // Garantindo position: relative explicitamente
     >
       {/* Enhanced background with depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-cosmic-bg/90 via-cosmic-bg/80 to-cosmic-bg/90 backdrop-blur-sm"></div>
 
-      {/* Animated stars with parallax effect */}
+      {/* Animated stars with parallax effect - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {starsData.map((star) => {
+        {starsData.slice(0, 30).map((star) => {
           return (
             <motion.div
               key={`end-star-${star.id}`}
@@ -130,8 +127,7 @@ const End = () => {
               animate={{
                 opacity: [star.initialOpacity, star.initialOpacity + 0.2, star.initialOpacity],
                 scale: [1, 1.2, 1],
-                x: mouseX.get() * star.depth * 0.5,
-                y: mouseY.get() * star.depth * 0.5,
+                // Removido transformações baseadas em mouseX/mouseY para melhorar performance
               }}
               transition={{
                 duration: star.animationDuration,
@@ -145,7 +141,7 @@ const End = () => {
         })}
       </div>
 
-      {/* Constellation effect */}
+      {/* Constellation effect - Simplificado para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute w-full h-full" style={{ opacity: 0.15 }}>
           {constellationPoints.map((point, i, points) => {
@@ -206,7 +202,7 @@ const End = () => {
         </svg>
       </div>
 
-      {/* Enhanced animated nebulae with parallax */}
+      {/* Enhanced animated nebulae with parallax - Reduzido para melhorar performance */}
       {nebulae.map((nebula, i) => (
         <motion.div
           key={`nebula-${i}`}
@@ -217,8 +213,7 @@ const End = () => {
             background: nebula.background,
             left: `calc(50% + ${nebula.x}px)`,
             top: `calc(50% + ${nebula.y}px)`,
-            x: nebulaParallaxX,
-            y: nebulaParallaxY,
+            transform: `translate(${parallaxX}px, ${parallaxY}px)`, // Usando transform diretamente em vez de useTransform
           }}
           animate={{
             scale: [1, 1.1, 0.95, 1.05, 1],
@@ -233,7 +228,7 @@ const End = () => {
         />
       ))}
 
-      {/* Shooting star animation that appears occasionally */}
+      {/* Shooting star animation that appears occasionally - Reduzido para melhorar performance */}
       <AnimatePresence>
         {isInView && (
           <motion.div
@@ -256,7 +251,7 @@ const End = () => {
               duration: 2.5,
               ease: "easeOut",
               delay: 1.5,
-              repeat: 2,
+              repeat: 1, // Reduzido para melhorar performance
               repeatDelay: 8,
             }}
           >
@@ -268,9 +263,9 @@ const End = () => {
         )}
       </AnimatePresence>
 
-      {/* Subtle cosmic dust particles */}
+      {/* Subtle cosmic dust particles - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => {
+        {Array.from({ length: 10 }).map((_, i) => {
           const size = Math.random() * 3 + 2
           const duration = Math.random() * 15 + 20
           const delay = Math.random() * 10
@@ -303,14 +298,14 @@ const End = () => {
       </div>
 
       <motion.div
-        className="text-center w-full max-w-[260px] xxs:max-w-[300px] xs:max-w-[360px] sm:max-w-[420px] md:max-w-2xl relative z-10"
+        className="text-center w-full max-w-[240px] xxs:max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] md:max-w-[420px] lg:max-w-[480px] xl:max-w-2xl relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
       >
         {/* Enhanced profile image with elegant animation */}
         <motion.div
-          className="flex justify-center mb-6 xxs:mb-7 xs:mb-8"
+          className="flex justify-center mb-4 xxs:mb-5 xs:mb-6 sm:mb-7 md:mb-8"
           initial={{ scale: 0.8 }}
           animate={isInView ? { scale: 1 } : { scale: 0.8 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -320,7 +315,7 @@ const End = () => {
           <div className="relative group cursor-pointer">
             {/* Elegant orbital ring animation */}
             <motion.div
-              className="absolute -inset-3 rounded-full pointer-events-none opacity-30"
+              className="absolute -inset-2 xxs:-inset-3 rounded-full pointer-events-none opacity-30"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             >
@@ -359,14 +354,14 @@ const End = () => {
             <img
               src="/assets/Eu.svg"
               alt="Despedida"
-              className="relative w-24 h-24 xxs:w-28 xxs:h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full object-cover border-2 border-cosmic-border group-hover:border-cosmic-accent transition-colors duration-300"
+              className="relative w-20 h-20 xxs:w-24 xxs:h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full object-cover border-2 border-cosmic-border group-hover:border-cosmic-accent transition-colors duration-300"
             />
           </div>
         </motion.div>
 
         {/* Enhanced title with animated accent */}
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold mb-2 xxs:mb-3 sm:mb-4"
+          className="text-lg xxs:text-xl xs:text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold mb-2 xxs:mb-3 sm:mb-4"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -390,7 +385,7 @@ const End = () => {
 
         {/* Enhanced text with better typography */}
         <motion.p
-          className="text-cosmic-text text-xs xxs:text-sm xs:text-base sm:text-lg mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 leading-relaxed"
+          className="text-cosmic-text text-xs xxs:text-sm xs:text-base sm:text-lg mb-4 xxs:mb-6 xs:mb-8 sm:mb-10 md:mb-12 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -431,7 +426,7 @@ const End = () => {
           />
 
           {/* Button background with subtle animation */}
-          <div className="relative px-3 xxs:px-4 xs:px-5 sm:px-6 py-2 xxs:py-2.5 xs:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover:border-cosmic-accent transition-all duration-300 overflow-hidden">
+          <div className="relative px-2.5 xxs:px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xxs:py-2 xs:py-2.5 sm:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover:border-cosmic-accent transition-all duration-300 overflow-hidden">
             {/* Subtle background animation */}
             <motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-20"
@@ -451,7 +446,7 @@ const End = () => {
             />
 
             {/* Button content with enhanced animation */}
-            <div className="flex items-center gap-1.5 xxs:gap-2 relative">
+            <div className="flex items-center gap-1 xxs:gap-1.5 xs:gap-2 relative">
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{
@@ -460,9 +455,9 @@ const End = () => {
                   repeatDelay: 1,
                 }}
               >
-                <ArrowUp className="w-3.5 xxs:w-4 h-3.5 xxs:h-4 text-cosmic-accent group-hover:text-white transition-colors duration-300" />
+                <ArrowUp className="w-3 xxs:w-3.5 xs:w-4 h-3 xxs:h-3.5 xs:h-4 text-cosmic-accent group-hover:text-white transition-colors duration-300" />
               </motion.div>
-              <span className="text-sm xxs:text-base text-cosmic-accent group-hover:text-white transition-colors duration-300">
+              <span className="text-xs xxs:text-sm xs:text-base text-cosmic-accent group-hover:text-white transition-colors duration-300">
                 Voltar ao Início
               </span>
             </div>

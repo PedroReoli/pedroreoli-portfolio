@@ -59,6 +59,23 @@
     --nebula-pink: rgba(190, 24, 93, 0.25);
     --nebula-teal: rgba(15, 118, 110, 0.25);
   }
+
+  /* Adicionando regras globais para evitar overflow horizontal */
+  html,
+  body,
+  #root {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Garantindo que todos os containers tenham position: relative */
+  section,
+  main,
+  div[class*="container"] {
+    position: relative;
+  }
 }
 
 @layer utilities {
@@ -112,14 +129,10 @@
     animation: shimmer 8s ease-in-out infinite;
   }
 
-  .cosmic-glow {
-    --glow-color: rgba(var(--cosmic-accent-rgb), 0.7);
-    box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
-  }
-
   /* Meteor animations - improved */
   @keyframes meteor {
     0% {
+      /* Substituído 100vw por 100% para evitar overflow */
       transform: translate(calc(-100% - 50px), calc(-100% - 50px)) rotate(var(--meteor-angle, 215deg));
       opacity: 0;
     }
@@ -130,7 +143,8 @@
       opacity: 1;
     }
     100% {
-      transform: translate(calc(100vw + 50px), calc(100vh + 50px)) rotate(var(--meteor-angle, 215deg));
+      /* Substituído 100vw por 100% para evitar overflow */
+      transform: translate(calc(100% + 50px), calc(100% + 50px)) rotate(var(--meteor-angle, 215deg));
       opacity: 0;
     }
   }
@@ -226,20 +240,38 @@
     background-attachment: fixed;
   }
 
-  /* Parallax layers */
+  /* Parallax layers - otimizados para reduzir consumo de memória */
+  /* Removido will-change para evitar alto consumo de memória */
   .parallax-layer-1 {
-    will-change: transform;
     transform: translateZ(-100px) scale(1.5);
   }
 
   .parallax-layer-2 {
-    will-change: transform;
     transform: translateZ(-200px) scale(2);
   }
 
   .parallax-layer-3 {
-    will-change: transform;
     transform: translateZ(-300px) scale(2.5);
+  }
+
+  /* Classes adicionais para garantir responsividade */
+  .responsive-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Classe para substituir width: 100vw */
+  .full-width {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Classe para garantir que elementos com efeitos de parallax tenham position: relative */
+  .parallax-container {
+    position: relative;
+    overflow: hidden;
   }
 }
 

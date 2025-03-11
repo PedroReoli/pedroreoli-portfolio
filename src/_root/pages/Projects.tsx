@@ -32,12 +32,15 @@ const Projects = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
-  // Parallax effect for background elements
+  // Parallax effect for background elements - Otimizado para evitar problemas de performance
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      // Usando requestAnimationFrame para melhorar performance
+      requestAnimationFrame(() => {
+        setScrollY(window.scrollY)
+      })
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -69,17 +72,16 @@ const Projects = () => {
       {/* Enhanced cosmic background with parallax */}
       <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds with parallax */}
+      {/* Animated nebula clouds with parallax - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 4 }).map((_, i) => {
+        {Array.from({ length: 3 }).map((_, i) => {
           const colors = [
             "radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, rgba(96, 165, 250, 0.05) 50%, transparent 80%)",
             "radial-gradient(circle, rgba(196, 181, 253, 0.15) 0%, rgba(167, 139, 250, 0.05) 50%, transparent 80%)",
             "radial-gradient(circle, rgba(249, 168, 212, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%)",
-            "radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 80%)",
           ]
 
-          const parallaxFactor = 0.05 * ((i % 4) + 1)
+          const parallaxFactor = 0.05 * ((i % 3) + 1)
 
           return (
             <motion.div
@@ -94,11 +96,10 @@ const Projects = () => {
                 opacity: 0.4,
                 filter: "blur(80px)",
                 transform: `translateY(${scrollY * parallaxFactor}px)`,
+                // Removido will-change para melhorar performance
               }}
               animate={{
                 scale: [1, 1.1, 0.95, 1.05, 1],
-                x: [0, 30, -20, 10, 0],
-                y: [0, -30, 20, -10, 0],
                 opacity: [0.4, 0.5, 0.3, 0.45, 0.4],
               }}
               transition={{
@@ -112,9 +113,9 @@ const Projects = () => {
         })}
       </div>
 
-      {/* Animated stars with parallax */}
+      {/* Animated stars with parallax - Reduzido para melhorar performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 50 }).map((_, i) => {
+        {Array.from({ length: 25 }).map((_, i) => {
           const size = Math.random() * 2 + 1
           const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
           const color = colors[i % colors.length]
@@ -133,6 +134,7 @@ const Projects = () => {
                 boxShadow: `0 0 ${size * 3}px ${size}px ${color}`,
                 opacity: Math.random() * 0.7 + 0.3,
                 transform: `translateY(${scrollY * parallaxFactor}px)`,
+                // Removido will-change para melhorar performance
               }}
               animate={{
                 opacity: [Math.random() * 0.7 + 0.3, Math.random() * 0.9 + 0.5, Math.random() * 0.7 + 0.3],

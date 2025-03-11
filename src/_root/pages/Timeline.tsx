@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import { motion, useScroll, useSpring, useInView, AnimatePresence } from "framer-motion"
+import { useState, useRef, useEffect, useMemo } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion" // Removido useScroll e useSpring
 import {
   Calendar,
   ExternalLink,
@@ -47,24 +47,35 @@ const Timeline = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const timelineRef = useRef<HTMLDivElement>(null)
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
-  // Parallax effect for background elements
+  // Substituindo useScroll por um estado e listener de scroll nativo
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [scrollY, setScrollY] = useState(0)
+
   useEffect(() => {
+    let ticking = false
+
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+
+          // Calculando o progresso do scroll manualmente
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect()
+            const total = rect.height + window.innerHeight
+            const progress = (window.scrollY - rect.top + window.innerHeight) / total
+            setScrollProgress(Math.max(0, Math.min(1, progress)))
+          }
+
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // Inicializa com a posição atual
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -72,12 +83,13 @@ const Timeline = () => {
     <section
       ref={containerRef}
       className="py-10 xxs:py-12 xs:py-14 sm:py-16 md:py-20 overflow-hidden min-h-screen relative"
+      style={{ position: "relative" }} // Garantindo position: relative explicitamente
       onMouseLeave={() => setActiveEvent(null)}
     >
-      {/* Section background with enhanced cosmic theme */}
+      {/* Section background */}
       <div className="absolute inset-0 bg-cosmic-bg/90 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds with parallax */}
+      {/* Animated nebula clouds com parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 3 }).map((_, i) => {
           const colors = [
@@ -93,7 +105,7 @@ const Timeline = () => {
               key={`timeline-nebula-${i}`}
               className="absolute rounded-full"
               style={{
-                background: colors[i % colors.length],
+                backgroundImage: colors[i % colors.length],
                 width: Math.random() * 800 + 400,
                 height: Math.random() * 800 + 400,
                 top: `${Math.random() * 100}%`,
@@ -123,9 +135,9 @@ const Timeline = () => {
         })}
       </div>
 
-      {/* Animated particles with parallax */}
+      {/* Animated particles com parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => {
+        {Array.from({ length: 20 }).map((_, i) => {
           const size = Math.random() * 3 + 1
           const colors = ["#93C5FD", "#C4B5FD", "#F9A8D4"]
           const color = colors[i % colors.length]
@@ -183,16 +195,16 @@ const Timeline = () => {
         </motion.div>
 
         <div className="relative" ref={timelineRef}>
-          {/* Enhanced timeline line with animated particles - visible on larger screens */}
+          {/* Timeline line com animated particles - visible on larger screens */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full hidden md:block overflow-hidden">
-            {/* Base line with glow */}
+            {/* Base line com glow */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-b from-cosmic-accent/10 via-cosmic-accent/30 to-cosmic-accent/10"
-              style={{ scaleY: scaleX }}
+              style={{ scaleY: scrollProgress }} // Usando scrollProgress calculado manualmente
             />
 
             {/* Animated particles along the line */}
-            {Array.from({ length: 8 }).map((_, i) => (
+            {Array.from({ length: 5 }).map((_, i) => (
               <motion.div
                 key={`line-particle-${i}`}
                 className="absolute w-2 h-2 left-1/2 -translate-x-1/2 rounded-full bg-cosmic-accent"
@@ -279,7 +291,9 @@ function TimelineEvent({
 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const eventIcon = getEventIcon(event.tags, event.empresa)
+
+  // Usando useMemo para evitar recálculos desnecessários
+  const eventIcon = useMemo(() => getEventIcon(event.tags, event.empresa), [event.tags, event.empresa])
 
   // Calculate parallax offset based on index
   const parallaxOffset = index % 2 === 0 ? 20 : -20
@@ -357,7 +371,7 @@ function TimelineEvent({
               className="absolute -inset-0.5 rounded-2xl blur-md z-0"
               animate={{
                 opacity: isActive || isExpanded ? 0.6 : 0,
-                background:
+                backgroundImage:
                   isActive || isExpanded
                     ? "linear-gradient(45deg, rgba(96, 165, 250, 0.6), rgba(147, 197, 253, 0.6), rgba(59, 130, 246, 0.6))"
                     : "linear-gradient(45deg, rgba(96, 165, 250, 0.3), rgba(147, 197, 253, 0.3), rgba(59, 130, 246, 0.3))",
