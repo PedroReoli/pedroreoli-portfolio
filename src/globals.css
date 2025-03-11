@@ -117,20 +117,20 @@
     box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
   }
 
-  /* Meteor animations - fixed direction */
+  /* Meteor animations - improved */
   @keyframes meteor {
     0% {
-      transform: translate(calc(-100% - 50px), calc(-100% - 50px)) rotate(215deg);
+      transform: translate(calc(-100% - 50px), calc(-100% - 50px)) rotate(var(--meteor-angle, 215deg));
       opacity: 0;
     }
-    10% {
+    5% {
       opacity: 1;
     }
-    90% {
+    95% {
       opacity: 1;
     }
     100% {
-      transform: translate(calc(100vw + 50px), calc(100vh + 50px)) rotate(215deg);
+      transform: translate(calc(100vw + 50px), calc(100vh + 50px)) rotate(var(--meteor-angle, 215deg));
       opacity: 0;
     }
   }
@@ -141,7 +141,7 @@
     height: 1px;
     background-color: white;
     border-radius: 50%;
-    animation: meteor var(--meteor-duration, 10s) linear infinite;
+    animation: meteor var(--meteor-duration, 10s) cubic-bezier(0.05, 0.5, 0.95, 0.95) infinite;
     animation-delay: var(--meteor-delay, 0s);
     transform-origin: center;
     z-index: 1;

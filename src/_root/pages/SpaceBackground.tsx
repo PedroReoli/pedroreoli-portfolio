@@ -249,16 +249,20 @@ const SpaceBackground = () => {
     }
   })
 
-  // Generate meteor data with fixed tail direction
-  const meteors = Array.from({ length: 5 }).map((_, i) => {
-    const size = Math.random() * 2 + 1
-    const opacity = Math.random() * 0.7 + 0.3
-    const duration = Math.random() * 5 + 8
-    const delay = Math.random() * 15
-    const tailLength = Math.random() * 150 + 50
-    const tailBlur = Math.random() * 1 + 0.3
+  // Generate meteor data with improved appearance and animation
+  const meteors = Array.from({ length: 8 }).map((_, i) => {
+    const size = Math.random() * 2.5 + 1.5 // Slightly larger meteors
+    const opacity = Math.random() * 0.3 + 0.7 // Higher base opacity
+    const duration = Math.random() * 4 + 6 // Slightly faster
+    const delay = Math.random() * 20 // More varied delays
+    const tailLength = Math.random() * 200 + 100 // Longer tails
+    const tailBlur = Math.random() * 1.5 + 0.5 // More varied blur
     const startPositionX = Math.random() * 100
     const startPositionY = Math.random() * 100
+    // Random angle between 215° and 235° for more natural variation
+    const angle = 215 + Math.random() * 20
+    // Random brightness for the meteor
+    const brightness = Math.random() * 30 + 70 // 70-100% brightness
 
     return {
       id: i,
@@ -270,6 +274,8 @@ const SpaceBackground = () => {
       tailBlur,
       startPositionX,
       startPositionY,
+      angle,
+      brightness,
     }
   })
 
@@ -535,7 +541,7 @@ const SpaceBackground = () => {
         ))}
       </div>
 
-      {/* Meteors with fixed tail direction */}
+      {/* Improved meteors with better tails */}
       {fullyLoaded && !isLowPerfDevice && (
         <AnimatePresence>
           {meteors.map((meteor) => (
@@ -548,27 +554,28 @@ const SpaceBackground = () => {
                   left: `${meteor.startPositionX}%`,
                   width: meteor.size,
                   height: meteor.size,
+                  backgroundColor: `rgba(255, 255, 255, ${meteor.opacity})`,
+                  boxShadow: `0 0 ${meteor.size * 2}px rgba(255, 255, 255, 0.8)`,
                   opacity: fixOpacityValue(meteor.opacity),
                   "--meteor-duration": `${meteor.duration}s`,
                   "--meteor-delay": `${meteor.delay}s`,
-                  "--tail-length": `${meteor.tailLength}px`,
-                  "--tail-blur": `${meteor.tailBlur}px`,
+                  "--meteor-angle": `${meteor.angle}deg`,
                 } as any
               }
               initial={{ opacity: 0 }}
               animate={{ opacity: fixOpacityValue(meteor.opacity) }}
               exit={{ opacity: 0 }}
             >
-              {/* Fixed meteor tail - now correctly positioned */}
+              {/* Improved meteor tail */}
               <div
                 className="absolute"
                 style={{
                   width: `${meteor.tailLength}px`,
-                  height: `${meteor.size}px`,
-                  background: `linear-gradient(to left, white, transparent)`,
+                  height: `${meteor.size * 1.5}px`,
+                  background: `linear-gradient(to left, rgba(255, 255, 255, ${meteor.opacity}), rgba(255, 255, 255, 0.1), transparent)`,
                   right: 0,
-                  top: 0,
-                  filter: `blur(${meteor.tailBlur}px)`,
+                  top: `-${(meteor.size * 1.5 - meteor.size) / 2}px`,
+                  filter: `blur(${meteor.tailBlur}px) brightness(${meteor.brightness}%)`,
                   transformOrigin: "right center",
                 }}
               />
