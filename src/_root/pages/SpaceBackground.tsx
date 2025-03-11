@@ -1,62 +1,48 @@
 "use client"
 
 import { useRef, useEffect, useState, useCallback } from "react"
-import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useThrottle } from "@/hooks/use-throttle"
 
 const SpaceBackground = () => {
   const [isClient, setIsClient] = useState(false)
   const [isLowPerfDevice, setIsLowPerfDevice] = useState(false)
   const [fullyLoaded, setFullyLoaded] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
   // Motion values for mouse parallax
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  // Smooth spring physics for mouse movement
-  const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 })
-  const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 })
-
-  // Scroll progress com layoutEffect: false para evitar erros de hidratação
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-    : false, // Adicionado para evitar erros de hidratação
-  })
-
-  // Background parallax elements with different speeds
-  const bgParallax1 = useTransform(scrollYProgress, [0, 1], [0, -300])
-  const bgParallax2 = useTransform(scrollYProgress, [0, 1], [0, -150])
-  const bgParallax3 = useTransform(scrollYProgress, [0, 1], [0, -450])
-
-  // Mouse parallax transforms for different layers
-  const mouseParallax1 = useTransform(smoothMouseX, [-500, 500], [-15, 15])
-  const mouseParallax2 = useTransform(smoothMouseY, [-500, 500], [-15, 15])
-  const mouseParallax3 = useTransform(smoothMouseX, [-500, 500], [-30, 30])
-  const mouseParallax4 = useTransform(smoothMouseY, [-500, 500], [-30, 30])
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   // Throttled mouse move handler otimizado com requestAnimationFrame
   const throttledMouseMove = useThrottle(
-    useCallback(
-      (e: MouseEvent) => {
-        const { clientX, clientY } = e
-        const { innerWidth, innerHeight } = window
+    useCallback((e: MouseEvent) => {
+      const { clientX, clientY } = e
+      const { innerWidth, innerHeight } = window
 
-        // Normalize mouse position to be centered (0,0) at the middle of the screen
-        const normalizedX = clientX - innerWidth / 2
-        const normalizedY = clientY - innerHeight / 2
+      // Normalize mouse position to be centered (0,0) at the middle of the screen
+      const normalizedX = clientX - innerWidth / 2
+      const normalizedY = clientY - innerHeight / 2
 
-        // Usando requestAnimationFrame para otimizar atualizações
-        requestAnimationFrame(() => {
-          mouseX.set(normalizedX)
-          mouseY.set(normalizedY)
-        })
-      },
-      [mouseX, mouseY],
-    ),
+      // Usando requestAnimationFrame para otimizar atualizações
+      requestAnimationFrame(() => {
+        setMousePosition({ x: normalizedX, y: normalizedY })
+      })
+    }, []),
     16, // 60fps throttle
   )
+
+  // Handle scroll for parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
+        setScrollY(window.scrollY)
+      })
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Fix for opacity animation issues - ensure we're using integer values for opacity
   const fixOpacityValue = (value: number) => {
@@ -82,7 +68,7 @@ const SpaceBackground = () => {
     }
 
     checkPerformance()
-    window.addEventListener("mousemove", throttledMouseMove, { passive: true }) // Adicionado passive: true para melhor performance
+    window.addEventListener("mousemove", throttledMouseMove, { passive: true })
 
     return () => {
       window.removeEventListener("mousemove", throttledMouseMove)
@@ -288,6 +274,20 @@ const SpaceBackground = () => {
     }
   })
 
+  // Calcular valores de parallax baseados no scroll
+  const getParallaxY = (factor: number) => {
+    return scrollY * factor * -1
+  }
+
+  // Calcular valores de parallax baseados na posição do mouse
+  const getMouseParallaxX = (factor: number) => {
+    return mousePosition.x * factor
+  }
+
+  const getMouseParallaxY = (factor: number) => {
+    return mousePosition.y * factor
+  }
+
   if (!isClient) {
     return null // Prevent hydration mismatch
   }
@@ -301,35 +301,29 @@ const SpaceBackground = () => {
       {isLowPerfDevice ? (
         // Simpler version with fewer stars
         <div className="absolute inset-0">
-          {starsLayer1.slice(0, 15).map(
-            (
-              star, // Reduzido de 20 para 15
-            ) => (
-              <div
-                key={star.id}
-                className="absolute rounded-full"
-                style={
-                  {
-                    width: star.size,
-                    height: star.size,
-                    top: star.top,
-                    left: star.left,
-                    backgroundColor: star.color,
-                    boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
-                    opacity: fixOpacityValue(star.baseOpacity),
-                  } as any
-                }
-              />
-            ),
-          )}
+          {starsLayer1.slice(0, 15).map((star) => (
+            <div
+              key={star.id}
+              className="absolute rounded-full"
+              style={{
+                width: star.size,
+                height: star.size,
+                top: star.top,
+                left: star.left,
+                backgroundColor: star.color,
+                boxShadow: `0 0 ${star.size * 2}px ${star.size / 2}px ${star.color}`,
+                opacity: fixOpacityValue(star.baseOpacity),
+              }}
+            />
+          ))}
         </div>
       ) : (
         // Full version with all effects
         <motion.div
           className="absolute inset-0"
           style={{
-            y: bgParallax1,
-            x: mouseParallax1,
+            y: getParallaxY(0.1),
+            x: getMouseParallaxX(0.03),
           }}
         >
           {starsLayer1.map((star) => (
@@ -361,8 +355,8 @@ const SpaceBackground = () => {
       <motion.div
         className="absolute inset-0"
         style={{
-          y: bgParallax2,
-          x: mouseParallax2,
+          y: getParallaxY(0.05),
+          x: getMouseParallaxX(0.03),
         }}
       >
         {starsLayer2.map((star) => (
@@ -401,7 +395,6 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      // Usando backgroundImage em vez de background para evitar conflitos
                       backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
@@ -427,9 +420,9 @@ const SpaceBackground = () => {
       <motion.div
         className="absolute inset-0"
         style={{
-          y: bgParallax3,
-          x: mouseParallax3,
-          rotateX: mouseParallax4,
+          y: getParallaxY(0.15),
+          x: getMouseParallaxX(0.06),
+          rotateX: getMouseParallaxY(0.01),
         }}
       >
         {starsLayer3.map((star) => (
@@ -468,7 +461,6 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      // Usando backgroundImage em vez de background para evitar conflitos
                       backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
@@ -494,7 +486,7 @@ const SpaceBackground = () => {
       <motion.div
         className="absolute inset-0"
         style={{
-          y: bgParallax1,
+          y: getParallaxY(0.1),
         }}
       >
         {fullyLoaded && (
@@ -509,7 +501,6 @@ const SpaceBackground = () => {
                     {
                       width: nebula.width,
                       height: nebula.height,
-                      // Usando backgroundImage em vez de background para evitar conflitos
                       backgroundImage: nebula.backgroundImage,
                       top: nebula.top,
                       left: nebula.left,
