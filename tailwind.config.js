@@ -1,24 +1,33 @@
-import type { Config } from "tailwindcss"
+const defaultTheme = require("tailwindcss/defaultTheme")
 
+/** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
   ],
-  prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      screens: {
+        xxs: "280px", // Telefones muito pequenos
+        xs: "375px", // iPhone SE, pequenos smartphones
+        sm: "425px", // Smartphones médios
+        md: "640px", // Tablets pequenos, smartphones grandes
+        lg: "768px", // Tablets
+        xl: "1024px", // Laptops/desktops pequenos
+        "2xl": "1280px", // Desktops
+        "3xl": "1440px", // Desktops grandes
+        "4xl": "1536px", // Telas muito grandes
+        "5xl": "1920px", // Full HD
+        tall: { raw: "(min-height: 800px)" }, // Telas altas
+        short: { raw: "(max-height: 600px)" }, // Telas curtas
+        portrait: { raw: "(orientation: portrait)" }, // Orientação retrato
+        landscape: { raw: "(orientation: landscape)" }, // Orientação paisagem
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,19 +62,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors for the portfolio
-        blue: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554",
+        // Cosmic theme colors
+        cosmic: {
+          bg: "#0F172A",
+          card: "#1E293B",
+          text: "#94A3B8",
+          accent: "#60A5FA",
+          border: "#334155",
         },
       },
       borderRadius: {
@@ -73,49 +76,83 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      backgroundImage: {
+        "radial-vignette": "radial-gradient(circle, transparent 50%, rgba(10, 17, 32, 0.4) 100%)",
+        "network-gradient": "linear-gradient(to bottom, #0A1120, #0F172A, #0A1120)",
+        "network-glow":
+          "radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 80%)",
+      },
+      animation: {
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float: "float 6s ease-in-out infinite",
+        "spin-slow": "spin 8s linear infinite",
+      },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        pulse: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "#94A3B8",
+            a: {
+              color: "#60A5FA",
+              "&:hover": {
+                color: "#93C5FD",
+              },
+            },
+            h1: {
+              color: "#FFFFFF",
+            },
+            h2: {
+              color: "#FFFFFF",
+            },
+            h3: {
+              color: "#FFFFFF",
+            },
+            h4: {
+              color: "#FFFFFF",
+            },
+          },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
-        pulse: "pulse 3s ease-in-out infinite",
-        shimmer: "shimmer 8s ease-in-out infinite",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "grid-pattern": "url('/assets/grid-pattern.svg')",
-      },
-      boxShadow: {
-        "glow-blue": "0 0 15px 5px rgba(59, 130, 246, 0.3)",
-        "glow-purple": "0 0 15px 5px rgba(147, 51, 234, 0.3)",
-        "glow-green": "0 0 15px 5px rgba(16, 185, 129, 0.3)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [
+    require("tailwindcss-animate"),
+    ({ addUtilities }) => {
+      const newUtilities = {
+        ".text-shadow-sm": {
+          textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+        },
+        ".text-shadow": {
+          textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+        },
+        ".text-shadow-md": {
+          textShadow: "0 4px 8px rgba(0, 0, 0, 0.4)",
+        },
+        ".text-shadow-lg": {
+          textShadow: "0 8px 16px rgba(0, 0, 0, 0.5)",
+        },
+        ".text-shadow-none": {
+          textShadow: "none",
+        },
+        ".backface-hidden": {
+          backfaceVisibility: "hidden",
+        },
+        ".perspective-1000": {
+          perspective: "1000px",
+        },
+        ".transform-gpu": {
+          transform: "translateZ(0)",
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
+}
 
-export default config
+module.exports = config
 
