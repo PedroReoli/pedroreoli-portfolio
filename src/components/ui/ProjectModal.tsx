@@ -1,266 +1,219 @@
 "use client"
 
+import type React from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ArrowLeft, X, ExternalLink, Code, Calendar, GitBranch, Tag, Users, CheckCircle2, Layers, Star, Clock } from 'lucide-react'
-import { type Project } from "@/constants/projectsData"
+import { type Project, statusColors, typeColors, techColors } from "@/constants/projectsData"
+import { X, ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ProjectModalProps {
-  project: Project
+  project: Project | null
   isOpen: boolean
   onClose: () => void
-  currentImageIndex: number
-  onImageNavigation: (direction: "next" | "prev") => void
 }
 
-const ProjectModal = ({
-  project,
-  isOpen,
-  onClose,
-  currentImageIndex,
-  onImageNavigation
-}: ProjectModalProps) => {
-  // Status color and icon mapping
-  const getStatusInfo = (status: string) => {
-    switch (status) {
-      case "Finalizado":
-        return {
-          color: "bg-green-500/10 text-green-400 border-green-500/20",
-          icon: <CheckCircle2 className="w-3 h-3" />,
-        }
-      case "Beta":
-        return {
-          color: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-          icon: <Star className="w-3 h-3" />,
-        }
-      case "Em Desenvolvimento":
-        return {
-          color: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
-          icon: <Clock className="w-3 h-3" />,
-        }
-      default:
-        return {
-          color: "bg-gray-500/10 text-gray-400 border-gray-500/20",
-          icon: <Tag className="w-3 h-3" />,
-        }
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // Reset image index when project changes
+  useEffect(() => {
+    setCurrentImageIndex(0)
+  }, [project])
+
+  // Close modal on ESC key press
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
     }
+
+    window.addEventListener("keydown", handleEsc)
+    return () => window.removeEventListener("keydown", handleEsc)
+  }, [onClose])
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isOpen])
+
+  if (!project) return null
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev === project.thumbnails.length - 1 ? 0 : prev + 1))
   }
 
-  // Type icon mapping
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case "Colaborativo":
-        return <Users className="w-3.5 h-3.5" />
-      case "Freelance":
-        return <GitBranch className="w-3.5 h-3.5" />
-      case "Pessoal":
-      default:
-        return <Tag className="w-3.5 h-3.5" />
-    }
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? project.thumbnails.length - 1 : prev - 1))
   }
-
-  const statusInfo = getStatusInfo(project.status)
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
+        <>
+          {/* Backdrop */}
           <motion.div
-            className="relative w-full max-w-2xl bg-cosmic-card rounded-xl border border-cosmic-accent/20 overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
           >
-            {/* Close button */}
-            <motion.button
-              className="absolute top-3 right-3 z-20 p-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white/80 hover:text-white"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={onClose}
+            {/* Modal */}
+            <motion.div
+              className="bg-gray-900/90 backdrop-blur-md border border-gray-800 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="w-4 h-4" />
-            </motion.button>
-            
-            {/* Image gallery */}
-            <div className="relative aspect-video">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImageIndex}
-                  src={project.thumbnails[currentImageIndex]}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </AnimatePresence>
-              
-              {/* Image overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-cosmic-card via-transparent to-transparent opacity-70" />
-              
-              {/* Image navigation */}
-              {project.thumbnails.length > 1 && (
-                <>
-                  <div className="absolute inset-0 flex items-center justify-between px-4">
-                    <motion.button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onImageNavigation("prev");
-                      }}
-                      className="p-1.5 rounded-full bg-black/30 backdrop-blur-sm text-white/80 hover:text-white"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ArrowLeft className="w-4 h-4" />
-                    </motion.button>
-                    <motion.button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onImageNavigation("next");
-                      }}
-                      className="p-1.5 rounded-full bg-black/30 backdrop-blur-sm text-white/80 hover:text-white"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.button>
-                  </div>
-                  
-                  {/* Image indicators */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
-                    {project.thumbnails.map((_, idx) => (
-                      <motion.div
-                        key={idx}
-                        className={`h-1 rounded-full transition-all duration-300 ${
-                          idx === currentImageIndex ? "w-5 bg-cosmic-accent" : "w-1 bg-white/40"
-                        }`}
-                        whileHover={{ scale: 1.2 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const direction = idx > currentImageIndex ? "next" : "prev";
-                          for (let i = 0; i < Math.abs(idx - currentImageIndex); i++) {
-                            onImageNavigation(direction);
-                          }
-                        }}
-                        style={{ cursor: "pointer" }}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-              
-              {/* Project title overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                
-                {/* Status badges */}
-                <div className="flex flex-wrap items-center gap-2 mt-2">
-                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium border ${statusInfo.color}`}>
-                    {statusInfo.icon}
-                    <span>{project.status}</span>
-                  </span>
-                  
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent border border-cosmic-accent/20">
-                    <Calendar className="w-3 h-3" />
-                    <span>{project.duration}</span>
-                  </span>
-                  
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent border border-cosmic-accent/20">
-                    {getTypeIcon(project.type)}
-                    <span>{project.type}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Project details */}
-            <div className="p-4 space-y-3">
-              {/* Description */}
-              <p className="text-sm text-cosmic-text">
-                {project.detailedDescription || project.description}
-              </p>
-              
-              {/* Tech stack */}
-              <div>
-                <h4 className="text-xs font-medium text-cosmic-text mb-2 flex items-center gap-1.5">
-                  <Code className="w-3.5 h-3.5 text-cosmic-accent" />
-                  <span>TECNOLOGIAS</span>
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.techStack.map((tech, idx) => (
-                    <span
+              {/* Image gallery */}
+              <div className="relative aspect-video w-full overflow-hidden">
+                <motion.div
+                  className="w-full h-full"
+                  initial={false}
+                  animate={{
+                    x: `-${currentImageIndex * 100}%`,
+                    transition: { duration: 0.5, ease: "easeInOut" },
+                  }}
+                  style={{
+                    display: "flex",
+                    width: `${project.thumbnails.length * 100}%`,
+                  }}
+                >
+                  {project.thumbnails.map((thumbnail, idx) => (
+                    <div
                       key={idx}
-                      className="px-2 py-0.5 rounded-md text-xs font-medium bg-cosmic-accent/10 text-cosmic-accent border border-cosmic-accent/20"
+                      className="w-full h-full flex-shrink-0"
+                      style={{ width: `${100 / project.thumbnails.length}%` }}
                     >
-                      {tech}
-                    </span>
+                      <img
+                        src={thumbnail || "/placeholder.svg"}
+                        alt={`${project.title} screenshot ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   ))}
-                </div>
+                </motion.div>
+
+                {/* Image navigation arrows */}
+                {project.thumbnails.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
+
+                    {/* Image indicators */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {project.thumbnails.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                            idx === currentImageIndex ? "bg-white" : "bg-white/40"
+                          }`}
+                          aria-label={`Go to image ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {/* Close button */}
+                <button
+                  onClick={onClose}
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
-              
-              {/* Features - if available */}
-              {project.features && project.features.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-medium text-cosmic-text mb-2 flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-cosmic-accent" />
-                    <span>FUNCIONALIDADES</span>
-                  </h4>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {project.features.slice(0, 4).map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-1.5 p-1.5 rounded-md bg-cosmic-bg/30 border border-cosmic-border">
-                        <CheckCircle2 className="w-3 h-3 shrink-0 text-cosmic-accent" />
-                        <span className="text-xs text-cosmic-text truncate">{feature}</span>
-                      </div>
-                    ))}
-                    {project.features.length > 4 && (
-                      <div className="flex items-center justify-center p-1.5 rounded-md bg-cosmic-bg/20 border border-cosmic-border/50">
-                        <span className="text-xs text-cosmic-text">+{project.features.length - 4} mais</span>
-                      </div>
-                    )}
+
+              {/* Content */}
+              <div className="p-6 overflow-y-auto">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <h2 className="text-2xl font-bold text-blue-500">{project.title}</h2>
+                  <div className="flex gap-2">
+                    <span className={`text-xs px-2 py-1 rounded-full border ${statusColors[project.status]}`}>
+                      {project.status}
+                    </span>
+                    <span className={`text-xs px-2 py-1 rounded-full border ${typeColors[project.type]}`}>
+                      {project.type}
+                    </span>
                   </div>
                 </div>
-              )}
-              
-              {/* Action buttons */}
-              <div className="flex justify-between items-center pt-1">
-                <motion.a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-medium text-cosmic-text hover:text-cosmic-accent transition-colors"
-                  whileHover={{ x: -3 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <GitBranch className="w-3.5 h-3.5" />
-                  <span>Repositório</span>
-                </motion.a>
-                
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-medium text-cosmic-accent hover:text-white transition-colors"
-                  whileHover={{ x: 3 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <span>Ver projeto</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </motion.a>
+
+                <p className="text-gray-300 mb-6">{project.description}</p>
+
+                {/* Detailed Description */}
+                {project.detailedDescription && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-white mb-2">Sobre o Projeto</h3>
+                    <p className="text-gray-300">{project.detailedDescription}</p>
+                  </div>
+                )}
+
+                {/* Tech Stack */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-white mb-2">Tecnologias</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech, index) => (
+                      <span
+                        key={index}
+                        className={`text-sm px-3 py-1 rounded-full border ${techColors[tech] || "bg-gray-700/50 text-gray-300 border-gray-600/30"}`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Links */}
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Ver Projeto
+                  </a>
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-colors"
+                  >
+                    <Github className="h-4 w-4" />
+                    Repositório
+                  </a>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   )
 }
 
 export default ProjectModal
+
