@@ -69,7 +69,25 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    margin: 0;
+    padding: 0;
   }
+  html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Remover margens e paddings padrão */
+body,
+html,
+#root,
+main,
+div,
+section {
+  margin: 0;
+  padding: 0;
 }
 
 /* Global styles */

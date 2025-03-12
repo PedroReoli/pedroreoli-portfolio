@@ -39,7 +39,7 @@ const MainPage = () => {
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3
+      const scrollPosition = window.scrollY + 50 // Pequeno offset para melhor detecção
 
       // Find the current active section
       Object.entries(sectionsRef.current).forEach(([section, ref]) => {
@@ -72,7 +72,7 @@ const MainPage = () => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       {/* Background */}
       <div className="fixed inset-0 z-0">
         <Background />
@@ -115,63 +115,68 @@ const MainPage = () => {
 
       {/* Content sections */}
       <div className="relative z-10">
-        {/* Home Section */}
-        <section ref={(el) => (sectionsRef.current.home = el)} id="home">
+        {/* Home Section - Ajustado para ficar no topo absoluto */}
+        <section
+          ref={(el) => (sectionsRef.current.home = el)}
+          id="home"
+          className="min-h-screen w-full"
+          style={{ marginTop: 0, paddingTop: 0 }}
+        >
           <Home />
         </section>
 
         {/* About Section */}
-        <section ref={(el) => (sectionsRef.current.about = el)} id="about">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.about = el)} id="about" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <About />
           </LazySection>
         </section>
 
         {/* Timeline Section */}
-        <section ref={(el) => (sectionsRef.current.timeline = el)} id="timeline">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.timeline = el)} id="timeline" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <Timeline />
           </LazySection>
         </section>
 
         {/* Projects Section */}
-        <section ref={(el) => (sectionsRef.current.projects = el)} id="projects">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.projects = el)} id="projects" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <Projects />
           </LazySection>
         </section>
 
         {/* Services Section */}
-        <section ref={(el) => (sectionsRef.current.services = el)} id="services">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.services = el)} id="services" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <Services />
           </LazySection>
         </section>
 
         {/* Skills Section */}
-        <section ref={(el) => (sectionsRef.current.skills = el)} id="skills">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.skills = el)} id="skills" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <Skills />
           </LazySection>
         </section>
 
         {/* Blog Section */}
-        <section ref={(el) => (sectionsRef.current.blog = el)} id="blog">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.blog = el)} id="blog" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <BlogSection />
           </LazySection>
         </section>
 
         {/* FAQ Section */}
-        <section ref={(el) => (sectionsRef.current.faq = el)} id="faq">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.faq = el)} id="faq" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <FAQ />
           </LazySection>
         </section>
 
         {/* End Section */}
-        <section ref={(el) => (sectionsRef.current.end = el)} id="end">
-          <LazySection>
+        <section ref={(el) => (sectionsRef.current.end = el)} id="end" className="min-h-screen w-full">
+          <LazySection threshold={0.05}>
             <End />
           </LazySection>
         </section>
