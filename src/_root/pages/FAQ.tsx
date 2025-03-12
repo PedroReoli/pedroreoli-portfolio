@@ -1,181 +1,164 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import { Mail, Instagram, ChevronDown, ChevronUp } from "lucide-react"
+import type React from "react"
 
-const faqs = [
-  {
-    question: "Quem é o seu público-alvo?",
-    answer:
-      "Meu público-alvo são desenvolvedores iniciantes, pessoas que desejam se aventurar no mundo da programação e clientes que buscam projetos personalizados. Também ofereço dicas e orientações para melhorar currículos e se destacar no mercado.",
-  },
-  {
-    question: "Qual é o prazo médio e o custo de um projeto?",
-    answer:
-      "Projetos simples geralmente são concluídos entre 1 a 2 semanas, enquanto projetos complexos podem levar de 1 a 3 meses. Para obter informações detalhadas sobre custos, entre em contato diretamente.",
-  },
-  {
-    question: "Como posso entrar em contato?",
-    answer: "Você pode me encontrar pelos canais abaixo:",
-    contacts: [
-      { type: "email", link: "mailto:pedrosousa2160@gmail.com", icon: <Mail />, label: "pedrosousa2160@gmail.com" },
-      {
-        type: "instagram",
-        link: "https://www.instagram.com/01_dev_em_desenvolvimento",
-        icon: <Instagram />,
-        label: "@01_dev_em_desenvolvimento",
-      },
-    ],
-  },
-  {
-    question: "Quais tecnologias você domina?",
-    answer:
-      "Trabalho com uma ampla variedade de tecnologias, incluindo React, Node.js, TypeScript, C#, ASP.NET e bancos de dados como SQL e MongoDB. Sempre busco usar a melhor solução para cada projeto.",
-  },
-]
+import { useState, useRef } from "react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import { faqData } from "@/constants/FAQData"
+import { ChevronDown, Mail, Instagram, Github, Linkedin } from "lucide-react"
 
 const FAQ = () => {
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(0)
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
-  const toggleFaq = (index: number) => {
-    setExpandedFaq(expandedFaq === index ? null : index)
+  const toggleQuestion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index)
+  }
+
+  // Function to render the appropriate icon based on iconType
+  const renderIcon = (iconType: string) => {
+    switch (iconType) {
+      case "mail":
+        return <Mail size={18} />
+      case "instagram":
+        return <Instagram size={18} />
+      case "github":
+        return <Github size={18} />
+      case "linkedin":
+        return <Linkedin size={18} />
+      default:
+        return null
+    }
   }
 
   return (
-    <section
-      ref={ref}
-      className="text-white min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/90 via-[#0F172A]/80 to-[#0A1120]/90 backdrop-blur-sm"></div>
-
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
-
-        {/* Glowing orb */}
-        <motion.div
-          className="absolute rounded-full blur-3xl opacity-20"
-          style={{
-            background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
-            width: "40rem",
-            height: "40rem",
-            top: "30%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.15, 0.2, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      <div className="max-w-3xl mx-auto relative z-10">
+    <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
+      <div className="container mx-auto px-4 max-w-3xl">
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12 sm:mb-16"
+          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
           initial={{ opacity: 0, y: -20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Perguntas Frequentes<span className="text-blue-400">;</span>
+          FAQ<span className="text-white">;</span>
         </motion.h2>
 
-        <motion.div
-          className="space-y-4 sm:space-y-6"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.15 },
-            },
-          }}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {faqs.map((faq, index) => (
-            <motion.div
+        <div ref={ref} className="space-y-4">
+          {faqData.map((item, index) => (
+            <FAQItem
               key={index}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.6,
-                    ease: "easeOut",
-                    delay: index * 0.1,
-                  },
-                },
-              }}
-              className="relative"
-            >
-              <div className="relative bg-blue-900/20 backdrop-blur-sm rounded-xl border border-blue-500/20 overflow-hidden transition-all duration-300 hover:border-blue-400/30">
-                {/* Question with toggle */}
-                <button
-                  className="flex items-center justify-between gap-3 w-full p-5 text-left"
-                  onClick={() => toggleFaq(index)}
-                >
-                  <h3 className="text-base sm:text-lg font-medium text-white">{faq.question}</h3>
-                  <div className="shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-blue-500/30 bg-blue-900/50">
-                    {expandedFaq === index ? (
-                      <ChevronUp className="w-4 h-4 text-blue-400" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-blue-400" />
-                    )}
-                  </div>
-                </button>
-
-                {/* Answer */}
-                <AnimatePresence>
-                  {expandedFaq === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-5 pt-0 border-t border-blue-500/20">
-                        <p className="text-sm sm:text-base text-blue-200/80 mb-4">{faq.answer}</p>
-
-                        {/* Contacts Section */}
-                        {faq.contacts && (
-                          <div className="space-y-2">
-                            {faq.contacts.map((contact, idx) => (
-                              <a
-                                key={idx}
-                                href={contact.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 p-3 rounded-lg bg-blue-900/30 border border-blue-500/20 hover:border-blue-400/30 transition-colors"
-                              >
-                                <div className="text-blue-400 w-5 h-5">{contact.icon}</div>
-                                <span className="text-sm text-blue-200">{contact.label}</span>
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
+              item={item}
+              index={index}
+              isActive={activeIndex === index}
+              toggleQuestion={() => toggleQuestion(index)}
+              isInView={isInView}
+              renderIcon={renderIcon}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
+  )
+}
+
+interface FAQItemProps {
+  item: {
+    question: string
+    answer: string
+    contacts?: {
+      type: string
+      link: string
+      iconType: string
+      label: string
+    }[]
+  }
+  index: number
+  isActive: boolean
+  toggleQuestion: () => void
+  isInView: boolean
+  renderIcon: (iconType: string) => React.ReactNode
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ item, index, isActive, toggleQuestion, isInView, renderIcon }) => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 * i,
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
+  }
+
+  return (
+    <motion.div
+      className="bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/50 transition-all duration-300"
+      variants={itemVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index}
+      style={{
+        borderColor: isActive ? "rgba(59, 130, 246, 0.3)" : "rgba(31, 41, 55, 0.5)",
+        boxShadow: isActive ? "0 4px 20px -5px rgba(59, 130, 246, 0.2)" : "none",
+      }}
+    >
+      {/* Question header */}
+      <button
+        className="w-full text-left p-5 flex justify-between items-center"
+        onClick={toggleQuestion}
+        aria-expanded={isActive}
+      >
+        <h3 className="text-lg font-medium text-white">{item.question}</h3>
+        <motion.div
+          animate={{ rotate: isActive ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-blue-400 flex-shrink-0 ml-4"
+        >
+          <ChevronDown size={20} />
+        </motion.div>
+      </button>
+
+      {/* Answer content */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="p-5 pt-0 text-gray-300 border-t border-gray-800/50">
+              <p>{item.answer}</p>
+
+              {/* Contacts list if available */}
+              {item.contacts && (
+                <div className="mt-4 space-y-3">
+                  {item.contacts.map((contact, contactIndex) => (
+                    <a
+                      key={contactIndex}
+                      href={contact.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors group"
+                    >
+                      <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
+                        {renderIcon(contact.iconType)}
+                      </div>
+                      <span className="text-gray-300 group-hover:text-white transition-colors">{contact.label}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   )
 }
 

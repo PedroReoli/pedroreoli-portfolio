@@ -1,190 +1,84 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { ArrowUp } from "lucide-react"
+import { motion } from "framer-motion"
 
 const End = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
 
   return (
-    <section
-      ref={ref}
-      className="text-white min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/90 via-[#0F172A]/80 to-[#0A1120]/90 backdrop-blur-sm"></div>
-
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
-
-        {/* Animated stars */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={`end-star-${i}`}
-            className="absolute rounded-full"
-            style={{
-              width: Math.random() * 2 + 1,
-              height: Math.random() * 2 + 1,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              backgroundColor: "#60A5FA",
-              boxShadow: `0 0 ${Math.random() * 4 + 2}px ${Math.random() * 2 + 1}px #60A5FA`,
-              opacity: Math.random() * 0.5 + 0.3,
-            }}
-            animate={{
-              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.7 + 0.5, Math.random() * 0.5 + 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: Math.random() * 4 + 2,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-
-        {/* Glowing orb */}
+    <section className="relative min-h-screen py-16 md:py-24 bg-transparent flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 max-w-3xl text-center">
+        {/* SVG Image */}
         <motion.div
-          className="absolute rounded-full blur-3xl opacity-20"
-          style={{
-            background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
-            width: "40rem",
-            height: "40rem",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.15, 0.2, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      <motion.div
-        className="text-center w-full max-w-xl relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Profile image with orbital ring */}
-        <motion.div
-          className="flex justify-center mb-6 sm:mb-8"
-          initial={{ scale: 0.8 }}
-          animate={isInView ? { scale: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-10 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="relative">
-            {/* Orbital ring */}
-            <motion.div
-              className="absolute -inset-3 rounded-full pointer-events-none opacity-30"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-            >
-              <svg className="w-full h-full" viewBox="0 0 100 100">
-                <defs>
-                  <linearGradient id="orbitalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="rgba(96, 165, 250, 0)" />
-                    <stop offset="50%" stopColor="rgba(96, 165, 250, 0.6)" />
-                    <stop offset="100%" stopColor="rgba(96, 165, 250, 0)" />
-                  </linearGradient>
-                </defs>
-                <ellipse cx="50" cy="50" rx="48" ry="48" fill="none" stroke="url(#orbitalGradient)" strokeWidth="0.5" />
-              </svg>
-            </motion.div>
-
-            <img
-              src="/assets/Eu.svg"
-              alt="Despedida"
-              className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full object-cover border-2 border-blue-500/30 hover:border-blue-400 transition-colors duration-300"
-            />
+          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-blue-500/50 p-1 flex items-center justify-center overflow-hidden bg-gray-900/50 shadow-lg shadow-blue-500/10">
+            <img src="/assets/Eu.svg" alt="Ilustração" className="w-full h-full object-contain" />
+            <div className="absolute inset-0 rounded-full border border-blue-500/20"></div>
           </div>
         </motion.div>
 
-        {/* Title with animated accent */}
+        {/* Thank You Title */}
         <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-4xl md:text-5xl font-bold text-blue-500 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Obrigado por visitar
-          <motion.span
-            className="ml-2 text-blue-400 inline-block"
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 5, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatDelay: 3,
-            }}
-          >
-            !
-          </motion.span>
+          Obrigado por visitar!
         </motion.h2>
 
-        {/* Text */}
-        <motion.p
-          className="text-blue-200/80 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          Espero que tenha gostado do meu portfólio! Fique à vontade para voltar ao início ou visitar novamente sempre
-          que desejar. Desejo tudo de melhor em seus projetos!
-        </motion.p>
-
-        {/* Button with interactive effects */}
-        <motion.button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="group relative inline-flex items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <div className="px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-blue-900/30 rounded-full border border-blue-500/30 group-hover:border-blue-400 transition-all duration-300 flex items-center gap-2">
-            <motion.div
-              animate={{ y: [0, -3, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatDelay: 1,
-              }}
-            >
-              <ArrowUp className="w-4 sm:w-5 h-4 sm:h-5 text-blue-400 group-hover:text-white transition-colors duration-300" />
-            </motion.div>
-            <span className="text-sm sm:text-base text-blue-400 group-hover:text-white transition-colors duration-300">
-              Voltar ao Início
-            </span>
-          </div>
-        </motion.button>
-
-        {/* Decorative line */}
+        {/* Farewell Message */}
         <motion.div
-          className="mt-12 sm:mt-16 opacity-60"
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={isInView ? { opacity: 0.6, scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-gray-300 text-lg md:text-xl mb-14 max-w-2xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+          <p className="mb-4">Espero que tenha gostado do meu portfólio!</p>
+          <p className="mb-4">
+            Sinta-se à vontade para explorar mais, voltar ao início ou retornar sempre que desejar.
+          </p>
+          <p>Desejo muito sucesso nos seus projetos e na sua jornada! 🚀</p>
         </motion.div>
-      </motion.div>
+
+        {/* Back to Top Button */}
+        <motion.button
+          onClick={scrollToTop}
+          className="px-8 py-3 bg-transparent text-blue-400 border-2 border-blue-500/50 hover:bg-blue-500/10 hover:text-blue-300 rounded-full font-medium transition-colors duration-300 flex items-center justify-center mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.2)" }}
+          whileTap={{ y: 0 }}
+        >
+          <svg
+            className="w-5 h-5 mr-2 transform rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          Voltar para o Início
+        </motion.button>
+      </div>
+
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+      {/* Animated gradient border */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_auto] animate-gradient"></div>
     </section>
   )
 }
