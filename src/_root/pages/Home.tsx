@@ -9,6 +9,7 @@ const Home = () => {
   const controls = useAnimation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+  const [activeIcon, setActiveIcon] = useState<number | null>(null)
 
   useEffect(() => {
     if (isInView) {
@@ -21,14 +22,44 @@ const Home = () => {
       ref={ref}
       className="text-white min-h-screen relative flex flex-col justify-center items-center overflow-hidden"
     >
-      {/* Local section background with subtle glow */}
-      <div className="absolute inset-0 bg-[#0A1120]/60 backdrop-blur-sm"></div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Glowing orbs */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`orb-${i}`}
+            className="absolute rounded-full blur-3xl opacity-20"
+            style={{
+              background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
+              width: `${Math.random() * 40 + 20}rem`,
+              height: `${Math.random() * 40 + 20}rem`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              transform: "translate(-50%, -50%)",
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.15, 0.2, 0.15],
+              x: [0, Math.random() * 20 - 10, 0],
+              y: [0, Math.random() * 20 - 10, 0],
+            }}
+            transition={{
+              duration: 8 + i * 4,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
+      </div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 xxs:py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24">
-        {/* Floating elements with 3D effect */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         <motion.div
-          className="flex flex-col items-center justify-center gap-12 xxs:gap-14 xs:gap-16 sm:gap-18 md:gap-20 lg:gap-24 xl:gap-28"
+          className="flex flex-col items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16"
           initial="hidden"
           animate={controls}
           variants={{
@@ -41,7 +72,7 @@ const Home = () => {
             },
           }}
         >
-          {/* Main heading */}
+          {/* Main heading with animated text */}
           <motion.div
             className="text-center"
             variants={{
@@ -49,75 +80,87 @@ const Home = () => {
               visible: {
                 opacity: 1,
                 y: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.25, 0.1, 0.25, 1],
+                },
               },
             }}
-            transition={{
-              duration: 1,
-              ease: [0.25, 0.1, 0.25, 1],
-            }}
           >
-            <motion.h1
-              className="text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.8,
-                    ease: [0.25, 0.1, 0.25, 1],
+            <div className="relative">
+              <motion.h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.1,
+                    },
                   },
-                },
-              }}
-            >
-              <span className="inline-block relative">
-                <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-white text-transparent bg-clip-text">
-                  Olá
-                </span>
+                }}
+              >
                 <motion.span
-                  className="absolute -inset-1 rounded-full blur-sm bg-[#60A5FA]/20"
-                  animate={{
-                    opacity: [0.2, 0.4, 0.2],
+                  className="inline-block relative"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
                   }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                  }}
-                ></motion.span>
-              </span>{" "}
-              <span className="inline-block relative mt-1 xxs:mt-1.5 xs:mt-2 sm:mt-3 md:mt-4">
-                <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-white text-transparent bg-clip-text">
-                  eu sou o{" "}
-                </span>
+                  transition={{ duration: 0.6 }}
+                >
+                  <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-white text-transparent bg-clip-text">
+                    Olá
+                  </span>
+                  <motion.div
+                    className="absolute -inset-1 rounded-full blur-md bg-[#60A5FA]/20"
+                    animate={{
+                      opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </motion.span>{" "}
                 <motion.span
-                  className="absolute -inset-1 rounded-full blur-sm bg-[#60A5FA]/20"
-                  animate={{
-                    opacity: [0.2, 0.4, 0.2],
+                  className="inline-block relative mt-2 sm:mt-3"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
                   }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                    delay: 0.5,
-                  }}
-                ></motion.span>
-              </span>
-            </motion.h1>
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-white text-transparent bg-clip-text">
+                    eu sou o{" "}
+                  </span>
+                  <motion.div
+                    className="absolute -inset-1 rounded-full blur-md bg-[#60A5FA]/20"
+                    animate={{
+                      opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                      delay: 0.5,
+                    }}
+                  />
+                </motion.span>
+              </motion.h1>
+            </div>
 
             {/* Name with enhanced special effects */}
             <motion.div
-              className="mt-2 xxs:mt-3 xs:mt-4 relative inline-block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.4,
-                ease: [0.25, 0.1, 0.25, 1],
+              className="mt-4 sm:mt-6 relative inline-block"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
               }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <motion.span
-                className="relative z-10 text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
+                className="relative z-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#93C5FD] to-[#3B82F6] text-transparent bg-clip-text"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -127,7 +170,7 @@ const Home = () => {
                   ease: "linear",
                 }}
                 style={{
-                  backgroundSize: "200% auto", // Corrigido para evitar conflito com backgroundPosition
+                  backgroundSize: "200% auto",
                 }}
               >
                 Pedro
@@ -155,14 +198,13 @@ const Home = () => {
                 style={{
                   background:
                     "linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.6), rgba(59, 130, 246, 0.3))",
-                  // Removido backgroundSize para evitar conflito com backgroundPosition
                 }}
-              ></motion.div>
+              />
             </motion.div>
 
             {/* Role with typing effect */}
             <motion.div
-              className="mt-3 xxs:mt-4 xs:mt-6 sm:mt-8 h-[24px] xxs:h-[28px] xs:h-[32px] sm:h-[40px] md:h-[48px] lg:h-[60px] xl:h-[72px] overflow-hidden"
+              className="mt-6 sm:mt-8 md:mt-10 h-8 sm:h-10 md:h-12 lg:h-14 overflow-hidden"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
@@ -180,14 +222,14 @@ const Home = () => {
 
           {/* Social icons with enhanced hover effects */}
           <motion.div
-            className="relative"
+            className="relative mt-8 sm:mt-12"
             variants={{
               hidden: { opacity: 0 },
               visible: {
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.1,
-                  delayChildren: 0.6,
+                  delayChildren: 0.8,
                 },
               },
             }}
@@ -214,37 +256,36 @@ const Home = () => {
                   repeatType: "reverse",
                 },
               }}
-            ></motion.div>
+            />
 
             {/* Social icons container */}
-            <motion.div className="relative flex flex-wrap justify-center items-center gap-2 xxs:gap-2.5 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8">
+            <motion.div className="relative flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 lg:gap-5">
               {socialLinks.map((link, index) => (
-                <SocialIcon key={index} {...link} index={index} />
+                <SocialIcon
+                  key={index}
+                  {...link}
+                  index={index}
+                  isActive={activeIcon === index}
+                  onMouseEnter={() => setActiveIcon(index)}
+                  onMouseLeave={() => setActiveIcon(null)}
+                />
               ))}
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Animated line at bottom */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#60A5FA]/50 to-transparent"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 1 }}
-      ></motion.div>
-
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-3 xxs:bottom-4 xs:bottom-5 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <p className="text-xs xxs:text-sm text-gray-400 mb-1 xxs:mb-2">Scroll para explorar</p>
+        <p className="text-sm text-blue-200/80 mb-2 font-light">Scroll para explorar</p>
         <motion.div
-          className="w-5 xxs:w-6 h-8 xxs:h-10 border-2 border-[#60A5FA]/50 rounded-full flex justify-center"
-          animate={{ y: [0, 8, 0] }}
+          className="w-6 h-10 border-2 border-blue-300/50 rounded-full flex justify-center"
+          animate={{ y: [0, 5, 0] }}
           transition={{
             duration: 1.5,
             repeat: Number.POSITIVE_INFINITY,
@@ -253,7 +294,7 @@ const Home = () => {
           }}
         >
           <motion.div
-            className="w-1 xxs:w-1.5 h-1 xxs:h-1.5 bg-[#60A5FA] rounded-full mt-2"
+            className="w-1.5 h-1.5 bg-blue-300 rounded-full mt-2"
             animate={{
               y: [0, 12, 0],
               opacity: [0, 1, 0],
@@ -275,7 +316,7 @@ const Home = () => {
 const TypewriterEffect: React.FC<{ text: string }> = ({ text }) => {
   const [displayText, setDisplayText] = useState("")
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isDeleting] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
 
   useEffect(() => {
@@ -298,7 +339,7 @@ const TypewriterEffect: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className="flex items-center h-full">
       <motion.p
-        className="text-base xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light"
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
@@ -327,7 +368,7 @@ const TypewriterEffect: React.FC<{ text: string }> = ({ text }) => {
             transition={{
               duration: isComplete ? 0.5 : 0.1,
             }}
-          ></motion.span>
+          />
         </span>
       </motion.p>
     </div>
@@ -353,12 +394,12 @@ interface SocialIconProps {
   icon: React.ReactNode
   label: string
   index: number
+  isActive: boolean
+  onMouseEnter: () => void
+  onMouseLeave: () => void
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const [isClicked, setIsClicked] = useState(false)
-
+const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label, index, isActive, onMouseEnter, onMouseLeave }) => {
   return (
     <motion.div
       className="relative"
@@ -370,14 +411,14 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
         duration: 0.5,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <motion.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative block p-2 xxs:p-2.5 xs:p-3 sm:p-3.5 md:p-4 lg:p-5"
+        className="relative block p-3 sm:p-4"
         whileHover={{
           scale: 1.1,
           y: -3,
@@ -385,41 +426,37 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
         whileTap={{
           scale: 0.95,
         }}
-        onTapStart={() => setIsClicked(true)}
-        onTap={() => {
-          setTimeout(() => setIsClicked(false), 300)
-        }}
       >
         {/* Animated border */}
         <motion.div
           className="absolute inset-0 rounded-full"
           style={{
-            background: isHovered
-              ? `linear-gradient(120deg, rgba(59, 130, 246, 0.4), rgba(96, 165, 250, 0.7), rgba(59, 130, 246, 0.4))`
-              : `linear-gradient(120deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.4), rgba(59, 130, 246, 0.2))`,
+            background: isActive
+              ? `linear-gradient(120deg, rgba(59, 130, 246, 0.6), rgba(96, 165, 250, 0.8), rgba(59, 130, 246, 0.6))`
+              : `linear-gradient(120deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.5), rgba(59, 130, 246, 0.3))`,
             backgroundSize: "200% 200%",
           }}
           animate={{
-            backgroundPosition: isHovered ? ["0% 0%", "100% 100%"] : ["0% 0%", "50% 50%"],
+            backgroundPosition: isActive ? ["0% 0%", "100% 100%"] : ["0% 0%", "50% 50%"],
           }}
           transition={{
-            duration: isHovered ? 2 : 5,
+            duration: isActive ? 2 : 5,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
-        ></motion.div>
+        />
 
         {/* Icon */}
         <motion.div
-          className="relative z-10 text-lg xxs:text-xl xs:text-2xl sm:text-2xl md:text-3xl text-white"
+          className="relative z-10 text-xl sm:text-2xl md:text-3xl text-white"
           animate={{
-            color: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.9)",
-            scale: isHovered ? [1, 1.1, 1] : 1,
-            rotate: isHovered ? [0, -5, 5, -3, 0] : 0,
+            color: isActive ? "#93C5FD" : "rgba(255, 255, 255, 0.9)",
+            scale: isActive ? [1, 1.1, 1] : 1,
+            rotate: isActive ? [0, -5, 5, -3, 0] : 0,
           }}
           transition={{
-            duration: isHovered ? 0.5 : 0.3,
-            repeat: isHovered ? Number.POSITIVE_INFINITY : 0,
+            duration: isActive ? 0.5 : 0.3,
+            repeat: isActive ? Number.POSITIVE_INFINITY : 0,
             repeatType: "reverse",
           }}
         >
@@ -430,41 +467,28 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => {
         <motion.div
           className="absolute inset-0 rounded-full blur-md"
           style={{
-            background: `radial-gradient(circle, rgba(96, 165, 250, ${isHovered ? 0.5 : 0.2}) 0%, transparent 70%)`,
+            background: `radial-gradient(circle, rgba(96, 165, 250, ${isActive ? 0.5 : 0.2}) 0%, transparent 70%)`,
           }}
           animate={{
-            opacity: isHovered ? 1 : 0.5,
-            scale: isHovered ? 1.2 : 1,
+            opacity: isActive ? 1 : 0.5,
+            scale: isActive ? 1.2 : 1,
           }}
           transition={{ duration: 0.3 }}
-        ></motion.div>
-
-        {/* Ripple effect on click */}
-        <AnimatePresence>
-          {isClicked && (
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/30"
-              initial={{ width: 0, height: 0, opacity: 0.7 }}
-              animate={{ width: 80, height: 80, opacity: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            />
-          )}
-        </AnimatePresence>
+        />
       </motion.a>
 
       {/* Label tooltip */}
       <AnimatePresence>
-        {isHovered && (
+        {isActive && (
           <motion.div
-            className="absolute -bottom-6 xxs:-bottom-7 xs:-bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+            className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
             transition={{ duration: 0.2 }}
           >
             <motion.span
-              className="block text-[10px] xxs:text-xs sm:text-sm text-white px-2 xxs:px-2.5 xs:px-3 py-1 xxs:py-1.5 rounded-full"
+              className="block text-xs sm:text-sm text-white px-2.5 py-1.5 rounded-full"
               style={{
                 background: "rgba(15, 23, 42, 0.8)",
                 backdropFilter: "blur(8px)",

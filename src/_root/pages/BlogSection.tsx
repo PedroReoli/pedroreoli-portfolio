@@ -1,8 +1,7 @@
 "use client"
 
-import { useRef, useMemo } from "react"
-import { motion, useInView, LayoutGroup } from "framer-motion"
-import { Tilt } from "react-tilt"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
 import { ExternalLink, Calendar } from "lucide-react"
 
 const blogs = [
@@ -32,250 +31,120 @@ const blogs = [
   },
 ]
 
-// Configurações de Tilt aprimoradas para um efeito mais suave
-const defaultTiltOptions = {
-  reverse: false,
-  max: 12,
-  perspective: 1200,
-  scale: 1.03,
-  speed: 1200,
-  transition: true,
-  axis: null,
-  reset: true,
-  easing: "cubic-bezier(.03,.98,.52,.99)",
-}
-
-// Pré-gerar valores aleatórios para evitar recálculos em cada render
-const generateNebulaProps = (count: number) => {
-  return Array.from({ length: count }).map((_, i) => {
-    const colors = [
-      "radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, rgba(96, 165, 250, 0.05) 50%, transparent 80%)",
-      "radial-gradient(circle, rgba(196, 181, 253, 0.15) 0%, rgba(167, 139, 250, 0.05) 50%, transparent 80%)",
-      "radial-gradient(circle, rgba(249, 168, 212, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%)",
-    ]
-
-    return {
-      background: colors[i % colors.length],
-      width: Math.random() * 600 + 400,
-      height: Math.random() * 600 + 400,
-      top: `${20 + i * 30}%`,
-      left: `${20 + i * 20}%`,
-      duration: 25 + i * 5,
-    }
-  })
-}
-
 const BlogSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
-  // Usando useMemo para evitar recálculos em cada render
-  const nebulaProps = useMemo(() => generateNebulaProps(3), [])
-
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      {/* Section background with subtle glow */}
-      <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/90 via-[#0F172A]/80 to-[#0A1120]/90 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds - Pré-calculados e reduzidos para melhorar performance */}
+      {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {nebulaProps.map((props, i) => (
-          <motion.div
-            key={`blog-nebula-${i}`}
-            className="absolute rounded-full"
-            style={{
-              background: props.background,
-              width: props.width,
-              height: props.height,
-              top: props.top,
-              left: props.left,
-              opacity: 0.4,
-              filter: "blur(80px)",
-              // Removido will-change para melhorar performance
-            }}
-            animate={{
-              scale: [1, 1.1, 0.95, 1.05, 1],
-              x: [0, 30, -20, 10, 0],
-              y: [0, -30, 20, -10, 0],
-              opacity: [0.4, 0.5, 0.3, 0.45, 0.4],
-            }}
-            transition={{
-              duration: props.duration,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
+
+        {/* Glowing orb */}
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-20"
+          style={{
+            background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
+            width: "40rem",
+            height: "40rem",
+            top: "30%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.15, 0.2, 0.15],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Últimos Posts no Blog<span className="text-cosmic-accent">;</span>
+          Últimos Posts no Blog<span className="text-blue-400">;</span>
         </motion.h2>
 
-        <LayoutGroup>
-          <motion.div
-            className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-6 xl:gap-8"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.15 },
-              },
-            }}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            layout
-          >
-            {blogs.map((blog, index) => (
-              <motion.div
-                key={blog.id}
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 0.6,
-                      ease: "easeOut",
-                      delay: index * 0.1,
-                    },
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.15 },
+            },
+          }}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {blogs.map((blog, index) => (
+            <motion.div
+              key={blog.id}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: index * 0.1,
                   },
-                }}
-                layout
-                layoutId={`blog-${blog.id}`}
-                className="relative"
-              >
-                <Tilt options={defaultTiltOptions} className="h-full">
-                  <div className="relative group h-full">
-                    {/* Improved card glow effect - consistent across all cards */}
-                    <div
-                      className="absolute -inset-[1px] rounded-lg xxs:rounded-xl xs:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 overflow-hidden"
-                      style={{
-                        background:
-                          "linear-gradient(120deg, rgba(0,0,0,0) 20%, rgba(var(--cosmic-accent-rgb), 0.3) 50%, rgba(0,0,0,0) 80%)",
-                      }}
-                    >
-                      <motion.div
-                        className="absolute inset-0"
-                        animate={{
-                          backgroundPosition: ["0% 0%", "100% 100%"],
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Number.POSITIVE_INFINITY,
-                          repeatType: "reverse",
-                          ease: "linear",
-                        }}
-                        style={{
-                          background:
-                            "linear-gradient(120deg, rgba(0,0,0,0) 40%, rgba(var(--cosmic-accent-rgb), 0.4) 50%, rgba(0,0,0,0) 60%)",
-                          backgroundSize: "200% 200%",
-                        }}
-                      />
-                    </div>
-
-                    {/* Card content with improved glass effect */}
-                    <div className="relative z-10 flex flex-col h-full p-3 xxs:p-4 xs:p-5 sm:p-6 md:p-5 lg:p-6 rounded-lg xxs:rounded-xl xs:rounded-2xl border border-cosmic-border backdrop-blur-xl bg-cosmic-card/90 transition-all duration-300 group-hover:bg-cosmic-card/95">
-                      {/* Subtle ambient glow inside the card */}
-                      <div className="absolute inset-0 rounded-xl xxs:rounded-2xl overflow-hidden">
-                        <div className="absolute -inset-[100%] opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-cosmic-accent blur-[80px]" />
-                      </div>
-
-                      {/* Content container with z-index to appear above effects */}
-                      <div className="relative z-10 flex flex-col h-full">
-                        {/* Date */}
-                        <div className="flex items-center gap-1.5 xxs:gap-2 mb-2 xxs:mb-3 text-cosmic-text">
-                          <Calendar className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 text-cosmic-accent" />
-                          <span className="text-[10px] xxs:text-xs">{blog.date}</span>
-                        </div>
-
-                        {/* Title with improved hover effect */}
-                        <h3 className="text-base xxs:text-lg xs:text-xl sm:text-xl md:text-lg lg:text-xl font-bold mb-2 xxs:mb-3 text-cosmic-accent group-hover:text-white transition-colors duration-300">
-                          {blog.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-xs xxs:text-sm xs:text-base text-cosmic-text mb-3 xxs:mb-4 xs:mb-5 sm:mb-6 group-hover:text-cosmic-text/90 transition-colors duration-300">
-                          {blog.description}
-                        </p>
-
-                        {/* Button - Now with improved hover effect */}
-                        <div className="mt-auto">
-                          <motion.a
-                            href={blog.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="relative group/link inline-block w-full"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            {/* Button glow effect */}
-                            <div className="absolute -inset-[1px] rounded-full overflow-hidden">
-                              <motion.div
-                                className="absolute inset-0 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300"
-                                animate={{
-                                  backgroundPosition: ["0% 0%", "100% 100%"],
-                                }}
-                                transition={{
-                                  duration: 1.5,
-                                  repeat: Number.POSITIVE_INFINITY,
-                                  repeatType: "reverse",
-                                  ease: "linear",
-                                }}
-                                style={{
-                                  background:
-                                    "linear-gradient(90deg, rgba(var(--cosmic-accent-rgb), 0.3) 0%, rgba(var(--cosmic-accent-rgb), 0.6) 50%, rgba(var(--cosmic-accent-rgb), 0.3) 100%)",
-                                  backgroundSize: "200% 100%",
-                                }}
-                              />
-                            </div>
-
-                            {/* Button content */}
-                            <div className="relative py-1.5 xxs:py-2 xs:py-2.5 sm:py-3 bg-cosmic-card rounded-full border border-cosmic-accent/50 group-hover/link:border-cosmic-accent transition-all duration-300">
-                              <div className="flex items-center justify-center gap-1.5 xxs:gap-2 text-cosmic-accent text-xs xxs:text-sm xs:text-base font-medium">
-                                Ler mais
-                                <ExternalLink className="w-3 h-3 xxs:w-3.5 xxs:h-3.5 xs:w-4 xs:h-4" />
-                              </div>
-                            </div>
-                          </motion.a>
-                        </div>
-
-                        {/* Decorative orbital element with improved animation */}
-                        <div className="absolute top-3 right-3 w-16 h-16 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
-                          <motion.div
-                            className="w-full h-full"
-                            animate={{
-                              rotate: [0, 360],
-                            }}
-                            transition={{
-                              duration: 20,
-                              repeat: Number.POSITIVE_INFINITY,
-                              ease: "linear",
-                            }}
-                          >
-                            <div className="w-full h-full border-2 border-cosmic-accent rounded-full"></div>
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 border-2 border-cosmic-accent rounded-full"></div>
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-2 border-cosmic-accent rounded-full"></div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
+                },
+              }}
+              className="group relative"
+            >
+              <div className="relative bg-blue-900/20 backdrop-blur-sm rounded-2xl border border-blue-500/20 overflow-hidden h-full transition-all duration-300 hover:border-blue-400/30 hover:shadow-lg hover:shadow-blue-500/10">
+                <div className="p-6">
+                  {/* Date */}
+                  <div className="flex items-center gap-2 mb-3 text-blue-300/80">
+                    <Calendar className="w-4 h-4 text-blue-400" />
+                    <span className="text-xs">{blog.date}</span>
                   </div>
-                </Tilt>
-              </motion.div>
-            ))}
-          </motion.div>
-        </LayoutGroup>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-bold mb-3 text-blue-400 group-hover:text-white transition-colors duration-300">
+                    {blog.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-blue-200/80 mb-5 line-clamp-3">{blog.description}</p>
+
+                  {/* Button */}
+                  <div className="mt-auto">
+                    <motion.a
+                      href={blog.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-white transition-colors"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span>Ler mais</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </motion.a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

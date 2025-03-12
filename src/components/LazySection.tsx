@@ -1,94 +1,173 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import type { ReactNode } from "react"
+import { useRef, useEffect, useState, type ReactNode } from "react"
+import { motion, useAnimation, useInView } from "framer-motion"
 
-interface LazySectionProps {
+interface LazyLoadingProps {
   children: ReactNode
-  parallaxFactor?: number
+  threshold?: number
+  delay?: number
+  className?: string
+  placeholderClassName?: string
+  placeholderHeight?: string | number
+  placeholderWidth?: string | number
+  placeholderColor?: string
+  fadeInDuration?: number
+  slideDistance?: number
+  direction?: "up" | "down" | "left" | "right"
+  once?: boolean
+  showLoadingIndicator?: boolean
+  loadingIndicatorColor?: string
+  loadingIndicatorSize?: string | number
+  onVisible?: () => void
 }
 
-const LazySection = ({ children, parallaxFactor = 0.2 }: LazySectionProps) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [opacity, setOpacity] = useState(0.6)
+const LazySection = ({
+  children,
+  threshold = 0.1,
+  delay = 0.2,
+  className = "",
+  placeholderClassName = "",
+  placeholderHeight = "100%",
+  placeholderWidth = "100%",
+  placeholderColor = "rgba(15, 23, 42, 0.3)",
+  fadeInDuration = 0.6,
+  slideDistance = 30,
+  direction = "up",
+  once = true,
+  showLoadingIndicator = true,
+  loadingIndicatorColor = "#60A5FA",
+  loadingIndicatorSize = 40,
+  onVisible,
+}: LazyLoadingProps) => {
+  const controls = useAnimation()
+  const ref = useRef(null)
+  const isInView = useInView(ref, {
+    once,
+    amount: threshold, // Usar 'amount' em vez de 'threshold'
+  })
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  // Substituindo useScroll por um listener de scroll nativo
+  // Determine slide direction
+  const getSlideDirection = () => {
+    switch (direction) {
+      case "up":
+        return { y: slideDistance }
+      case "down":
+        return { y: -slideDistance }
+      case "left":
+        return { x: slideDistance }
+      case "right":
+        return { x: -slideDistance }
+      default:
+        return { y: slideDistance }
+    }
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect()
-        const windowHeight = window.innerHeight
-        const elementHeight = rect.height
-
-        // Calcula a posição relativa do elemento na tela
-        const elementTop = rect.top
-        const elementBottom = rect.bottom
-
-        // Calcula o progresso do scroll (0 quando o topo do elemento está no fundo da tela,
-        // 1 quando o fundo do elemento está no topo da tela)
-        const scrollProgress = 1 - (elementTop + elementHeight) / (windowHeight + elementHeight)
-        setScrollPosition(scrollProgress)
-
-        // Calcula a opacidade baseada na posição do elemento
-        let newOpacity = 1
-        if (scrollProgress < 0.2) {
-          newOpacity = 0.6 + (scrollProgress / 0.2) * 0.4
-        } else if (scrollProgress > 0.8) {
-          newOpacity = 1 - ((scrollProgress - 0.8) / 0.2) * 0.4
-        }
-
-        setOpacity(newOpacity)
-      }
+    if (isInView) {
+      // Start animation when in view
+      setTimeout(() => {
+        controls.start({
+          opacity: 1,
+          ...getSlideDirection(),
+          transition: {
+            duration: fadeInDuration,
+            ease: [0.25, 0.1, 0.25, 1],
+          },
+        })
+        setIsLoaded(true)
+        if (onVisible) onVisible()
+      }, delay * 1000)
     }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Inicializa com a posição atual
-
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      {
-        rootMargin: "200px 0px",
-        threshold: 0.01,
-      },
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
-
-  // Calcula o valor de y baseado na posição de scroll
-  const y = (scrollPosition - 0.5) * 200 * parallaxFactor
+  }, [isInView, controls, delay, fadeInDuration, onVisible])
 
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        y,
-        opacity,
-        position: "relative",
-        zIndex: 10,
-      }}
-      className="relative"
-    >
-      {isVisible && children}
-    </motion.div>
+    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+      {/* Placeholder while loading */}
+      {!isLoaded && (
+        <div
+          className={`relative ${placeholderClassName}`}
+          style={{
+            height: placeholderHeight,
+            width: placeholderWidth,
+            backgroundColor: placeholderColor,
+            borderRadius: "0.5rem",
+          }}
+        >
+          {showLoadingIndicator && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative">
+                {/* Pulse animation */}
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.3, 0.1, 0.3],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    backgroundColor: loadingIndicatorColor,
+                  }}
+                />
+
+                {/* Spinner */}
+                <svg
+                  width={loadingIndicatorSize}
+                  height={loadingIndicatorSize}
+                  viewBox="0 0 38 38"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke={loadingIndicatorColor}
+                >
+                  <g fill="none" fillRule="evenodd">
+                    <g transform="translate(1 1)" strokeWidth="2">
+                      <circle strokeOpacity=".3" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 18 18"
+                          to="360 18 18"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        />
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Actual content with animation */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          ...(direction === "up"
+            ? { y: slideDistance }
+            : direction === "down"
+              ? { y: -slideDistance }
+              : direction === "left"
+                ? { x: slideDistance }
+                : direction === "right"
+                  ? { x: -slideDistance }
+                  : { y: slideDistance }),
+        }}
+        animate={controls}
+        style={{
+          display: isLoaded ? "block" : "none",
+          willChange: "opacity, transform",
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
   )
 }
 

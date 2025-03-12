@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
-import { Tilt } from "react-tilt"
 import { Mail, Instagram, ChevronDown, ChevronUp } from "lucide-react"
 
 const faqs = [
@@ -36,20 +35,8 @@ const faqs = [
   },
 ]
 
-const defaultTiltOptions = {
-  reverse: false,
-  max: 15,
-  perspective: 1000,
-  scale: 1.02,
-  speed: 1000,
-  transition: true,
-  axis: null,
-  reset: true,
-  easing: "cubic-bezier(.03,.98,.52,.99)",
-}
-
 const FAQ = () => {
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(0)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
@@ -60,58 +47,52 @@ const FAQ = () => {
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      {/* Section background with subtle glow */}
-      <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/90 via-[#0F172A]/80 to-[#0A1120]/90 backdrop-blur-sm"></div>
 
-      {/* Animated stars - Reduzido para melhorar performance */}
+      {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 25 }).map((_, i) => {
-          const size = Math.random() * 2 + 1
-          const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
-          const color = colors[i % colors.length]
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
 
-          return (
-            <motion.div
-              key={`faq-star-${i}`}
-              className="absolute rounded-full"
-              style={{
-                width: size,
-                height: size,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundColor: color,
-                boxShadow: `0 0 ${size * 3}px ${size}px ${color}`,
-                opacity: Math.random() * 0.7 + 0.3,
-              }}
-              animate={{
-                opacity: [Math.random() * 0.7 + 0.3, Math.random() * 0.9 + 0.5, Math.random() * 0.7 + 0.3],
-              }}
-              transition={{
-                duration: Math.random() * 4 + 2,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-                delay: Math.random() * 5,
-              }}
-            />
-          )
-        })}
+        {/* Glowing orb */}
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-20"
+          style={{
+            background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
+            width: "40rem",
+            height: "40rem",
+            top: "30%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.15, 0.2, 0.15],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-3xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 xxs:mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Perguntas Frequentes<span className="text-cosmic-accent">;</span>
+          Perguntas Frequentes<span className="text-blue-400">;</span>
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 gap-4 xxs:gap-5 xs:gap-6 sm:gap-6 md:grid-cols-2 md:gap-5 lg:gap-6 xl:gap-8"
+          className="space-y-4 sm:space-y-6"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -137,100 +118,59 @@ const FAQ = () => {
                   },
                 },
               }}
+              className="relative"
             >
-              <Tilt options={defaultTiltOptions}>
-                <div className="relative group">
-                  {/* Card glow effect */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
+              <div className="relative bg-blue-900/20 backdrop-blur-sm rounded-xl border border-blue-500/20 overflow-hidden transition-all duration-300 hover:border-blue-400/30">
+                {/* Question with toggle */}
+                <button
+                  className="flex items-center justify-between gap-3 w-full p-5 text-left"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <h3 className="text-base sm:text-lg font-medium text-white">{faq.question}</h3>
+                  <div className="shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-blue-500/30 bg-blue-900/50">
+                    {expandedFaq === index ? (
+                      <ChevronUp className="w-4 h-4 text-blue-400" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-blue-400" />
+                    )}
+                  </div>
+                </button>
 
-                  {/* Card content */}
-                  <div className="relative flex flex-col p-3 xxs:p-4 xs:p-5 sm:p-6 md:p-5 lg:p-6 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border hover:border-cosmic-accent/50 transition-colors duration-300">
-                    {/* Question with toggle */}
-                    <button
-                      className="flex items-center justify-between gap-2 xxs:gap-3 text-left mb-2 xxs:mb-3 group/question"
-                      onClick={() => toggleFaq(index)}
+                {/* Answer */}
+                <AnimatePresence>
+                  {expandedFaq === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      <h3 className="text-sm xxs:text-base xs:text-lg sm:text-lg md:text-base lg:text-lg xl:text-xl font-bold text-cosmic-accent group-hover/question:text-white transition-colors duration-300">
-                        {faq.question}
-                      </h3>
-                      <div className="shrink-0 w-5 h-5 xxs:w-6 xxs:h-6 flex items-center justify-center rounded-full border border-cosmic-border bg-cosmic-bg/50">
-                        {expandedFaq === index ? (
-                          <ChevronUp className="w-3 h-3 xxs:w-4 xxs:h-4 text-cosmic-accent" />
-                        ) : (
-                          <ChevronDown className="w-3 h-3 xxs:w-4 xxs:h-4 text-cosmic-accent" />
-                        )}
-                      </div>
-                    </button>
-
-                    {/* Answer */}
-                    <AnimatePresence>
-                      <motion.div
-                        initial={{ height: expandedFaq === index ? "auto" : 0, opacity: expandedFaq === index ? 1 : 0 }}
-                        animate={{ height: expandedFaq === index ? "auto" : 0, opacity: expandedFaq === index ? 1 : 0 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-xs xxs:text-sm sm:text-base text-cosmic-text mb-3 xxs:mb-4">{faq.answer}</p>
+                      <div className="p-5 pt-0 border-t border-blue-500/20">
+                        <p className="text-sm sm:text-base text-blue-200/80 mb-4">{faq.answer}</p>
 
                         {/* Contacts Section */}
                         {faq.contacts && (
-                          <div className="mt-auto">
-                            {/* Mobile Version (até 425px) */}
-                            <div className="flex justify-center gap-2 xxs:gap-3 sm:hidden">
-                              {faq.contacts.map((contact, idx) => (
-                                <motion.a
-                                  key={idx}
-                                  href={contact.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="relative group/contact"
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                >
-                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
-                                  <div className="relative flex items-center justify-center w-9 xxs:w-10 xs:w-11 h-9 xxs:h-10 xs:h-11 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
-                                    <div className="text-cosmic-accent w-4 xxs:w-5 xs:w-5 h-4 xxs:h-5 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
-                                      {contact.icon}
-                                    </div>
-                                  </div>
-                                </motion.a>
-                              ))}
-                            </div>
-
-                            {/* Tablet/Desktop Version (425px+) */}
-                            <div className="hidden sm:flex sm:flex-col sm:space-y-2">
-                              {faq.contacts.map((contact, idx) => (
-                                <motion.a
-                                  key={idx}
-                                  href={contact.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="relative group/contact"
-                                  whileHover={{ scale: 1.02 }}
-                                  whileTap={{ scale: 0.98 }}
-                                >
-                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-accent to-cosmic-accent rounded-lg xxs:rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
-                                  <div className="relative flex items-center gap-2 xxs:gap-3 p-2 xs:p-3 bg-cosmic-card rounded-lg xxs:rounded-xl border border-cosmic-border group-hover/contact:border-cosmic-accent/50 transition-all duration-300">
-                                    <div className="flex items-center justify-center w-7 xxs:w-8 xs:w-9 h-7 xxs:h-8 xs:h-9">
-                                      <div className="text-cosmic-accent w-4 xxs:w-4.5 xs:w-5 h-4 xxs:h-4.5 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
-                                        {contact.icon}
-                                      </div>
-                                    </div>
-                                    <span className="text-xs xxs:text-sm xs:text-base text-cosmic-text group-hover/contact:text-cosmic-accent transition-colors duration-300 truncate">
-                                      {contact.label}
-                                    </span>
-                                  </div>
-                                </motion.a>
-                              ))}
-                            </div>
+                          <div className="space-y-2">
+                            {faq.contacts.map((contact, idx) => (
+                              <a
+                                key={idx}
+                                href={contact.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 p-3 rounded-lg bg-blue-900/30 border border-blue-500/20 hover:border-blue-400/30 transition-colors"
+                              >
+                                <div className="text-blue-400 w-5 h-5">{contact.icon}</div>
+                                <span className="text-sm text-blue-200">{contact.label}</span>
+                              </a>
+                            ))}
                           </div>
                         )}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </Tilt>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
           ))}
         </motion.div>

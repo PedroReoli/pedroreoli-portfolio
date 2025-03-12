@@ -1,406 +1,347 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion"
-import { Code, Music, BookOpen, Sparkles } from "lucide-react"
+import { useRef, useState } from "react"
+import { motion, useInView } from "framer-motion"
+import { Code, Music, BookOpen, Sparkles, ExternalLink, ChevronRight } from "lucide-react"
 
 const About = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
-  const mainControls = useAnimation()
   const [isHovering, setIsHovering] = useState(false)
-  const [activeHighlight, setActiveHighlight] = useState<number | null>(null)
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible")
-    }
-  }, [isInView, mainControls])
-
-  const highlights = [
-    { icon: <Code className="w-4 h-4" />, label: "Desenvolvedor" },
-    { icon: <Music className="w-4 h-4" />, label: "Músico" },
-    { icon: <BookOpen className="w-4 h-4" />, label: "Escritor" },
-    { icon: <Sparkles className="w-4 h-4" />, label: "Criativo" },
-  ]
 
   return (
     <section
       ref={ref}
-      className="text-white min-h-screen py-6 xxs:py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative overflow-hidden"
+      className="text-white min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-10 relative overflow-hidden"
     >
-      {/* Section background with cosmic theme */}
-      <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/80 via-[#0F172A]/90 to-[#0A1120]/80 backdrop-blur-sm"></div>
 
-      {/* Animated stars - Reduzido o número de elementos para melhorar performance */}
+      {/* Animated geometric shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => {
-          const size = Math.random() * 2 + 1
-          const colors = ["#F9A8D4", "#C4B5FD", "#93C5FD", "#FFFFFF"]
-          const color = colors[i % colors.length]
+        {/* Circles */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`circle-${i}`}
+            className="absolute rounded-full border border-blue-500/20"
+            style={{
+              width: `${(i + 1) * 20}rem`,
+              height: `${(i + 1) * 20}rem`,
+              top: "50%",
+              left: "50%",
+              x: "-50%",
+              y: "-50%",
+            }}
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.05, 1],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              rotate: { duration: 30 + i * 10, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+              scale: { duration: 8, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", ease: "easeInOut" },
+              opacity: { duration: 6, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", ease: "easeInOut" },
+            }}
+          />
+        ))}
 
-          return (
-            <motion.div
-              key={`about-star-${i}`}
-              className="absolute rounded-full"
-              style={{
-                width: size,
-                height: size,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundColor: color,
-                boxShadow: `0 0 ${size * 3}px ${size}px ${color}`,
-                opacity: Math.random() * 0.7 + 0.3,
-              }}
-              animate={{
-                opacity: [Math.random() * 0.7 + 0.3, Math.random() * 0.9 + 0.5, Math.random() * 0.7 + 0.3],
-              }}
-              transition={{
-                duration: Math.random() * 4 + 2,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-                delay: Math.random() * 5,
-              }}
-            />
-          )
-        })}
-      </div>
-
-      {/* Animated nebula - Removido will-change para melhorar performance */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full opacity-20 filter blur-[100px]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, rgba(96, 165, 250, 0.1) 40%, transparent 70%)",
-            top: "30%",
-            left: "20%",
-          }}
-          animate={{
-            scale: [1, 1.1, 0.95, 1.05, 1],
-            opacity: [0.2, 0.25, 0.15, 0.25, 0.2],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        />
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute rounded-full bg-blue-400/30"
+            style={{
+              width: Math.random() * 4 + 2,
+              height: Math.random() * 4 + 2,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              filter: "blur(1px)",
+            }}
+            animate={{
+              y: [0, -Math.random() * 100 - 50],
+              x: [0, (Math.random() - 0.5) * 50],
+              opacity: [0.3, 0],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
 
       {/* Content container */}
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-xl xxs:text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-4 xxs:mb-5 xs:mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: -20 }}
-          animate={mainControls}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          variants={{
-            visible: { opacity: 1, y: 0 },
-          }}
         >
-          Sobre Mim <span className="text-cosmic-accent">;</span>
+          Sobre Mim <span className="text-blue-400">;</span>
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 xxs:gap-5 xs:gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-          {/* Imagem com efeitos aprimorados */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12 md:gap-16">
+          {/* Profile image column */}
           <motion.div
-            className="w-full max-w-[200px] xxs:max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-sm mx-auto lg:mx-0 lg:w-1/3"
+            className="lg:col-span-2 flex flex-col items-center lg:items-start"
             initial={{ opacity: 0, y: 50 }}
-            animate={mainControls}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            variants={{
-              visible: { opacity: 1, y: 0 },
-            }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div
-              className="relative aspect-[4/5] rounded-lg xxs:rounded-xl overflow-hidden shadow-lg"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              {/* Orbital rings decoration - Simplificado para melhorar performance */}
+            <div className="relative max-w-xs mx-auto">
+              {/* Profile image with effects */}
               <motion.div
-                className="absolute w-[150%] h-[150%] border border-cosmic-accent/20 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
-                animate={{
-                  rotate: [0, 360],
-                  scale: isHovering ? 1 : 0.8,
-                  opacity: isHovering ? 1 : 0.3,
-                }}
-                transition={{
-                  rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                  scale: { duration: 0.8, ease: "easeOut" },
-                  opacity: { duration: 0.8, ease: "easeOut" },
-                }}
-              />
-
-              <motion.div
-                className="absolute w-[130%] h-[130%] border border-cosmic-accent/15 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
-                animate={{
-                  rotate: [360, 0],
-                  scale: isHovering ? 1 : 0.7,
-                  opacity: isHovering ? 1 : 0.2,
-                }}
-                transition={{
-                  rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                  scale: { duration: 0.8, ease: "easeOut" },
-                  opacity: { duration: 0.8, ease: "easeOut" },
-                }}
-              />
-
-              {/* Cosmic glow effect */}
-              <motion.div
-                className="absolute -inset-0.5 rounded-xl z-0"
-                animate={{
-                  opacity: isHovering ? 1 : 0,
-                  scale: isHovering ? 1.05 : 1,
-                }}
-                transition={{ duration: 0.5 }}
-                style={{
-                  background:
-                    "linear-gradient(45deg, rgba(96, 165, 250, 0.4), rgba(147, 197, 253, 0.4), rgba(59, 130, 246, 0.4))",
-                  filter: "blur(15px)",
-                }}
-              />
-
-              {/* Image container with perspective effect - Corrigido para evitar problemas de layout */}
-              <div className="relative w-full h-full rounded-xl overflow-hidden transform-gpu perspective-1000">
+                className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-blue-500/20"
+                whileHover={{ scale: 1.02 }}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                {/* Orbital rings decoration */}
                 <motion.div
-                  className="w-full h-full relative"
+                  className="absolute w-[150%] h-[150%] border border-blue-400/20 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
                   animate={{
-                    rotateY: isHovering ? 180 : 0,
+                    rotate: [0, 360],
+                    scale: isHovering ? 1 : 0.8,
+                    opacity: isHovering ? 1 : 0.3,
                   }}
                   transition={{
-                    duration: 0.8,
-                    ease: [0.23, 1, 0.32, 1], // Custom cubic bezier for smooth flip
+                    rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                    scale: { duration: 0.8, ease: "easeOut" },
+                    opacity: { duration: 0.8, ease: "easeOut" },
                   }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  {/* Front image (black and white) */}
-                  <div className="absolute inset-0 backface-hidden" style={{ backfaceVisibility: "hidden" }}>
-                    <motion.div
-                      className="w-full h-full"
-                      animate={{
-                        scale: isHovering ? 1.1 : 1,
-                      }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <img src="/assets/perfilpb.jpg" alt="Pedro Lucas" className="w-full h-full object-cover" />
-                    </motion.div>
-                  </div>
+                />
 
-                  {/* Back image (color) */}
-                  <div
-                    className="absolute inset-0 backface-hidden"
-                    style={{
-                      backfaceVisibility: "hidden",
-                      transform: "rotateY(180deg)",
+                <motion.div
+                  className="absolute w-[130%] h-[130%] border border-blue-400/15 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
+                  animate={{
+                    rotate: [360, 0],
+                    scale: isHovering ? 1 : 0.7,
+                    opacity: isHovering ? 1 : 0.2,
+                  }}
+                  transition={{
+                    rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                    scale: { duration: 0.8, ease: "easeOut" },
+                    opacity: { duration: 0.8, ease: "easeOut" },
+                  }}
+                />
+
+                {/* Image container with perspective effect */}
+                <div className="relative w-full h-full rounded-2xl overflow-hidden transform-gpu perspective-1000">
+                  <motion.div
+                    className="w-full h-full relative"
+                    animate={{
+                      rotateY: isHovering ? 180 : 0,
                     }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.23, 1, 0.32, 1],
+                    }}
+                    style={{ transformStyle: "preserve-3d" }}
                   >
-                    <motion.div
-                      className="w-full h-full"
-                      animate={{
-                        scale: isHovering ? 1.1 : 1,
+                    {/* Front image (black and white) */}
+                    <div className="absolute inset-0 backface-hidden" style={{ backfaceVisibility: "hidden" }}>
+                      <motion.div
+                        className="w-full h-full"
+                        animate={{
+                          scale: isHovering ? 1.1 : 1,
+                        }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <img src="/assets/perfilpb.jpg" alt="Pedro Lucas" className="w-full h-full object-cover" />
+                      </motion.div>
+                    </div>
+
+                    {/* Back image (color) */}
+                    <div
+                      className="absolute inset-0 backface-hidden"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        transform: "rotateY(180deg)",
                       }}
-                      transition={{ duration: 0.8 }}
                     >
-                      <img
-                        src="/assets/perfilcol.jpg"
-                        alt="Pedro Lucas Colorido"
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  </div>
+                      <motion.div
+                        className="w-full h-full"
+                        animate={{
+                          scale: isHovering ? 1.1 : 1,
+                        }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <img
+                          src="/assets/perfilcol.jpg"
+                          alt="Pedro Lucas Colorido"
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Interactive caption */}
+              <motion.div
+                className="mt-3 text-center"
+                animate={{ opacity: isHovering ? 1 : 0.7 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-sm text-blue-200/80">
+                  {isHovering ? "Viu só que legal? 😎" : "(passe o mouse na foto)"}
+                </p>
+              </motion.div>
+
+              {/* Skills badges */}
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
+                <motion.div className="px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-900/30 backdrop-blur-sm flex items-center gap-1.5">
+                  <span className="text-blue-400">
+                    <Code className="w-4 h-4" />
+                  </span>
+                  <span className="text-xs font-medium text-blue-100">Desenvolvedor</span>
+                </motion.div>
+                <motion.div className="px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-900/30 backdrop-blur-sm flex items-center gap-1.5">
+                  <span className="text-blue-400">
+                    <Music className="w-4 h-4" />
+                  </span>
+                  <span className="text-xs font-medium text-blue-100">Músico</span>
+                </motion.div>
+                <motion.div className="px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-900/30 backdrop-blur-sm flex items-center gap-1.5">
+                  <span className="text-blue-400">
+                    <BookOpen className="w-4 h-4" />
+                  </span>
+                  <span className="text-xs font-medium text-blue-100">Escritor</span>
+                </motion.div>
+                <motion.div className="px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-900/30 backdrop-blur-sm flex items-center gap-1.5">
+                  <span className="text-blue-400">
+                    <Sparkles className="w-4 h-4" />
+                  </span>
+                  <span className="text-xs font-medium text-blue-100">Criativo</span>
                 </motion.div>
               </div>
-
-              {/* Particle effects - Reduzido para melhorar performance */}
-              <AnimatePresence>
-                {isHovering && (
-                  <>
-                    {Array.from({ length: 6 }).map((_, i) => (
-                      <motion.div
-                        key={`particle-${i}`}
-                        className="absolute w-1 h-1 rounded-full bg-cosmic-accent"
-                        initial={{
-                          opacity: 0,
-                          x: "50%",
-                          y: "50%",
-                          scale: 0,
-                        }}
-                        animate={{
-                          opacity: [0, 1, 0],
-                          scale: [0, Math.random() * 2 + 1, 0],
-                          x: `${50 + (Math.random() * 100 - 50)}%`,
-                          y: `${50 + (Math.random() * 100 - 50)}%`,
-                        }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        transition={{
-                          duration: Math.random() * 1.5 + 0.5,
-                          ease: "easeOut",
-                          delay: Math.random() * 0.2,
-                        }}
-                      />
-                    ))}
-                  </>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Interactive caption */}
-            <motion.div
-              className="mt-3 text-center"
-              animate={{ opacity: isHovering ? 1 : 0.7 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="text-xs xxs:text-sm text-cosmic-text">
-                {isHovering ? "Viu só que legal? 😎" : "(passe o mouse na foto)"}
-              </p>
-            </motion.div>
-
-            {/* Skills badges */}
-            <div className="mt-2 xxs:mt-3 xs:mt-4 flex flex-wrap justify-center gap-1 xxs:gap-1.5 xs:gap-2">
-              {highlights.map((highlight, index) => (
-                <motion.div
-                  key={index}
-                  className="relative"
-                  onMouseEnter={() => setActiveHighlight(index)}
-                  onMouseLeave={() => setActiveHighlight(null)}
-                  whileHover={{ y: -3 }}
-                >
-                  <motion.div
-                    className="px-2 xxs:px-2.5 py-1 xxs:py-1.5 rounded-full border border-cosmic-border bg-cosmic-card flex items-center gap-1 xxs:gap-1.5 cursor-pointer"
-                    animate={{
-                      borderColor: activeHighlight === index ? "rgba(96, 165, 250, 0.5)" : "rgba(30, 41, 59, 1)",
-                      backgroundColor: activeHighlight === index ? "rgba(15, 23, 42, 0.8)" : "rgba(15, 23, 42, 0.5)",
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <span className="text-cosmic-accent">{highlight.icon}</span>
-                    <span className="text-[10px] xxs:text-xs font-medium text-cosmic-text">{highlight.label}</span>
-                  </motion.div>
-
-                  <AnimatePresence>
-                    {activeHighlight === index && (
-                      <motion.div
-                        className="absolute -inset-0.5 rounded-full blur-sm z-[-1]"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        style={{
-                          background: "rgba(96, 165, 250, 0.3)",
-                        }}
-                      />
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
-          {/* Texto "Sobre Mim" com melhorias */}
+          {/* Content column */}
           <motion.div
-            className="w-full mt-6 lg:mt-0 lg:w-2/3"
+            className="lg:col-span-3"
             initial={{ opacity: 0, y: 50 }}
-            animate={mainControls}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            variants={{
-              visible: { opacity: 1, y: 0 },
-            }}
           >
-            <div className="space-y-3 xxs:space-y-4 xs:space-y-5 sm:space-y-6">
-              {/* Parágrafos com espaçamento melhorado */}
-              <div className="relative">
-                <motion.div
-                  className="absolute -left-2 xxs:-left-3 top-0 h-full w-0.5 xxs:w-1 bg-gradient-to-b from-cosmic-accent/0 via-cosmic-accent/30 to-cosmic-accent/0"
-                  initial={{ scaleY: 0 }}
-                  animate={mainControls}
-                  variants={{
-                    visible: { scaleY: 1 },
-                  }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                />
-                <p className="text-xs xxs:text-sm xs:text-base sm:text-base md:text-lg leading-relaxed text-cosmic-text">
-                  Sou <span className="text-cosmic-accent font-medium">Pedro Lucas</span>,{" "}
-                  <span className="text-cosmic-accent font-medium">programador júnior</span> movido pela{" "}
-                  <span className="text-cosmic-accent font-medium">gana por aprender</span> e pela busca contínua por{" "}
-                  <span className="text-cosmic-accent font-medium">inovação</span>. Apesar do{" "}
-                  <span className="text-cosmic-accent font-medium">curto tempo de formação</span>, acumulei{" "}
-                  <span className="text-cosmic-accent font-medium">experiências valiosas</span> graças à minha dedicação
-                  em criar <span className="text-cosmic-accent font-medium">soluções eficientes</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">escaláveis</span>. Minha{" "}
-                  <span className="text-cosmic-accent font-medium">visão humana</span>, influenciada pela trajetória
-                  como <span className="text-cosmic-accent font-medium">músico</span>,{" "}
-                  <span className="text-cosmic-accent font-medium">escritor</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">professor</span>, me permite unir{" "}
-                  <span className="text-cosmic-accent font-medium">criatividade</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">tecnologia</span> com sensibilidade.
-                </p>
-              </div>
+            <div className="bg-blue-900/10 backdrop-blur-md rounded-2xl border border-blue-500/20 overflow-hidden">
+              <div className="p-5 sm:p-6">
+                <div className="space-y-4">
+                  <div className="relative">
+                    <motion.div
+                      className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-blue-400/0 via-blue-400/30 to-blue-400/0"
+                      initial={{ scaleY: 0 }}
+                      animate={isInView ? { scaleY: 1 } : {}}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                    />
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed text-blue-100">
+                      Sou <span className="text-blue-400 font-medium">Pedro Lucas</span>,{" "}
+                      <span className="text-blue-400 font-medium">programador júnior</span> movido pela{" "}
+                      <span className="text-blue-400 font-medium">gana por aprender</span> e pela busca contínua por{" "}
+                      <span className="text-blue-400 font-medium">inovação</span>.
+                    </p>
+                  </div>
 
-              {/* Paragraph 2 with enhanced styling */}
-              <div className="relative">
-                <motion.div
-                  className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-cosmic-accent/0 via-cosmic-accent/30 to-cosmic-accent/0"
-                  initial={{ scaleY: 0 }}
-                  animate={mainControls}
-                  variants={{
-                    visible: { scaleY: 1 },
-                  }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
-                />
-                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
-                  Atualmente, atuo na <span className="text-cosmic-accent font-medium">Autocom3</span>, com foco em{" "}
-                  <span className="text-cosmic-accent font-medium">.NET</span>,{" "}
-                  <span className="text-cosmic-accent font-medium">C#</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">Python</span> para{" "}
-                  <span className="text-cosmic-accent font-medium">automação de testes</span>. Também realizo{" "}
-                  <span className="text-cosmic-accent font-medium">freelas FullStack</span>, criando{" "}
-                  <span className="text-cosmic-accent font-medium">interfaces modernas</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">intuitivas</span>. Além disso, desenvolvo{" "}
-                  <span className="text-cosmic-accent font-medium">projetos autorais</span>, buscando{" "}
-                  <span className="text-cosmic-accent font-medium">renda passiva</span> a longo prazo e a oportunidade
-                  de <span className="text-cosmic-accent font-medium">ensinar</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">compartilhar experiências</span>.
-                </p>
-              </div>
+                  <div className="relative">
+                    <motion.div
+                      className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-blue-400/0 via-blue-400/30 to-blue-400/0"
+                      initial={{ scaleY: 0 }}
+                      animate={isInView ? { scaleY: 1 } : {}}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                    />
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed text-blue-100">
+                      Minha <span className="text-blue-400 font-medium">visão humana</span>, influenciada pela
+                      trajetória como <span className="text-blue-400 font-medium">músico</span>,{" "}
+                      <span className="text-blue-400 font-medium">escritor</span> e{" "}
+                      <span className="text-blue-400 font-medium">professor</span>, me permite unir{" "}
+                      <span className="text-blue-400 font-medium">criatividade</span> e{" "}
+                      <span className="text-blue-400 font-medium">tecnologia</span> com sensibilidade.
+                    </p>
+                  </div>
 
-              {/* Paragraph 3 with enhanced styling */}
-              <div className="relative">
-                <motion.div
-                  className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-cosmic-accent/0 via-cosmic-accent/30 to-cosmic-accent/0"
-                  initial={{ scaleY: 0 }}
-                  animate={mainControls}
-                  variants={{
-                    visible: { scaleY: 1 },
-                  }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                />
-                <p className="text-xs xxs:text-sm xs:text-base sm:text-lg leading-relaxed text-cosmic-text">
-                  Meu diferencial é unir <span className="text-cosmic-accent font-medium">arte</span>,{" "}
-                  <span className="text-cosmic-accent font-medium">tecnologia</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">criatividade</span> para criar{" "}
-                  <span className="text-cosmic-accent font-medium">projetos modernos</span> e{" "}
-                  <span className="text-cosmic-accent font-medium">escaláveis</span>. Acredito que{" "}
-                  <span className="text-cosmic-accent font-medium">compartilhar conhecimento</span> gera{" "}
-                  <span className="text-cosmic-accent font-medium">valor</span> e impulsiona a{" "}
-                  <span className="text-cosmic-accent font-medium">comunidade</span>.
-                </p>
-              </div>
+                  <div className="relative">
+                    <motion.div
+                      className="absolute -left-3 top-0 h-full w-1 bg-gradient-to-b from-blue-400/0 via-blue-400/30 to-blue-400/0"
+                      initial={{ scaleY: 0 }}
+                      animate={isInView ? { scaleY: 1 } : {}}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                    />
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed text-blue-100">
+                      Meu diferencial é unir <span className="text-blue-400 font-medium">arte</span>,{" "}
+                      <span className="text-blue-400 font-medium">tecnologia</span> e{" "}
+                      <span className="text-blue-400 font-medium">criatividade</span> para criar{" "}
+                      <span className="text-blue-400 font-medium">projetos modernos</span> e{" "}
+                      <span className="text-blue-400 font-medium">escaláveis</span>.
+                    </p>
+                  </div>
 
-              {/* Call to action */}
-              <motion.div
-                className="pt-2 xxs:pt-3 sm:pt-4"
-                initial={{ opacity: 0 }}
-                animate={mainControls}
-                variants={{
-                  visible: { opacity: 1 },
-                }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-              ></motion.div>
+                  <motion.div
+                    className="mt-6 flex justify-end"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.8 }}
+                  >
+                    <motion.a
+                      href="https://devemdesenvolvimento.netlify.app/about"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span>Saiba mais</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.a>
+                  </motion.div>
+                </div>
+              </div>
             </div>
+
+            {/* Call to action */}
+            <motion.div
+              className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              <motion.a
+                href="https://github.com/PedroReoli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full bg-blue-600/20 border border-blue-500/30 backdrop-blur-sm text-blue-300 hover:text-white hover:bg-blue-600/30 transition-colors flex items-center gap-2"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span>GitHub</span>
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+
+              <motion.a
+                href="https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full bg-blue-600/20 border border-blue-500/30 backdrop-blur-sm text-blue-300 hover:text-white hover:bg-blue-600/30 transition-colors flex items-center gap-2"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span>LinkedIn</span>
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+
+              <motion.a
+                href="https://devemdesenvolvimento.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full bg-blue-600/20 border border-blue-500/30 backdrop-blur-sm text-blue-300 hover:text-white hover:bg-blue-600/30 transition-colors flex items-center gap-2"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span>Blog</span>
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </div>

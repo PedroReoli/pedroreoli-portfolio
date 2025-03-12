@@ -1,230 +1,179 @@
 "use client"
 
-import type React from "react"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { Code, Database, Layout, Smartphone, Server, Zap } from "lucide-react"
 
-import { useRef, useState, useEffect } from "react"
-import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion"
-import { Tilt } from "react-tilt"
-import { Code2, Layout, Users } from "lucide-react"
+// Dados dos serviços - simplificados
+const servicesData = [
+  {
+    id: 1,
+    title: "Desenvolvimento Frontend",
+    description: "Criação de interfaces modernas, responsivas e otimizadas para diferentes dispositivos.",
+    icon: <Layout className="w-6 h-6" />,
+    color: "blue",
+    technologies: ["React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    id: 2,
+    title: "Desenvolvimento Backend",
+    description: "Construção de APIs robustas, seguras e escaláveis para suportar aplicações web e mobile.",
+    icon: <Server className="w-6 h-6" />,
+    color: "purple",
+    technologies: ["Node.js", "Express", "MongoDB"],
+  },
+  {
+    id: 3,
+    title: "Desenvolvimento Mobile",
+    description: "Desenvolvimento de aplicativos móveis nativos e híbridos para iOS e Android.",
+    icon: <Smartphone className="w-6 h-6" />,
+    color: "green",
+    technologies: ["React Native", "Expo", "Firebase"],
+  },
+  {
+    id: 4,
+    title: "Banco de Dados",
+    description: "Modelagem, otimização e administração de bancos de dados relacionais e não-relacionais.",
+    icon: <Database className="w-6 h-6" />,
+    color: "orange",
+    technologies: ["MongoDB", "PostgreSQL", "MySQL"],
+  },
+  {
+    id: 5,
+    title: "Desenvolvimento Fullstack",
+    description: "Soluções completas que integram frontend, backend e banco de dados em um único projeto.",
+    icon: <Code className="w-6 h-6" />,
+    color: "teal",
+    technologies: ["MERN Stack", "Next.js", "Prisma"],
+  },
+  {
+    id: 6,
+    title: "Otimização de Performance",
+    description: "Análise e melhoria de performance em aplicações web e mobile para melhor experiência do usuário.",
+    icon: <Zap className="w-6 h-6" />,
+    color: "yellow",
+    technologies: ["Lighthouse", "WebVitals", "Webpack"],
+  },
+]
 
-const defaultTiltOptions = {
-  reverse: false,
-  max: 10, // Reduzido para um efeito mais sutil
-  perspective: 1000,
-  scale: 1.02,
-  speed: 1200,
-  transition: true,
-  axis: null,
-  reset: true,
-  easing: "cubic-bezier(.03,.98,.52,.99)",
+// Mapeamento de cores para classes do Tailwind - simplificado
+const colorMap = {
+  blue: {
+    light: "bg-blue-400/10",
+    border: "border-blue-400/30",
+    text: "text-blue-400",
+  },
+  purple: {
+    light: "bg-purple-400/10",
+    border: "border-purple-400/30",
+    text: "text-purple-400",
+  },
+  green: {
+    light: "bg-emerald-400/10",
+    border: "border-emerald-400/30",
+    text: "text-emerald-400",
+  },
+  orange: {
+    light: "bg-orange-400/10",
+    border: "border-orange-400/30",
+    text: "text-orange-400",
+  },
+  teal: {
+    light: "bg-teal-400/10",
+    border: "border-teal-400/30",
+    text: "text-teal-400",
+  },
+  yellow: {
+    light: "bg-amber-400/10",
+    border: "border-amber-400/30",
+    text: "text-amber-400",
+  },
 }
 
 const Services = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
-  const controls = useAnimation()
-  const [scrollY, setScrollY] = useState(0)
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
-
-  // Parallax effect for background elements - Otimizado com throttle para melhor performance
-  useEffect(() => {
-    let ticking = false
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY)
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true }) // Adicionado passive: true para melhor performance
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible")
-    }
-  }, [isInView, controls])
-
-  const services = [
-    {
-      icon: Layout,
-      title: "UX / UI Design",
-      description: "Desenho interfaces claras, objetivas e intuitivas, priorizando a experiência do usuário.",
-      delay: 0.1,
-      features: ["Wireframes", "Protótipos", "Design Systems", "Testes de Usabilidade"],
-    },
-    {
-      icon: Code2,
-      title: "Desenvolvimento FullStack",
-      description: "Construo soluções completas, desde interfaces até back-ends robustos e escaláveis.",
-      delay: 0.3,
-      features: ["Front-end Responsivo", "APIs RESTful", "Bancos de Dados", "Integração de Sistemas"],
-    },
-    {
-      icon: Users,
-      title: "Mentoria e Aulas",
-      description: "Orientação personalizada para estudos, carreiras e projetos na área de programação.",
-      delay: 0.5,
-      features: ["Revisão de Código", "Planejamento de Carreira", "Projetos Práticos", "Acompanhamento Contínuo"],
-    },
-  ]
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 })
 
   return (
     <section
-      ref={ref}
-      className="text-white min-h-screen py-10 xxs:py-12 xs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
-      id="services"
+      ref={containerRef}
+      className="relative min-h-screen py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Enhanced background com position relative para cálculo correto de scroll offset */}
-      <div className="absolute inset-0 bg-cosmic-bg/80 backdrop-blur-sm"></div>
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/90 via-[#0F172A]/80 to-[#0A1120]/90 backdrop-blur-sm"></div>
 
-      {/* Animated nebula clouds com parallax - Reduzido número de elementos para melhor performance */}
+      {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 3 }).map((_, i) => {
-          const colors = [
-            "radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, rgba(96, 165, 250, 0.05) 50%, transparent 80%)",
-            "radial-gradient(circle, rgba(147, 197, 253, 0.12) 0%, rgba(96, 165, 250, 0.04) 50%, transparent 80%)",
-            "radial-gradient(circle, rgba(147, 197, 253, 0.10) 0%, rgba(96, 165, 250, 0.03) 50%, transparent 80%)",
-          ]
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-repeat opacity-5"></div>
 
-          const parallaxFactor = 0.05 * ((i % 3) + 1)
-
-          return (
-            <motion.div
-              key={`service-nebula-${i}`}
-              className="absolute rounded-full"
-              style={{
-                // Separando background de outras propriedades para evitar conflitos
-                backgroundImage: colors[i % colors.length],
-                width: Math.random() * 800 + 400,
-                height: Math.random() * 800 + 400,
-                top: `${20 + i * 30}%`,
-                left: `${20 + i * 20}%`,
-                opacity: 0.4,
-                filter: "blur(100px)",
-                transform: `translateY(${scrollY * parallaxFactor}px)`,
-              }}
-              animate={{
-                scale: [1, 1.1, 0.95, 1.05, 1],
-                opacity: [0.4, 0.5, 0.3, 0.45, 0.4],
-              }}
-              transition={{
-                duration: 15 + i * 5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-            />
-          )
-        })}
-      </div>
-
-      {/* Enhanced floating particles com parallax - Reduzido para melhorar performance */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => {
-          // Reduzido de 30 para 20 partículas
-          const size = Math.random() * 3 + 1
-          const color = "#93C5FD"
-          const parallaxFactor = 0.03 * ((i % 3) + 1)
-
-          return (
-            <motion.div
-              key={`service-particle-${i}`}
-              className="absolute rounded-full"
-              style={{
-                width: size,
-                height: size,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundColor: color,
-                boxShadow: `0 0 ${size * 3}px ${size}px ${color}`,
-                opacity: Math.random() * 0.5 + 0.2,
-                transform: `translateY(${scrollY * parallaxFactor}px)`,
-              }}
-              animate={{
-                y: [0, Math.random() * -100 - 50],
-                x: [0, (Math.random() - 0.5) * 50],
-                opacity: [Math.random() * 0.5 + 0.2, 0],
-              }}
-              transition={{
-                duration: Math.random() * 15 + 10,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-                delay: Math.random() * 5,
-              }}
-            />
-          )
-        })}
+        {/* Glowing orb */}
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-20"
+          style={{
+            background: `radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 80%)`,
+            width: "40rem",
+            height: "40rem",
+            top: "30%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.15, 0.2, 0.15],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Enhanced section header with animated title */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block"
-          >
-            <motion.h2
-              className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl font-bold relative inline-block"
-              animate={
-                isInView
-                  ? {
-                      transition: { staggerChildren: 0.1 },
-                    }
-                  : {}
-              }
-            >
-              <span className="relative">
-                Serviços
-                <motion.span
-                  className="text-cosmic-accent"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                >
-                  ;
-                </motion.span>
-                <motion.span
-                  className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-transparent via-cosmic-accent to-transparent"
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={isInView ? { width: "100%", opacity: 1 } : { width: 0, opacity: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                />
-              </span>
-            </motion.h2>
-          </motion.div>
-
+        {/* Section header */}
+        <motion.div
+          className="text-center mb-12 sm:mb-16 md:mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            Serviços<span className="text-blue-400">;</span>
+          </h2>
           <motion.p
-            className="mt-4 text-cosmic-text max-w-2xl mx-auto text-sm xxs:text-base sm:text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-4 text-blue-200/80 max-w-2xl mx-auto text-base sm:text-lg"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Soluções personalizadas para transformar suas ideias em realidade digital
+            Conheça os serviços que ofereço como desenvolvedor fullstack
           </motion.p>
+        </motion.div>
+
+        {/* Services grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {servicesData.map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} isInView={isInView} />
+          ))}
         </div>
 
-        {/* Enhanced services grid com layout responsivo melhorado */}
+        {/* Contact CTA - simplified */}
         <motion.div
-          className="grid grid-cols-1 gap-6 xxs:gap-7 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
-          {services.map((service, serviceIndex) => (
-            <ServiceCard
-              key={service.title}
-              service={service}
-              isHovered={hoveredCard === serviceIndex}
-              onHover={() => setHoveredCard(serviceIndex)}
-              onLeave={() => setHoveredCard(null)}
-            />
-          ))}
+          <motion.a
+            href="mailto:pedrosousa2160@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600/20 border border-blue-500/30 backdrop-blur-sm text-blue-300 hover:text-white hover:bg-blue-600/30 transition-colors"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>Entre em contato</span>
+          </motion.a>
         </motion.div>
       </div>
     </section>
@@ -232,183 +181,60 @@ const Services = () => {
 }
 
 interface ServiceCardProps {
-  service: {
-    icon: React.ElementType
-    title: string
-    description: string
-    delay: number
-    features: string[]
-  }
-  isHovered: boolean
-  onHover: () => void
-  onLeave: () => void
+  service: (typeof servicesData)[0]
+  index: number
+  isInView: boolean
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, isHovered, onHover, onLeave }) => {
-  const { icon: Icon, title, description, delay, features } = service
-  const cardRef = useRef(null)
+const ServiceCard = ({ service, index, isInView }: ServiceCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const colors = colorMap[service.color as keyof typeof colorMap]
 
   return (
     <motion.div
       ref={cardRef}
-      variants={cardVariants}
-      transition={{
-        duration: 0.7,
-        delay,
-        ease: [0.22, 1, 0.36, 1], // Custom easing for smoother animation
-      }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      className="h-full"
+      className="group relative"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Tilt options={defaultTiltOptions} className="h-full">
-        <motion.div
-          className="group relative h-full flex flex-col"
-          whileHover={{ y: -8, x: 0 }}
-          animate={{
-            y: isHovered ? -4 : 0,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-        >
-          {/* Enhanced glow effect - Simplificado para melhor performance */}
-          <motion.div
-            className="absolute -inset-0.5 rounded-2xl blur-md z-0 bg-gradient-to-r from-cosmic-accent/40 to-cosmic-accent/20"
-            animate={
-              isHovered
-                ? {
-                    opacity: 0.8,
-                    // Usando backgroundImage em vez de background para evitar conflitos
-                    backgroundImage: "linear-gradient(45deg, rgba(96, 165, 250, 0.6), rgba(96, 165, 250, 0.4))",
-                  }
-                : {
-                    opacity: 0,
-                    backgroundImage: "linear-gradient(45deg, rgba(96, 165, 250, 0.4), rgba(96, 165, 250, 0.2))",
-                  }
-            }
-            transition={{ duration: 0.3 }}
-          />
-
-          {/* Card content com layout responsivo melhorado */}
-          <div className="relative flex flex-col h-full p-6 sm:p-8 bg-cosmic-card rounded-2xl border border-cosmic-border backdrop-blur-xl z-10">
-            {/* Enhanced icon container com animação otimizada */}
-            <div className="relative w-14 xxs:w-16 h-14 xxs:h-16 mx-auto mb-4 xxs:mb-5 sm:mb-6">
-              <motion.div
-                className="absolute inset-0 rounded-xl blur-md bg-cosmic-accent"
-                animate={{
-                  opacity: isHovered ? [0.3, 0.5, 0.3] : [0.15, 0.25, 0.15],
-                  scale: isHovered ? [1, 1.2, 1] : [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "reverse",
-                }}
-              />
-              <div className="relative flex items-center justify-center w-full h-full bg-cosmic-card rounded-xl border border-cosmic-border group-hover:border-cosmic-accent/50 transition-all duration-300">
-                <motion.div
-                  animate={
-                    isHovered
-                      ? {
-                          scale: [1, 1.1, 1],
-                          rotate: [0, 5, -5, 0],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1,
-                    repeat: isHovered ? Number.POSITIVE_INFINITY : 0,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <Icon className="w-8 h-8 text-cosmic-accent" />
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Enhanced title com animação */}
-            <motion.h3
-              className="text-lg xxs:text-xl sm:text-2xl font-bold text-center text-white mb-2 xxs:mb-3 group-hover:text-cosmic-accent transition-colors duration-300"
-              animate={isHovered ? { y: -3 } : { y: 0 }}
-              transition={{ duration: 0.3 }}
+      <motion.div
+        className="relative bg-blue-900/20 backdrop-blur-sm rounded-2xl border border-blue-500/20 overflow-hidden h-full"
+        whileHover={{ y: -8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="p-6">
+          {/* Service icon */}
+          <div className="mb-5">
+            <div
+              className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.border} border flex items-center justify-center transition-colors relative overflow-hidden`}
             >
-              {title}
-            </motion.h3>
-
-            {/* Enhanced description */}
-            <p className="text-sm xxs:text-base text-cosmic-text text-center leading-relaxed mb-4 xxs:mb-5 sm:mb-6">
-              {description}
-            </p>
-
-            {/* Features list com animação otimizada */}
-            <div className="mt-auto">
-              <AnimatePresence>
-                {isHovered && (
-                  <motion.div
-                    className="grid grid-cols-1 xxs:grid-cols-2 gap-2 mt-2"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {features.map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        className="flex items-center justify-center p-2 rounded-lg bg-cosmic-bg/30 border border-cosmic-border/50"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2, delay: idx * 0.05 }}
-                      >
-                        <span className="text-xs text-cosmic-text">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div className={colors.text}>{service.icon}</div>
             </div>
-
-            {/* Decorative element com animação simplificada */}
-            <motion.div
-              className="absolute bottom-3 right-3 w-16 h-16 opacity-10 pointer-events-none"
-              animate={{
-                rotate: [0, 360],
-                opacity: isHovered ? 0.2 : 0.1,
-              }}
-              transition={{
-                rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                opacity: { duration: 0.3 },
-              }}
-            >
-              <div className="w-full h-full border-2 border-cosmic-accent rounded-full"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 border-2 border-cosmic-accent rounded-full"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-2 border-cosmic-accent rounded-full"></div>
-            </motion.div>
           </div>
-        </motion.div>
-      </Tilt>
+
+          {/* Service content */}
+          <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors mb-2">
+            {service.title}
+          </h3>
+
+          <p className="text-blue-200/80 text-sm sm:text-base mb-4">{service.description}</p>
+
+          {/* Technologies */}
+          <div className="flex flex-wrap gap-2">
+            {service.technologies.map((tech, idx) => (
+              <span
+                key={idx}
+                className="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-400/10 text-blue-300 border border-blue-400/20"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   )
-}
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
 }
 
 export default Services
