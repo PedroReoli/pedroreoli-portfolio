@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { skillsByArea, areaLabels } from "@/constants/skillsData"
@@ -17,7 +16,7 @@ const Skills = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
+          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -25,11 +24,21 @@ const Skills = () => {
           Habilidades<span className="text-white">;</span>
         </motion.h2>
 
-        <div ref={ref} className="space-y-16">
+        {/* Grid layout for skill categories */}
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Object.keys(skillsByArea).map((area) => (
-            <div key={area} className="space-y-6">
+            <motion.div
+              key={area}
+              className="bg-gray-900/20 backdrop-blur-sm rounded-xl p-5 border border-gray-800/30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{
+                duration: 0.5,
+                delay: area === "frontend" ? 0 : area === "backend" ? 0.1 : area === "database" ? 0.2 : 0.3,
+              }}
+            >
               <motion.h3
-                className="text-2xl font-bold text-white"
+                className="text-xl font-bold text-blue-500 mb-3"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 transition={{ duration: 0.5 }}
@@ -37,7 +46,7 @@ const Skills = () => {
                 {areaLabels[area]}
               </motion.h3>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                 {skillsByArea[area].map((skill, index) => (
                   <SkillCard
                     key={skill.title}
@@ -48,7 +57,7 @@ const Skills = () => {
                   />
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -83,27 +92,19 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, isInView, onClick }
 
   return (
     <motion.div
-      className="bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden cursor-pointer transition-all duration-300"
+      className="bg-gray-900/40 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer transition-all duration-300 border border-gray-800/30 hover:border-blue-500/30 hover:bg-blue-500/10"
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index}
       onClick={onClick}
-      whileHover={{
-        y: -5,
-        boxShadow: `0 10px 25px -5px ${skill.color}20`,
-        backgroundColor: `${skill.color}15`,
-        borderColor: `${skill.color}30`,
-      }}
-      style={{
-        border: "1px solid transparent",
-      }}
+      whileHover={{ y: -3 }}
     >
-      <div className="p-4 flex flex-col items-center text-center">
-        <div className="mb-3 w-12 h-12 flex items-center justify-center">
-          <IconComponent className="w-8 h-8" />
+      <div className="p-2 flex flex-col items-center text-center">
+        <div className="mb-1 w-8 h-8 flex items-center justify-center text-blue-400">
+          <IconComponent className="w-6 h-6" />
         </div>
-        <h3 className="text-white font-medium">{skill.title}</h3>
+        <h3 className="text-white text-sm font-medium">{skill.title}</h3>
       </div>
     </motion.div>
   )
