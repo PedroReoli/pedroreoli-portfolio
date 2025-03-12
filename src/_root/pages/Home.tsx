@@ -1,102 +1,6 @@
 "use client"
-
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube, FaInstagram, FaNewspaper } from "react-icons/fa"
-
-const Home = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  return (
-    <section
-      ref={ref}
-      className="text-white min-h-screen w-full flex items-center justify-center"
-      style={{ marginTop: 0, paddingTop: 0 }}
-    >
-      {/* Conteúdo principal - sem card, fundo transparente */}
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col items-center text-center">
-            {/* Intro text */}
-            <motion.p
-              className="text-blue-400 text-lg mb-2"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4 }}
-            >
-              Olá, eu sou o
-            </motion.p>
-
-            {/* Nome com ênfase */}
-            <motion.h1
-              className="text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight mb-4"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Pedro</span>
-            </motion.h1>
-
-            {/* Função */}
-            <motion.p
-              className="text-xl sm:text-2xl text-blue-200 mb-12"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.2 }}
-            >
-              Desenvolvedor Fullstack Júnior
-            </motion.p>
-
-            {/* Ícones sociais em linha */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={link.label}
-                >
-                  <span className="text-2xl">{link.icon}</span>
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Indicador de scroll minimalista */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-      >
-        <motion.div
-          className="h-12 w-px bg-blue-500/30 mx-auto"
-          animate={{
-            scaleY: [0.3, 1, 0.3],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        />
-      </motion.div>
-    </section>
-  )
-}
+import { motion } from "framer-motion"
+import { FaEnvelope, FaGithub, FaLinkedin, FaNewspaper, FaYoutube, FaInstagram, FaTwitter } from "react-icons/fa"
 
 const socialLinks = [
   { href: "mailto:pedrosousa2160@gmail.com", icon: <FaEnvelope />, label: "Email" },
@@ -111,6 +15,106 @@ const socialLinks = [
   { href: "https://www.instagram.com/01_dev_em_desenvolvimento", icon: <FaInstagram />, label: "Instagram" },
   { href: "https://x.com/opedroreoli", icon: <FaTwitter />, label: "Twitter" },
 ]
+
+const Home = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden">
+      {/* Background gradient effect */}
+
+      {/* Animated background dots */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 z-10">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-white text-3xl md:text-4xl font-light mb-2">
+            Olá, eu sou o{" "}
+            <motion.span
+              className="block text-5xl md:text-7xl font-bold text-blue-500 mt-2 mb-4"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              Pedro
+            </motion.span>
+          </h1>
+
+          <motion.h2
+            className="text-gray-300 text-xl md:text-2xl font-light mb-8 tracking-wide"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            FullStack Junior Developer
+          </motion.h2>
+
+          <motion.div
+            className="flex flex-wrap justify-center gap-5 mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-transparent hover:bg-blue-500/10 transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + index * 0.1, duration: 0.3 }}
+              >
+                <span className="text-blue-500 text-xl group-hover:text-blue-400 transition-colors duration-300">
+                  {link.icon}
+                </span>
+                <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-gray-400 whitespace-nowrap transition-opacity duration-300">
+                  {link.label}
+                </span>
+              </motion.a>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+          >
+            <a
+              href="#about"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-medium transition-colors duration-300"
+            >
+              Conheça meu trabalho
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Animated gradient border */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_auto] animate-gradient"></div>
+    </section>
+  )
+}
 
 export default Home
 
