@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { faqData } from "@/constants/FAQData"
@@ -20,23 +19,23 @@ const FAQ = () => {
   const renderIcon = (iconType: string) => {
     switch (iconType) {
       case "mail":
-        return <Mail size={18} />
+        return <Mail className="w-4 h-4 md:w-5 md:h-5" />
       case "instagram":
-        return <Instagram size={18} />
+        return <Instagram className="w-4 h-4 md:w-5 md:h-5" />
       case "github":
-        return <Github size={18} />
+        return <Github className="w-4 h-4 md:w-5 md:h-5" />
       case "linkedin":
-        return <Linkedin size={18} />
+        return <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
       default:
         return null
     }
   }
 
   return (
-    <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
+    <section className="relative min-h-screen py-12 md:py-16 lg:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-blue-500 mb-8 md:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -44,7 +43,7 @@ const FAQ = () => {
           FAQ<span className="text-white">;</span>
         </motion.h2>
 
-        <div ref={ref} className="space-y-4">
+        <div ref={ref} className="space-y-3 md:space-y-4">
           {faqData.map((item, index) => (
             <FAQItem
               key={index}
@@ -108,17 +107,17 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, index, isActive, toggleQuestion
     >
       {/* Question header */}
       <button
-        className="w-full text-left p-5 flex justify-between items-center"
+        className="w-full text-left p-4 md:p-5 flex justify-between items-center"
         onClick={toggleQuestion}
         aria-expanded={isActive}
       >
-        <h3 className="text-lg font-medium text-white">{item.question}</h3>
+        <h3 className="text-base sm:text-lg font-medium text-white pr-3">{item.question}</h3>
         <motion.div
           animate={{ rotate: isActive ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="text-blue-400 flex-shrink-0 ml-4"
+          className="text-blue-400 flex-shrink-0 ml-2"
         >
-          <ChevronDown size={20} />
+          <ChevronDown className="w-5 h-5" />
         </motion.div>
       </button>
 
@@ -132,26 +131,30 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, index, isActive, toggleQuestion
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="p-5 pt-0 text-gray-300 border-t border-gray-800/50">
-              <p>{item.answer}</p>
+            <div className="p-4 md:p-5 pt-0 text-gray-300 border-t border-gray-800/50">
+              <p className="text-sm sm:text-base">{item.answer}</p>
 
               {/* Contacts list if available */}
               {item.contacts && (
-                <div className="mt-4 space-y-3">
-                  {item.contacts.map((contact, contactIndex) => (
-                    <a
-                      key={contactIndex}
-                      href={contact.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors group"
-                    >
-                      <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
-                        {renderIcon(contact.iconType)}
-                      </div>
-                      <span className="text-gray-300 group-hover:text-white transition-colors">{contact.label}</span>
-                    </a>
-                  ))}
+                <div className="mt-4 space-y-2">
+                  <div className="flex flex-wrap gap-2">
+                    {item.contacts.map((contact, contactIndex) => (
+                      <a
+                        key={contactIndex}
+                        href={contact.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/70 hover:bg-blue-500/20 transition-colors group"
+                        aria-label={contact.label}
+                        title={contact.label}
+                      >
+                        <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
+                          {renderIcon(contact.iconType)}
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">Clique nos ícones acima para entrar em contato</p>
                 </div>
               )}
             </div>
