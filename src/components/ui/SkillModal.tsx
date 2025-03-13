@@ -59,23 +59,23 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
       <div className="w-full">
         <div className="flex justify-between items-center mb-2">
           <div className="flex items-center gap-1.5">
-            <Award className="h-4 w-4" style={{ color: skill.color }} />
+            <Award className="h-4 w-4 text-blue-500" />
             <span className="text-sm font-medium text-gray-300">Proficiência</span>
           </div>
           <div className="flex items-center">
             <span className="text-sm text-gray-400 mr-2">{level.toFixed(1)}/3</span>
             <div className="flex">
               {[...Array(fullStars)].map((_, i) => (
-                <Star key={`full-${i}`} className="h-3.5 w-3.5 fill-current" style={{ color: skill.color }} />
+                <Star key={`full-${i}`} className="h-3.5 w-3.5 fill-current text-blue-500" />
               ))}
               {hasHalfStar && (
-                <div className="relative h-3.5 w-3.5" style={{ color: skill.color }}>
+                <div className="relative h-3.5 w-3.5 text-blue-500">
                   <Star className="absolute inset-0 fill-current" style={{ clipPath: "inset(0 50% 0 0)" }} />
                   <Star className="absolute inset-0 opacity-30" />
                 </div>
               )}
               {[...Array(emptyStars)].map((_, i) => (
-                <Star key={`empty-${i}`} className="h-3.5 w-3.5 opacity-30" style={{ color: skill.color }} />
+                <Star key={`empty-${i}`} className="h-3.5 w-3.5 opacity-30 text-blue-500" />
               ))}
             </div>
           </div>
@@ -85,10 +85,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="h-2.5 rounded-full"
-            style={{
-              backgroundColor: skill.color,
-            }}
+            className="h-2.5 rounded-full bg-blue-500"
           />
         </div>
       </div>
@@ -120,10 +117,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Decorative top gradient */}
-            <div
-              className="absolute top-0 left-0 right-0 h-2 rounded-t-xl"
-              style={{ background: `linear-gradient(to right, ${skill.color}, ${skill.color}88)` }}
-            />
+            <div className="absolute top-0 left-0 right-0 h-2 rounded-t-xl bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600" />
 
             {/* Header */}
             <div className="relative p-6 pb-4">
@@ -132,10 +126,9 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                  style={{ backgroundColor: `${skill.color}15` }}
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center bg-blue-500/15"
                 >
-                  <IconComponent className="w-9 h-9" style={{ color: skill.color }} />
+                  <IconComponent className="w-9 h-9 text-blue-500" />
                 </motion.div>
                 <div className="flex-1">
                   <motion.h3
@@ -152,7 +145,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                     transition={{ delay: 0.3, duration: 0.3 }}
                     className="flex items-center gap-1.5 mt-1"
                   >
-                    <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: skill.color }} />
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-500" />
                     <p className="text-gray-400 text-sm">{skill.area.charAt(0).toUpperCase() + skill.area.slice(1)}</p>
                   </motion.div>
                 </div>
@@ -182,9 +175,8 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                 <button
                   onClick={() => setActiveTab("about")}
                   className={`relative px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors ${
-                    activeTab === "about" ? "text-white" : "text-gray-400 hover:text-gray-300"
+                    activeTab === "about" ? "text-blue-500" : "text-gray-400 hover:text-gray-300"
                   }`}
-                  style={activeTab === "about" ? { color: skill.color } : {}}
                 >
                   <span className="flex items-center gap-1.5">
                     <Info className="h-4 w-4" />
@@ -193,8 +185,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   {activeTab === "about" && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                      style={{ backgroundColor: skill.color }}
+                      className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-blue-500"
                     />
                   )}
                 </button>
@@ -203,9 +194,8 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   <button
                     onClick={() => setActiveTab("courses")}
                     className={`relative px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors ${
-                      activeTab === "courses" ? "text-white" : "text-gray-400 hover:text-gray-300"
+                      activeTab === "courses" ? "text-blue-500" : "text-gray-400 hover:text-gray-300"
                     }`}
-                    style={activeTab === "courses" ? { color: skill.color } : {}}
                   >
                     <span className="flex items-center gap-1.5">
                       <BookOpen className="h-4 w-4" />
@@ -217,8 +207,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                     {activeTab === "courses" && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                        style={{ backgroundColor: skill.color }}
+                        className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-blue-500"
                       />
                     )}
                   </button>
@@ -248,7 +237,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                         className="w-full flex items-center justify-between p-3 rounded-xl bg-gray-800/20 hover:bg-gray-800/30 transition-colors text-sm text-gray-300 hover:text-white group"
                       >
                         <span className="flex items-center gap-2">
-                          <BookOpen className="h-4 w-4" style={{ color: skill.color }} />
+                          <BookOpen className="h-4 w-4 text-blue-500" />
                           Ver cursos recomendados
                         </span>
                         <ChevronRight className="h-4 w-4 text-gray-500 group-hover:text-white transition-transform group-hover:translate-x-0.5" />
@@ -282,26 +271,18 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                           >
                             <div
                               className="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 
-                                        hover:bg-gray-800/50 transition-all group-hover:shadow-md"
-                              style={{
-                                borderLeft: `3px solid ${skill.color}`,
-                              }}
+                                        hover:bg-gray-800/50 transition-all group-hover:shadow-md
+                                        border-l-3 border-blue-500"
                             >
                               <div className="flex items-center gap-3 flex-1 min-w-0">
-                                <div
-                                  className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                                  style={{ backgroundColor: `${skill.color}15` }}
-                                >
-                                  <Star className="h-5 w-5" style={{ color: skill.color }} />
+                                <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-blue-500/15">
+                                  <Star className="h-5 w-5 text-blue-500" />
                                 </div>
                                 <span className="text-gray-300 group-hover:text-white transition-colors truncate text-sm">
                                   {course}
                                 </span>
                               </div>
-                              <div
-                                className="flex-shrink-0 ml-2 p-2 rounded-full bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors"
-                                style={{ color: skill.color }}
-                              >
+                              <div className="flex-shrink-0 ml-2 p-2 rounded-full bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors text-blue-500">
                                 <ArrowUpRight className="h-4 w-4" />
                               </div>
                             </div>
