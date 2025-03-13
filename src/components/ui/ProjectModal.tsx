@@ -3,8 +3,8 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { type Project, statusColors, typeColors, techColors } from "@/constants/projectsData"
-import { X, ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
+import type { Project } from "@/constants/projectsData"
+import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Calendar, Tag, Code } from "lucide-react"
 
 interface ProjectModalProps {
   project: Project | null
@@ -58,7 +58,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -66,7 +66,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
           >
             {/* Modal */}
             <motion.div
-              className="bg-gray-900/90 backdrop-blur-md border border-gray-800 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+              className="bg-gray-900/90 backdrop-blur-md border border-gray-800/50 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-xl shadow-blue-500/5"
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -74,18 +74,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               onClick={(e) => e.stopPropagation()}
             >
               {/* Image gallery */}
-              <div className="relative aspect-video w-full overflow-hidden">
-                <motion.div
-                  className="w-full h-full"
-                  initial={false}
-                  animate={{
-                    x: `-${currentImageIndex * 100}%`,
-                    transition: { duration: 0.5, ease: "easeInOut" },
-                  }}
-                  style={{
-                    display: "flex",
-                    width: `${project.thumbnails.length * 100}%`,
-                  }}
+              <div className="relative aspect-video w-full overflow-hidden bg-gray-950">
+                <div
+                  className="flex w-full h-full transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${(currentImageIndex * 100) / project.thumbnails.length}%)` }}
                 >
                   {project.thumbnails.map((thumbnail, idx) => (
                     <div
@@ -94,13 +86,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       style={{ width: `${100 / project.thumbnails.length}%` }}
                     >
                       <img
-                        src={thumbnail || "/placeholder.svg"}
+                        src={thumbnail || "/placeholder.svg?height=400&width=800"}
                         alt={`${project.title} screenshot ${idx + 1}`}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   ))}
-                </motion.div>
+                </div>
 
                 {/* Image navigation arrows */}
                 {project.thumbnails.length > 1 && (
@@ -136,10 +128,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   </>
                 )}
 
+                {/* Project title overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
+                  <h2 className="text-3xl font-bold text-white">{project.title}</h2>
+                </div>
+
                 {/* Close button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="h-5 w-5" />
@@ -148,63 +145,77 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
               {/* Content */}
               <div className="p-6 overflow-y-auto">
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <h2 className="text-2xl font-bold text-blue-500">{project.title}</h2>
-                  <div className="flex gap-2">
-                    <span className={`text-xs px-2 py-1 rounded-full border ${statusColors[project.status]}`}>
+                <div className="flex flex-wrap items-center gap-4 mb-6 border-b border-gray-800/30 pb-6">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Tag className="h-4 w-4 text-blue-400" />
+                    <span className="text-xs px-2 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
                       {project.status}
                     </span>
-                    <span className={`text-xs px-2 py-1 rounded-full border ${typeColors[project.type]}`}>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Calendar className="h-4 w-4 text-blue-400" />
+                    <span className="text-xs px-2 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
                       {project.type}
                     </span>
                   </div>
                 </div>
 
-                <p className="text-gray-300 mb-6">{project.description}</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-2">
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
+                        Sobre o Projeto
+                      </h3>
+                      <p className="text-gray-300 leading-relaxed">
+                        {project.detailedDescription || project.description}
+                      </p>
+                    </div>
 
-                {/* Detailed Description */}
-                {project.detailedDescription && (
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-2">Sobre o Projeto</h3>
-                    <p className="text-gray-300">{project.detailedDescription}</p>
-                  </div>
-                )}
-
-                {/* Tech Stack */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">Tecnologias</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech, index) => (
-                      <span
-                        key={index}
-                        className={`text-sm px-3 py-1 rounded-full border ${techColors[tech] || "bg-gray-700/50 text-gray-300 border-gray-600/30"}`}
+                    {/* Links */}
+                    <div className="flex flex-wrap gap-4 mt-8">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <ExternalLink className="h-4 w-4" />
+                        Ver Projeto
+                      </a>
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-colors"
+                      >
+                        <Github className="h-4 w-4" />
+                        Repositório
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                {/* Links */}
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Ver Projeto
-                  </a>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-colors"
-                  >
-                    <Github className="h-4 w-4" />
-                    Repositório
-                  </a>
+                  <div>
+                    {/* Tech Stack */}
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
+                        <Code className="h-4 w-4 text-blue-400" />
+                        Tecnologias
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="text-sm px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

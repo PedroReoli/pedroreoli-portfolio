@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { type Project, projectsData, statusColors, typeColors } from "@/constants/projectsData"
+import { type Project, projectsData } from "@/constants/projectsData"
 import ProjectModal from "@/components/ui/ProjectModal"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye } from "lucide-react"
 
@@ -53,11 +53,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const nextImage = (e: React.MouseEvent) => {
+    e.preventDefault()
     e.stopPropagation()
     setCurrentImageIndex((prev) => (prev === project.thumbnails.length - 1 ? 0 : prev + 1))
   }
 
   const prevImage = (e: React.MouseEvent) => {
+    e.preventDefault()
     e.stopPropagation()
     setCurrentImageIndex((prev) => (prev === 0 ? project.thumbnails.length - 1 : prev - 1))
   }
@@ -77,63 +79,50 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
 
   return (
     <motion.div
-      className="group bg-gray-900/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-blue-500/5 hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer"
+      className="group bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/30 hover:border-blue-500/30 transition-all duration-300"
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index}
-      onClick={onOpenModal}
       whileHover={{ y: -5 }}
     >
       {/* Thumbnail with navigation */}
       <div className="aspect-video relative overflow-hidden">
-        <motion.div
-          className="w-full h-full"
-          initial={false}
-          animate={{
-            x: `-${currentImageIndex * 100}%`,
-            transition: { duration: 0.5, ease: "easeInOut" },
-          }}
-          style={{
-            display: "flex",
-            width: `${project.thumbnails.length * 100}%`,
-          }}
+        <div
+          className="flex w-full h-full transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
         >
           {project.thumbnails.map((thumbnail, idx) => (
-            <div
-              key={idx}
-              className="w-full h-full flex-shrink-0"
-              style={{ width: `${100 / project.thumbnails.length}%` }}
-            >
+            <div key={idx} className="w-full h-full flex-shrink-0">
               <img
-                src={thumbnail || "/placeholder.svg"}
+                src={thumbnail || "/placeholder.svg?height=200&width=400"}
                 alt={`${project.title} screenshot ${idx + 1}`}
                 className="w-full h-full object-cover"
               />
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Image navigation arrows */}
         {project.thumbnails.length > 1 && (
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
 
             {/* Image indicators */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
               {project.thumbnails.map((_, idx) => (
                 <div
                   key={idx}
@@ -150,11 +139,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
 
         {/* Status and Type badges */}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-          <span className={`text-xs px-2 py-0.5 rounded-full border ${statusColors[project.status]}`}>
+        <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-10">
+          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
             {project.status}
           </span>
-          <span className={`text-xs px-2 py-0.5 rounded-full border ${typeColors[project.type]}`}>{project.type}</span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            {project.type}
+          </span>
         </div>
       </div>
 
@@ -173,7 +164,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
             </span>
           ))}
           {project.techStack.length > 3 && (
-            <span className="text-xs px-2 py-0.5 bg-gray-700/50 text-gray-300 rounded-full">
+            <span className="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">
               +{project.techStack.length - 3}
             </span>
           )}
@@ -187,7 +178,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
-              onClick={(e) => e.stopPropagation()}
               aria-label={`Ver projeto ${project.title}`}
             >
               <ExternalLink className="h-3.5 w-3.5" />
@@ -197,8 +187,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-300 transition-colors"
-              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
               aria-label={`Ver repositório de ${project.title}`}
             >
               <Github className="h-3.5 w-3.5" />
@@ -206,19 +195,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
             </a>
           </div>
 
-          {project.detailedDescription && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                onOpenModal()
-              }}
-              className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label={`Ver mais detalhes sobre ${project.title}`}
-            >
-              <Eye className="h-3.5 w-3.5" />
-              Ver mais
-            </button>
-          )}
+          <button
+            onClick={onOpenModal}
+            className="flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-full transition-colors border border-blue-500/20"
+            aria-label={`Ver mais detalhes sobre ${project.title}`}
+          >
+            <Eye className="h-3.5 w-3.5" />
+            Ver mais
+          </button>
         </div>
       </div>
     </motion.div>
