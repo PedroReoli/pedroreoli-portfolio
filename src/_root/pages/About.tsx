@@ -7,10 +7,7 @@ const About = () => {
   const [isHovering, setIsHovering] = useState(false)
 
   return (
-    <section className="relative min-h-screen bg-gray-900 py-16 md:py-20 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-800 to-gray-900 opacity-50"></div>
-
+    <section className="relative min-h-screen py-16 md:py-24 bg-transparent overflow-hidden">
       {/* "Sobre Mim" heading */}
       <motion.div
         className="relative z-10 container mx-auto px-4 mb-10 md:mb-14"
@@ -94,40 +91,52 @@ const About = () => {
             </motion.div>
           </motion.div>
 
-          {/* Text content section */}
+          {/* Text content section with card design */}
           <motion.div
-            className="w-full lg:w-7/12 text-white lg:pt-4"
+            className="w-full lg:w-7/12"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-blue-500">Pedro Lucas</h2>
-            <h3 className="text-xl text-gray-300 mb-6">Desenvolvedor FullStack • Músico • Escritor • Criativo</h3>
+            <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800/50 p-6 md:p-8 shadow-xl shadow-blue-500/5 hover:shadow-blue-500/10 transition-all duration-500">
+              <div className="relative">
+                {/* Decorative corner accent */}
+                <div className="absolute -top-2 -left-2 w-10 h-10 border-t-2 border-l-2 border-blue-500/50 rounded-tl-lg"></div>
 
-            <div className="space-y-5 text-gray-300">
-              <p className="leading-relaxed text-base md:text-lg">
-                Sou Pedro Lucas, um desenvolvedor FullStack Júnior movido por{" "}
-                <span className="text-blue-500 font-medium">curiosidade, inovação e um olhar criativo</span>. Minha
-                experiência vai além do código — a música, a escrita e o ensino moldam minha abordagem, trazendo{" "}
-                <span className="text-blue-500 font-medium">sensibilidade e profundidade</span> para cada projeto que
-                crio.
-              </p>
+                <h3 className="text-xl text-gray-300 mb-6 pl-4">Desenvolvedor • Músico • Escritor</h3>
 
-              <p className="leading-relaxed text-base md:text-lg">
-                Acredito que tecnologia e criatividade <span className="text-blue-500 font-medium">andam juntas</span>.
-                Meu diferencial é transformar{" "}
-                <span className="text-blue-500 font-medium">ideias abstratas em soluções escaláveis</span>, aplicando{" "}
-                <span className="text-blue-500 font-medium">boas práticas de desenvolvimento</span> e um design
-                intuitivo que impacta vidas.
-              </p>
+                <div className="space-y-6 text-gray-300">
+                  <p className="leading-relaxed text-base md:text-lg">
+                    Sou um <span className="text-blue-500 font-medium">desenvolvedor FullStack Júnior</span> movido por{" "}
+                    <span className="text-blue-500 font-medium">curiosidade</span>,{" "}
+                    <span className="text-blue-500 font-medium">inovação</span> e um olhar{" "}
+                    <span className="text-blue-500 font-medium">criativo</span>. A tecnologia, para mim, vai além do
+                    código — é uma ponte entre <span className="text-blue-500 font-medium">acessibilidade</span>,{" "}
+                    <span className="text-blue-500 font-medium">arquitetura limpa</span> e impacto real.
+                  </p>
 
-              <p className="leading-relaxed text-base md:text-lg">
-                Com uma mentalidade voltada para o aprendizado contínuo, busco sempre{" "}
-                <span className="text-blue-500 font-medium">evoluir e criar</span> produtos modernos, otimizados e
-                eficientes. Seja desenvolvendo{" "}
-                <span className="text-blue-500 font-medium">aplicações performáticas</span>, escrevendo artigos ou
-                explorando novas tecnologias, meu objetivo é entregar valor e inovação em cada linha de código.
-              </p>
+                  <p className="leading-relaxed text-base md:text-lg">
+                    Como <span className="text-blue-500 font-medium">músico</span> e{" "}
+                    <span className="text-blue-500 font-medium">educador</span>, trago a sensibilidade da arte para a
+                    forma como construo soluções. Acredito que tecnologia e{" "}
+                    <span className="text-blue-500 font-medium">criatividade</span> andam juntas, e que cada projeto
+                    deve acolher, transformar e expandir possibilidades com um{" "}
+                    <span className="text-blue-500 font-medium">tato humano</span> que vá além da lógica.
+                  </p>
+
+                  <p className="leading-relaxed text-base md:text-lg">
+                    Busco <span className="text-blue-500 font-medium">evolução contínua</span> e impacto real. No
+                    futuro, quero unir <span className="text-blue-500 font-medium">educação</span> e{" "}
+                    <span className="text-blue-500 font-medium">empreendedorismo</span>, criando uma{" "}
+                    <span className="text-blue-500 font-medium">startup</span> que amplie{" "}
+                    <span className="text-blue-500 font-medium">inclusão digital</span> e torne a tecnologia acessível
+                    para mais pessoas.
+                  </p>
+                </div>
+
+                {/* Decorative corner accent */}
+                <div className="absolute -bottom-2 -right-2 w-10 h-10 border-b-2 border-r-2 border-blue-500/50 rounded-br-lg"></div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -136,6 +145,9 @@ const About = () => {
       {/* Decorative dots */}
       <div className="absolute top-20 right-10 w-24 h-24 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+      {/* Animated gradient border */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_auto] animate-gradient"></div>
     </section>
   )
 }
