@@ -92,17 +92,27 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, isInView, onClick }
 
   return (
     <motion.div
-      className="bg-gray-900/40 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer transition-all duration-300 border border-gray-800/30 hover:border-blue-500/30 hover:bg-blue-500/10"
+      className="bg-gray-900/40 backdrop-blur-sm rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border border-gray-800/30 hover:border-blue-500/30 hover:bg-blue-500/10 shadow-sm hover:shadow-blue-500/10"
+      style={{
+        borderRadius: "16px",
+        boxShadow: `0 0 0 1px rgba(59, 130, 246, 0.05)`,
+      }}
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index}
       onClick={onClick}
-      whileHover={{ y: -3 }}
+      whileHover={{ y: -3, scale: 1.02 }}
     >
-      <div className="p-2 flex flex-col items-center text-center">
-        <div className="mb-1 w-8 h-8 flex items-center justify-center text-blue-400">
-          <IconComponent className="w-6 h-6" />
+      <div className="p-3 flex flex-col items-center justify-center text-center h-full">
+        <div
+          className="mb-2 w-10 h-10 flex items-center justify-center rounded-full"
+          style={{
+            background: `${skill.color}15`,
+            boxShadow: `0 0 15px ${skill.color}20`,
+          }}
+        >
+          <IconComponent className="w-6 h-6" style={{ color: skill.color }} />
         </div>
         <h3 className="text-white text-sm font-medium">{skill.title}</h3>
       </div>

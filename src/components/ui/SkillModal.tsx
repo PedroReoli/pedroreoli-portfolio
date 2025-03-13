@@ -82,7 +82,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
 
           {/* Modal */}
           <motion.div
-            className="relative bg-gray-900 rounded-xl w-full max-w-md overflow-hidden shadow-xl"
+            className="relative bg-gray-900 rounded-2xl w-full max-w-md overflow-hidden shadow-xl"
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   className="w-14 h-14 rounded-xl flex items-center justify-center"
                   style={{ backgroundColor: `${skill.color}15` }}
                 >
-                  <IconComponent className="w-8 h-8" />
+                  <IconComponent className="w-8 h-8" style={{ color: skill.color }} />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white">{skill.title}</h3>
