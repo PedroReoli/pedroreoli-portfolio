@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { servicesData } from "@/constants/ServicesData"
+import { servicesData } from "@/constants/servicesData"
 import { FaPalette, FaCode, FaGraduationCap } from "react-icons/fa"
 
 const Services = () => {
