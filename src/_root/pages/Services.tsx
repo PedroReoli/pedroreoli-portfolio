@@ -15,7 +15,7 @@ const Services = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -105,9 +105,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) =
           {renderIcon()}
         </motion.div>
 
-        <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+        <h3 className="title font-bold text-white mb-4">{service.title}</h3>
 
-        <p className="text-gray-300">{service.description}</p>
+        <p className="text text-gray-300">{service.description}</p>
       </div>
     </motion.div>
   )

@@ -34,10 +34,10 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-white text-3xl md:text-4xl font-light mb-2">
+          <h1 className="text-white font-light mb-2">
             Olá, eu sou o{" "}
             <motion.span
-              className="block text-5xl md:text-7xl font-bold text-blue-500 mt-2 mb-4"
+              className="block section-title font-bold text-blue-500 mt-2 mb-4"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
@@ -47,7 +47,7 @@ const Home = () => {
           </h1>
 
           <motion.h2
-            className="text-gray-300 text-xl md:text-2xl font-light mb-8 tracking-wide"
+            className="text-gray-300 title font-light mb-8 tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
@@ -86,7 +86,6 @@ const Home = () => {
           </motion.div>
         </motion.div>
       </div>
-
     </section>
   )
 }

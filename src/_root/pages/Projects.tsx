@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { type Project, projectsData } from "@/constants/projectsData"
-import ProjectModal from "@/components/ui/ProjectModal"
+import ProjectModal from "@/components/ProjectModal"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye } from "lucide-react"
 
 const Projects = () => {
@@ -16,7 +16,7 @@ const Projects = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -151,10 +151,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
+        <h3 className="title font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+        <p className="text-gray-300 text-small mb-4 line-clamp-2">{project.description}</p>
 
         {/* Tech stack */}
         <div className="flex flex-wrap gap-1.5 mb-5">
@@ -177,7 +175,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center gap-1.5 text-small text-blue-400 hover:text-blue-300 transition-colors"
               aria-label={`Ver projeto ${project.title}`}
             >
               <ExternalLink className="h-3.5 w-3.5" />
@@ -187,7 +185,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center gap-1.5 text-small text-blue-400 hover:text-blue-300 transition-colors"
               aria-label={`Ver repositório de ${project.title}`}
             >
               <Github className="h-3.5 w-3.5" />

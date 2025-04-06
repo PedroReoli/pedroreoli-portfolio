@@ -20,7 +20,7 @@ const Timeline = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-10 md:mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-10 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -77,10 +77,10 @@ const Timeline = () => {
                           )}
                         </div>
                         <div>
-                          <h3 className="text-base md:text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
+                          <h3 className="title font-bold text-white group-hover:text-blue-400 transition-colors">
                             {item.empresa}
                           </h3>
-                          <p className="text-gray-300 text-xs md:text-sm">{item.cargo}</p>
+                          <p className="text text-gray-300">{item.cargo}</p>
                         </div>
                       </div>
                       <a
@@ -98,25 +98,23 @@ const Timeline = () => {
                   {/* Card content */}
                   <div className="p-4 md:p-5">
                     <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
-                      <span className="text-xs md:text-sm text-gray-400">{item.periodo}</span>
-                      <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      <span className="text text-gray-400">{item.periodo}</span>
+                      <span className="text-small px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
                         {item.status}
                       </span>
                     </div>
 
-                    <p className="text-gray-300 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed">{item.descricao}</p>
+                    <p className="text text-gray-300 mb-3 md:mb-4 leading-relaxed">{item.descricao}</p>
 
                     {item.detalhes && (
-                      <p className="text-gray-400 text-[10px] md:text-xs mb-3 md:mb-4 leading-relaxed">
-                        {item.detalhes}
-                      </p>
+                      <p className="text text-gray-400 mb-3 md:mb-4 leading-relaxed">{item.detalhes}</p>
                     )}
 
                     <div className="flex flex-wrap gap-1 md:gap-1.5 mt-3 md:mt-4">
                       {item.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="text-[10px] md:text-xs px-1.5 md:px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-colors"
+                          className="text-small px-1.5 md:px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-colors"
                         >
                           {tag}
                         </span>

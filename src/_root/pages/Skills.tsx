@@ -5,7 +5,7 @@ import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { skillsByArea, areaLabels } from "@/constants/skillsData"
 import type { Skill } from "@/constants/skillsData"
-import SkillModal from "@/components/ui/SkillModal"
+import SkillModal from "@/components/SkillModal"
 
 const Skills = () => {
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
@@ -16,7 +16,7 @@ const Skills = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-12"
+          className="section-title font-bold text-center text-blue-500 mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -38,7 +38,7 @@ const Skills = () => {
               }}
             >
               <motion.h3
-                className="text-xl font-bold text-blue-500 mb-3"
+                className="title font-bold text-blue-500 mb-3"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 transition={{ duration: 0.5 }}
@@ -114,7 +114,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, isInView, onClick }
         >
           <IconComponent className="w-6 h-6" style={{ color: skill.color }} />
         </div>
-        <h3 className="text-white text-sm font-medium">{skill.title}</h3>
+        <h3 className="text-small text-white font-medium">{skill.title}</h3>
       </div>
     </motion.div>
   )

@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,36 +32,15 @@
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 212.7 26.8% 83.9%;
-}
 
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
+  --scrollbar-track: 222.2 84% 4.9%;
+  --scrollbar-thumb: 217.2 32.6% 17.5%;
 
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  /* Network specific variables */
+  --network-bg: #0f172a;
+  --network-text: #e2e8f0;
+  --network-accent: #60a5fa;
+  --network-accent-rgb: 96, 165, 250;
 }
 
 @layer base {
@@ -71,11 +52,57 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     margin: 0;
     padding: 0;
+    font-size: var(--font-size-text);
+    font-family: var(--font-family-base);
   }
   html {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+  }
+  h1,
+  .section-title {
+    font-size: var(--font-size-section-title-mobile);
+    line-height: var(--line-height-tight);
+  }
+  h2,
+  h3,
+  .title {
+    font-size: var(--font-size-title-mobile);
+    line-height: var(--line-height-tight);
+  }
+  p,
+  .text {
+    font-size: var(--font-size-text);
+    line-height: var(--line-height-normal);
+  }
+  .text-small {
+    font-size: var(--font-size-small);
+  }
+  .text-xs {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Aplicar tamanhos de desktop em telas maiores */
+  @media (min-width: 768px) {
+    h1,
+    .section-title {
+      font-size: var(--font-size-section-title);
+    }
+    h2,
+    h3,
+    .title {
+      font-size: var(--font-size-title);
+    }
   }
 }
 
@@ -158,11 +185,13 @@ body {
   }
 
   .heading-primary {
-    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-white;
+    font-size: var(--font-size-section-title);
+    @apply font-bold text-white;
   }
 
   .heading-secondary {
-    @apply text-lg sm:text-xl text-[#94A3B8] mt-4;
+    font-size: var(--font-size-title);
+    @apply text-[#94A3B8] mt-4;
   }
 
   .card-default {
@@ -194,23 +223,6 @@ body {
 
 .no-fouc.loaded {
   @apply opacity-100;
-}
-
-/* Responsive typography */
-html {
-  font-size: 14px;
-}
-
-@screen sm {
-  html {
-    font-size: 15px;
-  }
-}
-
-@screen lg {
-  html {
-    font-size: 16px;
-  }
 }
 
 /* Prevent text size adjustment on orientation change */
@@ -334,5 +346,22 @@ html {
 
 .glow-yellow {
   box-shadow: 0 0 15px 5px rgba(245, 158, 11, 0.3);
+}
+
+/* Animação de gradiente para bordas */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
 }
 

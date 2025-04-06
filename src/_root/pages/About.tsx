@@ -15,7 +15,7 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-blue-500">
+        <h1 className="section-title font-bold text-center text-blue-500">
           Sobre Mim<span className="text-white">;</span>
         </h1>
       </motion.div>
@@ -103,10 +103,10 @@ const About = () => {
                 {/* Decorative corner accent */}
                 <div className="absolute -top-2 -left-2 w-10 h-10 border-t-2 border-l-2 border-blue-500/50 rounded-tl-lg"></div>
 
-                <h3 className="text-xl text-gray-300 mb-6 pl-4">Desenvolvedor • Músico • Escritor</h3>
+                <h3 className="title text-gray-300 mb-6 pl-4">Desenvolvedor • Músico • Escritor</h3>
 
                 <div className="space-y-6 text-gray-300">
-                  <p className="leading-relaxed text-base md:text-lg">
+                  <p className="text leading-relaxed">
                     Sou um <span className="text-blue-500 font-medium">desenvolvedor FullStack Júnior</span> movido por{" "}
                     <span className="text-blue-500 font-medium">curiosidade</span>,{" "}
                     <span className="text-blue-500 font-medium">inovação</span> e um olhar{" "}
@@ -115,7 +115,7 @@ const About = () => {
                     <span className="text-blue-500 font-medium">arquitetura limpa</span> e impacto real.
                   </p>
 
-                  <p className="leading-relaxed text-base md:text-lg">
+                  <p className="text leading-relaxed">
                     Como <span className="text-blue-500 font-medium">músico</span> e{" "}
                     <span className="text-blue-500 font-medium">educador</span>, trago a sensibilidade da arte para a
                     forma como construo soluções. Acredito que tecnologia e{" "}
@@ -124,7 +124,7 @@ const About = () => {
                     <span className="text-blue-500 font-medium">tato humano</span> que vá além da lógica.
                   </p>
 
-                  <p className="leading-relaxed text-base md:text-lg">
+                  <p className="text leading-relaxed">
                     Busco <span className="text-blue-500 font-medium">evolução contínua</span> e impacto real. No
                     futuro, quero unir <span className="text-blue-500 font-medium">educação</span> e{" "}
                     <span className="text-blue-500 font-medium">empreendedorismo</span>, criando uma{" "}

@@ -35,7 +35,7 @@ const FAQ = () => {
     <section className="relative min-h-screen py-12 md:py-16 lg:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-blue-500 mb-8 md:mb-12 lg:mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-8 md:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -111,7 +111,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, index, isActive, toggleQuestion
         onClick={toggleQuestion}
         aria-expanded={isActive}
       >
-        <h3 className="text-base sm:text-lg font-medium text-white pr-3">{item.question}</h3>
+        <h3 className="title font-medium text-white pr-3">{item.question}</h3>
         <motion.div
           animate={{ rotate: isActive ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -132,7 +132,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, index, isActive, toggleQuestion
             className="overflow-hidden"
           >
             <div className="p-4 md:p-5 pt-0 text-gray-300 border-t border-gray-800/50">
-              <p className="text-sm sm:text-base">{item.answer}</p>
+              <p className="text">{item.answer}</p>
 
               {/* Contacts list if available */}
               {item.contacts && (

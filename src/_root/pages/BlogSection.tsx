@@ -15,7 +15,7 @@ const BlogSection = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-blue-500 mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -74,21 +74,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index, isInView }) => {
         {/* Card content */}
         <div className="p-6 flex flex-col flex-grow">
           {/* Date */}
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-4">
+          <div className="flex items-center gap-2 text-gray-400 text-small mb-4">
             <Calendar className="h-4 w-4" />
             <span>{post.date}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-            {post.title}
-          </h3>
+          <h3 className="title font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{post.title}</h3>
 
           {/* Description */}
-          <p className="text-gray-300 text-sm mb-6 flex-grow">{post.description}</p>
+          <p className="text text-gray-300 mb-6 flex-grow">{post.description}</p>
 
           {/* Read more button */}
-          <div className="flex items-center text-blue-400 font-medium text-sm mt-auto group-hover:text-blue-300 transition-colors">
+          <div className="flex items-center text-blue-400 font-medium text-small mt-auto group-hover:text-blue-300 transition-colors">
             <span>Ler artigo</span>
             <ArrowUpRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
