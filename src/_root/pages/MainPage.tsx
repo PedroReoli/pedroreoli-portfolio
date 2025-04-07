@@ -14,6 +14,19 @@ import End from "./End"
 import Background from "./Background"
 import LazySection from "@/components/LazySection"
 
+// Tradução das seções para português
+const sectionLabels = {
+  home: "Início",
+  about: "Sobre Mim",
+  timeline: "Experiência",
+  projects: "Projetos",
+  services: "Serviços",
+  skills: "Habilidades",
+  blog: "Blog",
+  faq: "FAQ",
+  end: "Contato",
+}
+
 const MainPage = () => {
   const [activeSection, setActiveSection] = useState<string>("home")
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
@@ -84,7 +97,7 @@ const MainPage = () => {
         style={{ scaleX, transformOrigin: "0%" }}
       />
 
-      {/* Navigation dots */}
+      {/* Navigation dots - Traduzidos para português */}
       <div className="fixed right-4 xxs:right-5 sm:right-6 md:right-8 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
         <div className="flex flex-col items-center space-y-4">
           {Object.keys(sectionsRef.current).map((section) => (
@@ -92,7 +105,7 @@ const MainPage = () => {
               key={section}
               onClick={() => scrollToSection(section)}
               className="group relative flex items-center"
-              aria-label={`Scroll to ${section} section`}
+              aria-label={`Rolar para a seção ${sectionLabels[section as keyof typeof sectionLabels]}`}
             >
               <span
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
@@ -106,7 +119,7 @@ const MainPage = () => {
                     : "opacity-0 translate-x-2 bg-[#0F172A]/80 text-white/70"
                 } group-hover:opacity-100 group-hover:translate-x-0`}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {sectionLabels[section as keyof typeof sectionLabels]}
               </span>
             </button>
           ))}

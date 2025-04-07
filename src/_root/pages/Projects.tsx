@@ -5,7 +5,7 @@ import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { type Project, projectsData } from "@/constants/projectsData"
 import ProjectModal from "@/components/ProjectModal"
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye } from "lucide-react"
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye, Code, Calendar } from "lucide-react"
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -16,7 +16,7 @@ const Projects = () => {
     <section className="relative min-h-screen py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
-          className="section-title font-bold text-center text-blue-500 mb-16"
+          className="section-title font-bold text-center text-blue-500 mb-10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -24,7 +24,7 @@ const Projects = () => {
           Projetos<span className="text-white">;</span>
         </motion.h2>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projectsData.map((project, index) => (
             <ProjectCard
               key={index}
@@ -71,7 +71,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
       y: 0,
       transition: {
         delay: 0.1 * i,
-        duration: 0.6,
+        duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       },
     }),
@@ -79,15 +79,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
 
   return (
     <motion.div
-      className="group bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/30 hover:border-blue-500/30 transition-all duration-300"
+      className="group bg-gray-900/30 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/30 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 flex flex-col h-full"
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index}
       whileHover={{ y: -5 }}
     >
-      {/* Thumbnail with navigation */}
-      <div className="aspect-video relative overflow-hidden">
+      {/* Imagem do projeto */}
+      <div className="relative aspect-video overflow-hidden">
         <div
           className="flex w-full h-full transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
@@ -103,26 +103,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
           ))}
         </div>
 
-        {/* Image navigation arrows */}
+        {/* Navegação do carrossel */}
         {project.thumbnails.length > 1 && (
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
-              aria-label="Previous image"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+              aria-label="Imagem anterior"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
-              aria-label="Next image"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+              aria-label="Próxima imagem"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4" />
             </button>
 
-            {/* Image indicators */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            {/* Indicadores de imagem */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
               {project.thumbnails.map((_, idx) => (
                 <div
                   key={idx}
@@ -135,72 +135,75 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
           </>
         )}
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-
-        {/* Status and Type badges */}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-10">
-          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-            {project.status}
+        {/* Status badges */}
+        <div className="absolute top-2 left-2 flex gap-1.5">
+          <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
+            <Calendar className="h-2.5 w-2.5" />
+            <span className="text-xs">{project.status}</span>
           </span>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-            {project.type}
+          <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
+            <Code className="h-2.5 w-2.5" />
+            <span className="text-xs">{project.type}</span>
           </span>
         </div>
+
+        {/* Overlay gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
       </div>
 
-      {/* Content */}
-      <div className="p-5">
+      {/* Conteúdo do projeto */}
+      <div className="p-4 flex flex-col flex-grow">
+        {/* Título */}
         <h3 className="title font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
-        <p className="text-gray-300 text-small mb-4 line-clamp-2">{project.description}</p>
+
+        {/* Descrição */}
+        <p className="text-xs text-gray-300 mb-3 line-clamp-2">{project.description}</p>
 
         {/* Tech stack */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.techStack.slice(0, 3).map((tech, techIndex) => (
-            <span key={techIndex} className="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">
-              {tech}
-            </span>
-          ))}
-          {project.techStack.length > 3 && (
-            <span className="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">
-              +{project.techStack.length - 3}
-            </span>
-          )}
-        </div>
+        <div className="mt-auto">
+          <div className="flex flex-wrap gap-1 mb-3">
+            {project.techStack.slice(0, 3).map((tech, techIndex) => (
+              <span key={techIndex} className="text-xs px-1.5 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">
+                {tech}
+              </span>
+            ))}
+            {project.techStack.length > 3 && (
+              <span className="text-xs px-1.5 py-0.5 bg-gray-800/50 text-gray-400 rounded-full">
+                +{project.techStack.length - 3}
+              </span>
+            )}
+          </div>
 
-        {/* Actions */}
-        <div className="flex items-center justify-between">
-          <div className="flex gap-3">
+          {/* Ações */}
+          <div className="flex items-center gap-2">
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-small text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label={`Ver projeto ${project.title}`}
+              className="flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1"
+              aria-label={`Ver demonstração de ${project.title}`}
             >
-              <ExternalLink className="h-3.5 w-3.5" />
-              Demo
+              <ExternalLink className="h-3 w-3" />
+              App
             </a>
             <a
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-small text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center justify-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1"
               aria-label={`Ver repositório de ${project.title}`}
             >
-              <Github className="h-3.5 w-3.5" />
+              <Github className="h-3 w-3" />
               Repo
             </a>
+            <button
+              onClick={onOpenModal}
+              className="flex items-center justify-center p-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-lg transition-colors border border-blue-500/20"
+              aria-label={`Ver mais detalhes sobre ${project.title}`}
+            >
+              <Eye className="h-3 w-3" />
+            </button>
           </div>
-
-          <button
-            onClick={onOpenModal}
-            className="flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-full transition-colors border border-blue-500/20"
-            aria-label={`Ver mais detalhes sobre ${project.title}`}
-          >
-            <Eye className="h-3.5 w-3.5" />
-            Ver mais
-          </button>
         </div>
       </div>
     </motion.div>
