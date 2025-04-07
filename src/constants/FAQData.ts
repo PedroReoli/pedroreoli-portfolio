@@ -37,6 +37,18 @@ export const faqData: FAQItem[] = [
         iconType: "instagram",
         label: "@01_dev_em_desenvolvimento",
       },
+      {
+        type: "github",
+        link: "https://github.com/PedroReoli",
+        iconType: "github",
+        label: "PedroReoli",
+      },
+      {
+        type: "linkedin",
+        link: "https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/",
+        iconType: "linkedin",
+        label: "Pedro Lucas",
+      },
     ],
   },
   {
