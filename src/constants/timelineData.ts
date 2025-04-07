@@ -23,7 +23,7 @@ export const timelineData = [
   {
     empresa: "EvaTech",
     cargo: "Professor, Mentor e Palestrante",
-    periodo: "06/2023 - 11/2023",
+    periodo: "06/2024 - 11/2024",
     status: "Concluído",
     descricao: "Ministrei aulas e palestras sobre tecnologia e mercado de trabalho.",
     detalhes: "Trabalhei com conceitos básicos de IA, capacitando mães negras solteiras a ingressar na tecnologia.",
