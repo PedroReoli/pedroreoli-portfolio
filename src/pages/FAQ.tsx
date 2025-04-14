@@ -6,8 +6,10 @@ import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { faqData } from "@/constants/FAQData"
 import { ChevronDown, Mail, Instagram, Github, Linkedin, ExternalLink, HelpCircle, Sparkles } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const FAQ = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -109,7 +111,7 @@ const FAQ = () => {
         >
           <p className="text-xs text-gray-400 flex items-center justify-center gap-2">
             <Sparkles className="h-3 w-3 text-blue-400" />
-            Não encontrou o que procurava? Entre em contato diretamente
+            {t("faq.notFound")}
             <Sparkles className="h-3 w-3 text-blue-400" />
           </p>
         </motion.div>
@@ -152,6 +154,7 @@ const FAQItem: React.FC<FAQItemProps> = ({
   renderIcon,
   totalItems,
 }) => {
+  const { t } = useTranslation()
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -263,7 +266,7 @@ const FAQItem: React.FC<FAQItemProps> = ({
                   >
                     <h4 className="text-sm font-medium text-blue-400 mb-2 flex items-center gap-2">
                       <div className="w-4 h-px bg-blue-500/50"></div>
-                      Canais de contato
+                      {t("faq.contactChannels")}
                       <div className="w-4 h-px bg-blue-500/50"></div>
                     </h4>
 
@@ -308,4 +311,3 @@ const FAQItem: React.FC<FAQItemProps> = ({
 }
 
 export default FAQ
-

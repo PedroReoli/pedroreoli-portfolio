@@ -6,6 +6,7 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { blogPosts } from "@/constants/BlogData"
 import { ArrowUpRight, Calendar } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const BlogSection = () => {
   const ref = useRef(null)
@@ -46,6 +47,7 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index, isInView }) => {
+  const { t } = useTranslation()
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -87,7 +89,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index, isInView }) => {
 
           {/* Read more button */}
           <div className="flex items-center text-blue-400 font-medium text-small mt-auto group-hover:text-blue-300 transition-colors">
-            <span>Ler artigo</span>
+            <span>{t("blog.readArticle")}</span>
             <ArrowUpRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
         </div>
@@ -97,4 +99,3 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index, isInView }) => {
 }
 
 export default BlogSection
-

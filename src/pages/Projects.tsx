@@ -6,8 +6,10 @@ import { motion, useInView } from "framer-motion"
 import { type Project, projectsData } from "@/constants/projectsData"
 import ProjectModal from "@/components/ProjectModal"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye, Code, Calendar } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const Projects = () => {
+  const { t } = useTranslation()
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
@@ -21,7 +23,8 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Projetos<span className="text-white">;</span>
+          {t("projects.title")}
+          <span className="text-white">;</span>
         </motion.h2>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -50,6 +53,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onOpenModal }) => {
+  const { t } = useTranslation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const nextImage = (e: React.MouseEvent) => {
@@ -75,6 +79,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
         ease: [0.22, 1, 0.36, 1],
       },
     }),
+  }
+
+  // Traduzir status e tipo
+  const getTranslatedStatus = (status: string) => {
+    switch (status) {
+      case "Finalizado":
+        return t("projects.status.finished")
+      case "Beta":
+        return t("projects.status.beta")
+      case "Em Desenvolvimento":
+        return t("projects.status.inProgress")
+      default:
+        return status
+    }
+  }
+
+  const getTranslatedType = (type: string) => {
+    switch (type) {
+      case "Pessoal":
+        return t("projects.type.personal")
+      case "Colaborativo":
+        return t("projects.type.collaborative")
+      case "Freelance":
+        return t("projects.type.freelance")
+      default:
+        return type
+    }
   }
 
   return (
@@ -139,11 +170,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
         <div className="absolute top-2 left-2 flex gap-1.5">
           <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
             <Calendar className="h-2.5 w-2.5" />
-            <span className="text-xs">{project.status}</span>
+            <span className="text-xs">{getTranslatedStatus(project.status)}</span>
           </span>
           <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
             <Code className="h-2.5 w-2.5" />
-            <span className="text-xs">{project.type}</span>
+            <span className="text-xs">{getTranslatedType(project.type)}</span>
           </span>
         </div>
 
@@ -184,7 +215,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               aria-label={`Ver demonstração de ${project.title}`}
             >
               <ExternalLink className="h-3 w-3" />
-              App
+              {t("projects.viewApp")}
             </a>
             <a
               href={project.repo}
@@ -194,7 +225,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               aria-label={`Ver repositório de ${project.title}`}
             >
               <Github className="h-3 w-3" />
-              Repo
+              {t("projects.repository")}
             </a>
             <button
               onClick={onOpenModal}
@@ -211,4 +242,3 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
 }
 
 export default Projects
-

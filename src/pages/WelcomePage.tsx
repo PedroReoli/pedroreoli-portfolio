@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { motion, AnimatePresence } from "framer-motion"
-import { changeLanguage } from "../i18n/i18n"
 
 // Componente de bandeira 3D para a página de boas-vindas
 const WelcomeFlag = ({
@@ -81,9 +81,10 @@ const WelcomeFlag = ({
 }
 
 const WelcomePage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [detectedLanguage, setDetectedLanguage] = useState<string>("pt")
   const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
 
   // Mapeamento de códigos de idioma para nomes de países para as bandeiras
   const languageToCountry: Record<string, string> = {
@@ -106,12 +107,9 @@ const WelcomePage = () => {
     setDetectedLanguage(supportedLanguage)
 
     // Verificar se já existe uma preferência salva
-    const savedLanguage = localStorage.getItem("i18nextLng")
-    if (savedLanguage) {
-      const lang = savedLanguage.split("-")[0]
-      if (["pt", "en", "es"].includes(lang)) {
-        setDetectedLanguage(lang)
-      }
+    const savedLanguage = localStorage.getItem("language")
+    if (savedLanguage && ["pt", "en", "es"].includes(savedLanguage)) {
+      setDetectedLanguage(savedLanguage)
     }
 
     // Simular um tempo de carregamento para efeito visual
@@ -123,10 +121,15 @@ const WelcomePage = () => {
   }, [])
 
   const handleLanguageSelect = (language: string) => {
-    changeLanguage(language)
+    // Salvar a preferência de idioma
+    localStorage.setItem("language", language)
+    i18n.changeLanguage(language)
 
-    // Redirecionar para a URL correta
-    window.location.href = `/${language}`
+    // Marcar que já visitou o site
+    localStorage.setItem("hasVisitedBefore", "true")
+
+    // Navegar para a página principal com o idioma selecionado
+    navigate(`/${language}`)
   }
 
   return (

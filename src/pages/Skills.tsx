@@ -3,11 +3,13 @@
 import type React from "react"
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { skillsByArea, areaLabels } from "@/constants/skillsData"
+import { skillsByArea } from "@/constants/skillsData"
 import type { Skill } from "@/constants/skillsData"
 import SkillModal from "@/components/SkillModal"
+import { useTranslation } from "react-i18next"
 
 const Skills = () => {
+  const { t } = useTranslation()
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
@@ -24,7 +26,8 @@ const Skills = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Habilidades<span className="text-white">;</span>
+          {t("skills.title")}
+          <span className="text-white">;</span>
         </motion.h2>
 
         {/* Grid layout 2x2 para categorias de habilidades */}
@@ -56,6 +59,7 @@ interface SkillCategoryProps {
 }
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({ area, skills, isInView, onSelectSkill, index }) => {
+  const { t } = useTranslation()
   const categoryVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -78,7 +82,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ area, skills, isInView, o
       custom={index}
     >
       <div className="flex items-center mb-4">
-        <h3 className="title font-bold text-blue-500">{areaLabels[area]}</h3>
+        <h3 className="title font-bold text-blue-500">{t(`skills.areas.${area}`)}</h3>
         <motion.div
           className="h-0.5 flex-1 ml-3 bg-blue-500/20 rounded-full"
           initial={{ width: 0 }}
@@ -176,4 +180,3 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, isInView, onClick, 
 }
 
 export default Skills
-

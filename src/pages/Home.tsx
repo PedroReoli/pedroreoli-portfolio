@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, FileText, Youtube, Instagram, Twitter } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 // Ícones modernos do Lucide
 const socialLinks = [
@@ -24,8 +25,9 @@ const socialLinks = [
 ]
 
 const Home = () => {
+  const { t } = useTranslation()
   const [typedText, setTypedText] = useState("")
-  const fullText = "Olá, eu sou o"
+  const fullText = t("home.greeting")
 
   // Efeito de digitação
   useEffect(() => {
@@ -40,7 +42,7 @@ const Home = () => {
     }, 100)
 
     return () => clearInterval(typingInterval)
-  }, [])
+  }, [fullText])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden">
@@ -94,7 +96,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6, duration: 0.7 }}
             >
-              FullStack Junior Developer
+              {t("home.role")}
             </motion.h3>
           </motion.div>
 
@@ -150,4 +152,3 @@ const Home = () => {
 }
 
 export default Home
-

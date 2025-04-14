@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
 import { ChevronDown, MousePointer, Sparkles } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const About = () => {
+  const { t } = useTranslation()
   const [isHovering, setIsHovering] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -128,7 +130,8 @@ const About = () => {
         <motion.div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center" variants={itemVariants}>
           <div className="relative inline-block">
             <h1 className="section-title font-bold text-blue-500 relative z-10">
-              Sobre Mim<span className="text-white">;</span>
+              {t("about.title")}
+              <span className="text-white">;</span>
             </h1>
 
             {/* Efeito de destaque no título */}
@@ -170,7 +173,7 @@ const About = () => {
               onKeyDown={(e) => e.key === "Enter" && handleImageInteraction()}
               tabIndex={0}
               role="button"
-              aria-label="Alternar entre foto em preto e branco e colorida"
+              aria-label={t("about.imageAlt")}
             >
               {/* Efeito de brilho no hover/tap */}
               <motion.div
@@ -196,7 +199,7 @@ const About = () => {
                   <div className="absolute inset-0 backface-hidden">
                     <img
                       src="/assets/perfilpb.jpg"
-                      alt="Pedro Lucas em preto e branco"
+                      alt={t("about.imageAlt")}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -207,7 +210,7 @@ const About = () => {
                   <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(180deg)" }}>
                     <img
                       src="/assets/perfilcol.jpg"
-                      alt="Pedro Lucas colorido"
+                      alt={t("about.imageAltColor")}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -253,7 +256,7 @@ const About = () => {
               {(isMobile && isFlipped) || (!isMobile && isHovering) ? (
                 <span className="font-medium text-blue-500 flex items-center justify-center gap-1.5">
                   <Sparkles size={14} />
-                  Chique demais 😎
+                  {t("about.hoverText")}
                   <Sparkles size={14} />
                 </span>
               ) : (
@@ -261,13 +264,13 @@ const About = () => {
                   {isMobile ? (
                     <>
                       <ChevronDown size={14} className="animate-bounce" />
-                      clique na foto
+                      {t("about.clickText")}
                       <ChevronDown size={14} className="animate-bounce" />
                     </>
                   ) : (
                     <>
                       <MousePointer size={14} />
-                      passe o mouse na foto
+                      {t("about.hoverTextDesktop")}
                       <MousePointer size={14} />
                     </>
                   )}
@@ -291,7 +294,7 @@ const About = () => {
                   transition={{ delay: 0.5, duration: 0.6 }}
                 >
                   <span className="relative">
-                    Desenvolvedor • Músico • Escritor
+                    {t("about.subtitle")}
                     <motion.div
                       className="absolute -bottom-1 left-0 right-0 h-px bg-blue-500/30"
                       initial={{ scaleX: 0 }}
@@ -304,30 +307,15 @@ const About = () => {
                 {/* Parágrafos com animação sequencial */}
                 <div className="space-y-4 sm:space-y-6 text-gray-300">
                   <motion.p className="text leading-relaxed" variants={itemVariants}>
-                    Sou um <span className="text-blue-500 font-medium">desenvolvedor FullStack Júnior</span> movido por{" "}
-                    <span className="text-blue-500 font-medium">curiosidade</span>,{" "}
-                    <span className="text-blue-500 font-medium">inovação</span> e um olhar{" "}
-                    <span className="text-blue-500 font-medium">criativo</span>. A tecnologia, para mim, vai além do
-                    código — é uma ponte entre <span className="text-blue-500 font-medium">acessibilidade</span>,{" "}
-                    <span className="text-blue-500 font-medium">arquitetura limpa</span> e impacto real.
+                    {t("about.paragraph1")}
                   </motion.p>
 
                   <motion.p className="text leading-relaxed" variants={itemVariants}>
-                    Como <span className="text-blue-500 font-medium">músico</span> e{" "}
-                    <span className="text-blue-500 font-medium">educador</span>, trago a sensibilidade da arte para a
-                    forma como construo soluções. Acredito que tecnologia e{" "}
-                    <span className="text-blue-500 font-medium">criatividade</span> andam juntas, e que cada projeto
-                    deve acolher, transformar e expandir possibilidades com um{" "}
-                    <span className="text-blue-500 font-medium">tato humano</span> que vá além da lógica.
+                    {t("about.paragraph2")}
                   </motion.p>
 
                   <motion.p className="text leading-relaxed" variants={itemVariants}>
-                    Busco <span className="text-blue-500 font-medium">evolução contínua</span> e impacto real. No
-                    futuro, quero unir <span className="text-blue-500 font-medium">educação</span> e{" "}
-                    <span className="text-blue-500 font-medium">empreendedorismo</span>, criando uma{" "}
-                    <span className="text-blue-500 font-medium">startup</span> que amplie{" "}
-                    <span className="text-blue-500 font-medium">inclusão digital</span> e torne a tecnologia acessível
-                    para mais pessoas.
+                    {t("about.paragraph3")}
                   </motion.p>
                 </div>
 
@@ -356,4 +344,3 @@ const About = () => {
 }
 
 export default About
-

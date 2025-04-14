@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { timelineData } from "@/constants/timelineData"
 import { ExternalLink, Briefcase, Code, BookOpen } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 // Icon mapping for companies
 const companyIcons = {
@@ -13,6 +14,7 @@ const companyIcons = {
 } as const
 
 const Timeline = () => {
+  const { t } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, amount: 0.1 })
 
@@ -25,7 +27,8 @@ const Timeline = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Experiência<span className="text-white">;</span>
+          {t("timeline.title")}
+          <span className="text-white">;</span>
         </motion.h2>
 
         <div ref={containerRef} className="relative">
@@ -80,7 +83,9 @@ const Timeline = () => {
                           <h3 className="title font-bold text-white group-hover:text-blue-400 transition-colors">
                             {item.empresa}
                           </h3>
-                          <p className="text text-gray-300">{item.cargo}</p>
+                          <p className="text text-gray-300">
+                            {t(`timeline.companies.${item.empresa.toLowerCase()}.role`, item.cargo)}
+                          </p>
                         </div>
                       </div>
                       <a
@@ -98,16 +103,22 @@ const Timeline = () => {
                   {/* Card content */}
                   <div className="p-4 md:p-5">
                     <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
-                      <span className="text text-gray-400">{item.periodo}</span>
+                      <span className="text text-gray-400">
+                        {t(`timeline.companies.${item.empresa.toLowerCase()}.period`, item.periodo)}
+                      </span>
                       <span className="text-small px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                        {item.status}
+                        {t(`timeline.companies.${item.empresa.toLowerCase()}.status`, item.status)}
                       </span>
                     </div>
 
-                    <p className="text text-gray-300 mb-3 md:mb-4 leading-relaxed">{item.descricao}</p>
+                    <p className="text text-gray-300 mb-3 md:mb-4 leading-relaxed">
+                      {t(`timeline.companies.${item.empresa.toLowerCase()}.description`, item.descricao)}
+                    </p>
 
                     {item.detalhes && (
-                      <p className="text text-gray-400 mb-3 md:mb-4 leading-relaxed">{item.detalhes}</p>
+                      <p className="text text-gray-400 mb-3 md:mb-4 leading-relaxed">
+                        {t(`timeline.companies.${item.empresa.toLowerCase()}.details`, item.detalhes)}
+                      </p>
                     )}
 
                     <div className="flex flex-wrap gap-1 md:gap-1.5 mt-3 md:mt-4">
@@ -154,4 +165,3 @@ const Timeline = () => {
 }
 
 export default Timeline
-

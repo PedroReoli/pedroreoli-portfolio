@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useSpring } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import Home from "./Home"
 import About from "./About"
 import Timeline from "./Timeline"
@@ -14,20 +15,8 @@ import End from "./End"
 import Background from "./Background"
 import LazySection from "@/components/LazySection"
 
-// Tradução das seções para português
-const sectionLabels = {
-  home: "Início",
-  about: "Sobre Mim",
-  timeline: "Experiência",
-  projects: "Projetos",
-  services: "Serviços",
-  skills: "Habilidades",
-  blog: "Blog",
-  faq: "FAQ",
-  end: "Contato",
-}
-
 const MainPage = () => {
+  const { t } = useTranslation()
   const [activeSection, setActiveSection] = useState<string>("home")
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
@@ -105,7 +94,7 @@ const MainPage = () => {
               key={section}
               onClick={() => scrollToSection(section)}
               className="group relative flex items-center"
-              aria-label={`Rolar para a seção ${sectionLabels[section as keyof typeof sectionLabels]}`}
+              aria-label={`Rolar para a seção ${t(`navigation.${section}`)}`}
             >
               <span
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
@@ -119,7 +108,7 @@ const MainPage = () => {
                     : "opacity-0 translate-x-2 bg-[#0F172A]/80 text-white/70"
                 } group-hover:opacity-100 group-hover:translate-x-0`}
               >
-                {sectionLabels[section as keyof typeof sectionLabels]}
+                {t(`navigation.${section}`)}
               </span>
             </button>
           ))}
@@ -199,4 +188,3 @@ const MainPage = () => {
 }
 
 export default MainPage
-

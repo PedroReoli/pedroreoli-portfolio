@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Star, Award, BookOpen, Info, ChevronRight, ExternalLink } from "lucide-react"
 import type { Skill } from "@/constants/skillsData"
+import { useTranslation } from "react-i18next"
 
 interface SkillModalProps {
   skill: Skill | null
@@ -13,6 +14,7 @@ interface SkillModalProps {
 }
 
 const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
+  const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<"about" | "courses">("about")
   const modalRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -179,7 +181,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-1.5">
                     <Award className="h-4 w-4 text-blue-500" />
-                    <span className="text-xs font-medium text-gray-300">Proficiência</span>
+                    <span className="text-xs font-medium text-gray-300">{t("skills.modal.proficiency")}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-gray-400">{skill.level.toFixed(1)}/3</span>
@@ -200,7 +202,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                 >
                   <span className="flex items-center gap-1">
                     <Info className="h-3.5 w-3.5" />
-                    Sobre
+                    {t("skills.modal.about")}
                   </span>
                   {activeTab === "about" && (
                     <motion.div
@@ -219,7 +221,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   >
                     <span className="flex items-center gap-1">
                       <BookOpen className="h-3.5 w-3.5" />
-                      Cursos
+                      {t("skills.modal.courses")}
                       <span className="inline-flex items-center justify-center w-4 h-4 text-[10px] font-medium rounded-full bg-gray-800">
                         {skill.courses.length}
                       </span>
@@ -258,7 +260,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                       >
                         <span className="flex items-center gap-1.5">
                           <BookOpen className="h-3.5 w-3.5 text-blue-500" />
-                          Ver cursos recomendados
+                          {t("skills.modal.viewCourses")}
                         </span>
                         <ChevronRight className="h-3.5 w-3.5 text-gray-500 group-hover:text-white transition-transform group-hover:translate-x-0.5" />
                       </button>
@@ -321,7 +323,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                 onClick={onClose}
                 className="px-3 py-1.5 rounded-full text-xs font-medium bg-gray-800 hover:bg-gray-700 text-white transition-colors"
               >
-                Fechar
+                {t("skills.modal.close")}
               </button>
             </div>
           </motion.div>
@@ -332,4 +334,3 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
 }
 
 export default SkillModal
-

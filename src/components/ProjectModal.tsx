@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { Project } from "@/constants/projectsData"
 import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Calendar, Code, Layers, Info } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 interface ProjectModalProps {
   project: Project | null
@@ -14,6 +15,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+  const { t } = useTranslation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [activeTab, setActiveTab] = useState<"info" | "tech">("info")
   const modalRef = useRef<HTMLDivElement>(null)
@@ -91,6 +93,33 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev === 0 ? project.thumbnails.length - 1 : prev - 1))
+  }
+
+  // Traduzir status e tipo
+  const getTranslatedStatus = (status: string) => {
+    switch (status) {
+      case "Finalizado":
+        return t("projects.status.finished")
+      case "Beta":
+        return t("projects.status.beta")
+      case "Em Desenvolvimento":
+        return t("projects.status.inProgress")
+      default:
+        return status
+    }
+  }
+
+  const getTranslatedType = (type: string) => {
+    switch (type) {
+      case "Pessoal":
+        return t("projects.type.personal")
+      case "Colaborativo":
+        return t("projects.type.collaborative")
+      case "Freelance":
+        return t("projects.type.freelance")
+      default:
+        return type
+    }
   }
 
   return (
@@ -175,11 +204,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   <div className="flex flex-wrap gap-2 mb-2">
                     <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
-                      {project.status}
+                      {getTranslatedStatus(project.status)}
                     </span>
                     <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1">
                       <Code className="h-3 w-3" />
-                      {project.type}
+                      {getTranslatedType(project.type)}
                     </span>
                   </div>
 
@@ -195,7 +224,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                     }`}
                   >
                     <Info className="h-3.5 w-3.5" />
-                    Informações
+                    {t("projects.information")}
                     {activeTab === "info" && (
                       <motion.div
                         layoutId="activeProjectTab"
@@ -210,7 +239,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                     }`}
                   >
                     <Layers className="h-3.5 w-3.5" />
-                    Tecnologias
+                    {t("projects.technologies")}
                     {activeTab === "tech" && (
                       <motion.div
                         layoutId="activeProjectTab"
@@ -247,7 +276,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <h3 className="text-xs font-semibold text-white mb-3">Stack Tecnológica</h3>
+                        <h3 className="text-xs font-semibold text-white mb-3">{t("projects.techStack")}</h3>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {project.techStack.map((tech, index) => (
                             <div
@@ -273,7 +302,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       className="flex items-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
-                      Ver App
+                      {t("projects.viewApp")}
                     </a>
                     <a
                       href={project.repo}
@@ -282,7 +311,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
                     >
                       <Github className="h-3.5 w-3.5" />
-                      Repositório
+                      {t("projects.repository")}
                     </a>
                   </div>
                 </div>
@@ -296,4 +325,3 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 }
 
 export default ProjectModal
-

@@ -10,45 +10,43 @@ import "./i18n/i18n" // Importar configuração do i18n
 
 const App = () => {
   const { i18n } = useTranslation()
-  const [showWelcome, setShowWelcome] = useState(true)
-  const [hasLanguagePreference, setHasLanguagePreference] = useState(false)
+  const [hasVisitedBefore, setHasVisitedBefore] = useState(false)
 
-  // Verificar se já existe uma preferência de idioma salva
+  // Verificar se já visitou antes
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("i18nextLng")
-    if (savedLanguage) {
-      setHasLanguagePreference(true)
-
-      // Se estamos na raiz e temos uma preferência, redirecionar para a URL com idioma
-      if (window.location.pathname === "/") {
-        const lang = savedLanguage.split("-")[0]
-        if (["pt", "en", "es"].includes(lang)) {
-          window.location.href = `/${lang}`
-          return
-        }
-      }
-    }
+    const visited = localStorage.getItem("hasVisitedBefore")
+    setHasVisitedBefore(!!visited)
 
     // Se estamos em uma URL com idioma, não mostrar a página de boas-vindas
     const pathSegments = window.location.pathname.split("/").filter(Boolean)
     if (pathSegments.length > 0 && ["pt", "en", "es"].includes(pathSegments[0])) {
-      setShowWelcome(false)
       i18n.changeLanguage(pathSegments[0])
+      localStorage.setItem("language", pathSegments[0])
     }
   }, [i18n])
 
   return (
     <div className="relative overflow-x-hidden w-full">
       <Router>
-        {showWelcome && <WelcomePage />}
         <Routes>
+          {/* Rota raiz - mostrar WelcomePage ou redirecionar */}
           <Route
             path="/"
-            element={hasLanguagePreference ? <Navigate to={`/${i18n.language.split("-")[0]}`} /> : null}
+            element={
+              hasVisitedBefore ? <Navigate to={`/${localStorage.getItem("language") || "pt"}`} /> : <WelcomePage />
+            }
           />
+
+          {/* Rota para WelcomePage explícita */}
+          <Route path="/welcome" element={<WelcomePage />} />
+
+          {/* Rotas específicas de idioma */}
           <Route path="/:lang" element={<RootLayout />}>
             <Route index element={<MainPage />} />
           </Route>
+
+          {/* Redirecionar qualquer outra rota para a raiz */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </div>

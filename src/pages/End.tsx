@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion"
 import { HandIcon as HandWaving, ArrowUp, Sparkles, Heart } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const End = () => {
+  const { t } = useTranslation()
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -95,7 +97,7 @@ const End = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Obrigado por visitar!
+            {t("end.title")}
           </motion.h2>
 
           <motion.div
@@ -115,12 +117,10 @@ const End = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <p className="mb-4">Espero que tenha gostado do meu portfólio!</p>
-          <p className="mb-4">
-            Sinta-se à vontade para explorar mais, voltar ao início ou retornar sempre que desejar.
-          </p>
+          <p className="mb-4">{t("end.message1")}</p>
+          <p className="mb-4">{t("end.message2")}</p>
           <p className="flex items-center justify-center gap-2">
-            <span>Desejo muito sucesso nos seus projetos e na sua jornada!</span>
+            <span>{t("end.message3")}</span>
             <motion.span
               animate={{ rotate: [0, 10, -10, 10, 0] }}
               transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatDelay: 3 }}
@@ -144,7 +144,7 @@ const End = () => {
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-500/20 to-transparent -skew-x-20 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
 
           <ArrowUp className="w-5 h-5 mr-2" />
-          <span className="relative z-10">Voltar para o Início</span>
+          <span className="relative z-10">{t("end.backToTop")}</span>
 
           {/* Subtle glow effect on hover */}
           <motion.span
@@ -185,4 +185,3 @@ const End = () => {
 }
 
 export default End
-

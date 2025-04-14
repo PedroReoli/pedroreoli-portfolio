@@ -6,8 +6,10 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { servicesData } from "@/constants/servicesData"
 import { FaPalette, FaCode, FaGraduationCap } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
 
 const Services = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
@@ -20,7 +22,8 @@ const Services = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Serviços<span className="text-white">;</span>
+          {t("services.title")}
+          <span className="text-white">;</span>
         </motion.h2>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -44,6 +47,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) => {
+  const { t } = useTranslation()
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -85,6 +89,33 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) =
     }
   }
 
+  // Traduzir título e descrição com base no tipo de serviço
+  const getTranslatedTitle = () => {
+    switch (service.iconType) {
+      case "design":
+        return t("services.uxui.title")
+      case "code":
+        return t("services.fullstack.title")
+      case "education":
+        return t("services.mentoring.title")
+      default:
+        return service.title
+    }
+  }
+
+  const getTranslatedDescription = () => {
+    switch (service.iconType) {
+      case "design":
+        return t("services.uxui.description")
+      case "code":
+        return t("services.fullstack.description")
+      case "education":
+        return t("services.mentoring.description")
+      default:
+        return service.description
+    }
+  }
+
   return (
     <motion.div
       className="bg-gray-900/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-blue-500/5 hover:shadow-blue-500/10 transition-all duration-300"
@@ -105,13 +136,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) =
           {renderIcon()}
         </motion.div>
 
-        <h3 className="title font-bold text-white mb-4">{service.title}</h3>
+        <h3 className="title font-bold text-white mb-4">{getTranslatedTitle()}</h3>
 
-        <p className="text text-gray-300">{service.description}</p>
+        <p className="text text-gray-300">{getTranslatedDescription()}</p>
       </div>
     </motion.div>
   )
 }
 
 export default Services
-
