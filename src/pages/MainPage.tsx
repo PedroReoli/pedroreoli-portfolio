@@ -38,38 +38,85 @@ const MainPage = () => {
     restDelta: 0.001,
   })
 
+  const scrollTimeout = useRef<number | null>(null)
+
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 50 // Pequeno offset para melhor detecção
+      const scrollPosition = window.scrollY + window.innerHeight / 3 // Ponto de referência no terço superior da tela
 
-      // Find the current active section
+      // Encontrar qual seção está mais visível na viewport
+      let maxVisibility = 0
+      let currentSection = activeSection
+
       Object.entries(sectionsRef.current).forEach(([section, ref]) => {
         if (!ref) return
 
-        const offsetTop = ref.offsetTop
-        const offsetHeight = ref.offsetHeight
+        const rect = ref.getBoundingClientRect()
+        const sectionTop = rect.top + window.scrollY
+        const sectionBottom = sectionTop + rect.height
 
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          setActiveSection(section)
+        // Calcular quanto da seção está visível na viewport
+        const visibleTop = Math.max(sectionTop, window.scrollY)
+        const visibleBottom = Math.min(sectionBottom, window.scrollY + window.innerHeight)
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop)
+
+        // Verificar se esta seção está mais visível que a anterior
+        if (visibleHeight > maxVisibility) {
+          maxVisibility = visibleHeight
+          currentSection = section
         }
+
+        // Caso especial para a primeira seção (home)
+        if (section === "home" && window.scrollY < window.innerHeight / 2) {
+          currentSection = "home"
+        }
+
+        // Caso especial para a última seção (end)
+        if (section === "end" && window.scrollY + window.innerHeight > document.body.scrollHeight - 100) {
+          currentSection = "end"
+        }
+      })
+
+      setActiveSection(currentSection)
+    }
+
+    const handleScrollWithDebounce = () => {
+      if (scrollTimeout.current) {
+        window.cancelAnimationFrame(scrollTimeout.current)
+      }
+
+      scrollTimeout.current = window.requestAnimationFrame(() => {
+        handleScroll()
       })
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Initialize on mount
+    window.addEventListener("scroll", handleScrollWithDebounce, { passive: true })
+    handleScrollWithDebounce() // Initialize on mount
 
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      if (scrollTimeout.current) {
+        window.cancelAnimationFrame(scrollTimeout.current)
+      }
+      window.removeEventListener("scroll", handleScrollWithDebounce)
+    }
   }, [])
 
   // Scroll to section function
   const scrollToSection = (section: string) => {
     const ref = sectionsRef.current[section]
     if (ref) {
+      // Calcular a posição de scroll considerando o header ou outros elementos fixos
+      // Ajuste o valor 0 abaixo se houver um header fixo
+      const offsetTop = ref.getBoundingClientRect().top + window.pageYOffset - 0
+
       window.scrollTo({
-        top: ref.offsetTop,
+        top: offsetTop,
         behavior: "smooth",
       })
+
+      // Atualizar a seção ativa imediatamente para feedback visual
+      setActiveSection(section)
     }
   }
 
@@ -88,17 +135,19 @@ const MainPage = () => {
 
       {/* Navigation dots - Traduzidos para português */}
       <div className="fixed right-4 xxs:right-5 sm:right-6 md:right-8 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
-        <div className="flex flex-col items-center space-y-4">
+        <div className="flex flex-col items-center space-y-6">
           {Object.keys(sectionsRef.current).map((section) => (
             <button
               key={section}
               onClick={() => scrollToSection(section)}
-              className="group relative flex items-center"
+              className="group relative flex items-center py-1"
               aria-label={`Rolar para a seção ${t(`navigation.${section}`)}`}
             >
               <span
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeSection === section ? "bg-[#60A5FA] w-3 h-3" : "bg-white/30 group-hover:bg-white/60"
+                  activeSection === section
+                    ? "bg-[#60A5FA] w-3 h-3 shadow-[0_0_8px_rgba(96,165,250,0.6)]"
+                    : "bg-white/30 group-hover:bg-white/60"
                 }`}
               />
               <span
