@@ -1,9 +1,30 @@
-import { Outlet } from "react-router-dom"
+"use client"
+
+import { useEffect } from "react"
+import { Outlet, useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 
 const RootLayout = () => {
+  const { lang } = useParams<{ lang: string }>()
+  const { i18n } = useTranslation()
+
+  // Atualizar o idioma com base na URL
+  useEffect(() => {
+    if (lang && ["pt", "en", "es"].includes(lang)) {
+      i18n.changeLanguage(lang)
+    }
+  }, [lang, i18n])
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#111111] overflow-x-hidden">
-      <main className="flex-1 w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12 relative">
+    <div className="min-h-screen">
+      {/* Botão de troca de idioma no canto superior direito */}
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher />
+      </div>
+
+      {/* Conteúdo principal */}
+      <main>
         <Outlet />
       </main>
     </div>
@@ -11,4 +32,3 @@ const RootLayout = () => {
 }
 
 export default RootLayout
-

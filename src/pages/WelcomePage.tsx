@@ -81,7 +81,7 @@ const WelcomeFlag = ({
 }
 
 const WelcomePage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [detectedLanguage, setDetectedLanguage] = useState<string>("pt")
   const [isLoading, setIsLoading] = useState(true)
 
@@ -185,7 +185,7 @@ const WelcomePage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              {Object.entries(languageToCountry).map(([lang, country], index) => (
+              {Object.entries(languageToCountry).map(([lang, country]) => (
                 <WelcomeFlag
                   key={lang}
                   country={country}

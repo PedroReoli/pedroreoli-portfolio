@@ -51,7 +51,7 @@ const Flag3D = ({
 }
 
 const LanguageSwitcher = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const currentLanguage = getCurrentLanguage()
