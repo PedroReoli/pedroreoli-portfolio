@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { motion, AnimatePresence } from "framer-motion"
+import Background from "./Background"
 
 // Componente de bandeira 3D para a página de boas-vindas
 const WelcomeFlag = ({
@@ -28,7 +29,7 @@ const WelcomeFlag = ({
       onClick={onClick}
     >
       <motion.div
-        className={`relative w-24 h-24 rounded-xl overflow-hidden
+        className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden
                   ${isHighlighted ? "ring-4 ring-blue-500 ring-offset-4 ring-offset-gray-900" : ""}
                   shadow-lg hover:shadow-xl transition-all duration-300`}
         animate={
@@ -80,6 +81,21 @@ const WelcomeFlag = ({
   )
 }
 
+// Componente para exibir texto de boas-vindas em um idioma específico
+const WelcomeText = ({ language, title }: { language: string; title: string }) => {
+  return (
+    <motion.div
+      className="text-center mb-2"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="text-lg sm:text-xl font-medium text-blue-400">{title}</h2>
+      <p className="text-sm text-gray-400">{language}</p>
+    </motion.div>
+  )
+}
+
 const WelcomePage = () => {
   const { t, i18n } = useTranslation()
   const [detectedLanguage, setDetectedLanguage] = useState<string>("pt")
@@ -98,6 +114,13 @@ const WelcomePage = () => {
     pt: "Português",
     en: "English",
     es: "Español",
+  }
+
+  // Textos de boas-vindas em cada idioma
+  const welcomeTexts = {
+    pt: "Bem-vindo ao meu Portfólio",
+    en: "Welcome to my Portfolio",
+    es: "Bienvenido a mi Portafolio",
   }
 
   useEffect(() => {
@@ -133,7 +156,12 @@ const WelcomePage = () => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-gray-900 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Background animado */}
+      <div className="absolute inset-0">
+        <Background />
+      </div>
+
       <AnimatePresence>
         {isLoading ? (
           <motion.div
@@ -141,7 +169,7 @@ const WelcomePage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center relative z-10"
           >
             <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
           </motion.div>
@@ -151,32 +179,35 @@ const WelcomePage = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-full max-w-3xl p-8 rounded-2xl bg-gray-800/50 backdrop-blur-md border border-gray-700/50 shadow-xl"
+            className="w-full max-w-3xl p-6 sm:p-8 rounded-2xl bg-gray-800/50 backdrop-blur-md border border-gray-700/50 shadow-xl relative z-10 mx-4"
           >
-            <div className="text-center mb-10">
-              <motion.h1
-                className="text-3xl md:text-4xl font-bold text-white mb-3"
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
+            <div className="text-center mb-8">
+              {/* Textos de boas-vindas em todos os idiomas */}
+              <motion.div
+                className="flex flex-col gap-1 mb-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.7 }}
               >
-                {t("welcome.title")}
-              </motion.h1>
+                <WelcomeText language="Português" title={welcomeTexts.pt} />
+                <WelcomeText language="English" title={welcomeTexts.en} />
+                <WelcomeText language="Español" title={welcomeTexts.es} />
+              </motion.div>
 
               <motion.p
                 className="text-lg text-gray-300"
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.7 }}
               >
                 {t("welcome.subtitle")}
               </motion.p>
 
               <motion.div
-                className="mt-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300"
+                className="mt-6 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.6, duration: 0.7 }}
               >
                 {t("welcome.detected", { language: languageToName[detectedLanguage] })}
               </motion.div>
@@ -186,7 +217,7 @@ const WelcomePage = () => {
               className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.8, duration: 0.7 }}
             >
               {Object.entries(languageToCountry).map(([lang, country]) => (
                 <WelcomeFlag
@@ -198,6 +229,10 @@ const WelcomePage = () => {
                 />
               ))}
             </motion.div>
+
+            {/* Decoração de cantos */}
+            <div className="absolute top-3 left-3 w-16 h-16 border-t-2 border-l-2 border-blue-500/30 rounded-tl-lg"></div>
+            <div className="absolute bottom-3 right-3 w-16 h-16 border-b-2 border-r-2 border-blue-500/30 rounded-br-lg"></div>
           </motion.div>
         )}
       </AnimatePresence>
