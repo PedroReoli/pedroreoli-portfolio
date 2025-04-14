@@ -9,7 +9,7 @@ import { motion, AnimatePresence, useAnimation, useMotionValue, useTransform } f
 import Background from "./Background"
 import { Globe } from "lucide-react"
 
-// Componente de bandeira 3D com efeitos avançados
+// Substituir o componente Flag3D por uma versão mais responsiva
 const Flag3D = ({
   country,
   languageName,
@@ -66,7 +66,7 @@ const Flag3D = ({
     >
       <motion.div
         ref={flagRef}
-        className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden cursor-pointer border-2 transition-all duration-500"
+        className="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden cursor-pointer border-2 transition-all duration-500"
         style={{
           rotateX: rotateX,
           rotateY: rotateY,
@@ -99,20 +99,20 @@ const Flag3D = ({
 
       {/* Nome do idioma com efeito de destaque */}
       <motion.div
-        className="text-center mt-4"
+        className="text-center mt-2 sm:mt-4"
         animate={{
           color: isSelected ? "#60A5FA" : "#E5E7EB",
           textShadow: isSelected ? "0 0 10px rgba(96, 165, 250, 0.5)" : "none",
         }}
         transition={{ duration: 0.3 }}
       >
-        <h3 className="text-lg font-medium">{languageName}</h3>
+        <h3 className="text-sm sm:text-base md:text-lg font-medium">{languageName}</h3>
       </motion.div>
     </motion.div>
   )
 }
 
-// Componente principal da página de boas-vindas
+// Atualizar o componente WelcomePage para melhorar a responsividade
 const WelcomePage = () => {
   const { t, i18n } = useTranslation()
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null)
@@ -203,7 +203,7 @@ const WelcomePage = () => {
           >
             {/* Card principal com efeito de vidro premium */}
             <motion.div
-              className="rounded-3xl overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl"
+              className="rounded-2xl sm:rounded-3xl overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -214,20 +214,20 @@ const WelcomePage = () => {
               {/* Efeito de brilho no topo */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/80 to-blue-500/0" />
 
-              <div className="relative z-10 p-8 sm:p-12">
+              <div className="relative z-10 p-4 xs:p-6 sm:p-8 md:p-12">
                 {/* Cabeçalho com título elegante */}
-                <div className="flex flex-col items-center mb-12">
+                <div className="flex flex-col items-center mb-6 sm:mb-8 md:mb-12">
                   <motion.div
-                    className="mb-6 p-3 rounded-full bg-blue-500/10 border border-blue-500/30"
+                    className="mb-4 sm:mb-6 p-2 sm:p-3 rounded-full bg-blue-500/10 border border-blue-500/30"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                   >
-                    <Globe className="w-10 h-10 text-blue-400" />
+                    <Globe className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-blue-400" />
                   </motion.div>
 
                   <motion.h1
-                    className="text-3xl sm:text-4xl font-bold text-white mb-3 text-center"
+                    className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 text-center"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.7 }}
@@ -236,14 +236,14 @@ const WelcomePage = () => {
                   </motion.h1>
 
                   <motion.div
-                    className="h-0.5 w-20 bg-gradient-to-r from-transparent via-blue-500 to-transparent mb-6"
+                    className="h-0.5 w-16 sm:w-20 bg-gradient-to-r from-transparent via-blue-500 to-transparent mb-3 sm:mb-6"
                     initial={{ width: 0, opacity: 0 }}
                     animate={{ width: "5rem", opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
                   />
 
                   <motion.p
-                    className="text-lg text-gray-300 max-w-lg text-center"
+                    className="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.7 }}
@@ -254,7 +254,7 @@ const WelcomePage = () => {
 
                 {/* Seleção de bandeiras */}
                 <motion.div
-                  className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16"
+                  className="flex flex-row justify-center gap-4 xs:gap-6 sm:gap-8 md:gap-16"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.7 }}
@@ -272,15 +272,15 @@ const WelcomePage = () => {
               </div>
             </motion.div>
 
-            {/* Decoração de cantos flutuantes */}
+            {/* Decoração de cantos flutuantes - Ajustados para serem responsivos */}
             <motion.div
-              className="absolute -top-4 -left-4 w-16 h-16 border-t-2 border-l-2 border-blue-500/30 rounded-tl-3xl"
+              className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 md:-top-4 md:-left-4 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 border-t-2 border-l-2 border-blue-500/30 rounded-tl-3xl"
               initial={{ opacity: 0, x: -10, y: -10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
             />
             <motion.div
-              className="absolute -bottom-4 -right-4 w-16 h-16 border-b-2 border-r-2 border-blue-500/30 rounded-br-3xl"
+              className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 md:-bottom-4 md:-right-4 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 border-b-2 border-r-2 border-blue-500/30 rounded-br-3xl"
               initial={{ opacity: 0, x: 10, y: 10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}

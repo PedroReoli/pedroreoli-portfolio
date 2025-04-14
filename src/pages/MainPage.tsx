@@ -43,7 +43,6 @@ const MainPage = () => {
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3 // Ponto de referência no terço superior da tela
 
       // Encontrar qual seção está mais visível na viewport
       let maxVisibility = 0
