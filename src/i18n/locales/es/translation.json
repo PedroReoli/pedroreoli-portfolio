@@ -33,6 +33,7 @@
     "title": "Experiencia",
     "companies": {
       "autocom3": {
+        "name": "AutoCom3",
         "role": "Desarrollador Junior",
         "period": "10/2024 - Presente",
         "status": "En Curso",
@@ -40,6 +41,7 @@
         "details": "Implementación de soluciones para garantizar la calidad y eficiencia de los sistemas."
       },
       "devemdesenvolvimento": {
+        "name": "DevEmDesenvolvimento",
         "role": "CEO, Desarrollador y Redactor",
         "period": "05/2024 - Presente",
         "status": "En Curso",
@@ -47,6 +49,7 @@
         "details": "Ofrece cursos, blogs y proyectos prácticos para compartir conocimiento e impulsar carreras en el área de tecnología."
       },
       "evatech": {
+        "name": "EvaTech",
         "role": "Profesor, Mentor y Conferencista",
         "period": "06/2024 - 11/2024",
         "status": "Completado",
@@ -74,7 +77,24 @@
     "techStack": "Stack Tecnológico",
     "information": "Información",
     "technologies": "Tecnologías",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "items": {
+      "evatech": {
+        "title": "Sitio Web EvaTech",
+        "description": "Sitio web oficial de EvaTech, un proyecto social enfocado en enseñar tecnología a madres solteras negras.",
+        "detailedDescription": "Este proyecto colaborativo fue desarrollado para proporcionar una presencia digital a EvaTech, una iniciativa social que busca empoderar a madres solteras negras a través de la educación tecnológica. El sitio web incluye información sobre cursos, formularios de registro e historias de éxito."
+      },
+      "peoplelly": {
+        "title": "Peoplelly",
+        "description": "Una plataforma social para conectar personas con intereses similares y facilitar conversaciones significativas.",
+        "detailedDescription": "Peoplelly es un proyecto personal que busca crear una experiencia de redes sociales más auténtica. Se enfoca en conectar usuarios basándose en intereses compartidos en lugar de métricas superficiales, y fomenta conversaciones significativas a través de características innovadoras de chat."
+      },
+      "devEmDesenvolvimento": {
+        "title": "Dev Em Desenvolvimento",
+        "description": "Blog y plataforma educativa para desarrolladores principiantes con tutoriales, artículos y recursos.",
+        "detailedDescription": "Dev Em Desenvolvimento (Desarrollador en Desarrollo) es mi plataforma educativa dirigida a ayudar a principiantes a ingresar al mundo de la programación. Cuenta con tutoriales cuidadosamente elaborados, artículos en profundidad y recursos prácticos para hacer que el aprendizaje de la programación sea más accesible."
+      }
+    }
   },
   "services": {
     "title": "Servicios",
@@ -105,11 +125,69 @@
       "courses": "Cursos",
       "viewCourses": "Ver cursos recomendados",
       "close": "Cerrar"
+    },
+    "items": {
+      "react": {
+        "description": "React es mi biblioteca principal para frontend. La uso para construir interfaces de usuario interactivas con un enfoque basado en componentes, centrándome en la reutilización y mantenibilidad."
+      },
+      "nextjs": {
+        "description": "Next.js es mi framework de elección para aplicaciones React que requieren renderizado del lado del servidor, generación de sitios estáticos o rutas API."
+      },
+      "typescript": {
+        "description": "Uso TypeScript para agregar tipado estático a JavaScript, lo que ayuda a detectar errores temprano y mejora la calidad y mantenibilidad del código."
+      },
+      "tailwind": {
+        "description": "Tailwind CSS es mi solución de estilo preferida por su enfoque utility-first que permite un desarrollo rápido de UI con diseño consistente."
+      },
+      "nodejs": {
+        "description": "Node.js es mi entorno de ejecución para JavaScript del lado del servidor, permitiéndome construir aplicaciones de red escalables."
+      },
+      "csharp": {
+        "description": "C# es mi lenguaje de elección para desarrollo backend con .NET, particularmente para aplicaciones y servicios empresariales."
+      },
+      "python": {
+        "description": "Uso Python para automatización, análisis de datos y desarrollo backend cuando la simplicidad y legibilidad son prioridades."
+      },
+      "appwrite": {
+        "description": "Appwrite es mi plataforma backend-as-a-service preferida para el desarrollo rápido de aplicaciones web y móviles."
+      },
+      "sql": {
+        "description": "SQL es esencial para mi trabajo con bases de datos, permitiéndome consultar, manipular y gestionar bases de datos relacionales de manera efectiva."
+      },
+      "mongodb": {
+        "description": "MongoDB es mi base de datos NoSQL preferida para aplicaciones que requieren diseño de esquema flexible y escalado horizontal."
+      },
+      "postgresql": {
+        "description": "PostgreSQL es mi elección para necesidades avanzadas de bases de datos relacionales, ofreciendo características robustas y excelente rendimiento."
+      },
+      "git": {
+        "description": "Git es fundamental en mi flujo de trabajo para control de versiones, colaboración y gestión de código."
+      },
+      "docker": {
+        "description": "Uso Docker para contenerizar aplicaciones, asegurando entornos consistentes en desarrollo y producción."
+      },
+      "vscode": {
+        "description": "Visual Studio Code es mi editor de código principal, mejorado con extensiones para productividad y calidad de código."
+      }
     }
   },
   "blog": {
     "title": "Blog",
-    "readArticle": "Leer artículo"
+    "readArticle": "Leer artículo",
+    "posts": {
+      "sqlBestPractices": {
+        "title": "Mejores Prácticas en SQL",
+        "description": "Aprende prácticas esenciales para escribir consultas SQL eficientes, mantenibles y seguras."
+      },
+      "sqlBasics": {
+        "title": "Fundamentos de SQL",
+        "description": "Una guía completa sobre los fundamentos de SQL para principiantes, cubriendo comandos y conceptos básicos."
+      },
+      "oopSystems": {
+        "title": "Programación Orientada a Objetos: Estructurando Sistemas Reales",
+        "description": "Cómo aplicar principios orientados a objetos para modelar y construir sistemas del mundo real de manera efectiva."
+      }
+    }
   },
   "faq": {
     "title": "FAQ",
@@ -132,6 +210,12 @@
         "question": "¿Qué tecnologías dominas?",
         "answer": "Trabajo con una amplia variedad de tecnologías, incluyendo React, Node.js, TypeScript, C#, ASP.NET y bases de datos como SQL y MongoDB. Siempre busco usar la mejor solución para cada proyecto."
       }
+    },
+    "contacts": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
     }
   },
   "end": {
@@ -150,6 +234,6 @@
     "skills": "Habilidades",
     "blog": "Blog",
     "faq": "FAQ",
-    "contact": "Contacto"
+    "end": "Final"
   }
 }

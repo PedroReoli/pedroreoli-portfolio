@@ -1,24 +1,23 @@
 export interface Service {
-  title: string
-  description: string
   iconType: "design" | "code" | "education"
+  titleKey: string
+  descriptionKey: string
 }
 
 export const servicesData: Service[] = [
   {
-    title: "UX / UI Design",
-    description: "Desenho interfaces claras, objetivas e intuitivas, priorizando a experiência do usuário.",
     iconType: "design",
+    titleKey: "services.uxui.title",
+    descriptionKey: "services.uxui.description",
   },
   {
-    title: "Desenvolvimento FullStack",
-    description: "Construo soluções completas, desde interfaces até back-ends robustos e escaláveis.",
     iconType: "code",
+    titleKey: "services.fullstack.title",
+    descriptionKey: "services.fullstack.description",
   },
   {
-    title: "Mentoria e Aulas",
-    description: "Orientação personalizada para estudos, carreiras e projetos na área de programação.",
     iconType: "education",
+    titleKey: "services.mentoring.title",
+    descriptionKey: "services.mentoring.description",
   },
 ]
-

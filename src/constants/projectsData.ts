@@ -1,51 +1,48 @@
 export interface Project {
-  title: string
-  description: string
+  titleKey: string     // Chave de tradução para o título
+  descriptionKey: string  // Chave de tradução para a descrição
   link: string
   repo: string
   techStack: string[]
-  status: "Finalizado" | "Beta" | "Em Desenvolvimento"
+  status: "finished" | "beta" | "inProgress"  // Chaves de status padronizadas
   thumbnails: string[]
-  type: "Pessoal" | "Colaborativo" | "Freelance"
-  detailedDescription?: string
+  type: "personal" | "collaborative" | "freelance"  // Chaves de tipo padronizadas
+  detailedDescriptionKey?: string  // Chave de tradução para a descrição detalhada
 }
 
 export const projectsData: Project[] = [
   {
-    title: "Evatech",
-    description: "Plataforma educacional para empoderamento de mães através da tecnologia.",
+    titleKey: "projects.items.evatech.title",
+    descriptionKey: "projects.items.evatech.description",
     link: "https://evatech2024.netlify.app",
     repo: "https://github.com/PedroReoli/Evatech",
     techStack: ["React", "TailwindCSS", "AppwriteDB", "Node.js"],
-    status: "Finalizado",
+    status: "finished",
     thumbnails: ["/projects/eva1.jpg", "/projects/eva2.jpg", "/projects/eva3.jpg"],
-    type: "Colaborativo",
-    detailedDescription:
-      "O Evatech visa capacitar mães através de cursos, workshops e mentorias na área de tecnologia. O sistema possui autenticação, dashboard personalizado e fóruns de discussão. A plataforma foi desenvolvida com foco em acessibilidade e facilidade de uso, permitindo que as usuárias possam aprender em seu próprio ritmo e de acordo com sua disponibilidade.",
+    type: "collaborative",
+    detailedDescriptionKey: "projects.items.evatech.detailedDescription",
   },
   {
-    title: "Peoplelly",
-    description: "Rede social inovadora para conectar pessoas com interesses em comum.",
+    titleKey: "projects.items.peoplelly.title",
+    descriptionKey: "projects.items.peoplelly.description",
     link: "https://peoplelly.netlify.app",
     repo: "https://github.com/PedroReoli/peoplelly",
     techStack: ["React", "WebSocket", "Redux", "AppwriteDB"],
-    status: "Beta",
+    status: "beta",
     thumbnails: ["/projects/peop1.jpg", "/projects/peop2.jpg", "/projects/peop3.jpg"],
-    type: "Pessoal",
-    detailedDescription:
-      "Peoplelly é uma rede social que conecta pessoas com interesses similares, facilitando a formação de comunidades e o compartilhamento de conhecimento. A plataforma utiliza um algoritmo inteligente para sugerir conexões relevantes e possui recursos de chat em tempo real, grupos temáticos e compartilhamento de conteúdo.",
+    type: "personal",
+    detailedDescriptionKey: "projects.items.peoplelly.detailedDescription",
   },
   {
-    title: "DevEmDesenvolvimento",
-    description: "Blog técnico e plataforma educacional para novos desenvolvedores.",
+    titleKey: "projects.items.devEmDesenvolvimento.title",
+    descriptionKey: "projects.items.devEmDesenvolvimento.description",
     link: "https://devemdesenvolvimento.com.br",
     repo: "https://github.com/PedroReoli/BlogDevInDevelopment",
     techStack: ["Next.js", "MDX", "AppwriteDB"],
-    status: "Beta",
+    status: "beta",
     thumbnails: ["/projects/blog1.png", "/projects/blog2.png", "/projects/blog3.png"],
-    type: "Pessoal",
-    detailedDescription:
-      "DevEmDesenvolvimento é uma plataforma que combina blog técnico com recursos educacionais para desenvolvedores iniciantes. O site oferece artigos, tutoriais, projetos práticos e uma comunidade de suporte para ajudar novos programadores a avançarem em suas carreiras. O conteúdo é organizado por níveis de dificuldade e áreas de interesse.",
+    type: "personal",
+    detailedDescriptionKey: "projects.items.devEmDesenvolvimento.detailedDescription",
   },
 ]
 
@@ -53,4 +50,3 @@ export const projectsData: Project[] = [
 export const statusColors: Record<string, string> = {}
 export const typeColors: Record<string, string> = {}
 export const techColors: Record<string, string> = {}
-

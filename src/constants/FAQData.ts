@@ -1,60 +1,56 @@
 // Use string identifiers instead of direct JSX
 export interface FAQItem {
-  question: string
-  answer: string
+  questionKey: string;  // Chave de tradução para a pergunta
+  answerKey: string;    // Chave de tradução para a resposta
   contacts?: {
     type: string
     link: string
     iconType: "mail" | "instagram" | "github" | "linkedin"
-    label: string
+    labelKey: string   // Chave de tradução para o label
   }[]
 }
 
 export const faqData: FAQItem[] = [
   {
-    question: "Quem é o seu público-alvo?",
-    answer:
-      "Meu público-alvo são desenvolvedores iniciantes, pessoas que desejam se aventurar no mundo da programação e clientes que buscam projetos personalizados. Também ofereço dicas e orientações para melhorar currículos e se destacar no mercado.",
+    questionKey: "faq.questions.targetAudience.question",
+    answerKey: "faq.questions.targetAudience.answer",
   },
   {
-    question: "Qual é o prazo médio e o custo de um projeto?",
-    answer:
-      "Projetos simples geralmente são concluídos entre 1 a 2 semanas, enquanto projetos complexos podem levar de 1 a 3 meses. Para obter informações detalhadas sobre custos, entre em contato diretamente.",
+    questionKey: "faq.questions.projectTimeAndCost.question",
+    answerKey: "faq.questions.projectTimeAndCost.answer",
   },
   {
-    question: "Como posso entrar em contato?",
-    answer: "Você pode me encontrar pelos canais abaixo:",
+    questionKey: "faq.questions.contact.question",
+    answerKey: "faq.questions.contact.answer",
     contacts: [
       {
         type: "email",
         link: "mailto:pedrosousa2160@gmail.com",
         iconType: "mail",
-        label: "pedrosousa2160@gmail.com",
+        labelKey: "faq.contacts.email",
       },
       {
         type: "instagram",
         link: "https://www.instagram.com/01_dev_em_desenvolvimento",
         iconType: "instagram",
-        label: "@01_dev_em_desenvolvimento",
+        labelKey: "faq.contacts.instagram",
       },
       {
         type: "github",
         link: "https://github.com/PedroReoli",
         iconType: "github",
-        label: "PedroReoli",
+        labelKey: "faq.contacts.github",
       },
       {
         type: "linkedin",
         link: "https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/",
         iconType: "linkedin",
-        label: "Pedro Lucas",
+        labelKey: "faq.contacts.linkedin",
       },
     ],
   },
   {
-    question: "Quais tecnologias você domina?",
-    answer:
-      "Trabalho com uma ampla variedade de tecnologias, incluindo React, Node.js, TypeScript, C#, ASP.NET e bancos de dados como SQL e MongoDB. Sempre busco usar a melhor solução para cada projeto.",
+    questionKey: "faq.questions.technologies.question",
+    answerKey: "faq.questions.technologies.answer",
   },
 ]
-

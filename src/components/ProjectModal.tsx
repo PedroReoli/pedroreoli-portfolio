@@ -95,33 +95,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     setCurrentImageIndex((prev) => (prev === 0 ? project.thumbnails.length - 1 : prev - 1))
   }
 
-  // Traduzir status e tipo
-  const getTranslatedStatus = (status: string) => {
-    switch (status) {
-      case "Finalizado":
-        return t("projects.status.finished")
-      case "Beta":
-        return t("projects.status.beta")
-      case "Em Desenvolvimento":
-        return t("projects.status.inProgress")
-      default:
-        return status
-    }
-  }
-
-  const getTranslatedType = (type: string) => {
-    switch (type) {
-      case "Pessoal":
-        return t("projects.type.personal")
-      case "Colaborativo":
-        return t("projects.type.collaborative")
-      case "Freelance":
-        return t("projects.type.freelance")
-      default:
-        return type
-    }
-  }
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -157,7 +130,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                     >
                       <img
                         src={thumbnail || "/placeholder.svg?height=400&width=800"}
-                        alt={`${project.title} screenshot ${idx + 1}`}
+                        alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -204,15 +177,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   <div className="flex flex-wrap gap-2 mb-2">
                     <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
-                      {getTranslatedStatus(project.status)}
+                      {t(`projects.status.${project.status}`)}
                     </span>
                     <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1">
                       <Code className="h-3 w-3" />
-                      {getTranslatedType(project.type)}
+                      {t(`projects.type.${project.type}`)}
                     </span>
                   </div>
 
-                  <h2 className="title font-bold text-blue-500">{project.title}</h2>
+                  <h2 className="title font-bold text-blue-500">{t(project.titleKey)}</h2>
                 </div>
 
                 {/* Tabs */}
@@ -262,7 +235,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       >
                         <div className="prose prose-sm prose-invert max-w-none">
                           <p className="text-xs text-gray-300 leading-relaxed">
-                            {project.detailedDescription || project.description}
+                            {project.detailedDescriptionKey
+                              ? t(project.detailedDescriptionKey)
+                              : t(project.descriptionKey)}
                           </p>
                         </div>
                       </motion.div>

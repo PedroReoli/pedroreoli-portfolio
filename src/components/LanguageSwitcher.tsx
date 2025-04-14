@@ -12,7 +12,7 @@ const Flag3D = ({
   isActive = false,
   onClick,
 }: { country: string; isActive?: boolean; onClick?: () => void }) => {
-  const flagPath = `/flags/${country}.svg`
+  const flagPath = `/flags/${country}.png`
 
   return (
     <motion.div

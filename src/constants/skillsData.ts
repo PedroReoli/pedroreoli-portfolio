@@ -1,3 +1,4 @@
+// Mantendo a parte inicial do arquivo que cria os ícones
 import React from "react"
 import type { LucideIcon } from "lucide-react"
 
@@ -32,7 +33,7 @@ export interface Skill {
   courses: string[]
   coursesLinks: string[]
   icon: React.FC<{ className?: string }> | LucideIcon
-  description?: string // Descrição curta da habilidade
+  descriptionKey?: string // Chave de tradução para a descrição
   color: string // Cor para o hover effect
 }
 
@@ -45,7 +46,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("react/react-original.svg"),
     courses: ["React do Zero", "React Avançado"],
     coursesLinks: ["https://www.udemy.com/course/react-do-zero", "https://www.udemy.com/course/react-avancado"],
-    description: "Biblioteca JavaScript para criação de interfaces dinâmicas e reativas com componentes reutilizáveis.",
+    descriptionKey: "skills.items.react.description",
     color: "#61DAFB", // React blue
   },
   {
@@ -55,7 +56,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("nextjs/nextjs-original.svg"),
     courses: ["Next.js na Prática", "Next.js com TypeScript"],
     coursesLinks: ["https://www.udemy.com/course/nextjs-na-pratica", "https://www.udemy.com/course/nextjs-typescript"],
-    description: "Framework React para aplicações web otimizadas com SSR, SSG e rotas API integradas.",
+    descriptionKey: "skills.items.nextjs.description",
     color: "#000000", // Next.js black
   },
   {
@@ -68,7 +69,7 @@ export const skillsData: Skill[] = [
       "https://www.udemy.com/course/typescript-essencial",
       "https://www.udemy.com/course/typescript-avancado",
     ],
-    description: "Superset JavaScript que adiciona tipagem estática, interfaces e recursos avançados de OOP.",
+    descriptionKey: "skills.items.typescript.description",
     color: "#3178C6", // TypeScript blue
   },
   {
@@ -82,7 +83,7 @@ export const skillsData: Skill[] = [
       "https://www.udemy.com/course/tailwindcss-do-zero",
       "https://www.udemy.com/course/tailwindcss-avancado",
     ],
-    description: "Framework CSS utilitário para desenvolvimento rápido com classes pré-definidas e customizáveis.",
+    descriptionKey: "skills.items.tailwind.description",
     color: "#06B6D4", // Tailwind teal
   },
 
@@ -94,7 +95,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("nodejs/nodejs-original.svg"),
     courses: ["Node.js Básico", "Node.js com Express"],
     coursesLinks: ["https://www.udemy.com/course/nodejs-basico", "https://www.udemy.com/course/nodejs-express"],
-    description: "Ambiente de execução JavaScript server-side baseado no motor V8 do Chrome.",
+    descriptionKey: "skills.items.nodejs.description",
     color: "#339933", // Node.js green
   },
   {
@@ -104,7 +105,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("csharp/csharp-original.svg"),
     courses: ["C# Completo", "C# Avançado"],
     coursesLinks: ["https://www.udemy.com/course/csharp-completo", "https://www.udemy.com/course/csharp-avancado"],
-    description: "Linguagem de programação orientada a objetos e altamente performática da Microsoft.",
+    descriptionKey: "skills.items.csharp.description",
     color: "#239120", // C# green
   },
   {
@@ -114,7 +115,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("python/python-original.svg"),
     courses: ["Python Básico", "Python para Data Science"],
     coursesLinks: ["https://www.udemy.com/course/python-basico", "https://www.udemy.com/course/python-data-science"],
-    description: "Linguagem de programação de alto nível, interpretada e versátil para diversos domínios.",
+    descriptionKey: "skills.items.python.description",
     color: "#3776AB", // Python blue
   },
   {
@@ -127,7 +128,7 @@ export const skillsData: Skill[] = [
       "https://www.udemy.com/course/appwrite-fundamentals",
       "https://www.udemy.com/course/appwrite-para-desenvolvedores",
     ],
-    description: "Backend-as-a-Service open source com autenticação, banco de dados, storage e funções serverless.",
+    descriptionKey: "skills.items.appwrite.description",
     color: "#F02E65", // Appwrite pink
   },
 
@@ -139,7 +140,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("mysql/mysql-original.svg"),
     courses: ["SQL Básico", "SQL Avançado"],
     coursesLinks: ["https://www.udemy.com/course/sql-basico", "https://www.udemy.com/course/sql-avancado"],
-    description: "Linguagem para gerenciamento de bancos de dados relacionais com consultas estruturadas.",
+    descriptionKey: "skills.items.sql.description",
     color: "#4479A1", // MySQL blue
   },
   {
@@ -149,7 +150,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("mongodb/mongodb-original.svg"),
     courses: ["MongoDB Básico", "MongoDB Avançado"],
     coursesLinks: ["https://www.udemy.com/course/mongodb-basico", "https://www.udemy.com/course/mongodb-avancado"],
-    description: "Banco de dados NoSQL orientado a documentos com alta escalabilidade e flexibilidade.",
+    descriptionKey: "skills.items.mongodb.description",
     color: "#47A248", // MongoDB green
   },
   {
@@ -162,7 +163,7 @@ export const skillsData: Skill[] = [
       "https://www.udemy.com/course/postgresql-essencial",
       "https://www.udemy.com/course/postgresql-avancado",
     ],
-    description: "Sistema de banco de dados relacional de código aberto com recursos avançados e extensibilidade.",
+    descriptionKey: "skills.items.postgresql.description",
     color: "#336791", // PostgreSQL blue
   },
 
@@ -174,7 +175,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("git/git-original.svg"),
     courses: ["Git Essencial", "Git Avançado"],
     coursesLinks: ["https://www.udemy.com/course/git-essencial", "https://www.udemy.com/course/git-avancado"],
-    description: "Sistema de controle de versão distribuído para rastreamento de alterações no código-fonte.",
+    descriptionKey: "skills.items.git.description",
     color: "#F05032", // Git orange
   },
   {
@@ -184,7 +185,7 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("docker/docker-original.svg"),
     courses: ["Docker Básico", "Docker Avançado"],
     coursesLinks: ["https://www.udemy.com/course/docker-basico", "https://www.udemy.com/course/docker-avancado"],
-    description: "Plataforma para desenvolvimento, envio e execução de aplicações em containers isolados.",
+    descriptionKey: "skills.items.docker.description",
     color: "#2496ED", // Docker blue
   },
   {
@@ -194,10 +195,9 @@ export const skillsData: Skill[] = [
     icon: createDevIcon("vscode/vscode-original.svg"),
     courses: ["VS Code Produtivo", "VS Code Extensions"],
     coursesLinks: ["https://www.udemy.com/course/vscode-produtivo", "https://www.udemy.com/course/vscode-extensions"],
-    description: "Editor de código-fonte leve e poderoso com extenso ecossistema de extensões.",
+    descriptionKey: "skills.items.vscode.description",
     color: "#007ACC", // VS Code blue
   },
-  
 ]
 
 // Agrupar habilidades por área
@@ -219,4 +219,3 @@ export const areaLabels: Record<string, string> = {
   database: "Database",
   tools: "Tools & DevOps",
 }
-

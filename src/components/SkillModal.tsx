@@ -240,7 +240,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
             {/* Content */}
             <div className="p-4 pt-3 max-h-60 overflow-y-auto custom-scrollbar">
               <AnimatePresence mode="wait">
-                {activeTab === "about" && skill.description && (
+                {activeTab === "about" && skill.descriptionKey && (
                   <motion.div
                     key="about"
                     initial={{ opacity: 0, y: 5 }}
@@ -250,7 +250,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                     className="space-y-3"
                   >
                     <div className="bg-gray-800/30 p-3 rounded-lg border border-gray-800/50">
-                      <p className="text-gray-300 text-xs leading-relaxed">{skill.description}</p>
+                      <p className="text-gray-300 text-xs leading-relaxed">{t(skill.descriptionKey)}</p>
                     </div>
 
                     {skill.courses.length > 0 && (

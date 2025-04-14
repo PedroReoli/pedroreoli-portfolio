@@ -33,6 +33,7 @@
     "title": "Experience",
     "companies": {
       "autocom3": {
+        "name": "AutoCom3",
         "role": "Junior Developer",
         "period": "10/2024 - Present",
         "status": "Ongoing",
@@ -40,6 +41,7 @@
         "details": "Implementation of solutions to ensure system quality and efficiency."
       },
       "devemdesenvolvimento": {
+        "name": "DevEmDesenvolvimento",
         "role": "CEO, Developer and Writer",
         "period": "05/2024 - Present",
         "status": "Ongoing",
@@ -47,6 +49,7 @@
         "details": "Offers courses, blogs, and practical projects to share knowledge and boost careers in technology."
       },
       "evatech": {
+        "name": "EvaTech",
         "role": "Teacher, Mentor and Speaker",
         "period": "06/2024 - 11/2024",
         "status": "Completed",
@@ -74,7 +77,24 @@
     "techStack": "Tech Stack",
     "information": "Information",
     "technologies": "Technologies",
-    "close": "Close"
+    "close": "Close",
+    "items": {
+      "evatech": {
+        "title": "EvaTech Website",
+        "description": "Official website for EvaTech, a social project focused on teaching technology to single black mothers.",
+        "detailedDescription": "This collaborative project was developed to provide a digital presence for EvaTech, a social initiative that aims to empower single black mothers through technology education. The website features course information, registration forms, and success stories."
+      },
+      "peoplelly": {
+        "title": "Peoplelly",
+        "description": "A social platform for connecting people with similar interests and facilitating meaningful conversations.",
+        "detailedDescription": "Peoplelly is a personal project that aims to create a more authentic social media experience. It focuses on connecting users based on shared interests rather than superficial metrics, and encourages meaningful conversations through innovative chat features."
+      },
+      "devEmDesenvolvimento": {
+        "title": "Dev Em Desenvolvimento",
+        "description": "Educational blog and platform for beginner developers with tutorials, articles, and resources.",
+        "detailedDescription": "Dev Em Desenvolvimento (Developer in Development) is my educational platform aimed at helping beginners enter the world of programming. It features carefully crafted tutorials, in-depth articles, and practical resources to make learning programming more accessible."
+      }
+    }
   },
   "services": {
     "title": "Services",
@@ -88,7 +108,7 @@
     },
     "mentoring": {
       "title": "Mentoring and Classes",
-      "description": "Personalized guidance for studies, careers, and projects in programming."
+      "description": "Personalized guidance for studies, careers, and projects in the programming field."
     }
   },
   "skills": {
@@ -105,11 +125,69 @@
       "courses": "Courses",
       "viewCourses": "View recommended courses",
       "close": "Close"
+    },
+    "items": {
+      "react": {
+        "description": "React is my primary frontend library. I use it to build interactive user interfaces with a component-based approach, focusing on reusability and maintainability."
+      },
+      "nextjs": {
+        "description": "Next.js is my framework of choice for React applications that require server-side rendering, static site generation, or API routes."
+      },
+      "typescript": {
+        "description": "I use TypeScript to add static typing to JavaScript, which helps catch errors early and improves code quality and maintainability."
+      },
+      "tailwind": {
+        "description": "Tailwind CSS is my preferred styling solution for its utility-first approach that allows for rapid UI development with consistent design."
+      },
+      "nodejs": {
+        "description": "Node.js is my runtime environment for server-side JavaScript, enabling me to build scalable network applications."
+      },
+      "csharp": {
+        "description": "C# is my language of choice for backend development with .NET, particularly for enterprise applications and services."
+      },
+      "python": {
+        "description": "I use Python for automation, data analysis, and backend development when simplicity and readability are priorities."
+      },
+      "appwrite": {
+        "description": "Appwrite is my go-to backend-as-a-service platform for rapid development of web and mobile applications."
+      },
+      "sql": {
+        "description": "SQL is essential for my database work, allowing me to query, manipulate, and manage relational databases effectively."
+      },
+      "mongodb": {
+        "description": "MongoDB is my preferred NoSQL database for applications that require flexible schema design and horizontal scaling."
+      },
+      "postgresql": {
+        "description": "PostgreSQL is my choice for advanced relational database needs, offering robust features and excellent performance."
+      },
+      "git": {
+        "description": "Git is fundamental to my workflow for version control, collaboration, and code management."
+      },
+      "docker": {
+        "description": "I use Docker to containerize applications, ensuring consistent environments across development and production."
+      },
+      "vscode": {
+        "description": "Visual Studio Code is my primary code editor, enhanced with extensions for productivity and code quality."
+      }
     }
   },
   "blog": {
     "title": "Blog",
-    "readArticle": "Read article"
+    "readArticle": "Read article",
+    "posts": {
+      "sqlBestPractices": {
+        "title": "SQL Best Practices",
+        "description": "Learn essential best practices for writing efficient, maintainable, and secure SQL queries."
+      },
+      "sqlBasics": {
+        "title": "SQL Basics",
+        "description": "A comprehensive guide to SQL fundamentals for beginners, covering basic commands and concepts."
+      },
+      "oopSystems": {
+        "title": "Object-Oriented Programming: Structuring Real Systems",
+        "description": "How to apply object-oriented principles to model and build real-world systems effectively."
+      }
+    }
   },
   "faq": {
     "title": "FAQ",
@@ -121,21 +199,27 @@
         "answer": "My target audience is beginner developers, people who want to venture into the world of programming, and clients looking for custom projects. I also offer tips and guidance to improve resumes and stand out in the market."
       },
       "projectTimeAndCost": {
-        "question": "What is the average timeline and cost of a project?",
-        "answer": "Simple projects are usually completed within 1 to 2 weeks, while complex projects can take 1 to 3 months. For detailed information about costs, please contact me directly."
+        "question": "What is the average timeframe and cost of a project?",
+        "answer": "Simple projects are typically completed within 1-2 weeks, while complex projects can take 1-3 months. For detailed cost information, please contact me directly."
       },
       "contact": {
         "question": "How can I get in touch?",
-        "answer": "You can find me through the channels below:"
+        "answer": "You can find me through the following channels:"
       },
       "technologies": {
         "question": "What technologies do you master?",
-        "answer": "I work with a wide variety of technologies, including React, Node.js, TypeScript, C#, ASP.NET, and databases like SQL and MongoDB. I always seek to use the best solution for each project."
+        "answer": "I work with a wide range of technologies, including React, Node.js, TypeScript, C#, ASP.NET, and databases like SQL and MongoDB. I always aim to use the best solution for each project."
       }
+    },
+    "contacts": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
     }
   },
   "end": {
-    "title": "Thank you for visiting!",
+    "title": "Thanks for visiting!",
     "message1": "I hope you enjoyed my portfolio!",
     "message2": "Feel free to explore more, go back to the beginning, or return whenever you wish.",
     "message3": "I wish you great success in your projects and journey!",
@@ -150,6 +234,6 @@
     "skills": "Skills",
     "blog": "Blog",
     "faq": "FAQ",
-    "contact": "Contact"
+    "end": "End"
   }
 }

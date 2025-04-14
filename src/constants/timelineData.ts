@@ -1,32 +1,42 @@
-export const timelineData = [
+export interface TimelineItem {
+  companyKey: string // Chave de tradução para a empresa
+  roleKey: string // Chave de tradução para o cargo
+  periodKey: string // Chave de tradução para o período
+  statusKey: string // Chave de tradução para o status
+  descriptionKey: string // Chave de tradução para a descrição
+  detailsKey: string // Chave de tradução para os detalhes
+  tags: string[]
+  link: string
+}
+
+export const timelineData: TimelineItem[] = [
   {
-    empresa: "AutoCom3",
-    cargo: "Desenvolvedor Júnior",
-    periodo: "10/2024 - Atual",
-    status: "Em Andamento",
-    descricao: "Desenvolvimento e automação de testes com foco em .NET, C# e Python.",
-    detalhes: "Implementação de soluções para garantir a qualidade e eficiência dos sistemas.",
+    companyKey: "timeline.companies.autocom3.name",
+    roleKey: "timeline.companies.autocom3.role",
+    periodKey: "timeline.companies.autocom3.period",
+    statusKey: "timeline.companies.autocom3.status",
+    descriptionKey: "timeline.companies.autocom3.description",
+    detailsKey: "timeline.companies.autocom3.details",
     tags: ["C#", ".NET", "Python", "Testes", "Automação"],
     link: "https://autocom3.com.br/",
   },
   {
-    empresa: "DevEmDesenvolvimento",
-    cargo: "CEO, Desenvolvedor e Redator",
-    periodo: "05/2024 - Atual",
-    status: "Em Andamento",
-    descricao: "Plataforma educacional focada em novos entusiastas e programadores iniciantes.",
-    detalhes:
-      "Oferece cursos, blogs e projetos práticos para compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
+    companyKey: "timeline.companies.devemdesenvolvimento.name",
+    roleKey: "timeline.companies.devemdesenvolvimento.role",
+    periodKey: "timeline.companies.devemdesenvolvimento.period",
+    statusKey: "timeline.companies.devemdesenvolvimento.status",
+    descriptionKey: "timeline.companies.devemdesenvolvimento.description",
+    detailsKey: "timeline.companies.devemdesenvolvimento.details",
     tags: ["Educação", "Conteúdo Técnico", "Programação", "Comunidade"],
     link: "https://devemdesenvolvimento.netlify.app/",
   },
   {
-    empresa: "EvaTech",
-    cargo: "Professor, Mentor e Palestrante",
-    periodo: "06/2024 - 11/2024",
-    status: "Concluído",
-    descricao: "Ministrei aulas e palestras sobre tecnologia e mercado de trabalho.",
-    detalhes: "Trabalhei com conceitos básicos de IA, capacitando mães negras solteiras a ingressar na tecnologia.",
+    companyKey: "timeline.companies.evatech.name",
+    roleKey: "timeline.companies.evatech.role",
+    periodKey: "timeline.companies.evatech.period",
+    statusKey: "timeline.companies.evatech.status",
+    descriptionKey: "timeline.companies.evatech.description",
+    detailsKey: "timeline.companies.evatech.details",
     tags: ["Ensino", "Mentoria", "Palestras", "Inteligência Artificial"],
     link: "https://evatech.org/",
   },
@@ -48,4 +58,3 @@ export const tagColors: Record<string, string> = {
   Palestras: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   "Inteligência Artificial": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
 }
-

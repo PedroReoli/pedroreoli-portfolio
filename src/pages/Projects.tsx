@@ -81,33 +81,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
     }),
   }
 
-  // Traduzir status e tipo
-  const getTranslatedStatus = (status: string) => {
-    switch (status) {
-      case "Finalizado":
-        return t("projects.status.finished")
-      case "Beta":
-        return t("projects.status.beta")
-      case "Em Desenvolvimento":
-        return t("projects.status.inProgress")
-      default:
-        return status
-    }
-  }
-
-  const getTranslatedType = (type: string) => {
-    switch (type) {
-      case "Pessoal":
-        return t("projects.type.personal")
-      case "Colaborativo":
-        return t("projects.type.collaborative")
-      case "Freelance":
-        return t("projects.type.freelance")
-      default:
-        return type
-    }
-  }
-
   return (
     <motion.div
       className="group bg-gray-900/30 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/30 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 flex flex-col h-full"
@@ -127,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
             <div key={idx} className="w-full h-full flex-shrink-0">
               <img
                 src={thumbnail || "/placeholder.svg?height=200&width=400"}
-                alt={`${project.title} screenshot ${idx + 1}`}
+                alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -170,11 +143,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
         <div className="absolute top-2 left-2 flex gap-1.5">
           <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
             <Calendar className="h-2.5 w-2.5" />
-            <span className="text-xs">{getTranslatedStatus(project.status)}</span>
+            <span className="text-xs">{t(`projects.status.${project.status}`)}</span>
           </span>
           <span className="text-xs px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-blue-400 border border-blue-500/20 flex items-center gap-1">
             <Code className="h-2.5 w-2.5" />
-            <span className="text-xs">{getTranslatedType(project.type)}</span>
+            <span className="text-xs">{t(`projects.type.${project.type}`)}</span>
           </span>
         </div>
 
@@ -185,10 +158,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
       {/* Conteúdo do projeto */}
       <div className="p-4 flex flex-col flex-grow">
         {/* Título */}
-        <h3 className="title font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+        <h3 className="title font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+          {t(project.titleKey)}
+        </h3>
 
         {/* Descrição */}
-        <p className="text-xs text-gray-300 mb-3 line-clamp-2">{project.description}</p>
+        <p className="text-xs text-gray-300 mb-3 line-clamp-2">{t(project.descriptionKey)}</p>
 
         {/* Tech stack */}
         <div className="mt-auto">
@@ -212,7 +187,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1"
-              aria-label={`Ver demonstração de ${project.title}`}
+              aria-label={`Ver demonstração de ${t(project.titleKey)}`}
             >
               <ExternalLink className="h-3 w-3" />
               {t("projects.viewApp")}
@@ -222,7 +197,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1"
-              aria-label={`Ver repositório de ${project.title}`}
+              aria-label={`Ver repositório de ${t(project.titleKey)}`}
             >
               <Github className="h-3 w-3" />
               {t("projects.repository")}
@@ -230,7 +205,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
             <button
               onClick={onOpenModal}
               className="flex items-center justify-center p-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-lg transition-colors border border-blue-500/20"
-              aria-label={`Ver mais detalhes sobre ${project.title}`}
+              aria-label={`Ver mais detalhes sobre ${t(project.titleKey)}`}
             >
               <Eye className="h-3 w-3" />
             </button>

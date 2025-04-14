@@ -122,13 +122,13 @@ const FAQ = () => {
 
 interface FAQItemProps {
   item: {
-    question: string
-    answer: string
+    questionKey: string
+    answerKey: string
     contacts?: {
       type: string
       link: string
       iconType: string
-      label: string
+      labelKey: string
     }[]
   }
   index: number
@@ -199,7 +199,7 @@ const FAQItem: React.FC<FAQItemProps> = ({
               isActive ? "text-blue-400" : "text-white group-hover:text-blue-300"
             }`}
           >
-            {item.question}
+            {t(item.questionKey)}
           </h3>
 
           <div
@@ -253,7 +253,7 @@ const FAQItem: React.FC<FAQItemProps> = ({
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.4, delay: 0.1 }}
                 >
-                  <p className="text text-gray-300">{item.answer}</p>
+                  <p className="text text-gray-300">{t(item.answerKey)}</p>
                 </motion.div>
 
                 {/* Enhanced contacts list if available */}
@@ -278,14 +278,14 @@ const FAQItem: React.FC<FAQItemProps> = ({
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group relative"
-                          aria-label={contact.label}
+                          aria-label={t(contact.labelKey)}
                         >
                           <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all duration-300">
                             <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
                               {renderIcon(contact.iconType)}
                             </div>
                             <span className="text-xs text-gray-300 group-hover:text-white transition-colors">
-                              {contact.label}
+                              {t(contact.labelKey)}
                             </span>
                           </div>
 

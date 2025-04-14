@@ -9,6 +9,7 @@ import { ArrowUpRight, Calendar } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
 const BlogSection = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
@@ -21,7 +22,8 @@ const BlogSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Blog<span className="text-white">;</span>
+          {t("blog.title")}
+          <span className="text-white">;</span>
         </motion.h2>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -37,8 +39,8 @@ const BlogSection = () => {
 interface BlogCardProps {
   post: {
     id: string
-    title: string
-    description: string
+    titleKey: string
+    descriptionKey: string
     link: string
     date: string
   }
@@ -82,10 +84,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index, isInView }) => {
           </div>
 
           {/* Title */}
-          <h3 className="title font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{post.title}</h3>
+          <h3 className="title font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+            {t(post.titleKey)}
+          </h3>
 
           {/* Description */}
-          <p className="text text-gray-300 mb-6 flex-grow">{post.description}</p>
+          <p className="text text-gray-300 mb-6 flex-grow">{t(post.descriptionKey)}</p>
 
           {/* Read more button */}
           <div className="flex items-center text-blue-400 font-medium text-small mt-auto group-hover:text-blue-300 transition-colors">
