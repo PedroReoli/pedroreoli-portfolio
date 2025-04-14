@@ -1,0 +1,155 @@
+{
+  "welcome": {
+    "title": "Welcome to my Portfolio",
+    "subtitle": "Choose your preferred language",
+    "detected": "I noticed your browser is set to {{language}}. If you want to continue in this language, select below.",
+    "languages": {
+      "pt": "Portuguese",
+      "en": "English",
+      "es": "Spanish"
+    },
+    "continue": "Continue"
+  },
+  "languageSwitcher": {
+    "label": "Change language"
+  },
+  "home": {
+    "greeting": "Hello, I am",
+    "role": "FullStack Junior Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Developer • Musician • Writer",
+    "paragraph1": "I am a Junior FullStack Developer driven by curiosity, innovation, and a creative perspective. For me, technology goes beyond code — it's a bridge between accessibility, clean architecture, and real impact.",
+    "paragraph2": "As a musician and educator, I bring the sensitivity of art to how I build solutions. I believe that technology and creativity go hand in hand, and that each project should embrace, transform, and expand possibilities with a human touch that goes beyond logic.",
+    "paragraph3": "I seek continuous evolution and real impact. In the future, I want to unite education and entrepreneurship, creating a startup that expands digital inclusion and makes technology accessible to more people.",
+    "imageAlt": "Pedro Lucas in black and white",
+    "imageAltColor": "Pedro Lucas in color",
+    "hoverText": "Looking sharp 😎",
+    "clickText": "click on the photo",
+    "hoverTextDesktop": "hover over the photo"
+  },
+  "timeline": {
+    "title": "Experience",
+    "companies": {
+      "autocom3": {
+        "role": "Junior Developer",
+        "period": "10/2024 - Present",
+        "status": "Ongoing",
+        "description": "Development and test automation focusing on .NET, C# and Python.",
+        "details": "Implementation of solutions to ensure system quality and efficiency."
+      },
+      "devemdesenvolvimento": {
+        "role": "CEO, Developer and Writer",
+        "period": "05/2024 - Present",
+        "status": "Ongoing",
+        "description": "Educational platform focused on new enthusiasts and beginner programmers.",
+        "details": "Offers courses, blogs, and practical projects to share knowledge and boost careers in technology."
+      },
+      "evatech": {
+        "role": "Teacher, Mentor and Speaker",
+        "period": "06/2024 - 11/2024",
+        "status": "Completed",
+        "description": "Taught classes and lectures on technology and the job market.",
+        "details": "Worked with basic AI concepts, empowering single black mothers to enter the technology field."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "status": {
+      "finished": "Finished",
+      "beta": "Beta",
+      "inProgress": "In Development"
+    },
+    "type": {
+      "personal": "Personal",
+      "collaborative": "Collaborative",
+      "freelance": "Freelance"
+    },
+    "viewApp": "View App",
+    "repository": "Repository",
+    "viewMore": "View more",
+    "readMore": "Read more",
+    "techStack": "Tech Stack",
+    "information": "Information",
+    "technologies": "Technologies",
+    "close": "Close"
+  },
+  "services": {
+    "title": "Services",
+    "uxui": {
+      "title": "UX / UI Design",
+      "description": "I design clear, objective, and intuitive interfaces, prioritizing user experience."
+    },
+    "fullstack": {
+      "title": "FullStack Development",
+      "description": "I build complete solutions, from interfaces to robust and scalable back-ends."
+    },
+    "mentoring": {
+      "title": "Mentoring and Classes",
+      "description": "Personalized guidance for studies, careers, and projects in programming."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "areas": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools & DevOps"
+    },
+    "modal": {
+      "proficiency": "Proficiency",
+      "about": "About",
+      "courses": "Courses",
+      "viewCourses": "View recommended courses",
+      "close": "Close"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Read article"
+  },
+  "faq": {
+    "title": "FAQ",
+    "contactChannels": "Contact channels",
+    "notFound": "Didn't find what you were looking for? Contact me directly",
+    "questions": {
+      "targetAudience": {
+        "question": "Who is your target audience?",
+        "answer": "My target audience is beginner developers, people who want to venture into the world of programming, and clients looking for custom projects. I also offer tips and guidance to improve resumes and stand out in the market."
+      },
+      "projectTimeAndCost": {
+        "question": "What is the average timeline and cost of a project?",
+        "answer": "Simple projects are usually completed within 1 to 2 weeks, while complex projects can take 1 to 3 months. For detailed information about costs, please contact me directly."
+      },
+      "contact": {
+        "question": "How can I get in touch?",
+        "answer": "You can find me through the channels below:"
+      },
+      "technologies": {
+        "question": "What technologies do you master?",
+        "answer": "I work with a wide variety of technologies, including React, Node.js, TypeScript, C#, ASP.NET, and databases like SQL and MongoDB. I always seek to use the best solution for each project."
+      }
+    }
+  },
+  "end": {
+    "title": "Thank you for visiting!",
+    "message1": "I hope you enjoyed my portfolio!",
+    "message2": "Feel free to explore more, go back to the beginning, or return whenever you wish.",
+    "message3": "I wish you great success in your projects and journey!",
+    "backToTop": "Back to Top"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Me",
+    "timeline": "Experience",
+    "projects": "Projects",
+    "services": "Services",
+    "skills": "Skills",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contact"
+  }
+}

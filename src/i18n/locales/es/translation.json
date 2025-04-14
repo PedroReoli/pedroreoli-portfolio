@@ -1,0 +1,155 @@
+{
+  "welcome": {
+    "title": "Bienvenido a mi Portafolio",
+    "subtitle": "Elige tu idioma preferido",
+    "detected": "Noté que tu navegador está configurado en {{language}}. Si deseas continuar en este idioma, selecciona abajo.",
+    "languages": {
+      "pt": "Portugués",
+      "en": "Inglés",
+      "es": "Español"
+    },
+    "continue": "Continuar"
+  },
+  "languageSwitcher": {
+    "label": "Cambiar idioma"
+  },
+  "home": {
+    "greeting": "Hola, soy",
+    "role": "Desarrollador FullStack Junior"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "Desarrollador • Músico • Escritor",
+    "paragraph1": "Soy un Desarrollador FullStack Junior impulsado por la curiosidad, la innovación y una mirada creativa. Para mí, la tecnología va más allá del código — es un puente entre accesibilidad, arquitectura limpia e impacto real.",
+    "paragraph2": "Como músico y educador, aporto la sensibilidad del arte a la forma en que construyo soluciones. Creo que la tecnología y la creatividad van de la mano, y que cada proyecto debe acoger, transformar y expandir posibilidades con un toque humano que va más allá de la lógica.",
+    "paragraph3": "Busco evolución continua e impacto real. En el futuro, quiero unir educación y emprendimiento, creando una startup que amplíe la inclusión digital y haga la tecnología accesible para más personas.",
+    "imageAlt": "Pedro Lucas en blanco y negro",
+    "imageAltColor": "Pedro Lucas en color",
+    "hoverText": "¡Muy elegante! 😎",
+    "clickText": "haz clic en la foto",
+    "hoverTextDesktop": "pasa el ratón sobre la foto"
+  },
+  "timeline": {
+    "title": "Experiencia",
+    "companies": {
+      "autocom3": {
+        "role": "Desarrollador Junior",
+        "period": "10/2024 - Presente",
+        "status": "En Curso",
+        "description": "Desarrollo y automatización de pruebas con enfoque en .NET, C# y Python.",
+        "details": "Implementación de soluciones para garantizar la calidad y eficiencia de los sistemas."
+      },
+      "devemdesenvolvimento": {
+        "role": "CEO, Desarrollador y Redactor",
+        "period": "05/2024 - Presente",
+        "status": "En Curso",
+        "description": "Plataforma educativa enfocada en nuevos entusiastas y programadores principiantes.",
+        "details": "Ofrece cursos, blogs y proyectos prácticos para compartir conocimiento e impulsar carreras en el área de tecnología."
+      },
+      "evatech": {
+        "role": "Profesor, Mentor y Conferencista",
+        "period": "06/2024 - 11/2024",
+        "status": "Completado",
+        "description": "Impartí clases y conferencias sobre tecnología y mercado laboral.",
+        "details": "Trabajé con conceptos básicos de IA, capacitando a madres solteras negras para ingresar al campo de la tecnología."
+      }
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "status": {
+      "finished": "Finalizado",
+      "beta": "Beta",
+      "inProgress": "En Desarrollo"
+    },
+    "type": {
+      "personal": "Personal",
+      "collaborative": "Colaborativo",
+      "freelance": "Freelance"
+    },
+    "viewApp": "Ver App",
+    "repository": "Repositorio",
+    "viewMore": "Ver más",
+    "readMore": "Leer más",
+    "techStack": "Stack Tecnológico",
+    "information": "Información",
+    "technologies": "Tecnologías",
+    "close": "Cerrar"
+  },
+  "services": {
+    "title": "Servicios",
+    "uxui": {
+      "title": "UX / UI Design",
+      "description": "Diseño interfaces claras, objetivas e intuitivas, priorizando la experiencia del usuario."
+    },
+    "fullstack": {
+      "title": "Desarrollo FullStack",
+      "description": "Construyo soluciones completas, desde interfaces hasta back-ends robustos y escalables."
+    },
+    "mentoring": {
+      "title": "Mentoría y Clases",
+      "description": "Orientación personalizada para estudios, carreras y proyectos en el área de programación."
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "areas": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Base de Datos",
+      "tools": "Herramientas & DevOps"
+    },
+    "modal": {
+      "proficiency": "Competencia",
+      "about": "Acerca de",
+      "courses": "Cursos",
+      "viewCourses": "Ver cursos recomendados",
+      "close": "Cerrar"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Leer artículo"
+  },
+  "faq": {
+    "title": "FAQ",
+    "contactChannels": "Canales de contacto",
+    "notFound": "¿No encontraste lo que buscabas? Contáctame directamente",
+    "questions": {
+      "targetAudience": {
+        "question": "¿Quién es tu público objetivo?",
+        "answer": "Mi público objetivo son desarrolladores principiantes, personas que desean aventurarse en el mundo de la programación y clientes que buscan proyectos personalizados. También ofrezco consejos y orientación para mejorar currículums y destacarse en el mercado."
+      },
+      "projectTimeAndCost": {
+        "question": "¿Cuál es el plazo medio y el costo de un proyecto?",
+        "answer": "Los proyectos simples generalmente se completan entre 1 y 2 semanas, mientras que los proyectos complejos pueden llevar de 1 a 3 meses. Para obtener información detallada sobre costos, contáctame directamente."
+      },
+      "contact": {
+        "question": "¿Cómo puedo ponerme en contacto?",
+        "answer": "Puedes encontrarme a través de los siguientes canales:"
+      },
+      "technologies": {
+        "question": "¿Qué tecnologías dominas?",
+        "answer": "Trabajo con una amplia variedad de tecnologías, incluyendo React, Node.js, TypeScript, C#, ASP.NET y bases de datos como SQL y MongoDB. Siempre busco usar la mejor solución para cada proyecto."
+      }
+    }
+  },
+  "end": {
+    "title": "¡Gracias por visitar!",
+    "message1": "¡Espero que hayas disfrutado de mi portafolio!",
+    "message2": "Siéntete libre de explorar más, volver al inicio o regresar cuando lo desees.",
+    "message3": "¡Te deseo mucho éxito en tus proyectos y en tu camino!",
+    "backToTop": "Volver al Inicio"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "timeline": "Experiencia",
+    "projects": "Proyectos",
+    "services": "Servicios",
+    "skills": "Habilidades",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contacto"
+  }
+}
