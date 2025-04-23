@@ -28,7 +28,7 @@ export const timelineData: TimelineItem[] = [
     descriptionKey: "timeline.companies.devemdesenvolvimento.description",
     detailsKey: "timeline.companies.devemdesenvolvimento.details",
     tags: ["Educação", "Conteúdo Técnico", "Programação", "Comunidade"],
-    link: "https://devemdesenvolvimento.netlify.app/",
+    link: "https://devemdesenvolvimento.vercel.app/",
   },
   {
     companyKey: "timeline.companies.evatech.name",

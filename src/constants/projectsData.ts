@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
   {
     titleKey: "projects.items.evatech.title",
     descriptionKey: "projects.items.evatech.description",
-    link: "https://evatech2024.netlify.app",
+    link: "https://evatech2024.vercel.app",
     repo: "https://github.com/PedroReoli/Evatech",
     techStack: ["React", "TailwindCSS", "AppwriteDB", "Node.js"],
     status: "finished",
@@ -25,7 +25,7 @@ export const projectsData: Project[] = [
   {
     titleKey: "projects.items.peoplelly.title",
     descriptionKey: "projects.items.peoplelly.description",
-    link: "https://peoplelly.netlify.app",
+    link: "https://peoplelly.vercel.app",
     repo: "https://github.com/PedroReoli/peoplelly",
     techStack: ["React", "WebSocket", "Redux", "AppwriteDB"],
     status: "beta",
