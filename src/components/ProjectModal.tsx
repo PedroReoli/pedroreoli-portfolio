@@ -5,7 +5,7 @@ import type React from "react"
 import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { Project } from "@/constants/projectsData"
-import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Calendar, Code, Layers, Info } from "lucide-react"
+import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Calendar, Code, Layers, Info, Play } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
 interface ProjectModalProps {
@@ -95,6 +95,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     setCurrentImageIndex((prev) => (prev === 0 ? project.thumbnails.length - 1 : prev - 1))
   }
 
+  // Determinar se temos um vídeo para mostrar
+  const hasVideo = project.youtubeUrl || project.videoUrl
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -121,35 +124,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               {/* Image gallery - Lado esquerdo */}
               <div className="md:w-1/2 relative bg-gray-950">
                 <div className="aspect-video md:aspect-auto md:h-full">
-                  {project.videoUrl ? (
-                    <div className="absolute inset-0">
-                      <video
-                        src={project.videoUrl}
+                  {project.thumbnails.map((thumbnail, idx) => (
+                    <div
+                      key={idx}
+                      className={`absolute inset-0 transition-opacity duration-300 ${
+                        idx === currentImageIndex ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <img
+                        src={thumbnail || "/placeholder.svg?height=400&width=800"}
+                        alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
                         className="w-full h-full object-cover"
-                        controls
-                        poster={project.thumbnails[0]}
                       />
                     </div>
-                  ) : (
-                    project.thumbnails.map((thumbnail, idx) => (
-                      <div
-                        key={idx}
-                        className={`absolute inset-0 transition-opacity duration-300 ${
-                          idx === currentImageIndex ? "opacity-100" : "opacity-0"
-                        }`}
-                      >
-                        <img
-                          src={thumbnail || "/placeholder.svg?height=400&width=800"}
-                          alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ))
-                  )}
+                  ))}
                 </div>
 
-                {/* Image navigation - only show if there's no video and multiple images */}
-                {!project.videoUrl && project.thumbnails.length > 1 && (
+                {/* Image navigation - only show if multiple images */}
+                {project.thumbnails.length > 1 && (
                   <>
                     <button
                       onClick={prevImage}
@@ -281,25 +273,55 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                 {/* Footer with links */}
                 <div className="p-3 border-t border-gray-800/30">
                   <div className="flex gap-2">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      {t("projects.viewApp")}
-                    </a>
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                      {t("projects.repository")}
-                    </a>
+                    {project.link && project.link !== "#" ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        {t("projects.viewApp")}
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-1 px-3 py-1.5 bg-blue-500/50 text-gray-200 rounded-lg text-xs flex-1 justify-center cursor-not-allowed">
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        {t("projects.privateApp")}
+                      </div>
+                    )}
+
+                    {project.repo ? (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1 justify-center"
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                        {t("projects.repository")}
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs flex-1 justify-center cursor-not-allowed">
+                        <Github className="h-3.5 w-3.5" />
+                        {t("projects.privateCode")}
+                      </div>
+                    )}
                   </div>
+
+                  {/* Botão de vídeo - apenas se houver um vídeo */}
+                  {hasVideo && (
+                    <div className="mt-2">
+                      <a
+                        href={project.youtubeUrl || project.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors text-xs w-full justify-center"
+                      >
+                        <Play className="h-3.5 w-3.5" />
+                        {t("projects.watchVideo")}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

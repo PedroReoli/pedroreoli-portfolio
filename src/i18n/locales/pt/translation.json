@@ -60,10 +60,20 @@
   },
   "projects": {
     "title": "Projetos",
+    "subtitle": "Conheça alguns dos meus trabalhos",
+    "viewDetails": "Ver detalhes",
+    "viewApp": "Ver aplicação",
+    "privateApp": "App Privado",
+    "repository": "Repositório",
+    "privateCode": "Código Privado",
+    "information": "Informações",
+    "technologies": "Tecnologias",
+    "techStack": "Stack de tecnologias",
+    "video": "Vídeo",
     "status": {
-      "finished": "Finalizado",
+      "finished": "Concluído",
       "beta": "Beta",
-      "inProgress": "Em Desenvolvimento"
+      "inProgress": "Em Progresso"
     },
     "type": {
       "personal": "Pessoal",
@@ -71,41 +81,34 @@
       "freelance": "Freelance",
       "work": "Trabalho"
     },
-    "viewApp": "Ver App",
-    "repository": "Repositório",
-    "viewMore": "Ver mais",
-    "readMore": "Ler mais",
-    "techStack": "Stack Tecnológica",
-    "information": "Informações",
-    "technologies": "Tecnologias",
-    "close": "Fechar",
     "items": {
       "autocom3": {
         "title": "Revitalização do site da Autocom3",
-        "description": "Site da Autocom3 todo vivo, refeito parte por parte com o intuito de deixar o mais moderno e único possível.",
-        "detailedDescription": "Este projeto foi desenvolvido com o objetivo de transformar o site da Autocom3, originalmente hospedado no WordPress e construído com Elementor, em uma plataforma visualmente refinada e tecnicamente personalizada. A proposta central foi romper com os padrões genéricos de sites feitos em ferramentas low-code, resgatando a essência do desenvolvimento front-end tradicional. Para isso, todo o layout foi reestruturado manualmente com HTML e CSS puros, sem o uso de frameworks, valorizando a performance, a originalidade e o controle total sobre o código."
+        "description": "Revitalização completa do site da Autocom3, empresa de automação industrial.",
+        "detailedDescription": "Projeto de revitalização completa do site da Autocom3, empresa especializada em automação industrial. O projeto incluiu redesign completo da interface, otimização para dispositivos móveis e implementação de animações para melhorar a experiência do usuário."
       },
       "autoPonto": {
         "title": "Auto Ponto",
-        "description": "Aplicação de registro de ponto eletrônico desenvolvida para a Autocom3.",
-        "detailedDescription": "Este projeto foi desenvolvido com o intuito de solucionar desafios recorrentes enfrentados pela empresa Autocom3 no controle de ponto diário e no gerenciamento de banco de horas. As dificuldades surgiam principalmente da dependência de aplicações de terceiros, que não ofereciam a flexibilidade ou confiabilidade necessárias. Diante disso, propus e desenvolvi uma aplicação própria, totalmente pensada para atender às necessidades específicas da empresa, garantindo maior precisão nos registros, facilidade de ajustes e autonomia total sobre os dados e funcionalidades do sistema."
+        "description": "Sistema de registro de ponto automatizado para empresas.",
+        "detailedDescription": "Sistema de registro de ponto automatizado para empresas, com funcionalidades de controle de jornada, banco de horas, justificativas de ausências e relatórios gerenciais. Desenvolvido com React e Node.js, utilizando Supabase como banco de dados."
       },
       "evatech": {
-        "title": "Site EvaTech",
-        "description": "Site oficial da EvaTech, um projeto social focado em ensinar tecnologia para mães negras solteiras.",
-        "detailedDescription": "Este projeto colaborativo foi desenvolvido para fornecer uma presença digital para a EvaTech, uma iniciativa social que visa empoderar mães negras solteiras através da educação tecnológica. O site apresenta informações sobre cursos, formulários de inscrição e histórias de sucesso."
+        "title": "Evatech",
+        "description": "Plataforma de gestão para empresas de tecnologia.",
+        "detailedDescription": "Evatech é uma plataforma de gestão para empresas de tecnologia, com funcionalidades de gerenciamento de projetos, controle financeiro, gestão de equipes e relatórios de desempenho. Desenvolvido em colaboração com uma equipe de desenvolvedores."
       },
       "peoplelly": {
         "title": "Peoplelly",
-        "description": "Uma plataforma social para conectar pessoas com interesses semelhantes e facilitar conversas significativas.",
-        "detailedDescription": "Peoplelly é um projeto pessoal que visa criar uma experiência de mídia social mais autêntica. Concentra-se em conectar usuários com base em interesses compartilhados em vez de métricas superficiais, e incentiva conversas significativas através de recursos inovadores de chat."
+        "description": "Rede social para conectar pessoas com interesses similares.",
+        "detailedDescription": "Peoplelly é uma rede social projetada para conectar pessoas com interesses similares. A plataforma utiliza um algoritmo de correspondência para sugerir conexões baseadas em interesses, localização e histórico de interações. Implementado com React, Redux e WebSockets para comunicação em tempo real."
       },
       "devEmDesenvolvimento": {
-        "title": "Dev Em Desenvolvimento",
-        "description": "Blog e plataforma educacional para desenvolvedores iniciantes com tutoriais, artigos e recursos.",
-        "detailedDescription": "Dev Em Desenvolvimento é minha plataforma educacional voltada para ajudar iniciantes a entrar no mundo da programação. Apresenta tutoriais cuidadosamente elaborados, artigos aprofundados e recursos práticos para tornar o aprendizado de programação mais acessível."
+        "title": "Dev em Desenvolvimento",
+        "description": "Blog pessoal sobre desenvolvimento de software e tecnologia.",
+        "detailedDescription": "Dev em Desenvolvimento é um blog pessoal onde compartilho artigos, tutoriais e reflexões sobre desenvolvimento de software, novas tecnologias e minha jornada como desenvolvedor. Construído com Next.js e MDX para uma experiência de leitura otimizada."
       }
-    }
+    },
+    "watchVideo": "Assistir vídeo"
   },
   "services": {
     "title": "Serviços",

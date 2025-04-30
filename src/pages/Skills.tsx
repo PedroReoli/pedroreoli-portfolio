@@ -1,12 +1,13 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { useState, useRef, useEffect } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
 import { skillsByArea } from "@/constants/skillsData"
 import type { Skill } from "@/constants/skillsData"
 import SkillModal from "@/components/SkillModal"
 import { useTranslation } from "react-i18next"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const Skills = () => {
   const { t } = useTranslation()
@@ -60,6 +61,26 @@ interface SkillCategoryProps {
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({ area, skills, isInView, onSelectSkill, index }) => {
   const { t } = useTranslation()
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 6 // 3 colunas x 2 linhas
+  const totalPages = Math.ceil(skills.length / itemsPerPage)
+
+  // Resetar a página quando a área muda
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [area])
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1))
+  }
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1))
+  }
+
+  const visibleSkills = skills.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+  const hasMultiplePages = skills.length > itemsPerPage
+
   const categoryVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -75,7 +96,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ area, skills, isInView, o
 
   return (
     <motion.div
-      className="bg-gray-900/20 backdrop-blur-sm rounded-xl p-5 border border-gray-800/30"
+      className="bg-gray-900/20 backdrop-blur-sm rounded-xl p-5 border border-gray-800/30 relative"
       variants={categoryVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -91,17 +112,64 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ area, skills, isInView, o
         />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {skills.map((skill, skillIndex) => (
-          <SkillCard
-            key={skill.title}
-            skill={skill}
-            index={skillIndex}
-            isInView={isInView}
-            onClick={() => onSelectSkill(skill)}
-            categoryIndex={index}
-          />
-        ))}
+      <div className="relative">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+          >
+            {visibleSkills.map((skill, skillIndex) => (
+              <SkillCard
+                key={skill.title}
+                skill={skill}
+                index={skillIndex}
+                isInView={isInView}
+                onClick={() => onSelectSkill(skill)}
+                categoryIndex={index}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navegação do carrossel */}
+        {hasMultiplePages && (
+          <>
+            <button
+              onClick={prevPage}
+              className="absolute -left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-800/70 backdrop-blur-sm flex items-center justify-center text-white hover:bg-blue-500/70 transition-colors z-10"
+              aria-label="Página anterior"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextPage}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-800/70 backdrop-blur-sm flex items-center justify-center text-white hover:bg-blue-500/70 transition-colors z-10"
+              aria-label="Próxima página"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Indicadores de página */}
+            {totalPages > 1 && (
+              <div className="flex justify-center gap-1 mt-4">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      i === currentPage ? "bg-blue-500" : "bg-gray-600 hover:bg-gray-500"
+                    }`}
+                    aria-label={`Ir para página ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
     </motion.div>
   )

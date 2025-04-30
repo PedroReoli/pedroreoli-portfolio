@@ -189,26 +189,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
 
           {/* Ações */}
           <div className="flex items-center gap-2">
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1"
-              aria-label={`Ver demonstração de ${t(project.titleKey)}`}
-            >
-              <ExternalLink className="h-3 w-3" />
-              {t("projects.viewApp")}
-            </a>
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1"
-              aria-label={`Ver repositório de ${t(project.titleKey)}`}
-            >
-              <Github className="h-3 w-3" />
-              {t("projects.repository")}
-            </a>
+            {project.link ? (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs flex-1"
+                aria-label={`Ver demonstração de ${t(project.titleKey)}`}
+              >
+                <ExternalLink className="h-3 w-3" />
+                {t("projects.viewApp")}
+              </a>
+            ) : (
+              <div
+                className="flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-500/50 text-gray-200 rounded-lg text-xs flex-1 cursor-not-allowed"
+                aria-label={`App privado de ${t(project.titleKey)}`}
+              >
+                <ExternalLink className="h-3 w-3" />
+                {t("projects.privateApp")}
+              </div>
+            )}
+            {project.repo ? (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-xs flex-1"
+                aria-label={`Ver repositório de ${t(project.titleKey)}`}
+              >
+                <Github className="h-3 w-3" />
+                {t("projects.repository")}
+              </a>
+            ) : (
+              <div
+                className="flex items-center justify-center gap-1 px-3 py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs flex-1 cursor-not-allowed"
+                aria-label={`Código privado de ${t(project.titleKey)}`}
+              >
+                <Github className="h-3 w-3" />
+                {t("projects.privateCode")}
+              </div>
+            )}
             <button
               onClick={onOpenModal}
               className="flex items-center justify-center p-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-lg transition-colors border border-blue-500/20"

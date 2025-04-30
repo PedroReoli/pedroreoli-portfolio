@@ -35,6 +35,7 @@ export interface Skill {
   icon: React.FC<{ className?: string }> | LucideIcon
   descriptionKey?: string // Chave de tradução para a descrição
   color: string // Cor para o hover effect
+  showCourses?: boolean // Nova propriedade para controlar a exibição de cursos
 }
 
 export const skillsData: Skill[] = [
@@ -48,6 +49,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/react-do-zero", "https://www.udemy.com/course/react-avancado"],
     descriptionKey: "skills.items.react.description",
     color: "#61DAFB", // React blue
+    showCourses: false,
   },
   {
     title: "Next.js",
@@ -58,6 +60,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/nextjs-na-pratica", "https://www.udemy.com/course/nextjs-typescript"],
     descriptionKey: "skills.items.nextjs.description",
     color: "#000000", // Next.js black
+    showCourses: false,
   },
   {
     title: "TypeScript",
@@ -71,6 +74,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.typescript.description",
     color: "#3178C6", // TypeScript blue
+    showCourses: false,
   },
   {
     title: "Tailwind CSS",
@@ -85,6 +89,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.tailwind.description",
     color: "#06B6D4", // Tailwind teal
+    showCourses: false,
   },
   {
     title: "Vite",
@@ -98,6 +103,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.vite.description",
     color: "#646CFF", // Vite purple
+    showCourses: false,
   },
   {
     title: "Three.js",
@@ -111,6 +117,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.threejs.description",
     color: "#000000", // Three.js black
+    showCourses: false,
   },
   {
     title: "Shadcn/UI",
@@ -124,6 +131,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.shadcn.description",
     color: "#000000", // Shadcn black
+    showCourses: false,
   },
   {
     title: "Framer Motion",
@@ -137,6 +145,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.framermotion.description",
     color: "#0055FF", // Framer blue
+    showCourses: false,
   },
   {
     title: "Blazor",
@@ -147,6 +156,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/blazor-webassembly", "https://www.udemy.com/course/blazor-com-dotnet"],
     descriptionKey: "skills.items.blazor.description",
     color: "#512BD4", // Blazor purple
+    showCourses: false,
   },
 
   // Backend
@@ -159,6 +169,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/nodejs-basico", "https://www.udemy.com/course/nodejs-express"],
     descriptionKey: "skills.items.nodejs.description",
     color: "#339933", // Node.js green
+    showCourses: false,
   },
   {
     title: "C#",
@@ -169,6 +180,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/csharp-completo", "https://www.udemy.com/course/csharp-avancado"],
     descriptionKey: "skills.items.csharp.description",
     color: "#239120", // C# green
+    showCourses: false,
   },
   {
     title: "Python",
@@ -179,6 +191,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/python-basico", "https://www.udemy.com/course/python-data-science"],
     descriptionKey: "skills.items.python.description",
     color: "#3776AB", // Python blue
+    showCourses: false,
   },
   {
     title: "Supabase",
@@ -192,6 +205,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.supabase.description",
     color: "#3ECF8E", // Supabase green
+    showCourses: false,
   },
   {
     title: "Express.js",
@@ -202,6 +216,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/expressjs-basico", "https://www.udemy.com/course/apis-com-express"],
     descriptionKey: "skills.items.express.description",
     color: "#000000", // Express black
+    showCourses: false,
   },
   {
     title: "Prisma ORM",
@@ -215,6 +230,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.prisma.description",
     color: "#2D3748", // Prisma dark blue
+    showCourses: false,
   },
   {
     title: "JWT",
@@ -228,6 +244,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.jwt.description",
     color: "#000000", // JWT black
+    showCourses: false,
   },
   {
     title: "Socket.IO",
@@ -241,6 +258,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.socketio.description",
     color: "#010101", // Socket.IO black
+    showCourses: false,
   },
   {
     title: "Postman",
@@ -254,6 +272,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.postman.description",
     color: "#FF6C37", // Postman orange
+    showCourses: false,
   },
   {
     title: "Swagger",
@@ -267,6 +286,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.swagger.description",
     color: "#85EA2D", // Swagger green
+    showCourses: false,
   },
 
   // Database
@@ -279,6 +299,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/sql-basico", "https://www.udemy.com/course/sql-avancado"],
     descriptionKey: "skills.items.sql.description",
     color: "#4479A1", // MySQL blue
+    showCourses: false,
   },
   {
     title: "MongoDB",
@@ -289,6 +310,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/mongodb-basico", "https://www.udemy.com/course/mongodb-avancado"],
     descriptionKey: "skills.items.mongodb.description",
     color: "#47A248", // MongoDB green
+    showCourses: false,
   },
   {
     title: "PostgreSQL",
@@ -302,6 +324,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.postgresql.description",
     color: "#336791", // PostgreSQL blue
+    showCourses: false,
   },
 
   // Tools
@@ -314,6 +337,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/git-essencial", "https://www.udemy.com/course/git-avancado"],
     descriptionKey: "skills.items.git.description",
     color: "#F05032", // Git orange
+    showCourses: false,
   },
   {
     title: "Docker",
@@ -324,6 +348,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/docker-basico", "https://www.udemy.com/course/docker-avancado"],
     descriptionKey: "skills.items.docker.description",
     color: "#2496ED", // Docker blue
+    showCourses: false,
   },
   {
     title: "VS Code",
@@ -334,6 +359,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/vscode-produtivo", "https://www.udemy.com/course/vscode-extensions"],
     descriptionKey: "skills.items.vscode.description",
     color: "#007ACC", // VS Code blue
+    showCourses: false,
   },
   {
     title: "Vercel",
@@ -344,6 +370,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/deploy-com-vercel", "https://www.udemy.com/course/cicd-na-vercel"],
     descriptionKey: "skills.items.vercel.description",
     color: "#000000", // Vercel black
+    showCourses: false,
   },
   {
     title: "ESLint + Prettier",
@@ -357,6 +384,7 @@ export const skillsData: Skill[] = [
     ],
     descriptionKey: "skills.items.eslint.description",
     color: "#4B32C3", // ESLint purple
+    showCourses: false,
   },
 ]
 

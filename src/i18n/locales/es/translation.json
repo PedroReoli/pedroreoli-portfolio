@@ -60,10 +60,20 @@
   },
   "projects": {
     "title": "Proyectos",
+    "subtitle": "Conoce algunos de mis trabajos",
+    "viewDetails": "Ver detalles",
+    "viewApp": "Ver aplicación",
+    "privateApp": "App Privada",
+    "repository": "Repositorio",
+    "privateCode": "Código Privado",
+    "information": "Información",
+    "technologies": "Tecnologías",
+    "techStack": "Stack de tecnologías",
+    "video": "Video",
     "status": {
-      "finished": "Finalizado",
+      "finished": "Completado",
       "beta": "Beta",
-      "inProgress": "En Desarrollo"
+      "inProgress": "En Progreso"
     },
     "type": {
       "personal": "Personal",
@@ -71,41 +81,34 @@
       "freelance": "Freelance",
       "work": "Trabajo"
     },
-    "viewApp": "Ver App",
-    "repository": "Repositorio",
-    "viewMore": "Ver más",
-    "readMore": "Leer más",
-    "techStack": "Stack Tecnológico",
-    "information": "Información",
-    "technologies": "Tecnologías",
-    "close": "Cerrar",
     "items": {
       "autocom3": {
         "title": "Revitalización del sitio web de Autocom3",
-        "description": "Sitio web de Autocom3 completamente vivo, rehecho parte por parte con el objetivo de hacerlo lo más moderno y único posible.",
-        "detailedDescription": "Este proyecto fue desarrollado con el objetivo de transformar el sitio web de Autocom3, originalmente alojado en WordPress y construido con Elementor, en una plataforma visualmente refinada y técnicamente personalizada. La propuesta central fue romper con los patrones genéricos de sitios hechos con herramientas low-code, rescatando la esencia del desarrollo front-end tradicional. Para ello, todo el diseño fue reestructurado manualmente con HTML y CSS puros, sin el uso de frameworks, valorando el rendimiento, la originalidad y el control total sobre el código."
+        "description": "Revitalización completa del sitio web de Autocom3, empresa de automatización industrial.",
+        "detailedDescription": "Proyecto de revitalización completa del sitio web de Autocom3, empresa especializada en automatización industrial. El proyecto incluyó rediseño completo de la interfaz, optimización para dispositivos móviles e implementación de animaciones para mejorar la experiencia del usuario."
       },
       "autoPonto": {
         "title": "Auto Ponto",
-        "description": "Aplicación de registro de tiempo electrónico desarrollada para Autocom3.",
-        "detailedDescription": "Este proyecto fue desarrollado con el objetivo de resolver desafíos recurrentes enfrentados por la empresa Autocom3 en el control diario de tiempo y en la gestión del banco de horas. Las dificultades surgían principalmente de la dependencia de aplicaciones de terceros, que no ofrecían la flexibilidad o confiabilidad necesarias. Ante esto, propuse y desarrollé una aplicación propia, totalmente diseñada para atender las necesidades específicas de la empresa, garantizando mayor precisión en los registros, facilidad de ajustes y autonomía total sobre los datos y funcionalidades del sistema."
+        "description": "Sistema de registro de tiempo automatizado para empresas.",
+        "detailedDescription": "Sistema de registro de tiempo automatizado para empresas, con funcionalidades de control de jornada, banco de horas, justificaciones de ausencias e informes gerenciales. Desarrollado con React y Node.js, utilizando Supabase como base de datos."
       },
       "evatech": {
-        "title": "Sitio Web EvaTech",
-        "description": "Sitio web oficial de EvaTech, un proyecto social enfocado en enseñar tecnología a madres solteras negras.",
-        "detailedDescription": "Este proyecto colaborativo fue desarrollado para proporcionar una presencia digital a EvaTech, una iniciativa social que busca empoderar a madres solteras negras a través de la educación tecnológica. El sitio web incluye información sobre cursos, formularios de registro e historias de éxito."
+        "title": "Evatech",
+        "description": "Plataforma de gestión para empresas de tecnología.",
+        "detailedDescription": "Evatech es una plataforma de gestión para empresas de tecnología, con funcionalidades de gestión de proyectos, control financiero, gestión de equipos e informes de rendimiento. Desarrollado en colaboración con un equipo de desarrolladores."
       },
       "peoplelly": {
         "title": "Peoplelly",
-        "description": "Una plataforma social para conectar personas con intereses similares y facilitar conversaciones significativas.",
-        "detailedDescription": "Peoplelly es un proyecto personal que busca crear una experiencia de redes sociales más auténtica. Se enfoca en conectar usuarios basándose en intereses compartidos en lugar de métricas superficiales, y fomenta conversaciones significativas a través de características innovadoras de chat."
+        "description": "Red social para conectar personas con intereses similares.",
+        "detailedDescription": "Peoplelly es una red social diseñada para conectar personas con intereses similares. La plataforma utiliza un algoritmo de correspondencia para sugerir conexiones basadas en intereses, ubicación e historial de interacciones. Implementado con React, Redux y WebSockets para comunicación en tiempo real."
       },
       "devEmDesenvolvimento": {
-        "title": "Dev Em Desenvolvimento",
-        "description": "Blog y plataforma educativa para desarrolladores principiantes con tutoriales, artículos y recursos.",
-        "detailedDescription": "Dev Em Desenvolvimento (Desarrollador en Desarrollo) es mi plataforma educativa dirigida a ayudar a principiantes a ingresar al mundo de la programación. Cuenta con tutoriales cuidadosamente elaborados, artículos en profundidad y recursos prácticos para hacer que el aprendizaje de la programación sea más accesible."
+        "title": "Dev en Desarrollo",
+        "description": "Blog personal sobre desarrollo de software y tecnología.",
+        "detailedDescription": "Dev en Desarrollo es un blog personal donde comparto artículos, tutoriales y reflexiones sobre desarrollo de software, nuevas tecnologías y mi trayectoria como desarrollador. Construido con Next.js y MDX para una experiencia de lectura optimizada."
       }
-    }
+    },
+    "watchVideo": "Ver video"
   },
   "services": {
     "title": "Servicios",

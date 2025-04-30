@@ -8,7 +8,8 @@ export interface Project {
   thumbnails: string[]
   type: "personal" | "collaborative" | "freelance" | "work" // Adicionado "work"
   detailedDescriptionKey?: string // Chave de tradução para a descrição detalhada
-  videoUrl?: string // URL do vídeo (opcional)
+  videoUrl?: string // URL do vídeo local (opcional)
+  youtubeUrl?: string // URL do vídeo do YouTube (opcional)
 }
 
 export const projectsData: Project[] = [
@@ -19,11 +20,12 @@ export const projectsData: Project[] = [
     repo: "",
     techStack: ["HTML", "CSS", "Framer Motion", "HTML Tilt", "JavaScript"],
     status: "finished",
-    thumbnails: ["/projects/autocom1.png", "/projects/autocom2.png", "/projects/autocom3.png"],
+    thumbnails: ["/projects/autocom1.jpg", "/projects/autocom2.jpg", "/projects/autocom3.jpg"],
     type: "work",
     detailedDescriptionKey: "projects.items.autocom3.detailedDescription",
-    videoUrl: "/projects/autocom1.mp4",
+    youtubeUrl : "https://www.youtube.com/watch?v=wn0DBp2nYWg",
   },
+  
   {
     titleKey: "projects.items.autoPonto.title",
     descriptionKey: "projects.items.autoPonto.description",
@@ -34,7 +36,7 @@ export const projectsData: Project[] = [
     thumbnails: ["/projects/ponto1.jpg", "/projects/ponto2.jpg", "/projects/ponto3.jpg"],
     type: "work",
     detailedDescriptionKey: "projects.items.autoPonto.detailedDescription",
-    videoUrl: "/projects/ponto.mp4",
+    youtubeUrl : "https://youtu.be/3LhKdtr1fOY",
   },
   {
     titleKey: "projects.items.evatech.title",
@@ -68,7 +70,7 @@ export const projectsData: Project[] = [
     thumbnails: ["/projects/blog1.png", "/projects/blog2.png", "/projects/blog3.png"],
     type: "personal",
     detailedDescriptionKey: "projects.items.devEmDesenvolvimento.detailedDescription",
-    videoUrl: "/projects/blog.mp4",
+    youtubeUrl : "https://youtu.be/ICdA0rHeRIs",
   },
 ]
 

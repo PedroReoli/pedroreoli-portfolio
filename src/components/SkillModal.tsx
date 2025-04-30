@@ -1,10 +1,10 @@
 "use client"
 
-import type React from "react"
-import { useEffect, useState, useRef } from "react"
+import React from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Star, Award, BookOpen, Info, ChevronRight, ExternalLink } from "lucide-react"
 import type { Skill } from "@/constants/skillsData"
+import { X, ExternalLink, BookOpen, Star, Award, Info } from 'lucide-react'
 import { useTranslation } from "react-i18next"
 
 interface SkillModalProps {
@@ -86,6 +86,9 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
 
   if (!skill) return null
 
+  // Verificar se os cursos devem ser exibidos
+  const shouldShowCourses = skill.showCourses !== false && skill.courses && skill.courses.length > 0
+
   // Convert level to stars
   const renderStars = (level: number) => {
     const fullStars = Math.floor(level)
@@ -110,6 +113,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
     )
   }
 
+  // Renderizar o ícone corretamente
   const IconComponent = skill.icon
 
   return (
@@ -141,7 +145,9 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                     boxShadow: `0 0 15px ${skill.color}10`,
                   }}
                 >
-                  <IconComponent className="w-7 h-7" style={{ color: skill.color }} />
+                  <div style={{ color: skill.color }}>
+                    <IconComponent className="w-7 h-7" />
+                  </div>
                 </motion.div>
                 <div className="flex-1">
                   <motion.h3
@@ -212,7 +218,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                   )}
                 </button>
 
-                {skill.courses.length > 0 && (
+                {shouldShowCourses && (
                   <button
                     onClick={() => setActiveTab("courses")}
                     className={`relative px-3 py-2 text-xs font-medium rounded-t-lg transition-colors ${
@@ -223,7 +229,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                       <BookOpen className="h-3.5 w-3.5" />
                       {t("skills.modal.courses")}
                       <span className="inline-flex items-center justify-center w-4 h-4 text-[10px] font-medium rounded-full bg-gray-800">
-                        {skill.courses.length}
+                        {skill.courses?.length || 0}
                       </span>
                     </span>
                     {activeTab === "courses" && (
@@ -253,7 +259,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                       <p className="text-gray-300 text-xs leading-relaxed">{t(skill.descriptionKey)}</p>
                     </div>
 
-                    {skill.courses.length > 0 && (
+                    {shouldShowCourses && (
                       <button
                         onClick={() => setActiveTab("courses")}
                         className="w-full flex items-center justify-between p-2 rounded-lg bg-gray-800/20 hover:bg-gray-800/30 transition-colors text-xs text-gray-300 hover:text-white group"
@@ -262,13 +268,20 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                           <BookOpen className="h-3.5 w-3.5 text-blue-500" />
                           {t("skills.modal.viewCourses")}
                         </span>
-                        <ChevronRight className="h-3.5 w-3.5 text-gray-500 group-hover:text-white transition-transform group-hover:translate-x-0.5" />
+                        <motion.div
+                          className="h-3.5 w-3.5 text-gray-500 group-hover:text-white"
+                          initial={{ x: 0 }}
+                          whileHover={{ x: 3 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </motion.div>
                       </button>
                     )}
                   </motion.div>
                 )}
 
-                {activeTab === "courses" && skill.courses.length > 0 && (
+                {activeTab === "courses" && shouldShowCourses && (
                   <motion.div
                     key="courses"
                     initial={{ opacity: 0, y: 5 }}
@@ -278,7 +291,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                     className="space-y-2"
                   >
                     <div className="grid gap-2">
-                      {skill.courses.map((course, index) => (
+                      {skill.courses?.map((course, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, y: 5 }}
@@ -286,7 +299,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ skill, isOpen, onClose }) => {
                           transition={{ delay: index * 0.05, duration: 0.2 }}
                         >
                           <a
-                            href={skill.coursesLinks[index]}
+                            href={skill.coursesLinks?.[index] || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group block"

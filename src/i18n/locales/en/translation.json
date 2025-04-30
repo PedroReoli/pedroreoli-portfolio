@@ -60,10 +60,20 @@
   },
   "projects": {
     "title": "Projects",
+    "subtitle": "Check out some of my work",
+    "viewDetails": "View details",
+    "viewApp": "View application",
+    "privateApp": "Private App",
+    "repository": "Repository",
+    "privateCode": "Private Code",
+    "information": "Information",
+    "technologies": "Technologies",
+    "techStack": "Tech stack",
+    "video": "Video",
     "status": {
-      "finished": "Finished",
+      "finished": "Completed",
       "beta": "Beta",
-      "inProgress": "In Development"
+      "inProgress": "In Progress"
     },
     "type": {
       "personal": "Personal",
@@ -71,41 +81,34 @@
       "freelance": "Freelance",
       "work": "Work"
     },
-    "viewApp": "View App",
-    "repository": "Repository",
-    "viewMore": "View more",
-    "readMore": "Read more",
-    "techStack": "Tech Stack",
-    "information": "Information",
-    "technologies": "Technologies",
-    "close": "Close",
     "items": {
       "autocom3": {
         "title": "Autocom3 Website Revitalization",
-        "description": "Complete revitalization of the Autocom3 website, rebuilt part by part to make it as modern and unique as possible.",
-        "detailedDescription": "This project was developed with the aim of transforming the Autocom3 website, originally hosted on WordPress and built with Elementor, into a visually refined and technically customized platform. The central proposal was to break away from the generic patterns of sites made with low-code tools, reclaiming the essence of traditional front-end development. To achieve this, the entire layout was manually restructured with pure HTML and CSS, without the use of frameworks, valuing performance, originality, and total control over the code."
+        "description": "Complete revitalization of the Autocom3 website, an industrial automation company.",
+        "detailedDescription": "Complete revitalization project for the Autocom3 website, a company specialized in industrial automation. The project included a complete interface redesign, mobile optimization, and implementation of animations to enhance the user experience."
       },
       "autoPonto": {
         "title": "Auto Ponto",
-        "description": "Electronic time tracking application developed for Autocom3.",
-        "detailedDescription": "This project was developed to solve recurring challenges faced by Autocom3 in daily time tracking and hour bank management. The difficulties arose mainly from the dependence on third-party applications, which did not offer the necessary flexibility or reliability. Given this, I proposed and developed a proprietary application, fully designed to meet the specific needs of the company, ensuring greater accuracy in records, ease of adjustments, and total autonomy over the system's data and functionalities."
+        "description": "Automated time tracking system for companies.",
+        "detailedDescription": "Automated time tracking system for companies, with features for journey control, hour bank, absence justifications, and management reports. Developed with React and Node.js, using Supabase as the database."
       },
       "evatech": {
-        "title": "EvaTech Website",
-        "description": "Official website for EvaTech, a social project focused on teaching technology to single black mothers.",
-        "detailedDescription": "This collaborative project was developed to provide a digital presence for EvaTech, a social initiative that aims to empower single black mothers through technology education. The website features course information, registration forms, and success stories."
+        "title": "Evatech",
+        "description": "Management platform for technology companies.",
+        "detailedDescription": "Evatech is a management platform for technology companies, with features for project management, financial control, team management, and performance reports. Developed in collaboration with a team of developers."
       },
       "peoplelly": {
         "title": "Peoplelly",
-        "description": "A social platform for connecting people with similar interests and facilitating meaningful conversations.",
-        "detailedDescription": "Peoplelly is a personal project that aims to create a more authentic social media experience. It focuses on connecting users based on shared interests rather than superficial metrics, and encourages meaningful conversations through innovative chat features."
+        "description": "Social network to connect people with similar interests.",
+        "detailedDescription": "Peoplelly is a social network designed to connect people with similar interests. The platform uses a matching algorithm to suggest connections based on interests, location, and interaction history. Implemented with React, Redux, and WebSockets for real-time communication."
       },
       "devEmDesenvolvimento": {
-        "title": "Dev Em Desenvolvimento",
-        "description": "Educational blog and platform for beginner developers with tutorials, articles, and resources.",
-        "detailedDescription": "Dev Em Desenvolvimento (Developer in Development) is my educational platform aimed at helping beginners enter the world of programming. It features carefully crafted tutorials, in-depth articles, and practical resources to make learning programming more accessible."
+        "title": "Dev in Development",
+        "description": "Personal blog about software development and technology.",
+        "detailedDescription": "Dev in Development is a personal blog where I share articles, tutorials, and reflections on software development, new technologies, and my journey as a developer. Built with Next.js and MDX for an optimized reading experience."
       }
-    }
+    },
+    "watchVideo": "Watch video"
   },
   "services": {
     "title": "Services",
