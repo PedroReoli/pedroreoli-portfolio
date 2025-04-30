@@ -68,7 +68,8 @@
     "type": {
       "personal": "Pessoal",
       "collaborative": "Colaborativo",
-      "freelance": "Freelance"
+      "freelance": "Freelance",
+      "work": "Trabalho"
     },
     "viewApp": "Ver App",
     "repository": "Repositório",
@@ -79,6 +80,16 @@
     "technologies": "Tecnologias",
     "close": "Fechar",
     "items": {
+      "autocom3": {
+        "title": "Revitalização do site da Autocom3",
+        "description": "Site da Autocom3 todo vivo, refeito parte por parte com o intuito de deixar o mais moderno e único possível.",
+        "detailedDescription": "Este projeto foi desenvolvido com o objetivo de transformar o site da Autocom3, originalmente hospedado no WordPress e construído com Elementor, em uma plataforma visualmente refinada e tecnicamente personalizada. A proposta central foi romper com os padrões genéricos de sites feitos em ferramentas low-code, resgatando a essência do desenvolvimento front-end tradicional. Para isso, todo o layout foi reestruturado manualmente com HTML e CSS puros, sem o uso de frameworks, valorizando a performance, a originalidade e o controle total sobre o código."
+      },
+      "autoPonto": {
+        "title": "Auto Ponto",
+        "description": "Aplicação de registro de ponto eletrônico desenvolvida para a Autocom3.",
+        "detailedDescription": "Este projeto foi desenvolvido com o intuito de solucionar desafios recorrentes enfrentados pela empresa Autocom3 no controle de ponto diário e no gerenciamento de banco de horas. As dificuldades surgiam principalmente da dependência de aplicações de terceiros, que não ofereciam a flexibilidade ou confiabilidade necessárias. Diante disso, propus e desenvolvi uma aplicação própria, totalmente pensada para atender às necessidades específicas da empresa, garantindo maior precisão nos registros, facilidade de ajustes e autonomia total sobre os dados e funcionalidades do sistema."
+      },
       "evatech": {
         "title": "Site EvaTech",
         "description": "Site oficial da EvaTech, um projeto social focado em ensinar tecnologia para mães negras solteiras.",
@@ -168,6 +179,48 @@
       },
       "vscode": {
         "description": "Visual Studio Code é meu editor de código principal, aprimorado com extensões para produtividade e qualidade de código."
+      },
+      "vite": {
+        "description": "Utilizo o Vite como ferramenta de build para desenvolvimento rápido, aproveitando sua velocidade de compilação e hot module replacement para uma experiência de desenvolvimento mais eficiente."
+      },
+      "threejs": {
+        "description": "Trabalho com Three.js para criar gráficos 3D interativos na web, utilizando WebGL para renderização de alta performance e experiências visuais imersivas."
+      },
+      "shadcn": {
+        "description": "Implemento Shadcn/UI para criar interfaces elegantes e acessíveis, aproveitando seus componentes estilizados com Tailwind CSS para desenvolvimento rápido e consistente."
+      },
+      "framermotion": {
+        "description": "Utilizo Framer Motion para criar animações declarativas com alto nível de controle, melhorando a experiência do usuário com transições fluidas e interações dinâmicas."
+      },
+      "blazor": {
+        "description": "Desenvolvo aplicações web interativas com Blazor, utilizando C# e .NET para criar interfaces de usuário ricas que rodam diretamente no navegador via WebAssembly."
+      },
+      "supabase": {
+        "description": "Utilizo Supabase como backend-as-a-service para criar APIs, gerenciar autenticação e armazenar dados, aproveitando seu banco de dados PostgreSQL e funcionalidades em tempo real."
+      },
+      "express": {
+        "description": "Desenvolvo APIs RESTful com Express.js, um framework minimalista para Node.js que facilita a criação de servidores web e aplicações backend robustas."
+      },
+      "prisma": {
+        "description": "Utilizo Prisma ORM para interagir com bancos de dados em aplicações Node.js, aproveitando seu sistema de tipos forte com TypeScript e migrações automatizadas."
+      },
+      "jwt": {
+        "description": "Implemento autenticação e autorização em aplicações web utilizando JSON Web Tokens (JWT), garantindo segurança e escalabilidade em APIs RESTful."
+      },
+      "socketio": {
+        "description": "Desenvolvo comunicação em tempo real com Socket.IO, permitindo conexões bidirecionais entre clientes e servidores para aplicações como chats, dashboards ao vivo e jogos."
+      },
+      "postman": {
+        "description": "Utilizo Postman para testar, documentar e automatizar APIs, facilitando o desenvolvimento e garantindo a qualidade das interfaces de programação."
+      },
+      "swagger": {
+        "description": "Documento APIs com Swagger/OpenAPI, criando especificações claras e interativas que facilitam o entendimento e consumo dos endpoints por outros desenvolvedores."
+      },
+      "vercel": {
+        "description": "Utilizo a plataforma Vercel para deploy contínuo e hospedagem de aplicações frontend, aproveitando sua integração com Git e otimizações automáticas."
+      },
+      "eslint": {
+        "description": "Mantenho a qualidade e consistência do código com ESLint e Prettier, estabelecendo padrões de estilo e detectando problemas potenciais antes mesmo da execução."
       }
     }
   },

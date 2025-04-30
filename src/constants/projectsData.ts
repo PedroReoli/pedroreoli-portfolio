@@ -1,16 +1,41 @@
 export interface Project {
-  titleKey: string     // Chave de tradução para o título
-  descriptionKey: string  // Chave de tradução para a descrição
+  titleKey: string // Chave de tradução para o título
+  descriptionKey: string // Chave de tradução para a descrição
   link: string
   repo: string
   techStack: string[]
-  status: "finished" | "beta" | "inProgress"  // Chaves de status padronizadas
+  status: "finished" | "beta" | "inProgress" // Chaves de status padronizadas
   thumbnails: string[]
-  type: "personal" | "collaborative" | "freelance"  // Chaves de tipo padronizadas
-  detailedDescriptionKey?: string  // Chave de tradução para a descrição detalhada
+  type: "personal" | "collaborative" | "freelance" | "work" // Adicionado "work"
+  detailedDescriptionKey?: string // Chave de tradução para a descrição detalhada
+  videoUrl?: string // URL do vídeo (opcional)
 }
 
 export const projectsData: Project[] = [
+  {
+    titleKey: "projects.items.autocom3.title",
+    descriptionKey: "projects.items.autocom3.description",
+    link: "https://autocom3.com.br",
+    repo: "",
+    techStack: ["HTML", "CSS", "Framer Motion", "HTML Tilt", "JavaScript"],
+    status: "finished",
+    thumbnails: ["/projects/autocom1.png", "/projects/autocom2.png", "/projects/autocom3.png"],
+    type: "work",
+    detailedDescriptionKey: "projects.items.autocom3.detailedDescription",
+    videoUrl: "/projects/autocom1.mp4",
+  },
+  {
+    titleKey: "projects.items.autoPonto.title",
+    descriptionKey: "projects.items.autoPonto.description",
+    link: "#",
+    repo: "https://github.com/PedroReoli/RegistroDePonto",
+    techStack: ["React", "APIRest", "Supabase", "Node.js"],
+    status: "inProgress",
+    thumbnails: ["/projects/ponto1.jpg", "/projects/ponto2.jpg", "/projects/ponto3.jpg"],
+    type: "work",
+    detailedDescriptionKey: "projects.items.autoPonto.detailedDescription",
+    videoUrl: "/projects/ponto.mp4",
+  },
   {
     titleKey: "projects.items.evatech.title",
     descriptionKey: "projects.items.evatech.description",
@@ -43,6 +68,7 @@ export const projectsData: Project[] = [
     thumbnails: ["/projects/blog1.png", "/projects/blog2.png", "/projects/blog3.png"],
     type: "personal",
     detailedDescriptionKey: "projects.items.devEmDesenvolvimento.detailedDescription",
+    videoUrl: "/projects/blog.mp4",
   },
 ]
 

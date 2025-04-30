@@ -68,7 +68,8 @@
     "type": {
       "personal": "Personal",
       "collaborative": "Collaborative",
-      "freelance": "Freelance"
+      "freelance": "Freelance",
+      "work": "Work"
     },
     "viewApp": "View App",
     "repository": "Repository",
@@ -79,6 +80,16 @@
     "technologies": "Technologies",
     "close": "Close",
     "items": {
+      "autocom3": {
+        "title": "Autocom3 Website Revitalization",
+        "description": "Complete revitalization of the Autocom3 website, rebuilt part by part to make it as modern and unique as possible.",
+        "detailedDescription": "This project was developed with the aim of transforming the Autocom3 website, originally hosted on WordPress and built with Elementor, into a visually refined and technically customized platform. The central proposal was to break away from the generic patterns of sites made with low-code tools, reclaiming the essence of traditional front-end development. To achieve this, the entire layout was manually restructured with pure HTML and CSS, without the use of frameworks, valuing performance, originality, and total control over the code."
+      },
+      "autoPonto": {
+        "title": "Auto Ponto",
+        "description": "Electronic time tracking application developed for Autocom3.",
+        "detailedDescription": "This project was developed to solve recurring challenges faced by Autocom3 in daily time tracking and hour bank management. The difficulties arose mainly from the dependence on third-party applications, which did not offer the necessary flexibility or reliability. Given this, I proposed and developed a proprietary application, fully designed to meet the specific needs of the company, ensuring greater accuracy in records, ease of adjustments, and total autonomy over the system's data and functionalities."
+      },
       "evatech": {
         "title": "EvaTech Website",
         "description": "Official website for EvaTech, a social project focused on teaching technology to single black mothers.",
@@ -168,6 +179,48 @@
       },
       "vscode": {
         "description": "Visual Studio Code is my primary code editor, enhanced with extensions for productivity and code quality."
+      },
+      "vite": {
+        "description": "I use Vite as a build tool for rapid development, leveraging its fast compilation speed and hot module replacement for a more efficient development experience."
+      },
+      "threejs": {
+        "description": "I work with Three.js to create interactive 3D graphics on the web, using WebGL for high-performance rendering and immersive visual experiences."
+      },
+      "shadcn": {
+        "description": "I implement Shadcn/UI to create elegant and accessible interfaces, leveraging its Tailwind CSS-styled components for rapid and consistent development."
+      },
+      "framermotion": {
+        "description": "I use Framer Motion to create declarative animations with a high level of control, enhancing user experience with fluid transitions and dynamic interactions."
+      },
+      "blazor": {
+        "description": "I develop interactive web applications with Blazor, using C# and .NET to create rich user interfaces that run directly in the browser via WebAssembly."
+      },
+      "supabase": {
+        "description": "I use Supabase as a backend-as-a-service to create APIs, manage authentication, and store data, leveraging its PostgreSQL database and real-time functionality."
+      },
+      "express": {
+        "description": "I develop RESTful APIs with Express.js, a minimalist framework for Node.js that facilitates the creation of web servers and robust backend applications."
+      },
+      "prisma": {
+        "description": "I use Prisma ORM to interact with databases in Node.js applications, leveraging its strong type system with TypeScript and automated migrations."
+      },
+      "jwt": {
+        "description": "I implement authentication and authorization in web applications using JSON Web Tokens (JWT), ensuring security and scalability in RESTful APIs."
+      },
+      "socketio": {
+        "description": "I develop real-time communication with Socket.IO, enabling bidirectional connections between clients and servers for applications like chats, live dashboards, and games."
+      },
+      "postman": {
+        "description": "I use Postman to test, document, and automate APIs, facilitating development and ensuring the quality of programming interfaces."
+      },
+      "swagger": {
+        "description": "I document APIs with Swagger/OpenAPI, creating clear and interactive specifications that make it easier for other developers to understand and consume endpoints."
+      },
+      "vercel": {
+        "description": "I use the Vercel platform for continuous deployment and hosting of frontend applications, leveraging its Git integration and automatic optimizations."
+      },
+      "eslint": {
+        "description": "I maintain code quality and consistency with ESLint and Prettier, establishing style standards and detecting potential problems before execution."
       }
     }
   },

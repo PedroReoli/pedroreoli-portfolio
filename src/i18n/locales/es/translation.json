@@ -68,7 +68,8 @@
     "type": {
       "personal": "Personal",
       "collaborative": "Colaborativo",
-      "freelance": "Freelance"
+      "freelance": "Freelance",
+      "work": "Trabajo"
     },
     "viewApp": "Ver App",
     "repository": "Repositorio",
@@ -79,6 +80,16 @@
     "technologies": "Tecnologías",
     "close": "Cerrar",
     "items": {
+      "autocom3": {
+        "title": "Revitalización del sitio web de Autocom3",
+        "description": "Sitio web de Autocom3 completamente vivo, rehecho parte por parte con el objetivo de hacerlo lo más moderno y único posible.",
+        "detailedDescription": "Este proyecto fue desarrollado con el objetivo de transformar el sitio web de Autocom3, originalmente alojado en WordPress y construido con Elementor, en una plataforma visualmente refinada y técnicamente personalizada. La propuesta central fue romper con los patrones genéricos de sitios hechos con herramientas low-code, rescatando la esencia del desarrollo front-end tradicional. Para ello, todo el diseño fue reestructurado manualmente con HTML y CSS puros, sin el uso de frameworks, valorando el rendimiento, la originalidad y el control total sobre el código."
+      },
+      "autoPonto": {
+        "title": "Auto Ponto",
+        "description": "Aplicación de registro de tiempo electrónico desarrollada para Autocom3.",
+        "detailedDescription": "Este proyecto fue desarrollado con el objetivo de resolver desafíos recurrentes enfrentados por la empresa Autocom3 en el control diario de tiempo y en la gestión del banco de horas. Las dificultades surgían principalmente de la dependencia de aplicaciones de terceros, que no ofrecían la flexibilidad o confiabilidad necesarias. Ante esto, propuse y desarrollé una aplicación propia, totalmente diseñada para atender las necesidades específicas de la empresa, garantizando mayor precisión en los registros, facilidad de ajustes y autonomía total sobre los datos y funcionalidades del sistema."
+      },
       "evatech": {
         "title": "Sitio Web EvaTech",
         "description": "Sitio web oficial de EvaTech, un proyecto social enfocado en enseñar tecnología a madres solteras negras.",
@@ -168,6 +179,48 @@
       },
       "vscode": {
         "description": "Visual Studio Code es mi editor de código principal, mejorado con extensiones para productividad y calidad de código."
+      },
+      "vite": {
+        "description": "Utilizo Vite como herramienta de construcción para desarrollo rápido, aprovechando su velocidad de compilación y reemplazo de módulos en caliente para una experiencia de desarrollo más eficiente."
+      },
+      "threejs": {
+        "description": "Trabajo con Three.js para crear gráficos 3D interactivos en la web, utilizando WebGL para renderizado de alto rendimiento y experiencias visuales inmersivas."
+      },
+      "shadcn": {
+        "description": "Implemento Shadcn/UI para crear interfaces elegantes y accesibles, aprovechando sus componentes estilizados con Tailwind CSS para un desarrollo rápido y consistente."
+      },
+      "framermotion": {
+        "description": "Utilizo Framer Motion para crear animaciones declarativas con un alto nivel de control, mejorando la experiencia del usuario con transiciones fluidas e interacciones dinámicas."
+      },
+      "blazor": {
+        "description": "Desarrollo aplicaciones web interactivas con Blazor, utilizando C# y .NET para crear interfaces de usuario ricas que se ejecutan directamente en el navegador a través de WebAssembly."
+      },
+      "supabase": {
+        "description": "Utilizo Supabase como backend-as-a-service para crear APIs, gestionar autenticación y almacenar datos, aprovechando su base de datos PostgreSQL y funcionalidades en tiempo real."
+      },
+      "express": {
+        "description": "Desarrollo APIs RESTful con Express.js, un framework minimalista para Node.js que facilita la creación de servidores web y aplicaciones backend robustas."
+      },
+      "prisma": {
+        "description": "Utilizo Prisma ORM para interactuar con bases de datos en aplicaciones Node.js, aprovechando su sistema de tipos fuerte con TypeScript y migraciones automatizadas."
+      },
+      "jwt": {
+        "description": "Implemento autenticación y autorización en aplicaciones web utilizando JSON Web Tokens (JWT), garantizando seguridad y escalabilidad en APIs RESTful."
+      },
+      "socketio": {
+        "description": "Desarrollo comunicación en tiempo real con Socket.IO, permitiendo conexiones bidireccionales entre clientes y servidores para aplicaciones como chats, dashboards en vivo y juegos."
+      },
+      "postman": {
+        "description": "Utilizo Postman para probar, documentar y automatizar APIs, facilitando el desarrollo y garantizando la calidad de las interfaces de programación."
+      },
+      "swagger": {
+        "description": "Documento APIs con Swagger/OpenAPI, creando especificaciones claras e interactivas que facilitan la comprensión y consumo de los endpoints por otros desarrolladores."
+      },
+      "vercel": {
+        "description": "Utilizo la plataforma Vercel para despliegue continuo y alojamiento de aplicaciones frontend, aprovechando su integración con Git y optimizaciones automáticas."
+      },
+      "eslint": {
+        "description": "Mantengo la calidad y consistencia del código con ESLint y Prettier, estableciendo estándares de estilo y detectando problemas potenciales antes de la ejecución."
       }
     }
   },

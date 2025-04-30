@@ -86,6 +86,68 @@ export const skillsData: Skill[] = [
     descriptionKey: "skills.items.tailwind.description",
     color: "#06B6D4", // Tailwind teal
   },
+  {
+    title: "Vite",
+    level: 2.7,
+    area: "frontend",
+    icon: createSimpleIcon("vite", "646CFF"),
+    courses: ["Vite para Desenvolvedores React", "Vite Avançado"],
+    coursesLinks: [
+      "https://www.udemy.com/course/vite-para-desenvolvedores-react",
+      "https://www.udemy.com/course/vite-avancado",
+    ],
+    descriptionKey: "skills.items.vite.description",
+    color: "#646CFF", // Vite purple
+  },
+  {
+    title: "Three.js",
+    level: 2.2,
+    area: "frontend",
+    icon: createSimpleIcon("threedotjs", "000000"),
+    courses: ["Three.js Fundamentos", "Gráficos 3D na Web"],
+    coursesLinks: [
+      "https://www.udemy.com/course/threejs-fundamentos",
+      "https://www.udemy.com/course/graficos-3d-na-web",
+    ],
+    descriptionKey: "skills.items.threejs.description",
+    color: "#000000", // Three.js black
+  },
+  {
+    title: "Shadcn/UI",
+    level: 2.5,
+    area: "frontend",
+    icon: createSimpleIcon("shadcnui", "000000"),
+    courses: ["Shadcn/UI com Tailwind", "Componentes Reutilizáveis"],
+    coursesLinks: [
+      "https://www.udemy.com/course/shadcn-ui-com-tailwind",
+      "https://www.udemy.com/course/componentes-reutilizaveis",
+    ],
+    descriptionKey: "skills.items.shadcn.description",
+    color: "#000000", // Shadcn black
+  },
+  {
+    title: "Framer Motion",
+    level: 2.6,
+    area: "frontend",
+    icon: createSimpleIcon("framer", "0055FF"),
+    courses: ["Animações com Framer Motion", "UX com Animações"],
+    coursesLinks: [
+      "https://www.udemy.com/course/animacoes-com-framer-motion",
+      "https://www.udemy.com/course/ux-com-animacoes",
+    ],
+    descriptionKey: "skills.items.framermotion.description",
+    color: "#0055FF", // Framer blue
+  },
+  {
+    title: "Blazor",
+    level: 2.0,
+    area: "frontend",
+    icon: createSimpleIcon("blazor", "512BD4"),
+    courses: ["Blazor WebAssembly", "Blazor com .NET"],
+    coursesLinks: ["https://www.udemy.com/course/blazor-webassembly", "https://www.udemy.com/course/blazor-com-dotnet"],
+    descriptionKey: "skills.items.blazor.description",
+    color: "#512BD4", // Blazor purple
+  },
 
   // Backend
   {
@@ -119,17 +181,92 @@ export const skillsData: Skill[] = [
     color: "#3776AB", // Python blue
   },
   {
-    title: "Appwrite",
+    title: "Supabase",
     level: 2.4,
     area: "backend",
-    icon: createSimpleIcon("appwrite", "F02E65"),
-    courses: ["Appwrite Fundamentals", "Appwrite para Desenvolvedores"],
+    icon: createSimpleIcon("supabase", "3ECF8E"),
+    courses: ["Supabase Fundamentals", "Supabase para Desenvolvedores"],
     coursesLinks: [
-      "https://www.udemy.com/course/appwrite-fundamentals",
-      "https://www.udemy.com/course/appwrite-para-desenvolvedores",
+      "https://www.udemy.com/course/supabase-fundamentals",
+      "https://www.udemy.com/course/supabase-para-desenvolvedores",
     ],
-    descriptionKey: "skills.items.appwrite.description",
-    color: "#F02E65", // Appwrite pink
+    descriptionKey: "skills.items.supabase.description",
+    color: "#3ECF8E", // Supabase green
+  },
+  {
+    title: "Express.js",
+    level: 2.5,
+    area: "backend",
+    icon: createSimpleIcon("express", "000000"),
+    courses: ["Express.js Básico", "APIs com Express"],
+    coursesLinks: ["https://www.udemy.com/course/expressjs-basico", "https://www.udemy.com/course/apis-com-express"],
+    descriptionKey: "skills.items.express.description",
+    color: "#000000", // Express black
+  },
+  {
+    title: "Prisma ORM",
+    level: 2.3,
+    area: "backend",
+    icon: createSimpleIcon("prisma", "2D3748"),
+    courses: ["Prisma ORM Básico", "Prisma com TypeScript"],
+    coursesLinks: [
+      "https://www.udemy.com/course/prisma-orm-basico",
+      "https://www.udemy.com/course/prisma-com-typescript",
+    ],
+    descriptionKey: "skills.items.prisma.description",
+    color: "#2D3748", // Prisma dark blue
+  },
+  {
+    title: "JWT",
+    level: 2.6,
+    area: "backend",
+    icon: createSimpleIcon("jsonwebtokens", "000000"),
+    courses: ["Autenticação com JWT", "Segurança em APIs"],
+    coursesLinks: [
+      "https://www.udemy.com/course/autenticacao-com-jwt",
+      "https://www.udemy.com/course/seguranca-em-apis",
+    ],
+    descriptionKey: "skills.items.jwt.description",
+    color: "#000000", // JWT black
+  },
+  {
+    title: "Socket.IO",
+    level: 2.2,
+    area: "backend",
+    icon: createSimpleIcon("socketdotio", "010101"),
+    courses: ["WebSockets Básico", "Aplicações em Tempo Real"],
+    coursesLinks: [
+      "https://www.udemy.com/course/websockets-basico",
+      "https://www.udemy.com/course/aplicacoes-em-tempo-real",
+    ],
+    descriptionKey: "skills.items.socketio.description",
+    color: "#010101", // Socket.IO black
+  },
+  {
+    title: "Postman",
+    level: 2.8,
+    area: "backend",
+    icon: createSimpleIcon("postman", "FF6C37"),
+    courses: ["Testes de API com Postman", "Automação com Postman"],
+    coursesLinks: [
+      "https://www.udemy.com/course/testes-de-api-com-postman",
+      "https://www.udemy.com/course/automacao-com-postman",
+    ],
+    descriptionKey: "skills.items.postman.description",
+    color: "#FF6C37", // Postman orange
+  },
+  {
+    title: "Swagger",
+    level: 2.4,
+    area: "backend",
+    icon: createSimpleIcon("swagger", "85EA2D"),
+    courses: ["Documentação de API com Swagger", "OpenAPI Specification"],
+    coursesLinks: [
+      "https://www.udemy.com/course/documentacao-de-api-com-swagger",
+      "https://www.udemy.com/course/openapi-specification",
+    ],
+    descriptionKey: "skills.items.swagger.description",
+    color: "#85EA2D", // Swagger green
   },
 
   // Database
@@ -197,6 +334,29 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/vscode-produtivo", "https://www.udemy.com/course/vscode-extensions"],
     descriptionKey: "skills.items.vscode.description",
     color: "#007ACC", // VS Code blue
+  },
+  {
+    title: "Vercel",
+    level: 2.7,
+    area: "tools",
+    icon: createSimpleIcon("vercel", "000000"),
+    courses: ["Deploy com Vercel", "CI/CD na Vercel"],
+    coursesLinks: ["https://www.udemy.com/course/deploy-com-vercel", "https://www.udemy.com/course/cicd-na-vercel"],
+    descriptionKey: "skills.items.vercel.description",
+    color: "#000000", // Vercel black
+  },
+  {
+    title: "ESLint + Prettier",
+    level: 2.8,
+    area: "tools",
+    icon: createSimpleIcon("eslint", "4B32C3"),
+    courses: ["Padrões de Código", "Linting e Formatação"],
+    coursesLinks: [
+      "https://www.udemy.com/course/padroes-de-codigo",
+      "https://www.udemy.com/course/linting-e-formatacao",
+    ],
+    descriptionKey: "skills.items.eslint.description",
+    color: "#4B32C3", // ESLint purple
   },
 ]
 

@@ -121,24 +121,35 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               {/* Image gallery - Lado esquerdo */}
               <div className="md:w-1/2 relative bg-gray-950">
                 <div className="aspect-video md:aspect-auto md:h-full">
-                  {project.thumbnails.map((thumbnail, idx) => (
-                    <div
-                      key={idx}
-                      className={`absolute inset-0 transition-opacity duration-300 ${
-                        idx === currentImageIndex ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      <img
-                        src={thumbnail || "/placeholder.svg?height=400&width=800"}
-                        alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
+                  {project.videoUrl ? (
+                    <div className="absolute inset-0">
+                      <video
+                        src={project.videoUrl}
                         className="w-full h-full object-cover"
+                        controls
+                        poster={project.thumbnails[0]}
                       />
                     </div>
-                  ))}
+                  ) : (
+                    project.thumbnails.map((thumbnail, idx) => (
+                      <div
+                        key={idx}
+                        className={`absolute inset-0 transition-opacity duration-300 ${
+                          idx === currentImageIndex ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        <img
+                          src={thumbnail || "/placeholder.svg?height=400&width=800"}
+                          alt={`${t(project.titleKey)} screenshot ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))
+                  )}
                 </div>
 
-                {/* Image navigation */}
-                {project.thumbnails.length > 1 && (
+                {/* Image navigation - only show if there's no video and multiple images */}
+                {!project.videoUrl && project.thumbnails.length > 1 && (
                   <>
                     <button
                       onClick={prevImage}

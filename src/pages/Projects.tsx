@@ -5,7 +5,7 @@ import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { type Project, projectsData } from "@/constants/projectsData"
 import ProjectModal from "@/components/ProjectModal"
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye, Code, Calendar } from "lucide-react"
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Eye, Code, Calendar, Play } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
 const Projects = () => {
@@ -106,6 +106,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, isInView, onO
             </div>
           ))}
         </div>
+
+        {/* Indicador de vídeo */}
+        {project.videoUrl && (
+          <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full p-1.5 text-white">
+            <Play className="h-4 w-4 fill-current" />
+          </div>
+        )}
 
         {/* Navegação do carrossel */}
         {project.thumbnails.length > 1 && (
