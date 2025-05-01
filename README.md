@@ -1,4 +1,4 @@
-# HiPeople 👋
+# Opa , tudo bem ?
 
 ## Sobre o Portfólio
 
@@ -31,4 +31,3 @@ Gostaria de trabalhar comigo ou tem alguma sugestão? Sinta-se à vontade para e
 
 ---
 
-> " **<span style="color:blue">um código de cada vez</span>**."
