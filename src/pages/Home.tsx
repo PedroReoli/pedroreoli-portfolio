@@ -14,7 +14,7 @@ const socialLinks = [
     icon: <Linkedin strokeWidth={1.5} />,
     label: "LinkedIn",
   },
-  { href: "https://devemdesenvolvimento.vercel.app/", icon: <FileText strokeWidth={1.5} />, label: "Blog" },
+  { href: "https://www.devemdesenvolvimento.com.br/", icon: <FileText strokeWidth={1.5} />, label: "Blog" },
   { href: "https://www.youtube.com/@DevDesenvolvimento", icon: <Youtube strokeWidth={1.5} />, label: "YouTube" },
   {
     href: "https://www.instagram.com/01_dev_em_desenvolvimento",
