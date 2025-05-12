@@ -11,16 +11,6 @@ export interface TimelineItem {
 
 export const timelineData: TimelineItem[] = [
   {
-    companyKey: "timeline.companies.autocom3.name",
-    roleKey: "timeline.companies.autocom3.role",
-    periodKey: "timeline.companies.autocom3.period",
-    statusKey: "timeline.companies.autocom3.status",
-    descriptionKey: "timeline.companies.autocom3.description",
-    detailsKey: "timeline.companies.autocom3.details",
-    tags: ["C#", ".NET", "Python", "Testes", "Automação"],
-    link: "https://autocom3.com.br/",
-  },
-  {
     companyKey: "timeline.companies.devemdesenvolvimento.name",
     roleKey: "timeline.companies.devemdesenvolvimento.role",
     periodKey: "timeline.companies.devemdesenvolvimento.period",
@@ -39,6 +29,16 @@ export const timelineData: TimelineItem[] = [
     detailsKey: "timeline.companies.evatech.details",
     tags: ["Ensino", "Mentoria", "Palestras", "Inteligência Artificial"],
     link: "https://evatech.org/",
+  },
+  {
+    companyKey: "timeline.companies.autocom3.name",
+    roleKey: "timeline.companies.autocom3.role",
+    periodKey: "timeline.companies.autocom3.period",
+    statusKey: "timeline.companies.autocom3.status",
+    descriptionKey: "timeline.companies.autocom3.description",
+    detailsKey: "timeline.companies.autocom3.details",
+    tags: ["C#", ".NET", "Python", "Testes", "Automação"],
+    link: "https://autocom3.com.br/",
   },
 ]
 
