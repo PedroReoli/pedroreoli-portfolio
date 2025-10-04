@@ -1,0 +1,295 @@
+{
+  "welcome": {
+    "title": "Welcome to my Portfolio",
+    "subtitle": "Choose your preferred language",
+    "detected": "I noticed your browser is set to {{language}}. If you want to continue in this language, select below.",
+    "languages": {
+      "pt": "Portuguese",
+      "en": "English",
+      "es": "Spanish"
+    },
+    "continue": "Continue"
+  },
+  "languageSwitcher": {
+    "label": "Change language"
+  },
+  "home": {
+    "greeting": "Hello, I am",
+    "role": "FullStack Junior Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Developer • Musician • Writer",
+    "paragraph1": "I am a Junior FullStack Developer driven by curiosity, innovation, and a creative perspective. For me, technology goes beyond code — it's a bridge between accessibility, clean architecture, and real impact.",
+    "paragraph2": "As a musician and educator, I bring the sensitivity of art to how I build solutions. I believe that technology and creativity go hand in hand, and that each project should embrace, transform, and expand possibilities with a human touch that goes beyond logic.",
+    "paragraph3": "I seek continuous evolution and real impact. In the future, I want to unite education and entrepreneurship, creating a startup that expands digital inclusion and makes technology accessible to more people.",
+    "imageAlt": "Pedro Lucas in black and white",
+    "imageAltColor": "Pedro Lucas in color",
+    "hoverText": "Looking sharp 😎",
+    "clickText": "click on the photo",
+    "hoverTextDesktop": "hover over the photo"
+  },
+  "timeline": {
+    "title": "Experience",
+    "companies": {
+      "autocom3": {
+        "name": "AutoCom3",
+        "role": "Junior Developer",
+        "period": "10/2024 - Present",
+        "status": "Ongoing",
+        "description": "Development and test automation focusing on .NET, C# and Python.",
+        "details": "Implementation of solutions to ensure system quality and efficiency."
+      },
+      "devemdesenvolvimento": {
+        "name": "DevEmDesenvolvimento",
+        "role": "CEO, Developer and Writer",
+        "period": "05/2024 - Present",
+        "status": "Ongoing",
+        "description": "Educational platform focused on new enthusiasts and beginner programmers.",
+        "details": "Offers courses, blogs, and practical projects to share knowledge and boost careers in technology."
+      },
+      "evatech": {
+        "name": "EvaTech",
+        "role": "Teacher, Mentor and Speaker",
+        "period": "06/2024 - 11/2024",
+        "status": "Completed",
+        "description": "Taught classes and lectures on technology and the job market.",
+        "details": "Worked with basic AI concepts, empowering single black mothers to enter the technology field."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Check out some of my work",
+    "viewDetails": "View details",
+    "viewApp": "View application",
+    "privateApp": "Private App",
+    "repository": "Repository",
+    "privateCode": "Private Code",
+    "information": "Information",
+    "technologies": "Technologies",
+    "techStack": "Tech stack",
+    "video": "Video",
+    "status": {
+      "finished": "Completed",
+      "beta": "Beta",
+      "inProgress": "In Progress"
+    },
+    "type": {
+      "personal": "Personal",
+      "collaborative": "Collaborative",
+      "freelance": "Freelance",
+      "work": "Work"
+    },
+    "items": {
+      "autocom3": {
+        "title": "Autocom3 Website Revitalization",
+        "description": "Complete revitalization of the Autocom3 website, an industrial automation company.",
+        "detailedDescription": "Complete revitalization project for the Autocom3 website, a company specialized in industrial automation. The project included a complete interface redesign, mobile optimization, and implementation of animations to enhance the user experience."
+      },
+      "autoPonto": {
+        "title": "Auto Ponto",
+        "description": "Automated time tracking system for companies.",
+        "detailedDescription": "Automated time tracking system for companies, with features for journey control, hour bank, absence justifications, and management reports. Developed with React and Node.js, using Supabase as the database."
+      },
+      "evatech": {
+        "title": "Evatech",
+        "description": "Management platform for technology companies.",
+        "detailedDescription": "Evatech is a management platform for technology companies, with features for project management, financial control, team management, and performance reports. Developed in collaboration with a team of developers."
+      },
+      "peoplelly": {
+        "title": "Peoplelly",
+        "description": "Social network to connect people with similar interests.",
+        "detailedDescription": "Peoplelly is a social network designed to connect people with similar interests. The platform uses a matching algorithm to suggest connections based on interests, location, and interaction history. Implemented with React, Redux, and WebSockets for real-time communication."
+      },
+      "devEmDesenvolvimento": {
+        "title": "Dev in Development",
+        "description": "Personal blog about software development and technology.",
+        "detailedDescription": "Dev in Development is a personal blog where I share articles, tutorials, and reflections on software development, new technologies, and my journey as a developer. Built with Next.js and MDX for an optimized reading experience."
+      }
+    },
+    "watchVideo": "Watch video"
+  },
+  "services": {
+    "title": "Services",
+    "uxui": {
+      "title": "UX / UI Design",
+      "description": "I design clear, objective, and intuitive interfaces, prioritizing user experience."
+    },
+    "fullstack": {
+      "title": "FullStack Development",
+      "description": "I build complete solutions, from interfaces to robust and scalable back-ends."
+    },
+    "mentoring": {
+      "title": "Mentoring and Classes",
+      "description": "Personalized guidance for studies, careers, and projects in the programming field."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "areas": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools & DevOps"
+    },
+    "modal": {
+      "proficiency": "Proficiency",
+      "about": "About",
+      "courses": "Courses",
+      "viewCourses": "View recommended courses",
+      "close": "Close"
+    },
+    "items": {
+      "react": {
+        "description": "React is my primary frontend library. I use it to build interactive user interfaces with a component-based approach, focusing on reusability and maintainability."
+      },
+      "nextjs": {
+        "description": "Next.js is my framework of choice for React applications that require server-side rendering, static site generation, or API routes."
+      },
+      "typescript": {
+        "description": "I use TypeScript to add static typing to JavaScript, which helps catch errors early and improves code quality and maintainability."
+      },
+      "tailwind": {
+        "description": "Tailwind CSS is my preferred styling solution for its utility-first approach that allows for rapid UI development with consistent design."
+      },
+      "nodejs": {
+        "description": "Node.js is my runtime environment for server-side JavaScript, enabling me to build scalable network applications."
+      },
+      "csharp": {
+        "description": "C# is my language of choice for backend development with .NET, particularly for enterprise applications and services."
+      },
+      "python": {
+        "description": "I use Python for automation, data analysis, and backend development when simplicity and readability are priorities."
+      },
+      "appwrite": {
+        "description": "Appwrite is my go-to backend-as-a-service platform for rapid development of web and mobile applications."
+      },
+      "sql": {
+        "description": "SQL is essential for my database work, allowing me to query, manipulate, and manage relational databases effectively."
+      },
+      "mongodb": {
+        "description": "MongoDB is my preferred NoSQL database for applications that require flexible schema design and horizontal scaling."
+      },
+      "postgresql": {
+        "description": "PostgreSQL is my choice for advanced relational database needs, offering robust features and excellent performance."
+      },
+      "git": {
+        "description": "Git is fundamental to my workflow for version control, collaboration, and code management."
+      },
+      "docker": {
+        "description": "I use Docker to containerize applications, ensuring consistent environments across development and production."
+      },
+      "vscode": {
+        "description": "Visual Studio Code is my primary code editor, enhanced with extensions for productivity and code quality."
+      },
+      "vite": {
+        "description": "I use Vite as a build tool for rapid development, leveraging its fast compilation speed and hot module replacement for a more efficient development experience."
+      },
+      "threejs": {
+        "description": "I work with Three.js to create interactive 3D graphics on the web, using WebGL for high-performance rendering and immersive visual experiences."
+      },
+      "shadcn": {
+        "description": "I implement Shadcn/UI to create elegant and accessible interfaces, leveraging its Tailwind CSS-styled components for rapid and consistent development."
+      },
+      "framermotion": {
+        "description": "I use Framer Motion to create declarative animations with a high level of control, enhancing user experience with fluid transitions and dynamic interactions."
+      },
+      "blazor": {
+        "description": "I develop interactive web applications with Blazor, using C# and .NET to create rich user interfaces that run directly in the browser via WebAssembly."
+      },
+      "supabase": {
+        "description": "I use Supabase as a backend-as-a-service to create APIs, manage authentication, and store data, leveraging its PostgreSQL database and real-time functionality."
+      },
+      "express": {
+        "description": "I develop RESTful APIs with Express.js, a minimalist framework for Node.js that facilitates the creation of web servers and robust backend applications."
+      },
+      "prisma": {
+        "description": "I use Prisma ORM to interact with databases in Node.js applications, leveraging its strong type system with TypeScript and automated migrations."
+      },
+      "jwt": {
+        "description": "I implement authentication and authorization in web applications using JSON Web Tokens (JWT), ensuring security and scalability in RESTful APIs."
+      },
+      "socketio": {
+        "description": "I develop real-time communication with Socket.IO, enabling bidirectional connections between clients and servers for applications like chats, live dashboards, and games."
+      },
+      "postman": {
+        "description": "I use Postman to test, document, and automate APIs, facilitating development and ensuring the quality of programming interfaces."
+      },
+      "swagger": {
+        "description": "I document APIs with Swagger/OpenAPI, creating clear and interactive specifications that make it easier for other developers to understand and consume endpoints."
+      },
+      "vercel": {
+        "description": "I use the Vercel platform for continuous deployment and hosting of frontend applications, leveraging its Git integration and automatic optimizations."
+      },
+      "eslint": {
+        "description": "I maintain code quality and consistency with ESLint and Prettier, establishing style standards and detecting potential problems before execution."
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Read article",
+    "posts": {
+      "sqlBestPractices": {
+        "title": "SQL Best Practices",
+        "description": "Learn essential best practices for writing efficient, maintainable, and secure SQL queries."
+      },
+      "sqlBasics": {
+        "title": "SQL Basics",
+        "description": "A comprehensive guide to SQL fundamentals for beginners, covering basic commands and concepts."
+      },
+      "oopSystems": {
+        "title": "Object-Oriented Programming: Structuring Real Systems",
+        "description": "How to apply object-oriented principles to model and build real-world systems effectively."
+      }
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "contactChannels": "Contact channels",
+    "notFound": "Didn't find what you were looking for? Contact me directly",
+    "questions": {
+      "targetAudience": {
+        "question": "Who is your target audience?",
+        "answer": "My target audience is beginner developers, people who want to venture into the world of programming, and clients looking for custom projects. I also offer tips and guidance to improve resumes and stand out in the market."
+      },
+      "projectTimeAndCost": {
+        "question": "What is the average timeframe and cost of a project?",
+        "answer": "Simple projects are typically completed within 1-2 weeks, while complex projects can take 1-3 months. For detailed cost information, please contact me directly."
+      },
+      "contact": {
+        "question": "How can I get in touch?",
+        "answer": "You can find me through the following channels:"
+      },
+      "technologies": {
+        "question": "What technologies do you master?",
+        "answer": "I work with a wide range of technologies, including React, Node.js, TypeScript, C#, ASP.NET, and databases like SQL and MongoDB. I always aim to use the best solution for each project."
+      }
+    },
+    "contacts": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "end": {
+    "title": "Thanks for visiting!",
+    "message1": "I hope you enjoyed my portfolio!",
+    "message2": "Feel free to explore more, go back to the beginning, or return whenever you wish.",
+    "message3": "I wish you great success in your projects and journey!",
+    "backToTop": "Back to Top"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Me",
+    "timeline": "Experience",
+    "projects": "Projects",
+    "services": "Services",
+    "skills": "Skills",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "end": "End"
+  }
+}

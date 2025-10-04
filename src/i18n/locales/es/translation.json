@@ -1,0 +1,295 @@
+{
+  "welcome": {
+    "title": "Bienvenido a mi Portafolio",
+    "subtitle": "Elige tu idioma preferido",
+    "detected": "Noté que tu navegador está configurado en {{language}}. Si deseas continuar en este idioma, selecciona abajo.",
+    "languages": {
+      "pt": "Portugués",
+      "en": "Inglés",
+      "es": "Español"
+    },
+    "continue": "Continuar"
+  },
+  "languageSwitcher": {
+    "label": "Cambiar idioma"
+  },
+  "home": {
+    "greeting": "Hola, soy",
+    "role": "Desarrollador FullStack Junior"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "Desarrollador • Músico • Escritor",
+    "paragraph1": "Soy un Desarrollador FullStack Junior impulsado por la curiosidad, la innovación y una mirada creativa. Para mí, la tecnología va más allá del código — es un puente entre accesibilidad, arquitectura limpia e impacto real.",
+    "paragraph2": "Como músico y educador, aporto la sensibilidad del arte a la forma en que construyo soluciones. Creo que la tecnología y la creatividad van de la mano, y que cada proyecto debe acoger, transformar y expandir posibilidades con un toque humano que va más allá de la lógica.",
+    "paragraph3": "Busco evolución continua e impacto real. En el futuro, quiero unir educación y emprendimiento, creando una startup que amplíe la inclusión digital y haga la tecnología accesible para más personas.",
+    "imageAlt": "Pedro Lucas en blanco y negro",
+    "imageAltColor": "Pedro Lucas en color",
+    "hoverText": "¡Muy elegante! 😎",
+    "clickText": "haz clic en la foto",
+    "hoverTextDesktop": "pasa el ratón sobre la foto"
+  },
+  "timeline": {
+    "title": "Experiencia",
+    "companies": {
+      "autocom3": {
+        "name": "AutoCom3",
+        "role": "Desarrollador Junior",
+        "period": "10/2024 - Presente",
+        "status": "En Curso",
+        "description": "Desarrollo y automatización de pruebas con enfoque en .NET, C# y Python.",
+        "details": "Implementación de soluciones para garantizar la calidad y eficiencia de los sistemas."
+      },
+      "devemdesenvolvimento": {
+        "name": "DevEmDesenvolvimento",
+        "role": "CEO, Desarrollador y Redactor",
+        "period": "05/2024 - Presente",
+        "status": "En Curso",
+        "description": "Plataforma educativa enfocada en nuevos entusiastas y programadores principiantes.",
+        "details": "Ofrece cursos, blogs y proyectos prácticos para compartir conocimiento e impulsar carreras en el área de tecnología."
+      },
+      "evatech": {
+        "name": "EvaTech",
+        "role": "Profesor, Mentor y Conferencista",
+        "period": "06/2024 - 11/2024",
+        "status": "Completado",
+        "description": "Impartí clases y conferencias sobre tecnología y mercado laboral.",
+        "details": "Trabajé con conceptos básicos de IA, capacitando a madres solteras negras para ingresar al campo de la tecnología."
+      }
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Conoce algunos de mis trabajos",
+    "viewDetails": "Ver detalles",
+    "viewApp": "Ver aplicación",
+    "privateApp": "App Privada",
+    "repository": "Repositorio",
+    "privateCode": "Código Privado",
+    "information": "Información",
+    "technologies": "Tecnologías",
+    "techStack": "Stack de tecnologías",
+    "video": "Video",
+    "status": {
+      "finished": "Completado",
+      "beta": "Beta",
+      "inProgress": "En Progreso"
+    },
+    "type": {
+      "personal": "Personal",
+      "collaborative": "Colaborativo",
+      "freelance": "Freelance",
+      "work": "Trabajo"
+    },
+    "items": {
+      "autocom3": {
+        "title": "Revitalización del sitio web de Autocom3",
+        "description": "Revitalización completa del sitio web de Autocom3, empresa de automatización industrial.",
+        "detailedDescription": "Proyecto de revitalización completa del sitio web de Autocom3, empresa especializada en automatización industrial. El proyecto incluyó rediseño completo de la interfaz, optimización para dispositivos móviles e implementación de animaciones para mejorar la experiencia del usuario."
+      },
+      "autoPonto": {
+        "title": "Auto Ponto",
+        "description": "Sistema de registro de tiempo automatizado para empresas.",
+        "detailedDescription": "Sistema de registro de tiempo automatizado para empresas, con funcionalidades de control de jornada, banco de horas, justificaciones de ausencias e informes gerenciales. Desarrollado con React y Node.js, utilizando Supabase como base de datos."
+      },
+      "evatech": {
+        "title": "Evatech",
+        "description": "Plataforma de gestión para empresas de tecnología.",
+        "detailedDescription": "Evatech es una plataforma de gestión para empresas de tecnología, con funcionalidades de gestión de proyectos, control financiero, gestión de equipos e informes de rendimiento. Desarrollado en colaboración con un equipo de desarrolladores."
+      },
+      "peoplelly": {
+        "title": "Peoplelly",
+        "description": "Red social para conectar personas con intereses similares.",
+        "detailedDescription": "Peoplelly es una red social diseñada para conectar personas con intereses similares. La plataforma utiliza un algoritmo de correspondencia para sugerir conexiones basadas en intereses, ubicación e historial de interacciones. Implementado con React, Redux y WebSockets para comunicación en tiempo real."
+      },
+      "devEmDesenvolvimento": {
+        "title": "Dev en Desarrollo",
+        "description": "Blog personal sobre desarrollo de software y tecnología.",
+        "detailedDescription": "Dev en Desarrollo es un blog personal donde comparto artículos, tutoriales y reflexiones sobre desarrollo de software, nuevas tecnologías y mi trayectoria como desarrollador. Construido con Next.js y MDX para una experiencia de lectura optimizada."
+      }
+    },
+    "watchVideo": "Ver video"
+  },
+  "services": {
+    "title": "Servicios",
+    "uxui": {
+      "title": "UX / UI Design",
+      "description": "Diseño interfaces claras, objetivas e intuitivas, priorizando la experiencia del usuario."
+    },
+    "fullstack": {
+      "title": "Desarrollo FullStack",
+      "description": "Construyo soluciones completas, desde interfaces hasta back-ends robustos y escalables."
+    },
+    "mentoring": {
+      "title": "Mentoría y Clases",
+      "description": "Orientación personalizada para estudios, carreras y proyectos en el área de programación."
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "areas": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Base de Datos",
+      "tools": "Herramientas & DevOps"
+    },
+    "modal": {
+      "proficiency": "Competencia",
+      "about": "Acerca de",
+      "courses": "Cursos",
+      "viewCourses": "Ver cursos recomendados",
+      "close": "Cerrar"
+    },
+    "items": {
+      "react": {
+        "description": "React es mi biblioteca principal para frontend. La uso para construir interfaces de usuario interactivas con un enfoque basado en componentes, centrándome en la reutilización y mantenibilidad."
+      },
+      "nextjs": {
+        "description": "Next.js es mi framework de elección para aplicaciones React que requieren renderizado del lado del servidor, generación de sitios estáticos o rutas API."
+      },
+      "typescript": {
+        "description": "Uso TypeScript para agregar tipado estático a JavaScript, lo que ayuda a detectar errores temprano y mejora la calidad y mantenibilidad del código."
+      },
+      "tailwind": {
+        "description": "Tailwind CSS es mi solución de estilo preferida por su enfoque utility-first que permite un desarrollo rápido de UI con diseño consistente."
+      },
+      "nodejs": {
+        "description": "Node.js es mi entorno de ejecución para JavaScript del lado del servidor, permitiéndome construir aplicaciones de red escalables."
+      },
+      "csharp": {
+        "description": "C# es mi lenguaje de elección para desarrollo backend con .NET, particularmente para aplicaciones y servicios empresariales."
+      },
+      "python": {
+        "description": "Uso Python para automatización, análisis de datos y desarrollo backend cuando la simplicidad y legibilidad son prioridades."
+      },
+      "appwrite": {
+        "description": "Appwrite es mi plataforma backend-as-a-service preferida para el desarrollo rápido de aplicaciones web y móviles."
+      },
+      "sql": {
+        "description": "SQL es esencial para mi trabajo con bases de datos, permitiéndome consultar, manipular y gestionar bases de datos relacionales de manera efectiva."
+      },
+      "mongodb": {
+        "description": "MongoDB es mi base de datos NoSQL preferida para aplicaciones que requieren diseño de esquema flexible y escalado horizontal."
+      },
+      "postgresql": {
+        "description": "PostgreSQL es mi elección para necesidades avanzadas de bases de datos relacionales, ofreciendo características robustas y excelente rendimiento."
+      },
+      "git": {
+        "description": "Git es fundamental en mi flujo de trabajo para control de versiones, colaboración y gestión de código."
+      },
+      "docker": {
+        "description": "Uso Docker para contenerizar aplicaciones, asegurando entornos consistentes en desarrollo y producción."
+      },
+      "vscode": {
+        "description": "Visual Studio Code es mi editor de código principal, mejorado con extensiones para productividad y calidad de código."
+      },
+      "vite": {
+        "description": "Utilizo Vite como herramienta de construcción para desarrollo rápido, aprovechando su velocidad de compilación y reemplazo de módulos en caliente para una experiencia de desarrollo más eficiente."
+      },
+      "threejs": {
+        "description": "Trabajo con Three.js para crear gráficos 3D interactivos en la web, utilizando WebGL para renderizado de alto rendimiento y experiencias visuales inmersivas."
+      },
+      "shadcn": {
+        "description": "Implemento Shadcn/UI para crear interfaces elegantes y accesibles, aprovechando sus componentes estilizados con Tailwind CSS para un desarrollo rápido y consistente."
+      },
+      "framermotion": {
+        "description": "Utilizo Framer Motion para crear animaciones declarativas con un alto nivel de control, mejorando la experiencia del usuario con transiciones fluidas e interacciones dinámicas."
+      },
+      "blazor": {
+        "description": "Desarrollo aplicaciones web interactivas con Blazor, utilizando C# y .NET para crear interfaces de usuario ricas que se ejecutan directamente en el navegador a través de WebAssembly."
+      },
+      "supabase": {
+        "description": "Utilizo Supabase como backend-as-a-service para crear APIs, gestionar autenticación y almacenar datos, aprovechando su base de datos PostgreSQL y funcionalidades en tiempo real."
+      },
+      "express": {
+        "description": "Desarrollo APIs RESTful con Express.js, un framework minimalista para Node.js que facilita la creación de servidores web y aplicaciones backend robustas."
+      },
+      "prisma": {
+        "description": "Utilizo Prisma ORM para interactuar con bases de datos en aplicaciones Node.js, aprovechando su sistema de tipos fuerte con TypeScript y migraciones automatizadas."
+      },
+      "jwt": {
+        "description": "Implemento autenticación y autorización en aplicaciones web utilizando JSON Web Tokens (JWT), garantizando seguridad y escalabilidad en APIs RESTful."
+      },
+      "socketio": {
+        "description": "Desarrollo comunicación en tiempo real con Socket.IO, permitiendo conexiones bidireccionales entre clientes y servidores para aplicaciones como chats, dashboards en vivo y juegos."
+      },
+      "postman": {
+        "description": "Utilizo Postman para probar, documentar y automatizar APIs, facilitando el desarrollo y garantizando la calidad de las interfaces de programación."
+      },
+      "swagger": {
+        "description": "Documento APIs con Swagger/OpenAPI, creando especificaciones claras e interactivas que facilitan la comprensión y consumo de los endpoints por otros desarrolladores."
+      },
+      "vercel": {
+        "description": "Utilizo la plataforma Vercel para despliegue continuo y alojamiento de aplicaciones frontend, aprovechando su integración con Git y optimizaciones automáticas."
+      },
+      "eslint": {
+        "description": "Mantengo la calidad y consistencia del código con ESLint y Prettier, estableciendo estándares de estilo y detectando problemas potenciales antes de la ejecución."
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Leer artículo",
+    "posts": {
+      "sqlBestPractices": {
+        "title": "Mejores Prácticas en SQL",
+        "description": "Aprende prácticas esenciales para escribir consultas SQL eficientes, mantenibles y seguras."
+      },
+      "sqlBasics": {
+        "title": "Fundamentos de SQL",
+        "description": "Una guía completa sobre los fundamentos de SQL para principiantes, cubriendo comandos y conceptos básicos."
+      },
+      "oopSystems": {
+        "title": "Programación Orientada a Objetos: Estructurando Sistemas Reales",
+        "description": "Cómo aplicar principios orientados a objetos para modelar y construir sistemas del mundo real de manera efectiva."
+      }
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "contactChannels": "Canales de contacto",
+    "notFound": "¿No encontraste lo que buscabas? Contáctame directamente",
+    "questions": {
+      "targetAudience": {
+        "question": "¿Quién es tu público objetivo?",
+        "answer": "Mi público objetivo son desarrolladores principiantes, personas que desean aventurarse en el mundo de la programación y clientes que buscan proyectos personalizados. También ofrezco consejos y orientación para mejorar currículums y destacarse en el mercado."
+      },
+      "projectTimeAndCost": {
+        "question": "¿Cuál es el plazo medio y el costo de un proyecto?",
+        "answer": "Los proyectos simples generalmente se completan entre 1 y 2 semanas, mientras que los proyectos complejos pueden llevar de 1 a 3 meses. Para obtener información detallada sobre costos, contáctame directamente."
+      },
+      "contact": {
+        "question": "¿Cómo puedo ponerme en contacto?",
+        "answer": "Puedes encontrarme a través de los siguientes canales:"
+      },
+      "technologies": {
+        "question": "¿Qué tecnologías dominas?",
+        "answer": "Trabajo con una amplia variedad de tecnologías, incluyendo React, Node.js, TypeScript, C#, ASP.NET y bases de datos como SQL y MongoDB. Siempre busco usar la mejor solución para cada proyecto."
+      }
+    },
+    "contacts": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "end": {
+    "title": "¡Gracias por visitar!",
+    "message1": "¡Espero que hayas disfrutado de mi portafolio!",
+    "message2": "Siéntete libre de explorar más, volver al inicio o regresar cuando lo desees.",
+    "message3": "¡Te deseo mucho éxito en tus proyectos y en tu camino!",
+    "backToTop": "Volver al Inicio"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "timeline": "Experiencia",
+    "projects": "Proyectos",
+    "services": "Servicios",
+    "skills": "Habilidades",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "end": "Final"
+  }
+}
