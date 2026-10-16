@@ -2,12 +2,7 @@ import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useLanguage } from "../../i18n/useLanguage"
 
-interface StitchHeaderProps {
-  activeTab?: string
-  onOpenDiagnostics?: () => void
-}
-
-export const StitchHeader: React.FC<StitchHeaderProps> = ({ onOpenDiagnostics }) => {
+export const StitchHeader: React.FC = () => {
   const { language, toggleLanguage } = useLanguage()
   const location = useLocation()
   const isEn = language === "en"
@@ -16,52 +11,40 @@ export const StitchHeader: React.FC<StitchHeaderProps> = ({ onOpenDiagnostics })
   const navLinks = [
     { path: "/", label: isEn ? "Home" : "Início", isActive: pathname === "/" },
     { path: "/projetos", label: isEn ? "Projects" : "Projetos", isActive: pathname.startsWith("/projetos") },
-    { path: "/midia-blog", label: isEn ? "Media & Blog" : "Mídia & Blog", isActive: pathname === "/midia-blog" },
-    { path: "/dossie-tecnico", label: isEn ? "Dossier" : "Dossiê", isActive: pathname === "/dossie-tecnico" },
+    { path: "/midia-blog", label: isEn ? "Media & Blog" : "Mídia & Blog", isActive: pathname.startsWith("/midia") },
   ]
-
-  const getPageTitle = () => {
-    if (pathname.startsWith("/projetos")) return isEn ? "Projects & Architecture" : "Projetos & Arquitetura"
-    if (pathname === "/midia-blog") return isEn ? "Media & Engineering Blog" : "Mídia & Blog Técnico"
-    if (pathname === "/dossie-tecnico") return isEn ? "Technical Dossier" : "Dossiê Técnico"
-    return isEn ? "Executive Portfolio" : "Portfólio Executivo"
-  }
 
   return (
     <header className="fixed top-0 w-full z-50 pt-safe bg-[#0d0f15]/90 backdrop-blur-xl shadow-[0_1px_12px_rgba(0,0,0,0.5)] border-b border-white/[0.08]">
       <div className="h-16 px-4 sm:px-8 max-w-6xl mx-auto flex items-center justify-between gap-4">
-        {/* Identidade e Status do Sistema */}
-        <div className="flex items-center gap-3">
-          <Link
-            to="/"
-            className="flex items-center justify-center w-9 h-9 rounded-xl bg-surface-container-high hover:bg-emerald-500/20 text-white hover:text-emerald-300 font-headline-sm text-base font-bold tracking-tighter border border-white/10 hover:border-emerald-500/40 transition-all cursor-pointer shadow-sm"
-            title="Ir para o Início"
-          >
+        {/* Identidade: PR Logo + Nome */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-surface-container-high group-hover:bg-emerald-500/20 text-white group-hover:text-emerald-300 font-headline-sm text-base font-bold tracking-tighter border border-white/10 group-hover:border-emerald-500/40 transition-all shadow-sm">
             PR
-          </Link>
+          </div>
           <div className="flex flex-col">
+            <span className="font-headline-sm text-white font-bold tracking-tight text-sm group-hover:text-emerald-300 transition-colors">
+              Pedro Lucas Reis
+            </span>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-telemetry-tag text-emerald-400 uppercase tracking-wider text-[10px] font-semibold">
-                SYS_VERIFIED // 2026
+                FULL STACK &amp; AI ARCHITECT
               </span>
             </div>
-            <span className="font-headline-sm text-white tracking-tight font-medium text-xs sm:text-sm">
-              {getPageTitle()}
-            </span>
           </div>
-        </div>
+        </Link>
 
-        {/* Links de Navegação Desktop */}
-        <nav className="hidden md:flex items-center gap-1 bg-surface-container/70 p-1 rounded-xl border border-white/5">
+        {/* 3 Links de Navegação Limpos */}
+        <nav className="flex items-center gap-1 sm:gap-2 bg-surface-container/70 p-1 rounded-xl border border-white/5">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`px-3 py-1.5 rounded-lg text-xs font-headline-sm font-medium transition-all ${
+              className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-headline-sm transition-all cursor-pointer ${
                 link.isActive
-                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold"
-                  : "text-zinc-400 hover:text-white hover:bg-white/5"
+                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold"
+                  : "text-zinc-400 hover:text-white hover:bg-white/5 font-medium"
               }`}
             >
               {link.label}
@@ -69,9 +52,8 @@ export const StitchHeader: React.FC<StitchHeaderProps> = ({ onOpenDiagnostics })
           ))}
         </nav>
 
-        {/* Controles: Idioma, Diagnóstico e Avatar */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Seletor de Idioma */}
+        {/* Seletor de Idioma & Avatar */}
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={toggleLanguage}
@@ -84,18 +66,6 @@ export const StitchHeader: React.FC<StitchHeaderProps> = ({ onOpenDiagnostics })
             <span className={language === "en" ? "text-emerald-400 font-bold" : "text-zinc-500"}>EN</span>
           </button>
 
-          {/* Terminal / HUD Diagnostics */}
-          <button
-            type="button"
-            onClick={onOpenDiagnostics}
-            aria-label="Diagnostics Status"
-            className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-surface-container hover:bg-surface-container-high text-zinc-400 hover:text-emerald-300 border border-white/10 hover:border-emerald-500/30 transition-all cursor-pointer"
-            title="Telemetria de Sistema"
-          >
-            <span className="material-symbols-outlined text-[19px]">terminal</span>
-          </button>
-
-          {/* Retrato em Miniatura */}
           <Link to="/" title="Pedro Lucas Reis">
             <img
               alt="Pedro Lucas Reis"

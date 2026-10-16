@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import StitchHeader from "../components/organisms/StitchHeader"
 import StitchAutocom3Section from "../components/organisms/StitchAutocom3Section"
-import StitchBottomNav from "../components/molecules/StitchBottomNav"
 import { useLanguage } from "../i18n/useLanguage"
 
 interface ProjectsPageProps {
@@ -17,7 +16,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
   const tabFromQuery = searchParams.get("tipo")
   const initialTab =
     defaultTab ||
-    (tabFromQuery === "corporativo" || tabFromQuery === "corporativos" ? "corporativo" : "corporativo")
+    (tabFromQuery === "gerais" ? "gerais" : "corporativo")
 
   const [activeTab, setActiveTab] = useState<"corporativo" | "gerais">(initialTab)
 
@@ -36,11 +35,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
 
   return (
     <div className="min-h-screen bg-[#0d0f15] font-body-md text-zinc-100 antialiased flex flex-col selection:bg-emerald-400 selection:text-zinc-950 relative overflow-x-hidden">
-      {/* Header */}
+      {/* Navbar Superior Limpa */}
       <StitchHeader />
 
-      {/* Main Container */}
-      <main className="flex-1 flex flex-col relative w-full pt-24 pb-safe px-4 sm:px-8 max-w-6xl mx-auto gap-8">
+      {/* Main Container Widescreen */}
+      <main className="flex-1 flex flex-col relative w-full pt-24 pb-16 px-4 sm:px-8 max-w-6xl mx-auto gap-8">
         {/* Page Title & Segmented Control */}
         <section className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
@@ -61,7 +60,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
           </div>
 
           {/* Segmented Control de Alto Contraste */}
-          <div className="flex items-center gap-3 p-1.5 rounded-2xl bg-surface-container border border-white/10 w-fit">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-surface-container border border-white/10 w-fit">
             <button
               type="button"
               onClick={() => handleTabChange("corporativo")}
@@ -265,9 +264,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
           </section>
         )}
       </main>
-
-      {/* Bottom Nav */}
-      <StitchBottomNav />
     </div>
   )
 }
