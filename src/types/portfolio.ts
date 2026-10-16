@@ -15,6 +15,30 @@ export interface PortfolioProject {
   features: readonly string[]
   metrics: readonly { label: string; value: string }[]
   flagship?: boolean
+  group?: "flagship" | "freelance" | "modules"
+  videoUrl?: string
+  videoPoster?: string
+}
+
+export interface EducationItem {
+  degree: string
+  institution: string
+  period: string
+  status: string
+  details?: readonly string[]
+}
+
+export interface LanguageItem {
+  name: string
+  level: string
+  info: string
+}
+
+export interface AcademicLeadershipItem {
+  title: string
+  organization: string
+  period: string
+  info: string
 }
 
 export interface PortfolioArticle {

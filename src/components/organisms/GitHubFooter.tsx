@@ -13,16 +13,16 @@ export const GitHubFooter: React.FC = () => {
   }
 
   return (
-    <footer id="contact" className="bg-[#09090b] border-t border-white/[0.08] py-10 sm:py-12 text-xs sm:text-sm text-[#a1a1aa] relative z-20">
+    <footer id="contact" className="bg-[#07080b] border-t border-white/[0.06] py-12 sm:py-16 text-xs sm:text-sm text-zinc-400 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         
         {/* Left: Branding & Copyright */}
         <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-4">
           <span className="font-heading font-extrabold text-white text-base tracking-tight">
-            PedroReoli <span className="text-[#71717a] font-mono text-xs font-normal">/ dev</span>
+            PedroReoli <span className="text-[#10b981] font-mono text-xs font-normal">/ dev</span>
           </span>
           <span className="hidden sm:inline text-white/20">|</span>
-          <span className="text-xs font-mono text-[#71717a]">
+          <span className="text-xs font-mono text-zinc-500">
             © {new Date().getFullYear()} {profile.name}. {language === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
           </span>
         </div>
@@ -33,49 +33,49 @@ export const GitHubFooter: React.FC = () => {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="w-9 h-9 rounded-xl border border-white/10 bg-[#141419] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-[#a1a1aa] transition-all"
+            className="w-11 h-11 rounded-xl border border-white/10 bg-[#0c0f16] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-zinc-300 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]"
             title="GitHub"
             aria-label="GitHub"
           >
-            <FiGithub className="text-sm" />
+            <FiGithub className="text-base" />
           </a>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="w-9 h-9 rounded-xl border border-white/10 bg-[#141419] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-[#a1a1aa] transition-all"
+            className="w-11 h-11 rounded-xl border border-white/10 bg-[#0c0f16] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-zinc-300 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]"
             title="LinkedIn"
             aria-label="LinkedIn"
           >
-            <FiLinkedin className="text-sm" />
+            <FiLinkedin className="text-base" />
           </a>
           <a
             href={profile.phoneHref}
             target="_blank"
             rel="noreferrer"
-            className="w-9 h-9 rounded-xl border border-white/10 bg-[#141419] hover:border-[#25d366]/40 hover:bg-white/[0.06] hover:text-[#25d366] flex items-center justify-center text-[#a1a1aa] transition-all"
+            className="w-11 h-11 rounded-xl border border-white/10 bg-[#0c0f16] hover:border-[#10b981]/50 hover:bg-[#10b981]/10 hover:text-[#10b981] flex items-center justify-center text-zinc-300 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]"
             title="WhatsApp"
             aria-label="WhatsApp"
           >
-            <FiPhone className="text-sm" />
+            <FiPhone className="text-base" />
           </a>
           <a
             href={`mailto:${profile.email}`}
-            className="w-9 h-9 rounded-xl border border-white/10 bg-[#141419] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-[#a1a1aa] transition-all"
+            className="w-11 h-11 rounded-xl border border-white/10 bg-[#0c0f16] hover:border-white/30 hover:bg-white/[0.06] hover:text-white flex items-center justify-center text-zinc-300 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]"
             title="E-mail"
             aria-label="E-mail"
           >
-            <FiMail className="text-sm" />
+            <FiMail className="text-base" />
           </a>
 
           <button
             type="button"
             onClick={scrollToTop}
-            className="w-9 h-9 rounded-xl border border-white/10 bg-[#141419] hover:border-white/40 hover:bg-white hover:text-[#09090b] flex items-center justify-center text-[#a1a1aa] transition-all ml-1.5 shadow-sm"
+            className="w-11 h-11 rounded-xl border border-white/10 bg-[#0c0f16] hover:border-white/40 hover:bg-white hover:text-black flex items-center justify-center text-zinc-300 transition-all ml-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]"
             title={language === "pt" ? "Voltar ao topo" : "Back to top"}
             aria-label={language === "pt" ? "Voltar ao topo" : "Back to top"}
           >
-            <FiArrowUp className="text-sm" />
+            <FiArrowUp className="text-base" />
           </button>
         </div>
 

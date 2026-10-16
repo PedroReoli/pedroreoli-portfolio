@@ -8,22 +8,29 @@ Este documento rastreia as entregas, refatorações, melhorias de UI/UX e próxi
 
 ### 🚀 Hero Section & Perfil Técnico
 - [x] Atualização da bio oficial com foco em 4 anos de experiência, ERPs corporativos, produtos digitais e plataformas SaaS.
-- [x] Criação de 6 cards de métricas e destaques técnicos de alta densidade:
-  - `10+ Produtos` (Produtos Digitais em Produção)
-  - `20+ Empresas` (Organizações Atendidas)
-  - `500+ Comp.` (Design System Unificado)
-  - `-70% Tempo` (Redução no Ciclo de Dev)
-  - `-40% Load` (Otimização de Performance)
-  - `30+ Alunos` (Mentorados em Tecnologia & IA)
-- [x] Foto de perfil expandida (`lg:w-72 lg:h-72`) com proporção otimizada e badge de senioridade.
-- [x] Fileira única de badges com ícones oficiais de stack (`TypeScript`, `React`, `Next.js`, `Node.js`, `PostgreSQL`).
+- [x] Foto de perfil expandida até proporções monumentais (`xl:w-96 xl:h-96`) com moldura executiva de alto contraste.
+- [x] Título monumental limpo e caixa alta (`PEDRO LUCAS REIS`), bio cirúrgica e 3 CTAs de conversão (WhatsApp, GitHub, LinkedIn).
+- [x] Faixa compacta de 5 métricas de engenharia com enquadramento de tela sem rolagem desnecessária.
 
-### 📦 Seção de Projetos & Catálogo
-- [x] Remoção da barra de filtros de categorias para layout mais limpo e direto.
-- [x] Redução para 2 métricas de alto impacto por card de projeto.
-- [x] Implementação do modal/flyout flutuante lateral (`z-50`) no botão **"Ver Arquitetura"**, sem deformar o card nem a grade.
-- [x] Ocultação temporária dos projetos: *Propose SaaS*, *Domus — Loog Platform*, *DomusDev & Ecossistema Digital*, *Gerador de Propostas Autocom3* e *Portal Contábil ERP*.
-- [x] Manutenção e destaque dos projetos emblemáticos ativos (*Reoli AI*, *Autocom3*, *Fala Atípica*, etc.).
+### 📦 Seção de Projetos & Catálogo em 3 Tiers
+- [x] **Tier 1 (Flagship):** Organon Desktop OS v6.23.2, Achilles CDP Agent e Portal Unificado ERP Autocom3.
+- [x] **Tier 2 (Freelance & Web):** Fala Atípica – Tríade, GeoAmbiental VR e Doce Norte & LPs Comerciais (Front-end moderno + backend mínimo).
+- [x] **Tier 3 (Módulos Corporativos Autocom3):** AC3 Flex (nome corrigido, sem "Cloud"), Autocom3 Aplicativo Mobile (com Expo e sincronismo offline), Gestão de Propostas, Portal Admin e Portal do Contador.
+- [x] Ocultação temporária comentada do *Propose SaaS*.
+- [x] **Eliminação de Modais Bloqueantes:** Introdução do novo `GitHubProjectPopup` com `z-[100]`, backdrop translúcido suave e fechamento ágil via ESC ou clique externo.
+
+### 🎓 Formação Acadêmica & Idiomas
+- [x] Harmonização e simetria completa de colunas (2 cards na esquerda e 2 cards na direita com mesmo ritmo visual).
+- [x] Separação clara entre Idiomas de Trabalho (Português e Inglês) e Extensão/Mentoria (EvaTech / SEBRAE & UniFOA).
+- [x] Faixa horizontal de CTA em largura total conectando o usuário ao WhatsApp sem desequilibrar o grid.
+
+### 🛠️ Stack Técnica & Engenharia
+- [x] Correção definitiva do bug de hover nos cards de tecnologias: pop-up flutuante absoluto (`z-[150]`) que nunca empurra cards vizinhos nem causa layout shift.
+- [x] Alinhamento inteligente do pop-up para evitar corte nas bordas da viewport.
+
+### 📱 Usabilidade & Regra de Viewport
+- [x] Validação de responsividade mobile (390px) e desktop (1920px) com zero overflow horizontal (`hasHorizontalOverflow: false`).
+- [x] Lazy loading em todas as imagens de preview e animações suaves e confortáveis com Framer Motion (350ms, easeOut).
 
 ### 💼 Seção de Experiências Profissionais
 - [x] Conversão da visualização para estágio fixo (*sticky scroll stage*) com fluxo horizontal de transição de cards.

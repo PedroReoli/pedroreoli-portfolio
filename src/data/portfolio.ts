@@ -256,22 +256,49 @@ export const educationList = [
     institution: "Centro Universitário de Volta Redonda (UniFOA)",
     period: "2022 - 2025",
     status: "Concluído",
+    details: [
+      "Foco em Engenharia de Software, Arquitetura de Sistemas, Banco de Dados Relacionais e Segurança da Informação.",
+      "Participação ativa em projetos de extensão universitária e pesquisa aplicada.",
+    ],
   },
   {
-    degree: "Formação Front-end e UX/UI Design (200h)",
+    degree: "Especialização Front-end Engineering & UI/UX (200h)",
     institution: "Origamid",
     period: "2026",
     status: "Concluído",
+    details: [
+      "Domínio aprofundado de ecossistemas React, Design Systems unificados, Acessibilidade WCAG e Core Web Vitals.",
+      "Arquitetura de interfaces modernas, animações de alta performance e tipagem rigorosa TypeScript.",
+    ],
   },
 ] as const
 
 export const languages = [
-  { name: "Português", level: "Nativo", info: "Comunicação fluente e técnica" },
-  { name: "Inglês", level: "Intermediário Funcional (B2)", info: "Leitura técnica fluida, escrita de documentação e conversação profissional" },
-  { name: "Mentoria & Comunidade", level: "EvaTech / SEBRAE", info: "Liderança e capacitação técnica de 30+ participantes" },
+  { 
+    name: "Português", 
+    level: "Nativo", 
+    info: "Comunicação executiva, liderança técnica, facilitação e documentação formal de software." 
+  },
+  { 
+    name: "Inglês", 
+    level: "Intermediário Funcional (B2)", 
+    info: "Leitura técnica fluida, redação de documentações de arquitetura e conversação profissional." 
+  },
+] as const
+
+export const academicLeadership = [
+  {
+    title: "Mentoria Técnica & Inteligência Artificial",
+    organization: "EvaTech / SEBRAE & UniFOA",
+    period: "Jun/2024 - Dez/2024",
+    info: "Capacitação e mentoria técnica de 30+ profissionais em TypeScript, React, boas práticas e automações com LLMs.",
+  },
 ] as const
 
 export const projects = [
+  // =========================================================================
+  // TIER 1: SISTEMAS FLAGSHIP / GRANDES PLATAFORMAS (3 ATIVOS)
+  // =========================================================================
   {
     id: "organon-ecosystem",
     name: "Organon Desktop & Ecosystem v6.23.2",
@@ -285,6 +312,7 @@ export const projects = [
     category: "Flagship • Business OS & IA",
     image: "/Domus.png",
     flagship: true,
+    group: "flagship",
     shortDescription:
       "Hub de produtividade local-first com 19 telas operacionais, editor rico TipTap, canvas visual Excalidraw, transcrição inteligente Whisper IA offline e servidor MCP.",
     stack: ["Electron", "React 18", "TypeScript", "Vite", "TipTap", "Excalidraw", "Radix UI", "Whisper AI", "Fastify", "SQLite", "MCP Protocol"],
@@ -312,6 +340,7 @@ export const projects = [
     category: "Engenharia de IA & Automação",
     image: "/nexus.png",
     flagship: true,
+    group: "flagship",
     shortDescription:
       "Motor autônomo de navegação e observação web para agentes de IA via CDP e semântica AXTree, com 92.2% de economia de tokens e servidor MCP nativo.",
     stack: ["Python", "Playwright", "CDP", "AXTree", "MCP Protocol", "FastAPI", "Asyncio", "Pydantic v2"],
@@ -326,75 +355,85 @@ export const projects = [
       { label: "Protocolo", value: "Servidor MCP Nativo stdio" },
     ],
   },
+  // =========================================================================
+  // TIER 2: PROJETOS FREELANCERS (SITES & FRONT-END COM BACKEND MÍNIMO)
+  // =========================================================================
   {
-    id: "portal-unificado-autocom3",
-    name: "Portal Unificado ERP Autocom3",
-    href: "https://www.autocom3.com.br/autocom3clientes",
-    githubUrl: undefined,
-    liveUrl: "https://www.autocom3.com.br/autocom3clientes",
-    isProprietary: true,
-    accessBadge: "Código Proprietário Corporativo",
-    domain: "autocom3.com.br/clientes",
-    type: "erp",
-    category: "ERP Corporativo",
-    image: "/portal-cliente.png",
-    flagship: true,
-    shortDescription:
-      "Hub corporativo ERP com 100+ telas atendendo 20+ organizações ativas, com Design System de 500+ componentes e redução de 70% no ciclo dev.",
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "AWS", "Tauri", "Tailwind CSS"],
-    features: [
-      "Hub corporativo unificado com módulos de autoatendimento, gestão financeira, contábil e operacional.",
-      "Design System autoral escalável com 500+ componentes tipados que reduziram em 70% o tempo de criação de novas telas.",
-      "Otimizações de queries e renderização com ganho de 40% no carregamento de páginas críticas para 20+ organizações.",
-      "Autenticação com JWT, controle de permissões granular (RBAC) e integrações seguras via Webhooks assíncronos.",
-    ],
-    metrics: [
-      { label: "Escala", value: "100+ Telas • 20+ Orgs" },
-      { label: "Design System", value: "500+ Componentes (-70%)" },
-    ],
-  },
-  {
-    id: "propose-saas",
-    name: "Propose SaaS – NoCode Proposal Engine",
-    href: undefined,
-    githubUrl: undefined,
+    id: "fala-atipica",
+    name: "Fala Atípica – Tríade",
+    href: "https://github.com/PedroReoli/FalaAtipica-Triade",
+    githubUrl: "https://github.com/PedroReoli/FalaAtipica-Triade",
     liveUrl: undefined,
-    isProprietary: true,
-    accessBadge: "SaaS Proprietário B2B",
-    domain: "domus.digital/propose",
-    type: "saas",
-    category: "Plataforma SaaS B2B",
-    image: "/propose.png",
-    flagship: true,
+    isProprietary: false,
+    accessBadge: "Front-end & Acessibilidade",
+    domain: "falaatipica.com.br",
+    type: "site",
+    category: "Plataforma Institucional & Acolhimento",
+    image: "/Domus.png",
+    flagship: false,
+    group: "freelance",
     shortDescription:
-      "Gerador NoCode de propostas comerciais com editor drag-and-drop, renderização dinâmica por esquemas JSON e integrações financeiras.",
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "Fastify", "PostgreSQL", "Supabase", "Tailwind CSS"],
+      "Plataforma institucional inclusiva e espaço de acolhimento para indivíduos autistas e famílias atípicas, desenvolvida com diretrizes de acessibilidade (WCAG) e arquitetura leve.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Acessibilidade (a11y)", "REST API"],
     features: [
-      "Editor drag-and-drop de alta velocidade com renderização dinâmica baseada em esquemas JSON flexíveis.",
-      "Integração com PostgreSQL e Supabase para controle de permissões multi-tenant e armazenamento de propostas.",
-      "Conectores com gateways de pagamento e webhooks automáticos para fechamento de contratos.",
-      "Otimização Lighthouse atingindo pontuações superiores a 95 em Performance e SEO.",
+      "Interface responsiva com alto contraste e design acolhedor adaptado a diretrizes de neurodiversidade.",
+      "Formulários acessíveis com validação em tempo real e envio direto para equipe multidisciplinar.",
+      "Front-end modular com carregamento veloz em dispositivos móveis e tablets.",
     ],
     metrics: [
-      { label: "Modelo", value: "NoCode & JSON Schemas" },
-      { label: "Infraestrutura", value: "Fastify + Supabase" },
+      { label: "Acessibilidade", value: "WCAG & Inclusão" },
+      { label: "Arquitetura", value: "Front-end + Backend Mínimo" },
     ],
   },
+  {
+    id: "geoambiental-vr",
+    name: "GeoAmbiental VR – Mapa Interativo",
+    href: "https://github.com/PedroReoli/GeoAmbiental-VR-Mapa-Ambiental-de-Volta-Redonda",
+    githubUrl: "https://github.com/PedroReoli/GeoAmbiental-VR-Mapa-Ambiental-de-Volta-Redonda",
+    liveUrl: undefined,
+    isProprietary: false,
+    accessBadge: "Geoprocessamento Web",
+    domain: "geoambientalvr.com.br",
+    type: "site",
+    category: "Geoprocessamento & Dados Ambientais",
+    image: "/nexus.png",
+    flagship: false,
+    group: "freelance",
+    shortDescription:
+      "Portal interativo e mapa ambiental de Volta Redonda para visualização de camadas geoespaciais, indicadores ecológicos e áreas de preservação com renderização fluida no navegador.",
+    stack: ["React", "TypeScript", "Maps API", "Tailwind CSS", "GeoJSON", "Vite"],
+    features: [
+      "Visualização interativa de camadas geoespaciais e pontos de interesse com renderização vetorial rápida.",
+      "Filtros de dados por bacia hidrográfica, zonas de amortecimento e dados ambientais.",
+      "Consumo de dados georreferenciados com cache local para navegação veloz mesmo em conexões móveis.",
+    ],
+    metrics: [
+      { label: "Segmento", value: "GIS & Meio Ambiente" },
+      { label: "Visualização", value: "Mapas Vetoriais Interativos" },
+    ],
+  },
+
+  // =========================================================================
+  // TIER 3: PROJETOS CORPORATIVOS (AUTOCOM3)
+  // 1. Portal do Contador, 2. Portal do Cliente, 3. Mobile, 4. AC3 Flex, 5. Gestão de Propostas, 6. Admin
+  // =========================================================================
   {
     id: "portal-contador",
-    name: "Autocom3 Portal do Contador",
+    name: "Portal do Contador",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Módulo Corporativo Interno",
+    accessBadge: "Módulo Fiscal & Contábil",
     domain: "autocom3.com.br/contador",
     type: "erp",
     category: "Plataforma Contábil & Fiscal",
     image: "/portal-contador.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
-      "Plataforma contábil integrada para exportação de XMLs, SPED fiscal, conciliação e relatórios corporativos automatizados.",
+      "Plataforma contábil integrada para exportação de XMLs, SPED fiscal, conciliação e relatórios corporativos automatizados para contadores parceiros.",
     stack: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
     features: [
       "Módulo de fechamento contábil e conferência fiscal com exportação em lote de notas fiscais.",
@@ -407,46 +446,107 @@ export const projects = [
     ],
   },
   {
-    id: "portal-admin",
-    name: "Autocom3 Portal Admin & RBAC",
+    id: "portal-cliente",
+    name: "Portal do Cliente",
+    href: "https://www.autocom3.com.br/autocom3clientes",
+    githubUrl: undefined,
+    liveUrl: "https://www.autocom3.com.br/autocom3clientes",
+    isProprietary: true,
+    accessBadge: "Portal Corporativo Web",
+    domain: "autocom3.com.br/clientes",
+    type: "erp",
+    category: "Autoatendimento & Gestão",
+    image: "/portal-cliente.png",
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
+    shortDescription:
+      "Hub corporativo ERP de autoatendimento com 100+ telas atendendo 20+ organizações ativas, centralizando faturamento, suporte e pedidos.",
+    stack: ["React", "Next.js", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "AWS", "Tailwind CSS"],
+    features: [
+      "Hub corporativo unificado com módulos de autoatendimento, gestão financeira, contábil e operacional.",
+      "Design System autoral escalável com 500+ componentes tipados que reduziram em 70% o tempo de criação de novas telas.",
+      "Otimizações de queries e renderização com ganho de 40% no carregamento de páginas críticas.",
+      "Autenticação com JWT, controle de permissões granular (RBAC) e integrações seguras via Webhooks.",
+    ],
+    metrics: [
+      { label: "Escala", value: "100+ Telas • 20+ Orgs" },
+      { label: "Design System", value: "500+ Componentes (-70%)" },
+    ],
+  },
+  {
+    id: "autocom3-mobile",
+    name: "Mobile (Aplicativo Autocom3)",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Painel Restrito Administrativo",
-    domain: "autocom3.com.br/admin",
-    type: "internal",
-    category: "Segurança & Multi-Tenant",
-    image: "/portal-admin.png",
+    accessBadge: "Aplicativo Mobile Corporativo",
+    domain: "autocom3.com.br/mobile",
+    type: "mobile",
+    category: "Mobile & Força de Vendas",
+    image: "/autocom3.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
-      "Painel administrativo central com gestão de tenants, auditoria de acessos, faturamento e permissões corporativas.",
-    stack: ["React", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "Radix UI"],
+      "Aplicativo mobile corporativo integrado ao ERP Autocom3 para equipes comerciais, consulta ágil de estoque e pedidos em tempo real.",
+    stack: ["React Native", "Expo", "TypeScript", "REST APIs", "Zustand", "Offline Sync"],
     features: [
-      "Gestão centralizada de clientes corporativos com controle granular de permissões e perfis de acesso.",
-      "Dashboard executivo com métricas de uso em tempo real e monitoramento de contratos ativos.",
-      "Logs de auditoria e trilhas de conformidade com segurança de ponta a ponta.",
+      "Consulta instantânea de catálogo de produtos, tabelas de preço e estoque para equipes comerciais externas.",
+      "Emissão e sincronização ágil de pedidos com suporte a operação offline e reconciliação automática.",
+      "Autenticação corporativa com perfis e permissões integradas ao ERP central.",
     ],
     metrics: [
-      { label: "Controle", value: "RBAC Granular" },
-      { label: "Multi-tenant", value: "20+ Organizações" },
+      { label: "Plataforma", value: "iOS & Android (Expo)" },
+      { label: "Operação", value: "Offline-First & Sincronismo" },
+    ],
+  },
+  {
+    id: "ac3-flex",
+    name: "AC3 Flex",
+    href: undefined,
+    githubUrl: undefined,
+    liveUrl: undefined,
+    isProprietary: true,
+    accessBadge: "Sincronização & Microsserviços",
+    domain: "autocom3.com.br/flex",
+    type: "erp",
+    category: "Sincronização & Microsserviços",
+    image: "/ac3-flex.png",
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
+    shortDescription:
+      "Módulo de integração e sincronização bidirecional entre ERP de retaguarda e ecossistemas web corporativos com arquitetura orientada a eventos.",
+    stack: ["Node.js", "TypeScript", "NestJS", "AWS", "PostgreSQL", "Docker"],
+    features: [
+      "Camada de abstração e sincronização bidirecional entre bases de retaguarda e portais corporativos modernos.",
+      "Arquitetura baseada em eventos com mensageria para operações assíncronas de alto volume.",
+      "Monitoramento contínuo de conectividade e alta disponibilidade para operações diárias.",
+    ],
+    metrics: [
+      { label: "Infra", value: "AWS & Docker" },
+      { label: "Arquitetura", value: "Event-Driven & Cache" },
     ],
   },
   {
     id: "propostas-ac3",
-    name: "Autocom3 Gestão de Propostas",
+    name: "Gestão de Propostas",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Módulo Corporativo Interno",
+    accessBadge: "Automação Comercial",
     domain: "autocom3.com.br/propostas",
     type: "saas",
     category: "Automação Comercial & Faturamento",
     image: "/propostas-ac3.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
-      "Módulo inteligente de geração, precificação dinâmica e assinatura digital de orçamentos e propostas comerciais.",
+      "Módulo inteligente de geração, precificação dinâmica e assinatura digital de orçamentos e propostas comerciais integradas ao faturamento.",
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
     features: [
       "Geração instantânea de propostas em PDF com tabelas de preço dinâmicas por perfil de cliente.",
@@ -459,32 +559,33 @@ export const projects = [
     ],
   },
   {
-    id: "ac3-flex",
-    name: "AC3 Flex Cloud Architecture",
+    id: "portal-admin",
+    name: "Admin (Portal Admin & RBAC)",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Infraestrutura em Nuvem",
-    domain: "autocom3.com.br/flex",
-    type: "erp",
-    category: "Cloud ERP & Microsserviços",
-    image: "/ac3-flex.png",
+    accessBadge: "Painel Restrito Administrativo",
+    domain: "autocom3.com.br/admin",
+    type: "internal",
+    category: "Segurança & Multi-Tenant",
+    image: "/portal-admin.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
-      "Arquitetura em nuvem escalável conectando ERPs legados a serviços web modernos com cache distribuído.",
-    stack: ["Node.js", "TypeScript", "NestJS", "AWS", "PostgreSQL", "Docker"],
+      "Painel administrativo central com gestão de tenants, auditoria de acessos, faturamento e controle de permissões corporativas.",
+    stack: ["React", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "Radix UI"],
     features: [
-      "Camada de abstração e sincronização bidirecional entre bancos legados e portais modernos na web.",
-      "Arquitetura baseada em eventos com mensageria para operações assíncronas de alto volume.",
-      "Monitoramento contínuo de saúde de serviços e alta disponibilidade.",
+      "Gestão centralizada de clientes corporativos com controle granular de permissões e perfis de acesso.",
+      "Dashboard executivo com métricas de uso em tempo real e monitoramento de contratos ativos.",
+      "Logs de auditoria e trilhas de conformidade com segurança de ponta a ponta.",
     ],
     metrics: [
-      { label: "Infra", value: "AWS & Docker" },
-      { label: "Arquitetura", value: "Event-Driven & Cache" },
+      { label: "Controle", value: "RBAC Granular" },
+      { label: "Multi-tenant", value: "20+ Organizações" },
     ],
   },
-
 ] as const
 
 export const parallaxProducts = [

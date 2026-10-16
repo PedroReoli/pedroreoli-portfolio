@@ -256,22 +256,49 @@ export const educationList = [
     institution: "Centro Universitário de Volta Redonda (UniFOA)",
     period: "2022 - 2025",
     status: "Completed",
+    details: [
+      "Core focus on Software Engineering, Systems Architecture, Relational Databases, and Information Security.",
+      "Active participation in academic outreach programs and applied software research.",
+    ],
   },
   {
-    degree: "Frontend & UX/UI Design Specialization (200h)",
+    degree: "Frontend Engineering & UI/UX Specialization (200h)",
     institution: "Origamid",
     period: "2026",
     status: "Completed",
+    details: [
+      "In-depth mastery of React ecosystems, unified Design Systems, WCAG Accessibility, and Core Web Vitals.",
+      "Modern UI architecture, high-performance web animations, and strict TypeScript domain modeling.",
+    ],
   },
 ] as const
 
 export const languages = [
-  { name: "Portuguese", level: "Native", info: "Fluent and technical communication" },
-  { name: "English", level: "Working Proficiency (B2)", info: "Fluent technical reading, documentation authoring, and professional speaking" },
-  { name: "Mentorship & Community", level: "EvaTech / SEBRAE", info: "Technical training and leadership for 30+ participants" },
+  { 
+    name: "Portuguese", 
+    level: "Native", 
+    info: "Executive communication, engineering leadership, facilitation, and formal software documentation." 
+  },
+  { 
+    name: "English", 
+    level: "Working Proficiency (B2)", 
+    info: "Fluent technical reading, architectural documentation writing, and professional speaking." 
+  },
+] as const
+
+export const academicLeadership = [
+  {
+    title: "Tech Mentorship & Applied AI",
+    organization: "EvaTech / SEBRAE & UniFOA",
+    period: "Jun/2024 - Dec/2024",
+    info: "Hands-on mentorship and technical training for 30+ participants in TypeScript, React, and LLM automation.",
+  },
 ] as const
 
 export const projects = [
+  // =========================================================================
+  // TIER 1: FLAGSHIP SYSTEMS / CORE PLATFORMS (3 ACTIVE)
+  // =========================================================================
   {
     id: "organon-ecosystem",
     name: "Organon Desktop & Ecosystem v6.23.2",
@@ -285,6 +312,7 @@ export const projects = [
     category: "Flagship • Business OS & AI",
     image: "/Domus.png",
     flagship: true,
+    group: "flagship",
     shortDescription:
       "Local-first productivity hub with 19 operational screens, TipTap rich text, Excalidraw infinite canvas, Whisper AI smart offline transcription, and MCP server.",
     stack: ["Electron", "React 18", "TypeScript", "Vite", "TipTap", "Excalidraw", "Radix UI", "Whisper AI", "Fastify", "SQLite", "MCP Protocol"],
@@ -312,6 +340,7 @@ export const projects = [
     category: "AI Engineering & Automation",
     image: "/nexus.png",
     flagship: true,
+    group: "flagship",
     shortDescription:
       "Autonomous browser automation and observation engine for AI agents via CDP and AXTree semantics, with 92.2% token savings and native MCP server.",
     stack: ["Python", "Playwright", "CDP", "AXTree", "MCP Protocol", "FastAPI", "Asyncio", "Pydantic v2"],
@@ -326,26 +355,118 @@ export const projects = [
       { label: "Protocol", value: "Native stdio MCP Server" },
     ],
   },
+  // =========================================================================
+  // TIER 2: FREELANCE PROJECTS (SITES & FRONTEND WITH MINIMAL BACKEND)
+  // =========================================================================
   {
-    id: "portal-unificado-autocom3",
-    name: "Autocom3 Unified ERP Portal",
+    id: "fala-atipica",
+    name: "Fala Atípica – Tríade",
+    href: "https://github.com/PedroReoli/FalaAtipica-Triade",
+    githubUrl: "https://github.com/PedroReoli/FalaAtipica-Triade",
+    liveUrl: undefined,
+    isProprietary: false,
+    accessBadge: "Frontend & Accessibility",
+    domain: "falaatipica.com.br",
+    type: "site",
+    category: "Institutional Platform & Welcoming",
+    image: "/Domus.png",
+    flagship: false,
+    group: "freelance",
+    shortDescription:
+      "Inclusive institutional web portal and supportive hub for autistic individuals and atypical families, developed with WCAG accessibility guidelines and lightweight architecture.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Accessibility (a11y)", "REST API"],
+    features: [
+      "Accessible responsive interface with thoughtful high-contrast theme honoring neurodiversity guidelines.",
+      "Real-time validated contact and screening forms connected to multidisciplinary coordinators.",
+      "Modular frontend codebase optimized for fast mobile rendering.",
+    ],
+    metrics: [
+      { label: "Accessibility", value: "WCAG & Inclusion" },
+      { label: "Architecture", value: "Frontend + Minimal Backend" },
+    ],
+  },
+  {
+    id: "geoambiental-vr",
+    name: "GeoAmbiental VR – Interactive Map",
+    href: "https://github.com/PedroReoli/GeoAmbiental-VR-Mapa-Ambiental-de-Volta-Redonda",
+    githubUrl: "https://github.com/PedroReoli/GeoAmbiental-VR-Mapa-Ambiental-de-Volta-Redonda",
+    liveUrl: undefined,
+    isProprietary: false,
+    accessBadge: "Web GIS & Geo Data",
+    domain: "geoambientalvr.com.br",
+    type: "site",
+    category: "GIS & Environmental Analytics",
+    image: "/nexus.png",
+    flagship: false,
+    group: "freelance",
+    shortDescription:
+      "Interactive portal and environmental map of Volta Redonda rendering geospatial layers, ecological indicators, and conservation zones fluidly in-browser.",
+    stack: ["React", "TypeScript", "Maps API", "Tailwind CSS", "GeoJSON", "Vite"],
+    features: [
+      "Dynamic rendering of geospatial layers and environmental points of interest with smooth vector paths.",
+      "Interactive data filtering across river basins, buffer zones, and ecological metrics.",
+      "Georeferenced data consumption with local caching for seamless responsiveness over mobile networks.",
+    ],
+    metrics: [
+      { label: "Domain", value: "GIS & Environment" },
+      { label: "Visualization", value: "Interactive Vector Maps" },
+    ],
+  },
+
+  // =========================================================================
+  // TIER 3: CORPORATE PROJECTS (AUTOCOM3)
+  // 1. Accountant Portal, 2. Client Portal, 3. Mobile, 4. AC3 Flex, 5. Proposals, 6. Admin
+  // =========================================================================
+  {
+    id: "portal-contador",
+    name: "Accountant Portal (Portal do Contador)",
+    href: undefined,
+    githubUrl: undefined,
+    liveUrl: undefined,
+    isProprietary: true,
+    accessBadge: "Tax & Accounting Module",
+    domain: "autocom3.com.br/contador",
+    type: "erp",
+    category: "Tax & Accounting Platform",
+    image: "/portal-contador.png",
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
+    shortDescription:
+      "Integrated accounting portal for automated XML exports, SPED fiscal compliance, and corporate financial reconciliation for partner accounting firms.",
+    stack: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    features: [
+      "Tax reconciliation and batch invoice export module for corporate accountants.",
+      "Isolated RBAC authentication per accounting firm and connected client enterprises.",
+      "Faster month-end tax filing and reduced closing cycle time.",
+    ],
+    metrics: [
+      { label: "Segment", value: "Tax & Accounting" },
+      { label: "Integration", value: "SPED / XML / ERP" },
+    ],
+  },
+  {
+    id: "portal-cliente",
+    name: "Client Portal (Portal do Cliente)",
     href: "https://www.autocom3.com.br/autocom3clientes",
     githubUrl: undefined,
     liveUrl: "https://www.autocom3.com.br/autocom3clientes",
     isProprietary: true,
-    accessBadge: "Proprietary Enterprise Software",
+    accessBadge: "Corporate Web Portal",
     domain: "autocom3.com.br/clients",
     type: "erp",
-    category: "Enterprise ERP",
+    category: "Self-Service & ERP Hub",
     image: "/portal-cliente.png",
-    flagship: true,
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
     shortDescription:
-      "Enterprise ERP hub spanning 100+ screens across 20+ active organizations, featuring a 500+ component Design System and 70% faster dev cycles.",
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "AWS", "Tauri", "Tailwind CSS"],
+      "Enterprise ERP self-service hub spanning 100+ screens across 20+ active organizations, unifying billing, support, and order dispatching.",
+    stack: ["React", "Next.js", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "AWS", "Tailwind CSS"],
     features: [
       "Unified enterprise portal with self-service, financial management, accounting, and operations modules.",
       "Proprietary 500+ component Design System that cut screen creation cycles by up to 70%.",
-      "Query and rendering optimizations delivering a 40% reduction in critical page load times for 20+ clients.",
+      "Query and rendering optimizations delivering a 40% reduction in critical page load times.",
       "JWT authentication, granular RBAC access controls, and secure asynchronous Webhook integrations.",
     ],
     metrics: [
@@ -354,61 +475,92 @@ export const projects = [
     ],
   },
   {
-    id: "propose-saas",
-    name: "Propose SaaS – NoCode Proposal Engine",
+    id: "autocom3-mobile",
+    name: "Mobile (Autocom3 Mobile App)",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Proprietary B2B SaaS",
-    domain: "domus.digital/propose",
-    type: "saas",
-    category: "B2B SaaS Platform",
-    image: "/propose.png",
-    flagship: true,
+    accessBadge: "Enterprise Mobile App",
+    domain: "autocom3.com.br/mobile",
+    type: "mobile",
+    category: "Mobile & Field Sales",
+    image: "/autocom3.png",
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
     shortDescription:
-      "NoCode commercial proposal builder with a drag-and-drop editor, dynamic JSON schema rendering, and automated billing integrations.",
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "Fastify", "PostgreSQL", "Supabase", "Tailwind CSS"],
+      "Enterprise mobile application integrated with the Autocom3 ERP ecosystem for field sales representatives, real-time inventory queries, and orders.",
+    stack: ["React Native", "Expo", "TypeScript", "REST APIs", "Zustand", "Offline Sync"],
     features: [
-      "High-velocity drag-and-drop builder with flexible dynamic rendering driven by JSON schemas.",
-      "PostgreSQL and Supabase backend with multi-tenant permissions and persistent proposal storage.",
-      "Payment gateway integrations with automated webhooks for deal closing workflows.",
-      "Lighthouse optimizations achieving scores above 95 in Performance and SEO.",
+      "Instant catalog lookup, real-time price tiers, and inventory checks for field sales representatives.",
+      "High-velocity pre-order generation with offline queueing and automatic sync upon connection.",
+      "Enterprise authentication with permission levels synced to ERP branch and operator roles.",
     ],
     metrics: [
-      { label: "Model", value: "NoCode & JSON Schemas" },
-      { label: "Infra", value: "Fastify + Supabase" },
+      { label: "Platform", value: "iOS & Android (Expo)" },
+      { label: "Operation", value: "Offline-First & Auto Sync" },
     ],
   },
   {
-    id: "portal-contador",
-    name: "Autocom3 Accountant Portal",
+    id: "ac3-flex",
+    name: "AC3 Flex",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
     isProprietary: true,
-    accessBadge: "Internal Corporate Module",
-    domain: "autocom3.com.br/contador",
+    accessBadge: "Synchronization & Microservices",
+    domain: "autocom3.com.br/flex",
     type: "erp",
-    category: "Tax & Accounting Platform",
-    image: "/portal-contador.png",
+    category: "Synchronization & Microservices",
+    image: "/ac3-flex.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
-      "Integrated accounting portal for automated XML exports, SPED fiscal compliance, and corporate financial reconciliation.",
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
+      "Enterprise data synchronization and messaging layer connecting on-premise ERP databases with modern cloud-based web portals.",
+    stack: ["Node.js", "TypeScript", "NestJS", "AWS", "PostgreSQL", "Docker"],
     features: [
-      "Tax reconciliation and batch invoice export module for corporate accountants.",
-      "Isolated RBAC authentication per accounting firm and connected client enterprises.",
-      "Faster month-end tax filing and reduced closing cycle time."
+      "Bidirectional abstraction and sync bridge between legacy database engines and cloud web portals.",
+      "Event-driven architecture with message queues for high-throughput asynchronous operations.",
+      "Continuous connectivity monitoring, distributed caching, and 99.9% service uptime.",
     ],
     metrics: [
-      { label: "Segment", value: "Tax & Accounting" },
-      { label: "Integration", value: "SPED / XML / ERP" },
+      { label: "Infra", value: "AWS & Docker" },
+      { label: "Architecture", value: "Event-Driven & Cache" },
+    ],
+  },
+  {
+    id: "propostas-ac3",
+    name: "Commercial Proposal Engine",
+    href: undefined,
+    githubUrl: undefined,
+    liveUrl: undefined,
+    isProprietary: true,
+    accessBadge: "Commercial Automation",
+    domain: "autocom3.com.br/propostas",
+    type: "saas",
+    category: "Billing & Proposal Automation",
+    image: "/propostas-ac3.png",
+    videoUrl: undefined,
+    flagship: false,
+    group: "modules",
+    shortDescription:
+      "Dynamic commercial proposal and quote generator with pricing matrix rules, contract templates, and digital workflows.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
+    features: [
+      "Instant PDF proposal generation with dynamic pricing tables based on customer tiering.",
+      "Real-time tracking of proposal viewing and digital signature status.",
+      "Direct automated bridge to the Autocom3 ERP contract management module.",
+    ],
+    metrics: [
+      { label: "Conversion", value: "Sales Velocity" },
+      { label: "Output", value: "PDF & Digital Sign" },
     ],
   },
   {
     id: "portal-admin",
-    name: "Autocom3 Admin Portal & RBAC",
+    name: "Admin (Admin Console & RBAC)",
     href: undefined,
     githubUrl: undefined,
     liveUrl: undefined,
@@ -418,73 +570,22 @@ export const projects = [
     type: "internal",
     category: "Security & Multi-Tenant",
     image: "/portal-admin.png",
+    videoUrl: undefined,
     flagship: false,
+    group: "modules",
     shortDescription:
       "Centralized administrative console with tenant management, access auditing, billing metrics, and role-based access control.",
     stack: ["React", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "Radix UI"],
     features: [
       "Centralized client enterprise management with granular permission schemes and access control.",
       "Executive real-time usage dashboard and active contract lifecycle monitoring.",
-      "Comprehensive audit logs and compliance trails with end-to-end security."
+      "Comprehensive audit logs and compliance trails with end-to-end security.",
     ],
     metrics: [
       { label: "Control", value: "Granular RBAC" },
       { label: "Multi-tenant", value: "20+ Organizations" },
     ],
   },
-  {
-    id: "propostas-ac3",
-    name: "Autocom3 Commercial Proposal Engine",
-    href: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined,
-    isProprietary: true,
-    accessBadge: "Internal Corporate Module",
-    domain: "autocom3.com.br/propostas",
-    type: "saas",
-    category: "Billing & Proposal Automation",
-    image: "/propostas-ac3.png",
-    flagship: false,
-    shortDescription:
-      "Dynamic commercial proposal and quote generator with pricing matrix rules and digital contract workflows.",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
-    features: [
-      "Instant PDF proposal generation with dynamic pricing tables based on customer tiering.",
-      "Real-time tracking of proposal viewing and digital signature status.",
-      "Direct automated bridge to the Autocom3 ERP contract management module."
-    ],
-    metrics: [
-      { label: "Conversion", value: "Sales Velocity" },
-      { label: "Output", value: "PDF & Digital Sign" },
-    ],
-  },
-  {
-    id: "ac3-flex",
-    name: "AC3 Flex Cloud Architecture",
-    href: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined,
-    isProprietary: true,
-    accessBadge: "Cloud Infrastructure",
-    domain: "autocom3.com.br/flex",
-    type: "erp",
-    category: "Cloud ERP & Microservices",
-    image: "/ac3-flex.png",
-    flagship: false,
-    shortDescription:
-      "Scalable cloud architecture connecting legacy on-premise ERPs to modern web platforms via distributed caching.",
-    stack: ["Node.js", "TypeScript", "NestJS", "AWS", "PostgreSQL", "Docker"],
-    features: [
-      "Bidirectional abstraction and synchronization layer between legacy databases and modern web portals.",
-      "Event-driven architecture with message queues for high-throughput asynchronous workloads.",
-      "Continuous health monitoring, distributed caching, and 99.9% service uptime."
-    ],
-    metrics: [
-      { label: "Infra", value: "AWS & Docker" },
-      { label: "Architecture", value: "Event-Driven & Cache" },
-    ],
-  },
-
 ] as const
 
 export const parallaxProducts = [

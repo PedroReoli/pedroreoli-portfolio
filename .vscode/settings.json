@@ -1,22 +1,14 @@
 {
     "workbench.colorCustomizations": {
-        // === FOCO GERAL & DIVISORES ===
         "focusBorder": "#0ea5e9",
-        "sash.hoverBorder": "#38bdf8",
-
-        // === IDENTIFICAÇÃO DE TELAS DIVIDIDAS (SPLIT EDITORS) ===
-        "editorGroup.border": "#0ea5e9",
+        "sash.hoverBorder": "#37b9f3",
         "editorGroup.focusedEmptyBorder": "#0ea5e9",
         "editorGroup.dropBackground": "#0ea5e925",
         "editorGroupHeader.tabsBackground": "#080c14",
         "editorGroupHeader.tabsBorder": "#1e293b",
         "editorGroupHeader.noTabsBackground": "#080c14",
-
-        // === ABAS (TELA ATIVA vs INATIVA) ===
-        "tab.activeBackground": "#131d2e",
         "tab.activeForeground": "#38bdf8",
         "tab.activeBorderTop": "#38bdf8",
-        "tab.activeBorder": "#0ea5e9",
         "tab.inactiveBackground": "#080c14",
         "tab.inactiveForeground": "#64748b",
         "tab.hoverBackground": "#0f172a",
@@ -27,8 +19,6 @@
         "tab.unfocusedActiveBorderTop": "#334155",
         "tab.unfocusedInactiveForeground": "#475569",
         "tab.lastPinnedBorder": "#0ea5e9",
-
-        // === EDITOR DE CÓDIGO (CURSOR, LINHA & SELEÇÃO) ===
         "editor.background": "#0b0f19",
         "editor.foreground": "#e2e8f0",
         "editorCursor.foreground": "#38bdf8",
@@ -47,37 +37,29 @@
         "editorBracketMatch.border": "#38bdf8",
         "editorIndentGuide.background1": "#1e293b80",
         "editorIndentGuide.activeBackground1": "#0ea5e9",
-
-        // === BARRA DE TÍTULO (JANELA ATIVA vs INATIVA) ===
-        "titleBar.activeBackground": "#090d16",
-        "titleBar.activeForeground": "#f8fafc",
-        "titleBar.inactiveBackground": "#05070c",
-        "titleBar.inactiveForeground": "#475569",
-        "titleBar.border": "#1e293b",
-        "commandCenter.border": "#1e293b",
-        "commandCenter.foreground": "#94a3b8",
+        "titleBar.activeBackground": "#0ea5e9",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#0ea5e999",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "commandCenter.border": "#e7e7e799",
+        "commandCenter.foreground": "#e7e7e7",
         "commandCenter.activeForeground": "#38bdf8",
         "commandCenter.background": "#0f172a",
-
-        // === BARRA LATERAL ESQUERDA (ACTIVITY BAR) ===
-        "activityBar.background": "#090d16",
-        "activityBar.foreground": "#38bdf8",
-        "activityBar.inactiveForeground": "#64748b",
-        "activityBar.activeBorder": "#38bdf8",
-        "activityBar.activeBackground": "#131d2e",
+        "activityBar.background": "#37b9f3",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBar.activeBorder": "#15202b",
+        "activityBar.activeBackground": "#37b9f3",
         "activityBar.border": "#1e293b",
-        "activityBarBadge.background": "#0ea5e9",
-        "activityBarBadge.foreground": "#ffffff",
-        "activityBarTop.background": "#090d16",
-        "activityBarTop.foreground": "#38bdf8",
-        "activityBarTop.inactiveForeground": "#64748b",
-        "activityBarTop.activeBorder": "#38bdf8",
-        "activityBarTop.activeBackground": "#131d2e",
-
-        // === EXPLORADOR DE ARQUIVOS (SIDEBAR & LISTAS) ===
+        "activityBarBadge.background": "#d20d95",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "activityBarTop.background": "#37b9f3",
+        "activityBarTop.foreground": "#15202b",
+        "activityBarTop.inactiveForeground": "#15202b99",
+        "activityBarTop.activeBorder": "#15202b",
+        "activityBarTop.activeBackground": "#37b9f3",
         "sideBar.background": "#090d16",
         "sideBar.foreground": "#cbd5e1",
-        "sideBar.border": "#1e293b",
         "sideBarTitle.foreground": "#f8fafc",
         "sideBarSectionHeader.background": "#0f172a",
         "sideBarSectionHeader.foreground": "#38bdf8",
@@ -93,24 +75,18 @@
         "list.hoverBackground": "#1e293b40",
         "list.hoverForeground": "#ffffff",
         "list.highlightForeground": "#38bdf8",
-
-        // === BARRA DE STATUS INFERIOR ===
-        "statusBar.background": "#090d16",
-        "statusBar.foreground": "#38bdf8",
-        "statusBar.border": "#1e293b",
-        "statusBar.debuggingBackground": "#e11d48",
-        "statusBar.debuggingForeground": "#ffffff",
+        "statusBar.background": "#0ea5e9",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBar.debuggingBackground": "#0ea5e9",
+        "statusBar.debuggingForeground": "#e7e7e7",
         "statusBar.noFolderBackground": "#090d16",
-        "statusBar.inactiveBackground": "#05070c",
+        "statusBar.inactiveBackground": "#0ea5e9",
         "statusBar.inactiveForeground": "#475569",
-        "statusBarItem.hoverBackground": "#1e293b",
-        "statusBarItem.remoteBackground": "#0ea5e9",
-        "statusBarItem.remoteForeground": "#ffffff",
+        "statusBarItem.hoverBackground": "#37b9f3",
+        "statusBarItem.remoteBackground": "#fde1f4",
+        "statusBarItem.remoteForeground": "#e7e7e7",
         "statusBarItem.prominentBackground": "#0ea5e933",
-
-        // === TERMINAL & PAINEL ===
         "panel.background": "#090d16",
-        "panel.border": "#1e293b",
         "panelTitle.activeBorder": "#38bdf8",
         "panelTitle.activeForeground": "#38bdf8",
         "panelTitle.inactiveForeground": "#64748b",
@@ -118,8 +94,6 @@
         "panelSectionHeader.border": "#1e293b",
         "terminal.tab.activeBorder": "#38bdf8",
         "terminalCursor.foreground": "#38bdf8",
-
-        // === NAVEGAÇÃO & MINIMAP ===
         "breadcrumb.foreground": "#64748b",
         "breadcrumb.focusForeground": "#38bdf8",
         "breadcrumb.activeSelectionForeground": "#ffffff",
