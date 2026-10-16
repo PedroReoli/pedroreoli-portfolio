@@ -194,57 +194,57 @@ export const StitchAutocom3Section: React.FC = () => {
         
         {/* MÓDULO 01: Painel Central de Operações Multissetorial */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-cyan-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-cyan-500/40 transition-all"
           id="stage-01"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 01 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/operacoes</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/operacoes</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-cyan-400">dashboard_customize</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               PAINEL CENTRAL DE OPERAÇÕES MULTISSETORIAL
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Unificação arquitetural de mais de 25 submódulos antes dispersos em uma interface centralizada com controle de acesso granular RBAC. Inclui filtros inteligentes por semelhança de áreas transversais (*Licenciamento &amp; Tokens, Clientes &amp; Cadastros, Parcerias &amp; White Label, Faturamento &amp; Cobrança, Catálogo &amp; SKUs*), sistema de favoritos com persistência local e alternador de módulos exclusivos para redução drástica de carga cognitiva.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Unificação de mais de 25 submódulos antes dispersos em um hub com controle RBAC, filtros inteligentes por áreas transversais e sistema de favoritos com persistência local.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">React 19</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Filtros Transversais</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Persistência Local</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Controle RBAC</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-cyan-400">Zero Reflow</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">React 19</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Filtros Transversais</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Persistência Local</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Controle RBAC</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-cyan-400">Zero Reflow</span>
           </div>
 
           {/* Screenshots Reais do Módulo */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-1">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/01-painel-operacoes-visao-geral.png"
                 alt="Painel de Operações - Visão Geral"
-                className="w-full h-56 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-52 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-xs text-zinc-300 font-semibold">VISÃO GERAL DO GRID DE SETORES</span>
+              <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">VISÃO GERAL DO GRID DE SETORES</span>
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/02-painel-operacoes-dropdown-filtros.png"
                 alt="Dropdown de Filtros Avançados"
-                className="w-full h-56 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-52 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-xs text-zinc-300 font-semibold">DROPDOWN DE FILTROS POR SEMELHANÇA DE ÁREAS</span>
+              <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">DROPDOWN DE FILTROS POR ÁREAS</span>
               </div>
             </div>
           </div>
@@ -252,154 +252,154 @@ export const StitchAutocom3Section: React.FC = () => {
 
         {/* MÓDULO 02: Motor de Propostas Comerciais & Precificação */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-emerald-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-emerald-500/40 transition-all"
           id="stage-02"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 02 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/propostas</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/propostas</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-emerald-400">request_quote</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               MOTOR DE PROPOSTAS COMERCIAIS &amp; PRECIFICAÇÃO
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Motor analítico para simulação de propostas corporativas, precificação flexível de planos SaaS e cálculo automatizado de margens para revendedores e franqueados. Emissão rápida de contratos com assinatura digital, geração de faturamento recorrente e reconciliação financeira em tempo real.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Simulação analítica de propostas corporativas, precificação flexível de planos SaaS e cálculo automatizado de margens para canais de revenda com faturamento recorrente.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Motor de Preços</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Planos SaaS</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Emissão Contratual</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-emerald-400">Margens Dinâmicas</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Motor de Preços</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Planos SaaS</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Emissão Contratual</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-emerald-400">Margens Dinâmicas</span>
           </div>
 
           {/* Screenshot Real */}
-          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest mt-2">
+          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest mt-1">
             <img
               src="/portfolio-autocom3/01-propostas-comerciais-listagem.png"
               alt="Listagem de Propostas Comerciais"
-              className="w-full max-h-[380px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
+              className="w-full max-h-[340px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
             />
-            <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-              <span className="font-label-caps text-xs text-zinc-300 font-semibold">LISTAGEM DE PROPOSTAS CORPORATIVAS &amp; PIPELINE COMERCIAL</span>
+            <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+              <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">LISTAGEM DE PROPOSTAS CORPORATIVAS</span>
             </div>
           </div>
         </article>
 
         {/* MÓDULO 03: Pipeline de Oportunidades Comerciais */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-indigo-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-indigo-500/40 transition-all"
           id="stage-03"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 03 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/propostas=oportunidade-comercial</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/propostas=oportunidade</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-indigo-400">handshake</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               PIPELINE DE OPORTUNIDADES &amp; QUALIFICAÇÃO
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Pipeline de captação comercial de alto valor com formulários complexos em multi-etapas, validações assíncronas de conformidade fiscal e regras de qualificação de leads B2B integradas à equipe de vendas e canais parceiros.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Captação comercial de alto valor com formulários multi-etapas, validações assíncronas de conformidade cadastral e qualificação automática de leads B2B.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Formulários Complexos</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Validação Zod / React Hook Form</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-indigo-300">Esteira de Qualificação</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Formulários Complexos</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Validação Zod / React Hook Form</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-indigo-300">Esteira de Qualificação</span>
           </div>
 
           {/* Screenshot Real */}
-          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest mt-2">
+          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest mt-1">
             <img
               src="/portfolio-autocom3/01-formulario-oportunidade-comercial.png"
               alt="Formulário de Oportunidade Comercial"
-              className="w-full max-h-[380px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
+              className="w-full max-h-[340px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
             />
-            <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-              <span className="font-label-caps text-xs text-zinc-300 font-semibold">FORMULÁRIO DE CAPTAÇÃO &amp; OPORTUNIDADE COMERCIAL</span>
+            <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+              <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">FORMULÁRIO DE OPORTUNIDADE COMERCIAL</span>
             </div>
           </div>
         </article>
 
         {/* MÓDULO 04: Ecossistema SGSH & Licenciamento de Missão Crítica */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-cyan-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-cyan-500/40 transition-all"
           id="stage-04"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 04 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/licencas &amp; /detalhes/:id</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/licencas</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-cyan-400">verified_user</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               ECOSSISTEMA SGSH &amp; CICLO DE VIDA DE LICENCIAMENTO
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Gestão de ciclo de vida completo de licenças de software corporativo: ativação, bloqueio, liberação manual emergencial com tolerância de +4 dias, prorrogação de demos e cancelamento com dupla confirmação em duas etapas para mitigar perdas financeiras. Incorpora o componente de consulta rápida <strong>&ldquo;Ficha do Cliente&rdquo;</strong> somente leitura com cópia atômica de dados anonimizados para suporte técnico e equipes em campo.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Gestão de ciclo de vida completo de licenças: ativação, liberação emergencial com tolerância de +4 dias, prorrogação e modal de consulta rápida &ldquo;Ficha do Cliente&rdquo; somente leitura com cópia atômica.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Ciclo de Vida SGSH</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Liberação Emergencial +4 Dias</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Dupla Confirmação</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-cyan-400">Ficha do Cliente View-Only</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Ciclo de Vida SGSH</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Liberação Emergencial +4D</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Dupla Confirmação</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-cyan-400">Ficha do Cliente View-Only</span>
           </div>
 
           {/* 3 Screenshots Reais do SGSH */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-1">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/01-licencas-sgsh-painel-central.png"
                 alt="Painel Central de Licenças SGSH"
-                className="w-full h-48 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-44 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
               <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
                 <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">PAINEL CENTRAL DE LICENÇAS</span>
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/02-licenca-detalhes-frames-ciclo-de-vida.png"
                 alt="Detalhes e Frames de Ciclo de Vida"
-                className="w-full h-48 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-44 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
               <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">FRAMES TEMÁTICOS DE CICLO DE VIDA</span>
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">CICLO DE VIDA &amp; PRAZOS</span>
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/03-modal-dados-cliente-somente-leitura.png"
                 alt="Modal Ficha do Cliente"
-                className="w-full h-48 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-44 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
               <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">FICHA DO CLIENTE SOMENTE LEITURA</span>
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">FICHA DO CLIENTE VIEW-ONLY</span>
               </div>
             </div>
           </div>
@@ -407,56 +407,56 @@ export const StitchAutocom3Section: React.FC = () => {
 
         {/* MÓDULO 05: Catálogo de SKUs, Módulos & Categorias */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-amber-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-amber-500/40 transition-all"
           id="stage-05"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 05 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/skus &amp; /skucategorias</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/skus</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-amber-400">category</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               CATÁLOGO DE SKUS, MÓDULOS &amp; CATEGORIAS
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Estruturação granular do catálogo de produtos SaaS e licenças desktop. Permite compor pacotes modulares, definir regras de recursos bloqueados por plano e gerenciar SKUs de liberação imediata sem necessidade de redeploy da aplicação.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Estruturação granular do catálogo SaaS: composição modular de pacotes, recursos bloqueados por plano e gerenciamento de SKUs de liberação imediata sem necessidade de redeploy.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Catálogo de SKUs</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Composição Modular</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Provisionamento Automático</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-amber-300">Feature Toggles</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Catálogo de SKUs</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Composição Modular</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Provisionamento</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-amber-300">Feature Toggles</span>
           </div>
 
           {/* Screenshots Reais */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-1">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/01-catalogo-skus-tabela.png"
                 alt="Tabela de SKUs"
-                className="w-full h-56 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-52 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-xs text-zinc-300 font-semibold">TABELA DE SKUS &amp; COMPOSIÇÃO DE PACOTES</span>
+              <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">TABELA DE SKUS &amp; COMPOSIÇÃO</span>
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest">
               <img
                 src="/portfolio-autocom3/02-categorias-produtos-skus.png"
                 alt="Categorias de Produtos"
-                className="w-full h-56 object-cover object-top hover:scale-105 transition-transform duration-300"
+                className="w-full h-52 object-cover object-top hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-                <span className="font-label-caps text-xs text-zinc-300 font-semibold">CATEGORIAS DE PRODUTOS &amp; REGRAS DE LIBERAÇÃO</span>
+              <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+                <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">CATEGORIAS DE PRODUTOS</span>
               </div>
             </div>
           </div>
@@ -464,44 +464,44 @@ export const StitchAutocom3Section: React.FC = () => {
 
         {/* MÓDULO 06: Ferramentas Tributárias & Parcerias White Label */}
         <article
-          className="w-full bg-surface-container rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 hover:border-emerald-500/40 transition-all"
+          className="w-full bg-surface-container rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-3.5 border border-white/10 hover:border-emerald-500/40 transition-all"
           id="stage-06"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="font-code-inline text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-md font-bold">
+              <span className="font-code-inline text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-md font-bold">
                 06 // MÓDULO
               </span>
-              <span className="font-label-caps text-zinc-400 text-xs">ROTA: /admin/modulo/operacoes/ferramentas-tributarias</span>
+              <span className="font-label-caps text-zinc-400 text-xs">/admin/modulo/ferramentas-tributarias</span>
             </div>
             <span className="material-symbols-outlined text-[20px] text-emerald-400">account_balance</span>
           </div>
 
           <div>
-            <h2 className="font-headline-lg text-white tracking-tight font-bold text-xl sm:text-2xl">
+            <h2 className="font-headline-lg text-white tracking-tight font-bold text-lg sm:text-xl">
               FERRAMENTAS TRIBUTÁRIAS &amp; WHITE LABEL
             </h2>
-            <p className="font-body-md text-zinc-300 mt-2 leading-relaxed text-sm sm:text-base">
-              Utilitários especializados em diagnóstico e parametrização fiscal interestadual (ICMS, PIS/COFINS, substituição tributária e regimes tributários diferenciados). Inclui painel de personalização de identidade para parceiros White Label (customização de cores, marcas e instaladores) com isolamento rigoroso de visibilidade contábil.
+            <p className="font-body-md text-zinc-300 mt-1 leading-relaxed text-xs sm:text-sm">
+              Diagnóstico e parametrização fiscal interestadual (ICMS, PIS/COFINS, substituição tributária) e personalização de identidade para parceiros White Label com isolamento contábil.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Diagnóstico Fiscal</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">White Label Multitenant</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-zinc-200">Isolamento Contábil</span>
-            <span className="font-code-inline text-xs bg-surface-container-high px-3 py-1 rounded-lg text-emerald-400">Conformidade SEFAZ</span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Diagnóstico Fiscal</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">White Label</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-zinc-200">Isolamento Contábil</span>
+            <span className="font-code-inline text-[11px] bg-surface-container-high px-2.5 py-0.5 rounded-md text-emerald-400">SEFAZ Ready</span>
           </div>
 
           {/* Screenshot Real */}
-          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-surface-container-lowest mt-2">
+          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-md bg-surface-container-lowest mt-1">
             <img
               src="/portfolio-autocom3/01-ferramentas-tributarias.png"
               alt="Ferramentas Tributárias e Diagnósticos Fiscais"
-              className="w-full max-h-[380px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
+              className="w-full max-h-[340px] object-cover object-top hover:scale-[1.02] transition-transform duration-300"
             />
-            <div className="p-3 bg-surface-container-lowest border-t border-white/5">
-              <span className="font-label-caps text-xs text-zinc-300 font-semibold">PARAMETRIZAÇÃO TRIBUTÁRIA &amp; DIAGNÓSTICOS FISCAIS</span>
+            <div className="p-2.5 bg-surface-container-lowest border-t border-white/5">
+              <span className="font-label-caps text-[11px] text-zinc-300 font-semibold">PARAMETRIZAÇÃO TRIBUTÁRIA &amp; DIAGNÓSTICOS</span>
             </div>
           </div>
         </article>

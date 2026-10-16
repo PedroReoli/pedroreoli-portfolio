@@ -16,3 +16,5 @@ temp_skills/
 .privado/
 .claude/skills/
 .claude/skills
+/.agents
+temp_stitch/

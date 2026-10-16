@@ -3,15 +3,15 @@
 > Este repositório utiliza a suíte unificada **Reoli** (ReoliCode + ReoliOS).
 
 ## 🛠️ ReoliCode — Governança & Regras de Código
-1. **Fonte de Verdade**: Consulte a pasta `!reoli/rules/` para acessar as regras de arquitetura, governança e workflow.
-2. **Precedência**: Leia `!reoli/rules/README.md` para entender a hierarquia das regras.
+1. **Fonte de Verdade**: Consulte a pasta `.agents/rules/` para acessar as regras de arquitetura, governança e workflow.
+2. **Precedência**: Leia `.agents/rules/README.md` para entender a hierarquia das regras.
 
 ## 🚀 ReoliOS — Sistema Operacional do Negócio
 1. **Contexto & Memória**: Consulte a pasta `!reoli/reolios/sistema/` (`memoria/`, `identidade/`, `scripts/`) para entender o negócio, produtos e preferências.
 2. **Skills Operacionais**: Consulte a pasta `.claude/skills/` para acessar as +75 skills de dev, automação, vendas, copy, autoridade e gestão.
 3. **Dashboard Web**: Execute `reoli ui` no terminal para visualizar o painel web self-hosted.
 
-## ReoliCode
-Leia primeiro `!reoli/rules/RULES-ROUTER.json`; carregue apenas as regras indicadas para a tarefa.
-## ReoliOS
-Leia primeiro `!reoli/reolios/sistema/dados/SKILLS-ROUTER.json`; carregue apenas as skills indicadas e as memórias necessárias em `!reoli/reolios/sistema/memoria/`.
+## Regras
+Leia primeiro `.agents/rules/RULES-ROUTER.json`; carregue apenas as regras indicadas para a tarefa.
+## Skills
+Leia primeiro `.agents/SKILLS-ROUTER.json`; carregue apenas as skills indicadas e as memórias necessárias em `.agents/memory/`.

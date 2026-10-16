@@ -116,37 +116,37 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
               <span className="font-code-inline text-xs text-emerald-400">4 REPOSITÓRIOS OFICIAIS</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* ORGANON OS */}
-              <article className="rounded-3xl bg-surface-container border border-indigo-500/20 p-7 flex flex-col justify-between shadow-xl hover:border-indigo-500/50 transition-all">
-                <div className="flex flex-col gap-3">
+              <article className="rounded-3xl bg-surface-container border border-indigo-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl hover:border-indigo-500/50 transition-all">
+                <div className="flex flex-col gap-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-300 font-label-caps text-xs font-bold uppercase tracking-wider border border-indigo-500/30">
+                    <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 font-label-caps text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-indigo-500/30">
                       LOCAL-FIRST OS
                     </span>
                     <span className="font-code-inline text-xs text-emerald-400 font-semibold">SQLITE WAL</span>
                   </div>
-                  <h3 className="font-headline-lg text-white font-bold text-2xl">
+                  <h3 className="font-headline-lg text-white font-bold text-xl sm:text-2xl">
                     Organon OS
                   </h3>
-                  <p className="font-body-md text-zinc-300 text-sm leading-relaxed">
-                    Sistema operacional de conhecimento local-first com grafo bidirecional de notas, sincronização CRDT offline, banco SQLite WAL local e privacidade criptográfica absoluta. Zero telemetria externa e execução em Tauri v2 com Rust FFI.
+                  <p className="font-body-md text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                    Sistema operacional de conhecimento local-first com grafo bidirecional, sincronização CRDT offline, SQLite WAL e privacidade absoluta em Tauri v2 com Rust.
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Tauri v2</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Rust</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">React 19</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">CRDT Sync</span>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Tauri v2</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Rust</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">React 19</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">CRDT Sync</span>
                   </div>
                 </div>
-                <div className="pt-6 mt-4 border-t border-white/5 flex items-center justify-between">
+                <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between">
                   <a
                     href="https://github.com/PedroReoli/organon"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-indigo-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-indigo-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
                   >
-                    <span className="material-symbols-outlined text-[18px]">code</span>
+                    <span className="material-symbols-outlined text-[16px]">code</span>
                     <span>Ver Repositório GitHub</span>
                   </a>
                   <span className="font-code-inline text-xs text-emerald-400 font-semibold">100% Offline</span>
@@ -154,35 +154,35 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
               </article>
 
               {/* ACHILLES CDP AGENT */}
-              <article className="rounded-3xl bg-surface-container border border-cyan-500/20 p-7 flex flex-col justify-between shadow-xl hover:border-cyan-500/50 transition-all">
-                <div className="flex flex-col gap-3">
+              <article className="rounded-3xl bg-surface-container border border-cyan-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl hover:border-cyan-500/50 transition-all">
+                <div className="flex flex-col gap-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 font-label-caps text-xs font-bold uppercase tracking-wider border border-cyan-500/30">
+                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 font-label-caps text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-cyan-500/30">
                       AGENTIC PROTOCOL
                     </span>
                     <span className="font-code-inline text-xs text-emerald-400 font-bold">-92.2% TOKENS</span>
                   </div>
-                  <h3 className="font-headline-lg text-white font-bold text-2xl">
+                  <h3 className="font-headline-lg text-white font-bold text-xl sm:text-2xl">
                     Achilles CDP Agent
                   </h3>
-                  <p className="font-body-md text-zinc-300 text-sm leading-relaxed">
-                    Motor autônomo de navegação web que intercepta a Árvore de Acessibilidade (AXTree) via protocolo CDP, reduzindo o payload de 240k para 18.7k tokens por passo. Execução determinística de ferramentas de navegação com latência média de 41ms.
+                  <p className="font-body-md text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                    Motor autônomo de navegação web via Chrome DevTools Protocol (CDP) e AXTree, reduzindo tokens em 92.2% com ferramentas determinísticas e 41ms de latência.
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Chrome DevTools Protocol</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">AXTree</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">MCP Server</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">TypeScript</span>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Chrome CDP</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">AXTree</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">MCP Server</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">TypeScript</span>
                   </div>
                 </div>
-                <div className="pt-6 mt-4 border-t border-white/5 flex items-center justify-between">
+                <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between">
                   <a
                     href="https://github.com/PedroReoli/Achilles-CDP-Agent"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-cyan-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-cyan-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
                   >
-                    <span className="material-symbols-outlined text-[18px]">code</span>
+                    <span className="material-symbols-outlined text-[16px]">code</span>
                     <span>Ver Repositório GitHub</span>
                   </a>
                   <span className="font-code-inline text-xs text-cyan-400 font-semibold">41ms Avg Latency</span>
@@ -190,35 +190,35 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
               </article>
 
               {/* FALA ATÍPICA */}
-              <article className="rounded-3xl bg-surface-container border border-emerald-500/20 p-7 flex flex-col justify-between shadow-xl hover:border-emerald-500/50 transition-all">
-                <div className="flex flex-col gap-3">
+              <article className="rounded-3xl bg-surface-container border border-emerald-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl hover:border-emerald-500/50 transition-all">
+                <div className="flex flex-col gap-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-label-caps text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 font-label-caps text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
                       HEALTHCARE &amp; NEURODIVERSITY
                     </span>
                     <span className="font-code-inline text-xs text-zinc-400 font-semibold">LOCAL SPEECH</span>
                   </div>
-                  <h3 className="font-headline-lg text-white font-bold text-2xl">
+                  <h3 className="font-headline-lg text-white font-bold text-xl sm:text-2xl">
                     Fala Atípica
                   </h3>
-                  <p className="font-body-md text-zinc-300 text-sm leading-relaxed">
-                    Plataforma de Comunicação Alternativa e Aumentativa (CAA) para pessoas neurodivergentes com síntese de voz local, símbolos pictográficos ARASAAC, banco IndexedDB offline e conformidade WCAG 2.2 AAA.
+                  <p className="font-body-md text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                    Plataforma de CAA para pessoas neurodivergentes com síntese de voz local, símbolos pictográficos ARASAAC, banco IndexedDB offline e conformidade WCAG 2.2 AAA.
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Next.js App Router</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Web Audio API</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">IndexedDB</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">WAI-ARIA AAA</span>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Next.js App Router</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Web Audio API</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">IndexedDB</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">WAI-ARIA AAA</span>
                   </div>
                 </div>
-                <div className="pt-6 mt-4 border-t border-white/5 flex items-center justify-between">
+                <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between">
                   <a
                     href="https://github.com/PedroReoli/Fala-Atipica"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-emerald-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-emerald-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
                   >
-                    <span className="material-symbols-outlined text-[18px]">code</span>
+                    <span className="material-symbols-outlined text-[16px]">code</span>
                     <span>Ver Repositório GitHub</span>
                   </a>
                   <span className="font-code-inline text-xs text-emerald-400 font-semibold">Acessibilidade AAA</span>
@@ -226,35 +226,35 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
               </article>
 
               {/* GEOAMBIENTAL VR */}
-              <article className="rounded-3xl bg-surface-container border border-amber-500/20 p-7 flex flex-col justify-between shadow-xl hover:border-amber-500/50 transition-all">
-                <div className="flex flex-col gap-3">
+              <article className="rounded-3xl bg-surface-container border border-amber-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl hover:border-amber-500/50 transition-all">
+                <div className="flex flex-col gap-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 font-label-caps text-xs font-bold uppercase tracking-wider border border-amber-500/30">
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-label-caps text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-amber-500/30">
                       SPATIAL COMPUTING &amp; 3D
                     </span>
                     <span className="font-code-inline text-xs text-zinc-400 font-semibold">60 FPS WEBGL</span>
                   </div>
-                  <h3 className="font-headline-lg text-white font-bold text-2xl">
+                  <h3 className="font-headline-lg text-white font-bold text-xl sm:text-2xl">
                     GeoAmbiental VR
                   </h3>
-                  <p className="font-body-md text-zinc-300 text-sm leading-relaxed">
-                    Simulador espacial 3D para dados climáticos e ambientais de alta densidade com renderização WebGL em 60 FPS contínuos, shaders GLSL customizados e telemetria microclimática interativa.
+                  <p className="font-body-md text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                    Simulador espacial 3D para dados climáticos de alta densidade com renderização WebGL em 60 FPS contínuos, shaders GLSL e telemetria microclimática interativa.
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Three.js</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">WebGL</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">GLSL Shaders</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-high text-zinc-200 font-code-inline text-xs">Spatial Math</span>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Three.js</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">WebGL</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">GLSL Shaders</span>
+                    <span className="px-2 py-0.5 rounded-md bg-surface-container-high text-zinc-200 font-code-inline text-[11px]">Spatial Math</span>
                   </div>
                 </div>
-                <div className="pt-6 mt-4 border-t border-white/5 flex items-center justify-between">
+                <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between">
                   <a
                     href="https://github.com/PedroReoli/GeoAmbientalVR"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-amber-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-amber-300 text-zinc-950 font-bold text-xs transition-all cursor-pointer shadow-md"
                   >
-                    <span className="material-symbols-outlined text-[18px]">code</span>
+                    <span className="material-symbols-outlined text-[16px]">code</span>
                     <span>Ver Repositório GitHub</span>
                   </a>
                   <span className="font-code-inline text-xs text-amber-400 font-semibold">60 FPS Smooth</span>
