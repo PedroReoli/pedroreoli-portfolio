@@ -10,11 +10,11 @@ export const HomePage: React.FC = () => {
       {/* Navbar Superior Celestial Fosca (Início, Projetos, Mídia & Blog) */}
       <StitchHeader />
 
-      {/* Container Principal Widescreen (max-w-6xl) */}
-      <main className="flex-1 flex flex-col relative w-full pt-16 px-4 sm:px-8 max-w-6xl mx-auto gap-12 sm:gap-16">
-        {/* Dobra 1: Hero Executivo Puro (100dvh) */}
-        <StitchHeroProjects />
+      {/* Dobra 1: Hero Executivo Puro Widescreen (Full Viewport Width & Height) */}
+      <StitchHeroProjects />
 
+      {/* Conteúdo Abaixo: Seções com Container Centralizado (max-w-6xl) */}
+      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 max-w-6xl mx-auto gap-12 sm:gap-16 pb-16">
         {/* Dobra 2: Seção de Destaques de Imprensa & Reconhecimento */}
         <StitchPressFeature />
 
