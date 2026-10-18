@@ -101,7 +101,7 @@ export const StitchMediaBlogSection: React.FC = () => {
               BROADCAST NODE // 0x4F9B — TRANSMISSÃO TÉCNICA
             </span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-zinc-300 font-label-caps text-xs border border-white/10">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-sky-100 font-label-caps text-xs border border-white/10">
             <span className="material-symbols-outlined text-[15px] text-cyan-400">rss_feed</span>
             <span>LATÊNCIA: 18ms</span>
           </div>
@@ -116,7 +116,7 @@ export const StitchMediaBlogSection: React.FC = () => {
             <span className="px-3 py-1 rounded-full bg-red-500/15 text-red-400 border border-red-500/30 font-label-caps text-xs font-bold uppercase tracking-wider">
               // CANAL TÉCNICO NO YOUTUBE
             </span>
-            <span className="font-code-inline text-xs text-zinc-400">BASTIDORES DE ENGENHARIA</span>
+            <span className="font-code-inline text-xs text-sky-200/80">BASTIDORES DE ENGENHARIA</span>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-1">
@@ -124,7 +124,7 @@ export const StitchMediaBlogSection: React.FC = () => {
               <h2 className="font-headline-lg text-white tracking-tight font-bold text-2xl sm:text-3xl">
                 DISSECANDO SISTEMAS REAIS, IA E ARQUITETURA
               </h2>
-              <p className="font-body-md text-zinc-300 text-sm sm:text-base mt-1">
+              <p className="font-body-md text-sky-100 text-sm sm:text-base mt-1">
                 {isEn
                   ? "Production code teardowns, model instrumentation, and low-latency system design recorded directly from the terminal."
                   : "Teardowns de código de produção, instrumentação de modelos e designs de baixa latência gravados direto do terminal."}
@@ -153,13 +153,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 alt="Como Construir um Servidor MCP"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNpFuj5rzK6RzJ_GyX5BHTcpx6qDMJBRl9X-4W9NJAivqzr1aci5M09fqSMc5Pma-6lMQWx-ZzOoW0jPhFSIgAyKS6QmCOrN0-OsVIYCT1kxGACRj1BDioCDJVwQfwlDjFUKj2qlVZR8h_7DsBAUlYAhIxAhZLgLJKT0rMApFo8kv77JP4aTCtuXPBu7Gad2UdmTGjXSkLLz6DWVW3quHCT4HTfJRt_K7YWmZtq8SkZQdhDpLBMlGs"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f15] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
               <div className="absolute top-2.5 left-2.5">
                 <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-cyan-400 font-code-inline text-[11px] font-bold border border-white/10">
                   EP // 042
                 </span>
               </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-zinc-300 font-code-inline text-[11px] border border-white/10">
+              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
                 <span className="material-symbols-outlined text-[13px] text-cyan-400">schedule</span>
                 <span>28:45</span>
               </div>
@@ -173,13 +173,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-cyan-300 transition-colors">
                   Construindo Servidores MCP de Alta Performance em TypeScript
                 </h3>
-                <p className="font-body-sm text-zinc-300 text-xs mt-1 line-clamp-2">
+                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
                   Implementação do Model Context Protocol do zero com validação JSON-RPC estrita e isolamento de runtime.
                 </p>
               </div>
 
               <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-zinc-400">Terminal Deep Dive</span>
+                <span className="font-code-inline text-[10px] text-sky-200/80">Terminal Deep Dive</span>
                 <span className="material-symbols-outlined text-[16px] text-cyan-400 group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
@@ -195,13 +195,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 alt="Navegação Headless com AXTree"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhBLBGJhaPoMI4wPlqPu-o1jfGnAxj6cAcwyaQmtg21R8L9GnYaCZ3LTYWY_Mu0Lf5xmM9gQAkgKNTqhq6AL4BTIZlUwWZrH7FP-xW6QxkzMxHT8NH12soGDFd-mXVKuN-ufclkBnL8lndeX6HdPpw57ssgw4fmhLZ-o6WivwgGPwM4OY4PHsAcXBr5Ojn_-euIVh_MnH4m7N31NEIuubk6hj6NRsXWP7mguz1ydOSbnkS7Ghswg0r"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f15] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
               <div className="absolute top-2.5 left-2.5">
                 <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-emerald-400 font-code-inline text-[11px] font-bold border border-white/10">
                   EP // 041
                 </span>
               </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-zinc-300 font-code-inline text-[11px] border border-white/10">
+              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
                 <span className="material-symbols-outlined text-[13px] text-emerald-400">schedule</span>
                 <span>34:12</span>
               </div>
@@ -215,13 +215,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-emerald-300 transition-colors">
                   Como Cortamos 92% dos Tokens Usando AXTree e Chrome CDP
                 </h3>
-                <p className="font-body-sm text-zinc-300 text-xs mt-1 line-clamp-2">
+                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
                   Interceptação de nós semânticos no Chromium para navegação autônoma com custo ínfimo de contexto.
                 </p>
               </div>
 
               <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-zinc-400">Benchmarks Reais</span>
+                <span className="font-code-inline text-[10px] text-sky-200/80">Benchmarks Reais</span>
                 <span className="material-symbols-outlined text-[16px] text-emerald-400 group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
@@ -237,13 +237,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 alt="Governança de Design Systems"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtxYDrcM1Qy-1E_8i5XEtqLBXfxC-nfmr2bWSoBDeLxNRDIKnqG6Cb0HjTebAtdmDlKV2pgKz4RrFg1jPQki67K4EAM5K2Ns5qoSobeVk95EbeCRrlRVt1OqVKSgrkYWPjpsJP7OIGFYL-S8r_E97TiZxs194cTKwJuTeArEUiwXQDFnF63JyHrVPm1jBLV9KNi_Bc2l0F1yL8Q5dY1X8ZdIiumZ_CgKvfcmQKWp8--BYN_AHNaTV9"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f15] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
               <div className="absolute top-2.5 left-2.5">
                 <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-indigo-300 font-code-inline text-[11px] font-bold border border-white/10">
                   EP // 040
                 </span>
               </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-zinc-300 font-code-inline text-[11px] border border-white/10">
+              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
                 <span className="material-symbols-outlined text-[13px] text-indigo-400">schedule</span>
                 <span>22:05</span>
               </div>
@@ -257,13 +257,13 @@ export const StitchMediaBlogSection: React.FC = () => {
                 <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-indigo-300 transition-colors">
                   Governança de Design Systems com 500+ Tokens
                 </h3>
-                <p className="font-body-sm text-zinc-300 text-xs mt-1 line-clamp-2">
+                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
                   Prevenção de layout shifts (CLS 0.000) e pipelines de CI com testes visuais automatizados sem penalizar a DX.
                 </p>
               </div>
 
               <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-zinc-400">CI/CD &amp; Testing</span>
+                <span className="font-code-inline text-[10px] text-sky-200/80">CI/CD &amp; Testing</span>
                 <span className="material-symbols-outlined text-[16px] text-indigo-400 group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
@@ -283,9 +283,9 @@ export const StitchMediaBlogSection: React.FC = () => {
                 CADERNOS DE ENGENHARIA
               </h2>
             </div>
-            <span className="font-code-inline text-xs text-zinc-400">4 ENSAIOS ARQUIVADOS</span>
+            <span className="font-code-inline text-xs text-sky-200/80">4 ENSAIOS ARQUIVADOS</span>
           </div>
-          <p className="font-body-md text-zinc-300 text-sm sm:text-base">
+          <p className="font-body-md text-sky-100 text-sm sm:text-base">
             Investigações empíricas sobre sistemas distribuídos, custo de inferência, compilação estática e arquiteturas operacionais.
           </p>
         </div>
@@ -301,7 +301,7 @@ export const StitchMediaBlogSection: React.FC = () => {
                 className={`px-4 py-2 rounded-xl font-code-inline text-xs font-semibold whitespace-nowrap transition-all border cursor-pointer ${
                   isSelected
                     ? "bg-emerald-400 hover:bg-emerald-300 text-zinc-950 font-bold border-emerald-400 shadow-md shadow-emerald-500/20"
-                    : "bg-surface-container hover:bg-surface-container-high text-zinc-300 hover:text-white border-white/10"
+                    : "bg-surface-container hover:bg-surface-container-high text-sky-100 hover:text-white border-white/10"
                 }`}
                 onClick={() => setFilter(item)}
               >
@@ -325,8 +325,8 @@ export const StitchMediaBlogSection: React.FC = () => {
                     DOC_ID // {art.id}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-zinc-400 font-code-inline text-xs">
-                  <span className="material-symbols-outlined text-[14px] text-zinc-400">timer</span>
+                <div className="flex items-center gap-1.5 text-sky-200/80 font-code-inline text-xs">
+                  <span className="material-symbols-outlined text-[14px] text-sky-200/80">timer</span>
                   <span>{art.time}</span>
                   <span className="mx-1">•</span>
                   <span>{art.date}</span>
@@ -337,7 +337,7 @@ export const StitchMediaBlogSection: React.FC = () => {
                 {art.title}
               </h3>
 
-              <p className="font-body-md text-zinc-300 leading-relaxed text-sm sm:text-base">
+              <p className="font-body-md text-sky-100 leading-relaxed text-sm sm:text-base">
                 {art.body}
               </p>
 
@@ -345,7 +345,7 @@ export const StitchMediaBlogSection: React.FC = () => {
               <div className="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-surface-container-lowest font-code-inline text-xs border border-white/5">
                 {art.metrics.map((m) => (
                   <div key={m.label} className="flex flex-col">
-                    <span className="text-zinc-400 font-label-caps text-[10px]">{m.label}</span>
+                    <span className="text-sky-200/80 font-label-caps text-[10px]">{m.label}</span>
                     <span className="text-emerald-400 font-bold text-sm mt-0.5">{m.value}</span>
                   </div>
                 ))}
@@ -357,7 +357,7 @@ export const StitchMediaBlogSection: React.FC = () => {
                   {art.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 rounded-md bg-surface-container-high font-code-inline text-xs text-zinc-300"
+                      className="px-2.5 py-1 rounded-md bg-surface-container-high font-code-inline text-xs text-sky-100"
                     >
                       #{t}
                     </span>
@@ -387,7 +387,7 @@ export const StitchMediaBlogSection: React.FC = () => {
             Despachos Técnicos de Engenharia
           </span>
         </div>
-        <p className="font-body-md text-zinc-300 text-sm sm:text-base max-w-2xl">
+        <p className="font-body-md text-sky-100 text-sm sm:text-base max-w-2xl">
           Receba logs de arquitetura brutos, snippets validados e análises de desempenho diretamente no seu e-mail. Zero marketing, apenas código e arquitetura.
         </p>
 
@@ -399,7 +399,7 @@ export const StitchMediaBlogSection: React.FC = () => {
         ) : (
           <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 mt-2 max-w-xl">
             <div className="flex items-center rounded-2xl bg-surface-container-lowest px-4 py-3 border border-white/10 flex-1">
-              <span className="material-symbols-outlined text-[18px] text-zinc-400 mr-2">mail</span>
+              <span className="material-symbols-outlined text-[18px] text-sky-200/80 mr-2">mail</span>
               <input
                 className="bg-transparent text-white font-code-inline placeholder:text-zinc-500 w-full focus:outline-none text-sm"
                 placeholder="seu.email@empresa.com.br"
@@ -418,7 +418,7 @@ export const StitchMediaBlogSection: React.FC = () => {
           </form>
         )}
 
-        <div className="flex items-center justify-between text-zinc-400 font-label-caps pt-2 text-xs border-t border-white/5">
+        <div className="flex items-center justify-between text-sky-200/80 font-label-caps pt-2 text-xs border-t border-white/5">
           <span>PGP SIGNED: KEY_0x82DE</span>
           <span>SEM TRACKERS // CANCELAMENTO EM 1-CLIQUE</span>
         </div>
