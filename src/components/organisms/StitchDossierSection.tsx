@@ -329,7 +329,7 @@ export const StitchDossierSection: React.FC = () => {
         <div className="editorial-container expertise-stage-layout">
           <Reveal className="expertise-intro flex flex-col justify-between border-b border-white/15 pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
             <div className="flex items-start justify-between gap-5 lg:block">
-              <p className="editorial-label text-[#82aaff]">{isEn ? "What I build" : "O que eu construo"}</p>
+              <p className="editorial-label text-[#82aaff]">06 / {isEn ? "What I build" : "O que eu construo"}</p>
               <p className="editorial-label text-right text-[#77736f] lg:mt-4 lg:text-left">04 / {isEn ? "disciplines" : "disciplinas"}</p>
             </div>
             <div>

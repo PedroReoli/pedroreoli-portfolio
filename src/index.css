@@ -470,12 +470,33 @@
   }
 
   .footer-cta {
-    font-size: clamp(3.8rem, min(16vw, 19vh), 13rem);
+    font-size: clamp(3.4rem, min(13vw, 17vh), 11rem);
+    font-stretch: 78%;
+    font-variation-settings: "wdth" 78;
   }
 
   .footer-stage-layout {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     padding-top: clamp(4.75rem, 10vh, 6rem);
     padding-bottom: clamp(0.85rem, 2.5vh, 2.5rem);
+  }
+
+  .footer-cta-word {
+    display: block;
+    width: fit-content;
+  }
+
+  .footer-cta-outline {
+    margin-left: auto;
+    padding-right: 0.65em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #edeae4;
+  }
+
+  .footer-cta-arrow {
+    width: 0.55em;
+    height: 0.55em;
   }
 
   .text-outline {
@@ -488,12 +509,28 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    border-bottom: 1px solid rgb(17 16 16 / 0.35);
-    padding-bottom: 0.75rem;
+    min-width: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.16);
+    padding-bottom: 0.65rem;
+    color: #edeae4;
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.02em;
+  }
+
+  .footer-link span {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: clamp(0.35rem, 1vw, 0.8rem);
+  }
+
+  .footer-link small {
+    color: #77736f;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
   }
 
   .footer-link svg {
@@ -504,6 +541,10 @@
 
   .footer-link:hover svg {
     transform: translate(0.2rem, -0.2rem);
+  }
+
+  .footer-link:hover {
+    border-color: #82aaff;
   }
 }
 
@@ -695,6 +736,20 @@
     margin-top: 0.65rem;
     font-size: clamp(0.7rem, 3vw, 0.85rem);
     line-height: 1.4;
+  }
+
+  .footer-link {
+    gap: 0.3rem;
+    font-size: clamp(0.65rem, 3vw, 0.8rem);
+  }
+
+  .footer-link small {
+    display: none;
+  }
+
+  .footer-link svg {
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   .expertise-heading {
