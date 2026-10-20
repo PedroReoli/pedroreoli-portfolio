@@ -51,8 +51,8 @@ export const StitchMediaBlogSection: React.FC = () => {
               {isEn ? "Read article" : "Ler reportagem"}<ExternalLink className="h-3.5 w-3.5" />
             </a>
           </div>
-          <figure className="aspect-[16/10] overflow-hidden bg-[#1b1a19] lg:col-span-7">
-            <img src="/TCC-img2.png" alt="Pedro apresentando o FalaAtípica" className="h-full w-full object-cover" />
+          <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19] lg:col-span-7">
+            <img src="/TCC-img2.png" alt="Pedro apresentando o FalaAtípica" loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </figure>
         </article>
       </section>

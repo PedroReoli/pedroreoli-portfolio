@@ -114,6 +114,49 @@
     letter-spacing: -0.075em;
   }
 
+  .stack-headline {
+    font-size: clamp(2.5rem, min(6vw, 9vh), 6.8rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+  }
+
+  .stack-row {
+    min-height: 1em;
+    font-size: clamp(2.25rem, min(7vw, 8vh), 7rem);
+  }
+
+  .stack-row + .stack-row {
+    margin-top: 0.18em;
+  }
+
+  .stack-row:nth-child(2) {
+    margin-left: clamp(-8rem, -4vw, -2rem);
+  }
+
+  .stack-row:nth-child(3) {
+    margin-left: clamp(1rem, 7vw, 7rem);
+  }
+
+  .stack-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #111010;
+  }
+
+  .technology-display {
+    font-size: clamp(3.5rem, min(16vw, 18vh), 12rem);
+    line-height: 0.76;
+    letter-spacing: -0.085em;
+  }
+
+  .technology-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #ffffff;
+  }
+
+  .footer-cta {
+    font-size: clamp(3.8rem, min(16vw, 19vh), 13rem);
+  }
+
   .text-outline {
     color: transparent;
     -webkit-text-stroke: 1.5px #edeae4;
@@ -199,6 +242,19 @@
 
   .text-outline {
     -webkit-text-stroke-width: 1px;
+  }
+
+  .stack-outline,
+  .technology-outline {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .stack-row:nth-child(2) {
+    margin-left: -1.5rem;
+  }
+
+  .stack-row:nth-child(3) {
+    margin-left: 1rem;
   }
 }
 

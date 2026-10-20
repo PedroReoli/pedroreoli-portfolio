@@ -80,15 +80,15 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
               </p>
             </div>
 
-            <figure className="my-10 overflow-hidden bg-[#1b1a19] sm:my-16">
-              <img src={corporateImages[0][0]} alt={corporateImages[0][1]} className="w-full object-cover object-top" />
+            <figure className="my-10 overflow-hidden rounded-xl bg-[#1b1a19] sm:my-16">
+              <img src={corporateImages[0][0]} alt={corporateImages[0][1]} loading="lazy" decoding="async" className="w-full object-cover object-top" />
             </figure>
 
             <div className="grid gap-5 sm:grid-cols-2">
               {corporateImages.slice(1).map(([src, alt], index) => (
-                <figure key={src} className={`${index === 2 ? "sm:col-span-2" : ""} group overflow-hidden bg-[#1b1a19]`}>
+                <figure key={src} className={`${index === 2 ? "sm:col-span-2" : ""} group overflow-hidden rounded-lg bg-[#1b1a19]`}>
                   <div className={`${index === 2 ? "aspect-[16/7]" : "aspect-[4/3]"} overflow-hidden`}>
-                    <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" />
+                    <img src={src} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" />
                   </div>
                   <figcaption className="editorial-label flex justify-between border-t border-white/10 p-4 text-[#8d8984]">
                     <span>{alt}</span><span>0{index + 2}</span>
@@ -99,7 +99,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ defaultTab }) => {
           </section>
         ) : (
           <section className="editorial-container pb-32">
-            <img src="/TCC-img2.png" alt="Apresentação do projeto FalaAtípica" className="mb-10 aspect-[16/7] w-full object-cover sm:mb-16" />
+            <img src="/TCC-img2.png" alt="Apresentação do projeto FalaAtípica" loading="lazy" decoding="async" className="mb-10 aspect-[16/7] w-full rounded-xl object-cover sm:mb-16" />
             {independentProjects.map(([number, title, category, href]) => (
               <a key={title} href={href} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-white/10 py-7 sm:grid-cols-[4rem_1fr_1fr_auto] sm:py-10">
                 <span className="editorial-label text-[#77736f]">{number}</span>

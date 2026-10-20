@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { Link } from "react-router-dom"
+import Reveal from "../atoms/Reveal"
+import StitchStackSection from "./StitchStackSection"
 import { useLanguage } from "../../i18n/useLanguage"
 
 type Project = {
@@ -71,13 +73,19 @@ export const StitchDossierSection: React.FC = () => {
   return (
     <div className="w-full">
       <section id="projetos-selecionados" className="editorial-section editorial-container">
-        <div className="mb-12 flex items-end justify-between border-b border-white/10 pb-5 sm:mb-20">
+        <Reveal className="mb-12 flex items-end justify-between border-b border-white/10 pb-5 sm:mb-20">
           <div>
             <p className="editorial-label mb-3 text-[#82aaff]">{isEn ? "Selected work" : "Trabalhos selecionados"}</p>
             <h2 className="section-display text-[#edeae4]">PROJETOS</h2>
           </div>
-          <span className="editorial-label hidden text-[#77736f] sm:block">03 / 2024—2026</span>
-        </div>
+          <Link
+            to="/projetos"
+            className="group mb-1 inline-flex items-center gap-2 border-b border-[#edeae4] pb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#edeae4] sm:text-xs"
+          >
+            {isEn ? "View all work" : "Ver todos os projetos"}
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </Link>
+        </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
@@ -93,6 +101,15 @@ export const StitchDossierSection: React.FC = () => {
                       {isEn ? project.descriptionEn : project.descriptionPt}
                     </p>
                     <p className="editorial-label mt-4 text-[#aaa6a0]">{project.category}</p>
+                    <figure className="mt-5 aspect-[4/3] overflow-hidden rounded-lg bg-[#1b1a19] lg:hidden">
+                      <img
+                        src={project.image}
+                        alt={project.imageAlt}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                      />
+                    </figure>
                   </div>
                   <div className="flex flex-col items-end justify-between py-1">
                     <span className="editorial-label text-[#77736f]">{project.year}</span>
@@ -126,12 +143,14 @@ export const StitchDossierSection: React.FC = () => {
           </div>
 
           <div className="relative hidden min-h-[36rem] lg:col-span-5 lg:block">
-            <div className="sticky top-24 aspect-[4/5] overflow-hidden bg-[#1b1a19]">
+            <div className="sticky top-24 aspect-[4/5] overflow-hidden rounded-xl bg-[#1b1a19]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={projects[activeProject].image}
                   src={projects[activeProject].image}
                   alt={projects[activeProject].imageAlt}
+                  loading="lazy"
+                  decoding="async"
                   initial={reduceMotion ? false : { opacity: 0, scale: 1.06 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
@@ -145,82 +164,80 @@ export const StitchDossierSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-5 lg:hidden">
-          {projects.slice(0, 1).map((project) => (
-            <figure key={project.title} className="aspect-[4/3] overflow-hidden bg-[#1b1a19]">
-              <img src={project.image} alt={project.imageAlt} loading="lazy" className="h-full w-full object-cover" />
-            </figure>
-          ))}
-        </div>
       </section>
 
-      <section className="editorial-section overflow-hidden border-y border-white/10 bg-[#151413]">
-        <div className="editorial-container grid gap-12 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="editorial-label mb-6 text-[#82aaff]">{isEn ? "Hello" : "Olá"}</p>
-            <h2 className="text-[clamp(2.8rem,7vw,7.2rem)] font-bold leading-[0.94] tracking-[-0.065em] text-[#d8d4ce]">
-              {isEn ? (
-                <>I build software that <em className="font-normal text-[#77736f]">moves</em> ideas into the real world.</>
-              ) : (
-                <>Construo software que leva <em className="font-normal text-[#77736f]">ideias</em> para o mundo real.</>
-              )}
-            </h2>
-          </div>
-          <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md text-base leading-relaxed text-[#9a9690] sm:text-lg">
-              {isEn
-                ? "From interface to architecture, I like making complex things feel inevitable."
-                : "Da interface à arquitetura, gosto de fazer o complexo parecer simples e inevitável."}
-            </p>
-          </div>
-        </div>
-      </section>
+      <StitchStackSection />
 
-      <section className="relative min-h-[72svh] overflow-hidden">
+      <section className="technology-story relative h-[100svh] overflow-hidden">
         <img
           src="/TCC-img2.png"
           alt="Pedro apresentando o FalaAtípica no UniFOA"
           loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/25 to-black/10" />
-        <div className="editorial-container relative flex min-h-[72svh] items-end py-12 sm:py-20">
-          <div className="max-w-3xl">
-            <p className="editorial-label mb-5 text-[#b8caff]">FalaAtípica / UniFOA</p>
-            <h2 className="text-[clamp(2.7rem,7vw,6.8rem)] font-bold leading-[0.92] tracking-[-0.06em] text-white">
-              {isEn ? "Technology with a reason to exist." : "Tecnologia com razão para existir."}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35" />
+        <div className="editorial-container relative grid h-full min-h-0 grid-rows-[auto_1fr_auto] py-8 sm:py-12">
+          <Reveal className="flex items-start justify-between">
+            <p className="editorial-label text-[#c7d3ff]">FalaAtípica / UniFOA</p>
+            <p className="editorial-label text-right text-white/70">Produto assistivo<br />2026</p>
+          </Reveal>
+
+          <Reveal className="flex min-h-0 items-center" distance={50}>
+            <h2 className="technology-display max-w-6xl font-black uppercase text-white">
+              {isEn ? (
+                <>Technology<br /><span className="technology-outline">with purpose.</span></>
+              ) : (
+                <>Tecnologia<br /><span className="technology-outline">com razão.</span></>
+              )}
             </h2>
+          </Reveal>
+
+          <Reveal className="grid gap-6 border-t border-white/30 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+            <p className="max-w-xl text-base leading-relaxed text-white/80 sm:text-xl">
+              {isEn
+                ? "A platform designed to bring children, families and speech professionals closer together."
+                : "Uma plataforma criada para aproximar crianças, famílias e profissionais da fala."}
+            </p>
             <a
               href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.14em] text-white"
+              className="inline-flex w-fit items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.14em] text-white"
             >
               {isEn ? "Read the story" : "Ler a história"}<ExternalLink className="h-3.5 w-3.5" />
             </a>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="editorial-section editorial-container">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+      <section className="trajectory-stage flex min-h-[100svh] items-center py-16 sm:py-20">
+        <div className="editorial-container grid w-full gap-12 lg:grid-cols-12 lg:gap-20">
+          <Reveal className="lg:col-span-4">
             <p className="editorial-label mb-4 text-[#82aaff]">{isEn ? "Experience" : "Experiência"}</p>
             <h2 className="text-[clamp(2.8rem,5.4vw,5.8rem)] font-black leading-[0.84] tracking-[-0.075em] text-[#edeae4]">TRAJETÓRIA</h2>
-          </div>
-          <div className="lg:col-span-8">
-            {experience.map(([period, company, role]) => (
-              <div key={`${period}-${company}`} className="grid gap-2 border-b border-white/10 py-6 sm:grid-cols-[8rem_1fr_1fr] sm:items-baseline sm:gap-5">
-                <span className="editorial-label text-[#77736f]">{period}</span>
-                <strong className="text-xl tracking-[-0.035em] text-[#edeae4] sm:text-2xl">{company}</strong>
-                <span className="text-sm text-[#8d8984] sm:text-right">{role}</span>
-              </div>
+            <p className="mt-7 max-w-sm text-base leading-relaxed text-[#8d8984]">
+              {isEn
+                ? "A path shaped by products in production, multidisciplinary teams and real constraints."
+                : "Uma jornada construída com produtos em produção, times multidisciplinares e restrições reais."}
+            </p>
+          </Reveal>
+          <div className="lg:col-span-8 lg:border-t lg:border-white/10">
+            {experience.map(([period, company, role], index) => (
+              <Reveal key={`${period}-${company}`} delay={index * 0.06} distance={22}>
+                <div className="trajectory-row group grid gap-2 border-b border-white/10 py-6 sm:grid-cols-[8rem_1fr_1fr] sm:items-baseline sm:gap-5 sm:py-8">
+                  <span className="editorial-label text-[#77736f]">{period}</span>
+                  <strong className="text-2xl tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">{company}</strong>
+                  <span className="text-sm text-[#8d8984] sm:text-right">{role}</span>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-white/10">
+      <section className="border-y border-white/10" aria-label={isEn ? "Areas of expertise" : "Áreas de atuação"}>
         <div className="editorial-container grid md:grid-cols-4">
           {["Interfaces", "Back-end", "AI agents", "Systems"].map((item, index) => (
             <div key={item} className="border-b border-white/10 py-8 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0">
