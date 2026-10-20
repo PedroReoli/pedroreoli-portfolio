@@ -5,7 +5,6 @@ import StitchHeroProjects from "../components/organisms/StitchHeroProjects"
 import StitchDossierSection from "../components/organisms/StitchDossierSection"
 import StitchFooter from "../components/organisms/StitchFooter"
 import TransitionEffect from "../components/atoms/TransitionEffect"
-import CelestialHireMe from "../components/molecules/CelestialHireMe"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const HomePage: React.FC = () => {
@@ -13,7 +12,7 @@ export const HomePage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="min-h-screen bg-[#0d1117] font-body text-[#f0f6fc] antialiased flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-hidden">
       {/* Metatags e SEO Dinâmico */}
       <SEOHead
         title={
@@ -32,22 +31,12 @@ export const HomePage: React.FC = () => {
       {/* Efeito de Transição de Rota */}
       <TransitionEffect />
 
-      {/* Header Fixo Sóbrio */}
       <StitchHeader />
-
-      {/* Dobra 1: Hero Executiva com Foto e Prova Social de Imprensa */}
       <StitchHeroProjects />
-
-      {/* Dobra 2: Dossiê Técnico, Stack em Grid e Trajetória */}
-      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 max-w-6xl mx-auto">
+      <main>
         <StitchDossierSection />
       </main>
-
-      {/* Rodapé Executivo de Alto Padrão */}
       <StitchFooter />
-
-      {/* Botão de Contato Flutuante Discreto */}
-      <CelestialHireMe />
     </div>
   )
 }

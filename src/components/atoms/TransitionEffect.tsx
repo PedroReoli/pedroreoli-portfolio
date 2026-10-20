@@ -1,34 +1,19 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 
 export const TransitionEffect: React.FC = () => {
+  const reduceMotion = useReducedMotion()
+
+  if (reduceMotion) return null
+
   return (
-    <div className="pointer-events-none select-none">
-      {/* Camada 1: Ciano Celeste Límpido */}
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-50 bg-[#38bdf8]"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        exit={{ x: ["0%", "100%"], width: ["0%", "100%"] }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      />
-
-      {/* Camada 2: Azul Meia-Noite Profundo */}
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-40 bg-[#0a1626]"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        transition={{ delay: 0.15, duration: 0.6, ease: "easeInOut" }}
-      />
-
-      {/* Camada 3: Marinho Cósmico Escuro */}
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-[#050a12]"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        transition={{ delay: 0.3, duration: 0.6, ease: "easeInOut" }}
-      />
-    </div>
+    <motion.div
+      className="pointer-events-none fixed inset-0 z-[100] origin-top bg-[#82aaff]"
+      initial={{ scaleY: 1 }}
+      animate={{ scaleY: 0 }}
+      transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+      aria-hidden="true"
+    />
   )
 }
 

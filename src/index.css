@@ -6,75 +6,154 @@
 @import "./styles/typography.css";
 
 @layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     color-scheme: dark;
-  }
-
-  ::selection {
-    background-color: rgba(88, 166, 255, 0.3) !important;
-    color: #ffffff !important;
-  }
-
-  ::-moz-selection {
-    background-color: rgba(88, 166, 255, 0.3) !important;
-    color: #ffffff !important;
-  }
-
-  *::selection {
-    background-color: rgba(88, 166, 255, 0.3) !important;
-    color: #ffffff !important;
+    background: #111010;
   }
 
   body {
-    background-color: #0d1117;
-    color: #f0f6fc;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-width: 320px;
+    margin: 0;
     overflow-x: clip;
+    background: #111010;
+    color: #edeae4;
+    font-family: "Archivo", "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.02em;
+    font-family: "Archivo", "Inter", sans-serif;
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, a {
+    border-radius: 0;
+  }
+
+  ::selection {
+    background: #82aaff;
+    color: #111010;
   }
 
   :focus-visible {
-    outline: 2px solid #58a6ff;
-    outline-offset: 2px;
-  }
-
-  .pb-safe {
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5rem);
-  }
-
-  .pt-safe {
-    padding-top: env(safe-area-inset-top, 0px);
+    outline: 2px solid #82aaff;
+    outline-offset: 4px;
   }
 }
 
-/* Custom Scrollbar estilo GitHub Dark */
+@layer components {
+  .editorial-container {
+    width: min(100% - 2rem, 92rem);
+    margin-inline: auto;
+  }
+
+  .editorial-section {
+    padding-block: clamp(5.5rem, 11vw, 10rem);
+  }
+
+  .editorial-label {
+    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .hero-display {
+    font-size: clamp(4.25rem, 16vw, 15rem);
+    font-weight: 900;
+    line-height: 0.72;
+    letter-spacing: -0.085em;
+  }
+
+  .section-display {
+    font-size: clamp(2.8rem, 8vw, 8rem);
+    font-weight: 900;
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #edeae4;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(17 16 16 / 0.35);
+    padding-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-link svg {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 180ms ease;
+  }
+
+  .footer-link:hover svg {
+    transform: translate(0.2rem, -0.2rem);
+  }
+}
+
+.marquee-track {
+  animation: editorial-marquee 28s linear infinite;
+}
+
+@keyframes editorial-marquee {
+  to { transform: translateX(-50%); }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-::-webkit-scrollbar-track {
-  background: #0d1117;
+
+::-webkit-scrollbar-track { background: #111010; }
+::-webkit-scrollbar-thumb { background: #3b3937; }
+::-webkit-scrollbar-thumb:hover { background: #82aaff; }
+
+@media (min-width: 640px) {
+  .editorial-container {
+    width: min(100% - 4rem, 92rem);
+  }
 }
-::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #58a6ff;
+
+@media (max-width: 420px) {
+  .hero-display {
+    font-size: clamp(3.8rem, 19vw, 5rem);
+    line-height: 0.78;
+  }
+
+  .text-outline {
+    -webkit-text-stroke-width: 1px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  .marquee-track { animation: none; }
 }

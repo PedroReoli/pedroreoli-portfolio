@@ -19,6 +19,17 @@ O portfólio foi desenvolvido utilizando tecnologias modernas para garantir um d
 - **TypeScript (TS)**
 - **CSS**
 - **Tailwind CSS**
+- **Framer Motion**
+
+### Hero em vídeo
+
+O hero usa `eu-profissional.png` como fallback. Para ativar um vídeo, copie `.env.example` para `.env.local`, adicione o arquivo em `public/hero-loop.mp4` e mantenha:
+
+```env
+VITE_HERO_VIDEO_SRC=/hero-loop.mp4
+```
+
+Formato recomendado: MP4/WebM, 6–10 segundos, sem áudio, câmera estável, enquadramento vertical 4:5 e compressão para web. O componente pausa o autoplay quando o visitante prefere movimento reduzido.
 
 ---
 

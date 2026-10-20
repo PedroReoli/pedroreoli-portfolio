@@ -6,7 +6,7 @@ import { ArrowLeft, Home } from "lucide-react"
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0d1117] font-body text-[#f0f6fc] antialiased flex flex-col">
+    <div className="flex min-h-screen flex-col bg-[#111010] text-[#edeae4] antialiased">
       <SEOHead
         title="404 — Página Não Encontrada | Pedro Lucas Reis"
         description="A página que você está procurando não existe ou foi movida."
@@ -15,28 +15,26 @@ export const NotFoundPage: React.FC = () => {
       />
       <StitchHeader />
 
-      <main className="flex-1 flex flex-col items-center justify-center text-center px-4 pt-32 pb-16 max-w-2xl mx-auto">
-        <span className="font-mono text-sm text-[#58a6ff] bg-[#161b22] px-3 py-1 rounded-md border border-[#30363d] mb-4">
-          ERRO 404
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#f0f6fc] mb-3">
-          Página não encontrada
+      <main className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32">
+        <span className="editorial-label mb-6 text-[#82aaff]">ERRO / 404</span>
+        <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.78] tracking-[-0.08em] text-[#edeae4]">
+          FORA DE ROTA
         </h1>
-        <p className="text-[#8b949e] text-base mb-8 max-w-md">
+        <p className="mb-10 mt-8 max-w-md text-base text-[#8d8984]">
           O link que você tentou acessar não existe ou pode ter sido movido. Verifique o endereço ou retorne à página inicial.
         </p>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-5">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#238636] hover:bg-[#2ea043] text-white font-medium text-sm transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 border-b border-[#82aaff] pb-2 text-sm font-semibold uppercase tracking-[0.1em]"
           >
             <Home className="w-4 h-4" />
             <span>Voltar ao Início</span>
           </Link>
           <Link
             to="/projetos"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-[#c9d1d9] hover:text-white font-medium text-sm transition-colors border border-[#30363d]"
+            className="inline-flex items-center gap-2 border-b border-white/30 pb-2 text-sm font-semibold uppercase tracking-[0.1em] text-[#aaa6a0]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Ver Projetos</span>

@@ -4,7 +4,6 @@ import StitchHeader from "../components/organisms/StitchHeader"
 import StitchMediaBlogSection from "../components/organisms/StitchMediaBlogSection"
 import StitchFooter from "../components/organisms/StitchFooter"
 import TransitionEffect from "../components/atoms/TransitionEffect"
-import CelestialHireMe from "../components/molecules/CelestialHireMe"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const MediaBlogPage: React.FC = () => {
@@ -12,7 +11,7 @@ export const MediaBlogPage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="min-h-screen bg-[#0d1117] font-body text-[#f0f6fc] antialiased flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-[#111010] text-[#edeae4] antialiased">
       {/* Metatags e SEO Dinâmico */}
       <SEOHead
         title={
@@ -31,12 +30,11 @@ export const MediaBlogPage: React.FC = () => {
       <TransitionEffect />
       <StitchHeader />
 
-      <main className="flex-1 flex flex-col relative w-full pt-24 pb-8 px-4 sm:px-8 max-w-6xl mx-auto">
+      <main className="pt-16">
         <StitchMediaBlogSection />
       </main>
 
       <StitchFooter />
-      <CelestialHireMe />
     </div>
   )
 }

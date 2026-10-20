@@ -27,9 +27,6 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, language)
     document.documentElement.lang = language === "pt" ? "pt-BR" : "en"
-    document.title = language === "pt"
-      ? "Pedro Lucas Reis | Full Stack Engineer"
-      : "Pedro Lucas Reis | Full Stack Engineer"
   }, [language])
 
   const value = useMemo(
