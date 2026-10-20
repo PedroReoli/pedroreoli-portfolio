@@ -344,9 +344,9 @@ export const StitchDossierSection: React.FC = () => {
             </div>
           </Reveal>
 
-          <div className="expertise-list min-h-0">
+          <div className="expertise-list min-h-0" role="list">
             {expertise.map((item, index) => (
-              <Reveal key={item.title} className="expertise-row group" delay={index * 0.05} distance={18}>
+              <Reveal key={item.title} className="expertise-row group" delay={index * 0.05} distance={18} role="listitem">
                 <span className="editorial-label text-[#77736f] transition-colors group-hover:text-[#82aaff]">0{index + 1}</span>
                 <h3 className="expertise-title font-bold tracking-[-0.055em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">{item.title}</h3>
                 <p className="expertise-description text-[#8f8a84]">
