@@ -1,6 +1,6 @@
 import React from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 
 const entranceEase = [0.16, 1, 0.3, 1] as const
@@ -54,27 +54,30 @@ export const StitchHeroProjects: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/10 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/20" />
 
-      <div className="relative grid h-[calc(100svh-4rem)] min-h-0 grid-rows-[auto_minmax(0,1fr)_auto_auto]">
+      <div className="hero-frame relative grid h-[calc(100svh-4rem)] min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.46, ease: entranceEase }}
-          className="editorial-container flex items-start justify-between pt-5"
+          className="editorial-container grid grid-cols-[1fr_auto_1fr] items-start pt-5"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
-            {isEn ? "Creative software engineer" : "Engenheiro de software criativo"}
+            Portfolio / ©2026
           </p>
-          <p className="editorial-label whitespace-nowrap text-right text-white/70">
+          <p className="editorial-label hidden text-center text-white/70 sm:block">
+            {isEn ? "Creative developer" : "Desenvolvedor criativo"}
+          </p>
+          <p className="editorial-label col-start-3 whitespace-nowrap text-right text-white/70">
             Volta Redonda, BR<br />2026
           </p>
         </motion.div>
 
-        <div className="editorial-container flex min-h-0 items-center">
+        <div className="editorial-container hero-name-stage min-h-0">
           <h1 className="hero-video-title w-full font-black uppercase text-white" aria-label="Pedro Reoli">
-            <span className="hero-name-word">
+            <span className="hero-name-word hero-name-word-first">
               <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
             </span>
-            <span className="hero-name-word hero-name-outline">
+            <span className="hero-name-word hero-name-word-last">
               <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>REOLI</AnimatedWord>
             </span>
           </h1>
@@ -84,49 +87,22 @@ export const StitchHeroProjects: React.FC = () => {
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: reduceMotion ? 0 : 0.92, ease: entranceEase }}
-          className="editorial-container grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 pb-5"
+          className="editorial-container grid grid-cols-[minmax(0,1fr)_auto] items-end gap-5 pb-7"
         >
-          <p className="hero-statement max-w-xl font-medium leading-[1.08] tracking-[-0.04em] text-white/90">
+          <p className="hero-statement max-w-md font-medium leading-[1.12] tracking-[-0.04em] text-white/90">
             {isEn
               ? "I turn complex systems into digital products that feel clear, fast and human."
               : "Transformo sistemas complexos em produtos digitais claros, rápidos e humanos."}
           </p>
 
-          <div className="flex items-end gap-3 sm:gap-6">
-            <a
-              href="#projetos-selecionados"
-              className="group inline-flex items-center gap-2 border-b border-white pb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white sm:text-xs"
-            >
-              <span className="hero-project-label-long">{isEn ? "Selected work" : "Projetos selecionados"}</span>
-              <span className="hero-project-label-short">{isEn ? "Work" : "Projetos"}</span>
-              <ArrowDown className="h-3.5 w-3.5 transition-transform group-hover:translate-y-1" />
-            </a>
-            <a
-              href="mailto:pedrosousa2160@gmail.com"
-              aria-label="Enviar e-mail para Pedro"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[#111010] transition-transform hover:rotate-12 sm:h-14 sm:w-14"
-            >
-              <ArrowUpRight className="h-5 w-5" />
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: "100%" }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: reduceMotion ? 0 : 1.06, ease: entranceEase }}
-          className="hero-marquee overflow-hidden border-y border-white/20 bg-black/20 py-2.5 backdrop-blur-sm sm:py-3"
-        >
-          <div className="marquee-track flex w-max items-center gap-7 whitespace-nowrap text-xl font-medium italic tracking-[-0.04em] text-white/75 sm:text-3xl">
-            {[0, 1].map((copy) => (
-              <React.Fragment key={copy}>
-                <span>PRODUCT ENGINEERING</span><span className="text-white">◆</span>
-                <span>DESIGN SYSTEMS</span><span className="text-white">◆</span>
-                <span>AI AGENTS</span><span className="text-white">◆</span>
-                <span>FULL STACK</span><span className="text-white">◆</span>
-              </React.Fragment>
-            ))}
-          </div>
+          <a
+            href="#projetos-selecionados"
+            className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.13em] text-white transition-colors hover:border-white hover:bg-white hover:text-[#111010] sm:h-14 sm:px-7 sm:text-[10px]"
+          >
+            <span className="hero-project-label-long">{isEn ? "See the work" : "Ver projetos"}</span>
+            <span className="hero-project-label-short">{isEn ? "Work" : "Projetos"}</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </motion.div>
       </div>
     </section>

@@ -72,36 +72,43 @@
   }
 
   .hero-video-title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: clamp(5.25rem, min(14vw, 19vh), 13.5rem);
-    font-stretch: 82%;
-    font-variation-settings: "wdth" 82;
-    line-height: 0.72;
-    letter-spacing: -0.09em;
+    position: relative;
+    height: 100%;
+    font-size: clamp(7.5rem, min(19vw, 25vh), 17rem);
+    font-stretch: 78%;
+    font-variation-settings: "wdth" 78;
+    line-height: 0.74;
+    letter-spacing: -0.085em;
   }
 
   .hero-shell {
     height: 100svh;
   }
 
+  .hero-name-stage {
+    position: relative;
+  }
+
   .hero-name-word {
+    position: absolute;
     display: block;
     padding-inline: 0.04em 0.12em;
     padding-block: 0.12em;
+    white-space: nowrap;
   }
 
-  .hero-name-outline {
-    color: transparent;
-    -webkit-text-stroke: 2px #ffffff;
-    font-stretch: 96%;
-    font-variation-settings: "wdth" 96;
-    paint-order: stroke fill;
+  .hero-name-word-first {
+    top: 10%;
+    left: -0.03em;
+  }
+
+  .hero-name-word-last {
+    right: -0.01em;
+    bottom: 8%;
   }
 
   .hero-statement {
-    font-size: clamp(1.15rem, 2.1vw, 2.25rem);
+    font-size: clamp(1.05rem, 1.55vw, 1.55rem);
   }
 
   .hero-project-label-short {
@@ -327,12 +334,19 @@
 
 @media (max-width: 420px) {
   .hero-video-title {
-    font-size: clamp(4.25rem, min(23vw, 14vh), 6.25rem);
-    line-height: 0.7;
+    font-size: clamp(5.35rem, min(27vw, 17vh), 6.75rem);
+    font-stretch: 76%;
+    font-variation-settings: "wdth" 76;
+    line-height: 0.72;
   }
 
-  .hero-name-outline {
-    -webkit-text-stroke-width: 1px;
+  .hero-name-word-first {
+    top: 15%;
+  }
+
+  .hero-name-word-last {
+    right: 0;
+    bottom: 12%;
   }
 
   .hero-statement {
@@ -444,7 +458,7 @@
 
 @media (max-height: 680px) and (min-width: 421px) {
   .hero-video-title {
-    font-size: clamp(4.5rem, min(12vw, 17vh), 8.5rem);
+    font-size: clamp(6rem, min(18vw, 23vh), 11rem);
   }
 
   .hero-statement {
