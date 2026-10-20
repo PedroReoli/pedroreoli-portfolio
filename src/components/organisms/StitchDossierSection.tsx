@@ -58,10 +58,34 @@ const projects: Project[] = [
 ]
 
 const experience = [
-  ["2024—Agora", "Autocom3 Tecnologia", "Full Stack Software Engineer"],
-  ["2025—Agora", "Domus", "Full Stack Engineer"],
-  ["2022—2025", "SIVIS Tecnologia", "Software Engineer"],
-  ["2024", "UniFOA", "Mentor de tecnologia"],
+  {
+    period: "2024—Agora",
+    company: "Autocom3 Tecnologia",
+    role: "Full Stack Software Engineer",
+    descriptionPt: "Evolução de produtos corporativos e fluxos críticos, conectando interface, arquitetura e operação.",
+    descriptionEn: "Evolving enterprise products and critical flows across interface, architecture and operations.",
+  },
+  {
+    period: "2025—Agora",
+    company: "Domus",
+    role: "Full Stack Engineer",
+    descriptionPt: "Construção de experiências digitais e serviços full stack orientados a produto.",
+    descriptionEn: "Building product-led digital experiences and full-stack services.",
+  },
+  {
+    period: "2022—2025",
+    company: "SIVIS Tecnologia",
+    role: "Software Engineer",
+    descriptionPt: "Desenvolvimento de sistemas web, integrações e bases técnicas para produtos em produção.",
+    descriptionEn: "Developing web systems, integrations and technical foundations for production products.",
+  },
+  {
+    period: "2024",
+    company: "UniFOA",
+    role: "Mentor de tecnologia",
+    descriptionPt: "Mentoria prática para transformar problemas reais em protótipos e soluções digitais.",
+    descriptionEn: "Hands-on mentoring to turn real problems into prototypes and digital solutions.",
+  },
 ]
 
 export const StitchDossierSection: React.FC = () => {
@@ -69,11 +93,13 @@ export const StitchDossierSection: React.FC = () => {
   const isEn = language === "en"
   const reduceMotion = useReducedMotion()
   const [activeProject, setActiveProject] = useState(0)
+  const [activeExperience, setActiveExperience] = useState<number | null>(null)
 
   return (
     <div className="w-full">
-      <section id="projetos-selecionados" className="editorial-section editorial-container">
-        <Reveal className="mb-12 flex items-end justify-between border-b border-white/10 pb-5 sm:mb-20">
+      <section id="projetos-selecionados" className="project-stage flex min-h-[100svh] items-center py-16 sm:py-20">
+        <div className="editorial-container w-full">
+        <Reveal className="mb-10 flex items-end justify-between border-b border-white/10 pb-5 sm:mb-12">
           <div>
             <p className="editorial-label mb-3 text-[#82aaff]">{isEn ? "Selected work" : "Trabalhos selecionados"}</p>
             <h2 className="section-display text-[#edeae4]">PROJETOS</h2>
@@ -163,7 +189,7 @@ export const StitchDossierSection: React.FC = () => {
             </div>
           </div>
         </div>
-
+        </div>
       </section>
 
       <StitchStackSection />
@@ -174,22 +200,22 @@ export const StitchDossierSection: React.FC = () => {
           alt="Pedro apresentando o FalaAtípica no UniFOA"
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/45" />
         <div className="editorial-container relative grid h-full min-h-0 grid-rows-[auto_1fr_auto] py-8 sm:py-12">
           <Reveal className="flex items-start justify-between">
             <p className="editorial-label text-[#c7d3ff]">FalaAtípica / UniFOA</p>
             <p className="editorial-label text-right text-white/70">Produto assistivo<br />2026</p>
           </Reveal>
 
-          <Reveal className="flex min-h-0 items-center" distance={50}>
-            <h2 className="technology-display max-w-6xl font-black uppercase text-white">
+          <Reveal className="flex min-h-0 items-end pb-7 sm:pb-10" distance={42}>
+            <h2 className="technology-title max-w-5xl font-black uppercase text-white">
               {isEn ? (
-                <>Technology<br /><span className="technology-outline">with purpose.</span></>
+                <>TECHNOLOGY<br /><span className="text-[#b8caff]">WITH PURPOSE.</span></>
               ) : (
-                <>Tecnologia<br /><span className="technology-outline">com razão.</span></>
+                <>TECNOLOGIA<br /><span className="text-[#b8caff]">COM PROPÓSITO.</span></>
               )}
             </h2>
           </Reveal>
@@ -212,24 +238,58 @@ export const StitchDossierSection: React.FC = () => {
         </div>
       </section>
 
-      <section className="trajectory-stage flex min-h-[100svh] items-center py-16 sm:py-20">
-        <div className="editorial-container grid w-full gap-12 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="lg:col-span-4">
-            <p className="editorial-label mb-4 text-[#82aaff]">{isEn ? "Experience" : "Experiência"}</p>
-            <h2 className="text-[clamp(2.8rem,5.4vw,5.8rem)] font-black leading-[0.84] tracking-[-0.075em] text-[#edeae4]">TRAJETÓRIA</h2>
-            <p className="mt-7 max-w-sm text-base leading-relaxed text-[#8d8984]">
+      <section className="trajectory-stage flex min-h-[100svh] items-center py-14 sm:py-20">
+        <div className="editorial-container w-full">
+          <Reveal className="grid gap-7 border-b border-white/15 pb-7 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
+            <div>
+              <p className="editorial-label mb-4 text-[#82aaff]">{isEn ? "Experience" : "Experiência"}</p>
+              <h2 className="trajectory-title font-black uppercase text-[#edeae4]">TRAJETÓRIA</h2>
+            </div>
+            <p className="max-w-sm text-base leading-relaxed text-[#8d8984] lg:pb-1">
               {isEn
                 ? "A path shaped by products in production, multidisciplinary teams and real constraints."
                 : "Uma jornada construída com produtos em produção, times multidisciplinares e restrições reais."}
             </p>
           </Reveal>
-          <div className="lg:col-span-8 lg:border-t lg:border-white/10">
-            {experience.map(([period, company, role], index) => (
-              <Reveal key={`${period}-${company}`} delay={index * 0.06} distance={22}>
-                <div className="trajectory-row group grid gap-2 border-b border-white/10 py-6 sm:grid-cols-[8rem_1fr_1fr] sm:items-baseline sm:gap-5 sm:py-8">
-                  <span className="editorial-label text-[#77736f]">{period}</span>
-                  <strong className="text-2xl tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">{company}</strong>
-                  <span className="text-sm text-[#8d8984] sm:text-right">{role}</span>
+
+          <div className="ml-auto mt-3 w-full lg:w-[82%]">
+            {experience.map((item, index) => (
+              <Reveal key={`${item.period}-${item.company}`} delay={index * 0.05} distance={20}>
+                <div
+                  className="trajectory-row group relative border-b border-white/10"
+                  onMouseEnter={() => setActiveExperience(index)}
+                  onMouseLeave={() => setActiveExperience(null)}
+                  onFocus={() => setActiveExperience(index)}
+                  onBlur={() => setActiveExperience(null)}
+                >
+                  <button
+                    type="button"
+                    className="grid w-full gap-2 py-5 text-left sm:grid-cols-[8rem_1fr_1fr_auto] sm:items-center sm:gap-5 sm:py-6"
+                    aria-expanded={activeExperience === index}
+                    onClick={() => setActiveExperience((current) => current === index ? null : index)}
+                  >
+                    <span className="editorial-label text-[#77736f]">{item.period}</span>
+                    <strong className="text-2xl tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2 sm:text-3xl lg:text-4xl">{item.company}</strong>
+                    <span className="text-sm text-[#8d8984] sm:text-right">{item.role}</span>
+                    <span className="editorial-label text-[#82aaff]">+</span>
+                  </button>
+
+                  <AnimatePresence>
+                    {activeExperience === index && (
+                      <motion.aside
+                        initial={reduceMotion ? false : { opacity: 0, y: 10, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.22 }}
+                        className="experience-popover z-20 bg-[#edeae4] p-4 text-[#111010] shadow-2xl"
+                      >
+                        <p className="editorial-label mb-2 text-[#5f5b56]">{item.company} / {item.period}</p>
+                        <p className="text-sm leading-relaxed">
+                          {isEn ? item.descriptionEn : item.descriptionPt}
+                        </p>
+                      </motion.aside>
+                    )}
+                  </AnimatePresence>
                 </div>
               </Reveal>
             ))}

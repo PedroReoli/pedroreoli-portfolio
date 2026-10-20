@@ -111,15 +111,16 @@
     height: 1em;
   }
 
-  .technology-display {
-    font-size: clamp(3.5rem, min(16vw, 18vh), 12rem);
-    line-height: 0.76;
-    letter-spacing: -0.085em;
+  .technology-title {
+    font-size: clamp(3.25rem, min(11vw, 14vh), 9.5rem);
+    line-height: 0.8;
+    letter-spacing: -0.078em;
   }
 
-  .technology-outline {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #ffffff;
+  .trajectory-title {
+    font-size: clamp(3.4rem, min(10vw, 15vh), 10rem);
+    line-height: 0.76;
+    letter-spacing: -0.08em;
   }
 
   .footer-cta {
@@ -205,9 +206,6 @@
     -webkit-text-stroke-width: 1px;
   }
 
-  .technology-outline {
-    -webkit-text-stroke-width: 1px;
-  }
 }
 
 @media (max-width: 639px) {
@@ -219,6 +217,13 @@
 @media (min-width: 640px) {
   .stack-icon-item:nth-child(4n) {
     border-right: 0;
+  }
+
+  .experience-popover {
+    position: absolute;
+    top: calc(100% - 0.5rem);
+    right: 1.5rem;
+    width: min(22rem, 48vw);
   }
 }
 
