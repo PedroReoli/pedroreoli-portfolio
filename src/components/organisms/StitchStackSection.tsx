@@ -35,8 +35,8 @@ export const StitchStackSection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section className="stack-stage flex min-h-[100svh] items-center overflow-hidden bg-[#edeae4] py-10 text-[#111010] sm:py-14">
-      <div className="editorial-container w-full">
+    <section className="stack-stage h-[100svh] overflow-hidden bg-[#edeae4] text-[#111010]">
+      <div className="editorial-container stack-stage-layout">
         <Reveal className="grid gap-5 border-b border-black/25 pb-6 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-8">
           <div>
             <p className="editorial-label mb-4 text-[#5f5b56]">
@@ -46,20 +46,20 @@ export const StitchStackSection: React.FC = () => {
               {isEn ? <>BUILT TO<br />SHIP.</> : <>STACK PARA<br />ENTREGAR.</>}
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-[#5f5b56] sm:pb-1 sm:text-base">
+          <p className="stack-intro-copy max-w-sm text-sm leading-relaxed text-[#5f5b56] sm:pb-1 sm:text-base">
             {isEn
               ? "Technologies chosen to take products from interface to infrastructure."
               : "Tecnologias escolhidas para levar produtos da interface à infraestrutura."}
           </p>
         </Reveal>
 
-        <div className="stack-icon-grid grid grid-cols-3 sm:grid-cols-4">
+        <div className="stack-icon-grid grid min-h-0 grid-cols-3 sm:grid-cols-4">
           {stackItems.map((item, index) => (
             <Reveal
               key={item.name}
               delay={(index % 4) * 0.035}
               distance={18}
-              className="stack-icon-item group relative flex min-h-24 flex-col justify-between border-b border-r border-black/20 p-3 sm:min-h-32 sm:p-5 lg:min-h-36"
+              className="stack-icon-item group relative flex min-h-0 flex-col justify-between border-b border-r border-black/20 p-3 sm:p-5"
             >
               <span className={`stack-brand-icon text-3xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110 sm:text-4xl lg:text-5xl ${item.color}`}>
                 {item.icon}

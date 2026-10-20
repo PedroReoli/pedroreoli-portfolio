@@ -21,3 +21,5 @@ Substitua este arquivo pelos dois vídeos abaixo, mantendo exatamente estes nome
 - `/videos/hero-mobile.mp4`
 
 Enquanto os vídeos não forem adicionados, a hero exibirá somente o fundo preto e o conteúdo textual. Nenhuma fotografia será usada como fallback.
+
+Depois de adicionar os dois arquivos, configure `VITE_HERO_VIDEO_ENABLED=true` no `.env` local para ativá-los. A flag evita requisições quebradas enquanto os arquivos ainda não existem.

@@ -8,8 +8,8 @@ export const StitchFooter: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <footer id="contato" className="footer-stage min-h-[100svh] bg-[#edeae4] text-[#111010]">
-      <div className="editorial-container flex min-h-[100svh] flex-col justify-between py-8 sm:py-12">
+    <footer id="contato" className="footer-stage h-[100svh] overflow-hidden bg-[#edeae4] text-[#111010]">
+      <div className="editorial-container footer-stage-layout flex h-full flex-col justify-between">
         <Reveal className="flex items-start justify-between border-b border-black/20 pb-5">
           <div>
             <p className="editorial-label text-[#57534e]">{isEn ? "Start a conversation" : "Comece uma conversa"}</p>

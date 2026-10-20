@@ -4,6 +4,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 
 const entranceEase = [0.16, 1, 0.3, 1] as const
+const heroVideoEnabled = import.meta.env.VITE_HERO_VIDEO_ENABLED === "true"
 
 interface AnimatedWordProps {
   children: string
@@ -31,21 +32,23 @@ export const StitchHeroProjects: React.FC = () => {
 
   return (
     <section id="hero" className="hero-shell relative overflow-hidden bg-[#111010] pt-16">
-      <motion.video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay={!reduceMotion}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        initial={reduceMotion ? false : { opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.4, delay: reduceMotion ? 0 : 0.3, ease: entranceEase }}
-      >
-        <source src="/videos/hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
-        <source src="/videos/hero-desktop.mp4" type="video/mp4" />
-      </motion.video>
+      {heroVideoEnabled && (
+        <motion.video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay={!reduceMotion}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          initial={reduceMotion ? false : { opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, delay: reduceMotion ? 0 : 0.3, ease: entranceEase }}
+        >
+          <source src="/videos/hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
+          <source src="/videos/hero-desktop.mp4" type="video/mp4" />
+        </motion.video>
+      )}
 
       <div className="absolute inset-0 bg-black/35" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/10 to-black/80" />
