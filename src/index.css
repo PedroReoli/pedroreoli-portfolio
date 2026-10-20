@@ -287,9 +287,41 @@
   }
 
   .technology-title {
-    font-size: clamp(3.25rem, min(11vw, 14vh), 9.5rem);
-    line-height: 0.8;
+    position: relative;
+    font-size: clamp(4.5rem, min(13vw, 18vh), 11.5rem);
+    font-stretch: 82%;
+    font-variation-settings: "wdth" 82;
+    line-height: 0.76;
     letter-spacing: -0.078em;
+  }
+
+  .technology-image {
+    transform: scale(1.015);
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 700ms ease;
+  }
+
+  .technology-story:hover .technology-image {
+    filter: saturate(0.9) contrast(1.04);
+    transform: scale(1.035);
+  }
+
+  .technology-title-first,
+  .technology-title-last {
+    position: absolute;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .technology-title-first {
+    top: 13%;
+    left: 0;
+  }
+
+  .technology-title-last {
+    right: 0;
+    bottom: 12%;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #c7d3ff;
   }
 
   .technology-stage-layout {
@@ -476,7 +508,20 @@
   }
 
   .technology-title {
-    font-size: 2.65rem;
+    font-size: clamp(2.4rem, 11.5vw, 3rem);
+    font-stretch: 78%;
+    font-variation-settings: "wdth" 78;
+  }
+
+  .technology-title-first {
+    top: 16%;
+  }
+
+  .technology-title-last {
+    right: auto;
+    bottom: 14%;
+    left: 0;
+    white-space: normal;
   }
 
   .trajectory-title {
@@ -606,7 +651,7 @@
   }
 
   .technology-title {
-    font-size: clamp(2.55rem, min(9vw, 11vh), 5.5rem);
+    font-size: clamp(2.55rem, min(11vw, 14vh), 6.5rem);
   }
 
   .footer-cta {
@@ -626,7 +671,7 @@
 
 @media (max-width: 420px) and (max-height: 680px) {
   .technology-title {
-    font-size: 2.1rem;
+    font-size: clamp(2rem, 10.5vw, 2.65rem);
   }
 }
 
