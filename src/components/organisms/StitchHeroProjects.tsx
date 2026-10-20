@@ -11,6 +11,7 @@ interface AnimatedWordProps {
   delay: number
   outline?: boolean
   reduceMotion: boolean
+  className?: string
 }
 
 const AnimatedWord: React.FC<AnimatedWordProps> = ({
@@ -18,9 +19,10 @@ const AnimatedWord: React.FC<AnimatedWordProps> = ({
   delay,
   outline = false,
   reduceMotion,
+  className = "",
 }) => (
   <span
-    className={`flex overflow-hidden ${outline ? "justify-end text-outline" : "justify-start"}`}
+    className={`block w-fit overflow-hidden ${outline ? "text-outline" : ""} ${className}`}
     aria-hidden="true"
   >
     {children.split("").map((letter, index) => (
@@ -29,7 +31,7 @@ const AnimatedWord: React.FC<AnimatedWordProps> = ({
         initial={reduceMotion ? false : { y: "115%", opacity: 0 }}
         animate={{ y: "0%", opacity: 1 }}
         transition={{
-          duration: 0.78,
+          duration: 0.92,
           delay: reduceMotion ? 0 : delay + index * 0.055,
           ease: entranceEase,
         }}
@@ -51,9 +53,9 @@ export const StitchHeroProjects: React.FC = () => {
       <div className="grid h-[calc(100svh-4rem)] min-h-0 grid-rows-[minmax(0,1fr)_auto]">
         <div className="editorial-container hero-content-grid min-h-0 py-4 sm:py-5">
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: reduceMotion ? 0 : 0.72 }}
+            initial={reduceMotion ? false : { opacity: 0, y: -14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.38, ease: entranceEase }}
             className="flex items-start justify-between"
           >
             <p className="editorial-label max-w-[11rem] text-[#8d8984]">
@@ -65,18 +67,21 @@ export const StitchHeroProjects: React.FC = () => {
           </motion.div>
 
           <div className="hero-stage relative min-h-0">
-            <h1
-              className="hero-display pointer-events-none absolute inset-x-0 top-1/2 z-20 -translate-y-1/2 text-[#edeae4]"
+            <motion.h1
+              initial={reduceMotion ? false : { opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.44, ease: entranceEase }}
+              className="hero-display pointer-events-none absolute left-0 top-1/2 z-20 -translate-y-1/2 text-[#edeae4]"
               aria-label="Pedro Reoli"
             >
-              <AnimatedWord delay={0.76} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
-              <AnimatedWord delay={0.94} outline reduceMotion={reduceMotion}>REOLI</AnimatedWord>
-            </h1>
+              <AnimatedWord delay={0.46} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
+              <AnimatedWord className="hero-word-outline" delay={0.62} outline reduceMotion={reduceMotion}>REOLI</AnimatedWord>
+            </motion.h1>
 
             <motion.figure
-              initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(100% 0 0 0)", scale: 1.08 }}
+              initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(100% 0 0 0)", scale: 1.12 }}
               animate={{ opacity: 1, clipPath: "inset(0% 0 0 0)", scale: 1 }}
-              transition={{ duration: 1.05, delay: reduceMotion ? 0 : 1.02, ease: entranceEase }}
+              transition={{ duration: 1.15, delay: reduceMotion ? 0 : 0.68, ease: entranceEase }}
               className="hero-media absolute bottom-0 right-[6%] z-10 overflow-hidden bg-[#1b1a19]"
             >
               {heroVideoSrc ? (
@@ -94,6 +99,8 @@ export const StitchHeroProjects: React.FC = () => {
                 <img
                   src="/eu-profissional.png"
                   alt="Pedro Lucas Reis, engenheiro de software"
+                  loading="eager"
+                  decoding="async"
                   className="h-full w-full object-cover grayscale contrast-110"
                 />
               )}
@@ -112,7 +119,7 @@ export const StitchHeroProjects: React.FC = () => {
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: reduceMotion ? 0 : 1.36, ease: entranceEase }}
+            transition={{ duration: 0.8, delay: reduceMotion ? 0 : 1.08, ease: entranceEase }}
             className="hero-bottom grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"
           >
             <p className="hero-statement max-w-xl font-medium leading-[1.08] tracking-[-0.04em] text-[#d2cec8]">
@@ -144,7 +151,7 @@ export const StitchHeroProjects: React.FC = () => {
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: "100%" }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: reduceMotion ? 0 : 1.48, ease: entranceEase }}
+          transition={{ duration: 0.7, delay: reduceMotion ? 0 : 1.18, ease: entranceEase }}
           className="hero-marquee overflow-hidden border-y border-white/10 py-2.5 sm:py-3"
         >
           <div className="marquee-track flex w-max items-center gap-7 whitespace-nowrap text-xl font-medium italic tracking-[-0.04em] text-[#b8b4ae] sm:text-3xl">

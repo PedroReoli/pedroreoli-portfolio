@@ -78,6 +78,11 @@
     letter-spacing: -0.085em;
   }
 
+  .hero-word-outline {
+    margin-top: -0.04em;
+    margin-left: clamp(2.5rem, 15vw, 14rem);
+  }
+
   .hero-shell {
     height: 100svh;
   }
@@ -170,6 +175,10 @@
   .hero-media {
     right: 4%;
     height: min(34vh, 15.5rem);
+  }
+
+  .hero-word-outline {
+    margin-left: clamp(1.25rem, 12vw, 3rem);
   }
 
   .hero-statement {
