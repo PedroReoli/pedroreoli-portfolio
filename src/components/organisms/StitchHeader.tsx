@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import React, { useEffect, useState } from "react"
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
@@ -8,7 +8,30 @@ export const StitchHeader: React.FC = () => {
   const { language, toggleLanguage } = useLanguage()
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const { scrollY } = useScroll()
+  const reduceMotion = useReducedMotion()
   const isEn = language === "en"
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const previous = scrollY.getPrevious() ?? current
+
+    if (menuOpen || current < 80) {
+      setHeaderVisible(true)
+      return
+    }
+
+    if (current > previous && current > 120) {
+      setHeaderVisible(false)
+      return
+    }
+
+    if (current < previous) setHeaderVisible(true)
+  })
+
+  useEffect(() => {
+    if (menuOpen) setHeaderVisible(true)
+  }, [menuOpen])
 
   const navLinks = [
     { path: "/", label: isEn ? "Home" : "Início" },
@@ -17,7 +40,12 @@ export const StitchHeader: React.FC = () => {
   ]
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#111010]/80 backdrop-blur-xl">
+    <motion.header
+      initial={false}
+      animate={{ y: headerVisible ? 0 : "-100%" }}
+      transition={{ duration: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#111010]/80 backdrop-blur-xl"
+    >
       <div className="editorial-container flex h-16 items-center justify-between">
         <Link
           to="/"
@@ -99,7 +127,7 @@ export const StitchHeader: React.FC = () => {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 }
 
