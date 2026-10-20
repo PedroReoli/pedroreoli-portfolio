@@ -17,20 +17,6 @@ export const StitchHeroProjects: React.FC = () => {
         id="hero"
         className="relative z-10 w-full flex flex-col items-center justify-center text-center px-4 sm:px-8 pt-24 sm:pt-32 pb-10"
       >
-        {/* Status de Disponibilidade Sênior */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono mb-6">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3fb950] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3fb950]" />
-          </span>
-          <span className="text-[#3fb950] font-semibold">
-            {isEn ? "Available for Senior Positions" : "Disponível para Posições Sênior & Projetos"}
-          </span>
-          <span className="text-[#8b949e] hidden xs:inline">&bull;</span>
-          <span className="text-[#8b949e] hidden xs:inline">
-            Volta Redonda, RJ &bull; Remoto / Híbrido
-          </span>
-        </div>
 
         {/* Foto Profissional em Destaque */}
         <div className="relative mb-6">
