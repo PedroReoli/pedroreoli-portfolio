@@ -260,19 +260,24 @@ export const StitchDossierSection: React.FC = () => {
 
       <section className="trajectory-stage h-[100svh] overflow-hidden">
         <div className="editorial-container trajectory-stage-layout">
-          <Reveal className="grid gap-3 border-b border-white/15 pb-3 sm:gap-5 sm:pb-5 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
+          <Reveal className="trajectory-intro flex min-h-0 flex-col justify-between border-b border-white/15 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
             <div>
-              <p className="editorial-label mb-2 text-[#82aaff] sm:mb-4">{isEn ? "Experience" : "Experiência"}</p>
-              <h2 className="trajectory-title font-black uppercase text-[#edeae4]">TRAJETÓRIA</h2>
+              <p className="editorial-label text-[#82aaff]">05 / {isEn ? "Experience" : "Experiência"}</p>
+              <p className="editorial-label mt-3 text-[#77736f]">04 / {isEn ? "chapters" : "capítulos"}</p>
             </div>
-            <p className="max-w-sm text-base leading-relaxed text-[#8d8984] lg:pb-1">
-              {isEn
-                ? "A path shaped by products in production, multidisciplinary teams and real constraints."
-                : "Uma jornada construída com produtos em produção, times multidisciplinares e restrições reais."}
-            </p>
+            <div>
+              <h2 className="trajectory-title font-black uppercase text-[#edeae4]">
+                {isEn ? <>JOUR<span className="text-outline">NEY.</span></> : <>TRAJE<span className="text-outline">TÓRIA.</span></>}
+              </h2>
+              <p className="trajectory-summary mt-4 max-w-md leading-relaxed text-[#8d8984]">
+                {isEn
+                  ? "Products in production, multidisciplinary teams and real constraints."
+                  : "Produtos em produção, times multidisciplinares e restrições reais."}
+              </p>
+            </div>
           </Reveal>
 
-          <div className="ml-auto mt-3 w-full lg:w-[82%]">
+          <div className="trajectory-list min-h-0">
             {experience.map((item, index) => (
               <Reveal key={`${item.period}-${item.company}`} delay={index * 0.05} distance={20}>
                 <div
@@ -284,14 +289,17 @@ export const StitchDossierSection: React.FC = () => {
                 >
                   <button
                     type="button"
-                    className="relative grid w-full gap-1 py-2 pr-5 text-left sm:grid-cols-[8rem_1fr_1fr_auto] sm:items-center sm:gap-5 sm:py-5 sm:pr-0"
+                    className="trajectory-row-button relative grid w-full text-left"
                     aria-expanded={activeExperience === index}
-                    onClick={() => setActiveExperience(index)}
+                    onClick={() => setActiveExperience((current) => current === index ? null : index)}
                   >
+                    <span className={`trajectory-dot ${activeExperience === index ? "trajectory-dot-active" : ""}`} aria-hidden="true" />
                     <span className="editorial-label text-[#77736f]">{item.period}</span>
-                    <strong className="text-xl tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2 sm:text-3xl lg:text-4xl">{item.company}</strong>
-                    <span className="text-xs text-[#8d8984] sm:text-right sm:text-sm">{item.role}</span>
-                    <span className="editorial-label absolute right-0 top-1/2 -translate-y-1/2 text-[#82aaff] sm:static sm:translate-y-0">+</span>
+                    <span className="min-w-0">
+                      <strong className="trajectory-company block tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">{item.company}</strong>
+                      <span className="trajectory-role mt-1 block text-[#8d8984]">{item.role}</span>
+                    </span>
+                    <span className="editorial-label text-[#82aaff]" aria-hidden="true">{activeExperience === index ? "×" : "+"}</span>
                   </button>
 
                   <AnimatePresence>
