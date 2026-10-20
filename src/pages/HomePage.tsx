@@ -1,26 +1,53 @@
 import React from "react"
+import SEOHead from "../components/atoms/SEOHead"
 import StitchHeader from "../components/organisms/StitchHeader"
 import StitchHeroProjects from "../components/organisms/StitchHeroProjects"
-import StitchPressFeature from "../components/organisms/StitchPressFeature"
 import StitchDossierSection from "../components/organisms/StitchDossierSection"
+import StitchFooter from "../components/organisms/StitchFooter"
+import TransitionEffect from "../components/atoms/TransitionEffect"
+import CelestialHireMe from "../components/molecules/CelestialHireMe"
+import { useLanguage } from "../i18n/useLanguage"
 
 export const HomePage: React.FC = () => {
+  const { language } = useLanguage()
+  const isEn = language === "en"
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#154c94] via-[#1a5ab3] to-[#14488a] font-body-md text-white antialiased flex flex-col selection:bg-white selection:text-[#144b91] relative overflow-x-hidden">
-      {/* Navbar Superior Celestial Fosca (Início, Projetos, Mídia & Blog) */}
+    <div className="min-h-screen bg-[#0d1117] font-body text-[#f0f6fc] antialiased flex flex-col relative overflow-x-hidden">
+      {/* Metatags e SEO Dinâmico */}
+      <SEOHead
+        title={
+          isEn
+            ? "Pedro Lucas Reis | Full Stack Software Engineer & Systems Architect"
+            : "Pedro Lucas Reis | Engenheiro de Software Full Stack & Arquiteto de Sistemas"
+        }
+        description={
+          isEn
+            ? "Portfolio of Pedro Lucas Reis — Full Stack Software Engineer specializing in high-density frontend architectures, distributed systems, and AI agents."
+            : "Portfólio de Pedro Lucas Reis — Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
+        }
+        canonicalUrl="https://pedroreis.vercel.app/"
+      />
+
+      {/* Efeito de Transição de Rota */}
+      <TransitionEffect />
+
+      {/* Header Fixo Sóbrio */}
       <StitchHeader />
 
-      {/* Dobra 1: Hero Executivo Puro Widescreen (Full Viewport Width & Height) */}
+      {/* Dobra 1: Hero Executiva com Foto e Prova Social de Imprensa */}
       <StitchHeroProjects />
 
-      {/* Conteúdo Abaixo: Seções com Container Centralizado (max-w-6xl) */}
-      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 max-w-6xl mx-auto gap-12 sm:gap-16 pb-16">
-        {/* Dobra 2: Seção de Destaques de Imprensa & Reconhecimento */}
-        <StitchPressFeature />
-
-        {/* Dobra 3 & 4: Dossiê Técnico Integrado (Matriz, Trajetória, Formação Stacked & Contato) */}
+      {/* Dobra 2: Dossiê Técnico, Stack em Grid e Trajetória */}
+      <main className="flex-1 flex flex-col relative w-full px-4 sm:px-8 max-w-6xl mx-auto">
         <StitchDossierSection />
       </main>
+
+      {/* Rodapé Executivo de Alto Padrão */}
+      <StitchFooter />
+
+      {/* Botão de Contato Flutuante Discreto */}
+      <CelestialHireMe />
     </div>
   )
 }

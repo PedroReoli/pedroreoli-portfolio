@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import ProjectsPage from "./pages/ProjectsPage"
 import MediaBlogPage from "./pages/MediaBlogPage"
+import NotFoundPage from "./pages/NotFoundPage"
 import { LanguageProvider } from "./i18n/LanguageContext"
 import { MotionConfig } from "framer-motion"
 
@@ -12,10 +13,10 @@ const App: React.FC = () => {
       <MotionConfig reducedMotion="user">
         <BrowserRouter>
           <Routes>
-            {/* Página 1: Início (Hero 100dvh + Destaques de Imprensa + Dossiê Integrado) */}
+            {/* Página 1: Início */}
             <Route path="/" element={<HomePage />} />
 
-            {/* Página 2: Projetos (Corporativo Autocom3 com 6 módulos & Gerais Flagship) */}
+            {/* Página 2: Projetos */}
             <Route path="/projetos" element={<ProjectsPage />} />
             <Route path="/projetos=corporativos" element={<ProjectsPage defaultTab="corporativo" />} />
             <Route path="/projetos=coprporativos" element={<ProjectsPage defaultTab="corporativo" />} />
@@ -25,12 +26,12 @@ const App: React.FC = () => {
             <Route path="/midia-blog" element={<MediaBlogPage />} />
             <Route path="/midia-e-blog" element={<MediaBlogPage />} />
 
-            {/* Redirecionamentos de rota do dossiê para a home com âncora */}
+            {/* Redirecionamentos de rotas antigas */}
             <Route path="/dossie-tecnico" element={<Navigate to="/" replace />} />
             <Route path="/dossie" element={<Navigate to="/" replace />} />
 
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Página 404 dedicada */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </MotionConfig>

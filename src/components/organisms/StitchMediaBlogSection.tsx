@@ -1,5 +1,12 @@
 import React, { useState } from "react"
 import { useLanguage } from "../../i18n/useLanguage"
+import {
+  Clock,
+  CheckCircle2,
+  Mail,
+  ExternalLink,
+} from "lucide-react"
+import { FaGithub } from "react-icons/fa6"
 
 export const StitchMediaBlogSection: React.FC = () => {
   const { language } = useLanguage()
@@ -18,9 +25,9 @@ export const StitchMediaBlogSection: React.FC = () => {
       title: "Reduzindo em 92.2% o Custo de Tokens de Agentes de IA Web Utilizando AXTree",
       body: "Interceptação direta da árvore de acessibilidade do Chromium via protocolo CDP, reduzindo o payload de 240k para 18.7k tokens por passo com ferramentas determinísticas.",
       metrics: [
-        { label: "TOKEN REDUCTION", value: "-92.2%" },
-        { label: "CDP LATENCY", value: "41ms AVG" },
-        { label: "TOOL PRECISION", value: "99.4% HIT" },
+        { label: "ECONOMIA DE TOKENS", value: "-92.2%" },
+        { label: "LATÊNCIA MÉDIA CDP", value: "41ms" },
+        { label: "PRECISÃO DE FERRAMENTAS", value: "99.4%" },
       ],
       tags: ["CDP", "A11Y", "TOKENS"],
       link: "https://github.com/PedroReoli/Achilles-CDP-Agent",
@@ -35,8 +42,8 @@ export const StitchMediaBlogSection: React.FC = () => {
       body: "Como manter Cumulative Layout Shift (CLS) em 0.000 absoluto em dashboards corporativos com centenas de atualizações via WebSocket por segundo, CSS subgrid e content-visibility.",
       metrics: [
         { label: "CLS MEDIDO", value: "0.000" },
-        { label: "FPS CONTINUO", value: "60.0 FPS" },
-        { label: "LCP TIME", value: "0.7s" },
+        { label: "FPS CONTÍNUO", value: "60.0 FPS" },
+        { label: "LCP MÉDIO", value: "0.7s" },
       ],
       tags: ["LAYOUT", "CSS", "VITALS"],
       link: "https://github.com/PedroReoli",
@@ -50,9 +57,9 @@ export const StitchMediaBlogSection: React.FC = () => {
       title: "Design de Sistemas Local-First com SQLite WAL e Resolução de Conflitos CRDT em Rust",
       body: "Estrutura do Organon OS: como o log Write-Ahead (WAL) do SQLite combinado com árvores de estado em memória e sincronização assíncrona P2P viabiliza latência zero de escrita.",
       metrics: [
-        { label: "WRITE LATENCY", value: "0.2ms" },
-        { label: "OFFLINE DURATION", value: "INFINITA" },
-        { label: "CRDT CONFLICTS", value: "0 DIVERGÊNCIA" },
+        { label: "LATÊNCIA DE ESCRITA", value: "0.2ms" },
+        { label: "MODO OFFLINE", value: "100%" },
+        { label: "CONFLITOS CRDT", value: "Zero Divergência" },
       ],
       tags: ["PRIVACY", "CRDT", "SQLITE"],
       link: "https://github.com/PedroReoli/organon",
@@ -66,9 +73,9 @@ export const StitchMediaBlogSection: React.FC = () => {
       title: "Padronização de Contratos de API com TypeScript Estrito e Validação Zod",
       body: "Esteira de geração automática de contratos de rede com Zod e TypeScript strict-mode, erradicando discrepâncias de runtime entre microsserviços Node e endpoints Python.",
       metrics: [
-        { label: "RUNTIME ERRORS", value: "0.0% UNCAUGHT" },
-        { label: "GEN BUILD", value: "2.1s MONO" },
-        { label: "PARSING OVERHEAD", value: "< 0.4ms" },
+        { label: "ERROS NÃO CAPTURADOS", value: "0.0%" },
+        { label: "BUILD MONOREPO", value: "2.1s" },
+        { label: "OVERHEAD DE PARSING", value: "< 0.4ms" },
       ],
       tags: ["TYPESCRIPT", "ZOD", "CONTRACTS"],
       link: "https://github.com/PedroReoli",
@@ -88,276 +95,96 @@ export const StitchMediaBlogSection: React.FC = () => {
   }
 
   return (
-    <div id="midia-e-blog" className="flex flex-col w-full gap-10 pb-16">
-      {/* TOP TELEMETRY STRIP & RADIAL BEACON */}
-      <section className="flex flex-col gap-2">
-        <div className="flex items-center justify-between p-3.5 rounded-2xl bg-surface-container shadow-sm border border-white/10">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-2.5 w-2.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
-            </span>
-            <span className="font-telemetry-tag text-emerald-400 tracking-wider uppercase text-xs font-semibold">
-              BROADCAST NODE // 0x4F9B — TRANSMISSÃO TÉCNICA
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-sky-100 font-label-caps text-xs border border-white/10">
-            <span className="material-symbols-outlined text-[15px] text-cyan-400">rss_feed</span>
-            <span>LATÊNCIA: 18ms</span>
-          </div>
+    <div id="midia-e-blog" className="flex flex-col w-full gap-8 pb-12">
+      {/* Cabeçalho da Página com H1 Semântico */}
+      <section className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#3fb950]" />
+          <span className="font-mono text-xs text-[#3fb950] uppercase tracking-wider font-semibold">
+            PUBLICAÇÕES &amp; RECONHECIMENTO
+          </span>
         </div>
-      </section>
 
-      {/* SECTION 1: YOUTUBE TECHNICAL BROADCAST (WIDESCREEN 3 COLUNAS) */}
-      <section className="flex flex-col rounded-3xl bg-surface-container p-6 sm:p-8 shadow-xl gap-6 border border-white/10">
-        {/* Channel Header Metadata */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full bg-red-500/15 text-red-400 border border-red-500/30 font-label-caps text-xs font-bold uppercase tracking-wider">
-              // CANAL TÉCNICO NO YOUTUBE
-            </span>
-            <span className="font-code-inline text-xs text-sky-200/80">BASTIDORES DE ENGENHARIA</span>
-          </div>
+        <h1 className="text-3xl sm:text-5xl font-bold text-[#f0f6fc] tracking-tight">
+          {isEn
+            ? "Technical Publications & Media"
+            : "Mídia, Publicações & Ensaios Técnicos"}
+        </h1>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-1">
-            <div>
-              <h2 className="font-headline-lg text-white tracking-tight font-bold text-2xl sm:text-3xl">
-                DISSECANDO SISTEMAS REAIS, IA E ARQUITETURA
-              </h2>
-              <p className="font-body-md text-sky-100 text-sm sm:text-base mt-1">
-                {isEn
-                  ? "Production code teardowns, model instrumentation, and low-latency system design recorded directly from the terminal."
-                  : "Teardowns de código de produção, instrumentação de modelos e designs de baixa latência gravados direto do terminal."}
-              </p>
-            </div>
+        <p className="text-sm sm:text-base text-[#8b949e] max-w-3xl leading-relaxed">
+          {isEn
+            ? "Technical essays, open-source documentation, and media coverage regarding healthcare technology, AI agents, and systems architecture."
+            : "Ensaios técnicos, documentação de código aberto e repercussão na imprensa sobre tecnologia assistiva, agentes autônomos e arquitetura de software."}
+        </p>
 
-            <a
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider active:scale-95 transition-all shadow-lg shadow-red-600/25 shrink-0 self-start sm:self-auto cursor-pointer"
-              href="https://www.youtube.com/@PedroReoli"
-              target="_blank"
-              rel="noopener noreferrer"
+        {/* Filtros de Categoria */}
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          {["ALL", "AGENTES & IA", "WEB VITALS", "LOCAL-FIRST"].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-3 py-1.5 rounded-md text-xs font-mono transition-colors border ${
+                filter === cat
+                  ? "bg-[#21262d] text-[#f0f6fc] border-[#58a6ff] font-semibold"
+                  : "bg-[#161b22] text-[#8b949e] border-[#30363d] hover:text-[#f0f6fc]"
+              }`}
+              type="button"
             >
-              <span className="material-symbols-outlined text-[18px]">play_arrow</span>
-              <span>INSCREVER-SE NO CANAL</span>
-            </a>
-          </div>
-        </div>
-
-        {/* 3 Widescreen Video Cards (Grid 3 Colunas no Desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* EPISODE 1 */}
-          <article className="flex flex-col rounded-2xl bg-surface-container-low overflow-hidden group border border-white/10 hover:border-cyan-500/40 transition-all shadow-md">
-            <div className="relative w-full aspect-video bg-surface-container-high overflow-hidden">
-              <img
-                className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-500 group-hover:scale-105"
-                alt="Como Construir um Servidor MCP"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNpFuj5rzK6RzJ_GyX5BHTcpx6qDMJBRl9X-4W9NJAivqzr1aci5M09fqSMc5Pma-6lMQWx-ZzOoW0jPhFSIgAyKS6QmCOrN0-OsVIYCT1kxGACRj1BDioCDJVwQfwlDjFUKj2qlVZR8h_7DsBAUlYAhIxAhZLgLJKT0rMApFo8kv77JP4aTCtuXPBu7Gad2UdmTGjXSkLLz6DWVW3quHCT4HTfJRt_K7YWmZtq8SkZQdhDpLBMlGs"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
-              <div className="absolute top-2.5 left-2.5">
-                <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-cyan-400 font-code-inline text-[11px] font-bold border border-white/10">
-                  EP // 042
-                </span>
-              </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
-                <span className="material-symbols-outlined text-[13px] text-cyan-400">schedule</span>
-                <span>28:45</span>
-              </div>
-            </div>
-
-            <div className="p-4 flex flex-col gap-2 flex-1 justify-between">
-              <div>
-                <span className="font-label-caps text-cyan-400 text-[10px] uppercase font-bold tracking-wider">
-                  ARQUITETURA DE AGENTES
-                </span>
-                <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-cyan-300 transition-colors">
-                  Construindo Servidores MCP de Alta Performance em TypeScript
-                </h3>
-                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
-                  Implementação do Model Context Protocol do zero com validação JSON-RPC estrita e isolamento de runtime.
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-sky-200/80">Terminal Deep Dive</span>
-                <span className="material-symbols-outlined text-[16px] text-cyan-400 group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </div>
-            </div>
-          </article>
-
-          {/* EPISODE 2 */}
-          <article className="flex flex-col rounded-2xl bg-surface-container-low overflow-hidden group border border-white/10 hover:border-emerald-500/40 transition-all shadow-md">
-            <div className="relative w-full aspect-video bg-surface-container-high overflow-hidden">
-              <img
-                className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-500 group-hover:scale-105"
-                alt="Navegação Headless com AXTree"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhBLBGJhaPoMI4wPlqPu-o1jfGnAxj6cAcwyaQmtg21R8L9GnYaCZ3LTYWY_Mu0Lf5xmM9gQAkgKNTqhq6AL4BTIZlUwWZrH7FP-xW6QxkzMxHT8NH12soGDFd-mXVKuN-ufclkBnL8lndeX6HdPpw57ssgw4fmhLZ-o6WivwgGPwM4OY4PHsAcXBr5Ojn_-euIVh_MnH4m7N31NEIuubk6hj6NRsXWP7mguz1ydOSbnkS7Ghswg0r"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
-              <div className="absolute top-2.5 left-2.5">
-                <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-emerald-400 font-code-inline text-[11px] font-bold border border-white/10">
-                  EP // 041
-                </span>
-              </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
-                <span className="material-symbols-outlined text-[13px] text-emerald-400">schedule</span>
-                <span>34:12</span>
-              </div>
-            </div>
-
-            <div className="p-4 flex flex-col gap-2 flex-1 justify-between">
-              <div>
-                <span className="font-label-caps text-emerald-400 text-[10px] uppercase font-bold tracking-wider">
-                  AUTOMAÇÃO DE BROWSERS
-                </span>
-                <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-emerald-300 transition-colors">
-                  Como Cortamos 92% dos Tokens Usando AXTree e Chrome CDP
-                </h3>
-                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
-                  Interceptação de nós semânticos no Chromium para navegação autônoma com custo ínfimo de contexto.
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-sky-200/80">Benchmarks Reais</span>
-                <span className="material-symbols-outlined text-[16px] text-emerald-400 group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </div>
-            </div>
-          </article>
-
-          {/* EPISODE 3 */}
-          <article className="flex flex-col rounded-2xl bg-surface-container-low overflow-hidden group border border-white/10 hover:border-indigo-500/40 transition-all shadow-md">
-            <div className="relative w-full aspect-video bg-surface-container-high overflow-hidden">
-              <img
-                className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-500 group-hover:scale-105"
-                alt="Governança de Design Systems"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtxYDrcM1Qy-1E_8i5XEtqLBXfxC-nfmr2bWSoBDeLxNRDIKnqG6Cb0HjTebAtdmDlKV2pgKz4RrFg1jPQki67K4EAM5K2Ns5qoSobeVk95EbeCRrlRVt1OqVKSgrkYWPjpsJP7OIGFYL-S8r_E97TiZxs194cTKwJuTeArEUiwXQDFnF63JyHrVPm1jBLV9KNi_Bc2l0F1yL8Q5dY1X8ZdIiumZ_CgKvfcmQKWp8--BYN_AHNaTV9"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#113c78]/90 via-transparent to-transparent" />
-              <div className="absolute top-2.5 left-2.5">
-                <span className="px-2.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-md text-indigo-300 font-code-inline text-[11px] font-bold border border-white/10">
-                  EP // 040
-                </span>
-              </div>
-              <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/95 backdrop-blur-md text-sky-100 font-code-inline text-[11px] border border-white/10">
-                <span className="material-symbols-outlined text-[13px] text-indigo-400">schedule</span>
-                <span>22:05</span>
-              </div>
-            </div>
-
-            <div className="p-4 flex flex-col gap-2 flex-1 justify-between">
-              <div>
-                <span className="font-label-caps text-indigo-400 text-[10px] uppercase font-bold tracking-wider">
-                  DESIGN SYSTEMS &amp; TOKENS
-                </span>
-                <h3 className="font-headline-sm text-white font-bold text-base mt-1 line-clamp-2 group-hover:text-indigo-300 transition-colors">
-                  Governança de Design Systems com 500+ Tokens
-                </h3>
-                <p className="font-body-sm text-sky-100 text-xs mt-1 line-clamp-2">
-                  Prevenção de layout shifts (CLS 0.000) e pipelines de CI com testes visuais automatizados sem penalizar a DX.
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-code-inline text-[10px] text-sky-200/80">CI/CD &amp; Testing</span>
-                <span className="material-symbols-outlined text-[16px] text-indigo-400 group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </div>
-            </div>
-          </article>
+              {cat === "ALL" ? "Todos os Ensaios" : cat}
+            </button>
+          ))}
         </div>
       </section>
 
-      {/* SECTION 2: CADERNOS DE ENGENHARIA (BLOG TÉCNICO & ENSAIOS) */}
-      <section className="flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-cyan-400 text-[20px]">article</span>
-              <h2 className="font-headline-lg text-white tracking-tight font-bold text-2xl sm:text-3xl">
-                CADERNOS DE ENGENHARIA
-              </h2>
-            </div>
-            <span className="font-code-inline text-xs text-sky-200/80">4 ENSAIOS ARQUIVADOS</span>
-          </div>
-          <p className="font-body-md text-sky-100 text-sm sm:text-base">
-            Investigações empíricas sobre sistemas distribuídos, custo de inferência, compilação estática e arquiteturas operacionais.
-          </p>
-        </div>
-
-        {/* Filter chips com Alto Contraste */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
-          {["ALL", "AGENTES & IA", "WEB VITALS", "LOCAL-FIRST"].map((item) => {
-            const isSelected = filter === item
-            return (
-              <button
-                key={item}
-                type="button"
-                className={`px-4 py-2 rounded-xl font-code-inline text-xs font-semibold whitespace-nowrap transition-all border cursor-pointer ${
-                  isSelected
-                    ? "bg-emerald-400 hover:bg-emerald-300 text-zinc-950 font-bold border-emerald-400 shadow-md shadow-emerald-500/20"
-                    : "bg-surface-container hover:bg-surface-container-high text-sky-100 hover:text-white border-white/10"
-                }`}
-                onClick={() => setFilter(item)}
-              >
-                {item === "ALL" ? "TODOS (04)" : item}
-              </button>
-            )
-          })}
-        </div>
-
-        {/* Articles List */}
-        <div className="flex flex-col gap-6">
+      {/* Grid de Artigos Técnicos */}
+      <section className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredArticles.map((art) => (
             <article
               key={art.id}
-              className="flex flex-col rounded-3xl bg-surface-container p-6 sm:p-7 shadow-md gap-4 border border-white/10 hover:border-cyan-500/40 transition-all"
+              className="bg-[#161b22] rounded-xl p-5 sm:p-6 border border-[#30363d] flex flex-col justify-between hover:border-[#58a6ff]/40 transition-colors"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                  <span className="font-telemetry-tag text-cyan-400 uppercase tracking-wider text-xs font-bold">
-                    DOC_ID // {art.id}
+              <div className="flex flex-col gap-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="px-2 py-0.5 rounded-md bg-[#21262d] text-[#58a6ff] font-mono text-[11px] border border-[#30363d]">
+                    {art.category}
                   </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-sky-200/80 font-code-inline text-xs">
-                  <span className="material-symbols-outlined text-[14px] text-sky-200/80">timer</span>
-                  <span>{art.time}</span>
-                  <span className="mx-1">•</span>
-                  <span>{art.date}</span>
-                </div>
-              </div>
-
-              <h3 className="font-headline-md text-white tracking-tight font-bold text-lg sm:text-xl">
-                {art.title}
-              </h3>
-
-              <p className="font-body-md text-sky-100 leading-relaxed text-sm sm:text-base">
-                {art.body}
-              </p>
-
-              {/* Metrics pill bar */}
-              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-surface-container-lowest font-code-inline text-xs border border-white/5">
-                {art.metrics.map((m) => (
-                  <div key={m.label} className="flex flex-col">
-                    <span className="text-sky-200/80 font-label-caps text-[10px]">{m.label}</span>
-                    <span className="text-emerald-400 font-bold text-sm mt-0.5">{m.value}</span>
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-[#8b949e]">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>{art.time}</span>
                   </div>
-                ))}
+                </div>
+
+                <h2 className="text-lg sm:text-xl font-bold text-[#f0f6fc] tracking-tight leading-snug">
+                  {art.title}
+                </h2>
+
+                <p className="text-xs sm:text-sm text-[#8b949e] leading-relaxed">
+                  {art.body}
+                </p>
+
+                {/* Métricas do Artigo */}
+                <div className="grid grid-cols-3 gap-2 py-2 my-1 border-y border-[#21262d]">
+                  {art.metrics.map((m, idx) => (
+                    <div key={idx} className="flex flex-col">
+                      <span className="text-[10px] font-mono text-[#8b949e] uppercase truncate">
+                        {m.label}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-[#3fb950] mt-0.5">
+                        {m.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Read Action */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-white/5">
+              {/* Ação com Link para o Repositório / Documento */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 mt-2 border-t border-[#21262d]">
                 <div className="flex items-center gap-1.5 flex-wrap">
                   {art.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 rounded-md bg-surface-container-high font-code-inline text-xs text-sky-100"
+                      className="px-2 py-0.5 rounded bg-[#0d1117] font-mono text-[10px] text-[#8b949e] border border-[#30363d]"
                     >
                       #{t}
                     </span>
@@ -365,13 +192,14 @@ export const StitchMediaBlogSection: React.FC = () => {
                 </div>
 
                 <a
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-high hover:bg-white text-zinc-100 hover:text-zinc-950 font-bold text-xs transition-all border border-white/10 cursor-pointer self-start sm:self-auto"
                   href={art.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#21262d] hover:bg-[#30363d] text-[#f0f6fc] font-medium text-xs transition-colors border border-[#30363d] self-start sm:self-auto"
                 >
-                  <span>LER ENSAIO COMPLETO</span>
-                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  <FaGithub className="w-3.5 h-3.5" />
+                  <span>Ver Documentação</span>
+                  <ExternalLink className="w-3 h-3 text-[#8b949e]" />
                 </a>
               </div>
             </article>
@@ -379,29 +207,34 @@ export const StitchMediaBlogSection: React.FC = () => {
         </div>
       </section>
 
-      {/* NEWSLETTER COM BOTÃO DE ALTO CONTRASTE */}
-      <section className="rounded-3xl bg-surface-container p-6 sm:p-8 shadow-xl flex flex-col gap-4 border border-white/10 relative overflow-hidden">
+      {/* Formulário de Newsletter com Label Acessível */}
+      <section className="rounded-xl bg-[#161b22] p-6 sm:p-8 border border-[#30363d] flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[22px] text-emerald-400">mark_email_read</span>
-          <span className="font-headline-lg text-white font-bold text-xl sm:text-2xl tracking-tight">
+          <Mail className="w-5 h-5 text-[#3fb950]" />
+          <h2 className="text-xl sm:text-2xl font-bold text-[#f0f6fc] tracking-tight">
             Despachos Técnicos de Engenharia
-          </span>
+          </h2>
         </div>
-        <p className="font-body-md text-sky-100 text-sm sm:text-base max-w-2xl">
-          Receba logs de arquitetura brutos, snippets validados e análises de desempenho diretamente no seu e-mail. Zero marketing, apenas código e arquitetura.
+        <p className="text-sm text-[#8b949e] max-w-2xl leading-relaxed">
+          Receba notas de arquitetura, análises de desempenho e novos artigos diretamente no seu e-mail. Sem spam, apenas conteúdo técnico relevante.
         </p>
 
         {subscribed ? (
-          <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-code-inline text-sm flex items-center gap-2">
-            <span className="material-symbols-outlined text-[20px]">check_circle</span>
-            <span>FEED CONECTADO COM SUCESSO // CHAVE DE DISPATCH: 2026-OK</span>
+          <div className="p-3.5 rounded-lg bg-[#238636]/15 border border-[#238636]/30 text-[#3fb950] font-mono text-sm flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[#3fb950]" />
+            <span>Inscrição confirmada com sucesso. Obrigado!</span>
           </div>
         ) : (
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 mt-2 max-w-xl">
-            <div className="flex items-center rounded-2xl bg-surface-container-lowest px-4 py-3 border border-white/10 flex-1">
-              <span className="material-symbols-outlined text-[18px] text-sky-200/80 mr-2">mail</span>
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 mt-1 max-w-xl">
+            <div className="flex items-center rounded-lg bg-[#0d1117] px-3.5 py-2.5 border border-[#30363d] flex-1">
+              <Mail className="w-4 h-4 text-[#8b949e] mr-2 shrink-0" />
+              {/* Label acessível para atender WCAG / axe-core */}
+              <label htmlFor="newsletter-email" className="sr-only">
+                Endereço de e-mail para despachos técnicos
+              </label>
               <input
-                className="bg-transparent text-white font-code-inline placeholder:text-zinc-500 w-full focus:outline-none text-sm"
+                id="newsletter-email"
+                className="bg-transparent text-[#f0f6fc] font-mono placeholder:text-[#8b949e] w-full focus:outline-none text-xs sm:text-sm"
                 placeholder="seu.email@empresa.com.br"
                 type="email"
                 value={emailInput}
@@ -410,17 +243,17 @@ export const StitchMediaBlogSection: React.FC = () => {
               />
             </div>
             <button
-              className="py-3 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 hover:text-zinc-950 font-bold text-xs uppercase tracking-wider active:scale-95 transition-all shadow-md shadow-emerald-500/20 cursor-pointer whitespace-nowrap"
+              className="py-2.5 px-5 rounded-lg bg-[#238636] hover:bg-[#2ea043] text-white font-medium text-xs sm:text-sm active:scale-95 transition-colors cursor-pointer whitespace-nowrap shadow-sm"
               type="submit"
             >
-              ASSINAR FEED
+              Assinar Feed
             </button>
           </form>
         )}
 
-        <div className="flex items-center justify-between text-sky-200/80 font-label-caps pt-2 text-xs border-t border-white/5">
-          <span>PGP SIGNED: KEY_0x82DE</span>
-          <span>SEM TRACKERS // CANCELAMENTO EM 1-CLIQUE</span>
+        <div className="flex items-center justify-between text-[#8b949e] font-mono pt-2 text-xs border-t border-[#21262d]">
+          <span>Cancelamento em 1-clique</span>
+          <span>Zero Trackers</span>
         </div>
       </section>
     </div>

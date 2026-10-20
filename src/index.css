@@ -8,29 +8,28 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5rem;
     color-scheme: dark;
   }
 
   ::selection {
-    background-color: #ffffff !important;
-    color: #09090b !important;
+    background-color: rgba(88, 166, 255, 0.3) !important;
+    color: #ffffff !important;
   }
 
   ::-moz-selection {
-    background-color: #ffffff !important;
-    color: #09090b !important;
+    background-color: rgba(88, 166, 255, 0.3) !important;
+    color: #ffffff !important;
   }
 
   *::selection {
-    background-color: #ffffff !important;
-    color: #09090b !important;
+    background-color: rgba(88, 166, 255, 0.3) !important;
+    color: #ffffff !important;
   }
 
   body {
-    background: linear-gradient(180deg, #154c94 0%, #1a5ab3 35%, #2268c7 70%, #1754a1 100%);
-    background-attachment: fixed;
-    color: #ffffff;
+    background-color: #0d1117;
+    color: #f0f6fc;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
@@ -38,30 +37,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Space Grotesk", "Plus Jakarta Sans", "Inter", sans-serif;
-    letter-spacing: -0.025em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 3px;
-  }
-
-  .material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-    user-select: none;
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
   }
 
   .pb-safe {
@@ -73,83 +55,20 @@
   }
 }
 
-@layer components {
-  /* Celestial Glassmorphic Cards */
-  .glass-card {
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: 0 16px 40px -12px rgba(8, 28, 68, 0.35);
-  }
-
-  .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .glass-card-hover:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.35);
-    transform: translateY(-2px);
-    box-shadow: 0 20px 48px -10px rgba(8, 28, 68, 0.45);
-  }
-
-  /* Celestial Action Buttons */
-  .btn-celestial-primary {
-    @apply inline-flex items-center justify-center font-bold px-5 py-2.5 rounded-full bg-white hover:bg-sky-50 text-[#144b91] hover:text-[#0f3c78] shadow-lg shadow-blue-950/25 active:scale-95 transition-all duration-200 cursor-pointer;
-  }
-
-  .btn-celestial-glass {
-    @apply inline-flex items-center justify-center font-semibold px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/25 hover:border-white/40 active:scale-95 transition-all duration-200 cursor-pointer;
-  }
-
-  /* High contrast primary action button */
-  .btn-primary-contrast {
-    @apply inline-flex items-center justify-center font-bold px-4 py-3 rounded-xl bg-white hover:bg-emerald-400 text-zinc-950 hover:text-zinc-950 shadow-md active:scale-95 transition-all duration-200 cursor-pointer;
-  }
-  
-  /* High contrast emerald button */
-  .btn-emerald-contrast {
-    @apply inline-flex items-center justify-center font-bold px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 hover:text-zinc-950 shadow-lg shadow-emerald-500/20 active:scale-95 transition-all duration-200 cursor-pointer;
-  }
-
-  /* High contrast secondary button */
-  .btn-secondary-contrast {
-    @apply inline-flex items-center justify-center font-semibold px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/35 active:scale-95 transition-all duration-200 cursor-pointer;
-  }
-
-  /* Filter pill active */
-  .pill-active-contrast {
-    @apply bg-white hover:bg-sky-50 text-[#144b91] hover:text-[#0f3c78] font-bold border border-white shadow-md shadow-blue-950/20;
-  }
-
-  /* Filter pill inactive */
-  .pill-inactive-contrast {
-    @apply bg-white/10 hover:bg-white/20 text-white/80 hover:text-white border border-white/15 hover:border-white/30 font-medium;
-  }
-}
-
-/* Utility to hide scrollbars while keeping scroll functionality */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar estilo GitHub Dark */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #0d1117;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #30363d;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: #58a6ff;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Design Tokens — Celestial Studio (Azure Sky, Ethereal Clouds & Pure White)
+   Design Tokens — Deep Luxury Midnight Celestial (Deep Azure, Ethereal Cyan & Pure White)
    ========================================================================== */
 
 :root {
-  /* Celestial Blue Base & Surfaces */
-  --bg-dark: #144b91;
-  --bg-dark-secondary: #1754a1;
-  --bg-dark-card: rgba(255, 255, 255, 0.10);
-  --bg-dark-card-hover: rgba(255, 255, 255, 0.16);
-  --border-dark: rgba(255, 255, 255, 0.18);
-  --border-dark-hover: rgba(255, 255, 255, 0.35);
-  --border-dark-strong: rgba(255, 255, 255, 0.28);
+  /* Deep Midnight Azure Base & Surfaces */
+  --bg-dark: #060e18;
+  --bg-dark-secondary: #0a1626;
+  --bg-dark-card: rgba(10, 22, 38, 0.80);
+  --bg-dark-card-hover: rgba(14, 32, 56, 0.90);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-dark-hover: rgba(56, 189, 248, 0.35);
+  --border-dark-strong: rgba(255, 255, 255, 0.22);
 
   /* Primary Brand Tones */
   --color-primary: #ffffff;
   --color-primary-hover: #f0f7ff;
-  --color-primary-text: #144b91;
+  --color-primary-text: #0a1626;
   
   /* Celestial Accents */
   --color-accent-cyan: #38bdf8;
@@ -26,9 +26,9 @@
   /* Typography Colors */
   --text-dark-primary: #ffffff;
   --text-dark-secondary: #e0edff;
-  --text-dark-muted: #bfdbfe;
+  --text-dark-muted: #93c5fd;
 
   /* Shadows & Ambient Glows */
-  --shadow-card-dark: 0 16px 40px -10px rgba(10, 30, 70, 0.3), 0 0 1px 1px rgba(255, 255, 255, 0.15);
-  --shadow-btn-primary: 0 8px 24px rgba(10, 35, 80, 0.25), 0 2px 6px rgba(255, 255, 255, 0.2);
+  --shadow-card-dark: 0 24px 60px -15px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.1);
+  --shadow-btn-primary: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(255, 255, 255, 0.2);
 }
