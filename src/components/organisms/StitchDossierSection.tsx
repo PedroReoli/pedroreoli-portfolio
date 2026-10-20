@@ -57,7 +57,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({
                   href={companyLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#58a6ff] transition-colors"
+                  className="hover:text-[#3fb950] transition-colors"
                 >
                   {company}
                 </a>
@@ -65,7 +65,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({
                 company
               )}
             </h3>
-            <span className="text-[#58a6ff] text-xs sm:text-sm font-medium">
+            <span className="text-[#3fb950] text-xs sm:text-sm font-medium">
               {position}
             </span>
           </div>
@@ -98,7 +98,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({
         </ul>
 
         <div className="flex items-center gap-2 text-[#8b949e] font-mono text-xs flex-wrap pt-2.5 border-t border-[#21262d]">
-          <Terminal className="w-3.5 h-3.5 text-[#58a6ff] shrink-0" />
+          <Terminal className="w-3.5 h-3.5 text-[#8b949e] shrink-0" />
           <span>{techs}</span>
         </div>
       </div>
@@ -133,7 +133,7 @@ export const StitchDossierSection: React.FC = () => {
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5">
           <div className="flex items-center gap-2">
-            <Milestone className="w-5 h-5 text-[#58a6ff]" />
+            <Milestone className="w-5 h-5 text-[#3fb950]" />
             <h2 className="font-bold text-[#f0f6fc] text-xl sm:text-2xl tracking-tight">
               {isEn ? "Professional Experience" : "Experiência Profissional"}
             </h2>
@@ -233,8 +233,8 @@ export const StitchDossierSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#58a6ff]/40 transition-colors">
-            <div className="flex items-center gap-2 text-[#58a6ff]">
+          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#3fb950]/40 transition-colors">
+            <div className="flex items-center gap-2 text-[#3fb950]">
               <Layers className="w-4 h-4" />
               <h3 className="font-semibold text-xs sm:text-sm text-[#f0f6fc]">
                 Frontend &amp; Design Systems
@@ -257,8 +257,8 @@ export const StitchDossierSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#a371f7]/40 transition-colors">
-            <div className="flex items-center gap-2 text-[#a371f7]">
+          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#3fb950]/40 transition-colors">
+            <div className="flex items-center gap-2 text-[#3fb950]">
               <Database className="w-4 h-4" />
               <h3 className="font-semibold text-xs sm:text-sm text-[#f0f6fc]">
                 Dados &amp; Local-First
@@ -269,8 +269,8 @@ export const StitchDossierSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#f0883e]/40 transition-colors">
-            <div className="flex items-center gap-2 text-[#f0883e]">
+          <div className="p-4 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col gap-1.5 hover:border-[#3fb950]/40 transition-colors">
+            <div className="flex items-center gap-2 text-[#3fb950]">
               <Bot className="w-4 h-4" />
               <h3 className="font-semibold text-xs sm:text-sm text-[#f0f6fc]">
                 Engenharia de IA &amp; MCP
@@ -305,7 +305,7 @@ export const StitchDossierSection: React.FC = () => {
 
           <motion.div
             style={{ scaleY: educationScrollProgress }}
-            className="absolute left-[17px] sm:left-[25px] top-6 w-[4px] h-[calc(100%-3rem)] bg-[#58a6ff] origin-top pointer-events-none rounded-full"
+            className="absolute left-[17px] sm:left-[25px] top-6 w-[4px] h-[calc(100%-3rem)] bg-[#238636] origin-top pointer-events-none rounded-full"
             aria-hidden="true"
           />
 
@@ -373,7 +373,7 @@ export const StitchDossierSection: React.FC = () => {
               <div className="bg-[#161b22] rounded-xl p-5 sm:p-6 border border-[#30363d] flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="flex flex-col gap-1.5 max-w-2xl">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded-md bg-[#21262d] text-[#58a6ff] font-mono text-xs border border-[#30363d]">
+                    <span className="px-2 py-0.5 rounded-md bg-[#21262d] text-[#c9d1d9] font-mono text-xs border border-[#30363d]">
                       GRADUAÇÃO (BACHARELADO)
                     </span>
                     <span className="font-mono text-xs text-[#8b949e]">2022 — 2025</span>
@@ -381,7 +381,7 @@ export const StitchDossierSection: React.FC = () => {
                   <h3 className="font-bold text-[#f0f6fc] text-base sm:text-lg">
                     Bacharelado em Sistemas de Informação
                   </h3>
-                  <p className="text-[#58a6ff] text-xs sm:text-sm font-medium">
+                  <p className="text-[#3fb950] text-xs sm:text-sm font-medium">
                     Centro Universitário de Volta Redonda (UniFOA)
                   </p>
                   <p className="text-[#8b949e] text-xs sm:text-sm leading-relaxed">
@@ -411,7 +411,7 @@ export const StitchDossierSection: React.FC = () => {
               <div className="bg-[#161b22] rounded-xl p-5 sm:p-6 border border-[#30363d] flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="flex flex-col gap-1.5 max-w-2xl">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded-md bg-[#21262d] text-[#a371f7] font-mono text-xs border border-[#30363d]">
+                    <span className="px-2 py-0.5 rounded-md bg-[#21262d] text-[#c9d1d9] font-mono text-xs border border-[#30363d]">
                       ESPECIALIZAÇÃO
                     </span>
                     <span className="font-mono text-xs text-[#8b949e]">200 HORAS &bull; 2026</span>
@@ -419,7 +419,7 @@ export const StitchDossierSection: React.FC = () => {
                   <h3 className="font-bold text-[#f0f6fc] text-base sm:text-lg">
                     Formação Front-end e UX/UI Design
                   </h3>
-                  <p className="text-[#58a6ff] text-xs sm:text-sm font-medium">
+                  <p className="text-[#3fb950] text-xs sm:text-sm font-medium">
                     Origamid Brasil
                   </p>
                   <p className="text-[#8b949e] text-xs sm:text-sm leading-relaxed">
@@ -458,7 +458,7 @@ export const StitchDossierSection: React.FC = () => {
                     Leitura técnica fluida, elaboração de documentações (RFCs, ADRs) e conversação profissional para atuação em times remotos.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-md bg-[#21262d] text-[#58a6ff] font-mono text-xs border border-[#30363d] shrink-0">
+                <span className="px-3 py-1 rounded-md bg-[#21262d] text-[#3fb950] font-mono text-xs border border-[#30363d] shrink-0 font-medium">
                   Global Ready
                 </span>
               </div>

@@ -12,36 +12,36 @@ export const LiIcon: React.FC<LiIconProps> = ({ reference }) => {
   })
 
   return (
-    <figure className="absolute left-0 stroke-white/80 pointer-events-none select-none z-10">
+    <figure className="absolute left-[8px] sm:left-[16px] top-6 pointer-events-none select-none z-10 -translate-y-1/2">
       <svg
-        className="-rotate-90 w-[45px] h-[45px] sm:w-[60px] sm:h-[60px] lg:w-[75px] lg:h-[75px] drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]"
-        viewBox="0 0 100 100"
+        className="-rotate-90 w-5 h-5 sm:w-6 sm:h-6"
+        viewBox="0 0 24 24"
       >
-        {/* Anel Externo Fixo */}
+        {/* Anel Externo Fixo estilo Git Commit */}
         <circle
-          cx="75"
-          cy="50"
-          r="20"
-          className="stroke-cyan-400/40 stroke-[2px] fill-transparent"
+          cx="12"
+          cy="12"
+          r="9"
+          className="stroke-[#30363d] stroke-[2px] fill-[#0d1117]"
         />
 
-        {/* Anel de Progresso Conectado ao Scroll da Linha */}
+        {/* Anel de Progresso Verde Commit GitHub */}
         <motion.circle
-          cx="75"
-          cy="50"
-          r="20"
-          className="stroke-[4px] stroke-cyan-300 fill-white/15 backdrop-blur-sm"
+          cx="12"
+          cy="12"
+          r="9"
+          className="stroke-[2.5px] stroke-[#3fb950] fill-transparent"
           style={{
             pathLength: scrollYProgress,
           }}
         />
 
-        {/* Núcleo Pulsante Celestial */}
+        {/* Ponto Central Sólido (Commit Node) */}
         <circle
-          cx="75"
-          cy="50"
-          r="9"
-          className="animate-pulse stroke-1 stroke-white fill-cyan-400"
+          cx="12"
+          cy="12"
+          r="4"
+          className="fill-[#238636] stroke-none"
         />
       </svg>
     </figure>
@@ -49,3 +49,4 @@ export const LiIcon: React.FC<LiIconProps> = ({ reference }) => {
 }
 
 export default LiIcon
+

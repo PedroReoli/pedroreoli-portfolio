@@ -112,109 +112,149 @@ export const StitchHeroProjects: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          ATO 2: DESTAQUES DE IMPRENSA & PROVA SOCIAL LEGÍTIMA
+          ATO 2: DESTAQUES DE IMPRENSA & PROVA SOCIAL (EDITORIAL SHOWCASE)
           ========================================================================= */}
       <section
         id="reconhecimento-imprensa"
-        className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-8"
+        className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-10"
       >
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {/* Header da Seção de Imprensa */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#3fb950]" />
-              <span className="text-xs font-mono font-semibold text-[#3fb950] uppercase tracking-wider">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#30363d] pb-3">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#3fb950] animate-pulse" />
+              <h2 className="text-sm sm:text-base font-bold font-mono text-[#f0f6fc] uppercase tracking-wider">
                 {isEn ? "Press & Public Recognition" : "Reconhecimento na Imprensa & Mídia"}
-              </span>
+              </h2>
             </div>
-            <span className="text-xs font-mono text-[#8b949e]">
-              JORNAL CORREIO DA MANHÃ &bull; PORTAL UNIFOA
-            </span>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#8b949e]">
+              <span>JORNAL CORREIO DA MANHÃ</span>
+              <span>&bull;</span>
+              <span>PORTAL UNIFOA</span>
+            </div>
           </div>
 
-          {/* Card Editorial Clean Estilo GitHub Dark */}
-          <div className="rounded-xl bg-[#161b22] border border-[#30363d] p-6 sm:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Lado Esquerdo: Manchete, Citação e Links */}
-              <div className="lg:col-span-7 flex flex-col gap-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#21262d] border border-[#30363d] text-xs font-mono text-[#c9d1d9]">
-                    Correio da Manhã
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#21262d] border border-[#30363d] text-xs font-mono text-[#58a6ff]">
-                    UniFOA Notícias
-                  </span>
-                  <span className="text-xs font-mono text-[#8b949e]">
-                    Julho / 2026
-                  </span>
-                </div>
+          {/* Master Card Editorial Estilo GitHub Dark */}
+          <div className="rounded-2xl bg-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl flex flex-col">
+            {/* Topo: Badges de Cobertura */}
+            <div className="px-6 sm:px-8 pt-6 sm:pt-7 pb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#21262d] bg-[#0d1117]/60">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-md bg-[#21262d] border border-[#30363d] text-xs font-mono font-semibold text-[#f0f6fc]">
+                  Correio da Manhã
+                </span>
+                <span className="px-3 py-1 rounded-md bg-[#21262d] border border-[#30363d] text-xs font-mono font-semibold text-[#3fb950]">
+                  UniFOA Notícias
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-[#0d1117] text-xs font-mono text-[#8b949e] border border-[#21262d]">
+                  Destaque Regional
+                </span>
+              </div>
+              <span className="text-xs font-mono text-[#8b949e]">
+                Julho / 2026 &bull; Educação &amp; Saúde Assistiva
+              </span>
+            </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-[#f0f6fc] tracking-tight leading-snug">
+            {/* Conteúdo Editorial */}
+            <div className="p-6 sm:p-8 flex flex-col gap-6">
+              <div className="flex flex-col gap-3">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#f0f6fc] tracking-tight leading-tight">
                   {isEn
                     ? "UniFOA Alumnus Pedro Lucas Creates Tech Platform to Support Children with Speech Delay"
                     : "Egresso do UniFOA cria plataforma para apoiar crianças com atraso de fala"}
                 </h3>
-
-                <blockquote className="p-4 rounded-lg bg-[#0d1117] border-l-4 border-l-[#238636] border border-[#21262d] flex flex-col gap-1.5">
-                  <p className="text-sm italic text-[#c9d1d9] leading-relaxed">
-                    &ldquo;O FalaAtípica dá voz a quem ainda não pode falar, unindo a
-                    criança, a família e os terapeutas em uma jornada contínua e
-                    mensurável.&rdquo;
-                  </p>
-                  <cite className="text-xs font-mono text-[#3fb950] not-italic font-semibold">
-                    &mdash; Pedro Lucas Reis, entrevista ao Correio da Manhã &amp; UniFOA
-                  </cite>
-                </blockquote>
-
-                <p className="text-xs sm:text-sm text-[#8b949e] leading-relaxed">
-                  Ecossistema multiplataforma desenvolvido para apoiar crianças com
-                  atraso de fala e TEA, com jogos clínicos de reforço positivo e telemetria
-                  para fonoaudiólogos e psicólogos.
+                <p className="text-sm sm:text-base text-[#c9d1d9] leading-relaxed max-w-4xl">
+                  {isEn
+                    ? "FalaAtípica was conceived, architected, and engineered by Pedro Lucas Reis as an assistive digital health ecosystem designed to bridge children with speech delay and ASD to clinicians, therapists, and families through clinically validated games and telemetry."
+                    : "O FalaAtípica foi concebido, arquitetado e desenvolvido por Pedro Lucas Reis como um ecossistema digital de saúde assistiva, conectando crianças com atraso no desenvolvimento da fala e TEA a terapeutas, psicólogos e familiares por meio de mecânicas lúdicas de reforço positivo e telemetria clínica."}
                 </p>
+              </div>
 
-                {/* Links Externos Oficiais com Ícones Limpos */}
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <a
-                    href="https://www.correiodamanha.com.br/sul-fluminense/educacao/2026/07/303632-egresso-do-unifoa-cria-plataforma-de-auxilio-infantil.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-[#f0f6fc] font-medium text-xs transition-colors border border-[#30363d]"
-                  >
-                    <span>Ler no Correio da Manhã</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#8b949e]" />
-                  </a>
+              {/* Bloco de Citação Editorial */}
+              <blockquote className="p-5 sm:p-6 rounded-xl bg-[#0d1117] border-l-4 border-l-[#238636] border border-[#21262d] flex flex-col gap-2">
+                <p className="text-base sm:text-lg italic text-[#f0f6fc] leading-relaxed">
+                  &ldquo;O FalaAtípica dá voz a quem ainda não pode falar, unindo a criança, a família e os terapeutas em uma jornada contínua, acolhedora e mensurável.&rdquo;
+                </p>
+                <cite className="text-xs font-mono text-[#3fb950] not-italic font-semibold">
+                  &mdash; Pedro Lucas Reis, entrevista ao Jornal Correio da Manhã &amp; Portal UniFOA
+                </cite>
+              </blockquote>
 
-                  <a
-                    href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-[#f0f6fc] font-medium text-xs transition-colors border border-[#30363d]"
-                  >
-                    <span>Ler no Portal UniFOA</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#58a6ff]" />
-                  </a>
+              {/* Botões de Acesso às Reportagens Oficiais */}
+              <div className="flex flex-wrap gap-3 pt-1">
+                <a
+                  href="https://www.correiodamanha.com.br/sul-fluminense/educacao/2026/07/303632-egresso-do-unifoa-cria-plataforma-de-auxilio-infantil.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-[#f0f6fc] hover:text-white font-medium text-xs sm:text-sm transition-all border border-[#30363d] shadow-sm hover:border-[#8b949e]"
+                >
+                  <span>Ler reportagem no Correio da Manhã</span>
+                  <ExternalLink className="w-4 h-4 text-[#8b949e]" />
+                </a>
+
+                <a
+                  href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-[#f0f6fc] hover:text-[#3fb950] font-medium text-xs sm:text-sm transition-all border border-[#30363d] shadow-sm hover:border-[#3fb950]"
+                >
+                  <span>Ler matéria no Portal UniFOA</span>
+                  <ExternalLink className="w-4 h-4 text-[#3fb950]" />
+                </a>
+              </div>
+
+              {/* Showcase Widescreen da Foto Oficial (Proporção Natural 1280x577) */}
+              <div className="flex flex-col gap-2 pt-2">
+                <div className="relative w-full rounded-xl overflow-hidden border border-[#30363d] bg-[#0d1117] shadow-xl group">
+                  <div className="relative w-full overflow-hidden aspect-[1280/577]">
+                    <img
+                      src="/TCC-img2.png"
+                      alt="Pedro Lucas Reis apresentando a plataforma FalaAtípica no Centro Universitário de Volta Redonda (UniFOA)"
+                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/70 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Legenda Técnica da Foto */}
+                <div className="px-3.5 py-2.5 rounded-lg bg-[#0d1117] border border-[#21262d] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-[#8b949e]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#3fb950]" />
+                    <span className="text-[#c9d1d9] font-medium">
+                      Registro Fotográfico Oficial: Apresentação e Demonstração Técnica do FalaAtípica
+                    </span>
+                  </div>
+                  <span>Auditório UniFOA &bull; Volta Redonda - RJ</span>
                 </div>
               </div>
 
-              {/* Lado Direito: Imagem do Congresso / TCC */}
-              <div className="lg:col-span-5 flex flex-col items-center justify-center">
-                <div className="w-full max-w-sm rounded-xl overflow-hidden border border-[#30363d] bg-[#0d1117] shadow-lg flex flex-col">
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#0d1117] flex items-center justify-center p-2">
-                    <img
-                      src="/TCC-img2.png"
-                      alt="3º Congresso Tudo é Ciência: No Combate à Desinformação — UniFOA"
-                      className="w-full h-full object-contain rounded-lg"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-3 bg-[#161b22] border-t border-[#30363d] flex flex-col gap-1 text-center">
-                    <span className="font-mono text-xs font-semibold text-[#f0f6fc]">
-                      3º Congresso Tudo é Ciência &bull; UniFOA
-                    </span>
-                    <span className="text-[11px] text-[#8b949e]">
-                      Apresentação &amp; publicação de artigo científico
-                    </span>
-                  </div>
+              {/* 3 Pilares Técnicos de Impacto */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className="p-4 rounded-xl bg-[#0d1117] border border-[#21262d] flex flex-col gap-1.5">
+                  <span className="text-[11px] font-mono text-[#3fb950] uppercase tracking-wider font-semibold">
+                    Validação Clínica
+                  </span>
+                  <p className="text-xs text-[#8b949e] leading-relaxed">
+                    Jogos estruturados com fonoaudiólogos e psicólogos para reforço positivo da fala.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0d1117] border border-[#21262d] flex flex-col gap-1.5">
+                  <span className="text-[11px] font-mono text-[#3fb950] uppercase tracking-wider font-semibold">
+                    Acessibilidade WCAG 2.2
+                  </span>
+                  <p className="text-xs text-[#8b949e] leading-relaxed">
+                    Interface de alto contraste, elementos ampliados e navegação adaptada para uso infantil.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0d1117] border border-[#21262d] flex flex-col gap-1.5">
+                  <span className="text-[11px] font-mono text-[#3fb950] uppercase tracking-wider font-semibold">
+                    Telemetria em Tempo Real
+                  </span>
+                  <p className="text-xs text-[#8b949e] leading-relaxed">
+                    Dashboards de tempo de resposta, acertos e evolução diária para acompanhamento clínico.
+                  </p>
                 </div>
               </div>
             </div>
