@@ -71,8 +71,12 @@ export const StitchHeroProjects: React.FC = () => {
 
         <div className="editorial-container flex min-h-0 items-center">
           <h1 className="hero-video-title w-full font-black uppercase text-white" aria-label="Pedro Reoli">
-            <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
-            <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>REOLI</AnimatedWord>
+            <span className="hero-name-word">
+              <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
+            </span>
+            <span className="hero-name-word hero-name-outline">
+              <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>REOLI</AnimatedWord>
+            </span>
           </h1>
         </div>
 

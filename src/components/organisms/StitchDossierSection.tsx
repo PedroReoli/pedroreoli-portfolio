@@ -88,6 +88,29 @@ const experience = [
   },
 ]
 
+const expertise = [
+  {
+    title: "Interfaces",
+    descriptionPt: "Produtos claros, acessíveis e consistentes — do sistema visual à interação.",
+    descriptionEn: "Clear, accessible and consistent products — from visual systems to interaction.",
+  },
+  {
+    title: "Back-end",
+    descriptionPt: "APIs, integrações e dados preparados para sustentar a operação real.",
+    descriptionEn: "APIs, integrations and data foundations built for real operations.",
+  },
+  {
+    title: "AI agents",
+    descriptionPt: "Agentes úteis, observáveis e conectados às ferramentas certas.",
+    descriptionEn: "Useful, observable agents connected to the right tools.",
+  },
+  {
+    title: "Systems",
+    descriptionPt: "Arquitetura e automação para transformar complexidade em fluxo.",
+    descriptionEn: "Architecture and automation that turn complexity into flow.",
+  },
+]
+
 export const StitchDossierSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
@@ -283,14 +306,36 @@ export const StitchDossierSection: React.FC = () => {
         </div>
       </section>
 
-      <section className="expertise-stage flex h-[100svh] items-center overflow-hidden border-y border-white/10" aria-label={isEn ? "Areas of expertise" : "Áreas de atuação"}>
-        <div className="editorial-container grid h-[72svh] grid-cols-2 md:grid-cols-4">
-          {["Interfaces", "Back-end", "AI agents", "Systems"].map((item, index) => (
-            <div key={item} className="flex flex-col justify-between border-b border-r border-white/10 p-5 even:border-r-0 md:border-b-0 md:border-r md:p-7 md:even:border-r md:last:border-r-0">
-              <span className="editorial-label text-[#77736f]">0{index + 1}</span>
-              <h3 className="expertise-title font-bold tracking-[-0.055em] text-[#edeae4]">{item}</h3>
+      <section className="expertise-stage h-[100svh] overflow-hidden border-y border-white/10" aria-label={isEn ? "Areas of expertise" : "Áreas de atuação"}>
+        <div className="editorial-container expertise-stage-layout">
+          <Reveal className="expertise-intro flex flex-col justify-between border-b border-white/15 pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
+            <div className="flex items-start justify-between gap-5 lg:block">
+              <p className="editorial-label text-[#82aaff]">{isEn ? "What I build" : "O que eu construo"}</p>
+              <p className="editorial-label text-right text-[#77736f] lg:mt-4 lg:text-left">04 / {isEn ? "disciplines" : "disciplinas"}</p>
             </div>
-          ))}
+            <div>
+              <h2 className="expertise-heading font-black uppercase text-[#edeae4]">
+                {isEn ? <>FROM CODE<br /><span className="text-outline">TO PRODUCT.</span></> : <>DO CÓDIGO<br /><span className="text-outline">AO PRODUTO.</span></>}
+              </h2>
+              <p className="expertise-summary mt-4 max-w-md text-[#96918b]">
+                {isEn
+                  ? "I connect design, engineering and intelligence to put complete products into motion."
+                  : "Conecto design, engenharia e inteligência para colocar produtos completos em movimento."}
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="expertise-list min-h-0">
+            {expertise.map((item, index) => (
+              <Reveal key={item.title} className="expertise-row group" delay={index * 0.05} distance={18}>
+                <span className="editorial-label text-[#77736f] transition-colors group-hover:text-[#82aaff]">0{index + 1}</span>
+                <h3 className="expertise-title font-bold tracking-[-0.055em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">{item.title}</h3>
+                <p className="expertise-description text-[#8f8a84]">
+                  {isEn ? item.descriptionEn : item.descriptionPt}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </div>

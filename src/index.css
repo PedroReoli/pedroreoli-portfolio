@@ -13,7 +13,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 0;
     color-scheme: dark;
     background: #111010;
   }
@@ -72,22 +72,32 @@
   }
 
   .hero-video-title {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: start;
-    gap: 0.12em;
-    font-size: clamp(4.75rem, min(11vw, 18vh), 12.5rem);
-    line-height: 0.76;
-    letter-spacing: -0.085em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: clamp(5.25rem, min(14vw, 19vh), 13.5rem);
+    font-stretch: 82%;
+    font-variation-settings: "wdth" 82;
+    line-height: 0.72;
+    letter-spacing: -0.09em;
   }
 
   .hero-shell {
     height: 100svh;
   }
 
-  .hero-video-title > span:last-child {
+  .hero-name-word {
+    display: block;
+    padding-inline: 0.04em 0.12em;
+    padding-block: 0.12em;
+  }
+
+  .hero-name-outline {
     color: transparent;
-    -webkit-text-stroke: 1.5px #ffffff;
+    -webkit-text-stroke: 2px #ffffff;
+    font-stretch: 96%;
+    font-variation-settings: "wdth" 96;
+    paint-order: stroke fill;
   }
 
   .hero-statement {
@@ -108,10 +118,10 @@
   .project-stage-layout {
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr);
-    gap: clamp(0.65rem, 1.8vh, 1.25rem);
+    gap: clamp(0.5rem, 1.3vh, 1rem);
     height: 100%;
     padding-top: clamp(4.75rem, 10vh, 6rem);
-    padding-bottom: clamp(0.85rem, 2.5vh, 2.5rem);
+    padding-bottom: clamp(0.65rem, 1.7vh, 1.5rem);
   }
 
   .project-stage-title {
@@ -122,8 +132,8 @@
 
   .project-feature {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.75fr);
-    gap: clamp(1.5rem, 4vw, 5rem);
+    grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 0.65fr);
+    gap: clamp(1.5rem, 3vw, 4rem);
     height: 100%;
   }
 
@@ -135,6 +145,14 @@
 
   .project-feature-description {
     font-size: clamp(0.8rem, min(1.1vw, 2.2vh), 1.05rem);
+  }
+
+  .project-switcher {
+    scrollbar-width: none;
+  }
+
+  .project-switcher::-webkit-scrollbar {
+    display: none;
   }
 
   .stack-stage-layout {
@@ -204,8 +222,46 @@
   }
 
   .expertise-title {
-    font-size: clamp(1.7rem, min(4vw, 7vh), 4rem);
-    line-height: 0.9;
+    font-size: clamp(1.85rem, min(4vw, 6.5vh), 4.25rem);
+    line-height: 0.88;
+  }
+
+  .expertise-stage-layout {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(2rem, 5vw, 6rem);
+    height: 100%;
+    padding-top: clamp(5rem, 11vh, 7rem);
+    padding-bottom: clamp(1.5rem, 4vh, 3.5rem);
+  }
+
+  .expertise-heading {
+    font-size: clamp(3.6rem, min(7vw, 10vh), 7.5rem);
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+  }
+
+  .expertise-summary,
+  .expertise-description {
+    font-size: clamp(0.8rem, min(1.05vw, 2vh), 1rem);
+    line-height: 1.55;
+  }
+
+  .expertise-list {
+    display: grid;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .expertise-row {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(10rem, 0.8fr) minmax(12rem, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 3rem);
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .expertise-row:first-child {
+    border-top: 1px solid rgb(255 255 255 / 0.1);
   }
 
   .footer-cta {
@@ -271,16 +327,11 @@
 
 @media (max-width: 420px) {
   .hero-video-title {
-    display: block;
-    font-size: clamp(4rem, min(21vw, 13vh), 6rem);
-    line-height: 0.74;
+    font-size: clamp(4.25rem, min(23vw, 14vh), 6.25rem);
+    line-height: 0.7;
   }
 
-  .hero-video-title > span + span {
-    margin-left: 0.38em;
-  }
-
-  .hero-video-title > span:last-child {
+  .hero-name-outline {
     -webkit-text-stroke-width: 1px;
   }
 
@@ -290,6 +341,15 @@
 
   .project-stage-title {
     font-size: 2.05rem;
+  }
+
+  .project-switcher {
+    gap: 0.75rem;
+  }
+
+  .project-switcher button {
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
   }
 
   .technology-title {
@@ -317,7 +377,7 @@
 @media (max-width: 639px) {
   .project-feature {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1.25fr) auto;
     gap: clamp(0.7rem, 2vh, 1rem);
   }
 
@@ -336,6 +396,38 @@
   .stack-icon-item:nth-child(3n) {
     border-right: 0;
   }
+
+  .expertise-stage-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(0.8rem, 2.2vh, 1.25rem);
+    padding-top: clamp(4.75rem, 9vh, 5.5rem);
+    padding-bottom: clamp(0.85rem, 2vh, 1.25rem);
+  }
+
+  .expertise-heading {
+    font-size: clamp(2.65rem, min(13.5vw, 7.5vh), 4rem);
+  }
+
+  .expertise-summary {
+    margin-top: 0.65rem;
+    font-size: clamp(0.72rem, 3vw, 0.85rem);
+    line-height: 1.4;
+  }
+
+  .expertise-row {
+    grid-template-columns: 1.75rem minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 0.55rem;
+  }
+
+  .expertise-title {
+    font-size: clamp(1.35rem, min(6.5vw, 4.3vh), 2rem);
+  }
+
+  .expertise-description {
+    font-size: clamp(0.64rem, min(2.7vw, 1.65vh), 0.78rem);
+    line-height: 1.3;
+  }
 }
 
 @media (min-width: 640px) {
@@ -352,7 +444,7 @@
 
 @media (max-height: 680px) and (min-width: 421px) {
   .hero-video-title {
-    font-size: clamp(4.25rem, min(10vw, 16vh), 9rem);
+    font-size: clamp(4.5rem, min(12vw, 17vh), 8.5rem);
   }
 
   .hero-statement {
@@ -384,6 +476,11 @@
   .footer-stage-layout {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .expertise-stage-layout {
+    padding-top: 4.65rem;
+    padding-bottom: 0.75rem;
   }
 }
 
