@@ -1,11 +1,12 @@
-import React from "react"
+import React, { Suspense, lazy } from "react"
 import SEOHead from "../components/atoms/SEOHead"
 import StitchHeader from "../components/organisms/StitchHeader"
 import StitchHeroProjects from "../components/organisms/StitchHeroProjects"
-import StitchDossierSection from "../components/organisms/StitchDossierSection"
 import StitchFooter from "../components/organisms/StitchFooter"
 import TransitionEffect from "../components/atoms/TransitionEffect"
 import { useLanguage } from "../i18n/useLanguage"
+
+const StitchDossierSection = lazy(() => import("../components/organisms/StitchDossierSection"))
 
 export const HomePage: React.FC = () => {
   const { language } = useLanguage()
@@ -34,7 +35,17 @@ export const HomePage: React.FC = () => {
       <StitchHeader />
       <StitchHeroProjects />
       <main>
-        <StitchDossierSection />
+        <Suspense
+          fallback={(
+            <section className="grid min-h-[100svh] place-items-center border-y border-white/10" role="status">
+              <span className="editorial-label text-[#77736f]">
+                {isEn ? "Loading selected work" : "Carregando projetos selecionados"}
+              </span>
+            </section>
+          )}
+        >
+          <StitchDossierSection />
+        </Suspense>
       </main>
       <StitchFooter />
     </div>
