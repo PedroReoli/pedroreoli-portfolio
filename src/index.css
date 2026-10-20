@@ -71,32 +71,18 @@
     text-transform: uppercase;
   }
 
-  .hero-display {
-    font-size: clamp(5rem, min(15vw, 19vh), 14rem);
-    font-weight: 900;
-    line-height: 0.72;
+  .hero-video-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 0.16em;
+    font-size: clamp(4.75rem, min(11vw, 18vh), 12.5rem);
+    line-height: 0.76;
     letter-spacing: -0.085em;
-  }
-
-  .hero-word-outline {
-    margin-top: -0.04em;
-    margin-left: clamp(2.5rem, 15vw, 14rem);
   }
 
   .hero-shell {
     height: 100svh;
-  }
-
-  .hero-content-grid {
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    gap: clamp(0.7rem, 1.5vh, 1.25rem);
-  }
-
-  .hero-media {
-    aspect-ratio: 4 / 5;
-    height: min(45vh, 31rem);
-    max-height: 100%;
   }
 
   .hero-statement {
@@ -210,18 +196,14 @@
 }
 
 @media (max-width: 420px) {
-  .hero-display {
-    font-size: clamp(3.35rem, min(20vw, 10vh), 5rem);
-    line-height: 0.78;
+  .hero-video-title {
+    display: block;
+    font-size: clamp(4rem, min(21vw, 13vh), 6rem);
+    line-height: 0.74;
   }
 
-  .hero-media {
-    right: 4%;
-    height: min(34vh, 15.5rem);
-  }
-
-  .hero-word-outline {
-    margin-left: clamp(1.25rem, 12vw, 3rem);
+  .hero-video-title > span + span {
+    margin-left: 0.38em;
   }
 
   .hero-statement {
@@ -234,10 +216,6 @@
 
   .hero-project-label-short {
     display: inline;
-  }
-
-  .video-ready {
-    display: none;
   }
 
   .text-outline {
@@ -259,12 +237,8 @@
 }
 
 @media (max-height: 680px) and (min-width: 421px) {
-  .hero-display {
-    font-size: clamp(4.5rem, min(13vw, 17vh), 10rem);
-  }
-
-  .hero-media {
-    height: min(40vh, 22rem);
+  .hero-video-title {
+    font-size: clamp(4.25rem, min(10vw, 16vh), 9rem);
   }
 
   .hero-statement {
