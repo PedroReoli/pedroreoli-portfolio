@@ -122,9 +122,9 @@ export const StitchDossierSection: React.FC = () => {
     <div className="w-full">
       <section id="projetos-selecionados" className="project-stage h-[100svh] overflow-hidden">
         <div className="editorial-container project-stage-layout">
-          <Reveal className="flex items-end justify-between border-b border-white/10 pb-3 sm:pb-4">
+          <Reveal className="project-stage-heading flex items-end justify-between border-b border-white/10 pb-3 sm:pb-4">
             <div>
-              <p className="editorial-label mb-2 text-[#82aaff]">{isEn ? "Selected work" : "Trabalhos selecionados"}</p>
+              <p className="editorial-label mb-2 text-[#82aaff]">02 / {isEn ? "Selected work" : "Trabalhos selecionados"}</p>
               <h2 className="project-stage-title font-black uppercase text-[#edeae4]">PROJETOS</h2>
             </div>
             <Link
@@ -136,22 +136,22 @@ export const StitchDossierSection: React.FC = () => {
             </Link>
           </Reveal>
 
-          <div className="project-switcher flex items-center gap-5 overflow-x-auto border-b border-white/10 pb-3">
+          <div className="project-switcher flex items-center overflow-x-auto border-b border-white/10">
             {projects.map((project, index) => (
               <button
                 key={project.title}
                 type="button"
                 onClick={() => setActiveProject(index)}
-                className={`editorial-label shrink-0 transition-colors ${activeProject === index ? "text-[#edeae4]" : "text-[#66625e] hover:text-[#aaa6a0]"}`}
+                className={`project-switcher-button editorial-label relative shrink-0 py-3 text-left transition-colors ${activeProject === index ? "text-[#edeae4]" : "text-[#66625e] hover:text-[#aaa6a0]"}`}
                 aria-pressed={activeProject === index}
               >
-                {project.number} / {project.title}
+                <span className="mr-2 text-[#82aaff]">{project.number}</span>{project.title}
               </button>
             ))}
           </div>
 
           <div className="project-feature min-h-0">
-            <figure className="relative min-h-0 overflow-hidden rounded-xl bg-[#1b1a19]">
+            <figure className="project-image-frame group relative min-h-0 overflow-hidden rounded-xl bg-[#1b1a19]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={projects[activeProject].image}
@@ -163,10 +163,13 @@ export const StitchDossierSection: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="project-feature-image absolute inset-0 h-full w-full object-cover"
                 />
               </AnimatePresence>
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <span className="editorial-label absolute right-3 top-3 text-white/75 sm:right-5 sm:top-5">
+                {projects[activeProject].number} — 0{projects.length}
+              </span>
               <span className="editorial-label absolute bottom-3 left-3 text-white sm:bottom-5 sm:left-5">
                 {projects[activeProject].category} / {projects[activeProject].year}
               </span>
@@ -180,18 +183,22 @@ export const StitchDossierSection: React.FC = () => {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                 className="project-feature-copy flex min-h-0 flex-col justify-end"
+                aria-live="polite"
               >
-                <p className="editorial-label mb-2 text-[#77736f]">{projects[activeProject].number} / {projects[activeProject].year}</p>
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="h-px w-8 bg-[#82aaff]" />
+                  <p className="editorial-label text-[#77736f]">{projects[activeProject].number} / {projects[activeProject].year}</p>
+                </div>
                 <h3 className="project-feature-title font-bold text-[#edeae4]">{projects[activeProject].title}</h3>
                 <p className="project-feature-description mt-3 max-w-lg leading-relaxed text-[#9a9690]">
                   {isEn ? projects[activeProject].descriptionEn : projects[activeProject].descriptionPt}
                 </p>
                 {projects[activeProject].external ? (
-                  <a href={projects[activeProject].href} target="_blank" rel="noopener noreferrer" className="project-feature-link mt-4 inline-flex w-fit items-center gap-2 border-b border-white pb-1.5 text-[10px] font-semibold uppercase tracking-[0.12em]">
+                  <a href={projects[activeProject].href} target="_blank" rel="noopener noreferrer" className="project-feature-link mt-5 inline-flex h-11 w-fit items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.12em] transition-colors hover:border-white hover:bg-white hover:text-[#111010]">
                     {isEn ? "Open project" : "Abrir projeto"}<ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 ) : (
-                  <Link to={projects[activeProject].href} className="project-feature-link mt-4 inline-flex w-fit items-center gap-2 border-b border-white pb-1.5 text-[10px] font-semibold uppercase tracking-[0.12em]">
+                  <Link to={projects[activeProject].href} className="project-feature-link mt-5 inline-flex h-11 w-fit items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.12em] transition-colors hover:border-white hover:bg-white hover:text-[#111010]">
                     {isEn ? "Open project" : "Abrir projeto"}<ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
                 )}
