@@ -219,19 +219,71 @@
     padding-bottom: clamp(0.85rem, 2.5vh, 2.5rem);
   }
 
-  .stack-icon-grid {
-    grid-template-rows: repeat(3, minmax(0, 1fr));
+  .stack-index-title {
+    font-size: clamp(2.5rem, min(7vw, 9vh), 6.5rem);
+    line-height: 0.82;
+    letter-spacing: -0.075em;
   }
 
-  .stack-index-title {
-    font-size: clamp(2.5rem, min(6.5vw, 9vh), 6rem);
-    line-height: 0.78;
-    letter-spacing: -0.075em;
+  .stack-title-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #111010;
+  }
+
+  .stack-lanes {
+    display: grid;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .stack-lane {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1.35fr);
+    align-items: center;
+    gap: clamp(1rem, 4vw, 5rem);
+    border-bottom: 1px solid rgb(17 16 16 / 0.2);
+  }
+
+  .stack-lane-heading {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 1.5rem);
+  }
+
+  .stack-lane-title {
+    font-size: clamp(1.45rem, min(3vw, 5vh), 3.4rem);
+    line-height: 0.9;
+  }
+
+  .stack-lane-tools {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(1rem, 3vw, 3.5rem);
+  }
+
+  .stack-tool {
+    display: grid;
+    min-width: 4.5rem;
+    justify-items: center;
+    gap: 0.45rem;
+    color: #403c37;
+    font-size: clamp(0.6rem, 0.85vw, 0.8rem);
+    text-align: center;
+  }
+
+  .stack-brand-icon {
+    font-size: clamp(1.65rem, min(3vw, 4.5vh), 3.3rem);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .stack-brand-icon svg {
     width: 1em;
     height: 1em;
+  }
+
+  .stack-lane:hover .stack-brand-icon {
+    transform: translateY(-0.2rem);
   }
 
   .technology-title {
@@ -460,12 +512,37 @@
     font-size: clamp(0.72rem, 3.3vw, 0.85rem);
   }
 
-  .stack-icon-grid {
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+  .stack-lane {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-content: center;
+    gap: 0.35rem;
+    padding-block: 0.4rem;
   }
 
-  .stack-icon-item:nth-child(3n) {
-    border-right: 0;
+  .stack-lane-heading {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+  }
+
+  .stack-lane-title {
+    font-size: clamp(1.15rem, min(5.5vw, 3.6vh), 1.65rem);
+  }
+
+  .stack-lane-tools {
+    justify-content: flex-start;
+    gap: clamp(0.7rem, 4vw, 1.25rem);
+    padding-left: 2rem;
+  }
+
+  .stack-tool {
+    min-width: 0;
+    grid-template-columns: auto auto;
+    gap: 0.3rem;
+    font-size: clamp(0.48rem, min(2.3vw, 1.4vh), 0.65rem);
+  }
+
+  .stack-brand-icon {
+    font-size: clamp(1.1rem, min(5vw, 2.8vh), 1.6rem);
   }
 
   .expertise-stage-layout {
@@ -502,10 +579,6 @@
 }
 
 @media (min-width: 640px) {
-  .stack-icon-item:nth-child(4n) {
-    border-right: 0;
-  }
-
   .experience-popover {
     right: 1.5rem;
     left: auto;
@@ -528,12 +601,8 @@
     display: none;
   }
 
-  .stack-icon-item {
-    padding: 0.5rem;
-  }
-
-  .stack-brand-icon {
-    font-size: 1.75rem;
+  .stack-lane-tools {
+    gap: 0.85rem;
   }
 
   .technology-title {

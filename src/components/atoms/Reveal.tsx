@@ -6,6 +6,7 @@ interface RevealProps {
   className?: string
   delay?: number
   distance?: number
+  role?: React.AriaRole
 }
 
 export const Reveal: React.FC<RevealProps> = ({
@@ -13,12 +14,14 @@ export const Reveal: React.FC<RevealProps> = ({
   className,
   delay = 0,
   distance = 36,
+  role,
 }) => {
   const reduceMotion = useReducedMotion()
 
   return (
     <motion.div
       className={className}
+      role={role}
       initial={reduceMotion ? false : { opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
