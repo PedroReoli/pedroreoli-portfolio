@@ -1,6 +1,9 @@
 /// <reference types="vite/client" />
 
-declare module "*.splinecode?url" {
-  const src: string
-  export default src
+interface ImportMetaEnv {
+  readonly VITE_HERO_VIDEO_ENABLED?: "true" | "false"
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }
