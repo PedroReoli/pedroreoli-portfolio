@@ -1,0 +1,46 @@
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+    color-scheme: dark;
+    background: #111010;
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    overflow-x: clip;
+    background: #111010;
+    color: #edeae4;
+    font-family: "Archivo", "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Archivo", "Inter", sans-serif;
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, a {
+    border-radius: 0;
+  }
+
+  ::selection {
+    background: #82aaff;
+    color: #111010;
+  }
+
+  :focus-visible {
+    outline: 2px solid #82aaff;
+    outline-offset: 4px;
+  }
+}
