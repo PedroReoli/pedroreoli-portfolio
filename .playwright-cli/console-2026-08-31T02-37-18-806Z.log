@@ -1,7 +1,0 @@
-[    1036ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://127.0.0.1:4174/node_modules/.vite/deps/chunk-MMW4JUSU.js?v=8f8bebc4:21533
-[    1248ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:4174/favicon.ico:0
-[  118290ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://127.0.0.1:4174/node_modules/.vite/deps/chunk-MMW4JUSU.js?v=8f8bebc4:21533
-[  172611ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4174/src/components/organisms/GitHubProjectsSection.tsx?t=1788144011351:0
-[  172647ms] [ERROR] [hmr] Failed to reload /src/components/organisms/GitHubProjectsSection.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4174/@vite/client:296
-[  172647ms] [ERROR] [hmr] Failed to reload /src/components/templates/GitHubPortfolioTemplate.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4174/@vite/client:296
-[  674211ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://127.0.0.1:4174/node_modules/.vite/deps/chunk-MMW4JUSU.js?v=8f8bebc4:21533
