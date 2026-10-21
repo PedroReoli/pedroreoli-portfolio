@@ -79,7 +79,7 @@ export const SiteHeader: React.FC = () => {
       <div className="editorial-container flex h-16 items-center justify-between">
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-sm font-extrabold uppercase tracking-[-0.04em] text-[#edeae4]"
+          className="inline-flex min-h-11 items-center gap-1.5 text-sm font-extrabold uppercase tracking-[-0.04em] text-[#edeae4]"
           aria-label={isEn ? "Go to home" : "Ir para o início"}
         >
           Pedro
@@ -115,7 +115,7 @@ export const SiteHeader: React.FC = () => {
             ref={menuButtonRef}
             type="button"
             onClick={toggleLanguage}
-            className="editorial-label text-[#a5a19c] transition-colors hover:text-[#edeae4]"
+            className="editorial-label min-h-11 text-[#a5a19c] transition-colors hover:text-[#edeae4]"
             aria-label={isEn ? "Switch language to Portuguese" : "Mudar idioma para inglês"}
           >
             {language === "pt" ? "PT / EN" : "EN / PT"}

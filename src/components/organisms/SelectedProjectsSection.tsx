@@ -76,7 +76,7 @@ export const SelectedProjectsSection: React.FC = () => {
           </div>
           <Link
             to="/projetos"
-            className="group mb-1 inline-flex items-center gap-2 border-b border-[#edeae4] pb-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#edeae4] sm:text-xs"
+            className="group mb-1 inline-flex min-h-11 items-center gap-2 border-b border-[#edeae4] pb-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#edeae4] sm:text-xs"
           >
             {isEn ? "View all" : "Ver todos"}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />

@@ -39,7 +39,7 @@ export const MediaArchiveSection: React.FC = () => {
               href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.13em]"
+              className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.13em]"
             >
               {isEn ? "Read article" : "Ler reportagem"}
               <ExternalLink className="h-3.5 w-3.5" />

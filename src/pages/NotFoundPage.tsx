@@ -43,14 +43,14 @@ export const NotFoundPage: React.FC = () => {
         <div className="flex flex-wrap items-center gap-5">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 border-b border-[#82aaff] pb-2 text-sm font-semibold uppercase tracking-[0.1em]"
+            className="inline-flex min-h-11 items-center gap-2 border-b border-[#82aaff] pb-2 text-sm font-semibold uppercase tracking-[0.1em]"
           >
             <Home className="w-4 h-4" />
             <span>{isEn ? "Back home" : "Voltar ao início"}</span>
           </Link>
           <Link
             to="/projetos"
-            className="inline-flex items-center gap-2 border-b border-white/30 pb-2 text-sm font-semibold uppercase tracking-[0.1em] text-[#aaa6a0]"
+            className="inline-flex min-h-11 items-center gap-2 border-b border-white/30 pb-2 text-sm font-semibold uppercase tracking-[0.1em] text-[#aaa6a0]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{isEn ? "View projects" : "Ver projetos"}</span>
