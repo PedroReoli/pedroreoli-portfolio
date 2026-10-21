@@ -7,6 +7,7 @@ interface SEOHeadProps {
   noIndex?: boolean
   locale?: "pt_BR" | "en_US"
   imageUrl?: string
+  imageAlt?: string
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
@@ -16,6 +17,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   noIndex = false,
   locale = "pt_BR",
   imageUrl = "https://pedroreis.vercel.app/eu-profissional.png",
+  imageAlt = "Pedro Reoli",
 }) => {
   useEffect(() => {
     document.title = title
@@ -54,16 +56,19 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setNamedMeta("twitter:description", description)
     setNamedMeta("twitter:url", canonicalUrl)
     setNamedMeta("twitter:image", imageUrl)
+    setNamedMeta("twitter:image:alt", imageAlt)
 
     setPropertyMeta("og:type", "website")
     setPropertyMeta("og:title", title)
     setPropertyMeta("og:description", description)
     setPropertyMeta("og:url", canonicalUrl)
     setPropertyMeta("og:image", imageUrl)
+    setPropertyMeta("og:image:alt", imageAlt)
     setPropertyMeta("og:locale", locale)
+    setPropertyMeta("og:site_name", "Pedro Reoli")
 
     setNamedMeta("robots", noIndex ? "noindex, nofollow" : "index, follow")
-  }, [title, description, canonicalUrl, noIndex, locale, imageUrl])
+  }, [title, description, canonicalUrl, noIndex, locale, imageUrl, imageAlt])
 
   return null
 }
