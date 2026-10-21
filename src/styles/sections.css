@@ -614,3 +614,19 @@
     border-color: #82aaff;
   }
 }
+
+@supports not (-webkit-text-stroke: 1px #111010) {
+  .stack-title-outline {
+    color: #111010;
+  }
+
+  .technology-title-last {
+    color: #c7d3ff;
+  }
+
+  .project-agent-word,
+  .footer-cta-outline,
+  .text-outline {
+    color: #edeae4;
+  }
+}

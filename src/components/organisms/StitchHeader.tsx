@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {
-  AnimatePresence,
-  m,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-} from "framer-motion"
+import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
@@ -91,19 +85,14 @@ export const StitchHeader: React.FC = () => {
           aria-label={isEn ? "Primary navigation" : "Navegação principal"}
         >
           {navLinks.map((link) => {
-            const isActive =
-              link.path === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.path)
+            const isActive = link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
             return (
               <Link
                 key={link.path}
                 to={link.path}
                 aria-current={isActive ? "page" : undefined}
                 className={`editorial-label transition-colors ${
-                  isActive
-                    ? "text-[#edeae4]"
-                    : "text-[#8d8984] hover:text-[#edeae4]"
+                  isActive ? "text-[#edeae4]" : "text-[#8d8984] hover:text-[#edeae4]"
                 }`}
               >
                 {link.label}
@@ -117,11 +106,7 @@ export const StitchHeader: React.FC = () => {
             type="button"
             onClick={toggleLanguage}
             className="editorial-label text-[#a5a19c] transition-colors hover:text-[#edeae4]"
-            aria-label={
-              isEn
-                ? "Mudar idioma para português"
-                : "Switch language to English"
-            }
+            aria-label={isEn ? "Mudar idioma para português" : "Switch language to English"}
           >
             {language === "pt" ? "PT / EN" : "EN / PT"}
           </button>
@@ -139,21 +124,12 @@ export const StitchHeader: React.FC = () => {
             onClick={() => setMenuOpen((current) => !current)}
             className="grid h-9 w-9 place-items-center border border-white/15 text-[#edeae4] md:hidden"
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             aria-label={
-              menuOpen
-                ? isEn
-                  ? "Close menu"
-                  : "Fechar menu"
-                : isEn
-                  ? "Open menu"
-                  : "Abrir menu"
+              menuOpen ? (isEn ? "Close menu" : "Fechar menu") : isEn ? "Open menu" : "Abrir menu"
             }
           >
-            {menuOpen ? (
-              <X className="h-4 w-4" />
-            ) : (
-              <Menu className="h-4 w-4" />
-            )}
+            {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
@@ -161,6 +137,7 @@ export const StitchHeader: React.FC = () => {
       <AnimatePresence>
         {menuOpen && (
           <m.nav
+            id="mobile-navigation"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -170,9 +147,7 @@ export const StitchHeader: React.FC = () => {
             <div className="editorial-container flex flex-col py-5">
               {navLinks.map((link, index) => {
                 const isActive =
-                  link.path === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(link.path)
+                  link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
                 return (
                   <Link
                     key={link.path}
