@@ -1,14 +1,12 @@
 import React from "react"
 import { useSearchParams } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
-import TransitionEffect from "../components/atoms/TransitionEffect"
 import CorporateProjectsSection from "../components/organisms/CorporateProjectsSection"
 import IndependentProjectsSection from "../components/organisms/IndependentProjectsSection"
 import ProjectCategoryTabs, {
   type ProjectCategory,
 } from "../components/organisms/ProjectCategoryTabs"
 import SiteFooter from "../components/organisms/SiteFooter"
-import SiteHeader from "../components/organisms/SiteHeader"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const ProjectsPage: React.FC = () => {
@@ -34,9 +32,6 @@ export const ProjectsPage: React.FC = () => {
         canonicalUrl="https://pedroreis.vercel.app/projetos"
         locale={isEn ? "en_US" : "pt_BR"}
       />
-      <TransitionEffect />
-      <SiteHeader />
-
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
         <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
           <p className="editorial-label mb-5 text-[#82aaff]">

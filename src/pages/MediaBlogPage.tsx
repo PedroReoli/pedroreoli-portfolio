@@ -1,9 +1,7 @@
 import React from "react"
 import SEOHead from "../components/atoms/SEOHead"
-import SiteHeader from "../components/organisms/SiteHeader"
 import MediaArchiveSection from "../components/organisms/MediaArchiveSection"
 import SiteFooter from "../components/organisms/SiteFooter"
-import TransitionEffect from "../components/atoms/TransitionEffect"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const MediaBlogPage: React.FC = () => {
@@ -27,9 +25,6 @@ export const MediaBlogPage: React.FC = () => {
         canonicalUrl="https://pedroreis.vercel.app/midia-blog"
         locale={isEn ? "en_US" : "pt_BR"}
       />
-
-      <TransitionEffect />
-      <SiteHeader />
 
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
         <MediaArchiveSection />

@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
-import SiteHeader from "../components/organisms/SiteHeader"
 import { ArrowLeft, Home } from "lucide-react"
 import { useLanguage } from "../i18n/useLanguage"
 
@@ -26,12 +25,12 @@ export const NotFoundPage: React.FC = () => {
         noIndex={true}
         locale={isEn ? "en_US" : "pt_BR"}
       />
-      <SiteHeader />
-
-      <main id="main-content" tabIndex={-1} className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32 focus:outline-none">
-        <span className="editorial-label mb-6 text-[#82aaff]">
-          {isEn ? "ERROR" : "ERRO"} / 404
-        </span>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32 focus:outline-none"
+      >
+        <span className="editorial-label mb-6 text-[#82aaff]">{isEn ? "ERROR" : "ERRO"} / 404</span>
         <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.78] tracking-[-0.08em] text-[#edeae4]">
           {isEn ? "OFF ROUTE" : "FORA DE ROTA"}
         </h1>

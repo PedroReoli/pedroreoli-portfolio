@@ -1,9 +1,7 @@
 import React, { Suspense, lazy } from "react"
 import SEOHead from "../components/atoms/SEOHead"
-import SiteHeader from "../components/organisms/SiteHeader"
 import PortfolioHero from "../components/organisms/PortfolioHero"
 import SiteFooter from "../components/organisms/SiteFooter"
-import TransitionEffect from "../components/atoms/TransitionEffect"
 import { useLanguage } from "../i18n/useLanguage"
 
 const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
@@ -30,20 +28,19 @@ export const HomePage: React.FC = () => {
         locale={isEn ? "en_US" : "pt_BR"}
       />
 
-      {/* Efeito de Transição de Rota */}
-      <TransitionEffect />
-
-      <SiteHeader />
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <PortfolioHero />
         <Suspense
-          fallback={(
-            <section className="grid min-h-[100svh] place-items-center border-y border-white/10" role="status">
+          fallback={
+            <section
+              className="grid min-h-[100svh] place-items-center border-y border-white/10"
+              role="status"
+            >
               <span className="editorial-label text-[#8d8984]">
                 {isEn ? "Loading selected work" : "Carregando projetos selecionados"}
               </span>
             </section>
-          )}
+          }
         >
           <HomeSections />
         </Suspense>
