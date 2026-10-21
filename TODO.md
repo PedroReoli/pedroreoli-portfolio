@@ -16,6 +16,9 @@ Estado reconciliado com o código em 20/10/2026.
 - [x] Código legado e dependências sem uso removidos.
 - [x] Auditoria das dependências de produção sem vulnerabilidades conhecidas.
 - [x] Imagens de projeto com variantes WebP responsivas e fallback PNG.
+- [x] Tipografia variável empacotada localmente, sem dependência do Google Fonts.
+- [x] Breakpoints alinhados entre Tailwind e CSS, com composição própria para tablets.
+- [x] Trocas de rota reposicionam a nova página no início.
 
 ## Pendente de material
 

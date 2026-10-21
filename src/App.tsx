@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import { LanguageProvider } from "./i18n/LanguageContext"
 import { domAnimation, LazyMotion, MotionConfig } from "framer-motion"
+import ScrollToTop from "./components/atoms/ScrollToTop"
 
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"))
 const MediaBlogPage = lazy(() => import("./pages/MediaBlogPage"))
@@ -23,6 +24,7 @@ const App: React.FC = () => {
       <LazyMotion features={domAnimation} strict>
         <MotionConfig reducedMotion="user">
           <BrowserRouter>
+            <ScrollToTop />
             <Suspense fallback={<PageFallback />}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
