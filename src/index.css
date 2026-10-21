@@ -58,6 +58,13 @@
     margin-inline: auto;
   }
 
+  .viewport-stage {
+    height: 100svh;
+    height: 100dvh;
+    overflow: hidden;
+    overflow: clip;
+  }
+
   .editorial-section {
     padding-block: clamp(5.5rem, 11vw, 10rem);
   }
@@ -82,7 +89,11 @@
   }
 
   .hero-shell {
-    height: 100svh;
+    isolation: isolate;
+  }
+
+  .hero-frame {
+    height: 100%;
   }
 
   .hero-name-stage {
@@ -208,6 +219,62 @@
   .project-image-frame:hover .project-feature-image {
     filter: saturate(1.05) contrast(1.02);
     transform: scale(1.025);
+  }
+
+  .project-agent-visual {
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1.25rem, 3vw, 3rem);
+    background:
+      radial-gradient(circle at 78% 30%, rgb(130 170 255 / 0.3), transparent 27%),
+      linear-gradient(135deg, #17191f 0%, #0c0d10 62%, #151c2a 100%);
+  }
+
+  .project-agent-visual::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+    background-size: clamp(2.25rem, 5vw, 5rem) clamp(2.25rem, 5vw, 5rem);
+    content: "";
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+  }
+
+  .project-agent-kicker,
+  .project-agent-flow {
+    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
+    font-size: clamp(0.5rem, 0.75vw, 0.7rem);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .project-agent-kicker {
+    color: #9cb8ff;
+  }
+
+  .project-agent-word {
+    align-self: center;
+    color: transparent;
+    font-size: clamp(3.2rem, min(9vw, 15vh), 9rem);
+    font-weight: 900;
+    line-height: 0.75;
+    letter-spacing: -0.08em;
+    -webkit-text-stroke: 1.5px #edeae4;
+  }
+
+  .project-agent-flow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-top: 1px solid rgb(255 255 255 / 0.18);
+    padding-top: 1rem;
+    color: rgb(237 234 228 / 0.7);
   }
 
   .stack-stage-layout {

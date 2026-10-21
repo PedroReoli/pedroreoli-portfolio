@@ -31,7 +31,7 @@ export const StitchHeroProjects: React.FC = () => {
   const reduceMotion = Boolean(useReducedMotion())
 
   return (
-    <section id="hero" className="hero-shell relative overflow-hidden bg-[#111010] pt-16">
+    <section id="hero" className="viewport-stage hero-shell relative bg-[#111010] pt-16">
       {heroVideoEnabled && (
         <motion.video
           className="absolute inset-0 h-full w-full object-cover"
@@ -54,7 +54,7 @@ export const StitchHeroProjects: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/10 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/20" />
 
-      <div className="hero-frame relative grid h-[calc(100svh-4rem)] min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+      <div className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export const StitchHeroProjects: React.FC = () => {
           <p className="hero-statement max-w-md font-medium leading-[1.12] tracking-[-0.04em] text-white/90">
             {isEn
               ? "I turn complex systems into digital products that feel clear, fast and human."
-              : "Transformo sistemas complexos em produtos digitais claros, rápidos e humanos."}
+              : "Sistemas complexos. Experiências digitais claras, rápidas e humanas."}
           </p>
 
           <a

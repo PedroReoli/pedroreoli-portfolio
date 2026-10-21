@@ -8,13 +8,13 @@ export const StitchFooter: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <footer id="contato" className="footer-stage h-[100svh] overflow-hidden border-t border-white/10 bg-[#111010] text-[#edeae4]">
+    <footer id="contato" className="viewport-stage footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]">
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal className="flex items-start justify-between border-b border-white/15 pb-4 sm:pb-5">
           <div>
             <p className="editorial-label text-[#82aaff]">07 / {isEn ? "Contact" : "Contato"}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-[#8f8a84] sm:mt-3 sm:text-base">
-              {isEn ? "A good idea deserves to leave the screen." : "Uma boa ideia merece sair da tela."}
+              {isEn ? "Available for ambitious, useful work." : "Disponível para trabalhos ambiciosos e úteis."}
             </p>
           </div>
           <p className="editorial-label text-right text-[#77736f]">Volta Redonda<br />BR / 2026</p>

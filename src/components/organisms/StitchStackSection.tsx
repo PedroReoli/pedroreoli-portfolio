@@ -63,7 +63,7 @@ export const StitchStackSection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section className="stack-stage h-[100svh] overflow-hidden bg-[#edeae4] text-[#111010]">
+    <section className="viewport-stage stack-stage bg-[#edeae4] text-[#111010]">
       <div className="editorial-container stack-stage-layout">
         <Reveal className="stack-stage-heading grid gap-5 border-b border-black/25 pb-5 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-7">
           <div>
@@ -77,7 +77,7 @@ export const StitchStackSection: React.FC = () => {
           <div className="flex items-end justify-between gap-6 sm:block sm:text-right">
             <p className="editorial-label text-[#77716a]">12 / {isEn ? "tools" : "ferramentas"}</p>
             <p className="stack-intro-copy mt-2 max-w-xs text-sm leading-relaxed text-[#5f5b56]">
-              {isEn ? "From interface to operation." : "Da interface à operação."}
+              {isEn ? "Choices that keep the work moving." : "Escolhas que mantêm o trabalho em movimento."}
             </p>
           </div>
         </Reveal>
