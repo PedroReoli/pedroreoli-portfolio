@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
@@ -9,6 +9,7 @@ export const SiteHeader: React.FC = () => {
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(true)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const { scrollY } = useScroll()
   const reduceMotion = useReducedMotion()
   const isEn = language === "en"
@@ -40,12 +41,20 @@ export const SiteHeader: React.FC = () => {
   useEffect(() => {
     if (!menuOpen) return
 
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false)
+      if (event.key !== "Escape") return
+      setMenuOpen(false)
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus())
     }
 
     window.addEventListener("keydown", closeOnEscape)
-    return () => window.removeEventListener("keydown", closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", closeOnEscape)
+    }
   }, [menuOpen])
 
   const navLinks = [
@@ -103,6 +112,7 @@ export const SiteHeader: React.FC = () => {
 
         <div className="flex items-center gap-4">
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={toggleLanguage}
             className="editorial-label text-[#a5a19c] transition-colors hover:text-[#edeae4]"
@@ -122,7 +132,7 @@ export const SiteHeader: React.FC = () => {
           <button
             type="button"
             onClick={() => setMenuOpen((current) => !current)}
-            className="grid h-9 w-9 place-items-center border border-white/15 text-[#edeae4] md:hidden"
+            className="grid h-11 w-11 place-items-center border border-white/15 text-[#edeae4] md:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             aria-label={

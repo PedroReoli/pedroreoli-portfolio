@@ -81,7 +81,7 @@ export const SiteFooter: React.FC = () => {
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex shrink-0 items-center gap-2 uppercase transition-colors hover:text-white"
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 uppercase transition-colors hover:text-white"
             >
               {isEn ? "Back to top" : "Voltar ao topo"}
               <ArrowUp className="h-3.5 w-3.5" />

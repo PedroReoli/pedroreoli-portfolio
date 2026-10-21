@@ -89,7 +89,7 @@ export const SelectedProjectsSection: React.FC = () => {
               key={item.title}
               type="button"
               onClick={() => setActiveProject(index)}
-              className={`project-switcher-button editorial-label relative shrink-0 py-3 text-left transition-colors ${
+              className={`project-switcher-button editorial-label relative min-h-11 shrink-0 py-3 text-left transition-colors ${
                 activeProject === index ? "text-[#edeae4]" : "text-[#66625e] hover:text-[#aaa6a0]"
               }`}
               aria-pressed={activeProject === index}

@@ -36,7 +36,7 @@ export const ProjectCategoryTabs: React.FC<ProjectCategoryTabsProps> = ({
           aria-pressed={isActive}
           aria-controls={`${category.id}-projects`}
           onClick={() => onChange(category.id)}
-          className={`pb-4 text-sm font-semibold uppercase tracking-[0.1em] transition-colors ${
+          className={`min-h-11 pb-4 pt-1 text-sm font-semibold uppercase tracking-[0.1em] transition-colors ${
             isActive
               ? "border-b-2 border-[#82aaff] text-white"
               : "text-[#8d8984] hover:text-[#edeae4]"
