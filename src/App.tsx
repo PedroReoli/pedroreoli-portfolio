@@ -14,7 +14,7 @@ const PageFallback: React.FC = () => (
     className="grid min-h-[100dvh] place-items-center bg-[#111010] text-[#edeae4]"
     role="status"
   >
-    <span className="editorial-label text-[#77736f]">Loading / Carregando</span>
+    <span className="editorial-label text-[#8d8984]">Loading / Carregando</span>
   </div>
 )
 

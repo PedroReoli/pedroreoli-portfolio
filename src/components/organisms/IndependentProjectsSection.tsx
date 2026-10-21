@@ -45,7 +45,7 @@ export const IndependentProjectsSection: React.FC<IndependentProjectsSectionProp
         rel="noopener noreferrer"
         className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-white/10 py-7 sm:grid-cols-[4rem_minmax(12rem,0.8fr)_minmax(14rem,1fr)_auto] sm:py-10"
       >
-        <span className="editorial-label text-[#77736f]">{project.number}</span>
+        <span className="editorial-label text-[#8d8984]">{project.number}</span>
         <div>
           <strong className="block text-3xl leading-none tracking-[-0.05em] text-[#edeae4] sm:text-5xl">
             {project.title}

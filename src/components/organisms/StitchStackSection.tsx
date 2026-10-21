@@ -75,7 +75,7 @@ export const StitchStackSection: React.FC = () => {
             </h2>
           </div>
           <div className="flex items-end justify-between gap-6 sm:block sm:text-right">
-            <p className="editorial-label text-[#77716a]">12 / {isEn ? "tools" : "ferramentas"}</p>
+            <p className="editorial-label text-[#5f5b56]">12 / {isEn ? "tools" : "ferramentas"}</p>
             <p className="stack-intro-copy mt-2 max-w-xs text-sm leading-relaxed text-[#5f5b56]">
               {isEn ? "Choices that keep the work moving." : "Escolhas que mantêm o trabalho em movimento."}
             </p>
@@ -86,7 +86,7 @@ export const StitchStackSection: React.FC = () => {
           {stackGroups.map((group, index) => (
             <Reveal key={group.number} delay={index * 0.045} distance={18} className="stack-lane group" role="listitem">
               <div className="stack-lane-heading">
-                <span className="editorial-label text-[#77716a]">{group.number}</span>
+                <span className="editorial-label text-[#5f5b56]">{group.number}</span>
                 <h3 className="stack-lane-title font-bold tracking-[-0.05em]">{isEn ? group.titleEn : group.titlePt}</h3>
               </div>
               <div className="stack-lane-tools">

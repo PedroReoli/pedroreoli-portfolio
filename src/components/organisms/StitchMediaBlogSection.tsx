@@ -109,7 +109,7 @@ export const StitchMediaBlogSection: React.FC = () => {
           <h2 className="section-display">
             {isEn ? "OPEN SOURCE" : "CÓDIGO ABERTO"}
           </h2>
-          <span className="editorial-label hidden text-[#77736f] sm:block">
+          <span className="editorial-label hidden text-[#8d8984] sm:block">
             03 / {isEn ? "projects" : "projetos"}
           </span>
         </div>
@@ -121,7 +121,7 @@ export const StitchMediaBlogSection: React.FC = () => {
             rel="noopener noreferrer"
             className="group grid grid-cols-[2.5rem_1fr_auto] gap-3 border-b border-white/10 py-7 sm:grid-cols-[4rem_minmax(0,0.8fr)_minmax(14rem,1fr)_auto] sm:items-center sm:py-10"
           >
-            <span className="editorial-label text-[#77736f]">
+            <span className="editorial-label text-[#8d8984]">
               {note.number}
             </span>
             <div>

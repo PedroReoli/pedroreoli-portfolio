@@ -16,7 +16,7 @@ export const ExperienceSection: React.FC = () => {
         <Reveal className="trajectory-intro flex min-h-0 flex-col justify-between border-b border-white/15 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
           <div>
             <p className="editorial-label text-[#82aaff]">05 / {isEn ? "Experience" : "Experiência"}</p>
-            <p className="editorial-label mt-3 text-[#77736f]">04 / {isEn ? "chapters" : "capítulos"}</p>
+            <p className="editorial-label mt-3 text-[#8d8984]">04 / {isEn ? "chapters" : "capítulos"}</p>
           </div>
           <div>
             <h2 className="trajectory-title font-black uppercase text-[#edeae4]">
@@ -34,7 +34,7 @@ export const ExperienceSection: React.FC = () => {
               <div className="trajectory-row group relative border-b border-white/10" onMouseEnter={() => setActiveExperience(index)} onMouseLeave={() => setActiveExperience(null)} onFocus={() => setActiveExperience(index)} onBlur={() => setActiveExperience(null)}>
                 <button type="button" className="trajectory-row-button relative grid w-full text-left" aria-expanded={activeExperience === index} onClick={() => setActiveExperience((current) => current === index ? null : index)}>
                   <span className={`trajectory-dot ${activeExperience === index ? "trajectory-dot-active" : ""}`} aria-hidden="true" />
-                  <span className="editorial-label text-[#77736f]">{isEn ? item.period.en : item.period.pt}</span>
+                  <span className="editorial-label text-[#8d8984]">{isEn ? item.period.en : item.period.pt}</span>
                   <span className="min-w-0">
                     <strong className="trajectory-company block tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">{item.company}</strong>
                     <span className="trajectory-role mt-1 block text-[#8d8984]">{isEn ? item.role.en : item.role.pt}</span>

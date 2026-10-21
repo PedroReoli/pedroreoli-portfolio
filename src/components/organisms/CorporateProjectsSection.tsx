@@ -16,7 +16,7 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
   >
     <div className="grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-12 lg:items-end">
       <div className="lg:col-span-8">
-        <p className="editorial-label mb-4 text-[#77736f]">
+        <p className="editorial-label mb-4 text-[#8d8984]">
           2024—2026 / {isEn ? "Enterprise software" : "Software corporativo"}
         </p>
         <h2 className="section-display">AUTOCOM3</h2>

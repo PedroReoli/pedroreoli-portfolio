@@ -103,7 +103,7 @@ export const StitchHeader: React.FC = () => {
                 className={`editorial-label transition-colors ${
                   isActive
                     ? "text-[#edeae4]"
-                    : "text-[#77736f] hover:text-[#edeae4]"
+                    : "text-[#8d8984] hover:text-[#edeae4]"
                 }`}
               >
                 {link.label}
@@ -186,7 +186,7 @@ export const StitchHeader: React.FC = () => {
                     <span>{link.label}</span>
                     <span
                       className={`editorial-label ${
-                        isActive ? "text-[#82aaff]" : "text-[#77736f]"
+                        isActive ? "text-[#82aaff]" : "text-[#8d8984]"
                       }`}
                     >
                       0{index + 1}

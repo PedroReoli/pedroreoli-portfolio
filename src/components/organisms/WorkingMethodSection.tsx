@@ -18,7 +18,7 @@ export const WorkingMethodSection: React.FC = () => {
             <p className="editorial-label text-[#82aaff]">
               06 / {isEn ? "How I deliver" : "Como eu entrego"}
             </p>
-            <p className="editorial-label text-right text-[#77736f] lg:mt-4 lg:text-left">
+            <p className="editorial-label text-right text-[#8d8984] lg:mt-4 lg:text-left">
               04 / {isEn ? "principles" : "princípios"}
             </p>
           </div>
@@ -53,7 +53,7 @@ export const WorkingMethodSection: React.FC = () => {
               distance={18}
               role="listitem"
             >
-              <span className="editorial-label text-[#77736f] transition-colors group-hover:text-[#82aaff]">
+              <span className="editorial-label text-[#8d8984] transition-colors group-hover:text-[#82aaff]">
                 0{index + 1}
               </span>
               <h3 className="method-title font-bold tracking-[-0.055em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">

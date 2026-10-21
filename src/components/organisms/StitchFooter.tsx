@@ -17,11 +17,11 @@ export const StitchFooter: React.FC = () => {
               {isEn ? "Available for ambitious, useful work." : "Disponível para trabalhos ambiciosos e úteis."}
             </p>
           </div>
-          <p className="editorial-label text-right text-[#77736f]">Volta Redonda<br />BR / 2026</p>
+          <p className="editorial-label text-right text-[#8d8984]">Volta Redonda<br />BR / 2026</p>
         </Reveal>
 
         <Reveal className="footer-cta-stage flex min-h-0 flex-col justify-center" distance={48}>
-          <p className="editorial-label mb-4 text-[#77736f]">{isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}</p>
+          <p className="editorial-label mb-4 text-[#8d8984]">{isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}</p>
           <a
             href="mailto:pedrosousa2160@gmail.com"
             className="group block border-b border-white/25 pb-5 sm:pb-7"
@@ -46,7 +46,7 @@ export const StitchFooter: React.FC = () => {
             <a href="https://www.linkedin.com/in/pedro-lucas-reis-a93945171/" target="_blank" rel="noopener noreferrer" className="footer-link"><span><small>03</small>LinkedIn</span><ArrowUpRight /></a>
           </Reveal>
 
-          <div className="flex items-center justify-between gap-4 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#77736f] sm:pt-5 sm:text-[10px]">
+          <div className="flex items-center justify-between gap-4 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#8d8984] sm:pt-5 sm:text-[10px]">
             <span>© {new Date().getFullYear()} Pedro Lucas Reis</span>
             <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex shrink-0 items-center gap-2 uppercase transition-colors hover:text-white">
               {isEn ? "Back to top" : "Voltar ao topo"}<ArrowUp className="h-3.5 w-3.5" />

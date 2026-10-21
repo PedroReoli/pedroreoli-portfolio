@@ -143,7 +143,7 @@ export const SelectedProjectsSection: React.FC = () => {
             >
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-[#82aaff]" />
-                <p className="editorial-label text-[#77736f]">
+                <p className="editorial-label text-[#8d8984]">
                   {project.number} / {project.year}
                 </p>
               </div>
