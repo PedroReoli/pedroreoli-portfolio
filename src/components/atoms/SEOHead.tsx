@@ -5,6 +5,8 @@ interface SEOHeadProps {
   description: string
   canonicalUrl?: string
   noIndex?: boolean
+  locale?: "pt_BR" | "en_US"
+  imageUrl?: string
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
@@ -12,21 +14,22 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonicalUrl = "https://pedroreis.vercel.app/",
   noIndex = false,
+  locale = "pt_BR",
+  imageUrl = "https://pedroreis.vercel.app/eu-profissional.png",
 }) => {
   useEffect(() => {
-    // 1. Atualizar Título
     document.title = title
 
-    // 2. Atualizar ou Criar Meta Description
-    let metaDesc = document.querySelector('meta[name="description"]')
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta")
-      metaDesc.setAttribute("name", "description")
-      document.head.appendChild(metaDesc)
+    const setNamedMeta = (name: string, content: string) => {
+      let element = document.querySelector(`meta[name="${name}"]`)
+      if (!element) {
+        element = document.createElement("meta")
+        element.setAttribute("name", name)
+        document.head.appendChild(element)
+      }
+      element.setAttribute("content", content)
     }
-    metaDesc.setAttribute("content", description)
 
-    // 3. Canonical
     let canonical = document.querySelector('link[rel="canonical"]')
     if (!canonical) {
       canonical = document.createElement("link")
@@ -35,34 +38,32 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     }
     canonical.setAttribute("href", canonicalUrl)
 
-    // 4. OpenGraph
-    const setMeta = (property: string, content: string) => {
-      let el = document.querySelector(`meta[property="${property}"]`)
-      if (!el) {
-        el = document.createElement("meta")
-        el.setAttribute("property", property)
-        document.head.appendChild(el)
+    const setPropertyMeta = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`)
+      if (!element) {
+        element = document.createElement("meta")
+        element.setAttribute("property", property)
+        document.head.appendChild(element)
       }
-      el.setAttribute("content", content)
+      element.setAttribute("content", content)
     }
 
-    setMeta("og:title", title)
-    setMeta("og:description", description)
-    setMeta("og:url", canonicalUrl)
+    setNamedMeta("description", description)
+    setNamedMeta("twitter:card", "summary_large_image")
+    setNamedMeta("twitter:title", title)
+    setNamedMeta("twitter:description", description)
+    setNamedMeta("twitter:url", canonicalUrl)
+    setNamedMeta("twitter:image", imageUrl)
 
-    // 5. Robots NoIndex (se aplicável, ex: 404)
-    let metaRobots = document.querySelector('meta[name="robots"]')
-    if (noIndex) {
-      if (!metaRobots) {
-        metaRobots = document.createElement("meta")
-        metaRobots.setAttribute("name", "robots")
-        document.head.appendChild(metaRobots)
-      }
-      metaRobots.setAttribute("content", "noindex, nofollow")
-    } else if (metaRobots) {
-      metaRobots.setAttribute("content", "index, follow")
-    }
-  }, [title, description, canonicalUrl, noIndex])
+    setPropertyMeta("og:type", "website")
+    setPropertyMeta("og:title", title)
+    setPropertyMeta("og:description", description)
+    setPropertyMeta("og:url", canonicalUrl)
+    setPropertyMeta("og:image", imageUrl)
+    setPropertyMeta("og:locale", locale)
+
+    setNamedMeta("robots", noIndex ? "noindex, nofollow" : "index, follow")
+  }, [title, description, canonicalUrl, noIndex, locale, imageUrl])
 
   return null
 }

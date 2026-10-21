@@ -2,9 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "./styles/tokens.css";
-@import "./styles/typography.css";
-
 @layer base {
   :root {
     font-synthesis: none;
@@ -67,6 +64,25 @@
 
   .editorial-section {
     padding-block: clamp(5.5rem, 11vw, 10rem);
+  }
+
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.75rem;
+    left: 1rem;
+    border: 1px solid #82aaff;
+    background: #edeae4;
+    padding: 0.65rem 0.85rem;
+    color: #111010;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transform: translateY(-180%);
+    transition: transform 180ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
   }
 
   .editorial-label {

@@ -70,6 +70,9 @@ export const StitchHeader: React.FC = () => {
       }}
       className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#111010]/80 backdrop-blur-xl"
     >
+      <a href="#main-content" className="skip-link">
+        {isEn ? "Skip to content" : "Pular para o conteúdo"}
+      </a>
       <div className="editorial-container flex h-16 items-center justify-between">
         <Link
           to="/"

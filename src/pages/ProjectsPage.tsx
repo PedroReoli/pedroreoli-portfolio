@@ -45,11 +45,12 @@ export const ProjectsPage: React.FC = () => {
             : "Uma seleção de produtos digitais e sistemas construídos por Pedro Reoli."
         }
         canonicalUrl="https://pedroreis.vercel.app/projetos"
+        locale={isEn ? "en_US" : "pt_BR"}
       />
       <TransitionEffect />
       <StitchHeader />
 
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
           <p className="editorial-label mb-5 text-[#82aaff]">
             {isEn
@@ -122,6 +123,8 @@ export const ProjectsPage: React.FC = () => {
                 }
                 loading="lazy"
                 decoding="async"
+                width={2880}
+                height={1800}
                 className="w-full object-cover object-top"
               />
             </figure>
@@ -146,6 +149,8 @@ export const ProjectsPage: React.FC = () => {
                         alt={alt}
                         loading="lazy"
                         decoding="async"
+                        width={2880}
+                        height={1800}
                         className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                       />
                     </div>

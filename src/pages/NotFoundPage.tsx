@@ -24,10 +24,11 @@ export const NotFoundPage: React.FC = () => {
         }
         canonicalUrl="https://pedroreis.vercel.app/404"
         noIndex={true}
+        locale={isEn ? "en_US" : "pt_BR"}
       />
       <StitchHeader />
 
-      <main className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32">
+      <main id="main-content" className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32">
         <span className="editorial-label mb-6 text-[#82aaff]">
           {isEn ? "ERROR" : "ERRO"} / 404
         </span>

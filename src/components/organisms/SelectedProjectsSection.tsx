@@ -15,6 +15,8 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
         alt={isEn ? project.imageAlt.en : project.imageAlt.pt}
         loading="lazy"
         decoding="async"
+        width={2880}
+        height={1800}
         className="project-feature-image absolute inset-0 h-full w-full object-cover"
       />
     )

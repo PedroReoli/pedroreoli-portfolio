@@ -14,6 +14,8 @@ export const PurposeStorySection: React.FC = () => {
         alt={isEn ? "Pedro presenting FalaAtípica at UniFOA" : "Pedro apresentando o FalaAtípica no UniFOA"}
         loading="lazy"
         decoding="async"
+        width={1280}
+        height={577}
         className="technology-image absolute inset-0 h-full w-full object-cover object-[58%_center]"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/15" />

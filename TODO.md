@@ -13,6 +13,8 @@ Estado reconciliado com o código em 20/10/2026.
 - [x] Navegação que desaparece ao descer e reaparece ao subir.
 - [x] Conteúdo principal disponível em português e inglês.
 - [x] Build TypeScript/Vite e lint sem erros na última revisão.
+- [x] Código legado e dependências sem uso removidos.
+- [x] Auditoria das dependências de produção sem vulnerabilidades conhecidas.
 
 ## Pendente de material
 
@@ -35,3 +37,4 @@ Esses itens permanecem pendentes porque validação estática não comprova comp
 - [ ] Converter imagens de projeto para WebP/AVIF mantendo fallback compatível.
 - [ ] Criar imagem Open Graph específica para compartilhamento.
 - [ ] Atualizar o banco do Browserslist em uma manutenção separada.
+- [ ] Planejar migração conjunta de Tailwind 3 e Vite 4 para eliminar alertas restritos à toolchain sem quebrar o layout.

@@ -25,12 +25,13 @@ export const MediaBlogPage: React.FC = () => {
             : "Projetos de código aberto, notas técnicas e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
         }
         canonicalUrl="https://pedroreis.vercel.app/midia-blog"
+        locale={isEn ? "en_US" : "pt_BR"}
       />
 
       <TransitionEffect />
       <StitchHeader />
 
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         <StitchMediaBlogSection />
       </main>
 

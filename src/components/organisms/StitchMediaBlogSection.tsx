@@ -86,6 +86,8 @@ export const StitchMediaBlogSection: React.FC = () => {
               }
               loading="lazy"
               decoding="async"
+              width={1280}
+              height={577}
               className="h-full w-full object-cover"
             />
           </figure>

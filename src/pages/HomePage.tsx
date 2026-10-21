@@ -27,14 +27,15 @@ export const HomePage: React.FC = () => {
             : "Portfólio de Pedro Lucas Reis — Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
         }
         canonicalUrl="https://pedroreis.vercel.app/"
+        locale={isEn ? "en_US" : "pt_BR"}
       />
 
       {/* Efeito de Transição de Rota */}
       <TransitionEffect />
 
       <StitchHeader />
-      <StitchHeroProjects />
-      <main>
+      <main id="main-content">
+        <StitchHeroProjects />
         <Suspense
           fallback={(
             <section className="grid min-h-[100svh] place-items-center border-y border-white/10" role="status">
