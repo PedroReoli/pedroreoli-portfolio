@@ -34,7 +34,7 @@ export const HomePage: React.FC = () => {
       <TransitionEffect />
 
       <StitchHeader />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <StitchHeroProjects />
         <Suspense
           fallback={(

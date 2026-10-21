@@ -10,12 +10,15 @@ const MediaBlogPage = lazy(() => import("./pages/MediaBlogPage"))
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
 
 const PageFallback: React.FC = () => (
-  <div
-    className="grid min-h-[100dvh] place-items-center bg-[#111010] text-[#edeae4]"
-    role="status"
+  <main
+    id="main-content"
+    tabIndex={-1}
+    className="grid min-h-screen min-h-[100svh] min-h-[100dvh] place-items-center bg-[#111010] text-[#edeae4] focus:outline-none"
+    aria-live="polite"
+    aria-busy="true"
   >
     <span className="editorial-label text-[#8d8984]">Loading / Carregando</span>
-  </div>
+  </main>
 )
 
 const App: React.FC = () => {

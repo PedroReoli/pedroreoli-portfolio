@@ -37,7 +37,7 @@ export const ProjectsPage: React.FC = () => {
       <TransitionEffect />
       <StitchHeader />
 
-      <main id="main-content" className="pt-16">
+      <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
         <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
           <p className="editorial-label mb-5 text-[#82aaff]">
             {isEn ? "Archive / Selected work" : "Arquivo / Trabalhos selecionados"}

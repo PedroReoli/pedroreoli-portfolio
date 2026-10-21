@@ -10,7 +10,7 @@ export const NotFoundPage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-[#111010] text-[#edeae4] antialiased">
+    <div className="flex min-h-screen min-h-[100svh] min-h-[100dvh] flex-col bg-[#111010] text-[#edeae4] antialiased">
       <SEOHead
         title={
           isEn
@@ -28,7 +28,7 @@ export const NotFoundPage: React.FC = () => {
       />
       <StitchHeader />
 
-      <main id="main-content" className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32">
+      <main id="main-content" tabIndex={-1} className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32 focus:outline-none">
         <span className="editorial-label mb-6 text-[#82aaff]">
           {isEn ? "ERROR" : "ERRO"} / 404
         </span>

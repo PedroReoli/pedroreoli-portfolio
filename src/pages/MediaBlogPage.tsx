@@ -31,7 +31,7 @@ export const MediaBlogPage: React.FC = () => {
       <TransitionEffect />
       <StitchHeader />
 
-      <main id="main-content" className="pt-16">
+      <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
         <StitchMediaBlogSection />
       </main>
 
