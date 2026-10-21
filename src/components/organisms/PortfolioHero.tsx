@@ -6,32 +6,14 @@ import { useLanguage } from "../../i18n/useLanguage"
 const entranceEase = [0.16, 1, 0.3, 1] as const
 const heroVideoEnabled = import.meta.env.VITE_HERO_VIDEO_ENABLED === "true"
 
-interface AnimatedWordProps {
-  children: string
-  delay: number
-  reduceMotion: boolean
-}
-
-const AnimatedWord: React.FC<AnimatedWordProps> = ({ children, delay, reduceMotion }) => (
-  <span className="block overflow-hidden" aria-hidden="true">
-    <m.span
-      className="block"
-      initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
-      animate={{ y: "0%", opacity: 1 }}
-      transition={{ duration: 1, delay: reduceMotion ? 0 : delay, ease: entranceEase }}
-    >
-      {children}
-    </m.span>
-  </span>
-)
-
 export const PortfolioHero: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
 
   return (
-    <section id="hero" className="viewport-stage hero-shell relative bg-[#111010] pt-16">
+    <section id="hero" className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0">
+      {/* Background Video (if enabled) */}
       {heroVideoEnabled && (
         <m.video
           className="absolute inset-0 h-full w-full object-cover"
@@ -50,55 +32,89 @@ export const PortfolioHero: React.FC = () => {
         </m.video>
       )}
 
-      <div className="absolute inset-0 bg-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/10 to-black/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/20" />
+      {/* Atmospheric Background Layers (Deep, rich aesthetic) */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_65%_at_50%_45%,rgba(130,170,255,0.08)_0%,transparent_70%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.03)_0%,transparent_50%)]"
+        aria-hidden="true"
+      />
 
       <div className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+        {/* Top Info Metadata */}
         <m.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.46, ease: entranceEase }}
-          className="editorial-container grid grid-cols-[1fr_auto_1fr] items-start pt-5"
+          transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.35, ease: entranceEase }}
+          className="editorial-container flex items-start justify-between pt-5 md:pt-7"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
             {isEn ? "Portfolio" : "Portfólio"} / ©2026
           </p>
-          <p className="editorial-label hidden text-center text-white/70 sm:block">
-            {isEn ? "Creative developer" : "Desenvolvedor criativo"}
-          </p>
-          <p className="editorial-label col-start-3 whitespace-nowrap text-right text-white/70">
+          <p className="editorial-label whitespace-nowrap text-right text-white/70">
             Volta Redonda, BR
             <br />
             2026
           </p>
         </m.div>
 
-        <div className="editorial-container hero-name-stage min-h-0">
-          <h1
-            className="hero-video-title w-full font-black uppercase text-white"
+        {/* Center Hero Stage: Staggered Diagonal Lockup with Motion Convergence */}
+        <div className="editorial-container hero-name-stage flex min-h-0 flex-col items-center justify-center py-2 sm:py-4">
+          <div
+            className="hero-diagonal-stage relative flex w-full flex-col items-center justify-center"
             aria-label="Pedro Reoli"
           >
-            <span className="hero-name-word hero-name-word-first">
-              <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>
-                PEDRO
-              </AnimatedWord>
-            </span>
-            <span className="hero-name-word hero-name-word-last">
-              <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>
-                REOLI
-              </AnimatedWord>
-            </span>
-          </h1>
+            {/* PEDRO: Glides in from left to its diagonal position */}
+            <m.div
+              className="hero-diagonal-item hero-diagonal-pedro"
+              initial={reduceMotion ? false : { x: -260, opacity: 0, filter: "blur(8px)" }}
+              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.25, delay: reduceMotion ? 0 : 0.2, ease: entranceEase }}
+            >
+              <h1 className="hero-mega-text">PEDRO</h1>
+            </m.div>
+
+            {/* REOLI: Glides in from right to meet PEDRO along the diagonal, styled as hollow/outline font */}
+            <m.div
+              className="hero-diagonal-item hero-diagonal-reoli"
+              initial={reduceMotion ? false : { x: 260, opacity: 0, filter: "blur(8px)" }}
+              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.25, delay: reduceMotion ? 0 : 0.32, ease: entranceEase }}
+            >
+              <span className="hero-mega-text hero-text-hollow">REOLI</span>
+            </m.div>
+          </div>
+
+          {/* Cargo / Role under the name */}
+          <m.div
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: reduceMotion ? 0 : 0.55, ease: entranceEase }}
+            className="mt-4 flex items-center justify-center gap-2 sm:mt-6"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]" aria-hidden="true" />
+            <p className="editorial-label text-[11px] font-bold tracking-[0.16em] text-[#82aaff] uppercase sm:text-xs">
+              {isEn
+                ? "Full Stack Software Engineer & Systems Architect"
+                : "Engenheiro de Software Full Stack & Arquiteto de Sistemas"}
+            </p>
+          </m.div>
         </div>
 
+        {/* Bottom Hero Statement and Action */}
         <m.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: reduceMotion ? 0 : 0.92, ease: entranceEase }}
-          className="editorial-container grid grid-cols-[minmax(0,1fr)_auto] items-end gap-5 pb-7"
+          transition={{ duration: 0.8, delay: reduceMotion ? 0 : 0.75, ease: entranceEase }}
+          className="editorial-container grid grid-cols-[minmax(0,1fr)_auto] items-end gap-5 pb-7 md:pb-9"
         >
-          <p className="hero-statement max-w-md font-medium leading-[1.12] tracking-[-0.04em] text-white/90">
+          <p className="hero-statement max-w-md font-medium leading-[1.15] tracking-[-0.03em] text-white/90">
             {isEn
               ? "I turn complex systems into digital products that feel clear, fast and human."
               : "Sistemas complexos. Experiências digitais claras, rápidas e humanas."}
@@ -106,13 +122,13 @@ export const PortfolioHero: React.FC = () => {
 
           <a
             href="#projetos-selecionados"
-            className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.13em] text-white transition-colors hover:border-white hover:bg-white hover:text-[#111010] sm:h-14 sm:px-7 sm:text-[10px]"
+            className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.13em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#111010] sm:h-14 sm:px-7 sm:text-[10px]"
           >
             <span className="hero-project-label-long">
               {isEn ? "See the work" : "Ver projetos"}
             </span>
             <span className="hero-project-label-short">{isEn ? "Work" : "Projetos"}</span>
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </m.div>
       </div>
@@ -121,3 +137,4 @@ export const PortfolioHero: React.FC = () => {
 }
 
 export default PortfolioHero
+

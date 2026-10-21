@@ -5,6 +5,7 @@ import { LanguageProvider } from "./i18n/LanguageContext"
 import { domAnimation, LazyMotion, MotionConfig } from "framer-motion"
 import ScrollToTop from "./components/atoms/ScrollToTop"
 import TransitionEffect from "./components/atoms/TransitionEffect"
+import LanguageTransitionOverlay from "./components/atoms/LanguageTransitionOverlay"
 import SiteHeader from "./components/organisms/SiteHeader"
 
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"))
@@ -30,6 +31,7 @@ const RoutedApp: React.FC = () => {
     <>
       <ScrollToTop />
       <TransitionEffect key={location.pathname} />
+      <LanguageTransitionOverlay />
       <SiteHeader />
       <Suspense fallback={<PageFallback />}>
         <Routes location={location}>

@@ -43,16 +43,6 @@
     text-transform: uppercase;
   }
 
-  .hero-video-title {
-    position: relative;
-    height: 100%;
-    font-size: clamp(7.5rem, min(19vw, 25vh), 17rem);
-    font-stretch: 78%;
-    font-variation-settings: "wdth" 78;
-    line-height: 0.74;
-    letter-spacing: -0.085em;
-  }
-
   .hero-shell {
     isolation: isolate;
   }
@@ -63,24 +53,67 @@
 
   .hero-name-stage {
     position: relative;
+    overflow: visible;
   }
 
-  .hero-name-word {
-    position: absolute;
+  .hero-diagonal-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .hero-diagonal-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    will-change: transform, opacity, filter;
+  }
+
+  .hero-diagonal-pedro {
+    align-self: center;
+    transform: translateX(-28%);
+  }
+
+  .hero-diagonal-reoli {
+    align-self: center;
+    transform: translateX(28%);
+    margin-top: -0.15em;
+  }
+
+  .hero-mega-text {
     display: block;
-    padding-inline: 0.04em 0.12em;
-    padding-block: 0.12em;
+    font-family: "Archivo Variable", "Archivo", "Inter", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(5.8rem, min(19vw, 25vh), 17.5rem);
+    font-stretch: 80%;
+    font-variation-settings: "wdth" 80;
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    padding-inline: 0.12em;
+    padding-block: 0.08em;
     white-space: nowrap;
+    color: #ffffff;
+    overflow: visible;
   }
 
-  .hero-name-word-first {
-    top: 10%;
-    left: -0.03em;
+  .hero-text-hollow {
+    color: transparent !important;
+    -webkit-text-stroke: 3px #ffffff;
+    text-stroke: 3px #ffffff;
+    paint-order: stroke fill;
+    transition: -webkit-text-stroke-color 0.3s ease;
   }
 
-  .hero-name-word-last {
-    right: -0.01em;
-    bottom: 8%;
+  .hero-text-hollow:hover {
+    -webkit-text-stroke-color: #82aaff;
   }
 
   .hero-statement {
