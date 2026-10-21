@@ -19,6 +19,8 @@ Estado reconciliado com o código em 20/10/2026.
 - [x] Tipografia variável empacotada localmente, sem dependência do Google Fonts.
 - [x] Breakpoints alinhados entre Tailwind e CSS, com composição própria para tablets.
 - [x] Trocas de rota reposicionam a nova página no início.
+- [x] Lint de acessibilidade JSX aplicado às imagens, links e controles.
+- [x] Vite 8, TypeScript 5.9 e TypeScript ESLint 8 validados no build.
 
 ## Pendente de material
 
@@ -41,4 +43,4 @@ Esses itens permanecem pendentes porque validação estática não comprova comp
 - [ ] Avaliar AVIF depois da validação visual dos WebP já gerados.
 - [ ] Criar imagem Open Graph específica para compartilhamento.
 - [ ] Atualizar o banco do Browserslist em uma manutenção separada.
-- [ ] Planejar migração conjunta de Tailwind 3 e Vite 4 para eliminar alertas restritos à toolchain sem quebrar o layout.
+- [ ] Planejar a migração visual do Tailwind 3 para 4 para eliminar os alertas restantes da toolchain sem quebrar o layout.
