@@ -7,8 +7,8 @@ import IndependentProjectsSection from "../components/organisms/IndependentProje
 import ProjectCategoryTabs, {
   type ProjectCategory,
 } from "../components/organisms/ProjectCategoryTabs"
-import StitchFooter from "../components/organisms/StitchFooter"
-import StitchHeader from "../components/organisms/StitchHeader"
+import SiteFooter from "../components/organisms/SiteFooter"
+import SiteHeader from "../components/organisms/SiteHeader"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const ProjectsPage: React.FC = () => {
@@ -35,7 +35,7 @@ export const ProjectsPage: React.FC = () => {
         locale={isEn ? "en_US" : "pt_BR"}
       />
       <TransitionEffect />
-      <StitchHeader />
+      <SiteHeader />
 
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
         <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
@@ -59,7 +59,7 @@ export const ProjectsPage: React.FC = () => {
         )}
       </main>
 
-      <StitchFooter />
+      <SiteFooter />
     </div>
   )
 }

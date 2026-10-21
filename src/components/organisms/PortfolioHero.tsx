@@ -25,7 +25,7 @@ const AnimatedWord: React.FC<AnimatedWordProps> = ({ children, delay, reduceMoti
   </span>
 )
 
-export const StitchHeroProjects: React.FC = () => {
+export const PortfolioHero: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
@@ -109,4 +109,4 @@ export const StitchHeroProjects: React.FC = () => {
   )
 }
 
-export default StitchHeroProjects
+export default PortfolioHero

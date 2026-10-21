@@ -4,7 +4,7 @@ import { mediaNotes } from "../../content/mediaContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import ResponsiveImage from "../atoms/ResponsiveImage"
 
-export const StitchMediaBlogSection: React.FC = () => {
+export const MediaArchiveSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
@@ -111,4 +111,4 @@ export const StitchMediaBlogSection: React.FC = () => {
   )
 }
 
-export default StitchMediaBlogSection
+export default MediaArchiveSection

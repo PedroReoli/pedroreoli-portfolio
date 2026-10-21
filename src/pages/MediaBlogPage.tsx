@@ -1,8 +1,8 @@
 import React from "react"
 import SEOHead from "../components/atoms/SEOHead"
-import StitchHeader from "../components/organisms/StitchHeader"
-import StitchMediaBlogSection from "../components/organisms/StitchMediaBlogSection"
-import StitchFooter from "../components/organisms/StitchFooter"
+import SiteHeader from "../components/organisms/SiteHeader"
+import MediaArchiveSection from "../components/organisms/MediaArchiveSection"
+import SiteFooter from "../components/organisms/SiteFooter"
 import TransitionEffect from "../components/atoms/TransitionEffect"
 import { useLanguage } from "../i18n/useLanguage"
 
@@ -29,13 +29,13 @@ export const MediaBlogPage: React.FC = () => {
       />
 
       <TransitionEffect />
-      <StitchHeader />
+      <SiteHeader />
 
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
-        <StitchMediaBlogSection />
+        <MediaArchiveSection />
       </main>
 
-      <StitchFooter />
+      <SiteFooter />
     </div>
   )
 }

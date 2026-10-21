@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 
-export const StitchHeader: React.FC = () => {
+export const SiteHeader: React.FC = () => {
   const { language, toggleLanguage } = useLanguage()
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -177,4 +177,4 @@ export const StitchHeader: React.FC = () => {
   )
 }
 
-export default StitchHeader
+export default SiteHeader

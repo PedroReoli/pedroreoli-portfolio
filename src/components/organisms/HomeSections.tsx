@@ -2,17 +2,17 @@ import React from "react"
 import ExperienceSection from "./ExperienceSection"
 import PurposeStorySection from "./PurposeStorySection"
 import SelectedProjectsSection from "./SelectedProjectsSection"
-import StitchStackSection from "./StitchStackSection"
+import TechnologyStackSection from "./TechnologyStackSection"
 import WorkingMethodSection from "./WorkingMethodSection"
 
-export const StitchDossierSection: React.FC = () => (
+export const HomeSections: React.FC = () => (
   <div className="w-full">
     <SelectedProjectsSection />
-    <StitchStackSection />
+    <TechnologyStackSection />
     <PurposeStorySection />
     <ExperienceSection />
     <WorkingMethodSection />
   </div>
 )
 
-export default StitchDossierSection
+export default HomeSections

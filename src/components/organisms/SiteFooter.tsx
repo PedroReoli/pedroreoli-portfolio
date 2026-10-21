@@ -3,7 +3,7 @@ import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 
-export const StitchFooter: React.FC = () => {
+export const SiteFooter: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
@@ -93,4 +93,4 @@ export const StitchFooter: React.FC = () => {
   )
 }
 
-export default StitchFooter
+export default SiteFooter

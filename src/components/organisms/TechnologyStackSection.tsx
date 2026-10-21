@@ -58,7 +58,7 @@ const stackGroups = [
   },
 ]
 
-export const StitchStackSection: React.FC = () => {
+export const TechnologyStackSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
@@ -105,4 +105,4 @@ export const StitchStackSection: React.FC = () => {
   )
 }
 
-export default StitchStackSection
+export default TechnologyStackSection
