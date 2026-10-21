@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { useSearchParams } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
 import TransitionEffect from "../components/atoms/TransitionEffect"
+import ResponsiveImage from "../components/atoms/ResponsiveImage"
 import StitchFooter from "../components/organisms/StitchFooter"
 import StitchHeader from "../components/organisms/StitchHeader"
 import {
@@ -114,7 +115,15 @@ export const ProjectsPage: React.FC = () => {
             </div>
 
             <figure className="my-10 overflow-hidden rounded-xl bg-[#1b1a19] sm:my-16">
-              <img
+              <ResponsiveImage
+                pictureClassName="block w-full"
+                sources={[
+                  {
+                    srcSet: corporateProjectImages[0].srcSet,
+                    type: "image/webp",
+                    sizes: "(max-width: 1536px) calc(100vw - 4rem), 1472px",
+                  },
+                ]}
                 src={corporateProjectImages[0].src}
                 alt={
                   isEn
@@ -144,7 +153,17 @@ export const ProjectsPage: React.FC = () => {
                         image.wide ? "aspect-[16/7]" : "aspect-[4/3]"
                       } overflow-hidden`}
                     >
-                      <img
+                      <ResponsiveImage
+                        pictureClassName="block h-full w-full"
+                        sources={[
+                          {
+                            srcSet: image.srcSet,
+                            type: "image/webp",
+                            sizes: image.wide
+                              ? "(max-width: 1536px) calc(100vw - 4rem), 1472px"
+                              : "(max-width: 639px) calc(100vw - 2rem), (max-width: 1536px) 48vw, 720px",
+                          },
+                        ]}
                         src={image.src}
                         alt={alt}
                         loading="lazy"

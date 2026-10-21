@@ -12,6 +12,7 @@ export interface FeaturedProject {
   href: string
   external?: boolean
   image?: string
+  imageSrcSet?: string
   imageAlt?: LocalizedText
   visual?: "agent"
 }
@@ -39,6 +40,8 @@ export const featuredProjects: FeaturedProject[] = [
       en: "Commercial operations, licensing and catalog workflows brought into one enterprise experience.",
     },
     image: "/portfolio-autocom3/01-painel-operacoes-visao-geral.png",
+    imageSrcSet:
+      "/media/projects/autocom3-operations-720.webp 720w, /media/projects/autocom3-operations-1440.webp 1440w, /media/projects/autocom3-operations-2880.webp 2880w",
     imageAlt: {
       pt: "Interface do painel de operações da Autocom3",
       en: "Autocom3 operations dashboard interface",
@@ -64,7 +67,10 @@ export const experienceItems: ExperienceItem[] = [
   {
     period: { pt: "2024—Agora", en: "2024—Now" },
     company: "Autocom3 Tecnologia",
-    role: { pt: "Engenheiro de Software Full Stack", en: "Full Stack Software Engineer" },
+    role: {
+      pt: "Engenheiro de Software Full Stack",
+      en: "Full Stack Software Engineer",
+    },
     description: {
       pt: "Evolução de fluxos críticos em um ecossistema corporativo, da interface à arquitetura.",
       en: "Evolving critical flows across interface and architecture in an enterprise ecosystem.",

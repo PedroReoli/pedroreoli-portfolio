@@ -15,6 +15,7 @@ Estado reconciliado com o código em 20/10/2026.
 - [x] Build TypeScript/Vite e lint sem erros na última revisão.
 - [x] Código legado e dependências sem uso removidos.
 - [x] Auditoria das dependências de produção sem vulnerabilidades conhecidas.
+- [x] Imagens de projeto com variantes WebP responsivas e fallback PNG.
 
 ## Pendente de material
 
@@ -34,7 +35,7 @@ Esses itens permanecem pendentes porque validação estática não comprova comp
 
 ## Otimização futura
 
-- [ ] Converter imagens de projeto para WebP/AVIF mantendo fallback compatível.
+- [ ] Avaliar AVIF depois da validação visual dos WebP já gerados.
 - [ ] Criar imagem Open Graph específica para compartilhamento.
 - [ ] Atualizar o banco do Browserslist em uma manutenção separada.
 - [ ] Planejar migração conjunta de Tailwind 3 e Vite 4 para eliminar alertas restritos à toolchain sem quebrar o layout.

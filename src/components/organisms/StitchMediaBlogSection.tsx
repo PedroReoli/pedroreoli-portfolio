@@ -1,6 +1,7 @@
 import React from "react"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
+import ResponsiveImage from "../atoms/ResponsiveImage"
 
 const notes = [
   {
@@ -77,7 +78,16 @@ export const StitchMediaBlogSection: React.FC = () => {
             </a>
           </div>
           <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19] lg:col-span-7">
-            <img
+            <ResponsiveImage
+              pictureClassName="block h-full w-full"
+              sources={[
+                {
+                  srcSet:
+                    "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
+                  type: "image/webp",
+                  sizes: "(max-width: 767px) calc(100vw - 2rem), 58vw",
+                },
+              ]}
               src="/TCC-img2.png"
               alt={
                 isEn

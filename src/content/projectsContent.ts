@@ -2,6 +2,7 @@ import type { LocalizedText } from "./homeContent"
 
 export interface ProjectImage {
   src: string
+  srcSet: string
   alt: LocalizedText
   wide?: boolean
 }
@@ -17,11 +18,15 @@ export interface IndependentProject {
 export const corporateProjectImages: ProjectImage[] = [
   {
     src: "/portfolio-autocom3/01-painel-operacoes-visao-geral.png",
+    srcSet:
+      "/media/projects/autocom3-operations-720.webp 720w, /media/projects/autocom3-operations-1440.webp 1440w, /media/projects/autocom3-operations-2880.webp 2880w",
     alt: { pt: "Painel central de operações", en: "Operations command center" },
     wide: true,
   },
   {
     src: "/portfolio-autocom3/01-propostas-comerciais-listagem.png",
+    srcSet:
+      "/media/projects/autocom3-proposals-720.webp 720w, /media/projects/autocom3-proposals-1440.webp 1440w, /media/projects/autocom3-proposals-2880.webp 2880w",
     alt: {
       pt: "Gestão de propostas comerciais",
       en: "Commercial proposal management",
@@ -29,10 +34,14 @@ export const corporateProjectImages: ProjectImage[] = [
   },
   {
     src: "/portfolio-autocom3/01-licencas-sgsh-painel-central.png",
+    srcSet:
+      "/media/projects/autocom3-licenses-720.webp 720w, /media/projects/autocom3-licenses-1440.webp 1440w, /media/projects/autocom3-licenses-2880.webp 2880w",
     alt: { pt: "Ciclo de vida de licenças", en: "License lifecycle" },
   },
   {
     src: "/portfolio-autocom3/01-catalogo-skus-tabela.png",
+    srcSet:
+      "/media/projects/autocom3-catalog-720.webp 720w, /media/projects/autocom3-catalog-1440.webp 1440w, /media/projects/autocom3-catalog-2880.webp 2880w",
     alt: { pt: "Catálogo corporativo de SKUs", en: "Enterprise SKU catalog" },
     wide: true,
   },
