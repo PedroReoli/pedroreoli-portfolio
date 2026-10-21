@@ -1,40 +1,8 @@
 import React from "react"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { mediaNotes } from "../../content/mediaContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import ResponsiveImage from "../atoms/ResponsiveImage"
-
-const notes = [
-  {
-    number: "01",
-    categoryPt: "Agentes & browser",
-    categoryEn: "Agents & browser",
-    title: "Achilles CDP Agent",
-    descriptionPt:
-      "Automação local orientada por CDP e ferramentas determinísticas.",
-    descriptionEn: "Local automation shaped by CDP and deterministic tools.",
-    href: "https://github.com/PedroReoli/Achilles-CDP-Agent",
-  },
-  {
-    number: "02",
-    categoryPt: "Conhecimento local-first",
-    categoryEn: "Local-first knowledge",
-    title: "Organon",
-    descriptionPt:
-      "Planejamento e conhecimento em um ambiente privado e conectado.",
-    descriptionEn:
-      "Planning and knowledge in a private, connected environment.",
-    href: "https://github.com/PedroReoli/organon",
-  },
-  {
-    number: "03",
-    categoryPt: "Código aberto",
-    categoryEn: "Open source",
-    title: "Outros experimentos",
-    descriptionPt: "Ferramentas, estudos e sistemas publicados no GitHub.",
-    descriptionEn: "Tools, studies and systems published on GitHub.",
-    href: "https://github.com/PedroReoli",
-  },
-]
 
 export const StitchMediaBlogSection: React.FC = () => {
   const { language } = useLanguage()
@@ -107,13 +75,13 @@ export const StitchMediaBlogSection: React.FC = () => {
       <section className="editorial-container pb-32">
         <div className="mb-8 flex items-end justify-between">
           <h2 className="section-display">
-            {isEn ? "OPEN SOURCE" : "CÓDIGO ABERTO"}
+            {isEn ? "OPEN NOTEBOOK" : "CADERNO ABERTO"}
           </h2>
           <span className="editorial-label hidden text-[#8d8984] sm:block">
-            03 / {isEn ? "projects" : "projetos"}
+            03 / {isEn ? "notes" : "notas"}
           </span>
         </div>
-        {notes.map((note) => (
+        {mediaNotes.map((note) => (
           <a
             key={note.number}
             href={note.href}
@@ -126,14 +94,14 @@ export const StitchMediaBlogSection: React.FC = () => {
             </span>
             <div>
               <p className="editorial-label mb-3 text-[#82aaff]">
-                {isEn ? note.categoryEn : note.categoryPt}
+                {isEn ? note.category.en : note.category.pt}
               </p>
               <h3 className="max-w-4xl text-2xl font-bold leading-tight tracking-[-0.045em] sm:text-4xl">
-                {note.title}
+                {isEn ? note.title.en : note.title.pt}
               </h3>
             </div>
             <p className="hidden max-w-md text-sm leading-relaxed text-[#8d8984] sm:block">
-              {isEn ? note.descriptionEn : note.descriptionPt}
+              {isEn ? note.description.en : note.description.pt}
             </p>
             <ArrowUpRight className="h-5 w-5 text-[#82aaff] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </a>
