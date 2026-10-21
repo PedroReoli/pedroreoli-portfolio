@@ -1,7 +1,4 @@
-export interface LocalizedText {
-  pt: string
-  en: string
-}
+import type { LocalizedText } from "./contentTypes"
 
 export interface FeaturedProject {
   number: string

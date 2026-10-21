@@ -1,4 +1,4 @@
-import type { LocalizedText } from "./homeContent"
+import type { LocalizedText } from "./contentTypes"
 
 export interface MediaNote {
   number: string
