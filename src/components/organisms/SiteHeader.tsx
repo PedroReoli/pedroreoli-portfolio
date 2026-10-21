@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
+import { getMailtoUrl } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 
 export const SiteHeader: React.FC = () => {
@@ -121,7 +122,7 @@ export const SiteHeader: React.FC = () => {
           </button>
 
           <a
-            href="mailto:pedrosousa2160@gmail.com"
+            href={getMailtoUrl()}
             className="hidden items-center gap-1.5 border-b border-[#82aaff] pb-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#edeae4] sm:inline-flex"
           >
             {isEn ? "Let's talk" : "Vamos conversar"}

@@ -7,6 +7,7 @@ import ProjectCategoryTabs, {
   type ProjectCategory,
 } from "../components/organisms/ProjectCategoryTabs"
 import SiteFooter from "../components/organisms/SiteFooter"
+import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const ProjectsPage: React.FC = () => {
@@ -23,13 +24,15 @@ export const ProjectsPage: React.FC = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#111010] text-[#edeae4]">
       <SEOHead
-        title={isEn ? "Selected Work | Pedro Reoli" : "Projetos selecionados | Pedro Reoli"}
+        title={
+          isEn ? `Selected Work | ${siteConfig.name}` : `Projetos selecionados | ${siteConfig.name}`
+        }
         description={
           isEn
             ? "A selection of software products and systems built by Pedro Reoli."
             : "Uma seleção de produtos digitais e sistemas construídos por Pedro Reoli."
         }
-        canonicalUrl="https://pedroreis.vercel.app/projetos"
+        canonicalUrl={getSiteUrl("/projetos")}
         locale={isEn ? "en_US" : "pt_BR"}
       />
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">

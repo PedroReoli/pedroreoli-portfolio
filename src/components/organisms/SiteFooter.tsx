@@ -1,6 +1,7 @@
 import React from "react"
 import { useReducedMotion } from "framer-motion"
 import { ArrowUp, ArrowUpRight } from "lucide-react"
+import { getMailtoUrl, siteConfig } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 
@@ -30,10 +31,7 @@ export const SiteFooter: React.FC = () => {
           <p className="editorial-label mb-4 text-[#8d8984]">
             {isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}
           </p>
-          <a
-            href="mailto:pedrosousa2160@gmail.com"
-            className="group block border-b border-white/25 pb-5 sm:pb-7"
-          >
+          <a href={getMailtoUrl()} className="group block border-b border-white/25 pb-5 sm:pb-7">
             <span className="footer-cta relative block font-black uppercase leading-[0.76] tracking-[-0.085em]">
               <span className="footer-cta-word">{isEn ? "LET'S" : "VAMOS"}</span>
               <span className="footer-cta-word footer-cta-outline">
@@ -48,14 +46,14 @@ export const SiteFooter: React.FC = () => {
 
         <div className="footer-bottom">
           <Reveal className="grid grid-cols-3 gap-3 border-b border-white/15 pb-4 sm:gap-6 sm:pb-6">
-            <a href="mailto:pedrosousa2160@gmail.com" className="footer-link">
+            <a href={getMailtoUrl()} className="footer-link">
               <span>
                 <small>01</small>E-mail
               </span>
               <ArrowUpRight />
             </a>
             <a
-              href="https://github.com/PedroReoli"
+              href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
@@ -66,7 +64,7 @@ export const SiteFooter: React.FC = () => {
               <ArrowUpRight />
             </a>
             <a
-              href="https://www.linkedin.com/in/pedro-lucas-reis-a93945171/"
+              href={siteConfig.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
@@ -79,7 +77,9 @@ export const SiteFooter: React.FC = () => {
           </Reveal>
 
           <div className="flex items-center justify-between gap-4 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#8d8984] sm:pt-5 sm:text-[10px]">
-            <span>© {new Date().getFullYear()} Pedro Lucas Reis</span>
+            <span>
+              © {new Date().getFullYear()} {siteConfig.legalName}
+            </span>
             <button
               type="button"
               onClick={() =>

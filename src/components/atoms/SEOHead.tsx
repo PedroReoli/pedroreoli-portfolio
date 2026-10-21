@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { getSiteUrl, siteConfig } from "../../config/site"
 
 interface SEOHeadProps {
   title: string
@@ -13,11 +14,11 @@ interface SEOHeadProps {
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
-  canonicalUrl = "https://pedroreis.vercel.app/",
+  canonicalUrl = getSiteUrl(),
   noIndex = false,
   locale = "pt_BR",
-  imageUrl = "https://pedroreis.vercel.app/eu-profissional.png",
-  imageAlt = "Pedro Reoli",
+  imageUrl = getSiteUrl("/eu-profissional.png"),
+  imageAlt = siteConfig.name,
 }) => {
   useEffect(() => {
     document.title = title
@@ -65,7 +66,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setPropertyMeta("og:image", imageUrl)
     setPropertyMeta("og:image:alt", imageAlt)
     setPropertyMeta("og:locale", locale)
-    setPropertyMeta("og:site_name", "Pedro Reoli")
+    setPropertyMeta("og:site_name", siteConfig.name)
 
     setNamedMeta("robots", noIndex ? "noindex, nofollow" : "index, follow")
   }, [title, description, canonicalUrl, noIndex, locale, imageUrl, imageAlt])

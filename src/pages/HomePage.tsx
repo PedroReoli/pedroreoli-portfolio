@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react"
 import SEOHead from "../components/atoms/SEOHead"
 import PortfolioHero from "../components/organisms/PortfolioHero"
 import SiteFooter from "../components/organisms/SiteFooter"
+import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 
 const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
@@ -16,15 +17,15 @@ export const HomePage: React.FC = () => {
       <SEOHead
         title={
           isEn
-            ? "Pedro Lucas Reis | Full Stack Software Engineer & Systems Architect"
-            : "Pedro Lucas Reis | Engenheiro de Software Full Stack & Arquiteto de Sistemas"
+            ? `${siteConfig.legalName} | Full Stack Software Engineer & Systems Architect`
+            : `${siteConfig.legalName} | Engenheiro de Software Full Stack & Arquiteto de Sistemas`
         }
         description={
           isEn
             ? "Portfolio of Pedro Lucas Reis — Full Stack Software Engineer specializing in high-density frontend architectures, distributed systems, and AI agents."
             : "Portfólio de Pedro Lucas Reis — Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
         }
-        canonicalUrl="https://pedroreis.vercel.app/"
+        canonicalUrl={getSiteUrl()}
         locale={isEn ? "en_US" : "pt_BR"}
       />
 

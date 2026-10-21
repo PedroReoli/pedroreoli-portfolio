@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
 import { ArrowLeft, Home } from "lucide-react"
+import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const NotFoundPage: React.FC = () => {
@@ -13,15 +14,15 @@ export const NotFoundPage: React.FC = () => {
       <SEOHead
         title={
           isEn
-            ? "404 — Page Not Found | Pedro Lucas Reis"
-            : "404 — Página Não Encontrada | Pedro Lucas Reis"
+            ? `404 — Page Not Found | ${siteConfig.legalName}`
+            : `404 — Página Não Encontrada | ${siteConfig.legalName}`
         }
         description={
           isEn
             ? "The page you are looking for does not exist or has moved."
             : "A página que você está procurando não existe ou foi movida."
         }
-        canonicalUrl="https://pedroreis.vercel.app/404"
+        canonicalUrl={getSiteUrl("/404")}
         noIndex={true}
         locale={isEn ? "en_US" : "pt_BR"}
       />

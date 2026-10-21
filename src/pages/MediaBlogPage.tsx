@@ -2,6 +2,7 @@ import React from "react"
 import SEOHead from "../components/atoms/SEOHead"
 import MediaArchiveSection from "../components/organisms/MediaArchiveSection"
 import SiteFooter from "../components/organisms/SiteFooter"
+import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 
 export const MediaBlogPage: React.FC = () => {
@@ -14,15 +15,15 @@ export const MediaBlogPage: React.FC = () => {
       <SEOHead
         title={
           isEn
-            ? "Technical Publications & Media | Pedro Lucas Reis"
-            : "Mídia & Publicações Técnicas | Pedro Lucas Reis"
+            ? `Technical Publications & Media | ${siteConfig.legalName}`
+            : `Mídia & Publicações Técnicas | ${siteConfig.legalName}`
         }
         description={
           isEn
             ? "Open-source projects, technical notes and press coverage about software engineer Pedro Lucas Reis."
             : "Projetos de código aberto, notas técnicas e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
         }
-        canonicalUrl="https://pedroreis.vercel.app/midia-blog"
+        canonicalUrl={getSiteUrl("/midia-blog")}
         locale={isEn ? "en_US" : "pt_BR"}
       />
 
