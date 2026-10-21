@@ -21,8 +21,8 @@ export const MediaBlogPage: React.FC = () => {
         }
         description={
           isEn
-            ? "Technical essays, open-source architecture documentation, and press recognition of software engineer Pedro Lucas Reis."
-            : "Ensaios técnicos de engenharia de software, documentação de sistemas de código aberto e cobertura na imprensa sobre Pedro Lucas Reis."
+            ? "Open-source projects, technical notes and press coverage about software engineer Pedro Lucas Reis."
+            : "Projetos de código aberto, notas técnicas e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
         }
         canonicalUrl="https://pedroreis.vercel.app/midia-blog"
       />
