@@ -112,7 +112,6 @@ export const SiteHeader: React.FC = () => {
 
         <div className="flex items-center gap-4">
           <button
-            ref={menuButtonRef}
             type="button"
             onClick={toggleLanguage}
             className="editorial-label min-h-11 text-[#a5a19c] transition-colors hover:text-[#edeae4]"
@@ -130,6 +129,7 @@ export const SiteHeader: React.FC = () => {
           </a>
 
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setMenuOpen((current) => !current)}
             className="grid h-11 w-11 place-items-center border border-white/15 text-[#edeae4] md:hidden"
