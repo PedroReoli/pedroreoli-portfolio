@@ -2,10 +2,7 @@ import React, { useState } from "react"
 import { AnimatePresence, m, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import {
-  featuredProjects,
-  type FeaturedProject,
-} from "../../content/homeContent"
+import { featuredProjects, type FeaturedProject } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import ResponsiveImage from "../atoms/ResponsiveImage"
@@ -22,8 +19,7 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
           {
             srcSet: project.imageSrcSet,
             type: "image/webp",
-            sizes:
-              "(max-width: 639px) calc(100vw - 2rem), (max-width: 1536px) 68vw, 1024px",
+            sizes: "(max-width: 639px) calc(100vw - 2rem), (max-width: 1536px) 68vw, 1024px",
           },
         ]}
         src={project.image}
@@ -43,19 +39,19 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
       className="project-agent-visual absolute inset-0"
       role="img"
       aria-label={
-        isEn
-          ? "Achilles browser agent system diagram"
-          : "Diagrama do agente de navegador Achilles"
+        isEn ? "Achilles browser agent system diagram" : "Diagrama do agente de navegador Achilles"
       }
     >
-      <span className="project-agent-kicker">LOCAL AGENT / CDP</span>
+      <span className="project-agent-kicker">
+        {isEn ? "LOCAL AGENT / CDP" : "AGENTE LOCAL / CDP"}
+      </span>
       <span className="project-agent-word" aria-hidden="true">
         ACHILLES
       </span>
       <div className="project-agent-flow" aria-hidden="true">
-        <span>01 / OBSERVE</span>
-        <span>02 / DECIDE</span>
-        <span>03 / OPERATE</span>
+        <span>01 / {isEn ? "OBSERVE" : "OBSERVAR"}</span>
+        <span>02 / {isEn ? "DECIDE" : "DECIDIR"}</span>
+        <span>03 / {isEn ? "OPERATE" : "OPERAR"}</span>
       </div>
     </m.div>
   )
@@ -69,19 +65,14 @@ export const SelectedProjectsSection: React.FC = () => {
   const project = featuredProjects[activeProject]
 
   return (
-    <section
-      id="projetos-selecionados"
-      className="viewport-stage project-stage"
-    >
+    <section id="projetos-selecionados" className="viewport-stage project-stage">
       <div className="editorial-container project-stage-layout">
         <Reveal className="project-stage-heading flex items-end justify-between border-b border-white/10 pb-3 sm:pb-4">
           <div>
             <p className="editorial-label mb-2 text-[#82aaff]">
               02 / {isEn ? "Selected work" : "Trabalhos selecionados"}
             </p>
-            <h2 className="project-stage-title font-black uppercase text-[#edeae4]">
-              PROJETOS
-            </h2>
+            <h2 className="project-stage-title font-black uppercase text-[#edeae4]">PROJETOS</h2>
           </div>
           <Link
             to="/projetos"
@@ -98,7 +89,9 @@ export const SelectedProjectsSection: React.FC = () => {
               key={item.title}
               type="button"
               onClick={() => setActiveProject(index)}
-              className={`project-switcher-button editorial-label relative shrink-0 py-3 text-left transition-colors ${activeProject === index ? "text-[#edeae4]" : "text-[#66625e] hover:text-[#aaa6a0]"}`}
+              className={`project-switcher-button editorial-label relative shrink-0 py-3 text-left transition-colors ${
+                activeProject === index ? "text-[#edeae4]" : "text-[#66625e] hover:text-[#aaa6a0]"
+              }`}
               aria-pressed={activeProject === index}
             >
               <span className="mr-2 text-[#82aaff]">{item.number}</span>
@@ -126,8 +119,7 @@ export const SelectedProjectsSection: React.FC = () => {
               {project.number} — 0{featuredProjects.length}
             </span>
             <span className="editorial-label absolute bottom-3 left-3 text-white sm:bottom-5 sm:left-5">
-              {isEn ? project.category.en : project.category.pt} /{" "}
-              {project.year}
+              {isEn ? project.category.en : project.category.pt} / {project.year}
             </span>
           </figure>
 
@@ -147,9 +139,7 @@ export const SelectedProjectsSection: React.FC = () => {
                   {project.number} / {project.year}
                 </p>
               </div>
-              <h3 className="project-feature-title font-bold text-[#edeae4]">
-                {project.title}
-              </h3>
+              <h3 className="project-feature-title font-bold text-[#edeae4]">{project.title}</h3>
               <p className="project-feature-description mt-3 max-w-lg leading-relaxed text-[#9a9690]">
                 {isEn ? project.description.en : project.description.pt}
               </p>

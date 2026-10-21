@@ -62,23 +62,32 @@ export const PortfolioHero: React.FC = () => {
           className="editorial-container grid grid-cols-[1fr_auto_1fr] items-start pt-5"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
-            Portfolio / ©2026
+            {isEn ? "Portfolio" : "Portfólio"} / ©2026
           </p>
           <p className="editorial-label hidden text-center text-white/70 sm:block">
             {isEn ? "Creative developer" : "Desenvolvedor criativo"}
           </p>
           <p className="editorial-label col-start-3 whitespace-nowrap text-right text-white/70">
-            Volta Redonda, BR<br />2026
+            Volta Redonda, BR
+            <br />
+            2026
           </p>
         </m.div>
 
         <div className="editorial-container hero-name-stage min-h-0">
-          <h1 className="hero-video-title w-full font-black uppercase text-white" aria-label="Pedro Reoli">
+          <h1
+            className="hero-video-title w-full font-black uppercase text-white"
+            aria-label="Pedro Reoli"
+          >
             <span className="hero-name-word hero-name-word-first">
-              <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>PEDRO</AnimatedWord>
+              <AnimatedWord delay={0.48} reduceMotion={reduceMotion}>
+                PEDRO
+              </AnimatedWord>
             </span>
             <span className="hero-name-word hero-name-word-last">
-              <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>REOLI</AnimatedWord>
+              <AnimatedWord delay={0.62} reduceMotion={reduceMotion}>
+                REOLI
+              </AnimatedWord>
             </span>
           </h1>
         </div>
@@ -99,7 +108,9 @@ export const PortfolioHero: React.FC = () => {
             href="#projetos-selecionados"
             className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.13em] text-white transition-colors hover:border-white hover:bg-white hover:text-[#111010] sm:h-14 sm:px-7 sm:text-[10px]"
           >
-            <span className="hero-project-label-long">{isEn ? "See the work" : "Ver projetos"}</span>
+            <span className="hero-project-label-long">
+              {isEn ? "See the work" : "Ver projetos"}
+            </span>
             <span className="hero-project-label-short">{isEn ? "Work" : "Projetos"}</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>

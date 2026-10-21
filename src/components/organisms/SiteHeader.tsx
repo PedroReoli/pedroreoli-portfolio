@@ -106,7 +106,7 @@ export const SiteHeader: React.FC = () => {
             type="button"
             onClick={toggleLanguage}
             className="editorial-label text-[#a5a19c] transition-colors hover:text-[#edeae4]"
-            aria-label={isEn ? "Mudar idioma para português" : "Switch language to English"}
+            aria-label={isEn ? "Switch language to Portuguese" : "Mudar idioma para inglês"}
           >
             {language === "pt" ? "PT / EN" : "EN / PT"}
           </button>
