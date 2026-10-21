@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip">
       {/* Metatags e SEO Dinâmico */}
       <SEOHead
         title={
