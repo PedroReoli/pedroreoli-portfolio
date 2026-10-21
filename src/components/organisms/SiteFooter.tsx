@@ -1,4 +1,5 @@
 import React from "react"
+import { useReducedMotion } from "framer-motion"
 import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
@@ -6,6 +7,7 @@ import Reveal from "../atoms/Reveal"
 export const SiteFooter: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
+  const reduceMotion = useReducedMotion()
 
   return (
     <footer
@@ -80,7 +82,9 @@ export const SiteFooter: React.FC = () => {
             <span>© {new Date().getFullYear()} Pedro Lucas Reis</span>
             <button
               type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
+              }
               className="inline-flex min-h-11 shrink-0 items-center gap-2 uppercase transition-colors hover:text-white"
             >
               {isEn ? "Back to top" : "Voltar ao topo"}
