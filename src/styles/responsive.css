@@ -91,7 +91,7 @@
 
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .project-feature {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1.25fr) auto;
@@ -139,7 +139,7 @@
     font-size: clamp(1.1rem, min(5vw, 2.8vh), 1.6rem);
   }
 
-  .expertise-stage-layout {
+  .method-stage-layout {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 0.75fr) minmax(0, 1.25fr);
     gap: clamp(0.8rem, 2.2vh, 1.25rem);
@@ -194,28 +194,48 @@
     height: 0.75rem;
   }
 
-  .expertise-heading {
+  .method-heading {
     font-size: clamp(2.65rem, min(13.5vw, 7.5vh), 4rem);
   }
 
-  .expertise-summary {
+  .method-summary {
     margin-top: 0.65rem;
     font-size: clamp(0.72rem, 3vw, 0.85rem);
     line-height: 1.4;
   }
 
-  .expertise-row {
+  .method-row {
     grid-template-columns: 1.75rem minmax(0, 0.8fr) minmax(0, 1.2fr);
     gap: 0.55rem;
   }
 
-  .expertise-title {
+  .method-title {
     font-size: clamp(1.35rem, min(6.5vw, 4.3vh), 2rem);
   }
 
-  .expertise-description {
+  .method-description {
     font-size: clamp(0.64rem, min(2.7vw, 1.65vh), 0.78rem);
     line-height: 1.3;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .trajectory-stage-layout,
+  .method-stage-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 0.62fr) minmax(0, 1.38fr);
+    gap: clamp(0.8rem, 2vh, 1.4rem);
+  }
+
+  .trajectory-title,
+  .method-heading {
+    font-size: clamp(3.25rem, min(9vw, 8vh), 5.25rem);
+  }
+
+  .trajectory-summary,
+  .method-summary {
+    margin-top: 0.75rem;
+    font-size: clamp(0.78rem, min(1.8vw, 1.7vh), 0.95rem);
   }
 }
 
@@ -259,7 +279,7 @@
     padding-bottom: 1rem;
   }
 
-  .expertise-stage-layout {
+  .method-stage-layout {
     padding-top: 4.65rem;
     padding-bottom: 0.75rem;
   }

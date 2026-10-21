@@ -1,9 +1,9 @@
 import React from "react"
 import ExperienceSection from "./ExperienceSection"
-import ExpertiseSection from "./ExpertiseSection"
 import PurposeStorySection from "./PurposeStorySection"
 import SelectedProjectsSection from "./SelectedProjectsSection"
 import StitchStackSection from "./StitchStackSection"
+import WorkingMethodSection from "./WorkingMethodSection"
 
 export const StitchDossierSection: React.FC = () => (
   <div className="w-full">
@@ -11,7 +11,7 @@ export const StitchDossierSection: React.FC = () => (
     <StitchStackSection />
     <PurposeStorySection />
     <ExperienceSection />
-    <ExpertiseSection />
+    <WorkingMethodSection />
   </div>
 )
 

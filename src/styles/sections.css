@@ -458,12 +458,12 @@
     bottom: calc(100% - 0.35rem);
   }
 
-  .expertise-title {
+  .method-title {
     font-size: clamp(1.85rem, min(4vw, 6.5vh), 4.25rem);
     line-height: 0.88;
   }
 
-  .expertise-stage-layout {
+  .method-stage-layout {
     display: grid;
     grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.25fr);
     gap: clamp(2rem, 5vw, 6rem);
@@ -472,24 +472,24 @@
     padding-bottom: clamp(1.5rem, 4vh, 3.5rem);
   }
 
-  .expertise-heading {
+  .method-heading {
     font-size: clamp(3.6rem, min(7vw, 10vh), 7.5rem);
     line-height: 0.8;
     letter-spacing: -0.08em;
   }
 
-  .expertise-summary,
-  .expertise-description {
+  .method-summary,
+  .method-description {
     font-size: clamp(0.8rem, min(1.05vw, 2vh), 1rem);
     line-height: 1.55;
   }
 
-  .expertise-list {
+  .method-list {
     display: grid;
     grid-template-rows: repeat(4, minmax(0, 1fr));
   }
 
-  .expertise-row {
+  .method-row {
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -501,7 +501,7 @@
     padding-inline: clamp(0.25rem, 1vw, 1rem);
   }
 
-  .expertise-row::before {
+  .method-row::before {
     position: absolute;
     z-index: -1;
     inset: 0;
@@ -511,7 +511,7 @@
     transition: opacity 300ms ease;
   }
 
-  .expertise-row::after {
+  .method-row::after {
     position: absolute;
     right: 0;
     bottom: -1px;
@@ -524,15 +524,15 @@
     transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .expertise-row:hover::before {
+  .method-row:hover::before {
     opacity: 1;
   }
 
-  .expertise-row:hover::after {
+  .method-row:hover::after {
     transform: scaleX(1);
   }
 
-  .expertise-row:first-child {
+  .method-row:first-child {
     border-top: 1px solid rgb(255 255 255 / 0.1);
   }
 

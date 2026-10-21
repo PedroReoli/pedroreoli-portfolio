@@ -24,7 +24,7 @@ export interface ExperienceItem {
   description: LocalizedText
 }
 
-export interface ExpertiseItem {
+export interface WorkingPrinciple {
   title: LocalizedText
   description: LocalizedText
 }
@@ -105,33 +105,33 @@ export const experienceItems: ExperienceItem[] = [
   },
 ]
 
-export const expertiseItems: ExpertiseItem[] = [
+export const workingPrinciples: WorkingPrinciple[] = [
   {
-    title: { pt: "Interfaces", en: "Interfaces" },
+    title: { pt: "Contexto", en: "Context" },
     description: {
-      pt: "Clareza visual, acessibilidade e interação consistente.",
-      en: "Visual clarity, accessibility and consistent interaction.",
+      pt: "Entender a operação, o risco e o que realmente precisa mudar.",
+      en: "Understand the operation, the risk and what truly needs to change.",
     },
   },
   {
-    title: { pt: "Back-end", en: "Back-end" },
+    title: { pt: "Decisão", en: "Decision" },
     description: {
-      pt: "APIs, integrações e dados preparados para escala real.",
-      en: "APIs, integrations and data foundations ready for real scale.",
+      pt: "Escolher a solução mais simples que sustenta o próximo passo.",
+      en: "Choose the simplest solution that can support the next step.",
     },
   },
   {
-    title: { pt: "Agentes de IA", en: "AI agents" },
+    title: { pt: "Produção", en: "Production" },
     description: {
-      pt: "Automação observável conectada às ferramentas certas.",
-      en: "Observable automation connected to the right tools.",
+      pt: "Entregar com qualidade, observabilidade e documentação útil.",
+      en: "Ship with quality, observability and useful documentation.",
     },
   },
   {
-    title: { pt: "Sistemas", en: "Systems" },
+    title: { pt: "Evolução", en: "Evolution" },
     description: {
-      pt: "Arquitetura que transforma complexidade em fluxo.",
-      en: "Architecture that turns complexity into flow.",
+      pt: "Medir, aprender e melhorar sem recomeçar do zero.",
+      en: "Measure, learn and improve without starting over.",
     },
   },
 ]
