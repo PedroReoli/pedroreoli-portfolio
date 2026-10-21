@@ -6,14 +6,17 @@ interface ResponsiveImageSource {
   sizes?: string
 }
 
-interface ResponsiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface ResponsiveImageProps
+  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "alt"> {
   sources: ResponsiveImageSource[]
   pictureClassName?: string
+  alt: string
 }
 
 export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   sources,
   pictureClassName,
+  alt,
   ...imageProps
 }) => (
   <picture className={pictureClassName}>
@@ -25,7 +28,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         sizes={source.sizes}
       />
     ))}
-    <img {...imageProps} />
+    <img {...imageProps} alt={alt} />
   </picture>
 )
 
