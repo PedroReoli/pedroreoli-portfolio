@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { AnimatePresence, m, useReducedMotion } from "framer-motion"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
@@ -44,7 +44,7 @@ export const ExperienceSection: React.FC = () => {
 
                 <AnimatePresence>
                   {activeExperience === index && (
-                    <motion.aside
+                    <m.aside
                       initial={reduceMotion ? false : { opacity: 0, y: 10, scale: 0.98 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -53,7 +53,7 @@ export const ExperienceSection: React.FC = () => {
                     >
                       <p className="editorial-label mb-2 text-[#5f5b56]">{item.company} / {isEn ? item.period.en : item.period.pt}</p>
                       <p className="text-sm leading-relaxed">{isEn ? item.description.en : item.description.pt}</p>
-                    </motion.aside>
+                    </m.aside>
                   )}
                 </AnimatePresence>
               </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import {
   AnimatePresence,
-  motion,
+  m,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
@@ -61,7 +61,7 @@ export const StitchHeader: React.FC = () => {
   ]
 
   return (
-    <motion.header
+    <m.header
       initial={false}
       animate={{ y: headerVisible ? 0 : "-100%" }}
       transition={{
@@ -160,7 +160,7 @@ export const StitchHeader: React.FC = () => {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.nav
+          <m.nav
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -195,10 +195,10 @@ export const StitchHeader: React.FC = () => {
                 )
               })}
             </div>
-          </motion.nav>
+          </m.nav>
         )}
       </AnimatePresence>
-    </motion.header>
+    </m.header>
   )
 }
 

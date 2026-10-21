@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { m, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 
@@ -14,14 +14,14 @@ interface AnimatedWordProps {
 
 const AnimatedWord: React.FC<AnimatedWordProps> = ({ children, delay, reduceMotion }) => (
   <span className="block overflow-hidden" aria-hidden="true">
-    <motion.span
+    <m.span
       className="block"
       initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
       animate={{ y: "0%", opacity: 1 }}
       transition={{ duration: 1, delay: reduceMotion ? 0 : delay, ease: entranceEase }}
     >
       {children}
-    </motion.span>
+    </m.span>
   </span>
 )
 
@@ -33,7 +33,7 @@ export const StitchHeroProjects: React.FC = () => {
   return (
     <section id="hero" className="viewport-stage hero-shell relative bg-[#111010] pt-16">
       {heroVideoEnabled && (
-        <motion.video
+        <m.video
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay={!reduceMotion}
           muted
@@ -47,7 +47,7 @@ export const StitchHeroProjects: React.FC = () => {
         >
           <source src="/videos/hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
           <source src="/videos/hero-desktop.mp4" type="video/mp4" />
-        </motion.video>
+        </m.video>
       )}
 
       <div className="absolute inset-0 bg-black/35" />
@@ -55,7 +55,7 @@ export const StitchHeroProjects: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/20" />
 
       <div className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
-        <motion.div
+        <m.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.46, ease: entranceEase }}
@@ -70,7 +70,7 @@ export const StitchHeroProjects: React.FC = () => {
           <p className="editorial-label col-start-3 whitespace-nowrap text-right text-white/70">
             Volta Redonda, BR<br />2026
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="editorial-container hero-name-stage min-h-0">
           <h1 className="hero-video-title w-full font-black uppercase text-white" aria-label="Pedro Reoli">
@@ -83,7 +83,7 @@ export const StitchHeroProjects: React.FC = () => {
           </h1>
         </div>
 
-        <motion.div
+        <m.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: reduceMotion ? 0 : 0.92, ease: entranceEase }}
@@ -103,7 +103,7 @@ export const StitchHeroProjects: React.FC = () => {
             <span className="hero-project-label-short">{isEn ? "Work" : "Projetos"}</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

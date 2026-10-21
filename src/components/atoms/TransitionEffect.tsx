@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { m, useReducedMotion } from "framer-motion"
 
 export const TransitionEffect: React.FC = () => {
   const reduceMotion = useReducedMotion()
@@ -7,7 +7,7 @@ export const TransitionEffect: React.FC = () => {
   if (reduceMotion) return null
 
   return (
-    <motion.div
+    <m.div
       className="pointer-events-none fixed inset-0 z-[100] origin-top bg-[#82aaff]"
       initial={{ scaleY: 1 }}
       animate={{ scaleY: 0 }}

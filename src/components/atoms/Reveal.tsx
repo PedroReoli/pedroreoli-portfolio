@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { m, useReducedMotion } from "framer-motion"
 
 interface RevealProps {
   children: React.ReactNode
@@ -19,7 +19,7 @@ export const Reveal: React.FC<RevealProps> = ({
   const reduceMotion = useReducedMotion()
 
   return (
-    <motion.div
+    <m.div
       className={className}
       role={role}
       initial={reduceMotion ? false : { opacity: 0, y: distance }}
@@ -28,7 +28,7 @@ export const Reveal: React.FC<RevealProps> = ({
       transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { AnimatePresence, m, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import {
@@ -38,7 +38,7 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
   }
 
   return (
-    <motion.div
+    <m.div
       key={project.title}
       className="project-agent-visual absolute inset-0"
       role="img"
@@ -57,7 +57,7 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
         <span>02 / DECIDE</span>
         <span>03 / OPERATE</span>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -110,7 +110,7 @@ export const SelectedProjectsSection: React.FC = () => {
         <div className="project-feature min-h-0">
           <figure className="project-image-frame group relative min-h-0 overflow-hidden rounded-xl bg-[#1b1a19]">
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={project.title}
                 className="absolute inset-0"
                 initial={reduceMotion ? false : { opacity: 0, scale: 1.035 }}
@@ -119,7 +119,7 @@ export const SelectedProjectsSection: React.FC = () => {
                 transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
               >
                 <ProjectArtwork project={project} isEn={isEn} />
-              </motion.div>
+              </m.div>
             </AnimatePresence>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <span className="editorial-label absolute right-3 top-3 text-white/75 sm:right-5 sm:top-5">
@@ -132,7 +132,7 @@ export const SelectedProjectsSection: React.FC = () => {
           </figure>
 
           <AnimatePresence mode="wait">
-            <motion.article
+            <m.article
               key={project.title}
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ export const SelectedProjectsSection: React.FC = () => {
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
               )}
-            </motion.article>
+            </m.article>
           </AnimatePresence>
         </div>
       </div>
