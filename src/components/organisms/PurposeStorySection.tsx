@@ -21,27 +21,61 @@ export const PurposeStorySection: React.FC = () => {
           <p className="editorial-label text-right text-white/45">FalaAtípica / UniFOA / 2026</p>
         </Reveal>
 
-        <div className="purpose-stage-content min-h-0">
-          <div className="purpose-copy min-h-0">
-            <Reveal distance={28} amount={0.08}>
-              <p className="editorial-label mb-3 text-white/45">
-                {isEn ? "Real need / Useful response" : "Necessidade real / Resposta útil"}
-              </p>
-              <h2 className="purpose-title font-black uppercase">
-                {isEn ? "Technology" : "Tecnologia"}
-                <span>{isEn ? "that includes." : "que inclui."}</span>
-              </h2>
-            </Reveal>
+        <Reveal
+          className="purpose-media-shell min-h-0"
+          axis="x"
+          distance={28}
+          delay={0.06}
+          amount={0.08}
+        >
+          <figure className="purpose-media-frame relative h-full overflow-hidden">
+            <ResponsiveImage
+              pictureClassName="block h-full w-full"
+              sources={[
+                {
+                  srcSet:
+                    "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
+                  type: "image/webp",
+                  sizes: "calc(100vw - 2rem)",
+                },
+              ]}
+              src="/TCC-img2.png"
+              alt={
+                isEn
+                  ? "Pedro presenting the FalaAtípica project at UniFOA"
+                  : "Pedro apresentando o projeto FalaAtípica no UniFOA"
+              }
+              loading="lazy"
+              decoding="async"
+              width={1280}
+              height={577}
+              className="h-full w-full object-cover object-center"
+            />
+            <figcaption className="framed-media-caption">
+              <span>{isEn ? "Assistive technology" : "Tecnologia assistiva"}</span>
+              <span>{isEn ? "Presentation / UniFOA" : "Apresentação / UniFOA"}</span>
+            </figcaption>
+          </figure>
+        </Reveal>
 
-            <Reveal delay={0.12} distance={18} amount={0.08}>
+        <div className="purpose-statement">
+          <Reveal distance={24} amount={0.08}>
+            <h2 className="purpose-title font-black uppercase">
+              {isEn ? "Technology" : "Tecnologia"}
+              <span>{isEn ? "is access." : "é acesso."}</span>
+            </h2>
+          </Reveal>
+
+          <div className="purpose-statement-copy">
+            <Reveal delay={0.1} distance={16} amount={0.06}>
               <p className="purpose-summary">
                 {isEn
-                  ? "FalaAtípica connects families and speech professionals through clearer, more accessible communication."
-                  : "O FalaAtípica aproxima famílias e profissionais da fala por meio de uma comunicação mais clara e acessível."}
+                  ? "FalaAtípica brings families, children and speech professionals closer through clearer communication."
+                  : "O FalaAtípica aproxima famílias, crianças e profissionais da fala por meio de uma comunicação mais clara."}
               </p>
             </Reveal>
 
-            <Reveal delay={0.2} distance={14} amount={0.05}>
+            <Reveal delay={0.16} distance={12} amount={0.04}>
               <a
                 href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
                 target="_blank"
@@ -53,43 +87,6 @@ export const PurposeStorySection: React.FC = () => {
               </a>
             </Reveal>
           </div>
-
-          <Reveal
-            className="purpose-media-shell min-h-0"
-            axis="x"
-            distance={34}
-            delay={0.08}
-            amount={0.08}
-          >
-            <figure className="purpose-media-frame relative h-full overflow-hidden">
-              <ResponsiveImage
-                pictureClassName="block h-full w-full"
-                sources={[
-                  {
-                    srcSet:
-                      "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
-                    type: "image/webp",
-                    sizes: "(max-width: 767px) calc(100vw - 2rem), 58vw",
-                  },
-                ]}
-                src="/TCC-img2.png"
-                alt={
-                  isEn
-                    ? "Pedro presenting the FalaAtípica project at UniFOA"
-                    : "Pedro apresentando o projeto FalaAtípica no UniFOA"
-                }
-                loading="lazy"
-                decoding="async"
-                width={1280}
-                height={577}
-                className="h-full w-full object-cover object-[58%_center]"
-              />
-              <figcaption className="framed-media-caption">
-                <span>{isEn ? "Assistive product" : "Produto assistivo"}</span>
-                <span>01 / 01</span>
-              </figcaption>
-            </figure>
-          </Reveal>
         </div>
       </div>
     </section>
