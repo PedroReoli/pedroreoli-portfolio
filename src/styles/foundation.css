@@ -1,7 +1,21 @@
 @layer base {
   :root {
+    --viewport-height: 100vh;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Keep screen utilities and sticky scenes on the same mobile viewport. */
+  @supports (height: 100svh) {
+    :root {
+      --viewport-height: 100svh;
+    }
+  }
+
+  @supports (height: 100dvh) {
+    :root {
+      --viewport-height: 100dvh;
+    }
   }
 
   html {

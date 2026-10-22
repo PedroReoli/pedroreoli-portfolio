@@ -22,7 +22,7 @@ export const PortfolioHero: React.FC = () => {
     <section
       id="hero"
       ref={heroRef}
-      className="viewport-stage hero-shell relative min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#111010] pt-14 md:pt-0"
+      className="viewport-stage hero-shell relative min-h-screen bg-[#111010] pt-14 md:pt-0"
     >
       <SectionCurtain duration={1.18} once />
 

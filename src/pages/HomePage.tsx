@@ -34,7 +34,7 @@ export const HomePage: React.FC = () => {
         <Suspense
           fallback={
             <section
-              className="grid min-h-[100svh] place-items-center border-y border-white/10"
+              className="grid min-h-screen place-items-center border-y border-white/10"
               role="status"
             >
               <span className="editorial-label text-[#8d8984]">

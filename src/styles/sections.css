@@ -6,12 +6,8 @@
 
   .viewport-stage {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
-    height: 100vh;
-    height: 100svh;
-    height: 100dvh;
+    min-height: var(--viewport-height);
+    height: var(--viewport-height);
     overflow: hidden;
     overflow: clip;
   }
@@ -460,9 +456,7 @@
   }
 
   .experience-scroll-stage {
-    height: calc(var(--experience-steps) * 100vh);
-    height: calc(var(--experience-steps) * 100svh);
-    height: calc(var(--experience-steps) * 100dvh);
+    height: calc(var(--experience-steps) * var(--viewport-height));
   }
 
   .experience-stage-layout {

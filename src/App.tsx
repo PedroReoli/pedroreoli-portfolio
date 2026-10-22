@@ -16,7 +16,7 @@ const PageFallback: React.FC = () => (
   <main
     id="main-content"
     tabIndex={-1}
-    className="grid min-h-screen min-h-[100svh] min-h-[100dvh] place-items-center bg-[#111010] pt-16 text-[#edeae4] focus:outline-none"
+    className="grid min-h-screen place-items-center bg-[#111010] pt-16 text-[#edeae4] focus:outline-none"
     aria-live="polite"
     aria-busy="true"
   >

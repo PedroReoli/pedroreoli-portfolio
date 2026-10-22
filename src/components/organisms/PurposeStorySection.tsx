@@ -12,7 +12,7 @@ export const PurposeStorySection: React.FC = () => {
   return (
     <section
       id="proposito"
-      className="viewport-stage purpose-stage min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#111010] text-[#edeae4]"
+      className="viewport-stage purpose-stage min-h-screen bg-[#111010] text-[#edeae4]"
     >
       <SectionCurtain variant="right" duration={0.9} />
 

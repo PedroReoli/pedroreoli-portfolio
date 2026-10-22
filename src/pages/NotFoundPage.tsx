@@ -10,7 +10,7 @@ export const NotFoundPage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="flex min-h-screen min-h-[100svh] min-h-[100dvh] flex-col bg-[#111010] text-[#edeae4] antialiased">
+    <div className="flex min-h-screen flex-col bg-[#111010] text-[#edeae4] antialiased">
       <SEOHead
         title={
           isEn

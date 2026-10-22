@@ -97,7 +97,7 @@ export const TechnologyStackSection: React.FC = () => {
   return (
     <section
       id="stack"
-      className="viewport-stage stack-stage min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#edeae4] text-[#111010]"
+      className="viewport-stage stack-stage min-h-screen bg-[#edeae4] text-[#111010]"
     >
       <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.82} />
       <div className="editorial-container stack-stage-layout">
