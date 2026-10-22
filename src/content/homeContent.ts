@@ -26,11 +26,6 @@ export interface ExperienceItem {
   technologies?: string[]
 }
 
-export interface WorkingPrinciple {
-  title: LocalizedText
-  description: LocalizedText
-}
-
 export const featuredProjects: FeaturedProject[] = [
   {
     number: "01",
@@ -224,45 +219,6 @@ export const experienceItems: ExperienceItem[] = [
         "Relational database modeling and querying with PostgreSQL and MySQL.",
       ],
     },
-    technologies: [
-      "React",
-      "TypeScript",
-      "C#",
-      "PHP",
-      "PostgreSQL",
-      "MySQL",
-      "REST APIs",
-    ],
-  },
-]
-
-export const workingPrinciples: WorkingPrinciple[] = [
-  {
-    title: { pt: "Contexto", en: "Context" },
-    description: {
-      pt: "Entender a operação, o risco e o que realmente precisa mudar.",
-      en: "Understand the operation, the risk and what truly needs to change.",
-    },
-  },
-  {
-    title: { pt: "Decisão", en: "Decision" },
-    description: {
-      pt: "Escolher a solução mais simples que sustenta o próximo passo.",
-      en: "Choose the simplest solution that can support the next step.",
-    },
-  },
-  {
-    title: { pt: "Produção", en: "Production" },
-    description: {
-      pt: "Entregar com qualidade, observabilidade e documentação útil.",
-      en: "Ship with quality, observability and useful documentation.",
-    },
-  },
-  {
-    title: { pt: "Evolução", en: "Evolution" },
-    description: {
-      pt: "Medir, aprender e melhorar sem recomeçar do zero.",
-      en: "Measure, learn and improve without starting over.",
-    },
+    technologies: ["React", "TypeScript", "C#", "PHP", "PostgreSQL", "MySQL", "REST APIs"],
   },
 ]

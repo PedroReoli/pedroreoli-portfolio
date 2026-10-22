@@ -3,7 +3,6 @@ import ExperienceSection from "./ExperienceSection"
 import PurposeStorySection from "./PurposeStorySection"
 import SelectedProjectsSection from "./SelectedProjectsSection"
 import TechnologyStackSection from "./TechnologyStackSection"
-import WorkingMethodSection from "./WorkingMethodSection"
 
 export const HomeSections: React.FC = () => (
   <div className="w-full">
@@ -11,7 +10,6 @@ export const HomeSections: React.FC = () => (
     <TechnologyStackSection />
     <PurposeStorySection />
     <ExperienceSection />
-    <WorkingMethodSection />
   </div>
 )
 
