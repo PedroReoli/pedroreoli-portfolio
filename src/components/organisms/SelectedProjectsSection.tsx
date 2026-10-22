@@ -4,6 +4,7 @@ import { ArrowUpRight, ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
 import { featuredProjects, type FeaturedProject } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
+import Reveal from "../atoms/Reveal"
 import ResponsiveImage from "../atoms/ResponsiveImage"
 
 const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
@@ -47,17 +48,25 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
         <span className="h-2 w-2 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff] animate-pulse" />
       </div>
       <div className="my-auto py-4 text-center">
-        <span className="project-agent-word block font-black uppercase text-white/90 text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em]" aria-hidden="true">
+        <span
+          className="project-agent-word block font-black uppercase text-white/90 text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em]"
+          aria-hidden="true"
+        >
           ACHILLES
         </span>
         <p className="mt-2 text-xs font-mono uppercase tracking-[0.18em] text-white/50">
           Autonomous Browser Agent
         </p>
       </div>
-      <div className="project-agent-flow grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-white/70" aria-hidden="true">
+      <div
+        className="project-agent-flow grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-white/70"
+        aria-hidden="true"
+      >
         <span className="rounded bg-white/5 py-1.5">01 / {isEn ? "OBSERVE" : "OBSERVAR"}</span>
         <span className="rounded bg-white/5 py-1.5">02 / {isEn ? "DECIDE" : "DECIDIR"}</span>
-        <span className="rounded bg-white/5 py-1.5 text-[#82aaff] font-bold">03 / {isEn ? "OPERATE" : "OPERAR"}</span>
+        <span className="rounded bg-white/5 py-1.5 text-[#82aaff] font-bold">
+          03 / {isEn ? "OPERATE" : "OPERAR"}
+        </span>
       </div>
     </div>
   )
@@ -76,12 +85,10 @@ export const SelectedProjectsSection: React.FC = () => {
   })
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.36) {
+    if (latest < 0.5) {
       setActiveStep(0)
-    } else if (latest < 0.72) {
-      setActiveStep(1)
     } else {
-      setActiveStep(2)
+      setActiveStep(1)
     }
   })
 
@@ -91,8 +98,8 @@ export const SelectedProjectsSection: React.FC = () => {
     const rect = container.getBoundingClientRect()
     const scrollTop = window.scrollY + rect.top
     const totalScroll = container.scrollHeight - window.innerHeight
-    const targetScroll = scrollTop + (stepIndex / 2) * totalScroll
-    window.scrollTo({ top: targetScroll, behavior: "smooth" })
+    const targetScroll = scrollTop + stepIndex * totalScroll
+    window.scrollTo({ top: targetScroll, behavior: reduceMotion ? "auto" : "smooth" })
   }
 
   // The two flagship projects
@@ -102,18 +109,16 @@ export const SelectedProjectsSection: React.FC = () => {
   const stepsMeta = [
     { number: "01", label: "AUTOCOM3" },
     { number: "02", label: "ACHILLES" },
-    { number: "03", label: isEn ? "MORE WORK" : "VER MAIS" },
   ]
 
   return (
     <section
       id="projetos-selecionados"
       ref={containerRef}
-      className="relative h-[320vh] w-full bg-[#111010]"
+      className="relative h-[200vh] w-full bg-[#111010]"
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
-      <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pt-16 pb-3 sm:py-5 md:py-8">
-        
+      <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
         {/* Background Atmospheric Glow */}
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_40%,rgba(130,170,255,0.06)_0%,transparent_70%)]"
@@ -121,7 +126,10 @@ export const SelectedProjectsSection: React.FC = () => {
         />
 
         {/* Top Header */}
-        <div className="editorial-container relative z-10 flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4">
+        <Reveal
+          className="editorial-container relative z-10 flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4"
+          distance={12}
+        >
           <div>
             <p className="editorial-label text-[10px] text-[#82aaff] sm:text-xs">
               02 / {isEn ? "Selected work" : "Trabalhos selecionados"}
@@ -131,7 +139,7 @@ export const SelectedProjectsSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Interactive Step Navigator */}
+          {/* Interactive Step Navigator with Spring Motion */}
           <nav
             className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-md"
             aria-label={isEn ? "Projects navigation" : "Navegação dos projetos"}
@@ -141,17 +149,32 @@ export const SelectedProjectsSection: React.FC = () => {
                 key={step.label}
                 type="button"
                 onClick={() => scrollToStep(idx)}
-                className={`flex items-center gap-1 sm:gap-1.5 rounded-full px-2.5 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.12em] transition-all duration-300 ${
-                  activeStep === idx
-                    ? "bg-white text-[#111010] font-bold shadow-md"
-                    : "text-white/50 hover:text-white"
-                }`}
+                className="relative flex items-center gap-1 sm:gap-1.5 rounded-full px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.12em] transition-colors"
                 aria-current={activeStep === idx ? "step" : undefined}
               >
-                <span className={activeStep === idx ? "text-[#111010]" : "text-[#82aaff]"}>
+                {activeStep === idx && (
+                  <m.span
+                    layoutId="activeProjectsTab"
+                    className="absolute inset-0 rounded-full bg-white shadow-md"
+                    transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+                <span
+                  className={`relative z-10 ${
+                    activeStep === idx ? "text-[#111010] font-bold" : "text-[#82aaff]"
+                  }`}
+                >
                   {step.number}
                 </span>
-                <span className="hidden sm:inline">{step.label}</span>
+                <span
+                  className={`relative z-10 hidden sm:inline ${
+                    activeStep === idx
+                      ? "text-[#111010] font-bold"
+                      : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  {step.label}
+                </span>
               </button>
             ))}
           </nav>
@@ -159,12 +182,13 @@ export const SelectedProjectsSection: React.FC = () => {
           {/* Direct Link to Archive */}
           <Link
             to="/projetos"
-            className="group hidden items-center gap-1.5 border-b border-white/20 pb-0.5 text-[10px] font-mono uppercase tracking-[0.14em] text-[#edeae4] transition-colors hover:border-white sm:inline-flex"
+            aria-label={isEn ? "View all projects" : "Ver todos os projetos"}
+            className="group inline-flex items-center gap-1.5 border-b border-white/20 pb-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#edeae4] transition-colors hover:border-white"
           >
-            <span>{isEn ? "View all" : "Ver todos"}</span>
+            <span className="hidden lg:inline">{isEn ? "View all" : "Ver todos"}</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
-        </div>
+        </Reveal>
 
         {/* Middle Stage: Pinned Content Slides */}
         <div className="editorial-container relative z-10 my-auto flex h-full max-h-[70vh] sm:max-h-[72vh] w-full items-center justify-center py-1 sm:py-2">
@@ -175,10 +199,10 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 0 && (
               <m.div
                 key="step-autocom"
-                initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -24, scale: 0.98 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: reduceMotion ? 0 : 0.34, ease: [0.16, 1, 0.3, 1] }}
                 className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
               >
                 {/* Artwork Frame */}
@@ -189,7 +213,8 @@ export const SelectedProjectsSection: React.FC = () => {
                     01 — 02
                   </span>
                   <span className="editorial-label absolute bottom-3 left-3 sm:bottom-4 sm:left-4 text-[10px] text-white">
-                    {isEn ? autocomProject.category.en : autocomProject.category.pt} / {autocomProject.year}
+                    {isEn ? autocomProject.category.en : autocomProject.category.pt} /{" "}
+                    {autocomProject.year}
                   </span>
                 </figure>
 
@@ -208,15 +233,20 @@ export const SelectedProjectsSection: React.FC = () => {
 
                   <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
                     {isEn
-                      ? "Commercial operations, licensing and catalog workflows unified into a mission-critical enterprise experience built for high-density speed and stability."
-                      : "Operação comercial, licenças e catálogo reunidos em uma experiência corporativa. Plataforma robusta desenvolvida para operações críticas em tempo real com alta densidade de dados e estabilidade."}
+                      ? "Commercial operations, licensing and catalogs unified in a fast, reliable enterprise platform."
+                      : "Operação comercial, licenças e catálogo reunidos em uma plataforma corporativa rápida e confiável."}
                   </p>
 
                   <div className="mt-2.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">React</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">TypeScript</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">Clean Architecture</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">Mission Critical</span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      React
+                    </span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      TypeScript
+                    </span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      Clean Architecture
+                    </span>
                   </div>
 
                   {/* Button Requested: "Ver projeto mais a fundo" */}
@@ -239,10 +269,10 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 1 && (
               <m.div
                 key="step-achilles"
-                initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -24, scale: 0.98 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: reduceMotion ? 0 : 0.34, ease: [0.16, 1, 0.3, 1] }}
                 className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
               >
                 {/* Artwork Frame */}
@@ -253,7 +283,8 @@ export const SelectedProjectsSection: React.FC = () => {
                     02 — 02
                   </span>
                   <span className="editorial-label absolute bottom-3 left-3 sm:bottom-4 sm:left-4 text-[10px] text-white">
-                    {isEn ? achillesProject.category.en : achillesProject.category.pt} / {achillesProject.year}
+                    {isEn ? achillesProject.category.en : achillesProject.category.pt} /{" "}
+                    {achillesProject.year}
                   </span>
                 </figure>
 
@@ -272,15 +303,20 @@ export const SelectedProjectsSection: React.FC = () => {
 
                   <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
                     {isEn
-                      ? "A local autonomous agent that operates web browsers via Chrome DevTools Protocol (CDP), with observable, type-safe tools and anti-bot resilience."
-                      : "Um agente local que opera navegadores por CDP com ferramentas observáveis e determinísticas. Automatiza fluxos complexos na web mantendo total transparência e controle de execução."}
+                      ? "A local autonomous agent that operates browsers through CDP with observable, deterministic tools."
+                      : "Um agente local que opera navegadores por CDP com ferramentas observáveis e determinísticas."}
                   </p>
 
                   <div className="mt-2.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">CDP Protocol</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">TypeScript</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">Node.js</span>
-                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">100% Local</span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      CDP Protocol
+                    </span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      TypeScript
+                    </span>
+                    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1">
+                      Node.js
+                    </span>
                   </div>
 
                   <div className="mt-3.5 sm:mt-6">
@@ -297,83 +333,32 @@ export const SelectedProjectsSection: React.FC = () => {
                 </div>
               </m.div>
             )}
-
-            {/* ========================================================
-                SLIDE 2: "Quer ver mais projetos? Clique aqui"
-                (Center Stage Callout Card requested by User)
-                ======================================================== */}
-            {activeStep === 2 && (
-              <m.div
-                key="step-more-projects"
-                initial={reduceMotion ? false : { opacity: 0, scale: 0.92, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="relative flex w-full max-w-3xl flex-col items-center justify-center rounded-2xl sm:rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-transparent p-6 sm:p-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
-              >
-                {/* Glow accent */}
-                <div
-                  className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#82aaff]/20 via-transparent to-[#82aaff]/20 opacity-50 blur-xl"
-                  aria-hidden="true"
-                />
-
-                <span className="editorial-label text-xs tracking-[0.2em] text-[#82aaff]">
-                  03 / {isEn ? "Full Archive" : "Arquivo Completo"}
-                </span>
-
-                <h3 className="mt-3 text-3xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
-                  {isEn ? "Want to see more work?" : "Quer ver mais projetos?"}
-                </h3>
-
-                <p className="mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-white/70">
-                  {isEn
-                    ? "Explore the complete archive of corporate systems, AI agents, open source tools and user interfaces built by Pedro Reoli."
-                    : "Explore o acervo completo de sistemas corporativos, agentes de IA, soluções de infraestrutura e projetos independentes construídos por Pedro Reoli."}
-                </p>
-
-                {/* Big Magnetic Center Button */}
-                <Link
-                  to="/projetos"
-                  className="group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-xs font-mono font-bold uppercase tracking-[0.16em] text-[#111010] shadow-[0_0_35px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#82aaff] hover:text-[#111010]"
-                >
-                  <span>
-                    {isEn
-                      ? "Click here to see all projects"
-                      : "Clique aqui para ver todos os projetos"}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
-              </m.div>
-            )}
           </AnimatePresence>
         </div>
 
         {/* Bottom Status & Scroll Indicator */}
-        <div className="editorial-container relative z-10 flex items-center justify-between border-t border-white/10 pt-3">
+        <Reveal
+          className="editorial-container relative z-10 flex items-center justify-between border-t border-white/10 pt-3"
+          distance={10}
+        >
           <div className="flex items-center gap-2">
             <span className="font-mono text-[11px] font-bold text-[#82aaff]">
               {stepsMeta[activeStep].number}
             </span>
             <span className="text-[10px] text-white/30">/</span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
-              03 — {stepsMeta[activeStep].label}
+              02 — {stepsMeta[activeStep].label}
             </span>
           </div>
 
           <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.12em] text-white/40">
-            <span>
-              {activeStep === 2
-                ? (isEn ? "Scroll for next section" : "Role para a próxima seção")
-                : (isEn ? "Scroll to navigate" : "Role para navegar")}
-            </span>
+            <span>{isEn ? "Scroll to navigate" : "Role para navegar"}</span>
             <ChevronDown className="h-3.5 w-3.5 animate-bounce text-[#82aaff]" />
           </div>
-        </div>
-
+        </Reveal>
       </div>
     </section>
   )
 }
 
 export default SelectedProjectsSection
-

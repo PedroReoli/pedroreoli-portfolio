@@ -1,5 +1,5 @@
-import React from "react"
-import { m, useReducedMotion } from "framer-motion"
+import React, { useRef } from "react"
+import { m, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 
@@ -10,9 +10,20 @@ export const PortfolioHero: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  })
+  const exitOpacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 1, 0])
+  const exitY = useTransform(scrollYProgress, [0, 1], [0, -28])
 
   return (
-    <section id="hero" className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0">
+    <section
+      id="hero"
+      ref={heroRef}
+      className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0"
+    >
       {/* Background Video (if enabled) */}
       {heroVideoEnabled && (
         <m.video
@@ -46,7 +57,10 @@ export const PortfolioHero: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+      <m.div
+        className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]"
+        style={{ opacity: reduceMotion ? 1 : exitOpacity, y: reduceMotion ? 0 : exitY }}
+      >
         {/* Top Info Metadata */}
         <m.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
@@ -66,30 +80,32 @@ export const PortfolioHero: React.FC = () => {
 
         {/* Center Hero Stage: Staggered Diagonal Lockup with Motion Convergence */}
         <div className="editorial-container hero-name-stage flex min-h-0 flex-col items-center justify-center py-2 sm:py-4">
-          <div
+          <h1
             className="hero-diagonal-stage relative flex w-full flex-col items-center justify-center"
             aria-label="Pedro Reoli"
           >
-            {/* PEDRO: Glides in from left to its diagonal position */}
-            <m.div
-              className="hero-diagonal-item hero-diagonal-pedro"
-              initial={reduceMotion ? false : { x: -260, opacity: 0, filter: "blur(8px)" }}
-              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1.25, delay: reduceMotion ? 0 : 0.2, ease: entranceEase }}
-            >
-              <h1 className="hero-mega-text">PEDRO</h1>
-            </m.div>
+            <span className="hero-diagonal-item hero-diagonal-pedro" aria-hidden="true">
+              <m.span
+                className="hero-mega-text"
+                initial={reduceMotion ? false : { x: -120, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.72, delay: reduceMotion ? 0 : 0.16, ease: entranceEase }}
+              >
+                PEDRO
+              </m.span>
+            </span>
 
-            {/* REOLI: Glides in from right to meet PEDRO along the diagonal, styled as hollow/outline font */}
-            <m.div
-              className="hero-diagonal-item hero-diagonal-reoli"
-              initial={reduceMotion ? false : { x: 260, opacity: 0, filter: "blur(8px)" }}
-              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1.25, delay: reduceMotion ? 0 : 0.32, ease: entranceEase }}
-            >
-              <span className="hero-mega-text hero-text-hollow">REOLI</span>
-            </m.div>
-          </div>
+            <span className="hero-diagonal-item hero-diagonal-reoli" aria-hidden="true">
+              <m.span
+                className="hero-mega-text hero-text-hollow"
+                initial={reduceMotion ? false : { x: 120, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.72, delay: reduceMotion ? 0 : 0.24, ease: entranceEase }}
+              >
+                REOLI
+              </m.span>
+            </span>
+          </h1>
 
           {/* Cargo / Role under the name */}
           <m.div
@@ -98,7 +114,10 @@ export const PortfolioHero: React.FC = () => {
             transition={{ duration: 0.75, delay: reduceMotion ? 0 : 0.55, ease: entranceEase }}
             className="mt-4 flex items-center justify-center gap-2 sm:mt-6"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]" aria-hidden="true" />
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]"
+              aria-hidden="true"
+            />
             <p className="editorial-label text-[11px] font-bold tracking-[0.16em] text-[#82aaff] uppercase sm:text-xs">
               {isEn
                 ? "Full Stack Software Engineer & Systems Architect"
@@ -131,10 +150,9 @@ export const PortfolioHero: React.FC = () => {
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </m.div>
-      </div>
+      </m.div>
     </section>
   )
 }
 
 export default PortfolioHero
-

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { AnimatePresence, m, useReducedMotion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
@@ -7,107 +8,131 @@ import Reveal from "../atoms/Reveal"
 export const ExperienceSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
-  const reduceMotion = useReducedMotion()
-  const [activeExperience, setActiveExperience] = useState<number | null>(null)
+  const reduceMotion = Boolean(useReducedMotion())
+  const [activeExperience, setActiveExperience] = useState(0)
+  const activeItem = experienceItems[activeExperience]
 
   return (
-    <section className="viewport-stage trajectory-stage">
-      <div className="editorial-container trajectory-stage-layout">
-        <Reveal className="trajectory-intro flex min-h-0 flex-col justify-between border-b border-white/15 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
+    <section
+      id="experiencia"
+      className="viewport-stage trajectory-stage bg-[#111010] text-[#edeae4]"
+    >
+      <div className="editorial-container experience-stage-layout">
+        <Reveal className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4">
           <div>
-            <p className="editorial-label text-[#82aaff]">
+            <p className="editorial-label mb-2 text-[#82aaff]">
               05 / {isEn ? "Experience" : "Experiência"}
             </p>
-            <p className="editorial-label mt-3 text-[#8d8984]">
-              04 / {isEn ? "chapters" : "capítulos"}
-            </p>
-          </div>
-          <div>
-            <h2 className="trajectory-title font-black uppercase text-[#edeae4]">
-              {isEn ? (
-                <>
-                  JOUR<span className="text-outline">NEY.</span>
-                </>
-              ) : (
-                <>
-                  TRAJE<span className="text-outline">TÓRIA.</span>
-                </>
-              )}
+            <h2 className="experience-stage-title font-black uppercase tracking-[-0.065em]">
+              {isEn ? "JOURNEY." : "TRAJETÓRIA."}
             </h2>
-            <p className="trajectory-summary mt-4 max-w-md leading-relaxed text-[#8d8984]">
-              {isEn
-                ? "Four contexts that shaped how I decide, collaborate and build."
-                : "Quatro contextos que moldaram minha forma de decidir, colaborar e construir."}
-            </p>
           </div>
+          <p className="hidden max-w-sm text-right text-sm leading-relaxed text-[#96918b] sm:block">
+            {isEn
+              ? "Five contexts that shaped how I decide, collaborate and build."
+              : "Cinco contextos que moldaram minha forma de decidir, colaborar e construir."}
+          </p>
         </Reveal>
 
-        <div className="trajectory-list min-h-0">
-          {experienceItems.map((item, index) => (
-            <Reveal key={`${item.period.pt}-${item.company}`} delay={index * 0.05} distance={20}>
-              <div
-                className="trajectory-row group relative border-b border-white/10"
-                onMouseEnter={() => setActiveExperience(index)}
-                onMouseLeave={() => setActiveExperience(null)}
-                onFocus={() => setActiveExperience(index)}
-                onBlur={() => setActiveExperience(null)}
-              >
-                <button
-                  type="button"
-                  className="trajectory-row-button relative grid w-full text-left"
-                  aria-expanded={activeExperience === index}
-                  aria-controls={`experience-details-${index}`}
-                  onClick={() =>
-                    setActiveExperience((current) => (current === index ? null : index))
-                  }
-                >
-                  <span
-                    className={`trajectory-dot ${
-                      activeExperience === index ? "trajectory-dot-active" : ""
-                    }`}
-                    aria-hidden="true"
-                  />
-                  <span className="editorial-label text-[#8d8984]">
-                    {isEn ? item.period.en : item.period.pt}
-                  </span>
-                  <span className="min-w-0">
-                    <strong className="trajectory-company block tracking-[-0.045em] text-[#edeae4] transition-transform duration-300 group-hover:translate-x-2">
-                      {item.company}
-                    </strong>
-                    <span className="trajectory-role mt-1 block text-[#8d8984]">
-                      {isEn ? item.role.en : item.role.pt}
-                    </span>
-                  </span>
-                  <span className="editorial-label text-[#82aaff]" aria-hidden="true">
-                    {activeExperience === index ? "×" : "+"}
-                  </span>
-                </button>
+        <div className="experience-stage-content min-h-0">
+          <Reveal
+            className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
+            amount={0.12}
+          >
+            <div className="grid h-full grid-rows-5" role="list">
+              {experienceItems.map((item, index) => {
+                const isActive = activeExperience === index
 
-                <AnimatePresence>
-                  {activeExperience === index && (
-                    <m.aside
-                      id={`experience-details-${index}`}
-                      role="note"
-                      initial={reduceMotion ? false : { opacity: 0, y: 10, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.22 }}
-                      className={`experience-popover z-20 bg-[#edeae4] p-4 text-[#111010] shadow-2xl ${
-                        index > 1 ? "experience-popover-up" : ""
-                      }`}
+                return (
+                  <div
+                    key={`${item.company}-${item.period.pt}`}
+                    role="listitem"
+                    className="min-h-0"
+                  >
+                    <button
+                      type="button"
+                      aria-pressed={isActive}
+                      aria-controls="experience-detail"
+                      onClick={() => setActiveExperience(index)}
+                      onMouseEnter={() => setActiveExperience(index)}
+                      className="experience-index-row group grid h-full w-full min-h-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-white/10 text-left"
                     >
-                      <p className="editorial-label mb-2 text-[#5f5b56]">
-                        {item.company} / {isEn ? item.period.en : item.period.pt}
-                      </p>
-                      <p className="text-sm leading-relaxed">
-                        {isEn ? item.description.en : item.description.pt}
-                      </p>
-                    </m.aside>
-                  )}
-                </AnimatePresence>
-              </div>
-            </Reveal>
-          ))}
+                      <span
+                        className={`h-2 w-2 rounded-full transition-colors duration-200 ${
+                          isActive ? "bg-[#82aaff] shadow-[0_0_10px_#82aaff]" : "bg-white/25"
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <span className="min-w-0">
+                        <strong
+                          className={`experience-index-company block truncate font-bold tracking-[-0.035em] transition-colors duration-200 ${
+                            isActive ? "text-white" : "text-white/65 group-hover:text-white"
+                          }`}
+                        >
+                          {item.company}
+                        </strong>
+                        <span className="experience-index-role block truncate text-[#8d8984]">
+                          {isEn ? item.role.en : item.role.pt}
+                        </span>
+                      </span>
+                      <span className="editorial-label whitespace-nowrap text-[#8d8984]">
+                        {isEn ? item.period.en : item.period.pt}
+                      </span>
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          </Reveal>
+
+          <Reveal className="experience-detail-shell min-h-0" axis="x" distance={14} amount={0.12}>
+            <AnimatePresence mode="wait" initial={false}>
+              <m.article
+                id="experience-detail"
+                key={`${activeItem.company}-${language}`}
+                initial={reduceMotion ? false : { opacity: 0, x: 14 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, x: -10 }}
+                transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="flex h-full min-h-0 flex-col justify-center"
+                aria-live="polite"
+              >
+                <p className="editorial-label text-[#82aaff]">
+                  0{activeExperience + 1} / {isEn ? activeItem.period.en : activeItem.period.pt}
+                </p>
+                <h3 className="experience-detail-company mt-2 font-black tracking-[-0.055em] text-white">
+                  {activeItem.company}
+                </h3>
+                <p className="experience-detail-role mt-1 text-[#a39e98]">
+                  {isEn ? activeItem.role.en : activeItem.role.pt}
+                </p>
+                <p className="experience-detail-copy mt-3 max-w-xl leading-relaxed text-white/75">
+                  {isEn ? activeItem.description.en : activeItem.description.pt}
+                </p>
+
+                {activeItem.technologies && (
+                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-white/10 pt-3">
+                    {activeItem.technologies.slice(0, 4).map((technology) => (
+                      <span
+                        key={technology}
+                        className="editorial-label inline-flex items-center gap-2 text-[#9b9690]"
+                      >
+                        <span className="text-[#82aaff]" aria-hidden="true">
+                          •
+                        </span>
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-white/45">
+                  {isEn ? "Select another chapter" : "Selecione outro capítulo"}
+                  <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                </span>
+              </m.article>
+            </AnimatePresence>
+          </Reveal>
         </div>
       </div>
     </section>

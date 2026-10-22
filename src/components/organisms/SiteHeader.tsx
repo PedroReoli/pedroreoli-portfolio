@@ -11,6 +11,7 @@ export const SiteHeader: React.FC = () => {
   const { pathname } = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
+  const [navigationVisible, setNavigationVisible] = useState(true)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const { scrollY } = useScroll()
   const reduceMotion = Boolean(useReducedMotion())
@@ -18,16 +19,29 @@ export const SiteHeader: React.FC = () => {
   const isHomePage = pathname === "/"
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 120) {
-      setScrolledPastHero(true)
-    } else {
-      setScrolledPastHero(false)
+    const previous = scrollY.getPrevious() ?? latest
+    setScrolledPastHero(latest > 120)
+
+    if (mobileMenuOpen || latest < 80) {
+      setNavigationVisible(true)
+      return
     }
+
+    if (latest > previous && latest > 120) {
+      setNavigationVisible(false)
+      return
+    }
+
+    if (latest < previous) setNavigationVisible(true)
   })
 
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    if (mobileMenuOpen) setNavigationVisible(true)
+  }, [mobileMenuOpen])
 
   useEffect(() => {
     if (!mobileMenuOpen) return
@@ -81,7 +95,7 @@ export const SiteHeader: React.FC = () => {
           Smoothly appears on scroll on Home, or always on subpages
           ======================================================== */}
       <AnimatePresence>
-        {showBrandLogo && (
+        {showBrandLogo && navigationVisible && (
           <m.div
             initial={reduceMotion ? false : { opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,13 +126,18 @@ export const SiteHeader: React.FC = () => {
           ======================================================== */}
       <m.aside
         initial={reduceMotion ? false : { opacity: 0, x: 24 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 w-44 flex-col items-center gap-2 rounded-2xl border border-white/12 bg-[#141312]/85 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl"
+        animate={{ opacity: navigationVisible ? 1 : 0, x: navigationVisible ? 0 : 24 }}
+        transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed right-6 top-1/2 z-50 hidden w-44 -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border border-white/12 bg-[#141312]/85 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl md:flex ${
+          navigationVisible ? "pointer-events-auto" : "pointer-events-none"
+        }`}
         aria-label={isEn ? "Floating navigation" : "Navegação flutuante"}
       >
         {/* Navigation Links */}
-        <nav className="flex w-full flex-col gap-1" aria-label={isEn ? "Site links" : "Links do site"}>
+        <nav
+          className="flex w-full flex-col gap-1"
+          aria-label={isEn ? "Site links" : "Links do site"}
+        >
           {navLinks.map((link) => {
             const isActive = link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
             const Icon = link.icon
@@ -202,7 +221,12 @@ export const SiteHeader: React.FC = () => {
       {/* ========================================================
           MOBILE: Standard Fixed Top Navbar
           ======================================================== */}
-      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-white/10 bg-[#111010]/90 px-4 backdrop-blur-xl md:hidden">
+      <m.header
+        initial={false}
+        animate={{ y: navigationVisible ? 0 : "-100%" }}
+        transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-white/10 bg-[#111010]/90 px-4 backdrop-blur-xl md:hidden"
+      >
         <Link
           to="/"
           className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[-0.03em] text-[#edeae4]"
@@ -222,7 +246,10 @@ export const SiteHeader: React.FC = () => {
             className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white"
             aria-label={isEn ? "Switch language to Portuguese" : "Mudar idioma para inglês"}
           >
-            <FlagIcon country={language === "pt" ? "br" : "us"} className="h-2.5 w-3.5 rounded-[2px]" />
+            <FlagIcon
+              country={language === "pt" ? "br" : "us"}
+              className="h-2.5 w-3.5 rounded-[2px]"
+            />
             <span>{language === "pt" ? "PT" : "EN"}</span>
           </button>
 
@@ -234,13 +261,19 @@ export const SiteHeader: React.FC = () => {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={
-              mobileMenuOpen ? (isEn ? "Close menu" : "Fechar menu") : isEn ? "Open menu" : "Abrir menu"
+              mobileMenuOpen
+                ? isEn
+                  ? "Close menu"
+                  : "Fechar menu"
+                : isEn
+                ? "Open menu"
+                : "Abrir menu"
             }
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
-      </header>
+      </m.header>
 
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
@@ -256,7 +289,8 @@ export const SiteHeader: React.FC = () => {
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link, index) => {
-                const isActive = link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
+                const isActive =
+                  link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
                 const Icon = link.icon
 
                 return (

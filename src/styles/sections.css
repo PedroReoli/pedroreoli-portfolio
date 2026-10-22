@@ -211,7 +211,9 @@
   }
 
   .project-feature-image {
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), filter 400ms ease;
+    transition:
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 400ms ease;
   }
 
   .project-image-frame:hover .project-feature-image {
@@ -226,8 +228,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(1.25rem, 3vw, 3rem);
-    background:
-      radial-gradient(circle at 78% 30%, rgb(130 170 255 / 0.3), transparent 27%),
+    background: radial-gradient(circle at 78% 30%, rgb(130 170 255 / 0.3), transparent 27%),
       linear-gradient(135deg, #17191f 0%, #0c0d10 62%, #151c2a 100%);
   }
 
@@ -235,8 +236,7 @@
     position: absolute;
     z-index: -1;
     inset: 0;
-    background-image:
-      linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px),
+    background-image: linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px),
       linear-gradient(90deg, rgb(255 255 255 / 0.055) 1px, transparent 1px);
     background-size: clamp(2.25rem, 5vw, 5rem) clamp(2.25rem, 5vw, 5rem);
     content: "";
@@ -322,6 +322,7 @@
 
   .stack-lane-tools {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     gap: clamp(1rem, 3vw, 3.5rem);
@@ -348,7 +349,7 @@
   }
 
   .stack-lane:hover .stack-brand-icon {
-    transform: translateY(-0.2rem);
+    opacity: 0.95;
   }
 
   .technology-title {
@@ -362,7 +363,9 @@
 
   .technology-image {
     transform: scale(1.015);
-    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 700ms ease;
+    transition:
+      transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 700ms ease;
   }
 
   .technology-story:hover .technology-image {
@@ -398,97 +401,47 @@
     padding-bottom: clamp(0.85rem, 2.5vh, 2.5rem);
   }
 
-  .trajectory-title {
-    font-size: clamp(3.4rem, min(8.2vw, 12vh), 7.5rem);
-    font-stretch: 82%;
-    font-variation-settings: "wdth" 82;
-    line-height: 0.78;
-    letter-spacing: -0.08em;
-  }
-
-  .trajectory-stage-layout {
+  .experience-stage-layout {
     display: grid;
-    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(2rem, 5vw, 6rem);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(0.75rem, 2vh, 1.5rem);
     height: 100%;
-    padding-top: clamp(4.75rem, 10vh, 6rem);
-    padding-bottom: clamp(0.85rem, 2.5vh, 2.5rem);
+    padding-top: clamp(4.25rem, 8vh, 5.5rem);
+    padding-bottom: clamp(0.75rem, 2.5vh, 2rem);
   }
 
-  .trajectory-summary {
-    font-size: clamp(0.85rem, min(1.25vw, 2.2vh), 1.1rem);
+  .experience-stage-title {
+    font-size: clamp(2.5rem, min(7vw, 9vh), 6.5rem);
+    line-height: 0.82;
   }
 
-  .trajectory-list {
-    position: relative;
+  .experience-stage-content {
     display: grid;
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+    grid-template-columns: minmax(20rem, 1fr) minmax(18rem, 0.82fr);
+    gap: clamp(1.5rem, 4vw, 5rem);
   }
 
-  .trajectory-list::before {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    bottom: 0;
-    left: 0.35rem;
-    width: 1px;
-    background: rgb(255 255 255 / 0.14);
-    content: "";
+  .experience-index-company {
+    font-size: clamp(0.95rem, min(1.7vw, 2.8vh), 1.65rem);
+    line-height: 1;
   }
 
-  .trajectory-list > div {
-    min-height: 0;
+  .experience-index-role {
+    margin-top: 0.2rem;
+    font-size: clamp(0.58rem, min(0.85vw, 1.45vh), 0.78rem);
   }
 
-  .trajectory-row {
-    height: 100%;
+  .experience-detail-company {
+    font-size: clamp(2rem, min(4.6vw, 7vh), 4.75rem);
+    line-height: 0.88;
   }
 
-  .trajectory-row-button {
-    grid-template-columns: 1rem minmax(6.5rem, 0.35fr) minmax(0, 1fr) auto;
-    align-items: center;
-    gap: clamp(0.75rem, 2vw, 2rem);
-    height: 100%;
-    padding-block: 0.75rem;
+  .experience-detail-role {
+    font-size: clamp(0.72rem, min(1.2vw, 2vh), 1rem);
   }
 
-  .trajectory-dot {
-    position: relative;
-    z-index: 1;
-    width: 0.7rem;
-    height: 0.7rem;
-    border: 1px solid #77736f;
-    border-radius: 999px;
-    background: #111010;
-    transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
-  }
-
-  .trajectory-row:hover .trajectory-dot,
-  .trajectory-dot-active {
-    border-color: #82aaff;
-    background: #82aaff;
-    transform: scale(1.15);
-  }
-
-  .trajectory-company {
-    font-size: clamp(1.35rem, min(3.2vw, 5.5vh), 3.5rem);
-    line-height: 0.92;
-  }
-
-  .trajectory-role {
-    font-size: clamp(0.68rem, min(1vw, 1.8vh), 0.9rem);
-  }
-
-  .experience-popover {
-    position: absolute;
-    top: calc(100% - 0.35rem);
-    right: 0;
-    left: 0;
-  }
-
-  .experience-popover-up {
-    top: auto;
-    bottom: calc(100% - 0.35rem);
+  .experience-detail-copy {
+    font-size: clamp(0.78rem, min(1.15vw, 1.9vh), 1rem);
   }
 
   .method-title {

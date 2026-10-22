@@ -6,26 +6,37 @@ interface RevealProps {
   className?: string
   delay?: number
   distance?: number
+  duration?: number
+  amount?: number
+  axis?: "x" | "y"
   role?: React.AriaRole
+  ariaLabel?: string
 }
 
 export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 36,
+  distance = 18,
+  duration = 0.48,
+  amount = 0.2,
+  axis = "y",
   role,
+  ariaLabel,
 }) => {
   const reduceMotion = useReducedMotion()
+  const hidden = axis === "x" ? { opacity: 0, x: distance } : { opacity: 0, y: distance }
+  const visible = axis === "x" ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }
 
   return (
     <m.div
       className={className}
       role={role}
-      initial={reduceMotion ? false : { opacity: 0, y: distance }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      aria-label={ariaLabel}
+      initial={reduceMotion ? false : hidden}
+      whileInView={visible}
+      viewport={{ once: false, amount, margin: "-6% 0px -6% 0px" }}
+      transition={{ duration: reduceMotion ? 0 : duration, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </m.div>
