@@ -214,7 +214,7 @@ export const SelectedProjectsSection: React.FC = () => {
                   <ProjectArtwork project={autocomProject} isEn={isEn} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
                   <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
-                    01 — 02
+                    01 / 02
                   </span>
                   <span className="editorial-label absolute bottom-3 left-3 sm:bottom-4 sm:left-4 text-[10px] text-white">
                     {isEn ? autocomProject.category.en : autocomProject.category.pt} /{" "}
@@ -227,7 +227,7 @@ export const SelectedProjectsSection: React.FC = () => {
                   <div className="mb-1 sm:mb-2 flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]" />
                     <span className="editorial-label text-[10px] sm:text-xs tracking-[0.14em] text-[#82aaff]">
-                      {isEn ? "Enterprise System" : "Software Corporativo"} • 2024—26
+                      {isEn ? "Enterprise System" : "Software Corporativo"} • 2024 / 26
                     </span>
                   </div>
 
@@ -292,7 +292,7 @@ export const SelectedProjectsSection: React.FC = () => {
                   <ProjectArtwork project={achillesProject} isEn={isEn} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
                   <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
-                    02 — 02
+                    02 / 02
                   </span>
                   <span className="editorial-label absolute bottom-3 left-3 sm:bottom-4 sm:left-4 text-[10px] text-white">
                     {isEn ? achillesProject.category.en : achillesProject.category.pt} /{" "}
@@ -391,7 +391,7 @@ export const SelectedProjectsSection: React.FC = () => {
             </span>
             <span className="text-[10px] text-white/30">/</span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
-              03 — {stepsMeta[activeStep].label}
+              03 / {stepsMeta[activeStep].label}
             </span>
           </div>
 

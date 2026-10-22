@@ -14,8 +14,8 @@ export const NotFoundPage: React.FC = () => {
       <SEOHead
         title={
           isEn
-            ? `404 — Page Not Found | ${siteConfig.legalName}`
-            : `404 — Página Não Encontrada | ${siteConfig.legalName}`
+            ? `404 | Page Not Found | ${siteConfig.legalName}`
+            : `404 | Página Não Encontrada | ${siteConfig.legalName}`
         }
         description={
           isEn

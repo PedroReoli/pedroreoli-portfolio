@@ -22,8 +22,8 @@ export const HomePage: React.FC = () => {
         }
         description={
           isEn
-            ? "Portfolio of Pedro Lucas Reis — Full Stack Software Engineer specializing in high-density frontend architectures, distributed systems, and AI agents."
-            : "Portfólio de Pedro Lucas Reis — Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
+            ? "Portfolio of Pedro Lucas Reis. Full Stack Software Engineer specializing in high-density frontend architectures, distributed systems, and AI agents."
+            : "Portfólio de Pedro Lucas Reis. Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
         }
         canonicalUrl={getSiteUrl()}
         locale={isEn ? "en_US" : "pt_BR"}

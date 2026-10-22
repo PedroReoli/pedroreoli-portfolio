@@ -117,8 +117,8 @@ export const TechnologyStackSection: React.FC = () => {
           </div>
           <p className="stack-intro-copy max-w-xs text-sm leading-relaxed text-[#5f5b56] sm:text-right">
             {isEn
-              ? "Interfaces, services, cloud and AI — one production-minded system."
-              : "Interfaces, serviços, cloud e IA — um sistema pronto para produção."}
+              ? "Interfaces, services, cloud and AI. One production-minded system."
+              : "Interfaces, serviços, cloud e IA. Um sistema pronto para produção."}
           </p>
         </Reveal>
 

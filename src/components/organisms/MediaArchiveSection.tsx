@@ -19,8 +19,8 @@ export const MediaArchiveSection: React.FC = () => {
         </h1>
         <p className="mt-12 max-w-2xl text-xl leading-tight tracking-[-0.035em] text-[#aaa6a0] sm:mt-20 sm:text-4xl">
           {isEn
-            ? "Software, systems and applied automation — without the noise."
-            : "Software, sistemas e automação aplicada — sem ruído."}
+            ? "Software, systems and applied automation. Without the noise."
+            : "Software, sistemas e automação aplicada. Sem ruído."}
         </p>
       </section>
 
@@ -57,11 +57,7 @@ export const MediaArchiveSection: React.FC = () => {
                 },
               ]}
               src="/TCC-img2.png"
-              alt={
-                isEn
-                  ? "Pedro presenting FalaAtípica"
-                  : "Pedro apresentando o FalaAtípica"
-              }
+              alt={isEn ? "Pedro presenting FalaAtípica" : "Pedro apresentando o FalaAtípica"}
               loading="lazy"
               decoding="async"
               width={1280}
@@ -74,9 +70,7 @@ export const MediaArchiveSection: React.FC = () => {
 
       <section className="editorial-container pb-32">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="section-display">
-            {isEn ? "OPEN NOTEBOOK" : "CADERNO ABERTO"}
-          </h2>
+          <h2 className="section-display">{isEn ? "OPEN NOTEBOOK" : "CADERNO ABERTO"}</h2>
           <span className="editorial-label hidden text-[#8d8984] sm:block">
             03 / {isEn ? "notes" : "notas"}
           </span>
@@ -89,9 +83,7 @@ export const MediaArchiveSection: React.FC = () => {
             rel="noopener noreferrer"
             className="group grid grid-cols-[2.5rem_1fr_auto] gap-3 border-b border-white/10 py-7 sm:grid-cols-[4rem_minmax(0,0.8fr)_minmax(14rem,1fr)_auto] sm:items-center sm:py-10"
           >
-            <span className="editorial-label text-[#8d8984]">
-              {note.number}
-            </span>
+            <span className="editorial-label text-[#8d8984]">{note.number}</span>
             <div>
               <p className="editorial-label mb-3 text-[#82aaff]">
                 {isEn ? note.category.en : note.category.pt}

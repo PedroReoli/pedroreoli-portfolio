@@ -6,9 +6,7 @@ interface CorporateProjectsSectionProps {
   isEn: boolean
 }
 
-export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> = ({
-  isEn,
-}) => (
+export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> = ({ isEn }) => (
   <section
     id="corporativo-projects"
     className="editorial-container pb-32"
@@ -17,7 +15,7 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
     <div className="grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-12 lg:items-end">
       <div className="lg:col-span-8">
         <p className="editorial-label mb-4 text-[#8d8984]">
-          2024—2026 / {isEn ? "Enterprise software" : "Software corporativo"}
+          2024 / 2026 / {isEn ? "Enterprise software" : "Software corporativo"}
         </p>
         <h2 className="section-display">AUTOCOM3</h2>
       </div>
@@ -56,7 +54,9 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
         return (
           <figure
             key={image.src}
-            className={`${image.wide ? "sm:col-span-2" : ""} group overflow-hidden rounded-lg bg-[#1b1a19]`}
+            className={`${
+              image.wide ? "sm:col-span-2" : ""
+            } group overflow-hidden rounded-lg bg-[#1b1a19]`}
           >
             <div className={`${image.wide ? "aspect-[16/7]" : "aspect-[4/3]"} overflow-hidden`}>
               <ResponsiveImage

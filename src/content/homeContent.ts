@@ -31,7 +31,7 @@ export const featuredProjects: FeaturedProject[] = [
     number: "01",
     title: "Autocom3",
     category: { pt: "Software corporativo", en: "Enterprise software" },
-    year: "2024—26",
+    year: "2024 / 26",
     description: {
       pt: "Operação comercial, licenças e catálogo reunidos em uma experiência corporativa.",
       en: "Commercial operations, licensing and catalog workflows brought into one enterprise experience.",
@@ -62,8 +62,8 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const experienceItems: ExperienceItem[] = [
   {
-    period: { pt: "Out/2025—Presente", en: "Oct/2025—Present" },
-    company: "Domus — Sua Solução Digital",
+    period: { pt: "Out/2025 / Presente", en: "Oct/2025 / Present" },
+    company: "Domus | Sua Solução Digital",
     role: {
       pt: "Engenheiro Full Stack (Autônomo / Freelance)",
       en: "Full Stack Engineer (Freelance / Products)",
@@ -97,7 +97,7 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
-    period: { pt: "Nov/2025—Presente", en: "Nov/2025—Present" },
+    period: { pt: "Nov/2025 / Presente", en: "Nov/2025 / Present" },
     company: "SIVIS Tecnologia",
     role: {
       pt: "Engenheiro Full Stack (Frontend & Integrações)",
@@ -130,7 +130,7 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
-    period: { pt: "Nov/2024—Presente", en: "Nov/2024—Present" },
+    period: { pt: "Nov/2024 / Presente", en: "Nov/2024 / Present" },
     company: "Autocom3 Tecnologia",
     role: {
       pt: "Engenheiro de Software Full Stack",
@@ -168,7 +168,7 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
-    period: { pt: "Jun/2024—Dez/2024", en: "Jun/2024—Dec/2024" },
+    period: { pt: "Jun/2024 / Dez/2024", en: "Jun/2024 / Dec/2024" },
     company: "UniFOA / SEBRAE (EvaTech)",
     role: {
       pt: "Mentor de Tecnologia & Inteligência Artificial",
@@ -197,7 +197,7 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
-    period: { pt: "Ago/2022—Jun/2024", en: "Aug/2022—Jun/2024" },
+    period: { pt: "Ago/2022 / Jun/2024", en: "Aug/2022 / Jun/2024" },
     company: "SIVIS Tecnologia",
     role: {
       pt: "Engenheiro Full Stack Júnior",
