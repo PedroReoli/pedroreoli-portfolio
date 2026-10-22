@@ -51,7 +51,7 @@ export const PortfolioHero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.7,
-            delay: reduceMotion ? 0 : 1.6,
+            delay: reduceMotion ? 0 : 1.2,
             ease: entranceEase,
           }}
           className="editorial-container flex items-start justify-between pt-5 md:pt-24"
@@ -81,8 +81,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0 : 1.1,
-                  delay: reduceMotion ? 0 : 0.15,
+                  duration: reduceMotion ? 0 : 0.95,
+                  delay: reduceMotion ? 0 : 0.1,
                   ease: entranceEase,
                 }}
               >
@@ -99,8 +99,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0 : 1.1,
-                  delay: reduceMotion ? 0 : 0.65,
+                  duration: reduceMotion ? 0 : 0.95,
+                  delay: reduceMotion ? 0 : 0.48,
                   ease: entranceEase,
                 }}
               >
@@ -114,8 +114,8 @@ export const PortfolioHero: React.FC = () => {
             initial={reduceMotion ? false : { opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: reduceMotion ? 0 : 0.9,
-              delay: reduceMotion ? 0 : 1.2,
+              duration: reduceMotion ? 0 : 0.72,
+              delay: reduceMotion ? 0 : 0.92,
               ease: entranceEase,
             }}
             className="hero-role mt-3 flex items-center justify-center gap-3 sm:mt-5"
@@ -125,9 +125,7 @@ export const PortfolioHero: React.FC = () => {
               aria-hidden="true"
             />
             <p className="font-semibold tracking-[-0.025em] text-[#b8ccff]">
-              {isEn
-                ? "Full Stack Software Engineer & Systems Architect"
-                : "Engenheiro de Software Full Stack & Arquiteto de Sistemas"}
+              {isEn ? "Full Stack Software Engineer" : "Engenheiro de Software Full Stack"}
             </p>
           </m.div>
         </div>
@@ -138,7 +136,7 @@ export const PortfolioHero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.72,
-            delay: reduceMotion ? 0 : 1.75,
+            delay: reduceMotion ? 0 : 1.35,
             ease: entranceEase,
           }}
           className="editorial-container flex justify-end pb-7 md:pb-9"

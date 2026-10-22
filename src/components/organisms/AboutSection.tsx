@@ -1,5 +1,4 @@
 import React from "react"
-import { ArrowDownRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import SlideSection from "../atoms/SlideSection"
@@ -77,8 +76,8 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
             <Reveal once delay={0.46} distance={40} amount={0.08}>
               <p className="about-summary">
                 {isEn
-                  ? "I work on SaaS, ERP and corporate platforms with TypeScript, React, Node.js, PostgreSQL and AWS. From visual architecture to APIs, data and deployment."
-                  : "Atuo em SaaS, ERPs e plataformas corporativas com TypeScript, React, Node.js, PostgreSQL e AWS. Da arquitetura visual às APIs, banco e deploy."}
+                  ? "I'm a Full Stack engineer with a focus on frontend. I build ERP systems, SaaS products and integrations, from the first workflow to production."
+                  : "Sou engenheiro Full Stack, com foco em frontend. Trabalho em ERPs, SaaS e integrações, do primeiro fluxo à operação."}
               </p>
             </Reveal>
 
@@ -102,15 +101,6 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
                 </Reveal>
               ))}
             </div>
-
-            <Reveal once className="about-direction" delay={0.9} distance={32} amount={0.04}>
-              <ArrowDownRight aria-hidden="true" />
-              <span>
-                {isEn
-                  ? "TypeScript · React · Node.js · PostgreSQL · AWS"
-                  : "TypeScript · React · Node.js · PostgreSQL · AWS"}
-              </span>
-            </Reveal>
           </div>
         </div>
       </div>

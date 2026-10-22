@@ -1,6 +1,7 @@
 import React from "react"
 import { useSearchParams } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
+import ArchiveHeading from "../components/molecules/ArchiveHeading"
 import CorporateProjectsSection from "../components/organisms/CorporateProjectsSection"
 import IndependentProjectsSection from "../components/organisms/IndependentProjectsSection"
 import ProjectCategoryTabs, {
@@ -18,7 +19,14 @@ export const ProjectsPage: React.FC = () => {
     searchParams.get("tipo") === "gerais" ? "gerais" : "corporativo"
 
   const changeCategory = (category: ProjectCategory) => {
-    setSearchParams({ tipo: category }, { replace: true })
+    setSearchParams(
+      (current) => {
+        const next = new URLSearchParams(current)
+        next.set("tipo", category)
+        return next
+      },
+      { replace: true },
+    )
   }
 
   return (
@@ -36,19 +44,21 @@ export const ProjectsPage: React.FC = () => {
         locale={isEn ? "en_US" : "pt_BR"}
       />
       <main id="main-content" tabIndex={-1} className="pt-16 focus:outline-none">
-        <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
-          <p className="editorial-label mb-5 text-[#82aaff]">
-            {isEn ? "Archive / Selected work" : "Arquivo / Trabalhos selecionados"}
-          </p>
-          <h1 className="text-[clamp(4rem,17vw,16rem)] font-black leading-[0.72] tracking-[-0.085em]">
-            {isEn ? "WORK" : "PROJETOS"}
-          </h1>
+        <ArchiveHeading
+          eyebrow={isEn ? "Selected work" : "Trabalhos selecionados"}
+          title={isEn ? "WORK" : "PROJETOS"}
+          description={
+            isEn
+              ? "Enterprise applications and independent tools. Explore the interfaces and code."
+              : "Aplicações corporativas e ferramentas independentes. Explore as interfaces e o código."
+          }
+        >
           <ProjectCategoryTabs
             activeCategory={activeCategory}
             isEn={isEn}
             onChange={changeCategory}
           />
-        </section>
+        </ArchiveHeading>
 
         {activeCategory === "corporativo" ? (
           <CorporateProjectsSection isEn={isEn} />
@@ -57,7 +67,7 @@ export const ProjectsPage: React.FC = () => {
         )}
       </main>
 
-      <SiteFooter />
+      <SiteFooter compact />
     </div>
   )
 }

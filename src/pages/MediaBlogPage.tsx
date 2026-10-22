@@ -31,7 +31,7 @@ export const MediaBlogPage: React.FC = () => {
         <MediaArchiveSection />
       </main>
 
-      <SiteFooter />
+      <SiteFooter compact />
     </div>
   )
 }

@@ -1,0 +1,131 @@
+import assert from "node:assert/strict"
+import { after, before, test } from "node:test"
+import { fileURLToPath } from "node:url"
+import React from "react"
+import { renderToStaticMarkup } from "react-dom/server"
+import { StaticRouter } from "react-router-dom"
+import { LazyMotion, domAnimation } from "framer-motion"
+import { createServer } from "vite"
+
+// Verifica estrutura e conteúdo. Não substitui testes de layout e scroll no navegador.
+const root = fileURLToPath(new URL("../", import.meta.url))
+let server
+let LanguageContext
+const components = {}
+
+before(async () => {
+  server = await createServer({
+    root,
+    server: { middlewareMode: true, hmr: false },
+    appType: "custom",
+    logLevel: "error",
+  })
+  ;({ LanguageContext } = await server.ssrLoadModule("/src/i18n/language-context.ts"))
+  for (const [name, path] of Object.entries({
+    Projects: "/src/pages/ProjectsPage.tsx",
+    Notes: "/src/pages/MediaBlogPage.tsx",
+    Intro: "/src/components/organisms/HomeIntro.tsx",
+    Sections: "/src/components/organisms/HomeSections.tsx",
+    Footer: "/src/components/organisms/SiteFooter.tsx",
+  })) {
+    components[name] = (await server.ssrLoadModule(path)).default
+  }
+})
+
+after(async () => {
+  await server?.close()
+})
+
+function render(children, language = "pt", location = "/") {
+  return renderToStaticMarkup(
+    React.createElement(
+      LazyMotion,
+      { features: domAnimation, strict: true },
+      React.createElement(
+        StaticRouter,
+        { location },
+        React.createElement(
+          LanguageContext.Provider,
+          {
+            value: {
+              language,
+              setLanguage() {},
+              toggleLanguage() {},
+              isSwitching: false,
+              switchingTo: null,
+            },
+          },
+          children,
+        ),
+      ),
+    ),
+  )
+}
+
+for (const language of ["pt", "en"]) {
+  test(`Home ${language}: sete seções, nome e destinos preservados`, () => {
+    const html = render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(components.Intro),
+        React.createElement(components.Sections),
+        React.createElement(components.Footer),
+      ),
+      language,
+    )
+    for (const id of [
+      "hero",
+      "sobre",
+      "projetos-selecionados",
+      "stack",
+      "proposito",
+      "experiencia",
+      "contato",
+    ]) {
+      assert.equal(html.split(`id="${id}"`).length - 1, 1, id)
+    }
+    assert.equal((html.match(/<h1\b/g) || []).length, 1)
+    assert.ok(html.indexOf("PEDRO") < html.indexOf("REOLI"))
+    assert.ok(html.includes("translateY(110%)"), "Entrada inicial dos nomes preservada")
+    assert.ok(html.includes("min-h-screen"))
+    assert.ok(html.includes('href="/projetos?tipo=corporativo"'))
+    assert.ok(html.includes(language === "pt" ? "Quem eu sou" : "Who I am"))
+    assert.ok(!html.includes("footer-stage-compact"))
+  })
+
+  for (const category of ["corporativo", "gerais"]) {
+    test(`Projetos ${language}/${category}: filtro, título e rodapé compacto`, () => {
+      const html = render(
+        React.createElement(components.Projects),
+        language,
+        `/projetos?tipo=${category}`,
+      )
+      assert.equal((html.match(/<h1\b/g) || []).length, 1)
+      assert.ok(html.includes('class="archive-title"'))
+      assert.ok(html.includes(`id="${category}-projects"`))
+      assert.equal((html.match(/aria-pressed="true"/g) || []).length, 1)
+      assert.ok(html.includes(`aria-controls="${category}-projects"`))
+      assert.ok(html.includes("footer-stage-compact"))
+      assert.ok(!html.includes("17vw"))
+      if (category === "corporativo") {
+        assert.equal((html.match(/<img\b/g) || []).length, 4)
+        assert.ok(html.includes("project-overview-image"))
+      } else {
+        for (const title of ["Achilles CDP Agent", "Organon", "GeoAmbiental VR"]) {
+          assert.ok(html.includes(title))
+        }
+        assert.equal((html.match(/class="project-archive-description"/g) || []).length, 3)
+        assert.ok(!html.includes('class="hidden sm:block"'), "Descrições disponíveis no mobile")
+      }
+    })
+  }
+
+  test(`Notas ${language}: hierarquia e descrições presentes`, () => {
+    const html = render(React.createElement(components.Notes), language, "/midia-blog")
+    assert.equal((html.match(/<h1\b/g) || []).length, 1)
+    assert.ok(html.includes("FalaAtípica"))
+    assert.ok(html.includes("footer-stage-compact"))
+    assert.equal((html.match(/class="project-archive-description"/g) || []).length, 3)
+  })
+}

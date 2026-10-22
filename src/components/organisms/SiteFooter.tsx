@@ -7,7 +7,7 @@ import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import SlideSection from "../atoms/SlideSection"
 
-export const SiteFooter: React.FC = () => {
+export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = useReducedMotion()
@@ -50,7 +50,9 @@ export const SiteFooter: React.FC = () => {
     <SlideSection
       as="footer"
       id="contato"
-      className="viewport-stage footer-stage min-h-screen border-t border-white/10 bg-[#111010] text-[#edeae4]"
+      className={`${
+        compact ? "footer-stage-compact" : "viewport-stage min-h-screen"
+      } footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]`}
     >
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal className="border-b border-white/15 pb-4 sm:pb-5">
@@ -58,8 +60,8 @@ export const SiteFooter: React.FC = () => {
             <p className="editorial-label text-[#82aaff]">07 / {isEn ? "Contact" : "Contato"}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-[#8f8a84] sm:mt-3 sm:text-base">
               {isEn
-                ? "Available for ambitious, useful work."
-                : "Disponível para trabalhos ambiciosos e úteis."}
+                ? "For projects, partnerships and opportunities."
+                : "Para projetos, parcerias e oportunidades."}
             </p>
           </div>
         </Reveal>

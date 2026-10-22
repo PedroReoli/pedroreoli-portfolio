@@ -22,7 +22,7 @@ export const ProjectCategoryTabs: React.FC<ProjectCategoryTabsProps> = ({
   onChange,
 }) => (
   <div
-    className="mt-16 flex flex-wrap gap-8 border-b border-white/10 sm:mt-24"
+    className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-b border-white/10 sm:mt-8"
     role="group"
     aria-label={isEn ? "Project categories" : "Categorias de projetos"}
   >
@@ -34,12 +34,12 @@ export const ProjectCategoryTabs: React.FC<ProjectCategoryTabsProps> = ({
           key={category.id}
           type="button"
           aria-pressed={isActive}
-          aria-controls={`${category.id}-projects`}
+          aria-controls={isActive ? `${category.id}-projects` : undefined}
           onClick={() => onChange(category.id)}
-          className={`min-h-11 pb-4 pt-1 text-sm font-semibold uppercase tracking-[0.1em] transition-colors ${
+          className={`min-h-11 border-b-2 pb-3 pt-2 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
             isActive
-              ? "border-b-2 border-[#82aaff] text-white"
-              : "text-[#8d8984] hover:text-[#edeae4]"
+              ? "border-[#82aaff] text-white"
+              : "border-transparent text-[#aaa6a0] hover:text-[#edeae4]"
           }`}
         >
           {isEn ? category.label.en : category.label.pt}

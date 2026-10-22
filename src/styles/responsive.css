@@ -102,7 +102,7 @@
   }
 
   .about-stage-content {
-    grid-template-rows: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    grid-template-rows: minmax(0, 0.7fr) minmax(0, 1.3fr);
   }
 
   .framed-media-caption {
@@ -124,7 +124,7 @@
 
   .about-summary {
     margin-top: 0.55rem;
-    font-size: clamp(0.65rem, min(3vw, 1.55vh), 0.82rem);
+    font-size: clamp(0.8rem, 3.3vw, 0.95rem);
     line-height: 1.42;
   }
 
@@ -151,7 +151,7 @@
 
   .about-stat span {
     margin-top: 0.2rem;
-    font-size: clamp(0.4rem, min(1.8vw, 1.05vh), 0.52rem);
+    font-size: clamp(0.56rem, 2.3vw, 0.65rem);
   }
 
   .about-direction {
@@ -174,14 +174,14 @@
   }
 
   .purpose-summary {
-    font-size: clamp(0.68rem, min(3.2vw, 1.65vh), 0.84rem);
+    font-size: clamp(0.8rem, 3.3vw, 0.95rem);
     line-height: 1.38;
   }
 
   .purpose-link {
-    min-height: 2.2rem;
+    min-height: 2.75rem;
     margin-top: 0.35rem;
-    font-size: 0.52rem;
+    font-size: 0.625rem;
   }
 
   .experience-stage-layout {
@@ -214,7 +214,7 @@
   }
 
   .experience-detail-copy {
-    font-size: clamp(0.68rem, min(3vw, 1.65vh), 0.82rem);
+    font-size: clamp(0.78rem, 3.3vw, 0.9rem);
     line-height: 1.4;
   }
 
@@ -260,7 +260,7 @@
     justify-content: start;
     justify-items: start;
     gap: 0.3rem;
-    font-size: clamp(0.48rem, min(2.3vw, 1.4vh), 0.65rem);
+    font-size: clamp(0.6rem, 2.5vw, 0.72rem);
   }
 
   .stack-brand-icon {

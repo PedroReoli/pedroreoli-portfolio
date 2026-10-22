@@ -1,0 +1,123 @@
+@layer components {
+  .archive-container {
+    width: min(100% - 2rem, 76rem);
+    margin-inline: auto;
+  }
+
+  .archive-heading {
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .archive-title {
+    font-size: clamp(2.75rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+    overflow-wrap: anywhere;
+  }
+
+  .archive-description {
+    max-width: 40rem;
+    margin-top: 1.25rem;
+    color: #aaa6a0;
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    line-height: 1.55;
+  }
+
+  .archive-section {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .archive-section-title {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    overflow-wrap: anywhere;
+  }
+
+  .project-overview-image {
+    display: block;
+    width: 100%;
+    height: clamp(12rem, 45vw, 32rem);
+    object-fit: contain;
+  }
+
+  .project-archive-row {
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 1.25rem;
+    align-items: start;
+    gap: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+    padding-block: 1.5rem;
+    transition: border-color 180ms ease;
+  }
+
+  .project-archive-row:hover,
+  .project-archive-row:focus-visible {
+    border-color: #82aaff;
+  }
+
+  .project-archive-title {
+    font-size: clamp(1.35rem, 2.6vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .project-archive-description {
+    grid-column: 2;
+    color: #aaa6a0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    max-width: 36rem;
+  }
+
+  .project-archive-arrow {
+    grid-column: 3;
+    grid-row: 1;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #82aaff;
+    transition: transform 180ms ease;
+  }
+
+  .project-archive-row:hover .project-archive-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .footer-stage-compact .footer-stage-layout {
+    height: auto;
+    gap: 1.5rem;
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+
+  .footer-stage-compact .footer-cta {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+  }
+}
+
+@media (min-width: 640px) {
+  .archive-container {
+    width: min(100% - 4rem, 76rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .project-archive-row {
+    grid-template-columns: 2rem minmax(0, 1fr) minmax(0, 1fr) 1.25rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: 1.75rem;
+  }
+
+  .project-archive-description {
+    grid-column: 3;
+  }
+
+  .project-archive-arrow {
+    grid-column: 4;
+  }
+}

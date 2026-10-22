@@ -13,30 +13,31 @@ export const SiteHeader: React.FC = () => {
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [navigationVisible, setNavigationVisible] = useState(true)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const lastScrollDecision = useRef(0)
   const { scrollY } = useScroll()
   const reduceMotion = Boolean(useReducedMotion())
   const isEn = language === "en"
   const isHomePage = pathname === "/"
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? latest
     setScrolledPastHero(latest > 120)
 
-    if (mobileMenuOpen || latest < 80) {
+    if (mobileMenuOpen || latest < 80 || document.activeElement?.closest("header")) {
       setNavigationVisible(true)
+      lastScrollDecision.current = latest
       return
     }
 
-    if (latest > previous && latest > 120) {
-      setNavigationVisible(false)
-      return
-    }
-
-    if (latest < previous) setNavigationVisible(true)
+    const delta = latest - lastScrollDecision.current
+    if (Math.abs(delta) < 10) return
+    setNavigationVisible(delta < 0 || latest < 120)
+    lastScrollDecision.current = latest
   })
 
   useEffect(() => {
     setMobileMenuOpen(false)
+    setNavigationVisible(true)
+    lastScrollDecision.current = 0
   }, [pathname])
 
   useEffect(() => {
@@ -88,6 +89,7 @@ export const SiteHeader: React.FC = () => {
       </a>
 
       <m.header
+        onFocusCapture={() => setNavigationVisible(true)}
         initial={false}
         animate={{ y: navigationVisible ? 0 : "-110%" }}
         transition={{ duration: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
@@ -162,6 +164,7 @@ export const SiteHeader: React.FC = () => {
           MOBILE: Standard Fixed Top Navbar
           ======================================================== */}
       <m.header
+        onFocusCapture={() => setNavigationVisible(true)}
         initial={false}
         animate={{ y: navigationVisible ? 0 : "-100%" }}
         transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
@@ -183,7 +186,7 @@ export const SiteHeader: React.FC = () => {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white"
+            className="flex min-h-11 items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 text-[10px] font-mono uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white"
             aria-label={isEn ? "Switch language to Portuguese" : "Mudar idioma para inglês"}
           >
             <FlagIcon
@@ -197,7 +200,7 @@ export const SiteHeader: React.FC = () => {
             ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen((current) => !current)}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-[#edeae4] transition-colors hover:bg-white/10"
+            className="grid h-11 w-11 place-items-center rounded-lg border border-white/15 text-[#edeae4] transition-colors hover:bg-white/10"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={

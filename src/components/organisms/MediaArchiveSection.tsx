@@ -3,6 +3,8 @@ import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { mediaNotes } from "../../content/mediaContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import ResponsiveImage from "../atoms/ResponsiveImage"
+import Reveal from "../atoms/Reveal"
+import ArchiveHeading from "../molecules/ArchiveHeading"
 
 export const MediaArchiveSection: React.FC = () => {
   const { language } = useLanguage()
@@ -10,93 +12,90 @@ export const MediaArchiveSection: React.FC = () => {
 
   return (
     <div className="w-full">
-      <section className="editorial-container pb-16 pt-20 sm:pb-24 sm:pt-28">
-        <p className="editorial-label mb-5 text-[#82aaff]">
-          {isEn ? "Writing / Press / Ideas" : "Escrita / Imprensa / Ideias"}
-        </p>
-        <h1 className="text-[clamp(4rem,17vw,16rem)] font-black leading-[0.72] tracking-[-0.085em]">
-          {isEn ? "NOTES" : "NOTAS"}
-        </h1>
-        <p className="mt-12 max-w-2xl text-xl leading-tight tracking-[-0.035em] text-[#aaa6a0] sm:mt-20 sm:text-4xl">
-          {isEn
-            ? "Software, systems and applied automation. Without the noise."
-            : "Software, sistemas e automação aplicada. Sem ruído."}
-        </p>
+      <ArchiveHeading
+        eyebrow={isEn ? "Writing / Press / Ideas" : "Escrita / Imprensa / Ideias"}
+        title={isEn ? "NOTES" : "NOTAS"}
+        description={
+          isEn
+            ? "Technical notes, project decisions and press coverage."
+            : "Notas técnicas, decisões de projeto e participações na imprensa."
+        }
+      />
+
+      <section className="archive-container archive-section">
+        <Reveal distance={32}>
+          <article className="grid gap-6 border-y border-white/10 py-6 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <p className="editorial-label mb-5 text-[#82aaff]">
+                {isEn ? "In the press" : "Na imprensa"}
+              </p>
+              <h2 className="text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.05] tracking-[-0.045em]">
+                {isEn ? "FalaAtípica featured by UniFOA." : "FalaAtípica em destaque no UniFOA."}
+              </h2>
+              <a
+                href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.13em]"
+              >
+                {isEn ? "Read article" : "Ler reportagem"}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+            <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19] lg:col-span-7">
+              <ResponsiveImage
+                pictureClassName="block h-full w-full"
+                sources={[
+                  {
+                    srcSet:
+                      "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
+                    type: "image/webp",
+                    sizes:
+                      "(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(100vw - 4rem), (max-width: 1279px) 55vw, 696px",
+                  },
+                ]}
+                src="/TCC-img2.png"
+                alt={isEn ? "Pedro presenting FalaAtípica" : "Pedro apresentando o FalaAtípica"}
+                loading="lazy"
+                decoding="async"
+                width={1280}
+                height={577}
+                className="h-full w-full object-cover"
+              />
+            </figure>
+          </article>
+        </Reveal>
       </section>
 
-      <section className="editorial-container pb-24">
-        <article className="grid gap-8 border-y border-white/10 py-10 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5">
-            <p className="editorial-label mb-5 text-[#82aaff]">
-              {isEn ? "In the press" : "Na imprensa"}
-            </p>
-            <h2 className="text-[clamp(2.5rem,6vw,5.7rem)] font-bold leading-[0.9] tracking-[-0.065em]">
-              {isEn
-                ? "Technology that helps children find their voice."
-                : "Tecnologia para ajudar crianças a encontrar sua voz."}
-            </h2>
-            <a
-              href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.13em]"
-            >
-              {isEn ? "Read article" : "Ler reportagem"}
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          </div>
-          <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19] lg:col-span-7">
-            <ResponsiveImage
-              pictureClassName="block h-full w-full"
-              sources={[
-                {
-                  srcSet:
-                    "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
-                  type: "image/webp",
-                  sizes: "(max-width: 767px) calc(100vw - 2rem), 58vw",
-                },
-              ]}
-              src="/TCC-img2.png"
-              alt={isEn ? "Pedro presenting FalaAtípica" : "Pedro apresentando o FalaAtípica"}
-              loading="lazy"
-              decoding="async"
-              width={1280}
-              height={577}
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </article>
-      </section>
-
-      <section className="editorial-container pb-32">
+      <section className="archive-container archive-section">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="section-display">{isEn ? "OPEN NOTEBOOK" : "CADERNO ABERTO"}</h2>
+          <h2 className="archive-section-title">{isEn ? "Open notebook" : "Caderno aberto"}</h2>
           <span className="editorial-label hidden text-[#8d8984] sm:block">
             03 / {isEn ? "notes" : "notas"}
           </span>
         </div>
-        {mediaNotes.map((note) => (
-          <a
-            key={note.number}
-            href={note.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group grid grid-cols-[2.5rem_1fr_auto] gap-3 border-b border-white/10 py-7 sm:grid-cols-[4rem_minmax(0,0.8fr)_minmax(14rem,1fr)_auto] sm:items-center sm:py-10"
-          >
-            <span className="editorial-label text-[#8d8984]">{note.number}</span>
-            <div>
-              <p className="editorial-label mb-3 text-[#82aaff]">
-                {isEn ? note.category.en : note.category.pt}
+        {mediaNotes.map((note, index) => (
+          <Reveal key={note.number} distance={24} delay={index * 0.06}>
+            <a
+              href={note.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-archive-row group"
+            >
+              <span className="editorial-label text-[#8d8984]">{note.number}</span>
+              <div className="min-w-0">
+                <p className="editorial-label mb-3 text-[#82aaff]">
+                  {isEn ? note.category.en : note.category.pt}
+                </p>
+                <h3 className="project-archive-title">{isEn ? note.title.en : note.title.pt}</h3>
+              </div>
+              <p className="project-archive-description">
+                {isEn ? note.description.en : note.description.pt}
               </p>
-              <h3 className="max-w-4xl text-2xl font-bold leading-tight tracking-[-0.045em] sm:text-4xl">
-                {isEn ? note.title.en : note.title.pt}
-              </h3>
-            </div>
-            <p className="hidden max-w-md text-sm leading-relaxed text-[#8d8984] sm:block">
-              {isEn ? note.description.en : note.description.pt}
-            </p>
-            <ArrowUpRight className="h-5 w-5 text-[#82aaff] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-          </a>
+              <ArrowUpRight className="project-archive-arrow" aria-hidden="true" />
+              <span className="sr-only">{isEn ? "Opens in a new tab" : "Abre em nova aba"}</span>
+            </a>
+          </Reveal>
         ))}
       </section>
     </div>

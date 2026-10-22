@@ -116,7 +116,7 @@ export const ExperienceSection: React.FC = () => {
             <Reveal
               className="experience-detail-shell min-h-0"
               axis="x"
-              distance={64}
+              distance={40}
               amount={0.12}
               delay={0.36}
             >
@@ -124,10 +124,14 @@ export const ExperienceSection: React.FC = () => {
                 <m.article
                   id="experience-detail"
                   key={`${activeItem.company}-${language}`}
-                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 64 }}
+                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: -48 }}
-                  transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  exit={
+                    reduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 0, x: -24, transition: { duration: 0.18 } }
+                  }
+                  transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full min-h-0 flex-col justify-center"
                   aria-live="polite"
                 >

@@ -108,19 +108,19 @@ export const TechnologyStackSection: React.FC = () => {
             <h2 className="stack-index-title font-black uppercase">
               {isEn ? (
                 <>
-                  BUILT TO <span className="stack-title-outline">SCALE.</span>
+                  MY <span className="stack-title-outline">STACK.</span>
                 </>
               ) : (
                 <>
-                  STACK PARA <span className="stack-title-outline">ESCALAR.</span>
+                  MINHA <span className="stack-title-outline">STACK.</span>
                 </>
               )}
             </h2>
           </div>
           <p className="stack-intro-copy max-w-xs text-sm leading-relaxed text-[#5f5b56] sm:text-right">
             {isEn
-              ? "Interfaces, services, cloud and AI. One production-minded system."
-              : "Interfaces, serviços, cloud e IA. Um sistema pronto para produção."}
+              ? "Frontend, APIs, cloud and AI tools used in my work."
+              : "Frontend, APIs, cloud e ferramentas de IA que uso no trabalho."}
           </p>
         </Reveal>
 

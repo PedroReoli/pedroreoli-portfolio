@@ -124,7 +124,7 @@ export const SelectedProjectsSection: React.FC = () => {
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
       <SlideSection
         as="div"
-        className="sticky top-0 flex h-screen min-h-screen w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8"
+        className="selected-projects-stage sticky top-0 h-screen min-h-screen w-full overflow-hidden bg-[#111010]"
       >
         {/* Background Atmospheric Glow */}
         <div
@@ -134,7 +134,7 @@ export const SelectedProjectsSection: React.FC = () => {
 
         {/* Top Header */}
         <Reveal
-          className="editorial-container relative z-10 flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4"
+          className="editorial-container relative z-10 flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3"
           distance={12}
         >
           <div>
@@ -156,7 +156,8 @@ export const SelectedProjectsSection: React.FC = () => {
                 key={step.label}
                 type="button"
                 onClick={() => scrollToStep(idx)}
-                className="relative flex items-center gap-1 sm:gap-1.5 rounded-full px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.12em] transition-colors"
+                className="relative flex min-h-11 min-w-11 items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2.5 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-[0.08em] transition-colors"
+                aria-label={step.label}
                 aria-current={activeStep === idx ? "step" : undefined}
               >
                 {activeStep === idx && (
@@ -190,8 +191,8 @@ export const SelectedProjectsSection: React.FC = () => {
         {/* Middle Stage: Pinned Content Slides */}
         <Reveal
           delay={0.2}
-          distance={64}
-          className="editorial-container relative z-10 my-auto flex h-full max-h-[70vh] sm:max-h-[72vh] w-full items-center justify-center py-1 sm:py-2"
+          distance={40}
+          className="editorial-container relative z-10 flex h-full min-h-0 items-center justify-center"
         >
           <AnimatePresence mode="wait">
             {/* ========================================================
@@ -200,14 +201,18 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 0 && (
               <m.div
                 key="step-autocom"
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 72 }}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -48 }}
-                transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
+                exit={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 0, y: -24, transition: { duration: 0.18 } }
+                }
+                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
+                className="selected-project-slide"
               >
                 {/* Artwork Frame */}
-                <figure className="project-image-frame relative h-[180px] sm:h-full sm:min-h-[220px] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-[#191817] shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+                <figure className="project-image-frame relative h-full min-h-0 overflow-hidden rounded-xl border border-white/10 bg-[#191817]">
                   <ProjectArtwork project={autocomProject} isEn={isEn} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
                   <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
@@ -220,7 +225,7 @@ export const SelectedProjectsSection: React.FC = () => {
                 </figure>
 
                 {/* Details & CTA */}
-                <div className="flex flex-col justify-center">
+                <div className="selected-project-copy flex flex-col justify-center">
                   <div className="mb-1 sm:mb-2 flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]" />
                     <span className="editorial-label text-[10px] sm:text-xs tracking-[0.14em] text-[#82aaff]">
@@ -234,8 +239,8 @@ export const SelectedProjectsSection: React.FC = () => {
 
                   <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
                     {isEn
-                      ? "Commercial operations, licensing and catalogs unified in a fast, reliable enterprise platform."
-                      : "Operação comercial, licenças e catálogo reunidos em uma plataforma corporativa rápida e confiável."}
+                      ? "Proposals, licenses and catalogs in one corporate platform."
+                      : "Propostas, licenças e catálogo em uma plataforma corporativa."}
                   </p>
 
                   <div className="mt-2.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-white/60">
@@ -256,7 +261,7 @@ export const SelectedProjectsSection: React.FC = () => {
                       to="/projetos?tipo=corporativo"
                       className="group inline-flex items-center gap-2 sm:gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-2 sm:px-6 sm:py-3 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-[#111010] shadow-lg"
                     >
-                      <span>{isEn ? "Explore project in-depth" : "Ver projeto mais a fundo"}</span>
+                      <span>{isEn ? "Explore the interfaces" : "Explorar interfaces"}</span>
                       <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </Link>
                   </div>
@@ -270,14 +275,18 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 1 && (
               <m.div
                 key="step-achilles"
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 72 }}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -48 }}
-                transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
+                exit={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 0, y: -24, transition: { duration: 0.18 } }
+                }
+                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
+                className="selected-project-slide"
               >
                 {/* Artwork Frame */}
-                <figure className="project-image-frame relative h-[180px] sm:h-full sm:min-h-[220px] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-[#161514] shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+                <figure className="project-image-frame relative h-full min-h-0 overflow-hidden rounded-xl border border-white/10 bg-[#191817]">
                   <ProjectArtwork project={achillesProject} isEn={isEn} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
                   <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
@@ -290,7 +299,7 @@ export const SelectedProjectsSection: React.FC = () => {
                 </figure>
 
                 {/* Details & CTA */}
-                <div className="flex flex-col justify-center">
+                <div className="selected-project-copy flex flex-col justify-center">
                   <div className="mb-1 sm:mb-2 flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]" />
                     <span className="editorial-label text-[10px] sm:text-xs tracking-[0.14em] text-[#82aaff]">
@@ -304,8 +313,8 @@ export const SelectedProjectsSection: React.FC = () => {
 
                   <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
                     {isEn
-                      ? "A local autonomous agent that operates browsers through CDP with observable, deterministic tools."
-                      : "Um agente local que opera navegadores por CDP com ferramentas observáveis e determinísticas."}
+                      ? "A local agent for browser automation with CDP and observable tools."
+                      : "Agente local para automatizar navegadores com CDP e ferramentas observáveis."}
                   </p>
 
                   <div className="mt-2.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-white/60">
@@ -338,10 +347,14 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 2 && (
               <m.div
                 key="step-more-projects"
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 72 }}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -48 }}
-                transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
+                exit={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 0, y: -24, transition: { duration: 0.18 } }
+                }
+                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
                 className="flex h-full w-full items-center justify-center text-center"
               >
                 <Link
@@ -387,7 +400,7 @@ export const SelectedProjectsSection: React.FC = () => {
                 ? "Scroll to navigate"
                 : "Role para navegar"}
             </span>
-            <ChevronDown className="h-3.5 w-3.5 animate-bounce text-[#82aaff]" />
+            <ChevronDown className="h-3.5 w-3.5 text-[#82aaff]" aria-hidden="true" />
           </div>
         </Reveal>
       </SlideSection>

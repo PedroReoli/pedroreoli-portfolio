@@ -62,8 +62,8 @@ export const PurposeStorySection: React.FC = () => {
         <div className="purpose-statement">
           <Reveal distance={56} delay={0.32} amount={0.08}>
             <h2 className="purpose-title font-black uppercase">
-              {isEn ? "Technology" : "Tecnologia"}
-              <span>{isEn ? "is access." : "é acesso."}</span>
+              {isEn ? "Communication" : "Comunicação"}
+              <span>{isEn ? "made accessible." : "mais acessível."}</span>
             </h2>
           </Reveal>
 
