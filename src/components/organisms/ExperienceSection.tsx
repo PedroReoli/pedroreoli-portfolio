@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 export const ExperienceSection: React.FC = () => {
   const { language } = useLanguage()
@@ -17,6 +18,7 @@ export const ExperienceSection: React.FC = () => {
       id="experiencia"
       className="viewport-stage trajectory-stage bg-[#111010] text-[#edeae4]"
     >
+      <SectionCurtain />
       <div className="editorial-container experience-stage-layout">
         <Reveal className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4">
           <div>

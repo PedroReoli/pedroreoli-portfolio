@@ -42,7 +42,7 @@ export const Reveal: React.FC<RevealProps> = ({
       viewport={{ once: false, amount, margin: "-6% 0px -6% 0px" }}
       transition={{
         duration: reduceMotion ? 0.2 : duration,
-        delay: reduceMotion ? 0 : delay,
+        delay: reduceMotion ? 0 : delay + 0.18,
         ease: [0.16, 1, 0.3, 1],
       }}
     >

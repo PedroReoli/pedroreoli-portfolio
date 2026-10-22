@@ -4,6 +4,7 @@ import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { getMailtoUrl, siteConfig } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 export const SiteFooter: React.FC = () => {
   const { language } = useLanguage()
@@ -15,6 +16,7 @@ export const SiteFooter: React.FC = () => {
       id="contato"
       className="viewport-stage footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]"
     >
+      <SectionCurtain />
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal className="border-b border-white/15 pb-4 sm:pb-5">
           <div>

@@ -6,6 +6,7 @@ import { featuredProjects, type FeaturedProject } from "../../content/homeConten
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import ResponsiveImage from "../atoms/ResponsiveImage"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
   project,
@@ -122,6 +123,8 @@ export const SelectedProjectsSection: React.FC = () => {
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
       <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
+        <SectionCurtain />
+
         {/* Background Atmospheric Glow */}
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_40%,rgba(130,170,255,0.06)_0%,transparent_70%)]"

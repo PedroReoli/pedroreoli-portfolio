@@ -19,6 +19,7 @@ import {
 } from "react-icons/si"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 interface StackTool {
   name: string
@@ -81,6 +82,7 @@ export const TechnologyStackSection: React.FC = () => {
 
   return (
     <section id="stack" className="viewport-stage stack-stage bg-[#edeae4] text-[#111010]">
+      <SectionCurtain background="#edeae4" accent="#111010" />
       <div className="editorial-container stack-stage-layout">
         <Reveal className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6">
           <div>

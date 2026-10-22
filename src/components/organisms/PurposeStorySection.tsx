@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import ResponsiveImage from "../atoms/ResponsiveImage"
 import Reveal from "../atoms/Reveal"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 export const PurposeStorySection: React.FC = () => {
   const { language } = useLanguage()
@@ -13,6 +14,7 @@ export const PurposeStorySection: React.FC = () => {
       id="proposito"
       className="viewport-stage technology-story relative bg-[#111010] text-white"
     >
+      <SectionCurtain />
       <ResponsiveImage
         pictureClassName="absolute inset-0 block h-full w-full"
         sources={[

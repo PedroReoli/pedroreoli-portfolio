@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { m, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
+import SectionCurtain from "../atoms/SectionCurtain"
 
 const entranceEase = [0.16, 1, 0.3, 1] as const
 const heroVideoEnabled = import.meta.env.VITE_HERO_VIDEO_ENABLED === "true"
@@ -24,15 +25,7 @@ export const PortfolioHero: React.FC = () => {
       ref={heroRef}
       className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0"
     >
-      {!reduceMotion && (
-        <m.div
-          className="pointer-events-none absolute inset-0 z-30 origin-bottom bg-[#111010]"
-          initial={{ scaleY: 1 }}
-          animate={{ scaleY: 0 }}
-          transition={{ duration: 0.72, delay: 0.08, ease: entranceEase }}
-          aria-hidden="true"
-        />
-      )}
+      <SectionCurtain duration={1.18} once />
 
       {/* Background Video (if enabled) */}
       {heroVideoEnabled && (
@@ -77,7 +70,7 @@ export const PortfolioHero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.7,
-            delay: reduceMotion ? 0 : 0.42,
+            delay: reduceMotion ? 0 : 0.52,
             ease: entranceEase,
           }}
           className="editorial-container flex items-start justify-between pt-5 md:pt-7"
@@ -107,8 +100,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0.22 : 0.88,
-                  delay: reduceMotion ? 0 : 0.34,
+                  duration: reduceMotion ? 0.22 : 1.02,
+                  delay: reduceMotion ? 0 : 0.48,
                   ease: entranceEase,
                 }}
               >
@@ -125,8 +118,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0.22 : 0.88,
-                  delay: reduceMotion ? 0 : 0.46,
+                  duration: reduceMotion ? 0.22 : 1.02,
+                  delay: reduceMotion ? 0 : 0.62,
                   ease: entranceEase,
                 }}
               >
@@ -141,7 +134,7 @@ export const PortfolioHero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: reduceMotion ? 0.2 : 0.72,
-              delay: reduceMotion ? 0 : 0.72,
+              delay: reduceMotion ? 0 : 0.94,
               ease: entranceEase,
             }}
             className="hero-role mt-3 flex items-center justify-center gap-3 sm:mt-5"
@@ -164,7 +157,7 @@ export const PortfolioHero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.72,
-            delay: reduceMotion ? 0 : 0.86,
+            delay: reduceMotion ? 0 : 1.08,
             ease: entranceEase,
           }}
           className="editorial-container flex justify-end pb-7 md:pb-9"
