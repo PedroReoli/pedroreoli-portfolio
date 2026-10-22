@@ -5,6 +5,7 @@ export const siteConfig = {
   email: "pedrosousa2160@gmail.com",
   social: {
     github: "https://github.com/PedroReoli",
+    whatsapp: "https://wa.me/5524993264040",
     linkedin: "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/",
   },
 } as const

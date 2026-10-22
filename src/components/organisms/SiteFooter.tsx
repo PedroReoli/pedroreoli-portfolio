@@ -1,6 +1,7 @@
 import React from "react"
 import { useReducedMotion } from "framer-motion"
-import { ArrowUp, ArrowUpRight } from "lucide-react"
+import { ArrowUp, Mail } from "lucide-react"
+import { SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si"
 import { getMailtoUrl, siteConfig } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
@@ -10,6 +11,40 @@ export const SiteFooter: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = useReducedMotion()
+  const contactLinks = [
+    {
+      label: "E-mail",
+      detail: isEn ? "Start a conversation" : "Vamos conversar",
+      href: getMailtoUrl(),
+      icon: Mail,
+      color: "#82aaff",
+      external: false,
+    },
+    {
+      label: "WhatsApp",
+      detail: isEn ? "Send a message" : "Me mande uma mensagem",
+      href: siteConfig.social.whatsapp,
+      icon: SiWhatsapp,
+      color: "#25d366",
+      external: true,
+    },
+    {
+      label: "GitHub",
+      detail: isEn ? "Explore my code" : "Explore meu código",
+      href: siteConfig.social.github,
+      icon: SiGithub,
+      color: "#edeae4",
+      external: true,
+    },
+    {
+      label: "LinkedIn",
+      detail: isEn ? "Connect with me" : "Vamos nos conectar",
+      href: siteConfig.social.linkedin,
+      icon: SiLinkedin,
+      color: "#70b5f9",
+      external: true,
+    },
+  ]
 
   return (
     <footer
@@ -48,38 +83,33 @@ export const SiteFooter: React.FC = () => {
         </Reveal>
 
         <div className="footer-bottom">
-          <Reveal
-            className="grid grid-cols-3 gap-3 border-b border-white/15 pb-4 sm:gap-6 sm:pb-6"
-            delay={0.14}
-          >
-            <a href={getMailtoUrl()} className="footer-link">
-              <span>
-                <small>01</small>E-mail
-              </span>
-              <ArrowUpRight />
-            </a>
-            <a
-              href={siteConfig.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
+          <Reveal className="border-b border-white/15 pb-4 sm:pb-6" delay={0.14}>
+            <nav
+              className="footer-links"
+              aria-label={isEn ? "Contact and social profiles" : "Contato e redes sociais"}
             >
-              <span>
-                <small>02</small>GitHub
-              </span>
-              <ArrowUpRight />
-            </a>
-            <a
-              href={siteConfig.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
-            >
-              <span>
-                <small>03</small>LinkedIn
-              </span>
-              <ArrowUpRight />
-            </a>
+              {contactLinks.map(({ label, detail, href, icon: Icon, color, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className="footer-link"
+                  style={{ "--contact-color": color } as React.CSSProperties}
+                >
+                  <Icon className="footer-link-icon" aria-hidden="true" />
+                  <span className="footer-link-copy">
+                    <strong>{label}</strong>
+                    <small>{detail}</small>
+                  </span>
+                  {external && (
+                    <span className="sr-only">
+                      {isEn ? " (opens in a new tab)" : " (abre em nova aba)"}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </nav>
           </Reveal>
 
           <div className="flex items-center justify-between gap-4 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#8d8984] sm:pt-5 sm:text-[10px]">

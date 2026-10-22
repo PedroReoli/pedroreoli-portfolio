@@ -282,18 +282,14 @@
     font-size: clamp(1.1rem, min(5vw, 2.8vh), 1.6rem);
   }
 
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 1rem;
+  }
+
   .footer-link {
-    gap: 0.3rem;
-    font-size: clamp(0.65rem, 3vw, 0.8rem);
-  }
-
-  .footer-link small {
-    display: none;
-  }
-
-  .footer-link svg {
-    width: 0.75rem;
-    height: 0.75rem;
+    min-height: 3.75rem;
+    padding-block: 0.5rem;
   }
 }
 
