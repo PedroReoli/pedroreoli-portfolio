@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import "./styles/foundation.css";
+@import "./styles/scrollbar.css";
 @import "./styles/sections.css";
 @import "./styles/about-section.css";
 @import "./styles/responsive.css";

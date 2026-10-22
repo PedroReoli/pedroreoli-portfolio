@@ -1,18 +1,3 @@
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111010;
-}
-::-webkit-scrollbar-thumb {
-  background: #3b3937;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #82aaff;
-}
-
 @media (min-width: 640px) {
   .editorial-container {
     width: min(100% - 4rem, 92rem);
