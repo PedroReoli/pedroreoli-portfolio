@@ -17,15 +17,19 @@ export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 18,
-  duration = 0.48,
+  distance = 28,
+  duration = 0.62,
   amount = 0.2,
   axis = "y",
   role,
   ariaLabel,
 }) => {
   const reduceMotion = useReducedMotion()
-  const hidden = axis === "x" ? { opacity: 0, x: distance } : { opacity: 0, y: distance }
+  const hidden = reduceMotion
+    ? { opacity: 0 }
+    : axis === "x"
+    ? { opacity: 0, x: distance }
+    : { opacity: 0, y: distance }
   const visible = axis === "x" ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }
 
   return (
@@ -33,10 +37,14 @@ export const Reveal: React.FC<RevealProps> = ({
       className={className}
       role={role}
       aria-label={ariaLabel}
-      initial={reduceMotion ? false : hidden}
+      initial={hidden}
       whileInView={visible}
       viewport={{ once: false, amount, margin: "-6% 0px -6% 0px" }}
-      transition={{ duration: reduceMotion ? 0 : duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: reduceMotion ? 0.2 : duration,
+        delay: reduceMotion ? 0 : delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       {children}
     </m.div>

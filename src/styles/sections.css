@@ -73,18 +73,22 @@
     align-items: center;
     justify-content: center;
     overflow: visible;
-    will-change: transform, opacity, filter;
+    will-change: transform, opacity;
+  }
+
+  .hero-line-mask {
+    overflow: hidden;
   }
 
   .hero-diagonal-pedro {
     align-self: center;
-    transform: translateX(-28%);
+    transform: translateX(-20%);
   }
 
   .hero-diagonal-reoli {
     align-self: center;
-    transform: translateX(28%);
-    margin-top: -0.15em;
+    margin-top: -0.18em;
+    transform: translateX(20%);
   }
 
   .hero-mega-text {
@@ -92,10 +96,10 @@
     font-family: "Archivo Variable", "Archivo", "Inter", sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(5.8rem, min(19vw, 25vh), 17.5rem);
+    font-size: clamp(6.4rem, min(22vw, 29vh), 20rem);
     font-stretch: 80%;
     font-variation-settings: "wdth" 80;
-    line-height: 0.88;
+    line-height: 0.84;
     letter-spacing: -0.05em;
     padding-inline: 0.12em;
     padding-block: 0.08em;
@@ -116,8 +120,9 @@
     -webkit-text-stroke-color: #82aaff;
   }
 
-  .hero-statement {
-    font-size: clamp(1.05rem, 1.55vw, 1.55rem);
+  .hero-role {
+    font-size: clamp(1rem, min(1.55vw, 2.35vh), 1.55rem);
+    line-height: 1.1;
   }
 
   .hero-project-label-short {

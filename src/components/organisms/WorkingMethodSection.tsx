@@ -47,7 +47,7 @@ export const WorkingMethodSection: React.FC = () => {
           </div>
         </Reveal>
 
-        <Reveal className="method-list min-h-0" role="list" amount={0.12}>
+        <Reveal className="method-list min-h-0" role="list" amount={0.12} delay={0.1}>
           {workingPrinciples.map((item, index) => (
             <article key={item.title.en} className="method-row group" role="listitem">
               <span className="editorial-label text-[#8d8984] transition-colors group-hover:text-[#82aaff]">

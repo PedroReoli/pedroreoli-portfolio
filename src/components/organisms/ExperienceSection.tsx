@@ -38,6 +38,7 @@ export const ExperienceSection: React.FC = () => {
           <Reveal
             className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
             amount={0.12}
+            delay={0.08}
           >
             <div className="grid h-full grid-rows-5" role="list">
               {experienceItems.map((item, index) => {
@@ -85,7 +86,13 @@ export const ExperienceSection: React.FC = () => {
             </div>
           </Reveal>
 
-          <Reveal className="experience-detail-shell min-h-0" axis="x" distance={14} amount={0.12}>
+          <Reveal
+            className="experience-detail-shell min-h-0"
+            axis="x"
+            distance={22}
+            amount={0.12}
+            delay={0.16}
+          >
             <AnimatePresence mode="wait" initial={false}>
               <m.article
                 id="experience-detail"

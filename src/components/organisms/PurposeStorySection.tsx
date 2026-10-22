@@ -50,7 +50,12 @@ export const PurposeStorySection: React.FC = () => {
           </p>
         </Reveal>
 
-        <Reveal className="technology-title-stage relative min-h-0" distance={24} amount={0.28}>
+        <Reveal
+          className="technology-title-stage relative min-h-0"
+          distance={32}
+          amount={0.12}
+          delay={0.08}
+        >
           <h2 className="technology-title h-full font-black uppercase text-white">
             <span className="technology-title-first">{isEn ? "TECHNOLOGY" : "TECNOLOGIA"}</span>
             <span className="technology-title-last">
@@ -62,6 +67,7 @@ export const PurposeStorySection: React.FC = () => {
         <Reveal
           className="grid gap-3 border-t border-white/30 pt-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:gap-6 sm:pt-6"
           distance={14}
+          delay={0.16}
         >
           <div>
             <p className="editorial-label mb-2 text-[#c7d3ff]">

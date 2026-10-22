@@ -24,6 +24,16 @@ export const PortfolioHero: React.FC = () => {
       ref={heroRef}
       className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0"
     >
+      {!reduceMotion && (
+        <m.div
+          className="pointer-events-none absolute inset-0 z-30 origin-bottom bg-[#111010]"
+          initial={{ scaleY: 1 }}
+          animate={{ scaleY: 0 }}
+          transition={{ duration: 0.72, delay: 0.08, ease: entranceEase }}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Background Video (if enabled) */}
       {heroVideoEnabled && (
         <m.video
@@ -63,9 +73,13 @@ export const PortfolioHero: React.FC = () => {
       >
         {/* Top Info Metadata */}
         <m.div
-          initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.35, ease: entranceEase }}
+          transition={{
+            duration: reduceMotion ? 0.2 : 0.7,
+            delay: reduceMotion ? 0 : 0.42,
+            ease: entranceEase,
+          }}
           className="editorial-container flex items-start justify-between pt-5 md:pt-7"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
@@ -84,23 +98,37 @@ export const PortfolioHero: React.FC = () => {
             className="hero-diagonal-stage relative flex w-full flex-col items-center justify-center"
             aria-label="Pedro Reoli"
           >
-            <span className="hero-diagonal-item hero-diagonal-pedro" aria-hidden="true">
+            <span
+              className="hero-diagonal-item hero-line-mask hero-diagonal-pedro"
+              aria-hidden="true"
+            >
               <m.span
                 className="hero-mega-text"
-                initial={reduceMotion ? false : { x: -120, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.72, delay: reduceMotion ? 0 : 0.16, ease: entranceEase }}
+                initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: reduceMotion ? 0.22 : 0.88,
+                  delay: reduceMotion ? 0 : 0.34,
+                  ease: entranceEase,
+                }}
               >
                 PEDRO
               </m.span>
             </span>
 
-            <span className="hero-diagonal-item hero-diagonal-reoli" aria-hidden="true">
+            <span
+              className="hero-diagonal-item hero-line-mask hero-diagonal-reoli"
+              aria-hidden="true"
+            >
               <m.span
                 className="hero-mega-text hero-text-hollow"
-                initial={reduceMotion ? false : { x: 120, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.72, delay: reduceMotion ? 0 : 0.24, ease: entranceEase }}
+                initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: reduceMotion ? 0.22 : 0.88,
+                  delay: reduceMotion ? 0 : 0.46,
+                  ease: entranceEase,
+                }}
               >
                 REOLI
               </m.span>
@@ -109,16 +137,20 @@ export const PortfolioHero: React.FC = () => {
 
           {/* Cargo / Role under the name */}
           <m.div
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: reduceMotion ? 0 : 0.55, ease: entranceEase }}
-            className="mt-4 flex items-center justify-center gap-2 sm:mt-6"
+            transition={{
+              duration: reduceMotion ? 0.2 : 0.72,
+              delay: reduceMotion ? 0 : 0.72,
+              ease: entranceEase,
+            }}
+            className="hero-role mt-3 flex items-center justify-center gap-3 sm:mt-5"
           >
             <span
               className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]"
               aria-hidden="true"
             />
-            <p className="editorial-label text-[11px] font-bold tracking-[0.16em] text-[#82aaff] uppercase sm:text-xs">
+            <p className="font-semibold tracking-[-0.025em] text-[#b8ccff]">
               {isEn
                 ? "Full Stack Software Engineer & Systems Architect"
                 : "Engenheiro de Software Full Stack & Arquiteto de Sistemas"}
@@ -126,19 +158,17 @@ export const PortfolioHero: React.FC = () => {
           </m.div>
         </div>
 
-        {/* Bottom Hero Statement and Action */}
+        {/* Bottom action */}
         <m.div
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: reduceMotion ? 0 : 0.75, ease: entranceEase }}
-          className="editorial-container grid grid-cols-[minmax(0,1fr)_auto] items-end gap-5 pb-7 md:pb-9"
+          transition={{
+            duration: reduceMotion ? 0.2 : 0.72,
+            delay: reduceMotion ? 0 : 0.86,
+            ease: entranceEase,
+          }}
+          className="editorial-container flex justify-end pb-7 md:pb-9"
         >
-          <p className="hero-statement max-w-md font-medium leading-[1.15] tracking-[-0.03em] text-white/90">
-            {isEn
-              ? "I turn complex systems into digital products that feel clear, fast and human."
-              : "Sistemas complexos. Experiências digitais claras, rápidas e humanas."}
-          </p>
-
           <a
             href="#projetos-selecionados"
             className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/25 px-5 text-[9px] font-semibold uppercase tracking-[0.13em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#111010] sm:h-14 sm:px-7 sm:text-[10px]"

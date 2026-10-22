@@ -27,7 +27,11 @@ export const SiteFooter: React.FC = () => {
           </div>
         </Reveal>
 
-        <Reveal className="footer-cta-stage flex min-h-0 flex-col justify-center" distance={48}>
+        <Reveal
+          className="footer-cta-stage flex min-h-0 flex-col justify-center"
+          distance={48}
+          delay={0.08}
+        >
           <p className="editorial-label mb-4 text-[#8d8984]">
             {isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}
           </p>
@@ -45,7 +49,10 @@ export const SiteFooter: React.FC = () => {
         </Reveal>
 
         <div className="footer-bottom">
-          <Reveal className="grid grid-cols-3 gap-3 border-b border-white/15 pb-4 sm:gap-6 sm:pb-6">
+          <Reveal
+            className="grid grid-cols-3 gap-3 border-b border-white/15 pb-4 sm:gap-6 sm:pb-6"
+            delay={0.14}
+          >
             <a href={getMailtoUrl()} className="footer-link">
               <span>
                 <small>01</small>E-mail

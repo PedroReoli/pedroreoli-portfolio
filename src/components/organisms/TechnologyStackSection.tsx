@@ -111,6 +111,7 @@ export const TechnologyStackSection: React.FC = () => {
           role="list"
           ariaLabel={isEn ? "Technology stack" : "Stack de tecnologia"}
           amount={0.12}
+          delay={0.1}
         >
           {stackGroups.map((group) => (
             <article key={group.number} className="stack-lane" role="listitem">
