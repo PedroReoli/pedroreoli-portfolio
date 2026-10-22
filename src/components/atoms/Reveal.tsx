@@ -17,8 +17,8 @@ export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 28,
-  duration = 0.62,
+  distance = 38,
+  duration = 0.78,
   amount = 0.2,
   axis = "y",
   role,
@@ -28,9 +28,12 @@ export const Reveal: React.FC<RevealProps> = ({
   const hidden = reduceMotion
     ? { opacity: 0 }
     : axis === "x"
-    ? { opacity: 0, x: distance }
-    : { opacity: 0, y: distance }
-  const visible = axis === "x" ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }
+    ? { opacity: 0, x: distance, filter: "blur(7px)", clipPath: "inset(0 12% 0 0)" }
+    : { opacity: 0, y: distance, filter: "blur(7px)", clipPath: "inset(0 0 14% 0)" }
+  const visible =
+    axis === "x"
+      ? { opacity: 1, x: 0, filter: "blur(0px)", clipPath: "inset(0 0% 0 0)" }
+      : { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" }
 
   return (
     <m.div
@@ -42,7 +45,7 @@ export const Reveal: React.FC<RevealProps> = ({
       viewport={{ once: false, amount, margin: "-6% 0px -6% 0px" }}
       transition={{
         duration: reduceMotion ? 0.2 : duration,
-        delay: reduceMotion ? 0 : delay + 0.18,
+        delay: reduceMotion ? 0 : delay + 0.12,
         ease: [0.16, 1, 0.3, 1],
       }}
     >

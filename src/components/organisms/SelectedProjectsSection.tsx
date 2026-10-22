@@ -123,7 +123,7 @@ export const SelectedProjectsSection: React.FC = () => {
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
       <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
-        <SectionCurtain />
+        <SectionCurtain variant="left" duration={0.86} />
 
         {/* Background Atmospheric Glow */}
         <div
@@ -195,10 +195,18 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 0 && (
               <m.div
                 key="step-autocom"
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: reduceMotion ? 0 : 0.34, ease: [0.16, 1, 0.3, 1] }}
+                initial={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: 34, scale: 0.985, filter: "blur(8px)" }
+                }
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                exit={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: -24, scale: 0.99, filter: "blur(5px)" }
+                }
+                transition={{ duration: reduceMotion ? 0.2 : 0.58, ease: [0.16, 1, 0.3, 1] }}
                 className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
               >
                 {/* Artwork Frame */}
@@ -265,10 +273,18 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 1 && (
               <m.div
                 key="step-achilles"
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: reduceMotion ? 0 : 0.34, ease: [0.16, 1, 0.3, 1] }}
+                initial={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: 34, scale: 0.985, filter: "blur(8px)" }
+                }
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                exit={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: -24, scale: 0.99, filter: "blur(5px)" }
+                }
+                transition={{ duration: reduceMotion ? 0.2 : 0.58, ease: [0.16, 1, 0.3, 1] }}
                 className="grid h-full w-full grid-cols-1 items-center gap-3 sm:gap-6 md:grid-cols-[1.3fr_1fr] lg:grid-cols-[1.55fr_1fr] lg:gap-10"
               >
                 {/* Artwork Frame */}
@@ -333,10 +349,18 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 2 && (
               <m.div
                 key="step-more-projects"
-                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
-                transition={{ duration: reduceMotion ? 0.2 : 0.46, ease: [0.16, 1, 0.3, 1] }}
+                initial={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: 38, scale: 0.96, filter: "blur(10px)" }
+                }
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                exit={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: -24, scale: 0.98, filter: "blur(6px)" }
+                }
+                transition={{ duration: reduceMotion ? 0.2 : 0.66, ease: [0.16, 1, 0.3, 1] }}
                 className="flex h-full w-full items-center justify-center text-center"
               >
                 <Link

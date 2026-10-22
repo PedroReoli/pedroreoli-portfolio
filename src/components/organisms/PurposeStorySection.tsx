@@ -14,7 +14,7 @@ export const PurposeStorySection: React.FC = () => {
       id="proposito"
       className="viewport-stage technology-story relative bg-[#111010] text-white"
     >
-      <SectionCurtain />
+      <SectionCurtain variant="right" duration={0.94} />
       <ResponsiveImage
         pictureClassName="absolute inset-0 block h-full w-full"
         sources={[

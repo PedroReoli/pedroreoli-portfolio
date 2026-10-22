@@ -18,7 +18,7 @@ export const ExperienceSection: React.FC = () => {
       id="experiencia"
       className="viewport-stage trajectory-stage bg-[#111010] text-[#edeae4]"
     >
-      <SectionCurtain />
+      <SectionCurtain variant="left" duration={0.9} />
       <div className="editorial-container experience-stage-layout">
         <Reveal className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4">
           <div>
@@ -37,20 +37,22 @@ export const ExperienceSection: React.FC = () => {
         </Reveal>
 
         <div className="experience-stage-content min-h-0">
-          <Reveal
+          <div
             className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
-            amount={0.12}
-            delay={0.08}
+            role="list"
           >
-            <div className="grid h-full grid-rows-5" role="list">
+            <div className="grid h-full grid-rows-5">
               {experienceItems.map((item, index) => {
                 const isActive = activeExperience === index
 
                 return (
-                  <div
+                  <Reveal
                     key={`${item.company}-${item.period.pt}`}
                     role="listitem"
                     className="min-h-0"
+                    delay={0.07 + index * 0.055}
+                    distance={22}
+                    amount={0.04}
                   >
                     <button
                       type="button"
@@ -82,11 +84,11 @@ export const ExperienceSection: React.FC = () => {
                         {isEn ? item.period.en : item.period.pt}
                       </span>
                     </button>
-                  </div>
+                  </Reveal>
                 )
               })}
             </div>
-          </Reveal>
+          </div>
 
           <Reveal
             className="experience-detail-shell min-h-0"

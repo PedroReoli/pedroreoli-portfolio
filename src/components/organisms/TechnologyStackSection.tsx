@@ -82,7 +82,7 @@ export const TechnologyStackSection: React.FC = () => {
 
   return (
     <section id="stack" className="viewport-stage stack-stage bg-[#edeae4] text-[#111010]">
-      <SectionCurtain background="#edeae4" accent="#111010" />
+      <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.82} />
       <div className="editorial-container stack-stage-layout">
         <Reveal className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6">
           <div>
@@ -108,34 +108,41 @@ export const TechnologyStackSection: React.FC = () => {
           </p>
         </Reveal>
 
-        <Reveal
+        <div
           className="stack-lanes min-h-0"
           role="list"
-          ariaLabel={isEn ? "Technology stack" : "Stack de tecnologia"}
-          amount={0.12}
-          delay={0.1}
+          aria-label={isEn ? "Technology stack" : "Stack de tecnologia"}
         >
-          {stackGroups.map((group) => (
-            <article key={group.number} className="stack-lane" role="listitem">
-              <div className="stack-lane-heading">
-                <span className="editorial-label text-[#5f5b56]">{group.number}</span>
-                <h3 className="stack-lane-title font-bold tracking-[-0.05em]">
-                  {isEn ? group.title.en : group.title.pt}
-                </h3>
-              </div>
-              <div className="stack-lane-tools">
-                {group.tools.map((tool) => (
-                  <div key={tool.name} className="stack-tool">
-                    <span className={`stack-brand-icon ${tool.color}`} aria-hidden="true">
-                      {tool.icon}
-                    </span>
-                    <strong>{tool.name}</strong>
-                  </div>
-                ))}
-              </div>
-            </article>
+          {stackGroups.map((group, index) => (
+            <Reveal
+              key={group.number}
+              className="min-h-0"
+              role="listitem"
+              amount={0.05}
+              delay={0.08 + index * 0.07}
+              distance={26}
+            >
+              <article className="stack-lane h-full">
+                <div className="stack-lane-heading">
+                  <span className="editorial-label text-[#5f5b56]">{group.number}</span>
+                  <h3 className="stack-lane-title font-bold tracking-[-0.05em]">
+                    {isEn ? group.title.en : group.title.pt}
+                  </h3>
+                </div>
+                <div className="stack-lane-tools">
+                  {group.tools.map((tool) => (
+                    <div key={tool.name} className="stack-tool">
+                      <span className={`stack-brand-icon ${tool.color}`} aria-hidden="true">
+                        {tool.icon}
+                      </span>
+                      <strong>{tool.name}</strong>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   )
