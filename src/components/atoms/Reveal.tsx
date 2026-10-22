@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { m, useReducedMotion } from "framer-motion"
+import { SlideEntranceContext } from "./slideEntranceContext"
 
 interface RevealProps {
   children: React.ReactNode
@@ -18,37 +19,41 @@ export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 38,
-  duration = 0.78,
+  distance = 64,
+  duration = 0.9,
   amount = 0.2,
   axis = "y",
-  once = false,
+  once = true,
   role,
   ariaLabel,
 }) => {
   const reduceMotion = useReducedMotion()
-  const hidden = reduceMotion
-    ? { opacity: 0 }
-    : axis === "x"
-    ? { opacity: 0, x: distance, filter: "blur(7px)", clipPath: "inset(0 12% 0 0)" }
-    : { opacity: 0, y: distance, filter: "blur(7px)", clipPath: "inset(0 0 14% 0)" }
-  const visible =
-    axis === "x"
-      ? { opacity: 1, x: 0, filter: "blur(0px)", clipPath: "inset(0 0% 0 0)" }
-      : { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" }
+  const sectionVisible = useContext(SlideEntranceContext)
+  const [hasFocus, setHasFocus] = useState(false)
+  const hidden = { opacity: 0, x: axis === "x" ? distance : 0, y: axis === "y" ? distance : 0 }
+  const visible = { opacity: 1, x: 0, y: 0 }
+  const showImmediately = Boolean(reduceMotion || hasFocus)
 
   return (
     <m.div
       className={className}
       role={role}
       aria-label={ariaLabel}
-      initial={hidden}
-      whileInView={visible}
-      viewport={{ once, amount, margin: "-6% 0px -6% 0px" }}
+      initial={reduceMotion ? false : hidden}
+      animate={
+        showImmediately || sectionVisible === true
+          ? visible
+          : sectionVisible === false
+          ? hidden
+          : undefined
+      }
+      whileInView={sectionVisible === null && !showImmediately ? visible : undefined}
+      viewport={{ once, amount }}
+      onFocusCapture={() => setHasFocus(true)}
       transition={{
-        duration: reduceMotion ? 0.2 : duration,
-        delay: reduceMotion ? 0 : delay + 0.12,
-        ease: [0.16, 1, 0.3, 1],
+        duration: showImmediately ? 0 : duration,
+        delay: showImmediately ? 0 : delay,
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

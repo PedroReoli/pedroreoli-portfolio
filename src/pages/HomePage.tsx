@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react"
 import SEOHead from "../components/atoms/SEOHead"
-import PortfolioHero from "../components/organisms/PortfolioHero"
+import HomeIntro from "../components/organisms/HomeIntro"
 import SiteFooter from "../components/organisms/SiteFooter"
 import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
@@ -30,7 +30,7 @@ export const HomePage: React.FC = () => {
       />
 
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
-        <PortfolioHero />
+        <HomeIntro />
         <Suspense
           fallback={
             <section

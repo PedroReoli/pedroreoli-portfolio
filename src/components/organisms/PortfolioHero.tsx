@@ -2,7 +2,6 @@ import React, { useRef } from "react"
 import { m, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
-import SectionCurtain from "../atoms/SectionCurtain"
 
 const entranceEase = [0.16, 1, 0.3, 1] as const
 
@@ -15,28 +14,30 @@ export const PortfolioHero: React.FC = () => {
     target: heroRef,
     offset: ["start start", "end start"],
   })
-  const exitOpacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 1, 0])
+  const exitOpacity = useTransform(scrollYProgress, [0, 0.12, 0.55], [1, 1, 0])
   const exitY = useTransform(scrollYProgress, [0, 1], [0, -28])
+  const atmosphereOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   return (
     <section
       id="hero"
       ref={heroRef}
-      className="viewport-stage hero-shell relative min-h-screen bg-[#111010] pt-14 md:pt-0"
+      className="viewport-stage hero-shell relative min-h-screen pt-14 md:pt-0"
     >
-      <SectionCurtain duration={1.18} once />
-
       {/* Atmospheric Background Layers (Deep, rich aesthetic) */}
-      <div
+      <m.div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_65%_at_50%_45%,rgba(130,170,255,0.08)_0%,transparent_70%)]"
+        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
-      <div
+      <m.div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"
+        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
-      <div
+      <m.div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.03)_0%,transparent_50%)]"
+        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
 
@@ -46,11 +47,11 @@ export const PortfolioHero: React.FC = () => {
       >
         {/* Top Info Metadata */}
         <m.div
-          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
+          initial={reduceMotion ? false : { opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.7,
-            delay: reduceMotion ? 0 : 0.52,
+            delay: reduceMotion ? 0 : 1.6,
             ease: entranceEase,
           }}
           className="editorial-container flex items-start justify-between pt-5 md:pt-24"
@@ -77,11 +78,11 @@ export const PortfolioHero: React.FC = () => {
             >
               <m.span
                 className="hero-mega-text"
-                initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
+                initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0.22 : 1.02,
-                  delay: reduceMotion ? 0 : 0.48,
+                  duration: reduceMotion ? 0 : 1.1,
+                  delay: reduceMotion ? 0 : 0.15,
                   ease: entranceEase,
                 }}
               >
@@ -95,11 +96,11 @@ export const PortfolioHero: React.FC = () => {
             >
               <m.span
                 className="hero-mega-text hero-text-hollow"
-                initial={reduceMotion ? { opacity: 0 } : { y: "108%", opacity: 0 }}
+                initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0.22 : 1.02,
-                  delay: reduceMotion ? 0 : 0.62,
+                  duration: reduceMotion ? 0 : 1.1,
+                  delay: reduceMotion ? 0 : 0.65,
                   ease: entranceEase,
                 }}
               >
@@ -110,11 +111,11 @@ export const PortfolioHero: React.FC = () => {
 
           {/* Cargo / Role under the name */}
           <m.div
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: reduceMotion ? 0.2 : 0.72,
-              delay: reduceMotion ? 0 : 0.94,
+              duration: reduceMotion ? 0 : 0.9,
+              delay: reduceMotion ? 0 : 1.2,
               ease: entranceEase,
             }}
             className="hero-role mt-3 flex items-center justify-center gap-3 sm:mt-5"
@@ -133,11 +134,11 @@ export const PortfolioHero: React.FC = () => {
 
         {/* Bottom action */}
         <m.div
-          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: reduceMotion ? 0.2 : 0.72,
-            delay: reduceMotion ? 0 : 1.08,
+            delay: reduceMotion ? 0 : 1.75,
             ease: entranceEase,
           }}
           className="editorial-container flex justify-end pb-7 md:pb-9"

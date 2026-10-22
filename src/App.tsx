@@ -30,7 +30,7 @@ const RoutedApp: React.FC = () => {
   return (
     <>
       <ScrollToTop />
-      <TransitionEffect key={location.pathname} />
+      {location.pathname !== "/" && <TransitionEffect key={location.pathname} />}
       <LanguageTransitionOverlay />
       <SiteHeader />
       <Suspense fallback={<PageFallback />}>

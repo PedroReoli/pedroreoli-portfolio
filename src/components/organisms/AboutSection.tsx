@@ -2,7 +2,7 @@ import React from "react"
 import { ArrowDownRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
-import SectionCurtain from "../atoms/SectionCurtain"
+import SlideSection from "../atoms/SlideSection"
 
 const aboutStats = [
   { value: "04", pt: "anos de experiência", en: "years of experience" },
@@ -11,17 +11,18 @@ const aboutStats = [
   { value: "500+", pt: "componentes de Design System", en: "Design System components" },
 ]
 
-export const AboutSection: React.FC = () => {
+export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
+  blendBackground = false,
+}) => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
   return (
-    <section
+    <SlideSection
       id="sobre"
       className="viewport-stage about-stage min-h-screen bg-[#edeae4] text-[#111010]"
+      style={blendBackground ? { backgroundColor: "transparent" } : undefined}
     >
-      <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.88} once />
-
       <div className="editorial-container about-stage-layout">
         <Reveal
           once
@@ -38,7 +39,8 @@ export const AboutSection: React.FC = () => {
             once
             className="about-portrait-shell min-h-0"
             axis="x"
-            distance={-32}
+            distance={-64}
+            delay={0.18}
             amount={0.08}
           >
             <figure className="about-portrait-frame relative h-full overflow-hidden">
@@ -63,7 +65,7 @@ export const AboutSection: React.FC = () => {
           </Reveal>
 
           <div className="about-copy min-h-0">
-            <Reveal once distance={24} delay={0.08} amount={0.08}>
+            <Reveal once distance={56} delay={0.32} amount={0.08}>
               <p className="editorial-label mb-2 text-[#5f5b56]">
                 {isEn ? "Full Stack / Architecture / AI" : "Full Stack / Arquitetura / IA"}
               </p>
@@ -72,7 +74,7 @@ export const AboutSection: React.FC = () => {
               </h2>
             </Reveal>
 
-            <Reveal once delay={0.14} distance={20} amount={0.08}>
+            <Reveal once delay={0.46} distance={40} amount={0.08}>
               <p className="about-summary">
                 {isEn
                   ? "I work on SaaS, ERP and corporate platforms with TypeScript, React, Node.js, PostgreSQL and AWS. From visual architecture to APIs, data and deployment."
@@ -90,8 +92,8 @@ export const AboutSection: React.FC = () => {
                   key={stat.value}
                   className="about-stat"
                   role="listitem"
-                  delay={0.18 + index * 0.045}
-                  distance={16}
+                  delay={0.58 + index * 0.09}
+                  distance={40}
                   amount={0.04}
                   once
                 >
@@ -101,7 +103,7 @@ export const AboutSection: React.FC = () => {
               ))}
             </div>
 
-            <Reveal once className="about-direction" delay={0.26} distance={14} amount={0.04}>
+            <Reveal once className="about-direction" delay={0.9} distance={32} amount={0.04}>
               <ArrowDownRight aria-hidden="true" />
               <span>
                 {isEn
@@ -112,7 +114,7 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </SlideSection>
   )
 }
 

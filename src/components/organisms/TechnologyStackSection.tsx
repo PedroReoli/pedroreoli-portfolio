@@ -26,7 +26,7 @@ import {
 } from "react-icons/si"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
-import SectionCurtain from "../atoms/SectionCurtain"
+import SlideSection from "../atoms/SlideSection"
 
 interface StackTool {
   name: string
@@ -95,11 +95,10 @@ export const TechnologyStackSection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section
+    <SlideSection
       id="stack"
       className="viewport-stage stack-stage min-h-screen bg-[#edeae4] text-[#111010]"
     >
-      <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.82} />
       <div className="editorial-container stack-stage-layout">
         <Reveal className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6">
           <div>
@@ -136,8 +135,8 @@ export const TechnologyStackSection: React.FC = () => {
               className="min-h-0"
               role="listitem"
               amount={0.05}
-              delay={0.08 + index * 0.07}
-              distance={26}
+              delay={0.2 + index * 0.14}
+              distance={64}
             >
               <article className="stack-lane h-full">
                 <div className="stack-lane-heading">
@@ -161,7 +160,7 @@ export const TechnologyStackSection: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
+    </SlideSection>
   )
 }
 

@@ -5,7 +5,7 @@ import { SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si"
 import { getMailtoUrl, siteConfig } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
-import SectionCurtain from "../atoms/SectionCurtain"
+import SlideSection from "../atoms/SlideSection"
 
 export const SiteFooter: React.FC = () => {
   const { language } = useLanguage()
@@ -47,11 +47,11 @@ export const SiteFooter: React.FC = () => {
   ]
 
   return (
-    <footer
+    <SlideSection
+      as="footer"
       id="contato"
       className="viewport-stage footer-stage min-h-screen border-t border-white/10 bg-[#111010] text-[#edeae4]"
     >
-      <SectionCurtain variant="split" duration={0.9} />
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal className="border-b border-white/15 pb-4 sm:pb-5">
           <div>
@@ -67,7 +67,7 @@ export const SiteFooter: React.FC = () => {
         <Reveal
           className="footer-cta-stage flex min-h-0 flex-col justify-center"
           distance={48}
-          delay={0.08}
+          delay={0.22}
         >
           <p className="editorial-label mb-4 text-[#8d8984]">
             {isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}
@@ -83,7 +83,7 @@ export const SiteFooter: React.FC = () => {
         </Reveal>
 
         <div className="footer-bottom">
-          <Reveal className="border-b border-white/15 pb-4 sm:pb-6" delay={0.14}>
+          <Reveal className="border-b border-white/15 pb-4 sm:pb-6" delay={0.46}>
             <nav
               className="footer-links"
               aria-label={isEn ? "Contact and social profiles" : "Contato e redes sociais"}
@@ -129,7 +129,7 @@ export const SiteFooter: React.FC = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </SlideSection>
   )
 }
 

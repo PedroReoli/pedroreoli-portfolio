@@ -4,7 +4,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
-import SectionCurtain from "../atoms/SectionCurtain"
+import SlideSection from "../atoms/SlideSection"
 
 const getExperienceProgress = (index: number) =>
   experienceItems.length <= 1 ? 0 : index / (experienceItems.length - 1)
@@ -49,9 +49,7 @@ export const ExperienceSection: React.FC = () => {
       className="experience-scroll-stage relative min-h-screen bg-[#111010] text-[#edeae4]"
       style={{ "--experience-steps": experienceItems.length } as React.CSSProperties}
     >
-      <div className="viewport-stage trajectory-stage sticky top-0 min-h-screen">
-        <SectionCurtain variant="left" duration={0.9} />
-
+      <SlideSection as="div" className="viewport-stage trajectory-stage sticky top-0 min-h-screen">
         <div className="editorial-container experience-stage-layout">
           <Reveal className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4">
             <div>
@@ -69,10 +67,11 @@ export const ExperienceSection: React.FC = () => {
           </Reveal>
 
           <div className="experience-stage-content min-h-0">
-            <div
+            <Reveal
               className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
+              delay={0.18}
               role="list"
-              aria-label={isEn ? "Career chapters" : "Capítulos da trajetória"}
+              ariaLabel={isEn ? "Career chapters" : "Capítulos da trajetória"}
             >
               <div className="grid h-full grid-rows-5">
                 {experienceItems.map((item, index) => {
@@ -112,25 +111,23 @@ export const ExperienceSection: React.FC = () => {
                   )
                 })}
               </div>
-            </div>
+            </Reveal>
 
             <Reveal
               className="experience-detail-shell min-h-0"
               axis="x"
-              distance={22}
+              distance={64}
               amount={0.12}
-              delay={0.12}
+              delay={0.36}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <m.article
                   id="experience-detail"
                   key={`${activeItem.company}-${language}`}
-                  initial={
-                    reduceMotion ? { opacity: 0 } : { opacity: 0, x: 22, filter: "blur(6px)" }
-                  }
-                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                  exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -18, filter: "blur(4px)" }}
-                  transition={{ duration: reduceMotion ? 0.15 : 0.42, ease: [0.16, 1, 0.3, 1] }}
+                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 64 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: -48 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full min-h-0 flex-col justify-center"
                   aria-live="polite"
                 >
@@ -187,7 +184,7 @@ export const ExperienceSection: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </SlideSection>
     </section>
   )
 }

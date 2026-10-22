@@ -3,19 +3,17 @@ import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 import ResponsiveImage from "../atoms/ResponsiveImage"
 import Reveal from "../atoms/Reveal"
-import SectionCurtain from "../atoms/SectionCurtain"
+import SlideSection from "../atoms/SlideSection"
 
 export const PurposeStorySection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
   return (
-    <section
+    <SlideSection
       id="proposito"
       className="viewport-stage purpose-stage min-h-screen bg-[#111010] text-[#edeae4]"
     >
-      <SectionCurtain variant="right" duration={0.9} />
-
       <div className="editorial-container purpose-stage-layout">
         <Reveal className="purpose-stage-heading flex items-center justify-between border-b border-white/15 pb-3">
           <p className="editorial-label text-[#82aaff]">
@@ -27,8 +25,8 @@ export const PurposeStorySection: React.FC = () => {
         <Reveal
           className="purpose-media-shell min-h-0"
           axis="x"
-          distance={28}
-          delay={0.06}
+          distance={64}
+          delay={0.18}
           amount={0.08}
         >
           <figure className="purpose-media-frame relative h-full overflow-hidden">
@@ -62,7 +60,7 @@ export const PurposeStorySection: React.FC = () => {
         </Reveal>
 
         <div className="purpose-statement">
-          <Reveal distance={24} amount={0.08}>
+          <Reveal distance={56} delay={0.32} amount={0.08}>
             <h2 className="purpose-title font-black uppercase">
               {isEn ? "Technology" : "Tecnologia"}
               <span>{isEn ? "is access." : "é acesso."}</span>
@@ -70,7 +68,7 @@ export const PurposeStorySection: React.FC = () => {
           </Reveal>
 
           <div className="purpose-statement-copy">
-            <Reveal delay={0.1} distance={16} amount={0.06}>
+            <Reveal delay={0.46} distance={40} amount={0.06}>
               <p className="purpose-summary">
                 {isEn
                   ? "FalaAtípica brings families, children and speech professionals closer through clearer communication."
@@ -78,7 +76,7 @@ export const PurposeStorySection: React.FC = () => {
               </p>
             </Reveal>
 
-            <Reveal delay={0.16} distance={12} amount={0.04}>
+            <Reveal delay={0.6} distance={32} amount={0.04}>
               <a
                 href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
                 target="_blank"
@@ -92,7 +90,7 @@ export const PurposeStorySection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </SlideSection>
   )
 }
 
