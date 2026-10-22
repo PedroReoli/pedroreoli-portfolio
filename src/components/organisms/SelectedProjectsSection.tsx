@@ -85,10 +85,12 @@ export const SelectedProjectsSection: React.FC = () => {
   })
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.5) {
+    if (latest < 0.34) {
       setActiveStep(0)
-    } else {
+    } else if (latest < 0.67) {
       setActiveStep(1)
+    } else {
+      setActiveStep(2)
     }
   })
 
@@ -98,7 +100,7 @@ export const SelectedProjectsSection: React.FC = () => {
     const rect = container.getBoundingClientRect()
     const scrollTop = window.scrollY + rect.top
     const totalScroll = container.scrollHeight - window.innerHeight
-    const targetScroll = scrollTop + stepIndex * totalScroll
+    const targetScroll = scrollTop + (stepIndex / 2) * totalScroll
     window.scrollTo({ top: targetScroll, behavior: reduceMotion ? "auto" : "smooth" })
   }
 
@@ -109,13 +111,14 @@ export const SelectedProjectsSection: React.FC = () => {
   const stepsMeta = [
     { number: "01", label: "AUTOCOM3" },
     { number: "02", label: "ACHILLES" },
+    { number: "03", label: isEn ? "MORE PROJECTS" : "MAIS PROJETOS" },
   ]
 
   return (
     <section
       id="projetos-selecionados"
       ref={containerRef}
-      className="relative h-[200vh] w-full bg-[#111010]"
+      className="relative h-[300vh] w-full bg-[#111010]"
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
       <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
@@ -178,16 +181,6 @@ export const SelectedProjectsSection: React.FC = () => {
               </button>
             ))}
           </nav>
-
-          {/* Direct Link to Archive */}
-          <Link
-            to="/projetos"
-            aria-label={isEn ? "View all projects" : "Ver todos os projetos"}
-            className="group inline-flex items-center gap-1.5 border-b border-white/20 pb-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#edeae4] transition-colors hover:border-white"
-          >
-            <span className="hidden lg:inline">{isEn ? "View all" : "Ver todos"}</span>
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </Link>
         </Reveal>
 
         {/* Middle Stage: Pinned Content Slides */}
@@ -333,6 +326,30 @@ export const SelectedProjectsSection: React.FC = () => {
                 </div>
               </m.div>
             )}
+
+            {activeStep === 2 && (
+              <m.div
+                key="step-more-projects"
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
+                transition={{ duration: reduceMotion ? 0.2 : 0.46, ease: [0.16, 1, 0.3, 1] }}
+                className="flex h-full w-full items-center justify-center text-center"
+              >
+                <Link
+                  to="/projetos"
+                  className="group max-w-[12ch] font-black uppercase leading-[0.86] tracking-[-0.065em] text-[#edeae4] transition-colors duration-300 hover:text-[#82aaff] focus-visible:text-[#82aaff] focus-visible:outline-none text-[clamp(2.8rem,min(10vw,14vh),9rem)]"
+                >
+                  {isEn ? "See more projects" : "Ver mais projetos"}
+                  <span
+                    className="ml-[0.12em] inline-block text-[#82aaff] transition-transform duration-300 group-hover:-translate-y-[0.08em] group-hover:translate-x-[0.08em]"
+                    aria-hidden="true"
+                  >
+                    ↗
+                  </span>
+                </Link>
+              </m.div>
+            )}
           </AnimatePresence>
         </div>
 
@@ -347,12 +364,20 @@ export const SelectedProjectsSection: React.FC = () => {
             </span>
             <span className="text-[10px] text-white/30">/</span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
-              02 — {stepsMeta[activeStep].label}
+              03 — {stepsMeta[activeStep].label}
             </span>
           </div>
 
           <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.12em] text-white/40">
-            <span>{isEn ? "Scroll to navigate" : "Role para navegar"}</span>
+            <span>
+              {activeStep === 2
+                ? isEn
+                  ? "Scroll for next section"
+                  : "Role para a próxima seção"
+                : isEn
+                ? "Scroll to navigate"
+                : "Role para navegar"}
+            </span>
             <ChevronDown className="h-3.5 w-3.5 animate-bounce text-[#82aaff]" />
           </div>
         </Reveal>
