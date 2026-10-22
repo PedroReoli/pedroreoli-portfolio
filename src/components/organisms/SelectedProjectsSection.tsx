@@ -138,7 +138,7 @@ export const SelectedProjectsSection: React.FC = () => {
         >
           <div>
             <p className="editorial-label text-[10px] text-[#82aaff] sm:text-xs">
-              02 / {isEn ? "Selected work" : "Trabalhos selecionados"}
+              03 / {isEn ? "Selected work" : "Trabalhos selecionados"}
             </p>
             <h2 className="text-xl font-black uppercase tracking-tight text-[#edeae4] sm:text-3xl md:text-4xl">
               {isEn ? "Projects" : "Projetos"}

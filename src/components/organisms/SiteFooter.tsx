@@ -20,7 +20,7 @@ export const SiteFooter: React.FC = () => {
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal className="border-b border-white/15 pb-4 sm:pb-5">
           <div>
-            <p className="editorial-label text-[#82aaff]">06 / {isEn ? "Contact" : "Contato"}</p>
+            <p className="editorial-label text-[#82aaff]">07 / {isEn ? "Contact" : "Contato"}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-[#8f8a84] sm:mt-3 sm:text-base">
               {isEn
                 ? "Available for ambitious, useful work."

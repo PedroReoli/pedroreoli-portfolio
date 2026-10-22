@@ -5,7 +5,6 @@ import { useLanguage } from "../../i18n/useLanguage"
 import SectionCurtain from "../atoms/SectionCurtain"
 
 const entranceEase = [0.16, 1, 0.3, 1] as const
-const heroVideoEnabled = import.meta.env.VITE_HERO_VIDEO_ENABLED === "true"
 
 export const PortfolioHero: React.FC = () => {
   const { language } = useLanguage()
@@ -26,25 +25,6 @@ export const PortfolioHero: React.FC = () => {
       className="viewport-stage hero-shell relative bg-[#111010] pt-14 md:pt-0"
     >
       <SectionCurtain duration={1.18} once />
-
-      {/* Background Video (if enabled) */}
-      {heroVideoEnabled && (
-        <m.video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay={!reduceMotion}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          initial={reduceMotion ? false : { opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, delay: reduceMotion ? 0 : 0.3, ease: entranceEase }}
-        >
-          <source src="/videos/hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
-          <source src="/videos/hero-desktop.mp4" type="video/mp4" />
-        </m.video>
-      )}
 
       {/* Atmospheric Background Layers (Deep, rich aesthetic) */}
       <div
@@ -73,7 +53,7 @@ export const PortfolioHero: React.FC = () => {
             delay: reduceMotion ? 0 : 0.52,
             ease: entranceEase,
           }}
-          className="editorial-container flex items-start justify-between pt-5 md:pt-7"
+          className="editorial-container flex items-start justify-between pt-5 md:pt-24"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
             {isEn ? "Portfolio" : "Portfólio"} / ©2026

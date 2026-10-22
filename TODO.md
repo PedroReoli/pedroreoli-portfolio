@@ -22,11 +22,8 @@ Estado reconciliado com o código em 20/10/2026.
 - [x] Lint de acessibilidade JSX aplicado às imagens, links e controles.
 - [x] Vite 8, TypeScript 5.9 e TypeScript ESLint 8 validados no build.
 
-## Pendente de material
+## Pendente de conteúdo
 
-- [ ] Adicionar `public/videos/hero-desktop.mp4` em H.264, 1920 × 1080.
-- [ ] Adicionar `public/videos/hero-mobile.mp4` em H.264, 1080 × 1920.
-- [ ] Ativar `VITE_HERO_VIDEO_ENABLED=true` somente depois que os dois arquivos existirem.
 - [ ] Substituir links gerais por artigos reais quando os textos forem publicados.
 
 ## Pendente de validação visual

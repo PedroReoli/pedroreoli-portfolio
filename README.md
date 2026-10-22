@@ -38,18 +38,6 @@ npm run build
 npm run check
 ```
 
-## Vídeos da hero
-
-A hero já aponta para versões independentes de desktop e mobile, mas mantém o vídeo desativado até os arquivos finais existirem. Dimensões, formatos, limites e caminhos estão documentados em [`public/videos/README.md`](public/videos/README.md).
-
-Depois de adicionar os dois vídeos, copie `.env.example` para `.env.local` e altere:
-
-```env
-VITE_HERO_VIDEO_ENABLED=true
-```
-
-Sem os vídeos, a hero usa o fundo preto editorial; não há fotografia de fallback.
-
 ## Contato
 
 - [LinkedIn](https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/)

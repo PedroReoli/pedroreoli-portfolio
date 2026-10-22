@@ -80,9 +80,6 @@ export const SiteHeader: React.FC = () => {
     },
   ]
 
-  // Brand logo is visible always on subpages, or when scrolled past hero on homepage
-  const showBrandLogo = !isHomePage || scrolledPastHero
-
   return (
     <>
       {/* Acessibilidade: Skip link */}
@@ -90,133 +87,77 @@ export const SiteHeader: React.FC = () => {
         {isEn ? "Skip to content" : "Pular para o conteúdo"}
       </a>
 
-      {/* ========================================================
-          DESKTOP: Floating Brand Link (Top Left)
-          Smoothly appears on scroll on Home, or always on subpages
-          ======================================================== */}
-      <AnimatePresence>
-        {showBrandLogo && navigationVisible && (
-          <m.div
-            initial={reduceMotion ? false : { opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden md:block fixed top-6 left-6 md:left-8 z-50"
-          >
-            <Link
-              to="/"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#161514]/80 px-4 py-2 text-xs font-bold tracking-tight text-[#edeae4] backdrop-blur-xl transition-all duration-300 hover:border-white/30 hover:bg-[#1f1e1c]/95 hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
-              aria-label={isEn ? "Go to home" : "Ir para o início"}
-            >
-              <span className="font-extrabold tracking-[-0.03em]">Pedro</span>
-              <span
-                className="text-[0.5rem] text-[#82aaff] transition-transform duration-300 group-hover:scale-125"
-                aria-hidden="true"
-              >
-                ■
-              </span>
-              <span className="font-extrabold tracking-[-0.03em]">Reoli</span>
-            </Link>
-          </m.div>
-        )}
-      </AnimatePresence>
-
-      {/* ========================================================
-          DESKTOP: Floating Menu Fixed to the Right
-          ======================================================== */}
-      <m.aside
-        initial={reduceMotion ? false : { opacity: 0, x: 24 }}
-        animate={{ opacity: navigationVisible ? 1 : 0, x: navigationVisible ? 0 : 24 }}
-        transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed right-6 top-1/2 z-50 hidden w-44 -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border border-white/12 bg-[#141312]/85 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl md:flex ${
-          navigationVisible ? "pointer-events-auto" : "pointer-events-none"
+      <m.header
+        initial={false}
+        animate={{ y: navigationVisible ? 0 : "-110%" }}
+        transition={{ duration: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed inset-x-0 top-0 z-50 hidden h-16 items-center border-b transition-colors duration-300 md:flex ${
+          scrolledPastHero || !isHomePage
+            ? "border-white/10 bg-[#111010]/88 backdrop-blur-xl"
+            : "border-transparent bg-transparent"
         }`}
-        aria-label={isEn ? "Floating navigation" : "Navegação flutuante"}
       >
-        {/* Navigation Links */}
-        <nav
-          className="flex w-full flex-col gap-1"
-          aria-label={isEn ? "Site links" : "Links do site"}
-        >
-          {navLinks.map((link) => {
-            const isActive = link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
-            const Icon = link.icon
+        <div className="editorial-container grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+          <Link
+            to="/"
+            className="group inline-flex w-fit items-center gap-2 text-xs font-extrabold uppercase tracking-[-0.03em] text-[#edeae4]"
+            aria-label={isEn ? "Go to home" : "Ir para o início"}
+          >
+            <span>Pedro</span>
+            <span className="text-[0.48rem] text-[#82aaff]" aria-hidden="true">
+              ■
+            </span>
+            <span>Reoli</span>
+          </Link>
 
-            return (
-              <Link
-                key={link.path}
-                to={link.path}
-                aria-current={isActive ? "page" : undefined}
-                className={`group flex h-10 w-full items-center justify-between rounded-xl px-3 text-[11px] font-mono uppercase tracking-[0.14em] transition-all duration-200 ${
-                  isActive
-                    ? "border border-white/15 bg-white/12 font-bold text-white shadow-sm"
-                    : "border border-transparent text-white/60 hover:bg-white/5 hover:text-white"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Icon
-                    className={`h-4 w-4 shrink-0 transition-colors ${
-                      isActive ? "text-[#82aaff]" : "opacity-60 group-hover:opacity-100"
-                    }`}
-                  />
-                  <span className="whitespace-nowrap">{link.label}</span>
-                </div>
-                <span
-                  className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "scale-125 bg-[#82aaff] shadow-[0_0_8px_#82aaff]"
-                      : "bg-white/20 group-hover:bg-white/40"
+          <nav
+            className="flex items-center gap-7"
+            aria-label={isEn ? "Site links" : "Links do site"}
+          >
+            {navLinks.map((link) => {
+              const isActive = link.path === "/" ? pathname === "/" : pathname.startsWith(link.path)
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    isActive ? "text-white" : "text-white/50 hover:text-white"
                   }`}
-                  aria-hidden="true"
-                />
-              </Link>
-            )
-          })}
-        </nav>
+                >
+                  {link.label}
+                  <span
+                    className={`absolute inset-x-0 bottom-0 h-px origin-left bg-[#82aaff] transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </Link>
+              )
+            })}
+          </nav>
 
-        {/* Subtle Divider */}
-        <div className="h-[1px] w-full bg-white/10" aria-hidden="true" />
-
-        {/* Language Switcher (Segmented Control with Vector Flags) */}
-        <div className="flex w-full items-center rounded-xl border border-white/10 bg-white/5 p-1">
-          <button
-            type="button"
-            onClick={() => language !== "pt" && toggleLanguage()}
-            className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-1.5 text-center font-mono text-[10px] font-bold tracking-wider transition-all duration-200 ${
-              language === "pt"
-                ? "bg-white text-[#111010] shadow-sm"
-                : "text-white/50 hover:text-white"
-            }`}
-            aria-label="Mudar para Português"
-          >
-            <FlagIcon country="br" className="h-2.5 w-3.5 rounded-[2px]" />
-            <span>PT</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => language !== "en" && toggleLanguage()}
-            className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-1.5 text-center font-mono text-[10px] font-bold tracking-wider transition-all duration-200 ${
-              language === "en"
-                ? "bg-white text-[#111010] shadow-sm"
-                : "text-white/50 hover:text-white"
-            }`}
-            aria-label="Switch to English"
-          >
-            <FlagIcon country="us" className="h-2.5 w-3.5 rounded-[2px]" />
-            <span>EN</span>
-          </button>
+          <div className="flex items-center justify-end gap-4">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-white/60 transition-colors hover:text-white"
+              aria-label={isEn ? "Switch language to Portuguese" : "Mudar idioma para inglês"}
+            >
+              <FlagIcon country={language === "pt" ? "br" : "us"} className="h-2.5 w-3.5" />
+              <span>{language === "pt" ? "PT" : "EN"}</span>
+            </button>
+            <a
+              href={getMailtoUrl()}
+              className="group inline-flex items-center gap-2 border-b border-[#82aaff] pb-1 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-white"
+            >
+              <span>{isEn ? "Let's talk" : "Vamos conversar"}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </div>
-
-        {/* Contact CTA */}
-        <a
-          href={getMailtoUrl()}
-          className="group flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-3 text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white transition-all duration-200 hover:bg-white hover:text-[#111010]"
-          title={isEn ? "Let's talk" : "Vamos conversar"}
-        >
-          <span>{isEn ? "Contact" : "Contato"}</span>
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </a>
-      </m.aside>
+      </m.header>
 
       {/* ========================================================
           MOBILE: Standard Fixed Top Navbar
