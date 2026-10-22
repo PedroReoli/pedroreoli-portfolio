@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
-import { ArrowUpRight, Menu, X, Home, Briefcase, FileText } from "lucide-react"
+import { Menu, X, Home, Briefcase, FileText } from "lucide-react"
 import { getMailtoUrl } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import FlagIcon from "../atoms/FlagIcon"
@@ -153,7 +153,6 @@ export const SiteHeader: React.FC = () => {
               className="group inline-flex items-center gap-2 border-b border-[#82aaff] pb-1 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-white"
             >
               <span>{isEn ? "Let's talk" : "Vamos conversar"}</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
@@ -266,7 +265,6 @@ export const SiteHeader: React.FC = () => {
                 className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-white p-3.5 text-xs font-mono font-bold uppercase tracking-[0.14em] text-[#111010] shadow-lg transition-transform active:scale-95"
               >
                 <span>{isEn ? "Let's talk" : "Vamos conversar"}</span>
-                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </m.nav>

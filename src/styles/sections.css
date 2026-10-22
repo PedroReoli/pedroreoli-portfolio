@@ -567,14 +567,8 @@
 
   .footer-cta-outline {
     margin-left: auto;
-    padding-right: 0.65em;
     color: transparent;
     -webkit-text-stroke: 1.5px #edeae4;
-  }
-
-  .footer-cta-arrow {
-    width: 0.55em;
-    height: 0.55em;
   }
 
   .text-outline {

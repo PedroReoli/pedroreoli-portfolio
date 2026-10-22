@@ -43,9 +43,6 @@ export const SiteFooter: React.FC = () => {
               <span className="footer-cta-word footer-cta-outline">
                 {isEn ? "TALK." : "CONVERSAR."}
               </span>
-              <span className="footer-cta-arrow absolute bottom-[0.08em] right-0 grid place-items-center rounded-full bg-[#82aaff] text-[#111010] transition-transform duration-300 group-hover:-translate-y-2 group-hover:translate-x-2">
-                <ArrowUpRight className="h-[0.38em] w-[0.38em]" />
-              </span>
             </span>
           </a>
         </Reveal>
