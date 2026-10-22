@@ -16,11 +16,17 @@ export const AboutSection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section id="sobre" className="viewport-stage about-stage bg-[#edeae4] text-[#111010]">
-      <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.88} />
+    <section
+      id="sobre"
+      className="viewport-stage about-stage min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#edeae4] text-[#111010]"
+    >
+      <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.88} once />
 
       <div className="editorial-container about-stage-layout">
-        <Reveal className="about-stage-heading flex items-center justify-between border-b border-black/20 pb-3">
+        <Reveal
+          once
+          className="about-stage-heading flex items-center justify-between border-b border-black/20 pb-3"
+        >
           <p className="editorial-label text-[#5f5b56]">02 / {isEn ? "About" : "Sobre mim"}</p>
           <p className="editorial-label text-right text-[#5f5b56]">
             {isEn ? "Volta Redonda / Brazil" : "Volta Redonda / Brasil"}
@@ -28,7 +34,13 @@ export const AboutSection: React.FC = () => {
         </Reveal>
 
         <div className="about-stage-content min-h-0">
-          <Reveal className="about-portrait-shell min-h-0" axis="x" distance={-32} amount={0.08}>
+          <Reveal
+            once
+            className="about-portrait-shell min-h-0"
+            axis="x"
+            distance={-32}
+            amount={0.08}
+          >
             <figure className="about-portrait-frame relative h-full overflow-hidden">
               <img
                 src="/eu-profissional.png"
@@ -51,7 +63,7 @@ export const AboutSection: React.FC = () => {
           </Reveal>
 
           <div className="about-copy min-h-0">
-            <Reveal distance={24} delay={0.08} amount={0.08}>
+            <Reveal once distance={24} delay={0.08} amount={0.08}>
               <p className="editorial-label mb-2 text-[#5f5b56]">
                 {isEn ? "Full Stack / Architecture / AI" : "Full Stack / Arquitetura / IA"}
               </p>
@@ -63,7 +75,7 @@ export const AboutSection: React.FC = () => {
               </h2>
             </Reveal>
 
-            <Reveal delay={0.14} distance={20} amount={0.08}>
+            <Reveal once delay={0.14} distance={20} amount={0.08}>
               <p className="about-summary">
                 {isEn
                   ? "I work on SaaS, ERP and corporate platforms with TypeScript, React, Node.js, PostgreSQL and AWS. From visual architecture to APIs, data and deployment."
@@ -84,6 +96,7 @@ export const AboutSection: React.FC = () => {
                   delay={0.18 + index * 0.045}
                   distance={16}
                   amount={0.04}
+                  once
                 >
                   <strong>{stat.value}</strong>
                   <span>{isEn ? stat.en : stat.pt}</span>
@@ -91,7 +104,7 @@ export const AboutSection: React.FC = () => {
               ))}
             </div>
 
-            <Reveal className="about-direction" delay={0.26} distance={14} amount={0.04}>
+            <Reveal once className="about-direction" delay={0.26} distance={14} amount={0.04}>
               <ArrowDownRight aria-hidden="true" />
               <span>
                 {isEn

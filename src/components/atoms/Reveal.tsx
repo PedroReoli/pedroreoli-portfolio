@@ -9,6 +9,7 @@ interface RevealProps {
   duration?: number
   amount?: number
   axis?: "x" | "y"
+  once?: boolean
   role?: React.AriaRole
   ariaLabel?: string
 }
@@ -21,6 +22,7 @@ export const Reveal: React.FC<RevealProps> = ({
   duration = 0.78,
   amount = 0.2,
   axis = "y",
+  once = false,
   role,
   ariaLabel,
 }) => {
@@ -42,7 +44,7 @@ export const Reveal: React.FC<RevealProps> = ({
       aria-label={ariaLabel}
       initial={hidden}
       whileInView={visible}
-      viewport={{ once: false, amount, margin: "-6% 0px -6% 0px" }}
+      viewport={{ once, amount, margin: "-6% 0px -6% 0px" }}
       transition={{
         duration: reduceMotion ? 0.2 : duration,
         delay: reduceMotion ? 0 : delay + 0.12,

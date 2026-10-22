@@ -14,7 +14,7 @@ export const SiteFooter: React.FC = () => {
   return (
     <footer
       id="contato"
-      className="viewport-stage footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]"
+      className="viewport-stage footer-stage min-h-screen min-h-[100svh] min-h-[100dvh] border-t border-white/10 bg-[#111010] text-[#edeae4]"
     >
       <SectionCurtain variant="split" duration={0.9} />
       <div className="editorial-container footer-stage-layout h-full">

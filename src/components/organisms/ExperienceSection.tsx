@@ -46,10 +46,10 @@ export const ExperienceSection: React.FC = () => {
     <section
       id="experiencia"
       ref={containerRef}
-      className="experience-scroll-stage relative bg-[#111010] text-[#edeae4]"
+      className="experience-scroll-stage relative min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#111010] text-[#edeae4]"
       style={{ "--experience-steps": experienceItems.length } as React.CSSProperties}
     >
-      <div className="viewport-stage trajectory-stage sticky top-0">
+      <div className="viewport-stage trajectory-stage sticky top-0 min-h-screen min-h-[100svh] min-h-[100dvh]">
         <SectionCurtain variant="left" duration={0.9} />
 
         <div className="editorial-container experience-stage-layout">

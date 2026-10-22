@@ -10,7 +10,10 @@ export const PurposeStorySection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section id="proposito" className="viewport-stage purpose-stage bg-[#111010] text-[#edeae4]">
+    <section
+      id="proposito"
+      className="viewport-stage purpose-stage min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#111010] text-[#edeae4]"
+    >
       <SectionCurtain variant="right" duration={0.9} />
 
       <div className="editorial-container purpose-stage-layout">

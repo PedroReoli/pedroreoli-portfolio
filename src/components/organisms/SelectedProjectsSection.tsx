@@ -119,10 +119,10 @@ export const SelectedProjectsSection: React.FC = () => {
     <section
       id="projetos-selecionados"
       ref={containerRef}
-      className="relative h-[300vh] w-full bg-[#111010]"
+      className="relative h-[300vh] min-h-screen min-h-[100svh] min-h-[100dvh] w-full bg-[#111010]"
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
-      <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
+      <div className="sticky top-0 flex h-screen h-[100svh] h-[100dvh] min-h-screen min-h-[100svh] min-h-[100dvh] w-full flex-col justify-between overflow-hidden bg-[#111010] pb-3 pt-16 sm:py-5 md:py-8">
         <SectionCurtain variant="left" duration={0.86} />
 
         {/* Background Atmospheric Glow */}

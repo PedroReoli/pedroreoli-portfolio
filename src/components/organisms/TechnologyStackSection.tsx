@@ -95,7 +95,10 @@ export const TechnologyStackSection: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <section id="stack" className="viewport-stage stack-stage bg-[#edeae4] text-[#111010]">
+    <section
+      id="stack"
+      className="viewport-stage stack-stage min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#edeae4] text-[#111010]"
+    >
       <SectionCurtain background="#edeae4" accent="#111010" variant="split" duration={0.82} />
       <div className="editorial-container stack-stage-layout">
         <Reveal className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6">
