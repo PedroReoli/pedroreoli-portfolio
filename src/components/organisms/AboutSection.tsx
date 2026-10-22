@@ -68,10 +68,7 @@ export const AboutSection: React.FC = () => {
                 {isEn ? "Full Stack / Architecture / AI" : "Full Stack / Arquitetura / IA"}
               </p>
               <h2 className="about-title font-black uppercase">
-                {isEn ? "Frontend is my specialty." : "Frontend é meu forte."}{" "}
-                <span>
-                  {isEn ? "The whole product is my scope." : "Produto inteiro é meu campo."}
-                </span>
+                {isEn ? "Who I am" : "Quem eu sou"}
               </h2>
             </Reveal>
 

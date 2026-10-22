@@ -45,12 +45,6 @@
     letter-spacing: -0.075em;
   }
 
-  .about-title span {
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 1.5px #111010;
-  }
-
   .about-summary {
     max-width: 42rem;
     margin-top: clamp(0.75rem, 2vh, 1.5rem);
@@ -110,11 +104,5 @@
     width: 1rem;
     height: 1rem;
     color: #315da8;
-  }
-}
-
-@supports not (-webkit-text-stroke: 1px #111010) {
-  .about-title span {
-    color: #111010;
   }
 }
