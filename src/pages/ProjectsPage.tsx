@@ -49,8 +49,8 @@ export const ProjectsPage: React.FC = () => {
           title={isEn ? "WORK" : "PROJETOS"}
           description={
             isEn
-              ? "Enterprise applications and independent tools. Explore the interfaces and code."
-              : "Aplicações corporativas e ferramentas independentes. Explore as interfaces e o código."
+              ? "Explore enterprise interfaces and independent tools."
+              : "Explore interfaces corporativas e ferramentas independentes."
           }
         >
           <ProjectCategoryTabs

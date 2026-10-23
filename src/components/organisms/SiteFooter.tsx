@@ -14,7 +14,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
   const contactLinks = [
     {
       label: "E-mail",
-      detail: isEn ? "Start a conversation" : "Vamos conversar",
+      detail: isEn ? "Send an email" : "Enviar e-mail",
       href: getMailtoUrl(),
       icon: Mail,
       color: "#82aaff",
@@ -22,7 +22,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
     },
     {
       label: "WhatsApp",
-      detail: isEn ? "Send a message" : "Me mande uma mensagem",
+      detail: isEn ? "Send a message" : "Enviar mensagem",
       href: siteConfig.social.whatsapp,
       icon: SiWhatsapp,
       color: "#25d366",
@@ -30,7 +30,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
     },
     {
       label: "GitHub",
-      detail: isEn ? "Explore my code" : "Explore meu código",
+      detail: isEn ? "Code and repositories" : "Código e repositórios",
       href: siteConfig.social.github,
       icon: SiGithub,
       color: "#edeae4",
@@ -38,7 +38,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
     },
     {
       label: "LinkedIn",
-      detail: isEn ? "Connect with me" : "Vamos nos conectar",
+      detail: isEn ? "Professional experience" : "Trajetória profissional",
       href: siteConfig.social.linkedin,
       icon: SiLinkedin,
       color: "#70b5f9",
@@ -60,8 +60,8 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
             <p className="editorial-label text-[#82aaff]">07 / {isEn ? "Contact" : "Contato"}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-[#8f8a84] sm:mt-3 sm:text-base">
               {isEn
-                ? "For projects, partnerships and opportunities."
-                : "Para projetos, parcerias e oportunidades."}
+                ? "For software projects, technical collaboration and career opportunities."
+                : "Para projetos de software, colaboração técnica e oportunidades de trabalho."}
             </p>
           </div>
         </Reveal>
@@ -72,7 +72,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
           delay={0.22}
         >
           <p className="editorial-label mb-4 text-[#8d8984]">
-            {isEn ? "Have a project in mind?" : "Tem um projeto em mente?"}
+            {isEn ? "Tell me what you have in mind." : "Conte o que você tem em mente."}
           </p>
           <a href={getMailtoUrl()} className="group block border-b border-white/25 pb-5 sm:pb-7">
             <span className="footer-cta relative block font-black uppercase leading-[0.76] tracking-[-0.085em]">

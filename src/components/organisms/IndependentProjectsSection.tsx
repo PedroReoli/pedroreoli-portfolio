@@ -23,8 +23,8 @@ export const IndependentProjectsSection: React.FC<IndependentProjectsSectionProp
       </h2>
       <p className="max-w-md text-sm leading-relaxed text-[#aaa6a0] sm:text-base lg:col-span-5">
         {isEn
-          ? "Browser automation, personal knowledge and immersive experiences. Code available on GitHub."
-          : "Automação de navegadores, conhecimento pessoal e experiências imersivas. Código disponível no GitHub."}
+          ? "Open each project's repository on GitHub."
+          : "Abra o repositório de cada projeto no GitHub."}
       </p>
     </Reveal>
 

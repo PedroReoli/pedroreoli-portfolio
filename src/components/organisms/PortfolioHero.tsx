@@ -58,12 +58,12 @@ export const PortfolioHero: React.FC = () => {
           className="editorial-container flex items-start justify-between pt-5 md:pt-24"
         >
           <p className="editorial-label max-w-[11rem] text-white/70">
-            {isEn ? "Portfolio" : "Portfólio"} / ©2026
+            {isEn ? "Portfolio" : "Portfólio"}
           </p>
           <p className="editorial-label whitespace-nowrap text-right text-white/70">
             Volta Redonda, BR
             <br />
-            2026
+            {new Date().getFullYear()}
           </p>
         </m.div>
 

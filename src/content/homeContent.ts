@@ -27,7 +27,7 @@ export interface ExperienceItem {
     pt: string[]
     en: string[]
   }
-  technologies?: string[]
+  technologies?: Array<string | LocalizedText>
 }
 
 export const featuredProjects: FeaturedProject[] = [
@@ -78,8 +78,8 @@ export const experienceItems: ExperienceItem[] = [
       en: "Full Stack Engineer (Freelance / Products)",
     },
     description: {
-      pt: "Desenvolvimento de produtos digitais, soluções SaaS e plataformas personalizadas de ponta a ponta.",
-      en: "End-to-end development of digital products, SaaS solutions, and tailored web platforms.",
+      pt: "Produtos SaaS, como um editor visual de propostas. Dos requisitos às interfaces, APIs e integrações.",
+      en: "SaaS products, including a visual proposal editor. From requirements to interfaces, APIs and integrations.",
     },
     highlights: {
       pt: [
@@ -113,8 +113,8 @@ export const experienceItems: ExperienceItem[] = [
       en: "Full Stack Engineer (Frontend & Integrations)",
     },
     description: {
-      pt: "Atuação consultiva com foco em arquitetura frontend, integração de APIs e otimização de interfaces corporativas críticas.",
-      en: "Consulting role focused on frontend architecture, enterprise API integrations, and mission-critical UX performance.",
+      pt: "Arquitetura frontend e integração de APIs em módulos corporativos com React, Next.js e Angular.",
+      en: "Frontend architecture and API integration for enterprise modules built with React, Next.js and Angular.",
     },
     highlights: {
       pt: [
@@ -146,8 +146,8 @@ export const experienceItems: ExperienceItem[] = [
       en: "Full Stack Software Engineer",
     },
     description: {
-      pt: "Desenvolvimento e evolução de ecossistema ERP com 100+ páginas, portais corporativos e ferramentas administrativas unificadas.",
-      en: "Engineering and evolving a 100+ page ERP ecosystem, corporate portals, and unified administrative tooling.",
+      pt: "Portais, fluxos de ERP e um Design System compartilhado. Interfaces, APIs e controle de acesso para a operação.",
+      en: "Portals, ERP workflows and a shared Design System. Interfaces, APIs and access control for day-to-day operations.",
     },
     highlights: {
       pt: [
@@ -184,8 +184,8 @@ export const experienceItems: ExperienceItem[] = [
       en: "Technology & AI Mentor",
     },
     description: {
-      pt: "Mentoria técnica em inovação digital, inteligência artificial e resolução prática de problemas tecnológicos.",
-      en: "Technical mentoring in digital innovation, artificial intelligence, and hands-on technological problem solving.",
+      pt: "Oficinas de IA, ideação e prototipação. Apoio aos participantes para transformar problemas em projetos práticos.",
+      en: "Workshops on AI, ideation and prototyping. Helping participants turn problems into practical projects.",
     },
     highlights: {
       pt: [
@@ -198,11 +198,11 @@ export const experienceItems: ExperienceItem[] = [
       ],
     },
     technologies: [
-      "Inteligência Artificial",
-      "Prototipação",
-      "Inclusão Digital",
-      "Educação Tecnológica",
-      "Mentoria",
+      { pt: "Inteligência Artificial", en: "Artificial Intelligence" },
+      { pt: "Prototipação", en: "Prototyping" },
+      { pt: "Inclusão Digital", en: "Digital Inclusion" },
+      { pt: "Educação Tecnológica", en: "Technology Education" },
+      { pt: "Mentoria", en: "Mentoring" },
     ],
   },
   {
@@ -213,8 +213,8 @@ export const experienceItems: ExperienceItem[] = [
       en: "Junior Full Stack Engineer",
     },
     description: {
-      pt: "Desenvolvimento e sustentação de sistemas ERP, dashboards e plataformas de gestão para associações, clubes e proteção veicular.",
-      en: "Building and maintaining ERP systems, analytics dashboards, and management platforms for associations and enterprises.",
+      pt: "Dashboards, rotinas financeiras e integrações para sistemas de associações, clubes e proteção veicular.",
+      en: "Dashboards, financial workflows and integrations for associations, clubs and vehicle protection programs.",
     },
     highlights: {
       pt: [

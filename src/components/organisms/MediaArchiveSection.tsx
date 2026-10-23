@@ -17,8 +17,8 @@ export const MediaArchiveSection: React.FC = () => {
         title={isEn ? "NOTES" : "NOTAS"}
         description={
           isEn
-            ? "Press coverage and technical work you can explore in the code."
-            : "Participações na imprensa e trabalhos técnicos para explorar no código."
+            ? "A press feature and references to explore my projects in more detail."
+            : "Uma reportagem e referências para conhecer meus projetos por dentro."
         }
       />
 

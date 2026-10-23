@@ -127,7 +127,7 @@ export const ExperienceSection: React.FC = () => {
               <AnimatePresence mode="wait" initial={false}>
                 <m.article
                   id="experience-detail"
-                  key={`${activeItem.company}-${language}`}
+                  key={`${activeItem.company}-${activeItem.period.pt}-${language}`}
                   initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={
@@ -153,16 +153,16 @@ export const ExperienceSection: React.FC = () => {
                   </p>
 
                   {activeItem.technologies && (
-                    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-white/10 pt-3">
+                    <div className="experience-technologies mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-white/10 pt-3">
                       {activeItem.technologies.slice(0, 5).map((technology) => (
                         <span
-                          key={technology}
+                          key={typeof technology === "string" ? technology : technology.pt}
                           className="editorial-label inline-flex items-center gap-2 text-[#9b9690]"
                         >
                           <span className="text-[#82aaff]" aria-hidden="true">
                             •
                           </span>
-                          {technology}
+                          {typeof technology === "string" ? technology : technology[language]}
                         </span>
                       ))}
                     </div>

@@ -121,6 +121,13 @@ for (const language of ["pt", "en"]) {
           assert.ok(html.includes(scope === "page" ? "<h1 " : "<h2 "))
           assert.ok(html.includes(scope === "page" ? 'href="/"' : 'href="#contato"'))
         }
+        if (status === "loading" && scope === "section") {
+          assert.ok(
+            html.includes(
+              language === "pt" ? "Carregando seções do portfólio" : "Loading portfolio sections",
+            ),
+          )
+        }
       }
     }
   })

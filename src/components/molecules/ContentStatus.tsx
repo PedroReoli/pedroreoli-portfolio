@@ -76,8 +76,8 @@ export default function ContentStatus({ status, scope = "page" }: ContentStatusP
             ? "Loading page"
             : "Carregando página"
           : isEn
-          ? "Loading selected work"
-          : "Carregando projetos selecionados"}
+          ? "Loading portfolio sections"
+          : "Carregando seções do portfólio"}
       </p>
     ),
   )
