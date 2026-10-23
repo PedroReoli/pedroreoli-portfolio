@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { LanguageContext, type Language } from "./language-context"
+import { resolveLanguage } from "./language-preference"
 
 const STORAGE_KEY = "pedroreoli-portfolio-language"
 
-const readStoredLanguage = (): Language | null => {
+const readStoredLanguage = (): string | null => {
   try {
-    const savedLanguage = window.localStorage.getItem(STORAGE_KEY)
-    return savedLanguage === "pt" || savedLanguage === "en" ? savedLanguage : null
+    return window.localStorage.getItem(STORAGE_KEY)
   } catch {
     return null
   }
@@ -15,17 +15,8 @@ const readStoredLanguage = (): Language | null => {
 const detectLanguage = (): Language => {
   if (typeof window === "undefined") return "en"
 
-  const savedLanguage = readStoredLanguage()
-  if (savedLanguage) return savedLanguage
-
   const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language]
-
-  return browserLanguages.some((locale) => {
-    const normalizedLocale = locale.toLowerCase()
-    return normalizedLocale === "pt" || normalizedLocale.startsWith("pt-")
-  })
-    ? "pt"
-    : "en"
+  return resolveLanguage(readStoredLanguage(), browserLanguages)
 }
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {

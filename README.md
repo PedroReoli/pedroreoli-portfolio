@@ -48,12 +48,15 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa open h
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/navigation.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/preferences.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
 ```
 
 Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; não use `--headed`. Os roteiros validam menu, teclado, foco entre rotas, idioma, viewport baixa e os três slides de projetos em sete viewports e dois idiomas. Conferem transições com e sem movimento reduzido, sem clicar em links externos. A preferência de idioma muda apenas na sessão isolada de teste.
 
 `recovery.cli.js` intercepta módulos somente no navegador de teste para simular falhas de rede e renderização. Erros intencionais no console são esperados nesse roteiro. Verifica isolamento da falha, tentativa manual, preservação da URL e saída pelo menu, sem alterar arquivos ou o servidor. Essa proteção exige que o JavaScript inicial tenha carregado; não equivale a suporte offline.
+
+`preferences.cli.js` usa contextos isolados para conferir a ordem dos idiomas do navegador, a preferência salva e o funcionamento com armazenamento bloqueado. `npm run check` reúne lint, testes de conteúdo/preferências, TypeScript e build; os ensaios headless continuam sendo executados separadamente.
 
 ## Contato
 

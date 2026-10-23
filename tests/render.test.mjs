@@ -11,6 +11,7 @@ import { createServer } from "vite"
 const root = fileURLToPath(new URL("../", import.meta.url))
 let server
 let LanguageContext
+let resolveLanguage
 let featuredProjects
 const components = {}
 
@@ -22,6 +23,7 @@ before(async () => {
     logLevel: "error",
   })
   ;({ LanguageContext } = await server.ssrLoadModule("/src/i18n/language-context.ts"))
+  ;({ resolveLanguage } = await server.ssrLoadModule("/src/i18n/language-preference.ts"))
   ;({ featuredProjects } = await server.ssrLoadModule("/src/content/homeContent.ts"))
   for (const [name, path] of Object.entries({
     Projects: "/src/pages/ProjectsPage.tsx",
@@ -65,6 +67,26 @@ function render(children, language = "pt", location = "/") {
     ),
   )
 }
+
+test("Idioma: preferência explícita, ordem do navegador e fallback", () => {
+  const cases = [
+    ["pt", ["en-US"], "pt"],
+    ["en", ["pt-BR"], "en"],
+    [null, ["en-US", "pt-BR"], "en"],
+    [null, ["pt-PT", "en-US"], "pt"],
+    [null, ["fr-FR", "en-GB", "pt-BR"], "en"],
+    [null, ["fr-FR", "pt-BR"], "pt"],
+    ["invalid", ["pt-BR"], "pt"],
+    ["invalid", ["en-US"], "en"],
+    [null, [], "en"],
+    [null, ["fr-FR", "es-ES"], "en"],
+    [null, ["PT-br"], "pt"],
+    [null, ["", "en"], "en"],
+  ]
+  for (const [saved, locales, expected] of cases) {
+    assert.equal(resolveLanguage(saved, locales), expected, JSON.stringify({ saved, locales }))
+  }
+})
 
 for (const language of ["pt", "en"]) {
   test(`Estados ${language}: carregamento e erro com semântica de página e seção`, () => {
