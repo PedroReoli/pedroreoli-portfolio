@@ -52,6 +52,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/hero.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/sections.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/archives.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/experience.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -91,6 +92,8 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 `sections.cli.js` mede as sete seções da home em 22 viewports, nos dois idiomas, incluindo os limites de quebra do layout. Verifica altura de tela, overflow, encaixe dos itens da stack em suas linhas e amostra os surgimentos de Sobre, Stack, Propósito e Trajetória em mobile e desktop. Não substitui inspeção visual nem testes em dispositivos físicos.
 
 `archives.cli.js` verifica Projetos (duas categorias) e Notas em 16 viewports, PT/EN: largura, título sem recorte, imagens carregadas, entradas progressivas, scroll rápido e filtros por teclado sem perder foco nem parâmetros da URL. As páginas de arquivo mantêm altura natural; não herdam o limite de uma tela da home. A galeria carrega a primeira captura imediatamente e mantém as demais imagens sob demanda.
+
+`experience.cli.js` confere os cinco capítulos da trajetória em sete viewports e dois idiomas, com navegação por teclado, textos dentro do painel e competências traduzidas. Também verifica que períodos diferentes da mesma empresa recebem entradas próprias em mobile e desktop.
 
 ## Contato
 

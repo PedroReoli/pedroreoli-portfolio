@@ -48,6 +48,14 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Hero com espaçamento de Reoli proporcional às letras e cargo ampliado: 33 verificações em `tests/browser/hero.cli.js`, aprovadas em desenvolvimento e no build de produção. Encaixe em 14 viewports e dois idiomas, reduced motion, sequência Pedro → Reoli → cargo e transição de fundo. Capturas de 320×480, 667×375 e 1440×900 inspecionadas; sem cortes ou colisões detectados nesses cenários.
 - [x] Preferência de movimento reativa e compartilhada, sem reload: 49 verificações em `tests/browser/motion-preference.cli.js`, aprovadas em desenvolvimento e produção. Incluem PT/EN, arquivos de projetos/notas, mudança durante scroll da hero, reativação de movimento e navbar, preservação de URL/posição e entrada do título das referências. Regressões de hero (33), projetos (56) e navegação (15) aprovadas também em produção. Capturas da seção de referências em 390×480 e 1440×480 inspecionadas. A preferência foi emulada somente no navegador de teste, sem alterar o sistema operacional.
 
+## Revisão de conteúdo e transições em 23/10/2026
+
+- [x] Descrições da trajetória reescritas a partir dos destaques já cadastrados, sem acrescentar resultados; competências da mentoria traduzidas em PT/EN.
+- [x] Introduções de Projetos e Notas mais curtas, destinos do rodapé explícitos e mensagem de carregamento correspondente às seções lazy.
+- [x] Troca direta entre períodos da mesma empresa reproduzida e corrigida: cada período tem uma identificação própria para a animação.
+- [x] Build de produção: 317 verificações da home em 22 viewports e 72 da trajetória em sete viewports, nos dois idiomas. Capturas de conteúdo em 320×480 e 1440×900 inspecionadas. Lint, 14 testes de renderização, TypeScript e build aprovados.
+- [x] Projetos e Notas: 125 verificações do build de produção em 16 viewports, PT/EN, incluindo entradas e filtros por teclado. Capturas revisadas em mobile e desktop após o ajuste dos textos.
+
 ## Validação ainda pendente
 
 - [ ] Texto-base ampliado de 16px para 32px em 320×480 causa cortes nas seções de altura fixa. Aguardando decisão sobre permitir crescimento vertical nesse cenário, preservando o padrão de uma tela na escala normal. Isso é distinto do zoom nativo de página, já validado.
