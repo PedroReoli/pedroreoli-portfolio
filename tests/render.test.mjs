@@ -1,6 +1,7 @@
 import assert from "node:assert/strict"
 import { after, before, test } from "node:test"
 import { fileURLToPath } from "node:url"
+import { readFile } from "node:fs/promises"
 import React from "react"
 import { renderToStaticMarkup } from "react-dom/server"
 import { StaticRouter } from "react-router-dom"
@@ -86,6 +87,18 @@ test("Idioma: preferência explícita, ordem do navegador e fallback", () => {
   for (const [saved, locales, expected] of cases) {
     assert.equal(resolveLanguage(saved, locales), expected, JSON.stringify({ saved, locales }))
   }
+})
+
+test("Alternativa sem JavaScript mantém contatos alinhados à configuração", async () => {
+  const { siteConfig, getMailtoUrl } = await server.ssrLoadModule("/src/config/site.ts")
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8")
+  const fallback = html.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1]
+  assert.ok(fallback, "Fallback nativo presente no HTML inicial")
+  assert.ok(fallback.includes('id="main-content"'))
+  for (const href of [getMailtoUrl(), siteConfig.social.github, siteConfig.social.linkedin]) {
+    assert.ok(fallback.includes(`href="${href}"`), href)
+  }
+  assert.ok(fallback.includes('href="/no-script.css"'))
 })
 
 for (const language of ["pt", "en"]) {

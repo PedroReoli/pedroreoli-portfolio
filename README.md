@@ -50,6 +50,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/preferences.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/images.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/accessibility.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
 ```
 
@@ -60,6 +61,8 @@ Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; nã
 `preferences.cli.js` usa contextos isolados para conferir a ordem dos idiomas do navegador, a preferência salva e o funcionamento com armazenamento bloqueado. `npm run check` reúne lint, testes de conteúdo/preferências, TypeScript e build; os ensaios headless continuam sendo executados separadamente.
 
 `images.cli.js` verifica WebP em uso normal, recuperação com o PNG original e falha de ambos os formatos. A alternativa é tentada uma vez; se também falhar, a descrição alternativa e as dimensões são preservadas, sem novas tentativas automáticas. As falhas são simuladas apenas na sessão headless.
+
+`accessibility.cli.js` verifica o retorno do foco ao conteúdo pelo botão de topo, com movimento normal e reduzido, e a alternativa estática nas três rotas em quatro viewports. Sem JavaScript, nome, cargo e contatos permanecem disponíveis; os projetos interativos não são reproduzidos. O roteiro também foi validado contra o build de produção servido por `vite preview`, onde os estilos globais são carregados sem depender do JavaScript. Não substitui uma auditoria com leitor de tela.
 
 ## Contato
 

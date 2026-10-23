@@ -120,13 +120,14 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
             </span>
             <button
               type="button"
-              onClick={() =>
+              onClick={() => {
+                document.getElementById("main-content")?.focus({ preventScroll: true })
                 window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
-              }
+              }}
               className="inline-flex min-h-11 shrink-0 items-center gap-2 uppercase transition-colors hover:text-white"
             >
               {isEn ? "Back to top" : "Voltar ao topo"}
-              <ArrowUp className="h-3.5 w-3.5" />
+              <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
           </div>
         </div>

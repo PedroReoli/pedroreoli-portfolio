@@ -1,0 +1,95 @@
+/* Carregado somente pelo <noscript>; não participa do layout da aplicação React. */
+body {
+  margin: 0;
+  background: #111010;
+  color: #edeae4;
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+}
+
+.no-script-page {
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  align-items: center;
+  gap: 2rem;
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.no-script-label {
+  margin: 0 0 1.25rem;
+  color: #82aaff;
+  font:
+    0.75rem / 1.5 ui-monospace,
+    monospace;
+}
+
+.no-script-page h1 {
+  margin: 0;
+  font-family: inherit;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.no-script-page h1 span {
+  display: block;
+}
+
+.no-script-role {
+  max-width: 24ch;
+  margin: 1.25rem 0 0;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.no-script-details > p {
+  max-width: 42ch;
+  margin: 0;
+  color: #b9b5af;
+  line-height: 1.6;
+}
+
+.no-script-details nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.no-script-details a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid #696560;
+  color: #edeae4;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.no-script-details a:hover {
+  color: #82aaff;
+}
+.no-script-details a:focus-visible {
+  outline: 2px solid #82aaff;
+  outline-offset: 5px;
+}
+
+@media (min-width: 600px) {
+  .no-script-page {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-height: 500px) {
+  .no-script-page {
+    padding-block: 1rem;
+    gap: 1.25rem;
+  }
+}

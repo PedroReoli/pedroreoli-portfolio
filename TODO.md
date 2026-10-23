@@ -41,10 +41,11 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Falhas em módulos lazy e renderização isoladas por página/seção, com recuperação manual bilíngue; 28 verificações em `tests/browser/recovery.cli.js`, incluindo falhas consecutivas e preservação de parâmetros.
 - [x] Idioma inicial respeita a escolha salva e a ordem de preferência do navegador; sete casos headless, incluindo navegação com armazenamento bloqueado, em `tests/browser/preferences.cli.js`.
 - [x] Imagens responsivas recuperam o PNG original quando o WebP falha, sem repetição automática; 15 verificações em `tests/browser/images.cli.js`.
+- [x] Botão de topo devolve o foco ao conteúdo, e contatos permanecem disponíveis sem JavaScript; 34 verificações em `tests/browser/accessibility.cli.js`, também aprovadas no build de produção. Capturas da alternativa estática em mobile, paisagem e desktop inspecionadas.
 
 ## Validação ainda pendente
 
-- [ ] Zoom real de 200%, navegação completa com leitores de tela e operação sem JavaScript.
+- [ ] Zoom real de 200% e navegação completa com leitores de tela. Sem JavaScript, há apenas a alternativa de apresentação e contato; projetos e demais interações exigem JavaScript.
 - [ ] Safari/iOS e Firefox em dispositivos reais; o ensaio headless não certifica todos os navegadores ou dimensões possíveis.
 - [ ] Medição de Core Web Vitals e fluidez em hardware móvel real. CPU simulada a 4× não equivale a benchmark de dispositivo.
 
