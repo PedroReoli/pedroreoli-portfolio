@@ -45,6 +45,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Zoom nativo de 200% no Chrome headless: 142 verificações em PT/EN, quatro áreas úteis, sete seções, todos os slides, menu e arquivos de Projetos/Notas. Roteiro versionado em `tests/browser/zoom.cli.js`, aprovado também no build de produção. Hero, stack e propósito inspecionados visualmente com zoom.
 - [x] Seleção e foco distinguíveis em cores forçadas, sem depender dos fundos removidos pelo alto contraste. 93 verificações em `tests/browser/contrast.cli.js`, em dois temas e duas viewports, incluindo regressão do modo normal e build de produção. Capturas de projetos e trajetória inspecionadas.
 - [x] Limpeza de estilos antigos sem alteração visual: 20 pares de capturas em 390×844 e 1440×900 idênticos por SHA-256, cobrindo sete seções e três arquivos de conteúdo. Regressões de projetos (56) e navegação (15) aprovadas. CSS de produção reduzido de 52.620 para 51.471 bytes nesta revisão; isso não é medição de Core Web Vitals.
+- [x] Hero com espaçamento de Reoli proporcional às letras e cargo ampliado: 33 verificações em `tests/browser/hero.cli.js`, aprovadas em desenvolvimento e no build de produção. Encaixe em 14 viewports e dois idiomas, reduced motion, sequência Pedro → Reoli → cargo e transição de fundo. Capturas de 320×480, 667×375 e 1440×900 inspecionadas; sem cortes ou colisões detectados nesses cenários.
 
 ## Validação ainda pendente
 

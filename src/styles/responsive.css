@@ -14,8 +14,11 @@
     margin-top: -0.14em;
   }
 
-  .hero-mega-text {
+  .hero-diagonal-stage {
     font-size: clamp(5rem, min(22vw, 22vh), 10rem);
+  }
+
+  .hero-mega-text {
     letter-spacing: -0.04em;
   }
 
@@ -35,8 +38,11 @@
     margin-top: -0.1em;
   }
 
-  .hero-mega-text {
+  .hero-diagonal-stage {
     font-size: clamp(4rem, min(23vw, 18vh), 6.4rem);
+  }
+
+  .hero-mega-text {
     letter-spacing: -0.035em;
     line-height: 0.92;
   }
@@ -44,12 +50,6 @@
   .hero-text-hollow {
     -webkit-text-stroke: 1.8px #ffffff;
     text-stroke: 1.8px #ffffff;
-  }
-
-  .hero-role {
-    max-width: 18rem;
-    font-size: clamp(0.9rem, 4.2vw, 1.08rem);
-    text-align: center;
   }
 
   .hero-project-label-long {
@@ -234,7 +234,7 @@
 }
 
 @media (max-height: 680px) and (min-width: 421px) {
-  .hero-mega-text {
+  .hero-diagonal-stage {
     font-size: clamp(4.5rem, min(14vw, 19vh), 10.5rem);
   }
 }

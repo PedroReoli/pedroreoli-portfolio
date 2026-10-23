@@ -85,7 +85,7 @@
 @media (max-width: 767px) {
   .hero-role {
     max-width: 30rem;
-    font-size: clamp(1rem, 3.6vw, 1.4rem);
+    font-size: clamp(1.125rem, 4.8vw, 1.5rem);
     text-align: center;
     line-height: 1.25;
   }
@@ -114,14 +114,11 @@
   .hero-diagonal-stage {
     height: auto;
     min-height: 0;
-  }
-
-  .hero-mega-text {
     font-size: clamp(2.75rem, calc((var(--viewport-height) - 13rem) * 0.38), 7rem);
   }
 
   .hero-role {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   .hero-frame > :first-child {

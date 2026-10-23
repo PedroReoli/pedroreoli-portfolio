@@ -83,6 +83,8 @@
     justify-content: center;
     align-items: center;
     overflow: visible;
+    /* A margem em em de Reoli acompanha as letras, não os 16px do documento. */
+    font-size: clamp(6.4rem, min(22vw, 29vh), 20rem);
   }
 
   .hero-diagonal-item {
@@ -114,7 +116,7 @@
     font-family: "Archivo Variable", "Archivo", "Inter", sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(6.4rem, min(22vw, 29vh), 20rem);
+    font-size: inherit;
     font-stretch: 80%;
     font-variation-settings: "wdth" 80;
     line-height: 0.84;
@@ -139,8 +141,9 @@
   }
 
   .hero-role {
-    font-size: clamp(1rem, min(1.55vw, 2.35vh), 1.55rem);
-    line-height: 1.1;
+    max-width: 34ch;
+    font-size: clamp(1.125rem, min(2.2vw, 3.4vh), 2.25rem);
+    line-height: 1.2;
   }
 
   .hero-project-label-short {
