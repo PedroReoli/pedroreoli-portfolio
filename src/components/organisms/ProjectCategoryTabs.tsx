@@ -22,7 +22,7 @@ export const ProjectCategoryTabs: React.FC<ProjectCategoryTabsProps> = ({
   onChange,
 }) => (
   <div
-    className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-b border-white/10 sm:mt-8"
+    className="archive-category-tabs"
     role="group"
     aria-label={isEn ? "Project categories" : "Categorias de projetos"}
   >
@@ -36,7 +36,7 @@ export const ProjectCategoryTabs: React.FC<ProjectCategoryTabsProps> = ({
           aria-pressed={isActive}
           aria-controls={isActive ? `${category.id}-projects` : undefined}
           onClick={() => onChange(category.id)}
-          className={`min-h-11 border-b-2 pb-3 pt-2 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
+          className={`archive-category-button ${
             isActive
               ? "border-[#82aaff] text-white"
               : "border-transparent text-[#aaa6a0] hover:text-[#edeae4]"

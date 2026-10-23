@@ -15,7 +15,8 @@ export const IndependentProjectsSection: React.FC<IndependentProjectsSectionProp
   >
     <Reveal
       distance={24}
-      className="grid gap-4 border-b border-white/10 pb-6 lg:grid-cols-12 lg:items-end"
+      duration={0.65}
+      className="archive-section-heading grid gap-4 border-b border-white/10 pb-6 lg:grid-cols-12 lg:items-end"
     >
       <h2 className="archive-section-title lg:col-span-7">
         {isEn ? "Independent tools" : "Ferramentas independentes"}
@@ -28,7 +29,13 @@ export const IndependentProjectsSection: React.FC<IndependentProjectsSectionProp
     </Reveal>
 
     {independentProjects.map((project, index) => (
-      <Reveal key={project.title} distance={24} delay={index * 0.06}>
+      <Reveal
+        key={project.title}
+        distance={20}
+        duration={0.65}
+        amount={0.12}
+        delay={(index % 2) * 0.06}
+      >
         <a
           href={project.href}
           target="_blank"

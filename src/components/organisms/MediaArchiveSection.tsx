@@ -23,26 +23,32 @@ export const MediaArchiveSection: React.FC = () => {
       />
 
       <section className="archive-container archive-section">
-        <Reveal distance={32}>
-          <article className="grid gap-6 border-y border-white/10 py-6 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5">
-              <p className="editorial-label mb-5 text-[#82aaff]">
-                {isEn ? "In the press" : "Na imprensa"}
-              </p>
-              <h2 className="text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.05] tracking-[-0.045em]">
-                {isEn ? "FalaAtípica featured by UniFOA." : "FalaAtípica em destaque no UniFOA."}
-              </h2>
-              <a
-                href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-white pb-2 text-xs font-semibold uppercase tracking-[0.13em]"
-              >
-                {isEn ? "Read article" : "Ler reportagem"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-            <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19] lg:col-span-7">
+        <article className="media-feature">
+          <Reveal
+            className="media-feature-copy"
+            distance={24}
+            duration={0.7}
+            delay={0.12}
+            amount={0.1}
+          >
+            <p className="editorial-label mb-5 text-[#82aaff]">
+              {isEn ? "In the press" : "Na imprensa"}
+            </p>
+            <h2 className="media-feature-title">
+              {isEn ? "FalaAtípica featured by UniFOA." : "FalaAtípica em destaque no UniFOA."}
+            </h2>
+            <a
+              href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="media-feature-link"
+            >
+              {isEn ? "Read article" : "Ler reportagem"}
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </Reveal>
+          <Reveal className="media-feature-image" distance={28} duration={0.75} amount={0.1}>
+            <figure className="aspect-[16/10] overflow-hidden rounded-xl bg-[#1b1a19]">
               <ResponsiveImage
                 pictureClassName="block h-full w-full"
                 sources={[
@@ -51,7 +57,7 @@ export const MediaArchiveSection: React.FC = () => {
                       "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
                     type: "image/webp",
                     sizes:
-                      "(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(100vw - 4rem), (max-width: 1279px) 55vw, 696px",
+                      "(max-width: 639px) calc(100vw - 2rem), (max-width: 899px) calc(100vw - 4rem), (max-width: 1279px) 55vw, 696px",
                   },
                 ]}
                 src="/TCC-img2.png"
@@ -63,12 +69,12 @@ export const MediaArchiveSection: React.FC = () => {
                 className="h-full w-full object-cover"
               />
             </figure>
-          </article>
-        </Reveal>
+          </Reveal>
+        </article>
       </section>
 
       <section className="archive-container archive-section">
-        <Reveal distance={24} className="mb-8 flex items-end justify-between">
+        <Reveal distance={20} duration={0.65} className="archive-reference-heading">
           <h2 className="archive-section-title">
             {isEn ? "Inside the code" : "Por dentro do código"}
           </h2>
@@ -77,7 +83,13 @@ export const MediaArchiveSection: React.FC = () => {
           </span>
         </Reveal>
         {mediaNotes.map((note, index) => (
-          <Reveal key={note.number} distance={24} delay={index * 0.06}>
+          <Reveal
+            key={note.number}
+            distance={20}
+            duration={0.65}
+            amount={0.12}
+            delay={(index % 2) * 0.06}
+          >
             <a
               href={note.href}
               target="_blank"

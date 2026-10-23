@@ -1,4 +1,5 @@
 import React from "react"
+import { ArrowUpRight } from "lucide-react"
 import { corporateProjectImages } from "../../content/projectsContent"
 import ResponsiveImage from "../atoms/ResponsiveImage"
 import Reveal from "../atoms/Reveal"
@@ -15,7 +16,8 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
   >
     <Reveal
       distance={24}
-      className="grid gap-5 border-b border-white/10 pb-6 lg:grid-cols-12 lg:items-end"
+      duration={0.65}
+      className="archive-section-heading grid gap-5 border-b border-white/10 pb-6 lg:grid-cols-12 lg:items-end"
     >
       <div className="lg:col-span-8">
         <p className="editorial-label mb-3 text-[#aaa6a0]">
@@ -30,21 +32,21 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
       </p>
     </Reveal>
 
-    <Reveal distance={32} className="my-6 sm:my-8">
+    <Reveal distance={24} duration={0.75} amount={0.1} className="my-6 sm:my-8">
       <a
         href={corporateProjectImages[0].src}
         target="_blank"
         rel="noopener noreferrer"
-        className="block rounded-xl"
+        className="project-gallery-link group"
         aria-label={
           isEn
             ? "Open the operations dashboard image in a new tab"
             : "Ampliar painel de operações em nova aba"
         }
       >
-        <figure className="overflow-hidden rounded-xl border border-white/10 bg-[#1b1a19]">
+        <figure>
           <ResponsiveImage
-            pictureClassName="block w-full"
+            pictureClassName="project-gallery-frame block w-full"
             sources={[
               {
                 srcSet: corporateProjectImages[0].srcSet,
@@ -55,41 +57,56 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
             ]}
             src={corporateProjectImages[0].src}
             alt={isEn ? corporateProjectImages[0].alt.en : corporateProjectImages[0].alt.pt}
-            loading="lazy"
+            loading="eager"
             decoding="async"
             width={2880}
             height={1800}
             className="project-overview-image"
           />
+          <figcaption className="project-gallery-caption">
+            <span className="editorial-label text-[#82aaff]">01</span>
+            <span>
+              {isEn ? corporateProjectImages[0].alt.en : corporateProjectImages[0].alt.pt}
+            </span>
+            <ArrowUpRight aria-hidden="true" />
+          </figcaption>
         </figure>
       </a>
     </Reveal>
 
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="project-gallery">
       {corporateProjectImages.slice(1).map((image, index) => {
         const alt = isEn ? image.alt.en : image.alt.pt
 
         return (
-          <Reveal key={image.src} distance={24} delay={index * 0.06}>
+          <Reveal
+            key={image.src}
+            className={image.wide ? "project-gallery-wide" : undefined}
+            distance={24}
+            duration={0.7}
+            amount={0.1}
+            delay={(index % 2) * 0.08}
+          >
             <a
               href={image.src}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-lg"
+              className="project-gallery-link group"
               aria-label={`${
                 isEn ? "Open image in a new tab" : "Ampliar imagem em nova aba"
               }: ${alt}`}
             >
-              <figure className="overflow-hidden rounded-lg border border-white/10 bg-[#1b1a19]">
-                <div className="aspect-[16/10] overflow-hidden">
+              <figure>
+                <div className="project-gallery-frame aspect-[16/10]">
                   <ResponsiveImage
                     pictureClassName="block h-full w-full"
                     sources={[
                       {
                         srcSet: image.srcSet,
                         type: "image/webp",
-                        sizes:
-                          "(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) 46vw, (max-width: 1279px) 30vw, 395px",
+                        sizes: image.wide
+                          ? "(max-width: 639px) calc(100vw - 2rem), (max-width: 1279px) calc(100vw - 4rem), 1216px"
+                          : "(max-width: 639px) calc(100vw - 2rem), (max-width: 1279px) 46vw, 590px",
                       },
                     ]}
                     src={image.src}
@@ -101,9 +118,10 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <figcaption className="flex gap-3 border-t border-white/10 p-3 text-xs leading-relaxed text-[#aaa6a0]">
-                  <span className="min-w-0 flex-1">{alt}</span>
-                  <span className="shrink-0 text-[#82aaff]">0{index + 2} ↗</span>
+                <figcaption className="project-gallery-caption">
+                  <span className="editorial-label text-[#82aaff]">0{index + 2}</span>
+                  <span>{alt}</span>
+                  <ArrowUpRight aria-hidden="true" />
                 </figcaption>
               </figure>
             </a>
