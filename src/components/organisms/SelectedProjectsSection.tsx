@@ -134,7 +134,7 @@ export const SelectedProjectsSection: React.FC = () => {
 
         {/* Top Header */}
         <Reveal
-          className="editorial-container relative z-10 flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3"
+          className="selected-projects-heading editorial-container relative z-10 flex items-center justify-between gap-2 border-b border-white/10 pb-3"
           distance={12}
         >
           <div>

@@ -102,7 +102,7 @@
   }
 
   .about-stage-content {
-    grid-template-rows: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    grid-template-rows: minmax(0, 1fr) auto;
   }
 
   .framed-media-caption {

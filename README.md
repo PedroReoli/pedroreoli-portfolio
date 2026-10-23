@@ -34,9 +34,12 @@ Validações disponíveis:
 ```bash
 npm run typecheck
 npm run lint
+npm run test:render
 npm run build
 npm run check
 ```
+
+`test:render` confere estrutura, conteúdo bilíngue e rótulos acessíveis. Não substitui validação visual e de interações em navegador.
 
 ## Contato
 

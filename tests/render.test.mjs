@@ -92,6 +92,17 @@ for (const language of ["pt", "en"]) {
     assert.ok(html.includes('href="/projetos?tipo=corporativo"'))
     assert.ok(html.includes(language === "pt" ? "Quem eu sou" : "Who I am"))
     assert.ok(!html.includes("footer-stage-compact"))
+    const chapterButtons = [
+      ...html.matchAll(/<button\b[^>]*aria-controls="experience-detail"[^>]*>/g),
+    ]
+    assert.equal(chapterButtons.length, 5)
+    for (const [button] of chapterButtons) {
+      assert.match(
+        button,
+        /aria-label="[^"]+, [^"]+, [^"]+"/,
+        "Nome completo do capítulo no seletor compacto",
+      )
+    }
   })
 
   for (const category of ["corporativo", "gerais"]) {

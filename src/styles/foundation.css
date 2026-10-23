@@ -19,6 +19,7 @@
   }
 
   html {
+    position: relative;
     scroll-behavior: smooth;
     scroll-padding-top: 0;
     color-scheme: dark;
@@ -36,7 +37,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Archivo Variable", "Archivo", "Inter", sans-serif;
     text-wrap: balance;
   }
@@ -45,11 +51,13 @@
     text-wrap: pretty;
   }
 
-  a, button {
+  a,
+  button {
     -webkit-tap-highlight-color: transparent;
   }
 
-  button, a {
+  button,
+  a {
     border-radius: 0;
   }
 

@@ -10,7 +10,11 @@ export default function HomeIntro() {
   const backgroundColor = useTransform(scrollYProgress, [0, 0.5], ["#111010", "#edeae4"])
 
   return (
-    <m.div ref={ref} style={{ backgroundColor: reduceMotion ? "#111010" : backgroundColor }}>
+    <m.div
+      ref={ref}
+      className="relative"
+      style={{ backgroundColor: reduceMotion ? "#111010" : backgroundColor }}
+    >
       <PortfolioHero />
       <AboutSection blendBackground={!reduceMotion} />
     </m.div>

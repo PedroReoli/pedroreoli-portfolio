@@ -86,6 +86,9 @@ export const ExperienceSection: React.FC = () => {
                       <button
                         type="button"
                         aria-pressed={isActive}
+                        aria-label={`${item.company}, ${isEn ? item.role.en : item.role.pt}, ${
+                          isEn ? item.period.en : item.period.pt
+                        }`}
                         aria-controls="experience-detail"
                         onClick={() => scrollToExperience(index)}
                         className="experience-index-row group grid h-full w-full min-h-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-white/10 text-left"
@@ -164,7 +167,7 @@ export const ExperienceSection: React.FC = () => {
                     </div>
                   )}
 
-                  <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-white/45">
+                  <span className="experience-detail-hint mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-white/45">
                     {activeExperience === experienceItems.length - 1
                       ? isEn
                         ? "End of journey"

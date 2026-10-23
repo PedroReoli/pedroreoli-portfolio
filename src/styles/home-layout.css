@@ -16,6 +16,61 @@
     height: 100%;
     min-height: 0;
   }
+
+  .selected-project-slide .project-image-frame {
+    container-type: size;
+  }
+
+  .selected-projects-heading > :first-child {
+    min-width: 0;
+  }
+
+  .selected-projects-heading nav {
+    flex-shrink: 0;
+  }
+
+  .selected-project-copy a {
+    min-height: 2.75rem;
+  }
+}
+
+/* The agent artwork follows its frame, not only the device width. */
+@container (max-height: 240px) {
+  .project-image-frame .project-agent-visual {
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .project-agent-visual > :first-child,
+  .project-agent-visual .project-agent-flow {
+    display: none;
+  }
+
+  .project-agent-visual > :nth-child(2) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-agent-visual .project-agent-word {
+    font-size: clamp(1.5rem, 12cqw, 3rem);
+    line-height: 0.95;
+  }
+
+  .project-agent-visual p {
+    margin-top: 0.25rem;
+    font-size: 0.6rem;
+  }
+}
+
+@container (max-height: 100px) {
+  .project-agent-visual p,
+  .project-image-frame > span {
+    display: none;
+  }
+
+  .project-agent-visual .project-agent-word {
+    font-size: clamp(1.25rem, min(12cqw, 40cqh), 3rem);
+  }
 }
 
 @media (min-width: 768px) {
@@ -42,6 +97,10 @@
   .purpose-title {
     font-size: clamp(1.85rem, 8.4vw, 3rem);
     line-height: 0.95;
+  }
+
+  .purpose-media-frame img {
+    object-position: 65% center;
   }
 
   .framed-media-caption {
@@ -126,11 +185,11 @@
     line-height: 1.35;
   }
 
-  .selected-project-copy > * + * {
+  .selected-project-slide .selected-project-copy > * + * {
     margin-top: 0.5rem;
   }
 
-  .selected-project-copy > :first-child {
+  .selected-project-slide .selected-project-copy > :first-child {
     margin-bottom: 0;
   }
 
@@ -196,8 +255,12 @@
     font-size: 0.75rem;
   }
 
-  .experience-detail-shell article > * + * {
+  .experience-stage-content .experience-detail-shell article > * + * {
     margin-top: 0.4rem;
+  }
+
+  .experience-detail-hint {
+    display: none;
   }
 
   .footer-links {
@@ -206,6 +269,41 @@
 
   .footer-cta {
     font-size: clamp(2.5rem, 10vh, 3.5rem);
+  }
+}
+
+/* A compact chapter selector leaves room for the complete active experience. */
+@media (max-width: 767px) and (max-height: 700px) and (orientation: portrait) {
+  .experience-stage-content {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .experience-index > div {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 0.35rem;
+  }
+
+  .experience-index .experience-index-row {
+    display: flex;
+    min-height: 2.75rem;
+    justify-content: center;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    border-radius: 0.5rem;
+  }
+
+  .experience-index-row[aria-pressed="true"] {
+    background: rgb(130 170 255 / 0.12);
+    border-color: #82aaff;
+  }
+
+  .experience-index-row > span:not(.experience-step-number),
+  .experience-detail-hint {
+    display: none;
+  }
+
+  .experience-stage-content .experience-detail-shell article > * + * {
+    margin-top: 0.5rem;
   }
 }
 

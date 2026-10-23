@@ -1,12 +1,12 @@
 # TODO — Pedro Reoli Portfolio
 
-Estado reconciliado com o código em 20/10/2026.
+Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram registrados em revisões anteriores.
 
 ## Entregue e verificado por checks estáticos
 
 - [x] Home editorial dividida em seções modulares.
 - [x] Seções principais com contrato compartilhado de `100dvh` e fallback `100svh`.
-- [x] Hero preparada para vídeos desktop e mobile, protegida por feature flag.
+- [x] Hero tipográfica; retrato na seção Sobre, sem vídeo de fundo.
 - [x] Projetos selecionados sem repetição do case FalaAtípica.
 - [x] Imagens abaixo da dobra com lazy loading e decodificação assíncrona.
 - [x] Animações com suporte a `prefers-reduced-motion`.
@@ -26,14 +26,20 @@ Estado reconciliado com o código em 20/10/2026.
 
 - [ ] Substituir links gerais por artigos reais quando os textos forem publicados.
 
-## Pendente de validação visual
+## Validado em Chrome headless em 22/10/2026
 
-- [ ] Revisar a home em 320, 390, 768, 1024, 1440 e 1920 px.
-- [ ] Revisar viewports baixas e modo paisagem em celular.
-- [ ] Validar navegação por teclado, zoom de 200% e leitores de tela.
-- [ ] Conferir enquadramento dos dois vídeos finais na hero.
+- [x] Limites das sete seções em 14 viewports, de 320×480 a 2560×1440, em PT e EN: 196 medições sem extravasamento detectado.
+- [x] Todos os slides de projetos e experiências em sete viewports, incluindo 667×375 e 844×390: 112 verificações em PT e EN sem cortes internos detectados após os ajustes.
+- [x] Projetos e Notas em seis viewports e dois idiomas: 36 verificações de largura, imagens e preservação do filtro/query string.
+- [x] Sequência Pedro → Reoli → cargo e transição escura/clara no scroll. Entradas concluídas nas demais seções, inclusive com rolagem rápida.
+- [x] Reduced motion, navbar por direção de scroll, recuperação por foco, Escape e retorno do foco no menu mobile.
+- [x] Capturas de desktop, mobile e paisagem inspecionadas. Artefatos locais em `output/playwright/` (não versionados).
 
-Esses itens permanecem pendentes porque validação estática não comprova composição visual em navegador.
+## Validação ainda pendente
+
+- [ ] Zoom real de 200%, navegação completa com leitores de tela e operação sem JavaScript.
+- [ ] Safari/iOS e Firefox em dispositivos reais; o ensaio headless não certifica todos os navegadores ou dimensões possíveis.
+- [ ] Medição de Core Web Vitals e fluidez em hardware móvel real. CPU simulada a 4× não equivale a benchmark de dispositivo.
 
 ## Otimização futura
 
