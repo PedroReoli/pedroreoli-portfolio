@@ -42,10 +42,12 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Idioma inicial respeita a escolha salva e a ordem de preferência do navegador; sete casos headless, incluindo navegação com armazenamento bloqueado, em `tests/browser/preferences.cli.js`.
 - [x] Imagens responsivas recuperam o PNG original quando o WebP falha, sem repetição automática; 15 verificações em `tests/browser/images.cli.js`.
 - [x] Botão de topo devolve o foco ao conteúdo, e contatos permanecem disponíveis sem JavaScript; 34 verificações em `tests/browser/accessibility.cli.js`, também aprovadas no build de produção. Capturas da alternativa estática em mobile, paisagem e desktop inspecionadas.
+- [x] Zoom nativo de 200% no Chrome headless: 142 verificações em PT/EN, quatro áreas úteis, sete seções, todos os slides, menu e arquivos de Projetos/Notas. Roteiro versionado em `tests/browser/zoom.cli.js`, aprovado também no build de produção. Hero, stack e propósito inspecionados visualmente com zoom.
 
 ## Validação ainda pendente
 
-- [ ] Zoom real de 200% e navegação completa com leitores de tela. Sem JavaScript, há apenas a alternativa de apresentação e contato; projetos e demais interações exigem JavaScript.
+- [ ] Texto-base ampliado de 16px para 32px em 320×480 causa cortes nas seções de altura fixa. Aguardando decisão sobre permitir crescimento vertical nesse cenário, preservando o padrão de uma tela na escala normal. Isso é distinto do zoom nativo de página, já validado.
+- [ ] Navegação completa com leitores de tela. Sem JavaScript, há apenas a alternativa de apresentação e contato; projetos e demais interações exigem JavaScript.
 - [ ] Safari/iOS e Firefox em dispositivos reais; o ensaio headless não certifica todos os navegadores ou dimensões possíveis.
 - [ ] Medição de Core Web Vitals e fluidez em hardware móvel real. CPU simulada a 4× não equivale a benchmark de dispositivo.
 

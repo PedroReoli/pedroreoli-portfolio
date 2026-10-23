@@ -64,6 +64,20 @@ Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; nã
 
 `accessibility.cli.js` verifica o retorno do foco ao conteúdo pelo botão de topo, com movimento normal e reduzido, e a alternativa estática nas três rotas em quatro viewports. Sem JavaScript, nome, cargo e contatos permanecem disponíveis; os projetos interativos não são reproduzidos. O roteiro também foi validado contra o build de produção servido por `vite preview`, onde os estilos globais são carregados sem depender do JavaScript. Não substitui uma auditoria com leitor de tela.
 
+### Zoom nativo de 200%
+
+Use uma sessão Chrome headless com **perfil exclusivo de teste**, nunca o perfil pessoal do navegador:
+
+```bash
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-zoom open http://localhost:5173 --persistent --profile output/playwright/zoom-profile
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-zoom run-code --filename tests/browser/zoom.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-zoom close
+```
+
+O roteiro altera o zoom pelo controle nativo em `chrome://settings/appearance`, confere a redução real da viewport CSS pela metade e restaura a configuração no fim. São 142 verificações em PT/EN: sete seções, todos os slides de projetos/experiências, menu, foco e largura dos arquivos de Projetos/Notas. As quatro janelas de teste correspondem a áreas CSS de 320×480, 640×360, 720×450 e 960×540. Aprovado em desenvolvimento e no build servido por `vite preview`.
+
+Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em tela estreita permanece uma limitação registrada no TODO. Para capturas após rolagem com zoom nativo, foi necessário usar `Page.captureScreenshot` sem `clip` e com `captureBeyondViewport: false`: a captura comum do Playwright produziu imagens vazias nesses ensaios.
+
 ## Contato
 
 - [LinkedIn](https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/)
