@@ -30,6 +30,8 @@ async function auditMotionPreference(page) {
           ["/projetos?tipo=corporativo", "#corporativo-projects > div:last-child > div"],
           ["/projetos?tipo=gerais", ".project-archive-row"],
         ]) {
+          // O alvo precisa estar inteiro abaixo da dobra, independentemente da copy/layout.
+          await page.setViewportSize({ width, height: 480 })
           await page.emulateMedia({ reducedMotion: "no-preference" })
           await page.goto(`${origin}${path}`)
           const target = page.locator(selector).last()
@@ -38,12 +40,12 @@ async function auditMotionPreference(page) {
             const reveal = element.matches("a") ? element.parentElement : element
             return {
               opacity: getComputedStyle(reveal).opacity,
-              bottom: reveal.getBoundingClientRect().bottom,
+              top: reveal.getBoundingClientRect().top,
             }
           })
           check(
             `${width} / ${language} / ${path}: entrada aguardando scroll`,
-            before.bottom > height && before.opacity === "0",
+            before.top >= 480 && before.opacity === "0",
             before,
           )
           await page.emulateMedia({ reducedMotion: "reduce" })
