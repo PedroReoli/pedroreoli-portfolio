@@ -30,6 +30,7 @@ before(async () => {
     Sections: "/src/components/organisms/HomeSections.tsx",
     Footer: "/src/components/organisms/SiteFooter.tsx",
     FeaturedProject: "/src/components/molecules/FeaturedProjectSlide.tsx",
+    ContentStatus: "/src/components/molecules/ContentStatus.tsx",
   })) {
     components[name] = (await server.ssrLoadModule(path)).default
   }
@@ -66,6 +67,29 @@ function render(children, language = "pt", location = "/") {
 }
 
 for (const language of ["pt", "en"]) {
+  test(`Estados ${language}: carregamento e erro com semântica de página e seção`, () => {
+    for (const scope of ["page", "section"]) {
+      for (const status of ["loading", "error"]) {
+        const html = render(
+          React.createElement(components.ContentStatus, { scope, status }),
+          language,
+        )
+        assert.equal((html.match(/<main\b/g) || []).length, scope === "page" ? 1 : 0)
+        assert.equal((html.match(/id="main-content"/g) || []).length, scope === "page" ? 1 : 0)
+        assert.ok(html.includes(`aria-busy="${status === "loading"}"`))
+        if (status === "loading") {
+          assert.ok(html.includes('role="status"'))
+          assert.ok(html.includes(language === "pt" ? "Carregando" : "Loading"))
+        } else {
+          assert.ok(html.includes('role="alert"'))
+          assert.ok(html.includes(language === "pt" ? "Tentar novamente" : "Try again"))
+          assert.ok(html.includes(scope === "page" ? "<h1 " : "<h2 "))
+          assert.ok(html.includes(scope === "page" ? 'href="/"' : 'href="#contato"'))
+        }
+      }
+    }
+  })
+
   test(`Slides ${language}: conteúdo centralizado e destinos corretos`, () => {
     assert.equal(featuredProjects.length, 2, "Dois destaques antes do link Ver mais projetos")
     for (const project of featuredProjects) {

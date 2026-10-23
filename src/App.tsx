@@ -6,22 +6,12 @@ import { domAnimation, LazyMotion, MotionConfig } from "framer-motion"
 import ScrollToTop from "./components/atoms/ScrollToTop"
 import LanguageNotice from "./components/atoms/LanguageNotice"
 import SiteHeader from "./components/organisms/SiteHeader"
+import ContentBoundary from "./components/molecules/ContentBoundary"
+import ContentStatus from "./components/molecules/ContentStatus"
 
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"))
 const MediaBlogPage = lazy(() => import("./pages/MediaBlogPage"))
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
-
-const PageFallback: React.FC = () => (
-  <main
-    id="main-content"
-    tabIndex={-1}
-    className="grid min-h-screen place-items-center bg-[#111010] pt-16 text-[#edeae4] focus:outline-none"
-    aria-live="polite"
-    aria-busy="true"
-  >
-    <span className="editorial-label text-[#8d8984]">Loading / Carregando</span>
-  </main>
-)
 
 const RoutedApp: React.FC = () => {
   const location = useLocation()
@@ -31,29 +21,31 @@ const RoutedApp: React.FC = () => {
       <ScrollToTop />
       <LanguageNotice />
       <SiteHeader />
-      <Suspense key={location.pathname} fallback={<PageFallback />}>
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projetos" element={<ProjectsPage />} />
-          <Route
-            path="/projetos=corporativos"
-            element={<Navigate to="/projetos?tipo=corporativo" replace />}
-          />
-          <Route
-            path="/projetos=coprporativos"
-            element={<Navigate to="/projetos?tipo=corporativo" replace />}
-          />
-          <Route
-            path="/projetos=gerais"
-            element={<Navigate to="/projetos?tipo=gerais" replace />}
-          />
-          <Route path="/midia-blog" element={<MediaBlogPage />} />
-          <Route path="/midia-e-blog" element={<Navigate to="/midia-blog" replace />} />
-          <Route path="/dossie-tecnico" element={<Navigate to="/" replace />} />
-          <Route path="/dossie" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
+      <ContentBoundary key={location.pathname} fallback={<ContentStatus status="error" />}>
+        <Suspense fallback={<ContentStatus status="loading" />}>
+          <Routes location={location}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projetos" element={<ProjectsPage />} />
+            <Route
+              path="/projetos=corporativos"
+              element={<Navigate to="/projetos?tipo=corporativo" replace />}
+            />
+            <Route
+              path="/projetos=coprporativos"
+              element={<Navigate to="/projetos?tipo=corporativo" replace />}
+            />
+            <Route
+              path="/projetos=gerais"
+              element={<Navigate to="/projetos?tipo=gerais" replace />}
+            />
+            <Route path="/midia-blog" element={<MediaBlogPage />} />
+            <Route path="/midia-e-blog" element={<Navigate to="/midia-blog" replace />} />
+            <Route path="/dossie-tecnico" element={<Navigate to="/" replace />} />
+            <Route path="/dossie" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </ContentBoundary>
     </>
   )
 }

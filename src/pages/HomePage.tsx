@@ -4,6 +4,8 @@ import HomeIntro from "../components/organisms/HomeIntro"
 import SiteFooter from "../components/organisms/SiteFooter"
 import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
+import ContentBoundary from "../components/molecules/ContentBoundary"
+import ContentStatus from "../components/molecules/ContentStatus"
 
 const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
 
@@ -31,20 +33,11 @@ export const HomePage: React.FC = () => {
 
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <HomeIntro />
-        <Suspense
-          fallback={
-            <section
-              className="grid min-h-screen place-items-center border-y border-white/10"
-              role="status"
-            >
-              <span className="editorial-label text-[#8d8984]">
-                {isEn ? "Loading selected work" : "Carregando projetos selecionados"}
-              </span>
-            </section>
-          }
-        >
-          <HomeSections />
-        </Suspense>
+        <ContentBoundary fallback={<ContentStatus status="error" scope="section" />}>
+          <Suspense fallback={<ContentStatus status="loading" scope="section" />}>
+            <HomeSections />
+          </Suspense>
+        </ContentBoundary>
       </main>
       <SiteFooter />
     </div>
