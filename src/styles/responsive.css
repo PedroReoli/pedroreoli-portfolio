@@ -52,38 +52,12 @@
     text-align: center;
   }
 
-  .project-stage-title {
-    font-size: 2.05rem;
-  }
-
-  .project-switcher {
-    gap: 0.75rem;
-  }
-
-  .project-switcher button {
-    font-size: 0.5rem;
-    letter-spacing: 0.08em;
-  }
-
-  .project-switcher-button {
-    min-width: auto;
-    border-right: 0;
-  }
-
-  .project-switcher-button + .project-switcher-button {
-    padding-left: 0;
-  }
-
   .hero-project-label-long {
     display: none;
   }
 
   .hero-project-label-short {
     display: inline;
-  }
-
-  .text-outline {
-    -webkit-text-stroke-width: 1px;
   }
 }
 
@@ -154,11 +128,6 @@
     font-size: clamp(0.56rem, 2.3vw, 0.65rem);
   }
 
-  .about-direction {
-    margin-top: 0.45rem;
-    font-size: clamp(0.4rem, 1.8vw, 0.5rem);
-  }
-
   .purpose-stage-heading > :last-child {
     display: none;
   }
@@ -216,20 +185,6 @@
   .experience-detail-copy {
     font-size: clamp(0.78rem, 3.3vw, 0.9rem);
     line-height: 1.4;
-  }
-
-  .project-feature {
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 1.25fr) auto;
-    gap: clamp(0.7rem, 2vh, 1rem);
-  }
-
-  .project-feature-title {
-    font-size: clamp(2rem, min(10vw, 7vh), 3.5rem);
-  }
-
-  .project-feature-description {
-    font-size: clamp(0.72rem, 3.3vw, 0.85rem);
   }
 
   .stack-lane {
@@ -291,10 +246,6 @@
 
   .stack-lane-tools {
     gap: 0.85rem;
-  }
-
-  .about-direction {
-    display: none;
   }
 
   .about-summary,

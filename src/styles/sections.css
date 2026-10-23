@@ -12,10 +12,6 @@
     overflow: clip;
   }
 
-  .editorial-section {
-    padding-block: clamp(5.5rem, 11vw, 10rem);
-  }
-
   .skip-link {
     position: fixed;
     z-index: 100;
@@ -148,79 +144,6 @@
   }
 
   .hero-project-label-short {
-    display: none;
-  }
-
-  .section-display {
-    font-size: clamp(2.8rem, 8vw, 8rem);
-    font-weight: 900;
-    line-height: 0.82;
-    letter-spacing: -0.075em;
-  }
-
-  .project-stage-layout {
-    display: grid;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    gap: clamp(0.5rem, 1.3vh, 1rem);
-    height: 100%;
-    padding-top: clamp(4.75rem, 10vh, 6rem);
-    padding-bottom: clamp(0.65rem, 1.7vh, 1.5rem);
-  }
-
-  .project-stage-title {
-    font-size: clamp(2.5rem, min(7vw, 10vh), 7rem);
-    line-height: 0.76;
-    letter-spacing: -0.075em;
-  }
-
-  .project-feature {
-    display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 0.65fr);
-    gap: clamp(1.5rem, 3vw, 4rem);
-    height: 100%;
-  }
-
-  .project-feature-title {
-    font-size: clamp(2.75rem, min(6vw, 9vh), 6.5rem);
-    line-height: 0.82;
-    letter-spacing: -0.07em;
-  }
-
-  .project-feature-description {
-    font-size: clamp(0.8rem, min(1.1vw, 2.2vh), 1.05rem);
-  }
-
-  .project-switcher {
-    scrollbar-width: none;
-  }
-
-  .project-switcher-button {
-    min-width: clamp(8.5rem, 15vw, 13rem);
-    border-right: 1px solid rgb(255 255 255 / 0.1);
-  }
-
-  .project-switcher-button + .project-switcher-button {
-    padding-left: clamp(0.75rem, 1.5vw, 1.5rem);
-  }
-
-  .project-switcher-button::after {
-    position: absolute;
-    right: 0;
-    bottom: -1px;
-    left: 0;
-    height: 1px;
-    background: #82aaff;
-    content: "";
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .project-switcher-button[aria-pressed="true"]::after {
-    transform: scaleX(1);
-  }
-
-  .project-switcher::-webkit-scrollbar {
     display: none;
   }
 
@@ -565,11 +488,6 @@
     -webkit-text-stroke: 1.5px #edeae4;
   }
 
-  .text-outline {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #edeae4;
-  }
-
   .footer-links {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -638,8 +556,7 @@
   }
 
   .project-agent-word,
-  .footer-cta-outline,
-  .text-outline {
+  .footer-cta-outline {
     color: #edeae4;
   }
 }
