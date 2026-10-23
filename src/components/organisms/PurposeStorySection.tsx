@@ -25,8 +25,8 @@ export const PurposeStorySection: React.FC = () => {
         <Reveal
           className="purpose-media-shell min-h-0"
           axis="x"
-          distance={64}
-          delay={0.18}
+          distance={28}
+          delay={0.12}
           amount={0.08}
         >
           <figure className="purpose-media-frame relative h-full overflow-hidden">
@@ -60,7 +60,7 @@ export const PurposeStorySection: React.FC = () => {
         </Reveal>
 
         <div className="purpose-statement">
-          <Reveal distance={56} delay={0.32} amount={0.08}>
+          <Reveal distance={28} delay={0.22} amount={0.08}>
             <h2 className="purpose-title font-black uppercase">
               {isEn ? "Communication" : "Comunicação"}
               <span>{isEn ? "made accessible." : "mais acessível."}</span>
@@ -68,7 +68,7 @@ export const PurposeStorySection: React.FC = () => {
           </Reveal>
 
           <div className="purpose-statement-copy">
-            <Reveal delay={0.46} distance={40} amount={0.06}>
+            <Reveal delay={0.32} distance={24} amount={0.06}>
               <p className="purpose-summary">
                 {isEn
                   ? "FalaAtípica brings families, children and speech professionals closer through clearer communication."
@@ -76,7 +76,7 @@ export const PurposeStorySection: React.FC = () => {
               </p>
             </Reveal>
 
-            <Reveal delay={0.6} distance={32} amount={0.04}>
+            <Reveal delay={0.42} distance={20} amount={0.04}>
               <a
                 href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
                 target="_blank"

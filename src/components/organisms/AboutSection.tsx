@@ -38,8 +38,8 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
             once
             className="about-portrait-shell min-h-0"
             axis="x"
-            distance={-64}
-            delay={0.18}
+            distance={-28}
+            delay={0.12}
             amount={0.08}
           >
             <figure className="about-portrait-frame relative h-full overflow-hidden">
@@ -64,7 +64,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
           </Reveal>
 
           <div className="about-copy min-h-0">
-            <Reveal once distance={56} delay={0.32} amount={0.08}>
+            <Reveal once distance={28} delay={0.2} amount={0.08}>
               <p className="editorial-label mb-2 text-[#5f5b56]">
                 {isEn ? "Full Stack / Architecture / AI" : "Full Stack / Arquitetura / IA"}
               </p>
@@ -73,7 +73,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
               </h2>
             </Reveal>
 
-            <Reveal once delay={0.46} distance={40} amount={0.08}>
+            <Reveal once delay={0.28} distance={24} amount={0.08}>
               <p className="about-summary">
                 {isEn
                   ? "I'm a Full Stack engineer with a focus on frontend. I build ERP systems, SaaS products and integrations, from the first workflow to production."
@@ -91,8 +91,8 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
                   key={stat.value}
                   className="about-stat"
                   role="listitem"
-                  delay={0.58 + index * 0.09}
-                  distance={40}
+                  delay={0.36 + index * 0.06}
+                  distance={20}
                   amount={0.04}
                   once
                 >

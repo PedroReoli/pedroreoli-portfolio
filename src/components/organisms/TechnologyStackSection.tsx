@@ -141,8 +141,8 @@ export const TechnologyStackSection: React.FC = () => {
               className="min-h-0"
               role="listitem"
               amount={0.05}
-              delay={0.2 + index * 0.14}
-              distance={64}
+              delay={0.16 + index * 0.1}
+              distance={28}
             >
               <article className="stack-lane h-full">
                 <div className="stack-lane-heading">

@@ -109,6 +109,103 @@
   }
 }
 
+/* Tall phones have room for readable copy, not just a taller crop of the photo. */
+@media (max-width: 767px) and (min-height: 701px) {
+  .about-stage-content {
+    grid-template-rows: minmax(0, 1fr) minmax(min-content, 1fr);
+  }
+
+  .about-copy {
+    justify-content: center;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 10vw, 3.8rem);
+    line-height: 0.92;
+  }
+
+  .about-summary,
+  .purpose-summary {
+    font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+    line-height: 1.5;
+  }
+
+  .about-stats {
+    margin-top: 1rem;
+  }
+
+  .about-stat {
+    padding-block: 0.65rem;
+  }
+
+  .about-stat strong {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  .about-stat span {
+    font-size: clamp(0.6rem, 2.6vw, 0.75rem);
+  }
+
+  .purpose-stage-layout {
+    grid-template-rows: auto minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .purpose-statement {
+    align-content: center;
+    gap: 1.25rem;
+  }
+
+  .purpose-title {
+    font-size: clamp(2rem, 9.5vw, 4rem);
+  }
+
+  .stack-tool {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
+    gap: 0.35rem;
+    font-size: clamp(0.65rem, 2.7vw, 0.8rem);
+  }
+
+  .stack-lane-tools {
+    padding-left: 0;
+  }
+
+  .stack-brand-icon {
+    font-size: clamp(1.5rem, 6.5vw, 2.25rem);
+  }
+}
+
+/* Narrow tablets have room for a portrait column and a single row of tools. */
+@media (min-width: 600px) and (max-width: 767px) {
+  .about-stage-content {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .about-copy {
+    justify-content: center;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 0.92;
+  }
+
+  .stack-lane-tools {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    padding-left: 0;
+  }
+
+  .stack-tool {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
+    font-size: 0.65rem;
+  }
+}
+
 /* Paisagem: redistribui o conteúdo, sem apertar tudo em uma coluna. */
 @media (min-width: 600px) and (max-height: 540px) {
   .hero-diagonal-stage {

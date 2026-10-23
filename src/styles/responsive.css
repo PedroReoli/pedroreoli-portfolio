@@ -175,7 +175,7 @@
   }
 
   .experience-index-role {
-    font-size: clamp(0.52rem, min(2.4vw, 1.35vh), 0.68rem);
+    display: none;
   }
 
   .experience-detail-company {
@@ -219,7 +219,7 @@
   }
 
   .stack-brand-icon {
-    font-size: clamp(1.1rem, min(5vw, 2.8vh), 1.6rem);
+    font-size: clamp(1.1rem, min(6vw, 3.6vh), 1.8rem);
   }
 
   .footer-links {

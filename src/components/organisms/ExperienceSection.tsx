@@ -92,12 +92,12 @@ export const ExperienceSection: React.FC = () => {
                         }`}
                         aria-controls="experience-detail"
                         onClick={() => scrollToExperience(index)}
-                        className="experience-index-row group grid h-full w-full min-h-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-white/10 text-left"
+                        className="experience-index-row group grid h-full w-full min-h-0 grid-cols-[auto_minmax(0,1fr)] content-center items-center gap-x-3 gap-y-1 border-b border-white/10 text-left"
                       >
                         <span className="experience-step-number">0{index + 1}</span>
                         <span className="min-w-0">
                           <strong
-                            className={`experience-index-company block truncate font-bold tracking-[-0.035em] transition-colors duration-200 ${
+                            className={`experience-index-company block font-bold tracking-[-0.035em] transition-colors duration-200 ${
                               isActive ? "text-white" : "text-white/45 group-hover:text-white/75"
                             }`}
                           >
@@ -107,7 +107,7 @@ export const ExperienceSection: React.FC = () => {
                             {isEn ? item.role.en : item.role.pt}
                           </span>
                         </span>
-                        <span className="editorial-label whitespace-nowrap text-[#8d8984]">
+                        <span className="experience-index-period editorial-label col-start-2 text-[#8d8984]">
                           {isEn ? item.period.en : item.period.pt}
                         </span>
                       </button>
@@ -120,20 +120,20 @@ export const ExperienceSection: React.FC = () => {
             <Reveal
               className="experience-detail-shell min-h-0"
               axis="x"
-              distance={40}
+              distance={24}
               amount={0.12}
-              delay={0.36}
+              delay={0.28}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <m.article
                   id="experience-detail"
                   key={`${activeItem.company}-${language}`}
-                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 40 }}
+                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={
                     reduceMotion
                       ? { opacity: 1 }
-                      : { opacity: 0, x: -24, transition: { duration: 0.18 } }
+                      : { opacity: 0, x: -12, transition: { duration: 0.16 } }
                   }
                   transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full min-h-0 flex-col justify-center"
