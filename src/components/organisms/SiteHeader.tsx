@@ -5,14 +5,19 @@ import { Menu, X, Home, Briefcase, FileText } from "lucide-react"
 import { getMailtoUrl } from "../../config/site"
 import { useLanguage } from "../../i18n/useLanguage"
 import FlagIcon from "../atoms/FlagIcon"
+import { useMobileNavigation } from "./navigation/useMobileNavigation"
 
 export const SiteHeader: React.FC = () => {
   const { language, toggleLanguage } = useLanguage()
   const { pathname } = useLocation()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const {
+    open: mobileMenuOpen,
+    setOpen: setMobileMenuOpen,
+    buttonRef: menuButtonRef,
+    navigationRef,
+  } = useMobileNavigation(pathname)
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [navigationVisible, setNavigationVisible] = useState(true)
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const lastScrollDecision = useRef(0)
   const { scrollY } = useScroll()
   const reduceMotion = Boolean(useReducedMotion())
@@ -35,32 +40,12 @@ export const SiteHeader: React.FC = () => {
   })
 
   useEffect(() => {
-    setMobileMenuOpen(false)
     setNavigationVisible(true)
     lastScrollDecision.current = 0
   }, [pathname])
 
   useEffect(() => {
     if (mobileMenuOpen) setNavigationVisible(true)
-  }, [mobileMenuOpen])
-
-  useEffect(() => {
-    if (!mobileMenuOpen) return
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return
-      setMobileMenuOpen(false)
-      window.requestAnimationFrame(() => menuButtonRef.current?.focus())
-    }
-
-    window.addEventListener("keydown", closeOnEscape)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener("keydown", closeOnEscape)
-    }
   }, [mobileMenuOpen])
 
   const navLinks = [
@@ -223,11 +208,12 @@ export const SiteHeader: React.FC = () => {
         {mobileMenuOpen && (
           <m.nav
             id="mobile-navigation"
-            initial={{ opacity: 0, y: -8 }}
+            ref={navigationRef}
+            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-14 z-40 border-b border-white/10 bg-[#111010]/98 px-5 py-6 shadow-2xl backdrop-blur-2xl md:hidden"
+            transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 top-14 z-40 max-h-[calc(var(--viewport-height)-3.5rem)] overflow-y-auto overscroll-contain border-b border-white/10 bg-[#111010]/98 px-5 py-6 shadow-2xl backdrop-blur-2xl md:hidden"
             aria-label={isEn ? "Mobile navigation" : "Navegação mobile"}
           >
             <div className="flex flex-col gap-2">
@@ -241,7 +227,12 @@ export const SiteHeader: React.FC = () => {
                     key={link.path}
                     to={link.path}
                     aria-current={isActive ? "page" : undefined}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      if (link.path === pathname) {
+                        document.getElementById("main-content")?.focus({ preventScroll: true })
+                      }
+                    }}
                     className={`flex items-center justify-between rounded-xl border border-transparent p-3.5 text-lg font-bold tracking-[-0.02em] transition-all ${
                       isActive
                         ? "border-white/15 bg-white/10 text-white"
@@ -253,6 +244,7 @@ export const SiteHeader: React.FC = () => {
                       <span>{link.label}</span>
                     </span>
                     <span
+                      aria-hidden="true"
                       className={`text-xs font-mono ${
                         isActive ? "text-[#82aaff]" : "text-[#8d8984]"
                       }`}

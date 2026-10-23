@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { LanguageContext, type Language } from "./language-context"
 
 const STORAGE_KEY = "pedroreoli-portfolio-language"
@@ -30,8 +30,11 @@ const detectLanguage = (): Language => {
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState<Language>(detectLanguage)
-  const [isSwitching, setIsSwitching] = useState(false)
   const [switchingTo, setSwitchingTo] = useState<Language | null>(null)
+  const noticeTimer = useRef<number>()
+  const isSwitching = switchingTo !== null
+
+  useEffect(() => () => window.clearTimeout(noticeTimer.current), [])
 
   useEffect(() => {
     document.documentElement.lang = language === "pt" ? "pt-BR" : "en"
@@ -57,20 +60,15 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   const triggerLanguageSwitch = useCallback(
     (targetLanguage: Language) => {
-      if (targetLanguage === language || isSwitching) return
-      setIsSwitching(true)
+      if (targetLanguage === language) return
+      window.clearTimeout(noticeTimer.current)
+      setLanguage(targetLanguage)
       setSwitchingTo(targetLanguage)
-
-      window.setTimeout(() => {
-        setLanguage(targetLanguage)
-      }, 180)
-
-      window.setTimeout(() => {
-        setIsSwitching(false)
+      noticeTimer.current = window.setTimeout(() => {
         setSwitchingTo(null)
-      }, 550)
+      }, 1400)
     },
-    [language, isSwitching],
+    [language],
   )
 
   const toggleLanguage = useCallback(() => {
@@ -91,4 +89,3 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
-

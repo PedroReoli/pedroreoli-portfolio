@@ -34,6 +34,8 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Sequência Pedro → Reoli → cargo e transição escura/clara no scroll. Entradas concluídas nas demais seções, inclusive com rolagem rápida.
 - [x] Reduced motion, navbar por direção de scroll, recuperação por foco, Escape e retorno do foco no menu mobile.
 - [x] Capturas de desktop, mobile e paisagem inspecionadas. Artefatos locais em `output/playwright/` (não versionados).
+- [x] Menu mobile fecha ao virar desktop, sair pelo teclado ou clicar fora, sem bloquear a rolagem; confirmação de idioma compacta e troca imediata.
+- [x] Foco no conteúdo após navegação, inclusive em rota lazy; regressões de navegação versionadas em `tests/browser/navigation.cli.js`.
 
 ## Validação ainda pendente
 

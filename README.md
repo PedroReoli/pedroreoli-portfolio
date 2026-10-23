@@ -41,6 +41,16 @@ npm run check
 
 `test:render` confere estrutura, conteúdo bilíngue e rótulos acessíveis. Não substitui validação visual e de interações em navegador.
 
+Auditoria de navegação em navegador real, sem abrir janelas (CLI 0.1.22):
+
+```bash
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa open http://localhost:5173
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/navigation.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
+```
+
+Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; não use `--headed`. O roteiro valida menu, teclado, foco entre rotas, idioma e viewport baixa, sem clicar em links externos. A preferência de idioma da sessão de teste termina em português.
+
 ## Contato
 
 - [LinkedIn](https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/)
