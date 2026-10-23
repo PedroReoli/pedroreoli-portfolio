@@ -37,6 +37,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Capturas de desktop, mobile e paisagem inspecionadas. Artefatos locais em `output/playwright/` (não versionados).
 - [x] Menu mobile fecha ao virar desktop, sair pelo teclado ou clicar fora, sem bloquear a rolagem; confirmação de idioma compacta e troca imediata.
 - [x] Foco no conteúdo após navegação, inclusive em rota lazy; regressões de navegação versionadas em `tests/browser/navigation.cli.js`.
+- [x] Slides de projetos com apresentação reutilizável e conteúdo centralizado; 56 verificações de scroll, encaixe, teclado, destinos e transições em `tests/browser/projects.cli.js`.
 
 ## Validação ainda pendente
 

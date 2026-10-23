@@ -11,6 +11,7 @@ import { createServer } from "vite"
 const root = fileURLToPath(new URL("../", import.meta.url))
 let server
 let LanguageContext
+let featuredProjects
 const components = {}
 
 before(async () => {
@@ -21,12 +22,14 @@ before(async () => {
     logLevel: "error",
   })
   ;({ LanguageContext } = await server.ssrLoadModule("/src/i18n/language-context.ts"))
+  ;({ featuredProjects } = await server.ssrLoadModule("/src/content/homeContent.ts"))
   for (const [name, path] of Object.entries({
     Projects: "/src/pages/ProjectsPage.tsx",
     Notes: "/src/pages/MediaBlogPage.tsx",
     Intro: "/src/components/organisms/HomeIntro.tsx",
     Sections: "/src/components/organisms/HomeSections.tsx",
     Footer: "/src/components/organisms/SiteFooter.tsx",
+    FeaturedProject: "/src/components/molecules/FeaturedProjectSlide.tsx",
   })) {
     components[name] = (await server.ssrLoadModule(path)).default
   }
@@ -63,6 +66,34 @@ function render(children, language = "pt", location = "/") {
 }
 
 for (const language of ["pt", "en"]) {
+  test(`Slides ${language}: conteúdo centralizado e destinos corretos`, () => {
+    assert.equal(featuredProjects.length, 2, "Dois destaques antes do link Ver mais projetos")
+    for (const project of featuredProjects) {
+      const html = render(
+        React.createElement(components.FeaturedProject, {
+          project,
+          isEn: language === "en",
+          total: featuredProjects.length,
+        }),
+        language,
+      )
+      assert.ok(html.includes(project.title))
+      assert.ok(html.includes(project.description[language]))
+      assert.ok(html.includes(project.action[language]))
+      assert.ok(html.includes(`href="${project.href}"`))
+      assert.equal(html.split(project.year).length - 1, 1, "Ano sem repetição na imagem")
+      assert.equal((html.match(/<li\b/g) || []).length, project.technologies.length)
+      if (project.external) {
+        assert.ok(html.includes('rel="noopener noreferrer"'))
+        assert.ok(html.includes(language === "pt" ? "Abre em nova aba" : "Opens in a new tab"))
+      } else {
+        assert.ok(html.includes('loading="lazy"'))
+        assert.ok(html.includes(project.imageAlt[language]))
+        assert.ok(!html.includes('target="_blank"'))
+      }
+    }
+  })
+
   test(`Home ${language}: sete seções, nome e destinos preservados`, () => {
     const html = render(
       React.createElement(

@@ -46,10 +46,11 @@ Auditoria de navegação em navegador real, sem abrir janelas (CLI 0.1.22):
 ```bash
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa open http://localhost:5173
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/navigation.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
 ```
 
-Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; não use `--headed`. O roteiro valida menu, teclado, foco entre rotas, idioma e viewport baixa, sem clicar em links externos. A preferência de idioma da sessão de teste termina em português.
+Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; não use `--headed`. Os roteiros validam menu, teclado, foco entre rotas, idioma, viewport baixa e os três slides de projetos em sete viewports e dois idiomas. Conferem transições com e sem movimento reduzido, sem clicar em links externos. A preferência de idioma muda apenas na sessão isolada de teste.
 
 ## Contato
 

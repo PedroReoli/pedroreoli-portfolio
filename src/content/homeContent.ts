@@ -1,18 +1,22 @@
 import type { LocalizedText } from "./contentTypes"
 
-export interface FeaturedProject {
+interface FeaturedProjectContent {
   number: string
   title: string
   category: LocalizedText
   year: string
   description: LocalizedText
+  technologies: string[]
+  action: LocalizedText
   href: string
   external?: boolean
-  image?: string
-  imageSrcSet?: string
-  imageAlt?: LocalizedText
-  visual?: "agent"
 }
+
+export type FeaturedProject = FeaturedProjectContent &
+  (
+    | { visual: "image"; image: string; imageSrcSet: string; imageAlt: LocalizedText }
+    | { visual: "agent" }
+  )
 
 export interface ExperienceItem {
   period: LocalizedText
@@ -30,12 +34,15 @@ export const featuredProjects: FeaturedProject[] = [
   {
     number: "01",
     title: "Autocom3",
-    category: { pt: "Software corporativo", en: "Enterprise software" },
+    category: { pt: "Software corporativo", en: "Enterprise system" },
     year: "2024 / 26",
     description: {
-      pt: "Operação comercial, licenças e catálogo reunidos em uma experiência corporativa.",
-      en: "Commercial operations, licensing and catalog workflows brought into one enterprise experience.",
+      pt: "Propostas, licenças e catálogo em uma plataforma corporativa.",
+      en: "Proposals, licenses and catalogs in one corporate platform.",
     },
+    technologies: ["React", "TypeScript", "Clean Architecture"],
+    action: { pt: "Explorar interfaces", en: "Explore the interfaces" },
+    visual: "image",
     image: "/portfolio-autocom3/01-painel-operacoes-visao-geral.png",
     imageSrcSet:
       "/media/projects/autocom3-operations-720.webp 720w, /media/projects/autocom3-operations-1440.webp 1440w, /media/projects/autocom3-operations-2880.webp 2880w",
@@ -48,12 +55,14 @@ export const featuredProjects: FeaturedProject[] = [
   {
     number: "02",
     title: "Achilles",
-    category: { pt: "Agentes & browser", en: "Agents & browser" },
+    category: { pt: "Agentes autônomos", en: "Autonomous agents" },
     year: "2026",
     description: {
-      pt: "Um agente local que opera navegadores por CDP com ferramentas observáveis e determinísticas.",
-      en: "A local agent that operates browsers through CDP with observable, deterministic tools.",
+      pt: "Agente local para automatizar navegadores com CDP e ferramentas observáveis.",
+      en: "A local agent for browser automation with CDP and observable tools.",
     },
+    technologies: ["CDP Protocol", "TypeScript", "Node.js"],
+    action: { pt: "Ver no GitHub", en: "View on GitHub" },
     visual: "agent",
     href: "https://github.com/PedroReoli/Achilles-CDP-Agent",
     external: true,
