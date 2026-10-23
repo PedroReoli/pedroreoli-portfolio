@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
-import { m, useReducedMotion } from "framer-motion"
+import { m } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { SlideEntranceContext } from "./slideEntranceContext"
 
 interface RevealProps {

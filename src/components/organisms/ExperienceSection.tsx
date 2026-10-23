@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
-import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
+import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"

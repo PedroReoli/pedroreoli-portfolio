@@ -1,5 +1,5 @@
 import React from "react"
-import { useReducedMotion } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowUp, Mail } from "lucide-react"
 import { SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si"
 import { getMailtoUrl, siteConfig } from "../../config/site"

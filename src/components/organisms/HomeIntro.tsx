@@ -1,5 +1,6 @@
 import { useRef } from "react"
-import { m, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { m, useScroll, useTransform } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import AboutSection from "./AboutSection"
 import PortfolioHero from "./PortfolioHero"
 

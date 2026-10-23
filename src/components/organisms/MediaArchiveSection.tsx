@@ -68,14 +68,14 @@ export const MediaArchiveSection: React.FC = () => {
       </section>
 
       <section className="archive-container archive-section">
-        <div className="mb-8 flex items-end justify-between">
+        <Reveal distance={24} className="mb-8 flex items-end justify-between">
           <h2 className="archive-section-title">
             {isEn ? "Inside the code" : "Por dentro do código"}
           </h2>
           <span className="editorial-label hidden text-[#8d8984] sm:block">
             03 / {isEn ? "references" : "referências"}
           </span>
-        </div>
+        </Reveal>
         {mediaNotes.map((note, index) => (
           <Reveal key={note.number} distance={24} delay={index * 0.06}>
             <a

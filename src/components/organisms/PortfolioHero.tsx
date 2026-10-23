@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
-import { m, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { m, useScroll, useTransform } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
 

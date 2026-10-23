@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
-import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
+import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { Link, useLocation } from "react-router-dom"
 import { Menu, X, Home, Briefcase, FileText } from "lucide-react"
 import { getMailtoUrl } from "../../config/site"

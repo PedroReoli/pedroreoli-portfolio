@@ -54,7 +54,9 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <LazyMotion features={domAnimation} strict>
-        <MotionConfig reducedMotion="user">
+        {/* Cada animação usa o hook reativo local. O modo "user" do Framer 11
+            captura a preferência na montagem e não acompanha mudanças em tempo real. */}
+        <MotionConfig reducedMotion="never">
           <BrowserRouter>
             <RoutedApp />
           </BrowserRouter>

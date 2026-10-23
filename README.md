@@ -17,6 +17,7 @@ Portfólio bilíngue de Pedro Reoli, construído como uma experiência editorial
 src/
 ├── components/   # átomos, organismos e templates reutilizáveis
 ├── content/      # conteúdo estruturado da home e dos projetos
+├── hooks/        # preferências e comportamentos compartilhados
 ├── i18n/         # idioma e persistência da preferência
 ├── pages/        # composição das rotas
 └── styles/       # fundação, seções e regras responsivas
@@ -41,11 +42,15 @@ npm run check
 
 `test:render` confere estrutura, conteúdo bilíngue e rótulos acessíveis. Não substitui validação visual e de interações em navegador.
 
+As animações usam `hooks/useReducedMotion.ts`, que acompanha mudanças de `prefers-reduced-motion` com a página aberta. Novos componentes com movimento devem usar esse hook para controlar duração, deslocamento e scroll programático. A política fica na aplicação porque o modo `user` do Framer Motion 11 instalado captura a preferência na montagem. Não remonte a página ao mudar essa preferência: foco, URL e posição de leitura devem permanecer intactos.
+
 Auditoria de navegação em navegador real, sem abrir janelas (CLI 0.1.22):
 
 ```bash
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa open http://localhost:5173
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/navigation.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/hero.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/preferences.cli.js

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
-import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion"
+import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
 import { featuredProjects } from "../../content/homeContent"

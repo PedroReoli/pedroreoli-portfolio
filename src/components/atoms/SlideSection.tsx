@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
-import { useInView, useReducedMotion } from "framer-motion"
+import { useInView } from "framer-motion"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { SlideEntranceContext } from "./slideEntranceContext"
 
 type SlideSectionProps = React.HTMLAttributes<HTMLElement> & {
