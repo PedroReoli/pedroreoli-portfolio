@@ -1,0 +1,29 @@
+/* Cores forçadas removem fundos de seleção; preserva estado sem alterar o layout. */
+@media (forced-colors: active) {
+  a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  button:is([aria-current="step"], [aria-pressed="true"]) {
+    outline: 2px solid Highlight;
+    outline-offset: -3px;
+  }
+
+  /* Foco fica externo e tracejado; seleção continua interna e contínua. */
+  a:any-link:focus-visible,
+  button:focus-visible {
+    outline: 2px dashed Highlight;
+    outline-offset: 4px;
+  }
+
+  .experience-progress span {
+    border-top: 2px dotted GrayText;
+  }
+
+  .experience-progress span.is-complete {
+    border-top-style: solid;
+    border-top-color: Highlight;
+  }
+}

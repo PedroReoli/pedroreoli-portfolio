@@ -51,6 +51,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/preferences.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/images.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/accessibility.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/contrast.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
 ```
 
@@ -63,6 +64,8 @@ Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; nã
 `images.cli.js` verifica WebP em uso normal, recuperação com o PNG original e falha de ambos os formatos. A alternativa é tentada uma vez; se também falhar, a descrição alternativa e as dimensões são preservadas, sem novas tentativas automáticas. As falhas são simuladas apenas na sessão headless.
 
 `accessibility.cli.js` verifica o retorno do foco ao conteúdo pelo botão de topo, com movimento normal e reduzido, e a alternativa estática nas três rotas em quatro viewports. Sem JavaScript, nome, cargo e contatos permanecem disponíveis; os projetos interativos não são reproduzidos. O roteiro também foi validado contra o build de produção servido por `vite preview`, onde os estilos globais são carregados sem depender do JavaScript. Não substitui uma auditoria com leitor de tela.
+
+`contrast.cli.js` emula cores forçadas claras e escuras em 390×844 e 1440×900. Confere a página ativa, os três seletores de projetos, os cinco capítulos da trajetória, os filtros do arquivo e o foco por teclado, além de uma regressão do modo normal. A folha `styles/accessibility.css` usa cores do sistema e distingue seleção interna contínua de foco externo tracejado, sem mudar dimensões. As 93 verificações passaram também no build de produção; a emulação não certifica todos os temas de alto contraste do Windows.
 
 ### Zoom nativo de 200%
 

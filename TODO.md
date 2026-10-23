@@ -43,6 +43,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Imagens responsivas recuperam o PNG original quando o WebP falha, sem repetição automática; 15 verificações em `tests/browser/images.cli.js`.
 - [x] Botão de topo devolve o foco ao conteúdo, e contatos permanecem disponíveis sem JavaScript; 34 verificações em `tests/browser/accessibility.cli.js`, também aprovadas no build de produção. Capturas da alternativa estática em mobile, paisagem e desktop inspecionadas.
 - [x] Zoom nativo de 200% no Chrome headless: 142 verificações em PT/EN, quatro áreas úteis, sete seções, todos os slides, menu e arquivos de Projetos/Notas. Roteiro versionado em `tests/browser/zoom.cli.js`, aprovado também no build de produção. Hero, stack e propósito inspecionados visualmente com zoom.
+- [x] Seleção e foco distinguíveis em cores forçadas, sem depender dos fundos removidos pelo alto contraste. 93 verificações em `tests/browser/contrast.cli.js`, em dois temas e duas viewports, incluindo regressão do modo normal e build de produção. Capturas de projetos e trajetória inspecionadas.
 
 ## Validação ainda pendente
 
