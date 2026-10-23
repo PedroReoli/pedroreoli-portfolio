@@ -53,6 +53,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/sections.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/archives.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/experience.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/not-found.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -94,6 +95,8 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 `archives.cli.js` verifica Projetos (duas categorias) e Notas em 16 viewports, PT/EN: largura, título sem recorte, imagens carregadas, entradas progressivas, scroll rápido e filtros por teclado sem perder foco nem parâmetros da URL. As páginas de arquivo mantêm altura natural; não herdam o limite de uma tela da home. A galeria carrega a primeira captura imediatamente e mantém as demais imagens sob demanda.
 
 `experience.cli.js` confere os cinco capítulos da trajetória em sete viewports e dois idiomas, com navegação por teclado, textos dentro do painel e competências traduzidas. Também verifica que períodos diferentes da mesma empresa recebem entradas próprias em mobile e desktop.
+
+`not-found.cli.js` cobre a tela 404 em oito viewports e PT/EN: título, ações visíveis, saída por teclado, foco na página de destino, entrada suave e movimento reduzido. O teste de texto-base em 32px permite crescimento vertical nessa página, verificando que o conteúdo não é recortado horizontalmente.
 
 ## Contato
 

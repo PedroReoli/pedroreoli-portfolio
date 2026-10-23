@@ -1,7 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
-import { ArrowLeft, Home } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import Reveal from "../components/atoms/Reveal"
+import SlideSection from "../components/atoms/SlideSection"
 import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 
@@ -10,7 +12,7 @@ export const NotFoundPage: React.FC = () => {
   const isEn = language === "en"
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#111010] text-[#edeae4] antialiased">
+    <div className="bg-[#111010] text-[#edeae4] antialiased">
       <SEOHead
         title={
           isEn
@@ -29,34 +31,44 @@ export const NotFoundPage: React.FC = () => {
       <main
         id="main-content"
         tabIndex={-1}
-        className="editorial-container flex flex-1 flex-col justify-center pb-16 pt-32 focus:outline-none"
+        className="not-found-page archive-container focus:outline-none"
       >
-        <span className="editorial-label mb-6 text-[#82aaff]">{isEn ? "ERROR" : "ERRO"} / 404</span>
-        <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.78] tracking-[-0.08em] text-[#edeae4]">
-          {isEn ? "OFF ROUTE" : "FORA DE ROTA"}
-        </h1>
-        <p className="mb-10 mt-8 max-w-md text-base text-[#8d8984]">
-          {isEn
-            ? "This address does not exist or may have moved. Check the URL or return home."
-            : "Este endereço não existe ou pode ter sido movido. Verifique a URL ou retorne ao início."}
-        </p>
-
-        <div className="flex flex-wrap items-center gap-5">
-          <Link
-            to="/"
-            className="inline-flex min-h-11 items-center gap-2 border-b border-[#82aaff] pb-2 text-sm font-semibold uppercase tracking-[0.1em]"
-          >
-            <Home className="w-4 h-4" />
-            <span>{isEn ? "Back home" : "Voltar ao início"}</span>
-          </Link>
-          <Link
-            to="/projetos"
-            className="inline-flex min-h-11 items-center gap-2 border-b border-white/30 pb-2 text-sm font-semibold uppercase tracking-[0.1em] text-[#aaa6a0]"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{isEn ? "View projects" : "Ver projetos"}</span>
-          </Link>
-        </div>
+        <SlideSection as="div" className="not-found-layout">
+          <Reveal distance={12} duration={0.5} className="not-found-label editorial-label">
+            <span className="text-[#82aaff]">
+              404 / {isEn ? "Page not found" : "Página não encontrada"}
+            </span>
+            <span aria-hidden="true" className="text-[#8d8984]">
+              PEDRO REOLI
+            </span>
+          </Reveal>
+          <div className="not-found-content">
+            <div className="not-found-title-mask">
+              <Reveal distance={36} duration={0.8} delay={0.06}>
+                <h1 className="not-found-title">
+                  <span>{isEn ? "OFF" : "FORA"}</span> <span>{isEn ? "ROUTE." : "DE ROTA."}</span>
+                </h1>
+              </Reveal>
+            </div>
+            <Reveal distance={18} delay={0.18} className="not-found-detail">
+              <p>
+                {isEn
+                  ? "This address is unavailable. You can return home or explore my work."
+                  : "Este endereço não está disponível. Você pode voltar ao início ou conhecer meus projetos."}
+              </p>
+              <nav
+                aria-label={isEn ? "Continue browsing" : "Continuar navegando"}
+                className="not-found-actions"
+              >
+                <Link to="/">{isEn ? "Back home" : "Voltar ao início"}</Link>
+                <Link to="/projetos">
+                  {isEn ? "View projects" : "Ver projetos"}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </nav>
+            </Reveal>
+          </div>
+        </SlideSection>
       </main>
     </div>
   )

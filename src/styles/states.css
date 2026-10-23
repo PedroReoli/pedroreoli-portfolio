@@ -1,0 +1,108 @@
+@layer components {
+  .not-found-page {
+    display: grid;
+    min-height: var(--viewport-height, 100vh);
+    align-items: center;
+    padding-block: clamp(5rem, 12vh, 8rem) clamp(1.5rem, 5vh, 4rem);
+  }
+
+  .not-found-layout {
+    width: 100%;
+  }
+
+  .not-found-label {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.15);
+    padding-bottom: 1rem;
+  }
+
+  .not-found-content {
+    display: grid;
+    gap: clamp(1.25rem, 4vh, 3rem);
+    padding-top: clamp(1.25rem, 4vh, 3rem);
+  }
+
+  .not-found-title-mask {
+    min-width: 0;
+    overflow: hidden;
+    padding-bottom: 0.15em;
+  }
+
+  .not-found-title {
+    font-size: clamp(2.75rem, 11.5vw, 8.5rem);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.055em;
+  }
+
+  .not-found-title span {
+    display: block;
+  }
+
+  .not-found-title span:last-child {
+    color: #82aaff;
+  }
+
+  .not-found-detail {
+    align-self: end;
+    min-width: 0;
+  }
+
+  .not-found-detail p {
+    max-width: 30rem;
+    color: #aaa6a0;
+    font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
+    line-height: 1.55;
+  }
+
+  .not-found-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin-top: clamp(0.75rem, 3vh, 2rem);
+  }
+
+  .not-found-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    border-bottom: 1px solid #82aaff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: color 180ms ease;
+  }
+
+  .not-found-actions a:hover {
+    color: #82aaff;
+  }
+}
+
+@media (min-width: 900px) {
+  .not-found-content {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .not-found-title {
+    font-size: clamp(4rem, 8.5vw, 8rem);
+  }
+}
+
+@media (max-height: 500px) and (min-width: 600px) {
+  .not-found-page {
+    padding-block: 5rem 1.5rem;
+  }
+
+  .not-found-content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .not-found-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+}

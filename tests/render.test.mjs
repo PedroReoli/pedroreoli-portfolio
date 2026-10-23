@@ -29,6 +29,7 @@ before(async () => {
   for (const [name, path] of Object.entries({
     Projects: "/src/pages/ProjectsPage.tsx",
     Notes: "/src/pages/MediaBlogPage.tsx",
+    NotFound: "/src/pages/NotFoundPage.tsx",
     Intro: "/src/components/organisms/HomeIntro.tsx",
     Sections: "/src/components/organisms/HomeSections.tsx",
     Footer: "/src/components/organisms/SiteFooter.tsx",
@@ -102,6 +103,15 @@ test("Alternativa sem JavaScript mantém contatos alinhados à configuração", 
 })
 
 for (const language of ["pt", "en"]) {
+  test(`404 ${language}: heading e saídas internas preservadas`, () => {
+    const html = render(React.createElement(components.NotFound), language, "/pagina-ausente")
+    assert.equal((html.match(/<main\b/g) || []).length, 1)
+    assert.equal((html.match(/<h1\b/g) || []).length, 1)
+    assert.ok(html.includes('id="main-content"'))
+    assert.ok(html.includes('href="/"'))
+    assert.ok(html.includes('href="/projetos"'))
+    assert.ok(html.includes(language === "pt" ? "Página não encontrada" : "Page not found"))
+  })
   test(`Estados ${language}: carregamento e erro com semântica de página e seção`, () => {
     for (const scope of ["page", "section"]) {
       for (const status of ["loading", "error"]) {
