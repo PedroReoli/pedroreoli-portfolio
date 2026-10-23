@@ -54,6 +54,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/archives.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/experience.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/not-found.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/gallery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -97,6 +98,8 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 `experience.cli.js` confere os cinco capítulos da trajetória em sete viewports e dois idiomas, com navegação por teclado, textos dentro do painel e competências traduzidas. Também verifica que períodos diferentes da mesma empresa recebem entradas próprias em mobile e desktop.
 
 `not-found.cli.js` cobre a tela 404 em oito viewports e PT/EN: título, ações visíveis, saída por teclado, foco na página de destino, entrada suave e movimento reduzido. O teste de texto-base em 32px permite crescimento vertical nessa página, verificando que o conteúdo não é recortado horizontalmente.
+
+`gallery.cli.js` verifica as quatro capturas corporativas em seis viewports e dois idiomas. O clique comum abre um `dialog` nativo com legenda, anterior/próxima, teclado, Escape e retorno ao ponto/foco original. O fundo fica inerte e sem rolagem. O teste inclui falha de imagem, entrada curta e movimento reduzido; o link para o arquivo original é conferido sem abrir outra aba. Ctrl/Cmd+clique conserva a ação nativa do link.
 
 ## Contato
 

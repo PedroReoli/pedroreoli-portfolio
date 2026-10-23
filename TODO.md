@@ -56,6 +56,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Build de produção: 317 verificações da home em 22 viewports e 72 da trajetória em sete viewports, nos dois idiomas. Capturas de conteúdo em 320×480 e 1440×900 inspecionadas. Lint, 14 testes de renderização, TypeScript e build aprovados.
 - [x] Projetos e Notas: 125 verificações do build de produção em 16 viewports, PT/EN, incluindo entradas e filtros por teclado. Capturas revisadas em mobile e desktop após o ajuste dos textos.
 - [x] Tela 404 com hierarquia editorial, ações visíveis em mobile/paisagem e entrada suave reutilizando `SlideSection`/`Reveal`. 44 verificações headless aprovadas em desenvolvimento e produção: oito viewports, PT/EN, teclado, movimento reduzido e texto ampliado. Capturas antes/depois inspecionadas em 320×480, 667×375 e 1440×900. Lint, 16 testes de renderização, TypeScript e build aprovados.
+- [x] Galeria corporativa ampliada dentro da página com `dialog` nativo, legenda, quatro imagens, navegação por teclado, retorno ao foco/scroll e saída para o original. 174 verificações headless aprovadas no build de produção em seis viewports e PT/EN, incluindo carregamento lento, falha de imagem e fundo inerte. Capturas em 320×480, 667×375 e 1440×900 inspecionadas. Nenhuma dependência adicionada.
 
 ## Validação ainda pendente
 
