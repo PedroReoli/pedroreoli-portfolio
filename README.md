@@ -50,6 +50,7 @@ Auditoria de navegação em navegador real, sem abrir janelas (CLI 0.1.22):
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa open http://localhost:5173
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/navigation.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/hero.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/sections.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -85,6 +86,8 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-zoom clos
 O roteiro altera o zoom pelo controle nativo em `chrome://settings/appearance`, confere a redução real da viewport CSS pela metade e restaura a configuração no fim. São 142 verificações em PT/EN: sete seções, todos os slides de projetos/experiências, menu, foco e largura dos arquivos de Projetos/Notas. As quatro janelas de teste correspondem a áreas CSS de 320×480, 640×360, 720×450 e 960×540. Aprovado em desenvolvimento e no build servido por `vite preview`.
 
 Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em tela estreita permanece uma limitação registrada no TODO. Para capturas após rolagem com zoom nativo, foi necessário usar `Page.captureScreenshot` sem `clip` e com `captureBeyondViewport: false`: a captura comum do Playwright produziu imagens vazias nesses ensaios.
+
+`sections.cli.js` mede as sete seções da home em 22 viewports, nos dois idiomas, incluindo os limites de quebra do layout. Verifica altura de tela, overflow, encaixe dos itens da stack em suas linhas e amostra os surgimentos de Sobre, Stack, Propósito e Trajetória em mobile e desktop. Não substitui inspeção visual nem testes em dispositivos físicos.
 
 ## Contato
 
