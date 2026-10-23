@@ -49,6 +49,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/preferences.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/images.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa close
 ```
 
@@ -57,6 +58,8 @@ Use a URL exibida pelo seu servidor Vite. A sessão é headless por padrão; nã
 `recovery.cli.js` intercepta módulos somente no navegador de teste para simular falhas de rede e renderização. Erros intencionais no console são esperados nesse roteiro. Verifica isolamento da falha, tentativa manual, preservação da URL e saída pelo menu, sem alterar arquivos ou o servidor. Essa proteção exige que o JavaScript inicial tenha carregado; não equivale a suporte offline.
 
 `preferences.cli.js` usa contextos isolados para conferir a ordem dos idiomas do navegador, a preferência salva e o funcionamento com armazenamento bloqueado. `npm run check` reúne lint, testes de conteúdo/preferências, TypeScript e build; os ensaios headless continuam sendo executados separadamente.
+
+`images.cli.js` verifica WebP em uso normal, recuperação com o PNG original e falha de ambos os formatos. A alternativa é tentada uma vez; se também falhar, a descrição alternativa e as dimensões são preservadas, sem novas tentativas automáticas. As falhas são simuladas apenas na sessão headless.
 
 ## Contato
 

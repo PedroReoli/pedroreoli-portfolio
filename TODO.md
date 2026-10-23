@@ -40,6 +40,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Slides de projetos com apresentação reutilizável e conteúdo centralizado; 56 verificações de scroll, encaixe, teclado, destinos e transições em `tests/browser/projects.cli.js`.
 - [x] Falhas em módulos lazy e renderização isoladas por página/seção, com recuperação manual bilíngue; 28 verificações em `tests/browser/recovery.cli.js`, incluindo falhas consecutivas e preservação de parâmetros.
 - [x] Idioma inicial respeita a escolha salva e a ordem de preferência do navegador; sete casos headless, incluindo navegação com armazenamento bloqueado, em `tests/browser/preferences.cli.js`.
+- [x] Imagens responsivas recuperam o PNG original quando o WebP falha, sem repetição automática; 15 verificações em `tests/browser/images.cli.js`.
 
 ## Validação ainda pendente
 
