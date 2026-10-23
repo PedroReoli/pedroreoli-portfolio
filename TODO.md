@@ -20,6 +20,7 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Breakpoints alinhados entre Tailwind e CSS, com composição própria para tablets.
 - [x] Trocas de rota reposicionam a nova página no início.
 - [x] Lint de acessibilidade JSX aplicado às imagens, links e controles.
+- [x] Notas distingue links de repositório e perfil; stack com símbolo próprio do Claude, fonte registrada e Design System.
 - [x] Vite 8, TypeScript 5.9 e TypeScript ESLint 8 validados no build.
 
 ## Pendente de conteúdo

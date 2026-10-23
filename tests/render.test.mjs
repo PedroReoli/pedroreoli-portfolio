@@ -89,6 +89,9 @@ for (const language of ["pt", "en"]) {
     assert.ok(html.indexOf("PEDRO") < html.indexOf("REOLI"))
     assert.ok(html.includes("translateY(110%)"), "Entrada inicial dos nomes preservada")
     assert.ok(html.includes("min-h-screen"))
+    assert.ok(html.includes('src="/brands/claude.svg"'), "Símbolo próprio do Claude")
+    assert.ok(html.includes("Design System"))
+    assert.ok(html.includes(language === "pt" ? "IA &amp; APIs" : "AI &amp; APIs"))
     assert.ok(html.includes('href="/projetos?tipo=corporativo"'))
     assert.ok(html.includes(language === "pt" ? "Quem eu sou" : "Who I am"))
     assert.ok(!html.includes("footer-stage-compact"))
@@ -138,5 +141,8 @@ for (const language of ["pt", "en"]) {
     assert.ok(html.includes("FalaAtípica"))
     assert.ok(html.includes("footer-stage-compact"))
     assert.equal((html.match(/class="project-archive-description"/g) || []).length, 3)
+    assert.ok(html.includes(language === "pt" ? "Por dentro do código" : "Inside the code"))
+    assert.ok(html.includes(language === "pt" ? "Repositório no GitHub" : "GitHub repository"))
+    assert.ok(html.includes(language === "pt" ? "Perfil no GitHub" : "GitHub profile"))
   })
 }

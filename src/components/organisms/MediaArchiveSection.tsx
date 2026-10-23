@@ -13,12 +13,12 @@ export const MediaArchiveSection: React.FC = () => {
   return (
     <div className="w-full">
       <ArchiveHeading
-        eyebrow={isEn ? "Writing / Press / Ideas" : "Escrita / Imprensa / Ideias"}
+        eyebrow={isEn ? "Press / Code / References" : "Imprensa / Código / Referências"}
         title={isEn ? "NOTES" : "NOTAS"}
         description={
           isEn
-            ? "Technical notes, project decisions and press coverage."
-            : "Notas técnicas, decisões de projeto e participações na imprensa."
+            ? "Press coverage and technical work you can explore in the code."
+            : "Participações na imprensa e trabalhos técnicos para explorar no código."
         }
       />
 
@@ -69,9 +69,11 @@ export const MediaArchiveSection: React.FC = () => {
 
       <section className="archive-container archive-section">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="archive-section-title">{isEn ? "Open notebook" : "Caderno aberto"}</h2>
+          <h2 className="archive-section-title">
+            {isEn ? "Inside the code" : "Por dentro do código"}
+          </h2>
           <span className="editorial-label hidden text-[#8d8984] sm:block">
-            03 / {isEn ? "notes" : "notas"}
+            03 / {isEn ? "references" : "referências"}
           </span>
         </div>
         {mediaNotes.map((note, index) => (
@@ -88,6 +90,9 @@ export const MediaArchiveSection: React.FC = () => {
                   {isEn ? note.category.en : note.category.pt}
                 </p>
                 <h3 className="project-archive-title">{isEn ? note.title.en : note.title.pt}</h3>
+                <span className="mt-2 block text-xs text-[#aaa6a0]">
+                  {isEn ? note.destination.en : note.destination.pt}
+                </span>
               </div>
               <p className="project-archive-description">
                 {isEn ? note.description.en : note.description.pt}

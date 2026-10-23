@@ -5,6 +5,7 @@ export interface MediaNote {
   category: LocalizedText
   title: LocalizedText
   description: LocalizedText
+  destination: LocalizedText
   href: string
 }
 
@@ -17,9 +18,10 @@ export const mediaNotes: MediaNote[] = [
       en: "Agents that operate, not only respond",
     },
     description: {
-      pt: "Decisões por trás de uma automação de navegador observável e determinística.",
-      en: "Decisions behind observable, deterministic browser automation.",
+      pt: "Código e documentação do Achilles: automação de navegador com ferramentas observáveis.",
+      en: "Achilles code and documentation: browser automation with observable tools.",
     },
+    destination: { pt: "Repositório no GitHub", en: "GitHub repository" },
     href: "https://github.com/PedroReoli/Achilles-CDP-Agent",
   },
   {
@@ -30,9 +32,10 @@ export const mediaNotes: MediaNote[] = [
       en: "Privacy as an architecture choice",
     },
     description: {
-      pt: "O que muda quando dados, planejamento e contexto continuam sob controle do usuário.",
-      en: "What changes when data, planning and context remain under user control.",
+      pt: "Explore no código do Organon a organização de dados e o funcionamento local-first.",
+      en: "Explore data organization and local-first behavior in the Organon codebase.",
     },
+    destination: { pt: "Repositório no GitHub", en: "GitHub repository" },
     href: "https://github.com/PedroReoli/organon",
   },
   {
@@ -43,9 +46,10 @@ export const mediaNotes: MediaNote[] = [
       en: "Projects as a public laboratory",
     },
     description: {
-      pt: "Experimentos, ferramentas e decisões técnicas disponíveis para inspeção.",
-      en: "Experiments, tools and technical decisions available for inspection.",
+      pt: "Meu perfil no GitHub reúne os repositórios públicos e os experimentos em andamento.",
+      en: "My GitHub profile brings together public repositories and ongoing experiments.",
     },
+    destination: { pt: "Perfil no GitHub", en: "GitHub profile" },
     href: "https://github.com/PedroReoli",
   },
 ]

@@ -15,13 +15,13 @@ export const MediaBlogPage: React.FC = () => {
       <SEOHead
         title={
           isEn
-            ? `Technical Publications & Media | ${siteConfig.legalName}`
-            : `Mídia & Publicações Técnicas | ${siteConfig.legalName}`
+            ? `Notes & Media | ${siteConfig.legalName}`
+            : `Notas & Mídia | ${siteConfig.legalName}`
         }
         description={
           isEn
-            ? "Open-source projects, technical notes and press coverage about software engineer Pedro Lucas Reis."
-            : "Projetos de código aberto, notas técnicas e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
+            ? "Open-source code, documentation and press coverage about software engineer Pedro Lucas Reis."
+            : "Código aberto, documentação e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
         }
         canonicalUrl={getSiteUrl("/midia-blog")}
         locale={isEn ? "en_US" : "pt_BR"}

@@ -1,10 +1,9 @@
 import React from "react"
-import { Network } from "lucide-react"
+import { Component, Network } from "lucide-react"
 import { FaAws } from "react-icons/fa6"
 import {
   SiAmazonapigateway,
   SiAngular,
-  SiAnthropic,
   SiDocker,
   SiDotnet,
   SiExpress,
@@ -50,6 +49,7 @@ const stackGroups: StackGroup[] = [
       { name: "Next.js", icon: <SiNextdotjs />, color: "text-[#111010]" },
       { name: "Angular", icon: <SiAngular />, color: "text-[#dd0031]" },
       { name: "Tailwind", icon: <SiTailwindcss />, color: "text-[#06b6d4]" },
+      { name: "Design System", icon: <Component />, color: "text-[#514c47]" },
     ],
   },
   {
@@ -66,7 +66,7 @@ const stackGroups: StackGroup[] = [
   },
   {
     number: "03",
-    title: { pt: "Entrega", en: "Delivery" },
+    title: { pt: "Cloud & apps", en: "Cloud & apps" },
     tools: [
       { name: "AWS", icon: <FaAws />, color: "text-[#d97706]" },
       { name: "API Gateway", icon: <SiAmazonapigateway />, color: "text-[#ff4f8b]" },
@@ -78,10 +78,16 @@ const stackGroups: StackGroup[] = [
   },
   {
     number: "04",
-    title: { pt: "Engenharia de IA", en: "AI engineering" },
+    title: { pt: "IA & APIs", en: "AI & APIs" },
     tools: [
       { name: "OpenAI", icon: <SiOpenai />, color: "text-[#087f5b]" },
-      { name: "Claude", icon: <SiAnthropic />, color: "text-[#b45309]" },
+      {
+        name: "Claude",
+        icon: (
+          <img src="/brands/claude.svg" alt="" width={24} height={24} className="h-[1em] w-[1em]" />
+        ),
+        color: "text-[#b45309]",
+      },
       { name: "Gemini", icon: <SiGooglegemini />, color: "text-[#1a73e8]" },
       { name: "MCP", icon: <Network />, color: "text-[#705cf6]" },
       { name: "JWT / RBAC", icon: <SiJsonwebtokens />, color: "text-[#6b21a8]" },
