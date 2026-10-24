@@ -22,6 +22,7 @@ export const PortfolioHero: React.FC = () => {
   return (
     <section
       id="hero"
+      data-scroll-scene
       ref={heroRef}
       className="viewport-stage hero-shell relative min-h-screen pt-14 md:pt-0"
     >

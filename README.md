@@ -55,6 +55,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/experience.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/not-found.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/gallery.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/viewport-resize.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -100,6 +101,8 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 `not-found.cli.js` cobre a tela 404 em oito viewports e PT/EN: título, ações visíveis, saída por teclado, foco na página de destino, entrada suave e movimento reduzido. O teste de texto-base em 32px permite crescimento vertical nessa página, verificando que o conteúdo não é recortado horizontalmente.
 
 `gallery.cli.js` verifica as quatro capturas corporativas em seis viewports e dois idiomas. O clique comum abre um `dialog` nativo com legenda, anterior/próxima, teclado, Escape e retorno ao ponto/foco original. O fundo fica inerte e sem rolagem. O teste inclui falha de imagem, entrada curta e movimento reduzido; o link para o arquivo original é conferido sem abrir outra aba. Ctrl/Cmd+clique conserva a ação nativa do link.
+
+`viewport-resize.cli.js` redimensiona a janela durante a leitura das sete seções, incluindo todos os slides de projetos e capítulos da trajetória. Confere a preservação da posição relativa, seleção ativa, alterações consecutivas de altura e scroll nativo, em PT/EN e com/sem movimento reduzido. `useHomeScrollAnchor` centraliza essa restauração apenas na home; novas ações de mouse, toque ou teclado cancelam uma restauração pendente. A simulação headless não substitui a validação das barras dinâmicas em celulares físicos.
 
 ## Contato
 

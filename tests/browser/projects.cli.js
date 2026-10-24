@@ -36,6 +36,12 @@ async function auditProjectSlides(page) {
           const stage = document.querySelector(".selected-projects-stage")
           return stage && Math.abs(stage.getBoundingClientRect().height - innerHeight) < 1
         })
+        // A home restaura a cena em leitura após o novo layout. Só então inicia
+        // este percurso programático independente pelos capítulos.
+        await page.evaluate(
+          () =>
+            new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+        )
         for (let index = 0; index < labels.length; index++) {
           // Percorre o scroll nativo; a seleção precisa acompanhar cada capítulo.
           await section.evaluate((element, step) => {

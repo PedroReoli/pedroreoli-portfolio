@@ -12,6 +12,7 @@ export const PurposeStorySection: React.FC = () => {
   return (
     <SlideSection
       id="proposito"
+      data-scroll-scene
       className="viewport-stage purpose-stage min-h-screen bg-[#111010] text-[#edeae4]"
     >
       <div className="editorial-container purpose-stage-layout">

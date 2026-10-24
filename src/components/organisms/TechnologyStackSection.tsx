@@ -103,6 +103,7 @@ export const TechnologyStackSection: React.FC = () => {
   return (
     <SlideSection
       id="stack"
+      data-scroll-scene
       className="viewport-stage stack-stage min-h-screen bg-[#edeae4] text-[#111010]"
     >
       <div className="editorial-container stack-stage-layout">

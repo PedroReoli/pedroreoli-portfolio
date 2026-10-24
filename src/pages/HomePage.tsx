@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"
+import React, { Suspense, lazy, useRef } from "react"
 import SEOHead from "../components/atoms/SEOHead"
 import HomeIntro from "../components/organisms/HomeIntro"
 import SiteFooter from "../components/organisms/SiteFooter"
@@ -6,15 +6,21 @@ import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 import ContentBoundary from "../components/molecules/ContentBoundary"
 import ContentStatus from "../components/molecules/ContentStatus"
+import { useHomeScrollAnchor } from "../hooks/useHomeScrollAnchor"
 
 const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
 
 export const HomePage: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
+  const pageRef = useRef<HTMLDivElement>(null)
+  useHomeScrollAnchor(pageRef)
 
   return (
-    <div className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip">
+    <div
+      ref={pageRef}
+      className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip"
+    >
       {/* Metatags e SEO Dinâmico */}
       <SEOHead
         title={

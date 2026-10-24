@@ -58,6 +58,14 @@ async function auditSections(page) {
       await page.evaluate(() => document.fonts.ready)
       for (const [width, height] of sizes) {
         await page.setViewportSize({ width, height })
+        await page.waitForFunction(
+          (height) => document.getElementById("hero").offsetHeight === height,
+          height,
+        )
+        await page.evaluate(
+          () =>
+            new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+        )
         for (const id of sections) {
           await page
             .locator(`#${id}`)
@@ -75,6 +83,7 @@ async function auditSections(page) {
               : outer.querySelector(".viewport-stage") || outer.firstElementChild
             const frame = stage.getBoundingClientRect()
             const issues = []
+            if (Math.abs(frame.top) > 2) issues.push(`Seção fora da área visível: ${frame.top}`)
             const inside = (child, parent) =>
               child.left >= parent.left - 2 &&
               child.right <= parent.right + 2 &&

@@ -46,6 +46,7 @@ export const ExperienceSection: React.FC = () => {
   return (
     <section
       id="experiencia"
+      data-scroll-scene
       ref={containerRef}
       className="experience-scroll-stage relative min-h-screen bg-[#111010] text-[#edeae4]"
       style={{ "--experience-steps": experienceItems.length } as React.CSSProperties}

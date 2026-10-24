@@ -19,6 +19,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
   return (
     <SlideSection
       id="sobre"
+      data-scroll-scene
       className="viewport-stage about-stage min-h-screen bg-[#edeae4] text-[#111010]"
       style={blendBackground ? { backgroundColor: "transparent" } : undefined}
     >

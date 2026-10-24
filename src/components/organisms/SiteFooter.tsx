@@ -50,6 +50,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
     <SlideSection
       as="footer"
       id="contato"
+      data-scroll-scene={!compact || undefined}
       className={`${
         compact ? "footer-stage-compact" : "viewport-stage min-h-screen"
       } footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]`}
