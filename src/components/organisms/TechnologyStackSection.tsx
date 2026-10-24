@@ -107,7 +107,11 @@ export const TechnologyStackSection: React.FC = () => {
       className="viewport-stage stack-stage min-h-screen bg-[#edeae4] text-[#111010]"
     >
       <div className="editorial-container stack-stage-layout">
-        <Reveal className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6">
+        <Reveal
+          distance={14}
+          duration={0.55}
+          className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6"
+        >
           <div>
             <p className="editorial-label mb-2 text-[#5f5b56]">
               04 / {isEn ? "Production toolkit" : "Ferramentas de produção"}
@@ -141,9 +145,10 @@ export const TechnologyStackSection: React.FC = () => {
               key={group.number}
               className="min-h-0"
               role="listitem"
-              amount={0.05}
-              delay={0.16 + index * 0.1}
-              distance={28}
+              amount={0.04}
+              delay={0.08 + index * 0.07}
+              distance={18}
+              duration={0.58}
             >
               <article className="stack-lane h-full">
                 <div className="stack-lane-heading">

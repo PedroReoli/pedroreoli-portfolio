@@ -49,11 +49,11 @@ export const PortfolioHero: React.FC = () => {
       >
         {/* Top Info Metadata */}
         <m.div
-          initial={reduceMotion ? false : { opacity: 0, y: -18 }}
+          initial={reduceMotion ? false : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: reduceMotion ? 0.2 : 0.7,
-            delay: reduceMotion ? 0 : 1.2,
+            duration: reduceMotion ? 0.2 : 0.6,
+            delay: reduceMotion ? 0 : 0.1,
             ease: entranceEase,
           }}
           className="editorial-container flex items-start justify-between pt-5 md:pt-24"
@@ -83,8 +83,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0 : 0.95,
-                  delay: reduceMotion ? 0 : 0.1,
+                  duration: reduceMotion ? 0 : 0.88,
+                  delay: reduceMotion ? 0 : 0.18,
                   ease: entranceEase,
                 }}
               >
@@ -101,8 +101,8 @@ export const PortfolioHero: React.FC = () => {
                 initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: reduceMotion ? 0 : 0.95,
-                  delay: reduceMotion ? 0 : 0.48,
+                  duration: reduceMotion ? 0 : 0.88,
+                  delay: reduceMotion ? 0 : 0.34,
                   ease: entranceEase,
                 }}
               >
@@ -113,17 +113,17 @@ export const PortfolioHero: React.FC = () => {
 
           {/* Cargo / Role under the name */}
           <m.div
-            initial={reduceMotion ? false : { opacity: 0, y: 40 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: reduceMotion ? 0 : 0.72,
-              delay: reduceMotion ? 0 : 0.92,
+              duration: reduceMotion ? 0 : 0.65,
+              delay: reduceMotion ? 0 : 0.5,
               ease: entranceEase,
             }}
             className="hero-role mt-3 flex items-center justify-center gap-3 sm:mt-5"
           >
             <span
-              className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff]"
+              className="h-1.5 w-1.5 rounded-full bg-[#82aaff] shadow-[0_0_8px_#82aaff] animate-pulse"
               aria-hidden="true"
             />
             <p className="font-semibold tracking-[-0.025em] text-[#b8ccff]">
@@ -134,11 +134,11 @@ export const PortfolioHero: React.FC = () => {
 
         {/* Bottom action */}
         <m.div
-          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: reduceMotion ? 0.2 : 0.72,
-            delay: reduceMotion ? 0 : 1.35,
+            duration: reduceMotion ? 0.2 : 0.65,
+            delay: reduceMotion ? 0 : 0.66,
             ease: entranceEase,
           }}
           className="editorial-container flex justify-end pb-7 md:pb-9"

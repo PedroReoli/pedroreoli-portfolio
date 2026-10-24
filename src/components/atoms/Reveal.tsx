@@ -10,19 +10,23 @@ interface RevealProps {
   distance?: number
   duration?: number
   amount?: number
+  scale?: number
   axis?: "x" | "y"
   once?: boolean
   role?: React.AriaRole
   ariaLabel?: string
 }
 
+const entranceEase = [0.16, 1, 0.3, 1] as const
+
 export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 40,
-  duration = 0.72,
-  amount = 0.2,
+  distance = 24,
+  duration = 0.64,
+  amount = 0.08,
+  scale = 1,
   axis = "y",
   once = true,
   role,
@@ -31,8 +35,13 @@ export const Reveal: React.FC<RevealProps> = ({
   const reduceMotion = useReducedMotion()
   const sectionVisible = useContext(SlideEntranceContext)
   const [hasFocus, setHasFocus] = useState(false)
-  const hidden = { opacity: 0, x: axis === "x" ? distance : 0, y: axis === "y" ? distance : 0 }
-  const visible = { opacity: 1, x: 0, y: 0 }
+  const hidden = {
+    opacity: 0,
+    x: axis === "x" ? distance : 0,
+    y: axis === "y" ? distance : 0,
+    scale,
+  }
+  const visible = { opacity: 1, x: 0, y: 0, scale: 1 }
   const showImmediately = Boolean(reduceMotion || hasFocus)
 
   return (
@@ -54,7 +63,7 @@ export const Reveal: React.FC<RevealProps> = ({
       transition={{
         duration: showImmediately ? 0 : duration,
         delay: showImmediately ? 0 : delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: entranceEase,
       }}
     >
       {children}

@@ -16,7 +16,11 @@ export const PurposeStorySection: React.FC = () => {
       className="viewport-stage purpose-stage min-h-screen bg-[#111010] text-[#edeae4]"
     >
       <div className="editorial-container purpose-stage-layout">
-        <Reveal className="purpose-stage-heading flex items-center justify-between border-b border-white/15 pb-3">
+        <Reveal
+          distance={14}
+          duration={0.55}
+          className="purpose-stage-heading flex items-center justify-between border-b border-white/15 pb-3"
+        >
           <p className="editorial-label text-[#82aaff]">
             05 / {isEn ? "Technology with purpose" : "Tecnologia com propósito"}
           </p>
@@ -26,9 +30,11 @@ export const PurposeStorySection: React.FC = () => {
         <Reveal
           className="purpose-media-shell min-h-0"
           axis="x"
-          distance={28}
-          delay={0.12}
-          amount={0.08}
+          distance={20}
+          scale={0.97}
+          delay={0.08}
+          duration={0.65}
+          amount={0.06}
         >
           <figure className="purpose-media-frame relative h-full overflow-hidden">
             <ResponsiveImage
@@ -61,7 +67,7 @@ export const PurposeStorySection: React.FC = () => {
         </Reveal>
 
         <div className="purpose-statement">
-          <Reveal distance={28} delay={0.22} amount={0.08}>
+          <Reveal distance={20} delay={0.16} duration={0.6} amount={0.06}>
             <h2 className="purpose-title font-black uppercase">
               {isEn ? "Communication" : "Comunicação"}
               <span>{isEn ? "made accessible." : "mais acessível."}</span>
@@ -69,7 +75,7 @@ export const PurposeStorySection: React.FC = () => {
           </Reveal>
 
           <div className="purpose-statement-copy">
-            <Reveal delay={0.32} distance={24} amount={0.06}>
+            <Reveal delay={0.24} distance={16} duration={0.58} amount={0.05}>
               <p className="purpose-summary">
                 {isEn
                   ? "FalaAtípica brings families, children and speech professionals closer through clearer communication."
@@ -77,7 +83,7 @@ export const PurposeStorySection: React.FC = () => {
               </p>
             </Reveal>
 
-            <Reveal delay={0.42} distance={20} amount={0.04}>
+            <Reveal delay={0.32} distance={14} duration={0.55} amount={0.04}>
               <a
                 href="https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/"
                 target="_blank"

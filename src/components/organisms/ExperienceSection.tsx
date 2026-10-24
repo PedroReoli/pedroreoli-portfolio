@@ -53,7 +53,11 @@ export const ExperienceSection: React.FC = () => {
     >
       <SlideSection as="div" className="viewport-stage trajectory-stage sticky top-0 min-h-screen">
         <div className="editorial-container experience-stage-layout">
-          <Reveal className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4">
+          <Reveal
+            distance={14}
+            duration={0.55}
+            className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4"
+          >
             <div>
               <p className="editorial-label mb-2 text-[#82aaff]">
                 06 / {isEn ? "Experience" : "Experiência"}
@@ -71,7 +75,9 @@ export const ExperienceSection: React.FC = () => {
           <div className="experience-stage-content min-h-0">
             <Reveal
               className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
-              delay={0.18}
+              delay={0.1}
+              distance={18}
+              duration={0.6}
               role="list"
               ariaLabel={isEn ? "Career chapters" : "Capítulos da trajetória"}
             >
@@ -121,22 +127,28 @@ export const ExperienceSection: React.FC = () => {
             <Reveal
               className="experience-detail-shell min-h-0"
               axis="x"
-              distance={24}
-              amount={0.12}
-              delay={0.28}
+              distance={18}
+              amount={0.08}
+              delay={0.18}
+              duration={0.62}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <m.article
                   id="experience-detail"
                   key={`${activeItem.company}-${activeItem.period.pt}-${language}`}
-                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 18, scale: 0.99 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={
                     reduceMotion
                       ? { opacity: 1 }
-                      : { opacity: 0, x: -12, transition: { duration: 0.16 } }
+                      : {
+                          opacity: 0,
+                          x: -10,
+                          scale: 0.995,
+                          transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] },
+                        }
                   }
-                  transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.16, 1, 0.3, 1] }}
                   className="flex h-full min-h-0 flex-col justify-center"
                   aria-live="polite"
                 >

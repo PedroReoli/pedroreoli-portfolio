@@ -127,22 +127,28 @@ export const SelectedProjectsSection: React.FC = () => {
 
         {/* Middle Stage: Pinned Content Slides */}
         <Reveal
-          delay={0.2}
-          distance={40}
+          delay={0.12}
+          distance={20}
+          duration={0.62}
           className="editorial-container relative z-10 flex h-full min-h-0 items-center justify-center"
         >
           <AnimatePresence mode="wait">
             {activeProject && (
               <m.div
                 key={activeProject.number}
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20, scale: 0.985 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={
                   reduceMotion
                     ? { opacity: 1 }
-                    : { opacity: 0, y: -24, transition: { duration: 0.18 } }
+                    : {
+                        opacity: 0,
+                        y: -16,
+                        scale: 0.99,
+                        transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+                      }
                 }
-                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.16, 1, 0.3, 1] }}
                 className="selected-project-slide"
               >
                 <FeaturedProjectSlide
@@ -156,14 +162,19 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 2 && (
               <m.div
                 key="step-more-projects"
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={
                   reduceMotion
                     ? { opacity: 1 }
-                    : { opacity: 0, y: -24, transition: { duration: 0.18 } }
+                    : {
+                        opacity: 0,
+                        y: -16,
+                        scale: 0.98,
+                        transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+                      }
                 }
-                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.16, 1, 0.3, 1] }}
                 className="flex h-full w-full items-center justify-center text-center"
               >
                 <Link
@@ -187,7 +198,8 @@ export const SelectedProjectsSection: React.FC = () => {
         <Reveal
           className="editorial-container relative z-10 flex items-center justify-between border-t border-white/10 pt-3"
           distance={10}
-          delay={0.4}
+          delay={0.24}
+          duration={0.55}
         >
           <div className="flex items-center gap-2">
             <span className="font-mono text-[11px] font-bold text-[#82aaff]">
