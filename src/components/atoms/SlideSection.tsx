@@ -6,17 +6,19 @@ import { SlideEntranceContext } from "./slideEntranceContext"
 type SlideSectionProps = React.HTMLAttributes<HTMLElement> & {
   as?: "section" | "div" | "footer"
   amount?: number | "some" | "all"
+  replay?: boolean
 }
 
 /** Observa a seção imóvel para que os filhos não alterem o próprio gatilho. */
 export default function SlideSection({
   as = "section",
-  amount = 0.06,
+  amount = 0.22,
+  replay = true,
   children,
   ...props
 }: SlideSectionProps) {
   const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { amount, once: true })
+  const inView = useInView(ref, { amount, once: !replay })
   const reduceMotion = useReducedMotion()
   const [hasFocus, setHasFocus] = useState(false)
 

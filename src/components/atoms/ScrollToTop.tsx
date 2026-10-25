@@ -1,13 +1,20 @@
 import { useEffect, useRef } from "react"
 import { useLocation } from "react-router-dom"
 
-export const ScrollToTop = () => {
-  const { pathname } = useLocation()
+export const ScrollToTop = ({
+  renderedPath,
+  focusOnMount = false,
+}: {
+  renderedPath?: string
+  focusOnMount?: boolean
+}) => {
+  const location = useLocation()
+  const pathname = renderedPath ?? location.pathname
   const previousPath = useRef(pathname)
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
-    const changedPage = previousPath.current !== pathname
+    const changedPage = previousPath.current !== pathname || focusOnMount
     previousPath.current = pathname
     if (!changedPage) return
 
@@ -32,7 +39,7 @@ export const ScrollToTop = () => {
       window.cancelAnimationFrame(frame)
       observer?.disconnect()
     }
-  }, [pathname])
+  }, [pathname, focusOnMount])
 
   return null
 }

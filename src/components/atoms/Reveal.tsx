@@ -28,7 +28,7 @@ export const Reveal: React.FC<RevealProps> = ({
   amount = 0.08,
   scale = 1,
   axis = "y",
-  once = true,
+  once = false,
   role,
   ariaLabel,
 }) => {

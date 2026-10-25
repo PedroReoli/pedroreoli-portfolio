@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
+import { m } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import type { FeaturedProject } from "../../content/homeContent"
 import ResponsiveImage from "../atoms/ResponsiveImage"
+import { SlideEntranceContext } from "../atoms/slideEntranceContext"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
+import { chapterItemMotion, staggerMotion, stillMotion, filmEase } from "../../motion/choreography"
 
 const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
   project,
@@ -81,6 +85,10 @@ const actionClassName =
 /** Apresentação de um projeto. A seção pai controla scroll e transições. */
 export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedProjectSlideProps) {
   const language = isEn ? "en" : "pt"
+  const reduceMotion = useReducedMotion()
+  const sceneVisible = useContext(SlideEntranceContext)
+  const state = reduceMotion || sceneVisible !== false ? "visible" : "enter"
+  const itemVariants = reduceMotion ? stillMotion : chapterItemMotion
   const action = (
     <>
       <span>{project.action[language]}</span>
@@ -93,7 +101,22 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
 
   return (
     <>
-      <figure
+      <m.figure
+        initial={reduceMotion ? false : "enter"}
+        animate={state}
+        variants={
+          reduceMotion
+            ? stillMotion
+            : {
+                enter: { opacity: 0, y: 20, scale: 0.97 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: { duration: 0.64, ease: filmEase },
+                },
+              }
+        }
         className={`project-image-frame relative h-full min-h-0 overflow-hidden rounded-xl border border-white/10 ${
           project.visual === "image" ? "project-interface-frame" : "bg-[#191817]"
         }`}
@@ -102,29 +125,41 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
         <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
           {project.number} / {String(total).padStart(2, "0")}
         </span>
-      </figure>
-      <div className="selected-project-copy flex flex-col justify-center">
-        <div className="mb-1 sm:mb-2 flex items-center gap-2">
+      </m.figure>
+      <m.div
+        className="selected-project-copy flex flex-col justify-center"
+        initial={reduceMotion ? false : "enter"}
+        animate={state}
+        variants={reduceMotion ? stillMotion : staggerMotion}
+      >
+        <m.div variants={itemVariants} className="mb-1 sm:mb-2 flex items-center gap-2">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#82aaff]" aria-hidden="true" />
           <span className="editorial-label text-[10px] sm:text-xs tracking-[0.14em] text-[#82aaff]">
             {project.category[language]} • {project.year}
           </span>
-        </div>
-        <h3 className="selected-project-title font-black uppercase text-[#edeae4]">
+        </m.div>
+        <m.h3
+          variants={itemVariants}
+          className="selected-project-title font-black uppercase text-[#edeae4]"
+        >
           {project.title}
-        </h3>
-        <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
+        </m.h3>
+        <m.p
+          variants={itemVariants}
+          className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base"
+        >
           {project.description[language]}
-        </p>
-        <ul
+        </m.p>
+        <m.ul
+          variants={itemVariants}
           className="selected-project-technologies mt-2.5 sm:mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[10px] sm:text-xs text-white/60"
           aria-label={isEn ? "Project technologies" : "Tecnologias do projeto"}
         >
           {project.technologies.map((technology) => (
             <li key={technology}>{technology}</li>
           ))}
-        </ul>
-        <div className="mt-3.5 sm:mt-6">
+        </m.ul>
+        <m.div variants={itemVariants} className="mt-3.5 sm:mt-6">
           {project.external ? (
             <a
               href={project.href}
@@ -140,8 +175,8 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
               {action}
             </Link>
           )}
-        </div>
-      </div>
+        </m.div>
+      </m.div>
     </>
   )
 }

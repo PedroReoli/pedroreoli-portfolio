@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react"
+import { AnimatePresence } from "framer-motion"
 import { Expand } from "lucide-react"
 import { corporateProjectImages } from "../../content/projectsContent"
 import ResponsiveImage from "../atoms/ResponsiveImage"
@@ -141,13 +142,15 @@ export const CorporateProjectsSection: React.FC<CorporateProjectsSectionProps> =
           )
         })}
       </div>
-      {activeImage !== null && (
-        <ProjectImageViewer
-          images={corporateProjectImages}
-          initialIndex={activeImage}
-          onClose={closeImage}
-        />
-      )}
+      <AnimatePresence>
+        {activeImage !== null && (
+          <ProjectImageViewer
+            images={corporateProjectImages}
+            initialIndex={activeImage}
+            onClose={closeImage}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }

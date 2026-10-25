@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react"
+import { m, useIsPresent } from "framer-motion"
 import { ArrowLeft, ArrowRight, ExternalLink, X } from "lucide-react"
 import type { ProjectImage } from "../../content/projectsContent"
 import { useLanguage } from "../../i18n/useLanguage"
+import { useReducedMotion } from "../../hooks/useReducedMotion"
+import { filmEase } from "../../motion/choreography"
 
 interface ProjectImageViewerProps {
   images: ProjectImage[]
@@ -17,12 +20,17 @@ export default function ProjectImageViewer({
 }: ProjectImageViewerProps) {
   const { language } = useLanguage()
   const isEn = language === "en"
+  const reduceMotion = useReducedMotion()
+  const present = useIsPresent()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [index, setIndex] = useState(initialIndex)
   const [failedImage, setFailedImage] = useState<string | null>(null)
   const [loadedImage, setLoadedImage] = useState<string | null>(null)
   const image = images[index]
   const caption = image.alt[language]
+  useEffect(() => {
+    if (dialogRef.current) dialogRef.current.inert = !present
+  }, [present])
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -65,10 +73,14 @@ export default function ProjectImageViewer({
     setIndex((current) => (current + direction + images.length) % images.length)
 
   return (
-    <dialog
+    <m.dialog
       ref={dialogRef}
       className="project-viewer"
       aria-labelledby="project-viewer-title"
+      initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={reduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 8, scale: 0.99 }}
+      transition={{ duration: reduceMotion ? 0 : present ? 0.28 : 0.16, ease: filmEase }}
       onCancel={(event) => {
         event.preventDefault()
         onClose()
@@ -114,6 +126,7 @@ export default function ProjectImageViewer({
                 alt={caption}
                 width={2880}
                 height={1800}
+                className={loadedImage === image.src ? "is-loaded" : undefined}
                 decoding="async"
                 onLoad={() => setLoadedImage(image.src)}
                 onError={() => setFailedImage(image.src)}
@@ -152,6 +165,6 @@ export default function ProjectImageViewer({
           </a>
         </footer>
       </div>
-    </dialog>
+    </m.dialog>
   )
 }

@@ -56,6 +56,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/not-found.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/gallery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/viewport-resize.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/film-motion.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -103,6 +104,8 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 `gallery.cli.js` verifica as quatro capturas corporativas em seis viewports e dois idiomas. O clique comum abre um `dialog` nativo com legenda, anterior/próxima, teclado, Escape e retorno ao ponto/foco original. O fundo fica inerte e sem rolagem. O teste inclui falha de imagem, entrada curta e movimento reduzido; o link para o arquivo original é conferido sem abrir outra aba. Ctrl/Cmd+clique conserva a ação nativa do link.
 
 `viewport-resize.cli.js` redimensiona a janela durante a leitura das sete seções, incluindo todos os slides de projetos e capítulos da trajetória. Confere a preservação da posição relativa, seleção ativa, alterações consecutivas de altura e scroll nativo, em PT/EN e com/sem movimento reduzido. `useHomeScrollAnchor` centraliza essa restauração apenas na home; novas ações de mouse, toque ou teclado cancelam uma restauração pendente. A simulação headless não substitui a validação das barras dinâmicas em celulares físicos.
+
+`film-motion.cli.js` amostra quadros das transições de páginas, resposta de pressão dos controles, filtros e entradas repetidas das seções. Confere a direção e a sequência título → descrição nos capítulos da trajetória, histórico, foco e movimento reduzido em mobile e desktop. As curvas e variantes estão centralizadas em `src/motion/choreography.ts`. A página anterior fica inerte durante sua saída; a nova recebe foco após montar o conteúdo real.
 
 ## Contato
 

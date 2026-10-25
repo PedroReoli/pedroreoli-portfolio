@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react"
-import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
+import { useMotionValueEvent, useScroll } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import SlideSection from "../atoms/SlideSection"
+import ExperienceChapter from "../molecules/ExperienceChapter"
 
 const getExperienceProgress = (index: number) =>
   experienceItems.length <= 1 ? 0 : index / (experienceItems.length - 1)
@@ -15,7 +16,10 @@ export const ExperienceSection: React.FC = () => {
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
   const containerRef = useRef<HTMLElement>(null)
-  const [activeExperience, setActiveExperience] = useState(0)
+  const [{ index: activeExperience, direction }, setSelection] = useState({
+    index: 0,
+    direction: 1,
+  })
   const activeItem = experienceItems[activeExperience]
 
   const { scrollYProgress } = useScroll({
@@ -29,7 +33,11 @@ export const ExperienceSection: React.FC = () => {
       Math.floor(latest * experienceItems.length),
     )
 
-    setActiveExperience((current) => (current === nextIndex ? current : nextIndex))
+    setSelection((current) =>
+      current.index === nextIndex
+        ? current
+        : { index: nextIndex, direction: nextIndex > current.index ? 1 : -1 },
+    )
   })
 
   const scrollToExperience = (index: number) => {
@@ -86,10 +94,13 @@ export const ExperienceSection: React.FC = () => {
                   const isActive = activeExperience === index
 
                   return (
-                    <div
+                    <Reveal
                       key={`${item.company}-${item.period.pt}`}
                       role="listitem"
                       className="min-h-0"
+                      distance={12}
+                      delay={0.12 + index * 0.045}
+                      duration={0.42}
                     >
                       <button
                         type="button"
@@ -118,7 +129,7 @@ export const ExperienceSection: React.FC = () => {
                           {isEn ? item.period.en : item.period.pt}
                         </span>
                       </button>
-                    </div>
+                    </Reveal>
                   )
                 })}
               </div>
@@ -132,67 +143,12 @@ export const ExperienceSection: React.FC = () => {
               delay={0.18}
               duration={0.62}
             >
-              <AnimatePresence mode="wait" initial={false}>
-                <m.article
-                  id="experience-detail"
-                  key={`${activeItem.company}-${activeItem.period.pt}-${language}`}
-                  initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: 18, scale: 0.99 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={
-                    reduceMotion
-                      ? { opacity: 1 }
-                      : {
-                          opacity: 0,
-                          x: -10,
-                          scale: 0.995,
-                          transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] },
-                        }
-                  }
-                  transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex h-full min-h-0 flex-col justify-center"
-                  aria-live="polite"
-                >
-                  <p className="editorial-label text-[#82aaff]">
-                    0{activeExperience + 1} / {isEn ? activeItem.period.en : activeItem.period.pt}
-                  </p>
-                  <h3 className="experience-detail-company mt-2 font-black tracking-[-0.055em] text-white">
-                    {activeItem.company}
-                  </h3>
-                  <p className="experience-detail-role mt-1 text-[#a39e98]">
-                    {isEn ? activeItem.role.en : activeItem.role.pt}
-                  </p>
-                  <p className="experience-detail-copy mt-3 max-w-xl leading-relaxed text-white/75">
-                    {isEn ? activeItem.description.en : activeItem.description.pt}
-                  </p>
-
-                  {activeItem.technologies && (
-                    <div className="experience-technologies mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-white/10 pt-3">
-                      {activeItem.technologies.slice(0, 5).map((technology) => (
-                        <span
-                          key={typeof technology === "string" ? technology : technology.pt}
-                          className="editorial-label inline-flex items-center gap-2 text-[#9b9690]"
-                        >
-                          <span className="text-[#82aaff]" aria-hidden="true">
-                            •
-                          </span>
-                          {typeof technology === "string" ? technology : technology[language]}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <span className="experience-detail-hint mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-white/45">
-                    {activeExperience === experienceItems.length - 1
-                      ? isEn
-                        ? "End of journey"
-                        : "Fim da trajetória"
-                      : isEn
-                      ? "Keep scrolling"
-                      : "Continue rolando"}
-                    <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-                  </span>
-                </m.article>
-              </AnimatePresence>
+              <ExperienceChapter
+                item={activeItem}
+                index={activeExperience}
+                direction={direction}
+                total={experienceItems.length}
+              />
             </Reveal>
           </div>
 

@@ -8,13 +8,14 @@ import { useLanguage } from "../../i18n/useLanguage"
 import Reveal from "../atoms/Reveal"
 import FeaturedProjectSlide from "../molecules/FeaturedProjectSlide"
 import SlideSection from "../atoms/SlideSection"
+import { chapterMotion, stillMotion } from "../../motion/choreography"
 
 export const SelectedProjectsSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
   const containerRef = useRef<HTMLDivElement>(null)
-  const [activeStep, setActiveStep] = useState(0)
+  const [{ index: activeStep, direction }, setSelection] = useState({ index: 0, direction: 1 })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -22,13 +23,12 @@ export const SelectedProjectsSection: React.FC = () => {
   })
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.34) {
-      setActiveStep(0)
-    } else if (latest < 0.67) {
-      setActiveStep(1)
-    } else {
-      setActiveStep(2)
-    }
+    const nextIndex = latest < 0.34 ? 0 : latest < 0.67 ? 1 : 2
+    setSelection((current) =>
+      current.index === nextIndex
+        ? current
+        : { index: nextIndex, direction: nextIndex > current.index ? 1 : -1 },
+    )
   })
 
   const scrollToStep = (stepIndex: number) => {
@@ -132,23 +132,15 @@ export const SelectedProjectsSection: React.FC = () => {
           duration={0.62}
           className="editorial-container relative z-10 flex h-full min-h-0 items-center justify-center"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" custom={direction}>
             {activeProject && (
               <m.div
                 key={activeProject.number}
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20, scale: 0.985 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={
-                  reduceMotion
-                    ? { opacity: 1 }
-                    : {
-                        opacity: 0,
-                        y: -16,
-                        scale: 0.99,
-                        transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-                      }
-                }
-                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.16, 1, 0.3, 1] }}
+                custom={direction}
+                variants={reduceMotion ? stillMotion : chapterMotion}
+                initial={reduceMotion ? false : "enter"}
+                animate="visible"
+                exit="exit"
                 className="selected-project-slide"
               >
                 <FeaturedProjectSlide
@@ -162,19 +154,11 @@ export const SelectedProjectsSection: React.FC = () => {
             {activeStep === 2 && (
               <m.div
                 key="step-more-projects"
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={
-                  reduceMotion
-                    ? { opacity: 1 }
-                    : {
-                        opacity: 0,
-                        y: -16,
-                        scale: 0.98,
-                        transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-                      }
-                }
-                transition={{ duration: reduceMotion ? 0 : 0.44, ease: [0.16, 1, 0.3, 1] }}
+                custom={direction}
+                variants={reduceMotion ? stillMotion : chapterMotion}
+                initial={reduceMotion ? false : "enter"}
+                animate="visible"
+                exit="exit"
                 className="flex h-full w-full items-center justify-center text-center"
               >
                 <Link

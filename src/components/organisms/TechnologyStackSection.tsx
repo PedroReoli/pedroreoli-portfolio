@@ -158,13 +158,19 @@ export const TechnologyStackSection: React.FC = () => {
                   </h3>
                 </div>
                 <div className="stack-lane-tools">
-                  {group.tools.map((tool) => (
-                    <div key={tool.name} className="stack-tool">
+                  {group.tools.map((tool, toolIndex) => (
+                    <Reveal
+                      key={tool.name}
+                      className="stack-tool"
+                      distance={12}
+                      delay={0.14 + index * 0.06 + toolIndex * 0.035}
+                      duration={0.42}
+                    >
                       <span className={`stack-brand-icon ${tool.color}`} aria-hidden="true">
                         {tool.icon}
                       </span>
                       <strong>{tool.name}</strong>
-                    </div>
+                    </Reveal>
                   ))}
                 </div>
               </article>

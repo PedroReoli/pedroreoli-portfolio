@@ -1,4 +1,7 @@
 import React from "react"
+import { AnimatePresence, m } from "framer-motion"
+import { useReducedMotion } from "../hooks/useReducedMotion"
+import { filmEase } from "../motion/choreography"
 import { useSearchParams } from "react-router-dom"
 import SEOHead from "../components/atoms/SEOHead"
 import ArchiveHeading from "../components/molecules/ArchiveHeading"
@@ -14,6 +17,7 @@ import { useLanguage } from "../i18n/useLanguage"
 export const ProjectsPage: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
+  const reduceMotion = useReducedMotion()
   const [searchParams, setSearchParams] = useSearchParams()
   const activeCategory: ProjectCategory =
     searchParams.get("tipo") === "gerais" ? "gerais" : "corporativo"
@@ -60,11 +64,22 @@ export const ProjectsPage: React.FC = () => {
           />
         </ArchiveHeading>
 
-        {activeCategory === "corporativo" ? (
-          <CorporateProjectsSection isEn={isEn} />
-        ) : (
-          <IndependentProjectsSection isEn={isEn} />
-        )}
+        <AnimatePresence mode="wait">
+          <m.div
+            key={activeCategory}
+            className="project-category-scene"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -10 }}
+            transition={{ duration: reduceMotion ? 0 : 0.24, ease: filmEase }}
+          >
+            {activeCategory === "corporativo" ? (
+              <CorporateProjectsSection isEn={isEn} />
+            ) : (
+              <IndependentProjectsSection isEn={isEn} />
+            )}
+          </m.div>
+        </AnimatePresence>
       </main>
 
       <SiteFooter compact />

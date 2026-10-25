@@ -165,6 +165,7 @@ async function auditGallery(page) {
     await page.locator(".project-gallery-link").first().click()
     await page.getByRole("dialog").getByText("Loading image", { exact: true }).waitFor()
     await page.keyboard.press("Escape")
+    await page.getByRole("dialog").waitFor({ state: "detached" })
     check("Carregamento identificado e cancelável", (await page.getByRole("dialog").count()) === 0)
     await page.waitForTimeout(900)
     await page.unroute(origin + firstSrc)
@@ -205,6 +206,7 @@ async function auditGallery(page) {
       animation,
     )
     await page.getByRole("button", { name: "Close gallery" }).click()
+    await page.getByRole("dialog").waitFor({ state: "detached" })
     check("Botão fechar remove modal", (await page.getByRole("dialog").count()) === 0)
     return { passed: results.length, viewports: sizes.length, languages: ["pt", "en"] }
   } finally {

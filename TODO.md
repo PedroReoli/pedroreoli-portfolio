@@ -64,6 +64,14 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Composição própria para celulares altos, mantendo a compactação nas telas baixas. Descrição da Autocom3 explicita a atuação em frontend e integrações a partir da experiência já cadastrada.
 - [x] Build de produção: 56 verificações dos três slides em sete viewports e PT/EN, além de 317 verificações da home em 22 viewports. Lint, 16 testes de renderização, TypeScript e build aprovados nesta revisão.
 
+## Coreografia de motion em 25/10/2026
+
+- [x] Páginas com saída curta e entrada, preservando foco, histórico e uma única página ativa. Conteúdo em saída fica inerte.
+- [x] Seções reapresentam entradas ao retornar pelo scroll. Projetos, experiências, itens da stack e índice da trajetória entram em sequência; trocas de capítulos acompanham a direção da navegação.
+- [x] Controles com resposta de pressão, categorias com transição, galeria com entrada/saída e imagens com aparecimento após carregar. Movimento reduzido continua reativo e compartilhado.
+- [x] `film-motion.cli.js`: 40 verificações por amostragem de quadros em mobile/desktop, incluindo retorno às seções e ordem título → descrição. Regressões de galeria (174), navegação (15), projetos (56), trajetória (72), preferência de movimento (49), hero (33), arquivos (125) e home (317) aprovadas nesta revisão. Total de 881 verificações headless; lint, 16 testes de renderização, TypeScript e build aprovados.
+- [x] Gravação de navegação em 390×844 e capturas finais salvas em `output/playwright/` e inspecionadas. Artefatos locais não versionados.
+
 ## Validação ainda pendente
 
 - [ ] Texto-base ampliado de 16px para 32px em 320×480 causa cortes nas seções de altura fixa. Aguardando decisão sobre permitir crescimento vertical nesse cenário, preservando o padrão de uma tela na escala normal. Isso é distinto do zoom nativo de página, já validado.
