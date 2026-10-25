@@ -79,6 +79,8 @@ async function auditProjectSlides(page) {
             )) {
               const rect = item.getBoundingClientRect()
               if (!rect.width || !rect.height || item.closest(".sr-only")) continue
+              if (item.matches("h3") && item.scrollWidth > item.clientWidth + 1)
+                outside.push(`Título excede a própria largura: ${item.textContent.trim()}`)
               if (
                 rect.top < stage.top - 2 ||
                 rect.bottom > stage.bottom + 2 ||

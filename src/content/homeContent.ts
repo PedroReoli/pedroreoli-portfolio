@@ -37,8 +37,8 @@ export const featuredProjects: FeaturedProject[] = [
     category: { pt: "Software corporativo", en: "Enterprise system" },
     year: "2024 / 26",
     description: {
-      pt: "Propostas, licenças e catálogo em uma plataforma corporativa.",
-      en: "Proposals, licenses and catalogs in one corporate platform.",
+      pt: "Frontend e integrações para propostas, licenciamento e catálogo.",
+      en: "Frontend and integrations for proposals, licensing and catalog management.",
     },
     technologies: ["React", "TypeScript", "Clean Architecture"],
     action: { pt: "Explorar interfaces", en: "Explore the interfaces" },

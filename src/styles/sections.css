@@ -4,6 +4,35 @@
     margin-inline: auto;
   }
 
+  .project-interface-frame {
+    background: radial-gradient(ellipse at 50% 40%, #f0eeeb, #c5c0b9);
+  }
+
+  .project-interface-frame .project-feature-image {
+    padding: clamp(0.75rem, 2.2vw, 2rem);
+    filter: drop-shadow(0 0.75rem 1rem rgb(17 16 16 / 0.16));
+  }
+
+  .selected-project-title {
+    font-size: clamp(1.75rem, min(6vw, 8vh), 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .selected-project-technologies li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .selected-project-technologies li::before {
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background: #82aaff;
+    content: "";
+  }
+
   .viewport-stage {
     position: relative;
     min-height: var(--viewport-height);

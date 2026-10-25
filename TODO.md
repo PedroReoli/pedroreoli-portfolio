@@ -58,6 +58,12 @@ Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram 
 - [x] Tela 404 com hierarquia editorial, ações visíveis em mobile/paisagem e entrada suave reutilizando `SlideSection`/`Reveal`. 44 verificações headless aprovadas em desenvolvimento e produção: oito viewports, PT/EN, teclado, movimento reduzido e texto ampliado. Capturas antes/depois inspecionadas em 320×480, 667×375 e 1440×900. Lint, 16 testes de renderização, TypeScript e build aprovados.
 - [x] Galeria corporativa ampliada dentro da página com `dialog` nativo, legenda, quatro imagens, navegação por teclado, retorno ao foco/scroll e saída para o original. 174 verificações headless aprovadas no build de produção em seis viewports e PT/EN, incluindo carregamento lento, falha de imagem e fundo inerte. Capturas em 320×480, 667×375 e 1440×900 inspecionadas. Nenhuma dependência adicionada.
 
+## Acabamento visual em 25/10/2026
+
+- [x] Trabalhos selecionados com captura completa da interface, moldura clara, títulos maiores e tecnologias sem caixas. Links editoriais substituem os botões com fundo e sombra.
+- [x] Composição própria para celulares altos, mantendo a compactação nas telas baixas. Descrição da Autocom3 explicita a atuação em frontend e integrações a partir da experiência já cadastrada.
+- [x] Build de produção: 56 verificações dos três slides em sete viewports e PT/EN, além de 317 verificações da home em 22 viewports. Lint, 16 testes de renderização, TypeScript e build aprovados nesta revisão.
+
 ## Validação ainda pendente
 
 - [ ] Texto-base ampliado de 16px para 32px em 320×480 causa cortes nas seções de altura fixa. Aguardando decisão sobre permitir crescimento vertical nesse cenário, preservando o padrão de uma tela na escala normal. Isso é distinto do zoom nativo de página, já validado.

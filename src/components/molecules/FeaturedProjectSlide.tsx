@@ -25,7 +25,7 @@ const ProjectArtwork: React.FC<{ project: FeaturedProject; isEn: boolean }> = ({
         decoding="async"
         width={2880}
         height={1800}
-        className="project-feature-image absolute inset-0 h-full w-full object-cover"
+        className="project-feature-image absolute inset-0 h-full w-full object-contain"
       />
     )
   }
@@ -76,7 +76,7 @@ interface FeaturedProjectSlideProps {
 }
 
 const actionClassName =
-  "group inline-flex min-h-11 items-center gap-2 sm:gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-2 sm:px-6 sm:py-3 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#111010] shadow-lg"
+  "selected-project-action group inline-flex min-h-11 items-center gap-3 border-b border-[#82aaff] py-2 text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-[0.12em] text-[#edeae4] transition-colors duration-200 hover:text-[#82aaff]"
 
 /** Apresentação de um projeto. A seção pai controla scroll e transições. */
 export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedProjectSlideProps) {
@@ -93,7 +93,11 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
 
   return (
     <>
-      <figure className="project-image-frame relative h-full min-h-0 overflow-hidden rounded-xl border border-white/10 bg-[#191817]">
+      <figure
+        className={`project-image-frame relative h-full min-h-0 overflow-hidden rounded-xl border border-white/10 ${
+          project.visual === "image" ? "project-interface-frame" : "bg-[#191817]"
+        }`}
+      >
         <ProjectArtwork project={project} isEn={isEn} />
         <span className="editorial-label absolute right-3 top-3 sm:right-4 sm:top-4 rounded bg-black/60 px-2 py-1 text-[10px] text-white/80 backdrop-blur-md">
           {project.number} / {String(total).padStart(2, "0")}
@@ -106,23 +110,18 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
             {project.category[language]} • {project.year}
           </span>
         </div>
-        <h3 className="text-2xl font-black uppercase tracking-tight text-white sm:text-4xl lg:text-5xl">
+        <h3 className="selected-project-title font-black uppercase text-[#edeae4]">
           {project.title}
         </h3>
         <p className="mt-1.5 sm:mt-3 leading-snug sm:leading-relaxed text-white/80 text-xs sm:text-base">
           {project.description[language]}
         </p>
         <ul
-          className="mt-2.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-white/60"
+          className="selected-project-technologies mt-2.5 sm:mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[10px] sm:text-xs text-white/60"
           aria-label={isEn ? "Project technologies" : "Tecnologias do projeto"}
         >
           {project.technologies.map((technology) => (
-            <li
-              key={technology}
-              className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1"
-            >
-              {technology}
-            </li>
+            <li key={technology}>{technology}</li>
           ))}
         </ul>
         <div className="mt-3.5 sm:mt-6">
