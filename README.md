@@ -59,6 +59,7 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/film-motion.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/scene-navigation.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/scene-touch.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/snap-quality.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -109,9 +110,11 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 
 `film-motion.cli.js` amostra quadros das transições de páginas, resposta de pressão dos controles, filtros e entradas repetidas das seções. Confere a direção e a sequência título → descrição nos capítulos da trajetória, histórico, foco e movimento reduzido em mobile e desktop. As curvas e variantes estão centralizadas em `src/motion/choreography.ts`. A página anterior fica inerte durante sua saída; a nova recebe foco após montar o conteúdo real.
 
-A home avança por cenas com `useHomeSceneNavigation`: um gesto de roda/trackpad, swipe vertical ou PageDown percorre uma seção ou capítulo. A transição dura 900ms; a cauda de inércia não pula etapas. Arrastar a scrollbar encaixa na etapa mais próxima ao soltar. Links, Tab, menus, áreas com scroll próprio e gestos de zoom mantêm sua função; Escape interrompe a transição. Com movimento reduzido, a troca é imediata. O controlador existe apenas na home, é removido ao sair dela e recalcula posições após resize. Projetos têm três paradas e Experiência tem cinco. `useHomeSceneParallax` move somente a composição interna, sem alterar as medidas de navegação. Os surgimentos começam quando 72% do palco estão visíveis e repetem ao retornar.
+A home avança por cenas com `useHomeSceneNavigation`: um gesto de roda/trackpad, swipe vertical ou PageDown percorre uma seção ou capítulo. O encaixe usa `animate` do Framer Motion 11, com spring de duração configurada em 1,15s e bounce zero, em vez de um tween manual com aceleração cúbica. A cauda de inércia não pula etapas. Arrastar a scrollbar encaixa na etapa mais próxima ao soltar. Links, Tab, menus, áreas com scroll próprio e gestos de zoom mantêm sua função; Escape interrompe a transição. Com movimento reduzido, a troca é imediata. O controlador existe apenas na home, é removido ao sair dela e recalcula posições após resize. Projetos têm três paradas e Experiência tem cinco. `useHomeSceneParallax` move e ajusta sutilmente a escala da composição interna, sem alterar as medidas de navegação; a geometria fica em cache e é atualizada por observers, evitando leituras de layout por quadro de scroll. Os surgimentos começam com 42% do palco visível, durante o deslocamento, e repetem ao retornar.
 
 `scene-navigation.cli.js` percorre as 13 etapas, verifica inércia, teclado, altura do viewport, movimento reduzido e scroll nativo em outra rota. `scene-touch.cli.js` emula swipes por CDP em um contexto mobile isolado; não equivale a ensaio em aparelho físico.
+
+`snap-quality.cli.js` amostra posições e opacidade por quadro para conferir encaixe sem rebote, desaceleração final, ausência de salto na conclusão e entrada do texto antes de terminar o movimento, em desktop e mobile. A amostragem headless não certifica taxa de quadros em aparelhos reais.
 
 ## Contato
 

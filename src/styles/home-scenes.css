@@ -8,6 +8,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .home-page :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
     .experience-stage-layout, .footer-stage-layout) {
-    transform: translate3d(0, var(--scene-parallax, 0px), 0);
+    transform: translate3d(0, var(--scene-parallax, 0px), 0) scale(var(--scene-scale, 1));
+    transform-origin: center center;
   }
 }

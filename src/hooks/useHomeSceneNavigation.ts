@@ -1,4 +1,5 @@
 import { useEffect, type RefObject } from "react"
+import { animate, type AnimationPlaybackControls } from "framer-motion"
 import { useReducedMotion } from "./useReducedMotion"
 
 /** Um gesto percorre uma cena (ou capítulo), mantendo o documento e seus links nativos. */
@@ -8,7 +9,7 @@ export function useHomeSceneNavigation(root: RefObject<HTMLElement>) {
   useEffect(() => {
     const page = root.current
     if (!page) return
-    let frame = 0
+    let animation: AnimationPlaybackControls | undefined
     let settleTimer = 0
     let lastWheel = 0
     let wheelDistance = 0
@@ -42,7 +43,7 @@ export function useHomeSceneNavigation(root: RefObject<HTMLElement>) {
     }
 
     const travel = (destination: number) => {
-      cancelAnimationFrame(frame)
+      animation?.stop()
       clearTimeout(settleTimer)
       const start = scrollY
       const distance = destination - start
@@ -53,18 +54,19 @@ export function useHomeSceneNavigation(root: RefObject<HTMLElement>) {
       }
       animating = true
       page.dataset.sceneTransition = "running"
-      const began = performance.now()
-      const tick = (now: number) => {
-        const progress = Math.min(1, (now - began) / 900)
-        const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2
-        window.scrollTo({ top: start + distance * eased, behavior: "instant" })
-        if (progress < 1) frame = requestAnimationFrame(tick)
-        else {
+      animation = animate(start, destination, {
+        type: "spring",
+        duration: 1.15,
+        bounce: 0,
+        restDelta: 0.1,
+        restSpeed: 2,
+        onUpdate: (top) => window.scrollTo({ top, behavior: "instant" }),
+        onComplete: () => {
+          window.scrollTo({ top: destination, behavior: "instant" })
           animating = false
           delete page.dataset.sceneTransition
-        }
-      }
-      frame = requestAnimationFrame(tick)
+        },
+      })
     }
 
     const advance = (direction: number) => {
@@ -135,7 +137,7 @@ export function useHomeSceneNavigation(root: RefObject<HTMLElement>) {
       }, 200)
     }
     const cancel = () => {
-      cancelAnimationFrame(frame)
+      animation?.stop()
       clearTimeout(settleTimer)
       animating = false
       delete page.dataset.sceneTransition

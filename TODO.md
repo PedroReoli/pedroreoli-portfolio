@@ -2,6 +2,15 @@
 
 Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram registrados em revisões anteriores.
 
+## Suavização do encaixe em 26/10/2026
+
+- [x] Substituído o tween manual do scroll por spring do Framer Motion, sem bounce e com aproximação gradual do destino.
+- [x] Surgimentos iniciados durante a chegada da seção (42% visível), com deslocamentos menores e duração coordenada.
+- [x] Parallax e escala sutis com cache de geometria; sem medição de layout por quadro de scroll.
+- [x] Teste `snap-quality.cli.js`: 22 verificações de movimento real em desktop/mobile, nas duas direções, incluindo desaceleração, ausência de rebote, último quadro e entrada do texto durante o encaixe.
+- [x] Lint, 16 testes de renderização, TypeScript e build aprovados.
+- [x] 907 verificações Chrome headless: qualidade do encaixe 22, navegação por cenas 207, seções 317, motion 40, preferência de movimento 49, toque emulado 4 e resize 268.
+
 ## Navegação por cenas em 26/10/2026
 
 - [x] Home com 13 paradas: sete seções, incluindo três etapas de projetos e cinco capítulos da trajetória.
