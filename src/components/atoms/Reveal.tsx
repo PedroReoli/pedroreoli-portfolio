@@ -38,7 +38,7 @@ export const Reveal: React.FC<RevealProps> = ({
   const hidden = {
     opacity: 0,
     x: axis === "x" ? distance : 0,
-    y: axis === "y" ? distance : 0,
+    y: axis === "y" ? distance * (sectionVisible === null ? 1 : 2) : 0,
     scale,
   }
   const visible = { opacity: 1, x: 0, y: 0, scale: 1 }

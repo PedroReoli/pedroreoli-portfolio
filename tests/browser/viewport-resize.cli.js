@@ -1,4 +1,4 @@
-// Mantém a seção em leitura durante mudanças da área útil, sem interceptar scroll.
+// Mantém a seção em leitura durante resize e retoma o avanço por capítulos.
 async function auditViewportResize(page) {
   const origin = new URL(page.url()).origin
   if (origin === "null") throw new Error("Abra o servidor local antes da auditoria")
@@ -107,12 +107,15 @@ async function auditViewportResize(page) {
           Math.abs(after.progress - before.progress) < 0.005 && after.active === before.active,
           { before, after },
         )
-        const scroll = await page.evaluate(() => scrollY)
+        const nextChapter = await page.locator("#experiencia").evaluate((e) =>
+          scrollY + e.getBoundingClientRect().top + (e.offsetHeight - innerHeight) * 0.75)
+        await page.mouse.move(195, 420)
         await page.mouse.wheel(0, 150)
-        await page.waitForTimeout(250)
+        await page.waitForFunction((target) => Math.abs(scrollY - target) < 2 &&
+          !document.querySelector('[data-scene-transition="running"]'), nextChapter)
         check(
-          `${motion} ${language}: scroll nativo continua livre`,
-          await page.evaluate((previous) => scrollY > previous + 50, scroll),
+          `${motion} ${language}: gesto avança após resize`,
+          await page.evaluate((target) => Math.abs(scrollY - target) < 2, nextChapter),
         )
       }
     }

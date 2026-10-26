@@ -7,6 +7,8 @@ import { useLanguage } from "../i18n/useLanguage"
 import ContentBoundary from "../components/molecules/ContentBoundary"
 import ContentStatus from "../components/molecules/ContentStatus"
 import { useHomeScrollAnchor } from "../hooks/useHomeScrollAnchor"
+import { useHomeSceneNavigation } from "../hooks/useHomeSceneNavigation"
+import { useHomeSceneParallax } from "../hooks/useHomeSceneParallax"
 
 const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
 
@@ -15,11 +17,13 @@ export const HomePage: React.FC = () => {
   const isEn = language === "en"
   const pageRef = useRef<HTMLDivElement>(null)
   useHomeScrollAnchor(pageRef)
+  useHomeSceneNavigation(pageRef)
+  useHomeSceneParallax(pageRef)
 
   return (
     <div
       ref={pageRef}
-      className="min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip"
+      className="home-page min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip"
     >
       {/* Metatags e SEO Dinâmico */}
       <SEOHead

@@ -2,6 +2,17 @@
 
 Validação visual atualizada em 22/10/2026. Os checks históricos abaixo foram registrados em revisões anteriores.
 
+## Navegação por cenas em 26/10/2026
+
+- [x] Home com 13 paradas: sete seções, incluindo três etapas de projetos e cinco capítulos da trajetória.
+- [x] Um gesto de roda/trackpad ou swipe avança uma etapa; transição de 900ms, proteção contra inércia, teclado e encaixe após scroll parcial.
+- [x] Palcos com a mesma altura dinâmica do viewport e parallax apenas na composição interna.
+- [x] Entradas acionadas com 72% do palco visível, deslocamento mais perceptível e repetição ao retornar; movimento reduzido preservado.
+- [x] `npm run check`: lint, 16 testes de renderização, TypeScript e build aprovados.
+- [x] Chrome headless: 884 verificações aprovadas (cenas 207, toque emulado 4, seções 317, motion 40, navegação 15, resize 268, hero 33). Sem janelas visíveis.
+- [x] Teste de resize atualizado para conferir avanço ao próximo capítulo, substituindo a expectativa anterior de scroll livre da home.
+- [ ] Validar gestos e barras dinâmicas em aparelhos físicos; a emulação headless não cobre essa etapa.
+
 ## Entregue e verificado por checks estáticos
 
 - [x] Home editorial dividida em seções modulares.

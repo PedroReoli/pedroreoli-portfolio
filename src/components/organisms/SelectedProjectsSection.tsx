@@ -55,6 +55,7 @@ export const SelectedProjectsSection: React.FC = () => {
     <section
       id="projetos-selecionados"
       data-scroll-scene
+      data-scroll-steps={3}
       ref={containerRef}
       className="relative h-[calc(3*var(--viewport-height))] min-h-screen w-full bg-[#111010]"
     >

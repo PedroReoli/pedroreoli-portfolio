@@ -57,6 +57,8 @@ npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-co
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/gallery.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/viewport-resize.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/film-motion.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/scene-navigation.cli.js
+npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/scene-touch.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/motion-preference.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/projects.cli.js
 npx --yes --package @playwright/cli@0.1.22 playwright-cli -s=portfolio-qa run-code --filename tests/browser/recovery.cli.js
@@ -103,9 +105,13 @@ Zoom de página não equivale a ampliar apenas a fonte. Texto-base de 32px em te
 
 `gallery.cli.js` verifica as quatro capturas corporativas em seis viewports e dois idiomas. O clique comum abre um `dialog` nativo com legenda, anterior/próxima, teclado, Escape e retorno ao ponto/foco original. O fundo fica inerte e sem rolagem. O teste inclui falha de imagem, entrada curta e movimento reduzido; o link para o arquivo original é conferido sem abrir outra aba. Ctrl/Cmd+clique conserva a ação nativa do link.
 
-`viewport-resize.cli.js` redimensiona a janela durante a leitura das sete seções, incluindo todos os slides de projetos e capítulos da trajetória. Confere a preservação da posição relativa, seleção ativa, alterações consecutivas de altura e scroll nativo, em PT/EN e com/sem movimento reduzido. `useHomeScrollAnchor` centraliza essa restauração apenas na home; novas ações de mouse, toque ou teclado cancelam uma restauração pendente. A simulação headless não substitui a validação das barras dinâmicas em celulares físicos.
+`viewport-resize.cli.js` redimensiona a janela durante a leitura das sete seções, incluindo todos os slides de projetos e capítulos da trajetória. Confere a preservação da posição relativa, seleção ativa, alterações consecutivas de altura e retomada do avanço por capítulos, em PT/EN e com/sem movimento reduzido. `useHomeScrollAnchor` centraliza essa restauração apenas na home; novas ações de mouse, toque ou teclado cancelam uma restauração pendente. A simulação headless não substitui a validação das barras dinâmicas em celulares físicos.
 
 `film-motion.cli.js` amostra quadros das transições de páginas, resposta de pressão dos controles, filtros e entradas repetidas das seções. Confere a direção e a sequência título → descrição nos capítulos da trajetória, histórico, foco e movimento reduzido em mobile e desktop. As curvas e variantes estão centralizadas em `src/motion/choreography.ts`. A página anterior fica inerte durante sua saída; a nova recebe foco após montar o conteúdo real.
+
+A home avança por cenas com `useHomeSceneNavigation`: um gesto de roda/trackpad, swipe vertical ou PageDown percorre uma seção ou capítulo. A transição dura 900ms; a cauda de inércia não pula etapas. Arrastar a scrollbar encaixa na etapa mais próxima ao soltar. Links, Tab, menus, áreas com scroll próprio e gestos de zoom mantêm sua função; Escape interrompe a transição. Com movimento reduzido, a troca é imediata. O controlador existe apenas na home, é removido ao sair dela e recalcula posições após resize. Projetos têm três paradas e Experiência tem cinco. `useHomeSceneParallax` move somente a composição interna, sem alterar as medidas de navegação. Os surgimentos começam quando 72% do palco estão visíveis e repetem ao retornar.
+
+`scene-navigation.cli.js` percorre as 13 etapas, verifica inércia, teclado, altura do viewport, movimento reduzido e scroll nativo em outra rota. `scene-touch.cli.js` emula swipes por CDP em um contexto mobile isolado; não equivale a ensaio em aparelho físico.
 
 ## Contato
 
