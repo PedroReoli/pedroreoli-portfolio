@@ -24,7 +24,14 @@ export const HomePage: React.FC = () => {
     <div
       ref={pageRef}
       className="home-page min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip"
+      style={{ backgroundColor: "var(--page-bg, #111010)" }}
     >
+      {/* Camada global de fundo com transição de cor fluida entre seções */}
+      <div
+        className="home-backdrop pointer-events-none fixed inset-0 -z-10"
+        style={{ backgroundColor: "var(--page-bg, #111010)" }}
+        aria-hidden="true"
+      />
       {/* Metatags e SEO Dinâmico */}
       <SEOHead
         title={

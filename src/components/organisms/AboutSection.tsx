@@ -11,7 +11,7 @@ const aboutStats = [
 ]
 
 export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
-  blendBackground = false,
+  blendBackground = true,
 }) => {
   const { language } = useLanguage()
   const isEn = language === "en"
@@ -27,7 +27,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
         <Reveal
           once
           distance={14}
-          duration={0.58}
+          duration={0.32}
           className="about-stage-heading flex items-center justify-between border-b border-black/20 pb-3"
         >
           <p className="editorial-label text-[#5f5b56]">02 / {isEn ? "About" : "Sobre mim"}</p>
@@ -41,11 +41,11 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
             once
             className="about-portrait-shell min-h-0"
             axis="x"
-            distance={-22}
-            scale={0.97}
-            delay={0.08}
-            duration={0.68}
-            amount={0.06}
+            distance={-18}
+            scale={0.98}
+            delay={0.06}
+            duration={0.36}
+            amount={0.05}
           >
             <figure className="about-portrait-frame relative h-full overflow-hidden">
               <img
@@ -69,7 +69,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
           </Reveal>
 
           <div className="about-copy min-h-0">
-            <Reveal once distance={20} delay={0.14} duration={0.62} amount={0.06}>
+            <Reveal once distance={16} delay={0.1} duration={0.34} amount={0.05}>
               <p className="editorial-label mb-2 text-[#5f5b56]">
                 {isEn ? "Full Stack / Architecture / AI" : "Full Stack / Arquitetura / IA"}
               </p>
@@ -78,7 +78,7 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
               </h2>
             </Reveal>
 
-            <Reveal once delay={0.22} distance={16} duration={0.6} amount={0.06}>
+            <Reveal once delay={0.16} distance={14} duration={0.34} amount={0.05}>
               <p className="about-summary">
                 {isEn
                   ? "I'm a Full Stack engineer with a focus on frontend. I build ERP systems, SaaS products and integrations, from the first workflow to production."
@@ -96,9 +96,9 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
                   key={stat.value}
                   className="about-stat"
                   role="listitem"
-                  delay={0.28 + index * 0.05}
-                  distance={14}
-                  duration={0.55}
+                  delay={0.2 + index * 0.04}
+                  distance={12}
+                  duration={0.3}
                   amount={0.04}
                   once
                 >

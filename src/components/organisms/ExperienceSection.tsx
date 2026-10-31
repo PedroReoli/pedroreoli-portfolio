@@ -57,14 +57,14 @@ export const ExperienceSection: React.FC = () => {
       data-scroll-scene
       data-scroll-steps={experienceItems.length}
       ref={containerRef}
-      className="experience-scroll-stage relative min-h-screen bg-[#111010] text-[#edeae4]"
+      className="experience-scroll-stage relative min-h-screen bg-transparent text-[#edeae4]"
       style={{ "--experience-steps": experienceItems.length } as React.CSSProperties}
     >
       <SlideSection as="div" className="viewport-stage trajectory-stage sticky top-0 min-h-screen">
         <div className="editorial-container experience-stage-layout">
           <Reveal
             distance={14}
-            duration={0.55}
+            duration={0.32}
             className="experience-stage-heading flex items-end justify-between gap-5 border-b border-white/15 pb-4"
           >
             <div>
@@ -84,9 +84,9 @@ export const ExperienceSection: React.FC = () => {
           <div className="experience-stage-content min-h-0">
             <Reveal
               className="experience-index min-h-0 border-b border-white/10 lg:border-b-0 lg:border-r lg:pr-8"
-              delay={0.1}
-              distance={18}
-              duration={0.6}
+              delay={0.06}
+              distance={14}
+              duration={0.34}
               role="list"
               ariaLabel={isEn ? "Career chapters" : "Capítulos da trajetória"}
             >
@@ -99,9 +99,9 @@ export const ExperienceSection: React.FC = () => {
                       key={`${item.company}-${item.period.pt}`}
                       role="listitem"
                       className="min-h-0"
-                      distance={12}
-                      delay={0.12 + index * 0.045}
-                      duration={0.42}
+                      distance={10}
+                      delay={0.08 + index * 0.035}
+                      duration={0.28}
                     >
                       <button
                         type="button"
@@ -139,10 +139,10 @@ export const ExperienceSection: React.FC = () => {
             <Reveal
               className="experience-detail-shell min-h-0"
               axis="x"
-              distance={18}
-              amount={0.08}
-              delay={0.18}
-              duration={0.62}
+              distance={14}
+              amount={0.06}
+              delay={0.12}
+              duration={0.34}
             >
               <ExperienceChapter
                 item={activeItem}

@@ -108,12 +108,12 @@ export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedP
           reduceMotion
             ? stillMotion
             : {
-                enter: { opacity: 0, y: 20, scale: 0.97 },
+                enter: { opacity: 0, y: 14, scale: 0.98 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
-                  transition: { duration: 0.64, ease: filmEase },
+                  transition: { duration: 0.35, ease: filmEase },
                 },
               }
         }

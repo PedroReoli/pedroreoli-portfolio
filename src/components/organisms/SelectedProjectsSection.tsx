@@ -57,12 +57,12 @@ export const SelectedProjectsSection: React.FC = () => {
       data-scroll-scene
       data-scroll-steps={3}
       ref={containerRef}
-      className="relative h-[calc(3*var(--viewport-height))] min-h-screen w-full bg-[#111010]"
+      className="relative h-[calc(3*var(--viewport-height))] min-h-screen w-full bg-transparent"
     >
       {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
       <SlideSection
         as="div"
-        className="selected-projects-stage sticky top-0 h-screen min-h-screen w-full overflow-hidden bg-[#111010]"
+        className="selected-projects-stage sticky top-0 h-screen min-h-screen w-full overflow-hidden bg-transparent"
       >
         {/* Background Atmospheric Glow */}
         <div
@@ -74,6 +74,7 @@ export const SelectedProjectsSection: React.FC = () => {
         <Reveal
           className="selected-projects-heading editorial-container relative z-10 flex items-center justify-between gap-2 border-b border-white/10 pb-3"
           distance={12}
+          duration={0.32}
         >
           <div>
             <p className="editorial-label text-[10px] text-[#82aaff] sm:text-xs">
@@ -128,9 +129,9 @@ export const SelectedProjectsSection: React.FC = () => {
 
         {/* Middle Stage: Pinned Content Slides */}
         <Reveal
-          delay={0.12}
-          distance={20}
-          duration={0.62}
+          delay={0.06}
+          distance={14}
+          duration={0.34}
           className="editorial-container relative z-10 flex h-full min-h-0 items-center justify-center"
         >
           <AnimatePresence mode="wait" custom={direction}>
@@ -183,8 +184,8 @@ export const SelectedProjectsSection: React.FC = () => {
         <Reveal
           className="editorial-container relative z-10 flex items-center justify-between border-t border-white/10 pt-3"
           distance={10}
-          delay={0.24}
-          duration={0.55}
+          delay={0.14}
+          duration={0.32}
         >
           <div className="flex items-center gap-2">
             <span className="font-mono text-[11px] font-bold text-[#82aaff]">

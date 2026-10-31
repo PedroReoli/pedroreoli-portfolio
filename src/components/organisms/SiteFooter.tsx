@@ -53,10 +53,10 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
       data-scroll-scene={!compact || undefined}
       className={`${
         compact ? "footer-stage-compact" : "viewport-stage min-h-screen"
-      } footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]`}
+      } footer-stage border-t border-white/10 bg-transparent text-[#edeae4]`}
     >
       <div className="editorial-container footer-stage-layout h-full">
-        <Reveal distance={14} duration={0.55} className="border-b border-white/15 pb-4 sm:pb-5">
+        <Reveal distance={14} duration={0.32} className="border-b border-white/15 pb-4 sm:pb-5">
           <div>
             <p className="editorial-label text-[#82aaff]">07 / {isEn ? "Contact" : "Contato"}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-[#8f8a84] sm:mt-3 sm:text-base">
@@ -69,9 +69,9 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
 
         <Reveal
           className="footer-cta-stage flex min-h-0 flex-col justify-center"
-          distance={24}
-          delay={0.14}
-          duration={0.65}
+          distance={16}
+          delay={0.06}
+          duration={0.34}
         >
           <p className="editorial-label mb-4 text-[#8d8984]">
             {isEn ? "Tell me what you have in mind." : "Conte o que você tem em mente."}
@@ -89,9 +89,9 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
         <div className="footer-bottom">
           <Reveal
             className="border-b border-white/15 pb-4 sm:pb-6"
-            delay={0.26}
-            distance={18}
-            duration={0.58}
+            delay={0.14}
+            distance={14}
+            duration={0.32}
           >
             <nav
               className="footer-links"

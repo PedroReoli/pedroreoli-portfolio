@@ -15,9 +15,9 @@ export const PortfolioHero: React.FC = () => {
     target: heroRef,
     offset: ["start start", "end start"],
   })
-  const exitOpacity = useTransform(scrollYProgress, [0, 0.12, 0.55], [1, 1, 0])
-  const exitY = useTransform(scrollYProgress, [0, 1], [0, -28])
-  const atmosphereOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
+  const exitOpacity = useTransform(scrollYProgress, [0, 0.08, 0.38], [1, 1, 0])
+  const exitY = useTransform(scrollYProgress, [0, 0.45], [0, -24])
+  const atmosphereOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0])
 
   return (
     <section

@@ -105,11 +105,12 @@ export const TechnologyStackSection: React.FC = () => {
       id="stack"
       data-scroll-scene
       className="viewport-stage stack-stage min-h-screen bg-[#edeae4] text-[#111010]"
+      style={{ backgroundColor: "transparent" }}
     >
       <div className="editorial-container stack-stage-layout">
         <Reveal
           distance={14}
-          duration={0.55}
+          duration={0.32}
           className="stack-stage-heading grid gap-4 border-b border-black/25 pb-4 sm:grid-cols-[1fr_auto] sm:items-end sm:pb-6"
         >
           <div>
@@ -146,9 +147,9 @@ export const TechnologyStackSection: React.FC = () => {
               className="min-h-0"
               role="listitem"
               amount={0.04}
-              delay={0.08 + index * 0.07}
-              distance={18}
-              duration={0.58}
+              delay={0.06 + index * 0.05}
+              distance={14}
+              duration={0.32}
             >
               <article className="stack-lane h-full">
                 <div className="stack-lane-heading">
@@ -162,9 +163,9 @@ export const TechnologyStackSection: React.FC = () => {
                     <Reveal
                       key={tool.name}
                       className="stack-tool"
-                      distance={12}
-                      delay={0.14 + index * 0.06 + toolIndex * 0.035}
-                      duration={0.42}
+                      distance={10}
+                      delay={0.1 + index * 0.05 + toolIndex * 0.025}
+                      duration={0.28}
                     >
                       <span className={`stack-brand-icon ${tool.color}`} aria-hidden="true">
                         {tool.icon}

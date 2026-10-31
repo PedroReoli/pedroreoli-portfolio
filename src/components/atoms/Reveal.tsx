@@ -23,9 +23,9 @@ export const Reveal: React.FC<RevealProps> = ({
   children,
   className,
   delay = 0,
-  distance = 24,
-  duration = 0.64,
-  amount = 0.08,
+  distance = 16,
+  duration = 0.36,
+  amount = 0.06,
   scale = 1,
   axis = "y",
   once = false,
@@ -38,7 +38,7 @@ export const Reveal: React.FC<RevealProps> = ({
   const hidden = {
     opacity: 0,
     x: axis === "x" ? distance : 0,
-    y: axis === "y" ? distance * (sectionVisible === null ? 1 : 1.4) : 0,
+    y: axis === "y" ? distance * (sectionVisible === null ? 1 : 1.25) : 0,
     scale,
   }
   const visible = { opacity: 1, x: 0, y: 0, scale: 1 }
@@ -61,8 +61,12 @@ export const Reveal: React.FC<RevealProps> = ({
       viewport={{ once, amount }}
       onFocusCapture={() => setHasFocus(true)}
       transition={{
-        duration: showImmediately ? 0 : sectionVisible === null ? duration : Math.max(0.8, duration),
-        delay: showImmediately ? 0 : sectionVisible === null ? delay : delay * 0.7,
+        duration: showImmediately
+          ? 0
+          : sectionVisible === false
+          ? 0.16
+          : Math.min(0.48, duration),
+        delay: showImmediately || sectionVisible === false ? 0 : delay * 0.65,
         ease: entranceEase,
       }}
     >
