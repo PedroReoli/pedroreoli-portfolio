@@ -3,18 +3,30 @@ import type { Variants } from "framer-motion"
 export const filmEase = [0.22, 1, 0.36, 1] as const
 
 export const chapterMotion: Variants = {
-  enter: (direction: number = 1) => ({ opacity: 0, x: 16 * direction, filter: "blur(4px)" }),
+  enter: (direction: number = 1) => ({
+    opacity: 0,
+    x: 28 * direction,
+    scale: 0.96,
+    filter: "blur(8px)",
+  }),
   visible: {
     opacity: 1,
     x: 0,
+    scale: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.3, ease: filmEase, staggerChildren: 0.035, delayChildren: 0.02 },
+    transition: {
+      duration: 0.38,
+      ease: filmEase,
+      staggerChildren: 0.04,
+      delayChildren: 0.02,
+    },
   },
   exit: (direction: number = 1) => ({
     opacity: 0,
-    x: -12 * direction,
-    filter: "blur(4px)",
-    transition: { duration: 0.14, ease: filmEase },
+    x: -24 * direction,
+    scale: 0.96,
+    filter: "blur(8px)",
+    transition: { duration: 0.2, ease: filmEase },
   }),
 }
 

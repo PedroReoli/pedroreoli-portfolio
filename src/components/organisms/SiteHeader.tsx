@@ -18,12 +18,29 @@ export const SiteHeader: React.FC = () => {
     navigationRef,
   } = useMobileNavigation(pathname)
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
+  const [activeScene, setActiveScene] = useState(() => {
+    if (typeof document !== "undefined") {
+      return document.documentElement.dataset.activeScene || "hero"
+    }
+    return "hero"
+  })
   const [navigationVisible, setNavigationVisible] = useState(true)
   const lastScrollDecision = useRef(0)
   const { scrollY } = useScroll()
   const reduceMotion = Boolean(useReducedMotion())
   const isEn = language === "en"
   const isHomePage = pathname === "/"
+
+  useEffect(() => {
+    const handleSceneChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ sceneId: string }>
+      if (customEvent.detail?.sceneId) {
+        setActiveScene(customEvent.detail.sceneId)
+      }
+    }
+    window.addEventListener("scene-change", handleSceneChange)
+    return () => window.removeEventListener("scene-change", handleSceneChange)
+  }, [])
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolledPastHero(latest > 120)
@@ -80,8 +97,8 @@ export const SiteHeader: React.FC = () => {
         animate={{ y: navigationVisible ? 0 : "-110%" }}
         transition={{ duration: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed inset-x-0 top-0 z-50 hidden h-16 items-center border-b transition-colors duration-300 md:flex ${
-          scrolledPastHero || !isHomePage
-            ? "border-white/10 bg-[#111010]/88 backdrop-blur-xl"
+          (isHomePage && activeScene !== "hero") || scrolledPastHero || !isHomePage
+            ? "border-white/10 bg-[#111010]/90 backdrop-blur-xl shadow-lg"
             : "border-transparent bg-transparent"
         }`}
       >

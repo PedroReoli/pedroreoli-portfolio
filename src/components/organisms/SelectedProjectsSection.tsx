@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ChevronDown } from "lucide-react"
@@ -17,6 +17,21 @@ export const SelectedProjectsSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [{ index: activeStep, direction }, setSelection] = useState({ index: 0, direction: 1 })
 
+  useEffect(() => {
+    const handleSetStep = (e: Event) => {
+      const customEvent = e as CustomEvent<{ index: number }>
+      if (typeof customEvent.detail?.index === "number") {
+        const nextIdx = customEvent.detail.index
+        setSelection((current) => ({
+          index: nextIdx,
+          direction: nextIdx > current.index ? 1 : -1,
+        }))
+      }
+    }
+    window.addEventListener("set-project-step", handleSetStep)
+    return () => window.removeEventListener("set-project-step", handleSetStep)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -32,6 +47,13 @@ export const SelectedProjectsSection: React.FC = () => {
   })
 
   const scrollToStep = (stepIndex: number) => {
+    setSelection((current) => ({
+      index: stepIndex,
+      direction: stepIndex > current.index ? 1 : -1,
+    }))
+    window.dispatchEvent(
+      new CustomEvent("project-step-synced", { detail: { index: stepIndex } })
+    )
     if (!containerRef.current) return
     const container = containerRef.current
     const rect = container.getBoundingClientRect()

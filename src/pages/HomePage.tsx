@@ -1,24 +1,19 @@
-import React, { Suspense, lazy, useRef } from "react"
+import React, { useRef } from "react"
 import SEOHead from "../components/atoms/SEOHead"
 import HomeIntro from "../components/organisms/HomeIntro"
+import HomeSections from "../components/organisms/HomeSections"
 import SiteFooter from "../components/organisms/SiteFooter"
 import { getSiteUrl, siteConfig } from "../config/site"
 import { useLanguage } from "../i18n/useLanguage"
 import ContentBoundary from "../components/molecules/ContentBoundary"
 import ContentStatus from "../components/molecules/ContentStatus"
-import { useHomeScrollAnchor } from "../hooks/useHomeScrollAnchor"
-import { useHomeSceneNavigation } from "../hooks/useHomeSceneNavigation"
-import { useHomeSceneParallax } from "../hooks/useHomeSceneParallax"
-
-const HomeSections = lazy(() => import("../components/organisms/HomeSections"))
+import { useHomeSceneGSAP } from "../hooks/useHomeSceneGSAP"
 
 export const HomePage: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
   const pageRef = useRef<HTMLDivElement>(null)
-  useHomeScrollAnchor(pageRef)
-  useHomeSceneNavigation(pageRef)
-  useHomeSceneParallax(pageRef)
+  useHomeSceneGSAP(pageRef)
 
   return (
     <div
@@ -26,7 +21,7 @@ export const HomePage: React.FC = () => {
       className="home-page min-h-screen bg-[#111010] text-[#edeae4] antialiased overflow-x-clip"
       style={{ backgroundColor: "var(--page-bg, #111010)" }}
     >
-      {/* Camada global de fundo com transição de cor fluida entre seções */}
+      {/* Camada global de fundo com transição de cor fluida entre seções via GSAP */}
       <div
         className="home-backdrop pointer-events-none fixed inset-0 -z-10"
         style={{ backgroundColor: "var(--page-bg, #111010)" }}
@@ -51,9 +46,7 @@ export const HomePage: React.FC = () => {
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <HomeIntro />
         <ContentBoundary fallback={<ContentStatus status="error" scope="section" />}>
-          <Suspense fallback={<ContentStatus status="loading" scope="section" />}>
-            <HomeSections />
-          </Suspense>
+          <HomeSections />
         </ContentBoundary>
       </main>
       <SiteFooter />

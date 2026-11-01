@@ -5,7 +5,7 @@ import SelectedProjectsSection from "./SelectedProjectsSection"
 import TechnologyStackSection from "./TechnologyStackSection"
 
 export const HomeSections: React.FC = () => (
-  <div className="w-full">
+  <div className="home-sections-wrapper w-full">
     <SelectedProjectsSection />
     <TechnologyStackSection />
     <PurposeStorySection />

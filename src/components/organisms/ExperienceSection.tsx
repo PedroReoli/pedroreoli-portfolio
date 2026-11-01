@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useMotionValueEvent, useScroll } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowDown } from "lucide-react"
@@ -22,6 +22,21 @@ export const ExperienceSection: React.FC = () => {
   })
   const activeItem = experienceItems[activeExperience]
 
+  useEffect(() => {
+    const handleSetChapter = (e: Event) => {
+      const customEvent = e as CustomEvent<{ index: number }>
+      if (typeof customEvent.detail?.index === "number") {
+        const nextIdx = customEvent.detail.index
+        setSelection((current) => ({
+          index: nextIdx,
+          direction: nextIdx > current.index ? 1 : -1,
+        }))
+      }
+    }
+    window.addEventListener("set-experience-chapter", handleSetChapter)
+    return () => window.removeEventListener("set-experience-chapter", handleSetChapter)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -41,6 +56,13 @@ export const ExperienceSection: React.FC = () => {
   })
 
   const scrollToExperience = (index: number) => {
+    setSelection((current) => ({
+      index,
+      direction: index > current.index ? 1 : -1,
+    }))
+    window.dispatchEvent(
+      new CustomEvent("experience-chapter-synced", { detail: { index } })
+    )
     if (!containerRef.current) return
 
     const section = containerRef.current

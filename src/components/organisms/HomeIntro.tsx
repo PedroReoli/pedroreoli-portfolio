@@ -6,7 +6,7 @@ export default function HomeIntro() {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
-    <div ref={ref} className="relative bg-transparent">
+    <div ref={ref} className="home-intro-wrapper relative bg-transparent">
       <PortfolioHero />
       <AboutSection blendBackground={true} />
     </div>

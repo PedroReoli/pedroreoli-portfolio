@@ -1,6 +1,9 @@
-import React, { Suspense, lazy, useEffect, useRef } from "react"
+import React, { Suspense, useEffect, useRef } from "react"
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom"
 import HomePage from "./pages/HomePage"
+import ProjectsPage from "./pages/ProjectsPage"
+import MediaBlogPage from "./pages/MediaBlogPage"
+import NotFoundPage from "./pages/NotFoundPage"
 import { LanguageProvider } from "./i18n/LanguageContext"
 import { AnimatePresence, domAnimation, LazyMotion, MotionConfig } from "framer-motion"
 import ScrollToTop from "./components/atoms/ScrollToTop"
@@ -9,10 +12,6 @@ import SiteHeader from "./components/organisms/SiteHeader"
 import ContentBoundary from "./components/molecules/ContentBoundary"
 import ContentStatus from "./components/molecules/ContentStatus"
 import PageTransition from "./components/atoms/PageTransition"
-
-const ProjectsPage = lazy(() => import("./pages/ProjectsPage"))
-const MediaBlogPage = lazy(() => import("./pages/MediaBlogPage"))
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
 
 const RoutedApp: React.FC = () => {
   const location = useLocation()
