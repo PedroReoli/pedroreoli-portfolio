@@ -17,7 +17,7 @@ interface RevealProps {
   ariaLabel?: string
 }
 
-const entranceEase = [0.16, 1, 0.3, 1] as const
+const entranceEase = [0.22, 1, 0.36, 1] as const
 
 export const Reveal: React.FC<RevealProps> = ({
   children,
@@ -39,7 +39,7 @@ export const Reveal: React.FC<RevealProps> = ({
     opacity: 0,
     x: axis === "x" ? distance : 0,
     y: axis === "y" ? distance * (sectionVisible === null ? 1 : 1.25) : 0,
-    scale,
+    scale: scale * 0.98,
   }
   const visible = { opacity: 1, x: 0, y: 0, scale: 1 }
   const showImmediately = Boolean(reduceMotion || hasFocus)
@@ -64,8 +64,8 @@ export const Reveal: React.FC<RevealProps> = ({
         duration: showImmediately
           ? 0
           : sectionVisible === false
-          ? 0.16
-          : Math.min(0.48, duration),
+          ? 0.15
+          : Math.min(0.42, duration),
         delay: showImmediately || sectionVisible === false ? 0 : delay * 0.65,
         ease: entranceEase,
       }}

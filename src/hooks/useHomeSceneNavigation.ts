@@ -56,10 +56,10 @@ export function useHomeSceneNavigation(root: RefObject<HTMLElement>) {
       page.dataset.sceneTransition = "running"
       animation = animate(start, destination, {
         type: "spring",
-        duration: 0.58,
+        duration: 0.52,
         bounce: 0,
         restDelta: 0.2,
-        restSpeed: 3,
+        restSpeed: 4,
         onUpdate: (top) => window.scrollTo({ top, behavior: "instant" }),
         onComplete: () => {
           window.scrollTo({ top: destination, behavior: "instant" })

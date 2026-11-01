@@ -17,6 +17,8 @@ export const PortfolioHero: React.FC = () => {
   })
   const exitOpacity = useTransform(scrollYProgress, [0, 0.08, 0.38], [1, 1, 0])
   const exitY = useTransform(scrollYProgress, [0, 0.45], [0, -24])
+  const exitScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.96])
+  const exitBlur = useTransform(scrollYProgress, [0, 0.38], ["blur(0px)", "blur(4px)"])
   const atmosphereOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0])
 
   return (
@@ -45,7 +47,12 @@ export const PortfolioHero: React.FC = () => {
 
       <m.div
         className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]"
-        style={{ opacity: reduceMotion ? 1 : exitOpacity, y: reduceMotion ? 0 : exitY }}
+        style={{
+          opacity: reduceMotion ? 1 : exitOpacity,
+          y: reduceMotion ? 0 : exitY,
+          scale: reduceMotion ? 1 : exitScale,
+          filter: reduceMotion ? "none" : exitBlur,
+        }}
       >
         {/* Top Info Metadata */}
         <m.div

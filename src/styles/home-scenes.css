@@ -7,15 +7,15 @@
 
 .home-page {
   background-color: var(--page-bg, #111010);
-  transition: background-color 150ms ease-out;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .home-page :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
     .experience-stage-layout, .footer-stage-layout, .selected-projects-stage) {
-    transform: translate3d(0, calc(var(--scene-parallax, 0px) + var(--scene-exit-y, 0px)), 0) scale(var(--scene-scale, 1));
+    transform: translate3d(0, calc(var(--scene-parallax, 0px) + var(--scene-exit-y, 0px)), 0) scale(calc(var(--scene-scale, 1) * var(--scene-exit-scale, 1)));
     transform-origin: center center;
     opacity: var(--scene-exit-opacity, 1);
-    will-change: transform, opacity;
+    filter: blur(var(--scene-exit-blur, 0px));
+    will-change: transform, opacity, filter;
   }
 }

@@ -1,29 +1,31 @@
 import type { Variants } from "framer-motion"
 
-export const filmEase = [0.16, 1, 0.3, 1] as const
+export const filmEase = [0.22, 1, 0.36, 1] as const
 
 export const chapterMotion: Variants = {
-  enter: (direction: number = 1) => ({ opacity: 0, x: 18 * direction }),
+  enter: (direction: number = 1) => ({ opacity: 0, x: 16 * direction, filter: "blur(4px)" }),
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.32, ease: filmEase, staggerChildren: 0.04, delayChildren: 0.02 },
+    filter: "blur(0px)",
+    transition: { duration: 0.3, ease: filmEase, staggerChildren: 0.035, delayChildren: 0.02 },
   },
   exit: (direction: number = 1) => ({
     opacity: 0,
-    x: -14 * direction,
-    transition: { duration: 0.15, ease: filmEase },
+    x: -12 * direction,
+    filter: "blur(4px)",
+    transition: { duration: 0.14, ease: filmEase },
   }),
 }
 
 export const chapterItemMotion: Variants = {
-  enter: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: filmEase } },
+  enter: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: filmEase } },
 }
 
 export const staggerMotion: Variants = {
   enter: {},
-  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.02 } },
+  visible: { transition: { staggerChildren: 0.035, delayChildren: 0.02 } },
 }
 
 export const stillMotion: Variants = {

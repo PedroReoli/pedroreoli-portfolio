@@ -106,16 +106,22 @@ export function useHomeSceneParallax(root: RefObject<HTMLElement>) {
           stage.style.setProperty("--scene-parallax", `${offset.toFixed(2)}px`)
           stage.style.setProperty("--scene-scale", `${(1 - Math.abs(progress) * 0.02).toFixed(5)}`)
 
-          // Fade out e recuo ágil de saída quando a cena rola para fora pelo topo
+          // Fade out, recuo de profundidade e suave rack blur quando a cena rola para fora pelo topo
           if (top < 0) {
             const exitRatio = Math.max(0, Math.min(1, -top / (viewport * 0.38)))
             const exitOpacity = (1 - exitRatio).toFixed(3)
-            const exitY = (-exitRatio * 24).toFixed(1)
+            const exitY = (-exitRatio * 28).toFixed(1)
+            const exitScale = (1 - exitRatio * 0.04).toFixed(4)
+            const exitBlur = (exitRatio * 4).toFixed(1)
             stage.style.setProperty("--scene-exit-opacity", exitOpacity)
             stage.style.setProperty("--scene-exit-y", `${exitY}px`)
+            stage.style.setProperty("--scene-exit-scale", exitScale)
+            stage.style.setProperty("--scene-exit-blur", `${exitBlur}px`)
           } else {
             stage.style.setProperty("--scene-exit-opacity", "1")
             stage.style.setProperty("--scene-exit-y", "0px")
+            stage.style.setProperty("--scene-exit-scale", "1")
+            stage.style.setProperty("--scene-exit-blur", "0px")
           }
         }
       }
@@ -147,6 +153,8 @@ export function useHomeSceneParallax(root: RefObject<HTMLElement>) {
         stage.style.removeProperty("--scene-scale")
         stage.style.removeProperty("--scene-exit-opacity")
         stage.style.removeProperty("--scene-exit-y")
+        stage.style.removeProperty("--scene-exit-scale")
+        stage.style.removeProperty("--scene-exit-blur")
       }
       page.style.removeProperty("--page-bg")
     }
