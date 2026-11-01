@@ -5,17 +5,206 @@
   max-height: var(--viewport-height);
 }
 
-.home-page {
+.home-page,
+.home-backdrop {
   background-color: var(--page-bg, #111010);
+  transition: background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: background-color;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .home-page :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
-    .experience-stage-layout, .footer-stage-layout, .selected-projects-stage) {
-    transform: translate3d(0, calc(var(--scene-parallax, 0px) + var(--scene-exit-y, 0px)), 0) scale(calc(var(--scene-scale, 1) * var(--scene-exit-scale, 1)));
-    transform-origin: center center;
-    opacity: var(--scene-exit-opacity, 1);
-    filter: blur(var(--scene-exit-blur, 0px));
-    will-change: transform, opacity, filter;
+/* =========================================================================
+   SISTEMA DE TRANSIÇÃO CINEMATOGRÁFICA INTER E INTRA-SEÇÕES
+   Fase 1: Os itens da cena atual somem (fade-out + elevação + blur)
+   Fase 2: A cor do fundo muda suavemente e o alinhamento da cena ocorre
+   Fase 3: Os itens da nova cena surgem um por um, em cascata rápida
+   ========================================================================= */
+
+@keyframes sceneStageExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.97);
+    filter: blur(5px);
+  }
+}
+
+@keyframes sceneCascadeItemEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* FASE 1: ITENS SUMINDO */
+[data-scene-state="exiting"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+  .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame) {
+  animation: sceneStageExit 190ms cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  will-change: transform, opacity, filter;
+  pointer-events: none;
+}
+
+/* OCULTO DURANTE ALINHAMENTO */
+[data-scene-state="hidden"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+  .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* FASE 3: ENTRADA EM CASCATA ÁGIL ("um por um, tudo bem rápido") */
+[data-scene-state="entering"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+  .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Hero Stagger */
+[data-scene-state="entering"] .hero-frame > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .hero-frame > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 40ms both !important;
+}
+[data-scene-state="entering"] .hero-frame > :nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both !important;
+}
+
+/* Sobre mim Stagger */
+[data-scene-state="entering"] .about-stage-heading {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .about-portrait-shell {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 35ms both !important;
+}
+[data-scene-state="entering"] .about-copy > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both !important;
+}
+[data-scene-state="entering"] .about-copy > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 105ms both !important;
+}
+[data-scene-state="entering"] .about-stats-grid > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 130ms both !important;
+}
+[data-scene-state="entering"] .about-stats-grid > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 165ms both !important;
+}
+[data-scene-state="entering"] .about-stats-grid > :nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both !important;
+}
+[data-scene-state="entering"] .about-stats-grid > :nth-child(4) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 235ms both !important;
+}
+
+/* Projetos Stagger */
+[data-scene-state="entering"] .selected-projects-heading {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .selected-projects-stage .editorial-container:nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both !important;
+}
+
+/* Stack Stagger */
+[data-scene-state="entering"] .stack-stage-heading {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .stack-grid > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 35ms both !important;
+}
+[data-scene-state="entering"] .stack-grid > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both !important;
+}
+[data-scene-state="entering"] .stack-grid > :nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 105ms both !important;
+}
+[data-scene-state="entering"] .stack-grid > :nth-child(4) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both !important;
+}
+
+/* Propósito Stagger */
+[data-scene-state="entering"] .purpose-stage-heading {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .purpose-media-shell {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 40ms both !important;
+}
+[data-scene-state="entering"] .purpose-copy > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both !important;
+}
+[data-scene-state="entering"] .purpose-copy > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both !important;
+}
+[data-scene-state="entering"] .purpose-copy > :nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both !important;
+}
+
+/* Experiência Stagger */
+[data-scene-state="entering"] .experience-stage-heading {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .experience-index {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 45ms both !important;
+}
+[data-scene-state="entering"] .experience-stage-content > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both !important;
+}
+
+/* Contato / Rodapé Stagger */
+[data-scene-state="entering"] .footer-stage-layout > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both !important;
+}
+[data-scene-state="entering"] .footer-grid > :nth-child(1) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 35ms both !important;
+}
+[data-scene-state="entering"] .footer-grid > :nth-child(2) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both !important;
+}
+[data-scene-state="entering"] .footer-grid > :nth-child(3) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 105ms both !important;
+}
+[data-scene-state="entering"] .footer-grid > :nth-child(4) {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both !important;
+}
+[data-scene-state="entering"] .footer-banner {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 175ms both !important;
+}
+[data-scene-state="entering"] .footer-bottom {
+  animation: sceneCascadeItemEnter 300ms cubic-bezier(0.22, 1, 0.36, 1) 210ms both !important;
+}
+
+/* FASE 4: ESTADO ATIVO CONCLUÍDO */
+[data-scene-state="active"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+  .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Acessibilidade para quem prefere movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .home-page,
+  .home-backdrop {
+    transition: none !important;
+  }
+  [data-scene-state="exiting"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+    .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame),
+  [data-scene-state="entering"] :is(.about-stage-layout, .stack-stage-layout, .purpose-stage-layout,
+    .experience-stage-layout, .footer-stage-layout, .selected-projects-stage, .hero-frame),
+  [data-scene-state="entering"] * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
   }
 }
