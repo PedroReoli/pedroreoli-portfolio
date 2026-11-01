@@ -46,9 +46,9 @@ export const ExperienceSection: React.FC = () => {
       id="experiencia"
       data-scroll-scene
       ref={containerRef}
-      className="relative min-h-screen bg-transparent text-[#edeae4]"
+      className="relative min-h-screen bg-[#111010] text-[#edeae4]"
     >
-      <SlideSection as="div" className="viewport-stage trajectory-stage relative min-h-screen">
+      <SlideSection as="div" className="viewport-stage trajectory-stage relative min-h-screen bg-[#111010]">
         <div className="editorial-container experience-stage-layout">
           <Reveal
             distance={14}

@@ -71,12 +71,11 @@ export function getSceneElements(sceneEl: HTMLElement): Element[] {
 }
 
 /**
- * Orquestrador de transições fluidas em rolagem natural com GSAP ScrollTrigger:
- * - Rolagem 100% nativa e livre (SEM parallax travado, sem viewport lock)
- * - Ao rolar de uma seção para outra:
- *   1. Itens da seção anterior somem suavemente com fade, elevação e blur
- *   2. Cor de fundo transmuta dinamicamente (#111010 <-> #edeae4)
- *   3. Itens da nova seção chegam em cascata ágil ("um por um, tudo bem rápido")
+ * Orquestrador de transições fluidas com GSAP ScrollTrigger:
+ * - Rolagem 100% nativa e natural (SEM scroll lock ou parallax artificial)
+ * - Ao entrar na seção: itens surgem em cascata ágil ("um por um, tudo bem rápido")
+ * - Uso de clearProps: "all" para garantir que nenhum elemento fique preso ou invisível
+ * - Header sincronizado dinamicamente via dataset.activeScene e evento scene-change
  */
 export function useHomeSceneGSAP(root: RefObject<HTMLElement>) {
   const reduced = useReducedMotion()
@@ -108,7 +107,7 @@ export function useHomeSceneGSAP(root: RefObject<HTMLElement>) {
             stagger: 0.04,
             duration: 0.45,
             ease: "power3.out",
-            clearProps: "filter",
+            clearProps: "all",
           }
         )
       }
@@ -122,80 +121,66 @@ export function useHomeSceneGSAP(root: RefObject<HTMLElement>) {
 
       const config = SCENE_THEMES[id] || { color: "#111010" }
 
-      const applySceneEntrance = (direction: 1 | -1) => {
-        // Morph suave da cor do fundo
+      const activateScene = () => {
         page.style.setProperty("--page-bg", config.color)
         document.documentElement.style.setProperty("--page-bg", config.color)
-        gsap.to([page, backdrop].filter(Boolean), {
-          backgroundColor: config.color,
-          duration: 0.35,
-          ease: "power2.out",
-        })
-
         document.documentElement.dataset.activeScene = id
+
+        if (backdrop) {
+          gsap.to(backdrop, {
+            backgroundColor: config.color,
+            duration: 0.35,
+            ease: "power2.out",
+          })
+        }
+
         window.dispatchEvent(
           new CustomEvent("scene-change", {
             detail: { sceneId: id, color: config.color },
           })
         )
+      }
 
-        if (reduced) return
-
-        // Animação dos itens da nova seção entrando ("um por um, tudo bem rápido")
-        const items = getSceneElements(sceneEl)
-        gsap.fromTo(
-          items,
-          {
-            opacity: 0,
-            y: direction > 0 ? 30 : -30,
-            filter: "blur(6px)",
+      // 1. Gatilho de entrada com cascata ágil ("um por um, tudo bem rápido")
+      if (index > 0 && !reduced) {
+        const entranceTrigger = ScrollTrigger.create({
+          trigger: sceneEl,
+          start: "top 80%",
+          once: true,
+          onEnter: () => {
+            const items = getSceneElements(sceneEl)
+            gsap.fromTo(
+              items,
+              {
+                opacity: 0,
+                y: 28,
+                filter: "blur(6px)",
+              },
+              {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                stagger: 0.04,
+                duration: 0.35,
+                ease: "power3.out",
+                clearProps: "all",
+                overwrite: "auto",
+              }
+            )
           },
-          {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            stagger: 0.04,
-            duration: 0.35,
-            ease: "power3.out",
-            clearProps: "filter",
-            overwrite: "auto",
-          }
-        )
-      }
-
-      const applySceneExit = (direction: 1 | -1) => {
-        if (reduced) return
-        const items = getSceneElements(sceneEl)
-        gsap.to(items, {
-          opacity: 0.1,
-          y: direction > 0 ? -20 : 20,
-          filter: "blur(4px)",
-          duration: 0.2,
-          ease: "power2.in",
-          overwrite: "auto",
         })
+        triggers.push(entranceTrigger)
       }
 
-      // ScrollTrigger para cada seção na rolagem normal do documento
-      const trigger = ScrollTrigger.create({
+      // 2. Gatilho de sincronização de cena ativa para header e background
+      const activeTrigger = ScrollTrigger.create({
         trigger: sceneEl,
-        start: index === 0 ? "top 80%" : "top 50%",
-        end: "bottom 50%",
-        onEnter: () => applySceneEntrance(1),
-        onEnterBack: () => applySceneEntrance(-1),
-        onLeave: () => {
-          if (index < SCENE_ORDER.length - 1) {
-            applySceneExit(1)
-          }
-        },
-        onLeaveBack: () => {
-          if (index > 0) {
-            applySceneExit(-1)
-          }
-        },
+        start: "top 55%",
+        end: "bottom 45%",
+        onEnter: activateScene,
+        onEnterBack: activateScene,
       })
-
-      triggers.push(trigger)
+      triggers.push(activeTrigger)
     })
 
     // Suporte a cliques em âncoras para rolagem suave

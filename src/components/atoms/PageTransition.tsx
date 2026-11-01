@@ -34,7 +34,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
             stagger: 0.045,
             duration: 0.42,
             ease: "power3.out",
-            clearProps: "transform,filter,scale",
+            clearProps: "all",
           }
         )
       }

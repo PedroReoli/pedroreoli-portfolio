@@ -17,7 +17,7 @@ export const PortfolioHero: React.FC = () => {
       id="hero"
       data-scroll-scene
       ref={heroRef}
-      className="viewport-stage hero-shell relative min-h-screen pt-14 md:pt-0"
+      className="viewport-stage hero-shell relative min-h-screen bg-[#111010] text-[#edeae4] pt-14 md:pt-0"
     >
       {/* Atmospheric Background Layers (Deep, rich aesthetic) */}
       <div

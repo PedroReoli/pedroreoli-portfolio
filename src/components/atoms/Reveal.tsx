@@ -25,24 +25,26 @@ export const Reveal: React.FC<RevealProps> = ({
   delay = 0,
   distance = 16,
   duration = 0.36,
-  amount = 0.06,
+  amount = 0.05,
   scale = 1,
   axis = "y",
-  once = false,
+  once = true,
   role,
   ariaLabel,
 }) => {
   const reduceMotion = useReducedMotion()
   const sectionVisible = useContext(SlideEntranceContext)
   const [hasFocus, setHasFocus] = useState(false)
+  const [hasEntered, setHasEntered] = useState(false)
+
   const hidden = {
     opacity: 0,
     x: axis === "x" ? distance : 0,
-    y: axis === "y" ? distance * (sectionVisible === null ? 1 : 1.25) : 0,
+    y: axis === "y" ? distance : 0,
     scale: scale * 0.98,
   }
   const visible = { opacity: 1, x: 0, y: 0, scale: 1 }
-  const showImmediately = Boolean(reduceMotion || hasFocus)
+  const isVisible = Boolean(reduceMotion || hasFocus || hasEntered || sectionVisible === true)
 
   return (
     <m.div
@@ -50,23 +52,14 @@ export const Reveal: React.FC<RevealProps> = ({
       role={role}
       aria-label={ariaLabel}
       initial={reduceMotion ? false : hidden}
-      animate={
-        showImmediately || sectionVisible === true
-          ? visible
-          : sectionVisible === false
-          ? hidden
-          : undefined
-      }
-      whileInView={sectionVisible === null && !showImmediately ? visible : undefined}
+      animate={isVisible ? visible : hidden}
+      whileInView={!isVisible ? visible : undefined}
       viewport={{ once, amount }}
+      onViewportEnter={() => setHasEntered(true)}
       onFocusCapture={() => setHasFocus(true)}
       transition={{
-        duration: showImmediately
-          ? 0
-          : sectionVisible === false
-          ? 0.15
-          : Math.min(0.42, duration),
-        delay: showImmediately || sectionVisible === false ? 0 : delay * 0.65,
+        duration: reduceMotion ? 0 : Math.min(0.38, duration),
+        delay: reduceMotion ? 0 : delay * 0.6,
         ease: entranceEase,
       }}
     >

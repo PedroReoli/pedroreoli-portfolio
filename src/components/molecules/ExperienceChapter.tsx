@@ -1,11 +1,9 @@
-import { useContext } from "react"
 import { AnimatePresence, m, useIsPresent } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import type { ExperienceItem } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { chapterMotion, chapterItemMotion, stillMotion } from "../../motion/choreography"
-import { SlideEntranceContext } from "../atoms/slideEntranceContext"
 
 interface ExperienceChapterProps {
   item: ExperienceItem
@@ -85,17 +83,13 @@ function ChapterContent({ item, index, total, direction }: ExperienceChapterProp
 }
 
 export default function ExperienceChapter(props: ExperienceChapterProps) {
-  const visible = useContext(SlideEntranceContext)
-  const reducedMotion = useReducedMotion()
   const { language } = useLanguage()
   return (
     <AnimatePresence mode="wait" custom={props.direction}>
-      {(reducedMotion || visible !== false) && (
-        <ChapterContent
-          key={`${props.item.company}-${props.item.period.pt}-${language}`}
-          {...props}
-        />
-      )}
+      <ChapterContent
+        key={`${props.item.company}-${props.item.period.pt}-${language}`}
+        {...props}
+      />
     </AnimatePresence>
   )
 }

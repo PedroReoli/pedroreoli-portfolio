@@ -12,8 +12,8 @@ type SlideSectionProps = React.HTMLAttributes<HTMLElement> & {
 /** Observa a seção imóvel para que os filhos não alterem o próprio gatilho. */
 export default function SlideSection({
   as = "section",
-  amount = 0.18,
-  replay = true,
+  amount = 0.05,
+  replay = false,
   children,
   ...props
 }: SlideSectionProps) {

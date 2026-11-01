@@ -53,7 +53,7 @@ export const SiteFooter: React.FC<{ compact?: boolean }> = ({ compact = false })
       data-scroll-scene={!compact || undefined}
       className={`${
         compact ? "footer-stage-compact" : "viewport-stage min-h-screen"
-      } footer-stage border-t border-white/10 bg-transparent text-[#edeae4]`}
+      } footer-stage border-t border-white/10 bg-[#111010] text-[#edeae4]`}
     >
       <div className="editorial-container footer-stage-layout h-full">
         <Reveal distance={14} duration={0.32} className="border-b border-white/15 pb-4 sm:pb-5">

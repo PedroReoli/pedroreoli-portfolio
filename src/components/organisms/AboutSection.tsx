@@ -10,9 +10,7 @@ const aboutStats = [
   { value: "500+", pt: "componentes de Design System", en: "Design System components" },
 ]
 
-export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
-  blendBackground = true,
-}) => {
+export const AboutSection: React.FC<{ blendBackground?: boolean }> = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
 
@@ -21,7 +19,6 @@ export const AboutSection: React.FC<{ blendBackground?: boolean }> = ({
       id="sobre"
       data-scroll-scene
       className="viewport-stage about-stage min-h-screen bg-[#edeae4] text-[#111010]"
-      style={blendBackground ? { backgroundColor: "transparent" } : undefined}
     >
       <div className="editorial-container about-stage-layout">
         <Reveal

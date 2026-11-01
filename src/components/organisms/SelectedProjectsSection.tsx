@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, m } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import { featuredProjects } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
@@ -57,12 +57,12 @@ export const SelectedProjectsSection: React.FC = () => {
       id="projetos-selecionados"
       data-scroll-scene
       ref={containerRef}
-      className="relative min-h-screen w-full bg-transparent"
+      className="relative min-h-screen w-full bg-[#111010] text-[#edeae4]"
     >
       {/* Stage fluido de projetos em fluxo natural */}
       <SlideSection
         as="div"
-        className="selected-projects-stage relative min-h-screen w-full bg-transparent"
+        className="selected-projects-stage relative min-h-screen w-full bg-[#111010] text-[#edeae4]"
       >
         {/* Background Atmospheric Glow */}
         <div
@@ -85,46 +85,68 @@ export const SelectedProjectsSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Interactive Step Navigator with Spring Motion */}
-          <nav
-            className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-md"
-            aria-label={isEn ? "Projects navigation" : "Navegação dos projetos"}
-          >
-            {stepsMeta.map((step, idx) => (
-              <button
-                key={step.label}
-                type="button"
-                onClick={() => scrollToStep(idx)}
-                className="relative flex min-h-11 min-w-11 items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2.5 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-[0.08em] transition-colors"
-                aria-label={step.label}
-                aria-current={activeStep === idx ? "step" : undefined}
-              >
-                {activeStep === idx && (
-                  <m.span
-                    layoutId="activeProjectsTab"
-                    className="absolute inset-0 rounded-full bg-white shadow-md"
-                    transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
-                  />
-                )}
-                <span
-                  className={`relative z-10 ${
-                    activeStep === idx ? "text-[#111010] font-bold" : "text-[#82aaff]"
-                  }`}
+          {/* Interactive Step Navigator with Spring Motion and Prev/Next controls */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <button
+              type="button"
+              onClick={() => scrollToStep(Math.max(0, activeStep - 1))}
+              disabled={activeStep === 0}
+              className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              aria-label={isEn ? "Previous project" : "Projeto anterior"}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <nav
+              className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-md"
+              aria-label={isEn ? "Projects navigation" : "Navegação dos projetos"}
+            >
+              {stepsMeta.map((step, idx) => (
+                <button
+                  key={step.label}
+                  type="button"
+                  onClick={() => scrollToStep(idx)}
+                  className="relative flex min-h-8 sm:min-h-9 items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2.5 sm:px-3 py-1 text-[10px] font-mono uppercase tracking-[0.08em] transition-colors"
+                  aria-label={step.label}
+                  aria-current={activeStep === idx ? "step" : undefined}
                 >
-                  {step.number}
-                </span>
-                <span
-                  className={`relative z-10 hidden sm:inline ${
-                    activeStep === idx
-                      ? "text-[#111010] font-bold"
-                      : "text-white/60 hover:text-white"
-                  }`}
-                >
-                  {step.label}
-                </span>
-              </button>
-            ))}
-          </nav>
+                  {activeStep === idx && (
+                    <m.span
+                      layoutId="activeProjectsTab"
+                      className="absolute inset-0 rounded-full bg-white shadow-md"
+                      transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  )}
+                  <span
+                    className={`relative z-10 ${
+                      activeStep === idx ? "text-[#111010] font-bold" : "text-[#82aaff]"
+                    }`}
+                  >
+                    {step.number}
+                  </span>
+                  <span
+                    className={`relative z-10 hidden sm:inline ${
+                      activeStep === idx
+                        ? "text-[#111010] font-bold"
+                        : "text-white/60 hover:text-white"
+                    }`}
+                  >
+                    {step.label}
+                  </span>
+                </button>
+              ))}
+            </nav>
+
+            <button
+              type="button"
+              onClick={() => scrollToStep(Math.min(stepsMeta.length - 1, activeStep + 1))}
+              disabled={activeStep === stepsMeta.length - 1}
+              className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              aria-label={isEn ? "Next project" : "Próximo projeto"}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </Reveal>
 
         {/* Middle Stage: Pinned Content Slides */}

@@ -1,10 +1,9 @@
-import React, { useContext } from "react"
+import React from "react"
 import { m } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import type { FeaturedProject } from "../../content/homeContent"
 import ResponsiveImage from "../atoms/ResponsiveImage"
-import { SlideEntranceContext } from "../atoms/slideEntranceContext"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { chapterItemMotion, staggerMotion, stillMotion, filmEase } from "../../motion/choreography"
 
@@ -86,8 +85,7 @@ const actionClassName =
 export default function FeaturedProjectSlide({ project, isEn, total }: FeaturedProjectSlideProps) {
   const language = isEn ? "en" : "pt"
   const reduceMotion = useReducedMotion()
-  const sceneVisible = useContext(SlideEntranceContext)
-  const state = reduceMotion || sceneVisible !== false ? "visible" : "enter"
+  const state = "visible"
   const itemVariants = reduceMotion ? stillMotion : chapterItemMotion
   const action = (
     <>
