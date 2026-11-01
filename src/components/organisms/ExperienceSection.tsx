@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useMotionValueEvent, useScroll } from "framer-motion"
-import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowDown } from "lucide-react"
 import { experienceItems } from "../../content/homeContent"
 import { useLanguage } from "../../i18n/useLanguage"
@@ -8,13 +6,9 @@ import Reveal from "../atoms/Reveal"
 import SlideSection from "../atoms/SlideSection"
 import ExperienceChapter from "../molecules/ExperienceChapter"
 
-const getExperienceProgress = (index: number) =>
-  experienceItems.length <= 1 ? 0 : index / (experienceItems.length - 1)
-
 export const ExperienceSection: React.FC = () => {
   const { language } = useLanguage()
   const isEn = language === "en"
-  const reduceMotion = Boolean(useReducedMotion())
   const containerRef = useRef<HTMLElement>(null)
   const [{ index: activeExperience, direction }, setSelection] = useState({
     index: 0,
@@ -37,24 +31,6 @@ export const ExperienceSection: React.FC = () => {
     return () => window.removeEventListener("set-experience-chapter", handleSetChapter)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const nextIndex = Math.min(
-      experienceItems.length - 1,
-      Math.floor(latest * experienceItems.length),
-    )
-
-    setSelection((current) =>
-      current.index === nextIndex
-        ? current
-        : { index: nextIndex, direction: nextIndex > current.index ? 1 : -1 },
-    )
-  })
-
   const scrollToExperience = (index: number) => {
     setSelection((current) => ({
       index,
@@ -63,26 +39,16 @@ export const ExperienceSection: React.FC = () => {
     window.dispatchEvent(
       new CustomEvent("experience-chapter-synced", { detail: { index } })
     )
-    if (!containerRef.current) return
-
-    const section = containerRef.current
-    const sectionTop = window.scrollY + section.getBoundingClientRect().top
-    const scrollableDistance = section.scrollHeight - window.innerHeight
-    const target = sectionTop + scrollableDistance * getExperienceProgress(index)
-
-    window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" })
   }
 
   return (
     <section
       id="experiencia"
       data-scroll-scene
-      data-scroll-steps={experienceItems.length}
       ref={containerRef}
-      className="experience-scroll-stage relative min-h-screen bg-transparent text-[#edeae4]"
-      style={{ "--experience-steps": experienceItems.length } as React.CSSProperties}
+      className="relative min-h-screen bg-transparent text-[#edeae4]"
     >
-      <SlideSection as="div" className="viewport-stage trajectory-stage sticky top-0 min-h-screen">
+      <SlideSection as="div" className="viewport-stage trajectory-stage relative min-h-screen">
         <div className="editorial-container experience-stage-layout">
           <Reveal
             distance={14}

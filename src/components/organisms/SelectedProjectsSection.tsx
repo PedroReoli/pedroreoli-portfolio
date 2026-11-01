@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion"
+import { AnimatePresence, m } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ChevronDown } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -32,20 +32,6 @@ export const SelectedProjectsSection: React.FC = () => {
     return () => window.removeEventListener("set-project-step", handleSetStep)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const nextIndex = latest < 0.34 ? 0 : latest < 0.67 ? 1 : 2
-    setSelection((current) =>
-      current.index === nextIndex
-        ? current
-        : { index: nextIndex, direction: nextIndex > current.index ? 1 : -1 },
-    )
-  })
-
   const scrollToStep = (stepIndex: number) => {
     setSelection((current) => ({
       index: stepIndex,
@@ -54,13 +40,6 @@ export const SelectedProjectsSection: React.FC = () => {
     window.dispatchEvent(
       new CustomEvent("project-step-synced", { detail: { index: stepIndex } })
     )
-    if (!containerRef.current) return
-    const container = containerRef.current
-    const rect = container.getBoundingClientRect()
-    const scrollTop = window.scrollY + rect.top
-    const totalScroll = container.scrollHeight - window.innerHeight
-    const targetScroll = scrollTop + (stepIndex / 2) * totalScroll
-    window.scrollTo({ top: targetScroll, behavior: reduceMotion ? "auto" : "smooth" })
   }
 
   const activeProject = featuredProjects[activeStep]
@@ -77,14 +56,13 @@ export const SelectedProjectsSection: React.FC = () => {
     <section
       id="projetos-selecionados"
       data-scroll-scene
-      data-scroll-steps={3}
       ref={containerRef}
-      className="relative h-[calc(3*var(--viewport-height))] min-h-screen w-full bg-transparent"
+      className="relative min-h-screen w-full bg-transparent"
     >
-      {/* Sticky Fullscreen Stage (occupies 100% viewport height, matching Hero section) */}
+      {/* Stage fluido de projetos em fluxo natural */}
       <SlideSection
         as="div"
-        className="selected-projects-stage sticky top-0 h-screen min-h-screen w-full overflow-hidden bg-transparent"
+        className="selected-projects-stage relative min-h-screen w-full bg-transparent"
       >
         {/* Background Atmospheric Glow */}
         <div

@@ -1,54 +1,19 @@
-/* Uma mesma régua para todas as cenas, inclusive com a barra móvel do navegador. */
+/* Uma mesma régua para todas as cenas, permitindo rolagem fluida e natural */
 .home-page :is(.viewport-stage, .selected-projects-stage) {
-  height: var(--viewport-height);
-  min-height: var(--viewport-height);
-  max-height: var(--viewport-height);
+  min-height: var(--viewport-height, 100vh);
 }
 
 .home-page,
 .home-backdrop {
   background-color: var(--page-bg, #111010);
-  transition: background-color 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-color 450ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: background-color;
 }
 
-/* =========================================================================
-   PALCO ÚNICO DE CENAS GSAP (Full-Screen Viewport Stage)
-   Trava o scroll nativo da janela e permite transições teatrais no mesmo plano
-   ========================================================================= */
-
-.home-page.gsap-active {
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-height: 100vh !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-.home-page.gsap-active main#main-content,
-.home-page.gsap-active .home-intro-wrapper,
-.home-page.gsap-active .home-sections-wrapper {
-  display: contents !important;
-}
-
-.home-page.gsap-active [data-scroll-scene] {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-height: 100vh !important;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
-  display: none;
-  visibility: hidden;
-  z-index: 10;
-}
-
-.home-page.gsap-active [data-scroll-scene].scene-active {
-  display: block !important;
-  visibility: visible !important;
-  z-index: 20 !important;
+/* Transições suaves de elementos de cena */
+.home-page [data-scroll-scene] {
+  position: relative;
+  width: 100%;
 }
 
 /* Acessibilidade para quem prefere movimento reduzido */

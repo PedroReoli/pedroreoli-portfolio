@@ -432,7 +432,8 @@
   }
 
   .experience-scroll-stage {
-    height: calc(var(--experience-steps) * var(--viewport-height));
+    height: auto;
+    min-height: var(--viewport-height, 100vh);
   }
 
   .experience-stage-layout {

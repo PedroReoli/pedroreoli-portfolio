@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { m, useScroll, useTransform } from "framer-motion"
+import { m } from "framer-motion"
 import { useReducedMotion } from "../../hooks/useReducedMotion"
 import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "../../i18n/useLanguage"
@@ -11,15 +11,6 @@ export const PortfolioHero: React.FC = () => {
   const isEn = language === "en"
   const reduceMotion = Boolean(useReducedMotion())
   const heroRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  })
-  const exitOpacity = useTransform(scrollYProgress, [0, 0.08, 0.38], [1, 1, 0])
-  const exitY = useTransform(scrollYProgress, [0, 0.45], [0, -24])
-  const exitScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.96])
-  const exitBlur = useTransform(scrollYProgress, [0, 0.38], ["blur(0px)", "blur(4px)"])
-  const atmosphereOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0])
 
   return (
     <section
@@ -29,31 +20,20 @@ export const PortfolioHero: React.FC = () => {
       className="viewport-stage hero-shell relative min-h-screen pt-14 md:pt-0"
     >
       {/* Atmospheric Background Layers (Deep, rich aesthetic) */}
-      <m.div
+      <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_65%_at_50%_45%,rgba(130,170,255,0.08)_0%,transparent_70%)]"
-        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
-      <m.div
+      <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"
-        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
-      <m.div
+      <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.03)_0%,transparent_50%)]"
-        style={{ opacity: reduceMotion ? 1 : atmosphereOpacity }}
         aria-hidden="true"
       />
 
-      <m.div
-        className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]"
-        style={{
-          opacity: reduceMotion ? 1 : exitOpacity,
-          y: reduceMotion ? 0 : exitY,
-          scale: reduceMotion ? 1 : exitScale,
-          filter: reduceMotion ? "none" : exitBlur,
-        }}
-      >
+      <div className="hero-frame relative grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
         {/* Top Info Metadata */}
         <m.div
           initial={reduceMotion ? false : { opacity: 0, y: -12 }}
@@ -161,7 +141,7 @@ export const PortfolioHero: React.FC = () => {
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </m.div>
-      </m.div>
+      </div>
     </section>
   )
 }
