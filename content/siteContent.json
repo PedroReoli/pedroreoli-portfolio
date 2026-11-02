@@ -1,0 +1,48 @@
+{
+  "name": "Pedro Reoli",
+  "brand": { "first": "Pedro", "last": "Reoli" },
+  "legalName": "Pedro Lucas Reis",
+  "siteUrl": "https://pedroreis.vercel.app",
+  "defaultShareImage": "/eu-profissional.png",
+  "staticAssets": { "favicon": "/favicon.ico" },
+  "email": "pedrosousa2160@gmail.com",
+  "routes": {
+    "home": "/",
+    "projects": "/projetos",
+    "media": "/midia-blog",
+    "notFound": "/404",
+    "projectCorporate": "/projetos?tipo=corporativo",
+    "projectIndependent": "/projetos?tipo=gerais",
+    "aliases": [
+      { "from": "/projetos=corporativos", "to": "/projetos?tipo=corporativo" },
+      { "from": "/projetos=coprporativos", "to": "/projetos?tipo=corporativo" },
+      { "from": "/projetos=gerais", "to": "/projetos?tipo=gerais" },
+      { "from": "/midia-e-blog", "to": "/midia-blog" },
+      { "from": "/dossie-tecnico", "to": "/" },
+      { "from": "/dossie", "to": "/" }
+    ]
+  },
+  "social": {
+    "github": "https://github.com/PedroReoli",
+    "whatsapp": "https://wa.me/5524993264040",
+    "linkedin": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/"
+  },
+  "profile": {
+    "jobTitle": "Full Stack Software Engineer & Systems Architect",
+    "address": { "locality": "Volta Redonda", "region": "RJ", "country": "BR" },
+    "knowsAbout": ["React", "TypeScript", "Node.js", "Next.js", "Clean Architecture", "PostgreSQL", "Docker", "AI Agents", "Model Context Protocol"]
+  },
+  "noScript": {
+    "label": "Pedro Lucas Reis / Volta Redonda, RJ",
+    "titleFirst": "Pedro",
+    "titleLast": "Reoli",
+    "role": "Engenheiro de software Full Stack.",
+    "description": "A versão interativa deste portfólio precisa de JavaScript. Enquanto isso, você pode entrar em contato ou explorar meu código pelos links abaixo.",
+    "navigationLabel": "Contato e código",
+    "emailAction": "Enviar e-mail"
+  },
+  "flags": {
+    "br": { "default": "/flags/br.svg", "square": "/flags/br-1x1.svg", "alt": "Bandeira do Brasil" },
+    "us": { "default": "/flags/us.svg", "square": "/flags/us-1x1.svg", "alt": "United States Flag" }
+  }
+}

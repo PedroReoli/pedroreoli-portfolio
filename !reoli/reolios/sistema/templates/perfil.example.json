@@ -1,0 +1,13 @@
+{
+  "name": "Seu Nome Completo",
+  "first_name": "Seu Primeiro Nome",
+  "email": "seu-email@exemplo.com",
+  "phone": "+55 11 99999-9999",
+  "phone_clean": "11999999999",
+  "linkedin": "https://www.linkedin.com/in/seu-perfil",
+  "github": "https://github.com/seu-usuario",
+  "portfolio": "https://seu-portfolio.com",
+  "location": "Sua Cidade - UF, Brasil",
+  "role": "Seu Cargo / Especialidade",
+  "headline": "Seu Cargo | Tecnologias Principais | Bio Curta"
+}

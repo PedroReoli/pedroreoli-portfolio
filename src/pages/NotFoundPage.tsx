@@ -1,77 +1,59 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import SEOHead from "../components/atoms/SEOHead"
-import { ArrowUpRight } from "lucide-react"
-import Reveal from "../components/atoms/Reveal"
-import SlideSection from "../components/atoms/SlideSection"
-import { getSiteUrl, siteConfig } from "../config/site"
-import { useLanguage } from "../i18n/useLanguage"
+import React from 'react';
+import { useLanguage } from '@/context/LanguageContext';
+import { useRouter } from '@/context/RouterContext';
+import { interfaceContent } from '@/data/content';
+import { SEO } from '@/components/common/SEO';
+import { Icon } from '@/components/common/Icon';
 
 export const NotFoundPage: React.FC = () => {
-  const { language } = useLanguage()
-  const isEn = language === "en"
+  const { language } = useLanguage();
+  const { navigate } = useRouter();
+  const notFound = interfaceContent.notFound;
+  const t = notFound[language];
 
   return (
-    <div className="bg-[#111010] text-[#edeae4] antialiased">
-      <SEOHead
-        title={
-          isEn
-            ? `404 | Page Not Found | ${siteConfig.legalName}`
-            : `404 | Página Não Encontrada | ${siteConfig.legalName}`
-        }
-        description={
-          isEn
-            ? "The page you are looking for does not exist or has moved."
-            : "A página que você está procurando não existe ou foi movida."
-        }
-        canonicalUrl={getSiteUrl("/404")}
-        noIndex={true}
-        locale={isEn ? "en_US" : "pt_BR"}
-      />
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="not-found-page archive-container focus:outline-none"
-      >
-        <SlideSection as="div" className="not-found-layout">
-          <Reveal distance={12} duration={0.5} className="not-found-label editorial-label">
-            <span className="text-[#82aaff]">
-              404 / {isEn ? "Page not found" : "Página não encontrada"}
-            </span>
-            <span aria-hidden="true" className="text-[#8d8984]">
-              PEDRO REOLI
-            </span>
-          </Reveal>
-          <div className="not-found-content">
-            <div className="not-found-title-mask">
-              <Reveal distance={36} duration={0.8} delay={0.06}>
-                <h1 className="not-found-title">
-                  <span>{isEn ? "OFF" : "FORA"}</span> <span>{isEn ? "ROUTE." : "DE ROTA."}</span>
-                </h1>
-              </Reveal>
-            </div>
-            <Reveal distance={18} delay={0.18} className="not-found-detail">
-              <p>
-                {isEn
-                  ? "This address is unavailable. You can return home or explore my work."
-                  : "Este endereço não está disponível. Você pode voltar ao início ou conhecer meus projetos."}
-              </p>
-              <nav
-                aria-label={isEn ? "Continue browsing" : "Continuar navegando"}
-                className="not-found-actions"
-              >
-                <Link to="/">{isEn ? "Back home" : "Voltar ao início"}</Link>
-                <Link to="/projetos">
-                  {isEn ? "View projects" : "Ver projetos"}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </nav>
-            </Reveal>
-          </div>
-        </SlideSection>
-      </main>
-    </div>
-  )
-}
+    <div className="py-24 md:py-36">
+      <SEO pageKey="notFound" />
 
-export default NotFoundPage
+      <div className="container-editorial max-w-3xl text-center">
+        <div className="inline-block px-3 py-1 bg-paper-light border border-line rounded text-xs font-mono uppercase tracking-widest text-signal mb-6">
+          [404] — {t.label}
+        </div>
+
+        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-normal text-ink leading-none">
+          <span>{t.titleFirst} </span>
+          <span className="italic text-ink-soft">{t.titleSecond}</span>
+        </h1>
+
+        <p className="mt-8 text-lg sm:text-xl text-ink-soft font-light max-w-xl mx-auto leading-relaxed">
+          {t.description}
+        </p>
+
+        <nav aria-label={t.navLabel} className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={notFound.homePath}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(notFound.homePath);
+            }}
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-ink hover:bg-signal text-paper-light text-xs font-mono uppercase tracking-widest font-semibold rounded shadow-sm transition-colors min-h-[44px]"
+          >
+            <span>{t.homeAction}</span>
+          </a>
+
+          <a
+            href={notFound.projectsPath}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(notFound.projectsPath);
+            }}
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-paper-light hover:bg-paper-muted border border-line text-ink text-xs font-mono uppercase tracking-wider font-semibold rounded transition-colors min-h-[44px]"
+          >
+            <span>{t.projectsAction}</span>
+            <Icon name={notFound.projectsIcon} size={15} />
+          </a>
+        </nav>
+      </div>
+    </div>
+  );
+};

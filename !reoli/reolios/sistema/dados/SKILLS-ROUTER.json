@@ -1,0 +1,2704 @@
+{
+  "versao": 1,
+  "gerado_em": "2026-10-04T17:20:06.539Z",
+  "base": "ReoliOS",
+  "politica": "Selecione por intenção e caminho exato. Abra só a skill escolhida; leia as memórias listadas apenas se a tarefa precisar do contexto. Em colisão, peça ou infira o domínio antes de carregar.",
+  "raiz_instalada_memorias": "!reoli/reolios/",
+  "total": 128,
+  "colisoes_de_alias": {},
+  "nomes_divergentes": [],
+  "skills": [
+    {
+      "nome": "anuncio-google",
+      "arquivo": ".claude/skills/ads/anuncio-google/SKILL.md",
+      "resumo": "Planeja campanhas Search e gera CSV para Google Ads Editor com grupos, anúncios e negativas.",
+      "palavras_chave": [
+        "anuncio-google",
+        "estrutura",
+        "campanha",
+        "google",
+        "ads",
+        "planeja",
+        "campanhas",
+        "search"
+      ],
+      "gatilhos": [
+        "/anuncio-google"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "ads"
+    },
+    {
+      "nome": "relatorio-ads",
+      "arquivo": ".claude/skills/ads/relatorio-ads/SKILL.md",
+      "resumo": "Analisa exportações de Google Ads e Meta Ads e produz relatório semanal com métricas verificadas, alertas e ações.",
+      "palavras_chave": [
+        "relatorio-ads",
+        "relatório",
+        "semanal",
+        "google",
+        "ads",
+        "meta",
+        "analisa",
+        "exportações"
+      ],
+      "gatilhos": [
+        "/relatorio-ads"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "ads"
+    },
+    {
+      "nome": "automacao-local",
+      "arquivo": ".claude/skills/automacao/automacao-local/SKILL.md",
+      "resumo": "Planeja e implementa rotinas locais agendadas com logs, repetição segura e recuperação.",
+      "palavras_chave": [
+        "automacao-local",
+        "tarefa-agendada",
+        "automacao",
+        "windows",
+        "agendamento",
+        "planeja",
+        "implementa",
+        "rotinas"
+      ],
+      "gatilhos": [
+        "/automacao-local"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/automacoes.md"
+      ],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "n8n-workflow-gen",
+      "arquivo": ".claude/skills/automacao/n8n-workflow-gen/SKILL.md",
+      "resumo": "Desenha workflows n8n e valida o JSON na versão alvo antes de chamar de importável.",
+      "palavras_chave": [
+        "n8n-workflow-gen",
+        "geração",
+        "workflows",
+        "n8n",
+        "automacao",
+        "desenha",
+        "valida",
+        "json"
+      ],
+      "gatilhos": [
+        "/n8n-workflow-gen"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "n8n-zapier",
+      "arquivo": ".claude/skills/automacao/n8n-zapier/SKILL.md",
+      "resumo": "Criação e integração de fluxos no-code/low-code.",
+      "palavras_chave": [
+        "n8n-zapier",
+        "n8n",
+        "zapier",
+        "automacao",
+        "criação",
+        "integração",
+        "fluxos",
+        "no-code"
+      ],
+      "gatilhos": [
+        "/n8n-zapier"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "planilhas-inteligentes",
+      "arquivo": ".claude/skills/automacao/planilhas-inteligentes/SKILL.md",
+      "resumo": "Modela ou revisa planilhas de operação com esquema de dados, fórmulas, validação e testes de totais.",
+      "palavras_chave": [
+        "planilhas-inteligentes",
+        "criação",
+        "planilhas",
+        "inteligentes",
+        "automacao",
+        "modela",
+        "revisa",
+        "operação"
+      ],
+      "gatilhos": [
+        "/planilhas-inteligentes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "rotinas-repetitivas",
+      "arquivo": ".claude/skills/automacao/rotinas-repetitivas/SKILL.md",
+      "resumo": "Inventaria rotinas e prioriza automações por tempo, erro e custo observados.",
+      "palavras_chave": [
+        "rotinas-repetitivas",
+        "mapear-automacoes",
+        "automacao",
+        "operacao",
+        "inventaria",
+        "rotinas",
+        "prioriza",
+        "automações"
+      ],
+      "gatilhos": [
+        "/rotinas-repetitivas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/automacoes.md"
+      ],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "artigo-autoridade-linkedin",
+      "arquivo": ".claude/skills/autoridade-carreira/artigo-autoridade-linkedin/SKILL.md",
+      "resumo": "Pesquisa, estrutura, redige e audita artigos long-form para LinkedIn com tese explícita, evidências rastreáveis e SEO defensável.",
+      "palavras_chave": [
+        "artigo",
+        "linkedin",
+        "newsletter",
+        "autoridade",
+        "thought-leadership",
+        "conteúdo",
+        "carreira",
+        "posicionamento",
+        "seo",
+        "distribuicao"
+      ],
+      "gatilhos": [
+        "/artigo-autoridade-linkedin"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "curriculo",
+      "arquivo": ".claude/skills/autoridade-carreira/curriculo/SKILL.md",
+      "resumo": "Cria, audita e adapta currículos profissionais para uma vaga ou família de cargos com parsing ATS e integridade factual.",
+      "palavras_chave": [
+        "curriculo",
+        "currículo",
+        "cv",
+        "resume",
+        "ats",
+        "carreira",
+        "vagas",
+        "auditoria"
+      ],
+      "gatilhos": [
+        "/curriculo"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "curso-online",
+      "arquivo": ".claude/skills/autoridade-carreira/curso-online/SKILL.md",
+      "resumo": "Planeja curso online com público, resultado de aprendizagem, módulos e avaliação.",
+      "palavras_chave": [
+        "curso-online",
+        "estrutura",
+        "curso",
+        "online",
+        "módulos",
+        "aulas",
+        "carreira",
+        "planeja"
+      ],
+      "gatilhos": [
+        "/curso-online"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "deepthink",
+      "arquivo": ".claude/skills/autoridade-carreira/deepthink/SKILL.md",
+      "resumo": "Examina uma decisão profissional com hipóteses, evidências e alternativas.",
+      "palavras_chave": [
+        "deepthink",
+        "framework",
+        "pensar",
+        "mais",
+        "fundo",
+        "sobre",
+        "carreira",
+        "examina"
+      ],
+      "gatilhos": [
+        "/deepthink"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "estrutura-palestra",
+      "arquivo": ".claude/skills/autoridade-carreira/estrutura-palestra/SKILL.md",
+      "resumo": "Organiza palestra com tese, público, histórias verificadas e tempo por seção.",
+      "palavras_chave": [
+        "estrutura-palestra",
+        "estrutura",
+        "palestra",
+        "framework",
+        "tedx",
+        "carreira",
+        "organiza",
+        "tese"
+      ],
+      "gatilhos": [
+        "/estrutura-palestra"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "framework-thought-leadership",
+      "arquivo": ".claude/skills/autoridade-carreira/framework-thought-leadership/SKILL.md",
+      "resumo": "Transforma experiência profissional em tese pública com evidência e limites.",
+      "palavras_chave": [
+        "framework-thought-leadership",
+        "framework",
+        "thought",
+        "leadership",
+        "carreira",
+        "transforma",
+        "experiência",
+        "profissional"
+      ],
+      "gatilhos": [
+        "/framework-thought-leadership"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "instabio",
+      "arquivo": ".claude/skills/autoridade-carreira/instabio/SKILL.md",
+      "resumo": "Escreve bio de Instagram com público, oferta, prova real e ação clara.",
+      "palavras_chave": [
+        "instabio",
+        "bio",
+        "posicionamento",
+        "instagram",
+        "carreira",
+        "escreve",
+        "público",
+        "oferta"
+      ],
+      "gatilhos": [
+        "/instabio"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "otimizacao-linkedin",
+      "arquivo": ".claude/skills/autoridade-carreira/otimizacao-linkedin/SKILL.md",
+      "resumo": "Audita e reescreve perfil do LinkedIn para clareza, descoberta e coerência com vagas-alvo, ATS e currículo factual.",
+      "palavras_chave": [
+        "linkedin",
+        "perfil",
+        "otimização",
+        "headline",
+        "about",
+        "recruiter",
+        "boolean",
+        "ats",
+        "curriculo",
+        "posicionamento"
+      ],
+      "gatilhos": [
+        "/otimizacao-linkedin"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "personal-branding-x",
+      "arquivo": ".claude/skills/autoridade-carreira/personal-branding-x/SKILL.md",
+      "resumo": "Constrói posicionamento e sistema editorial no X com experiência real, posts longos ou curtos, voz autêntica e sem fake engagement.",
+      "palavras_chave": [
+        "x",
+        "twitter",
+        "personal-branding",
+        "autoridade",
+        "conteúdo",
+        "editorial",
+        "posicionamento",
+        "long-form",
+        "threads",
+        "anti-spam"
+      ],
+      "gatilhos": [
+        "/personal-branding-x"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "planejamento-semanal",
+      "arquivo": ".claude/skills/autoridade-carreira/planejamento-semanal/SKILL.md",
+      "resumo": "Organiza semana de trabalho com capacidade, compromissos e prioridades.",
+      "palavras_chave": [
+        "planejamento-semanal",
+        "planejamento",
+        "semanal",
+        "weekly",
+        "planning",
+        "carreira",
+        "organiza",
+        "semana"
+      ],
+      "gatilhos": [
+        "/planejamento-semanal"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "posts-creatoria",
+      "arquivo": ".claude/skills/autoridade-carreira/posts-creatoria/SKILL.md",
+      "resumo": "Converte aprendizagem ou trabalho real em posts autorais com exemplos.",
+      "palavras_chave": [
+        "posts-creatoria",
+        "estratégia",
+        "posicionamento",
+        "como",
+        "creator",
+        "carreira",
+        "converte",
+        "aprendizagem"
+      ],
+      "gatilhos": [
+        "/posts-creatoria"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "precificacao",
+      "arquivo": ".claude/skills/autoridade-carreira/precificacao/SKILL.md",
+      "resumo": "Calcula piso econômico, cenários de preço, margens e pacotes para serviços profissionais distinguindo custo, valor e risco.",
+      "palavras_chave": [
+        "precificação",
+        "preço",
+        "serviços",
+        "consultoria",
+        "freelancer",
+        "honorários",
+        "piso-economico",
+        "margem",
+        "pacotes",
+        "orçamento"
+      ],
+      "gatilhos": [
+        "/precificacao"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "email",
+      "arquivo": ".claude/skills/comunicacao/email/SKILL.md",
+      "resumo": "Cria sistema de email transacional.",
+      "palavras_chave": [
+        "email",
+        "sistema",
+        "completo",
+        "transacional",
+        "comunicacao",
+        "cria",
+        "resend",
+        "sendgrid"
+      ],
+      "gatilhos": [
+        "/email"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "comunicacao"
+    },
+    {
+      "nome": "webhook",
+      "arquivo": ".claude/skills/comunicacao/webhook/SKILL.md",
+      "resumo": "Cria e gerencia webhooks.",
+      "palavras_chave": [
+        "webhook",
+        "gestão",
+        "completa",
+        "webhooks",
+        "comunicacao",
+        "cria",
+        "gerencia",
+        "recebe"
+      ],
+      "gatilhos": [
+        "/webhook"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "comunicacao"
+    },
+    {
+      "nome": "artigos-longos",
+      "arquivo": ".claude/skills/conteudo-criativos/artigos-longos/SKILL.md",
+      "resumo": "Produção de artigos aprofundados e orientados a SEO.",
+      "palavras_chave": [
+        "artigos-longos",
+        "artigo",
+        "pilar",
+        "guia",
+        "completo",
+        "3000",
+        "palavras",
+        "conteudo"
+      ],
+      "gatilhos": [
+        "/artigos-longos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "carrossel-instagram",
+      "arquivo": ".claude/skills/conteudo-criativos/carrossel-instagram/SKILL.md",
+      "resumo": "Planeja, redige e estrutura carrosséis de alta retenção para Instagram (proporção 4:5, 1080x1350).",
+      "palavras_chave": [
+        "carrossel-instagram",
+        "instagram-carousel",
+        "instagram",
+        "carrossel",
+        "design",
+        "copy",
+        "planeja",
+        "redige"
+      ],
+      "gatilhos": [
+        "/carrossel-instagram"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "claude-creators",
+      "arquivo": ".claude/skills/conteudo-criativos/claude-creators/SKILL.md",
+      "resumo": "Uso do Claude Code para criação e escala de conteúdo.",
+      "palavras_chave": [
+        "claude-creators",
+        "uso",
+        "avançado",
+        "claude",
+        "creators",
+        "conteudo",
+        "code",
+        "criação"
+      ],
+      "gatilhos": [
+        "/claude-creators"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "copy-textos",
+      "arquivo": ".claude/skills/conteudo-criativos/copy-textos/SKILL.md",
+      "resumo": "Cria e edita copy para landing pages, e-mails e anúncios usando voz autêntica observável e claims substanciados por evidência.",
+      "palavras_chave": [
+        "copy",
+        "copywriting",
+        "textos",
+        "landing-page",
+        "email",
+        "anuncios",
+        "voz",
+        "autenticidade",
+        "substanciacao",
+        "anti-slop"
+      ],
+      "gatilhos": [
+        "/copy-textos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "cta-conversao",
+      "arquivo": ".claude/skills/conteudo-criativos/cta-conversao/SKILL.md",
+      "resumo": "Redige e compara chamadas para ação fiéis ao que acontece após o clique.",
+      "palavras_chave": [
+        "cta-conversao",
+        "cta",
+        "call",
+        "action",
+        "alta",
+        "conversão",
+        "conteudo",
+        "redige"
+      ],
+      "gatilhos": [
+        "/cta-conversao"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "twitter-threads",
+      "arquivo": ".claude/skills/conteudo-criativos/twitter-threads/SKILL.md",
+      "resumo": "Roteiros virais em formato de thread para X/Twitter.",
+      "palavras_chave": [
+        "twitter-threads",
+        "criador",
+        "thread",
+        "twitter",
+        "conteudo",
+        "roteiros",
+        "virais",
+        "formato"
+      ],
+      "gatilhos": [
+        "/twitter-threads"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "youtube-roteiros",
+      "arquivo": ".claude/skills/conteudo-criativos/youtube-roteiros/SKILL.md",
+      "resumo": "Estruturação de vídeos curtos e longos para o YouTube.",
+      "palavras_chave": [
+        "youtube-roteiros",
+        "roteiro",
+        "vídeo",
+        "educativo",
+        "youtube",
+        "conteudo",
+        "estruturação",
+        "vídeos"
+      ],
+      "gatilhos": [
+        "/youtube-roteiros"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "youtube-script-seo",
+      "arquivo": ".claude/skills/conteudo-criativos/youtube-script-seo/SKILL.md",
+      "resumo": "Roteirização técnica para vídeos longos e Shorts com SEO otimizado.",
+      "palavras_chave": [
+        "youtube-script-seo",
+        "roteirização",
+        "youtube",
+        "seo",
+        "conteudo",
+        "técnica",
+        "vídeos",
+        "longos"
+      ],
+      "gatilhos": [
+        "/youtube-script-seo"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "youtube-video-oferta",
+      "arquivo": ".claude/skills/conteudo-criativos/youtube-video-oferta/SKILL.md",
+      "resumo": "Roteiriza vídeos para YouTube conectando o conteúdo didático diretamente à oferta comercial do negócio.",
+      "palavras_chave": [
+        "youtube-video-oferta",
+        "yt-oferta",
+        "roteiro-youtube-oferta",
+        "youtube",
+        "roteiro",
+        "vendas",
+        "roteiriza",
+        "vídeos"
+      ],
+      "gatilhos": [
+        "/youtube-video-oferta",
+        "/yt-oferta"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "modelar-db",
+      "arquivo": ".claude/skills/database/modelar-db/SKILL.md",
+      "resumo": "Modela bancos de dados com Prisma.",
+      "palavras_chave": [
+        "modelar-db",
+        "modelagem",
+        "banco",
+        "dados",
+        "database",
+        "modela",
+        "bancos",
+        "prisma"
+      ],
+      "gatilhos": [
+        "/modelar-db"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "database"
+    },
+    {
+      "nome": "adr",
+      "arquivo": ".claude/skills/dev/adr/SKILL.md",
+      "resumo": "Gera e mantém Architecture Decision Records (ADRs) leves para documentar decisões técnicas, mudanças estruturais e escolhas de design no projeto.",
+      "palavras_chave": [
+        "adr",
+        "architecture",
+        "decision",
+        "records",
+        "registros",
+        "decisão",
+        "técnica",
+        "dev"
+      ],
+      "gatilhos": [
+        "/adr"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "audit",
+      "arquivo": ".claude/skills/dev/audit/SKILL.md",
+      "resumo": "Audita APIs e sistemas em busca de vulnerabilidades.",
+      "palavras_chave": [
+        "audit",
+        "audit-security",
+        "auditoria",
+        "completa",
+        "segurança",
+        "dev",
+        "audita",
+        "apis"
+      ],
+      "gatilhos": [
+        "/audit",
+        "/audit-security"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "auditar-mcp",
+      "arquivo": ".claude/skills/dev/auditar-mcp/SKILL.md",
+      "resumo": "Audita ferramentas MCP, transporte e autorização com testes de abuso.",
+      "palavras_chave": [
+        "auditar-mcp",
+        "seguranca-mcp",
+        "dev",
+        "mcp",
+        "integracao",
+        "audita",
+        "ferramentas",
+        "transporte"
+      ],
+      "gatilhos": [
+        "/auditar-mcp"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "avaliar-agentes-ia",
+      "arquivo": ".claude/skills/dev/avaliar-agentes-ia/SKILL.md",
+      "resumo": "Define avaliações reproduzíveis para roteamento, extração e decisões de agentes.",
+      "palavras_chave": [
+        "avaliar-agentes-ia",
+        "avaliar-agentes",
+        "evals-agentes",
+        "dev",
+        "avaliacao",
+        "typesafe",
+        "define",
+        "avaliações"
+      ],
+      "gatilhos": [
+        "/avaliar-agentes-ia",
+        "/avaliar-agentes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "code-architecture-auditor",
+      "arquivo": ".claude/skills/dev/code-architecture-auditor/SKILL.md",
+      "resumo": "Audita arquitetura, acoplamento, duplicação e organização de uma codebase.",
+      "palavras_chave": [
+        "code-architecture-auditor",
+        "auditor",
+        "arquitetura",
+        "código",
+        "modularização",
+        "dev",
+        "audita",
+        "acoplamento"
+      ],
+      "gatilhos": [
+        "/code-architecture-auditor"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "criar-api",
+      "arquivo": ".claude/skills/dev/criar-api/SKILL.md",
+      "resumo": "Cria APIs completas do zero.",
+      "palavras_chave": [
+        "criar-api",
+        "cria",
+        "api",
+        "completa",
+        "qualquer",
+        "stack",
+        "dev",
+        "apis"
+      ],
+      "gatilhos": [
+        "/criar-api"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "cyber-defense",
+      "arquivo": ".claude/skills/dev/cyber-defense/SKILL.md",
+      "resumo": "Proteção ativa, hardening de servidores e aplicação de contra-medidas contra ataques cibernéticos.",
+      "palavras_chave": [
+        "cyber-defense",
+        "defesa",
+        "cibernética",
+        "ativa",
+        "hardening",
+        "sistema",
+        "dev",
+        "proteção"
+      ],
+      "gatilhos": [
+        "/cyber-defense"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "frontend",
+      "arquivo": ".claude/skills/dev/frontend/SKILL.md",
+      "resumo": "Cria interfaces frontend completas.",
+      "palavras_chave": [
+        "frontend",
+        "cria",
+        "interfaces",
+        "completas",
+        "dev",
+        "pergunta",
+        "stack",
+        "react"
+      ],
+      "gatilhos": [
+        "/frontend"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "git-worktrees",
+      "arquivo": ".claude/skills/dev/git-worktrees/SKILL.md",
+      "resumo": "Configura e opera Git Worktrees para isolamento seguro de desenvolvimento.",
+      "palavras_chave": [
+        "git-worktrees",
+        "isolamento",
+        "seguro",
+        "workspace",
+        "dev",
+        "configura",
+        "opera",
+        "git"
+      ],
+      "gatilhos": [
+        "/git-worktrees"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "integrar-apis-brasileiras",
+      "arquivo": ".claude/skills/dev/integrar-apis-brasileiras/SKILL.md",
+      "resumo": "Integra consultas brasileiras como CNPJ e CEP com contrato, proveniência e tratamento de falhas.",
+      "palavras_chave": [
+        "integrar-apis-brasileiras",
+        "apis-brasileiras",
+        "consulta-cnpj-cep",
+        "dev",
+        "brasil",
+        "api",
+        "cnpj",
+        "cep"
+      ],
+      "gatilhos": [
+        "/integrar-apis-brasileiras",
+        "/apis-brasileiras"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "mcp-builder",
+      "arquivo": ".claude/skills/dev/mcp-builder/SKILL.md",
+      "resumo": "Desenvolvimento e arquitetura de servidores MCP (Model Context Protocol) em TypeScript ou Python.",
+      "palavras_chave": [
+        "mcp-builder",
+        "desenvolvimento",
+        "servidores",
+        "mcp",
+        "model",
+        "context",
+        "protocol",
+        "dev"
+      ],
+      "gatilhos": [
+        "/mcp-builder"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "security",
+      "arquivo": ".claude/skills/dev/security/SKILL.md",
+      "resumo": "Implementa segurança completa em APIs e sistemas.",
+      "palavras_chave": [
+        "security",
+        "implementação",
+        "completa",
+        "segurança",
+        "dev",
+        "implementa",
+        "apis",
+        "sistemas"
+      ],
+      "gatilhos": [
+        "/security"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "skill-optimizer",
+      "arquivo": ".claude/skills/dev/skill-optimizer/SKILL.md",
+      "resumo": "Otimiza prompts, instruções de sistema e arquivos SKILL.md para máxima clareza, ativação precisa e menor consumo de tokens.",
+      "palavras_chave": [
+        "skill-optimizer",
+        "otimizador",
+        "prompts",
+        "economia",
+        "tokens",
+        "dev",
+        "otimiza",
+        "instruções"
+      ],
+      "gatilhos": [
+        "/skill-optimizer"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "subagentes",
+      "arquivo": ".claude/skills/dev/subagentes/SKILL.md",
+      "resumo": "Orquestra e despacha sub-agentes especializados em paralelo para tarefas complexas de pesquisa, auditoria, testes ou processamento em lote.",
+      "palavras_chave": [
+        "subagentes",
+        "orquestração",
+        "agentes",
+        "especialistas",
+        "dev",
+        "orquestra",
+        "despacha",
+        "sub-agentes"
+      ],
+      "gatilhos": [
+        "/subagentes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "auth-seguranca",
+      "arquivo": ".claude/skills/dev-eng/auth-seguranca/SKILL.md",
+      "resumo": "Padrões e práticas de autenticação (JWT, OAuth, RBAC).",
+      "palavras_chave": [
+        "auth-seguranca",
+        "autenticação",
+        "autorização",
+        "implementação",
+        "dev",
+        "padrões",
+        "práticas",
+        "jwt"
+      ],
+      "gatilhos": [
+        "/auth-seguranca"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "changelog-release-notes",
+      "arquivo": ".claude/skills/dev-eng/changelog-release-notes/SKILL.md",
+      "resumo": "Geração de release notes e changelogs a partir de commits convencionais do Git.",
+      "palavras_chave": [
+        "changelog-release-notes",
+        "changelog",
+        "release",
+        "notes",
+        "automáticos",
+        "dev",
+        "documentacao",
+        "geração"
+      ],
+      "gatilhos": [
+        "/changelog-release-notes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "cicd",
+      "arquivo": ".claude/skills/dev-eng/cicd/SKILL.md",
+      "resumo": "Criar pipeline CI/CD completo com GitHub Actions.",
+      "palavras_chave": [
+        "cicd",
+        "pipeline",
+        "github",
+        "actions",
+        "dev",
+        "criar",
+        "completo"
+      ],
+      "gatilhos": [
+        "/cicd"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "estimativa-prazos",
+      "arquivo": ".claude/skills/dev-eng/estimativa-prazos/SKILL.md",
+      "resumo": "Cálculo e estimativa realista de prazos de desenvolvimento.",
+      "palavras_chave": [
+        "estimativa-prazos",
+        "estimativa",
+        "prazo",
+        "desenvolvimento",
+        "dev",
+        "cálculo",
+        "realista",
+        "prazos"
+      ],
+      "gatilhos": [
+        "/estimativa-prazos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "planejamento-sprint",
+      "arquivo": ".claude/skills/dev-eng/planejamento-sprint/SKILL.md",
+      "resumo": "Estruturação de tarefas, backlog e refinamento de sprint.",
+      "palavras_chave": [
+        "planejamento-sprint",
+        "planejamento",
+        "sprint",
+        "solo",
+        "dev",
+        "estruturação",
+        "tarefas",
+        "backlog"
+      ],
+      "gatilhos": [
+        "/planejamento-sprint"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "prd-user-stories",
+      "arquivo": ".claude/skills/dev-eng/prd-user-stories/SKILL.md",
+      "resumo": "Estruturação de PRDs, user stories e priorização RICE a partir de briefings.",
+      "palavras_chave": [
+        "prd-user-stories",
+        "prds",
+        "user",
+        "stories",
+        "ágeis",
+        "produto",
+        "dev",
+        "estruturação"
+      ],
+      "gatilhos": [
+        "/prd-user-stories"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "testes-unitarios",
+      "arquivo": ".claude/skills/dev-eng/testes-unitarios/SKILL.md",
+      "resumo": "Framework de escrita e execução de testes unitários.",
+      "palavras_chave": [
+        "testes-unitarios",
+        "testes",
+        "unitários",
+        "framework",
+        "escrita",
+        "dev",
+        "execução"
+      ],
+      "gatilhos": [
+        "/testes-unitarios"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "ci-cd",
+      "arquivo": ".claude/skills/devops/ci-cd/SKILL.md",
+      "resumo": "Cria pipelines CI/CD completas com GitHub Actions.",
+      "palavras_chave": [
+        "ci-cd",
+        "pipelines",
+        "completas",
+        "devops",
+        "cria",
+        "github",
+        "actions",
+        "automatiza"
+      ],
+      "gatilhos": [
+        "/ci-cd"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "deploy",
+      "arquivo": ".claude/skills/devops/deploy/SKILL.md",
+      "resumo": "Cria scripts e configurações para deploy.",
+      "palavras_chave": [
+        "deploy",
+        "configuração",
+        "completa",
+        "devops",
+        "cria",
+        "scripts",
+        "configurações",
+        "vercel"
+      ],
+      "gatilhos": [
+        "/deploy"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "github-pro",
+      "arquivo": ".claude/skills/devops/github-pro/SKILL.md",
+      "resumo": "Operação avançada e automação profissional do GitHub para agentes de IA.",
+      "palavras_chave": [
+        "github-pro",
+        "operação",
+        "automação",
+        "avançada",
+        "github",
+        "devops",
+        "profissional",
+        "agentes"
+      ],
+      "gatilhos": [
+        "/github-pro"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "documentar-api",
+      "arquivo": ".claude/skills/documentacao/documentar-api/SKILL.md",
+      "resumo": "Cria documentação completa de APIs.",
+      "palavras_chave": [
+        "documentar-api",
+        "documentação",
+        "completa",
+        "apis",
+        "documentacao",
+        "cria",
+        "gera",
+        "openapi"
+      ],
+      "gatilhos": [
+        "/documentar-api"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "documentacao"
+    },
+    {
+      "nome": "design-dna",
+      "arquivo": ".claude/skills/frontend/design-dna/SKILL.md",
+      "resumo": "Extrai, estrutura e aplica o DNA visual de referências (prints, imagens, URLs) em sistemas de design e componentes UI.",
+      "palavras_chave": [
+        "design-dna",
+        "extração",
+        "aplicação",
+        "identidade",
+        "visual",
+        "frontend",
+        "extrai",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/design-dna"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "frontend-design",
+      "arquivo": ".claude/skills/frontend/frontend-design/SKILL.md",
+      "resumo": "Cria interfaces com direção visual, acessibilidade e teste responsivo.",
+      "palavras_chave": [
+        "frontend-design",
+        "design",
+        "intencional",
+        "interfaces",
+        "frontend",
+        "cria",
+        "direção",
+        "visual"
+      ],
+      "gatilhos": [
+        "/frontend-design"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "scroll-craft",
+      "arquivo": ".claude/skills/frontend/scroll-craft/SKILL.md",
+      "resumo": "Engenharia de landing pages cinematográficas e experiências orientadas a scroll com 8 gramáticas visuais e verificação via browser headless.",
+      "palavras_chave": [
+        "scroll-craft",
+        "engenharia",
+        "experiências",
+        "orientadas",
+        "scroll",
+        "frontend",
+        "landing",
+        "pages"
+      ],
+      "gatilhos": [
+        "/scroll-craft"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "taste-skill",
+      "arquivo": ".claude/skills/frontend/taste-skill/SKILL.md",
+      "resumo": "Define preferências visuais de variação, movimento e densidade antes de criar frontend.",
+      "palavras_chave": [
+        "taste-skill",
+        "calibrador",
+        "gosto",
+        "estético",
+        "anti-slop",
+        "frontend",
+        "define",
+        "preferências"
+      ],
+      "gatilhos": [
+        "/taste-skill"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "geo-citabilidade",
+      "arquivo": ".claude/skills/geo/geo-citabilidade/SKILL.md",
+      "resumo": "Audita e otimiza páginas web, artigos e landing pages para citação direta em buscas com IA.",
+      "palavras_chave": [
+        "geo-citabilidade",
+        "geo",
+        "generative-engine-optimization",
+        "seo",
+        "ai-search",
+        "audita",
+        "otimiza",
+        "páginas"
+      ],
+      "gatilhos": [
+        "/geo-citabilidade",
+        "/geo"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "geo"
+    },
+    {
+      "nome": "llmstxt-generator",
+      "arquivo": ".claude/skills/geo/llmstxt-generator/SKILL.md",
+      "resumo": "Gera e valida arquivos llms.txt e llms-full.txt para sites e documentações.",
+      "palavras_chave": [
+        "llmstxt-generator",
+        "llms-txt",
+        "gerar-llmstxt",
+        "seo",
+        "geo",
+        "ai-crawlers",
+        "gera",
+        "valida"
+      ],
+      "gatilhos": [
+        "/llmstxt-generator",
+        "/llms-txt"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "geo"
+    },
+    {
+      "nome": "avaliacao-desempenho",
+      "arquivo": ".claude/skills/gestao-lideranca/avaliacao-desempenho/SKILL.md",
+      "resumo": "Prepara avaliação de desempenho com evidências, critérios e plano de desenvolvimento.",
+      "palavras_chave": [
+        "avaliacao-desempenho",
+        "avaliação",
+        "desempenho",
+        "modelo",
+        "completo",
+        "gestao",
+        "prepara",
+        "evidências"
+      ],
+      "gatilhos": [
+        "/avaliacao-desempenho"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "criador-sop",
+      "arquivo": ".claude/skills/gestao-lideranca/criador-sop/SKILL.md",
+      "resumo": "Documenta procedimento operacional com gatilho, responsável, passos e exceções.",
+      "palavras_chave": [
+        "criador-sop",
+        "criador",
+        "sop",
+        "procedimento",
+        "operacional",
+        "gestao",
+        "documenta",
+        "gatilho"
+      ],
+      "gatilhos": [
+        "/criador-sop"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "dashboard-semanal",
+      "arquivo": ".claude/skills/gestao-lideranca/dashboard-semanal/SKILL.md",
+      "resumo": "Monta resumo semanal de operação com métricas, fontes e decisões pendentes.",
+      "palavras_chave": [
+        "dashboard-semanal",
+        "dashboard",
+        "semanal",
+        "gestão",
+        "líder",
+        "equipe",
+        "pequena",
+        "gestao"
+      ],
+      "gatilhos": [
+        "/dashboard-semanal"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "documentacao-checklists",
+      "arquivo": ".claude/skills/gestao-lideranca/documentacao-checklists/SKILL.md",
+      "resumo": "Cria checklists de execução e verificação para processos recorrentes.",
+      "palavras_chave": [
+        "documentacao-checklists",
+        "sop",
+        "processos",
+        "equipe",
+        "gestao",
+        "cria",
+        "checklists",
+        "execução"
+      ],
+      "gatilhos": [
+        "/documentacao-checklists"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "mapeamento-processos",
+      "arquivo": ".claude/skills/gestao-lideranca/mapeamento-processos/SKILL.md",
+      "resumo": "Mapeia processo de equipe com entradas, decisões, exceções e responsáveis.",
+      "palavras_chave": [
+        "mapeamento-processos",
+        "organização",
+        "processos",
+        "líder",
+        "equipe",
+        "pequena",
+        "gestao",
+        "mapeia"
+      ],
+      "gatilhos": [
+        "/mapeamento-processos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "okrs",
+      "arquivo": ".claude/skills/gestao-lideranca/okrs/SKILL.md",
+      "resumo": "Define objetivos e resultados mensuráveis com linha de base e responsável.",
+      "palavras_chave": [
+        "okrs",
+        "objetivos",
+        "resultados-chave",
+        "gestao",
+        "define",
+        "resultados",
+        "mensuráveis",
+        "linha"
+      ],
+      "gatilhos": [
+        "/okrs"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "vaga-atrativa",
+      "arquivo": ".claude/skills/gestao-lideranca/vaga-atrativa/SKILL.md",
+      "resumo": "Redige anúncio de vaga com responsabilidades, requisitos e condições reais.",
+      "palavras_chave": [
+        "vaga-atrativa",
+        "descrição",
+        "vaga",
+        "atrativa",
+        "gestao",
+        "redige",
+        "anúncio",
+        "responsabilidades"
+      ],
+      "gatilhos": [
+        "/vaga-atrativa"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "impeccable",
+      "arquivo": ".claude/skills/impeccable/SKILL.md",
+      "resumo": "Planeja, audita e refina interfaces de sites e aplicativos com os comandos do pacote Impeccable.",
+      "palavras_chave": [
+        "impeccable",
+        "qualidade",
+        "frontend",
+        "planeja",
+        "audita",
+        "refina",
+        "interfaces",
+        "sites"
+      ],
+      "gatilhos": [
+        "/impeccable"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "impeccable"
+    },
+    {
+      "nome": "contrato-freelancer",
+      "arquivo": ".claude/skills/legal/contrato-freelancer/SKILL.md",
+      "resumo": "Geração e revisão de contratos de prestação de serviços freelancer/PJ com cláusulas de PI, LGPD, escopo, pagamento e rescisão.",
+      "palavras_chave": [
+        "contrato-freelancer",
+        "contrato",
+        "freelancer",
+        "seguro",
+        "juridico",
+        "geração",
+        "revisão",
+        "contratos"
+      ],
+      "gatilhos": [
+        "/contrato-freelancer"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "lgpd",
+      "arquivo": ".claude/skills/legal/lgpd/SKILL.md",
+      "resumo": "Implementa compliance LGPD completo.",
+      "palavras_chave": [
+        "lgpd",
+        "compliance",
+        "completo",
+        "legal",
+        "implementa",
+        "analisa",
+        "coleta",
+        "dados"
+      ],
+      "gatilhos": [
+        "/lgpd"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "termos-privacidade",
+      "arquivo": ".claude/skills/legal/termos-privacidade/SKILL.md",
+      "resumo": "Redige minutas de Termos de Uso e Política de Privacidade a partir do tratamento real de dados.",
+      "palavras_chave": [
+        "termos-privacidade",
+        "termos",
+        "uso",
+        "privacidade",
+        "lgpd",
+        "juridico",
+        "redige",
+        "minutas"
+      ],
+      "gatilhos": [
+        "/termos-privacidade"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "aprovar-post",
+      "arquivo": ".claude/skills/marketing/aprovar-post/SKILL.md",
+      "resumo": "Publica conteúdo aprovado no site e nas redes configuradas, com checagem de artefatos e resultados por canal.",
+      "palavras_chave": [
+        "aprovar-post",
+        "pipeline",
+        "aprovação",
+        "publicação",
+        "automática",
+        "marketing",
+        "publica",
+        "conteúdo"
+      ],
+      "gatilhos": [
+        "/aprovar-post"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "carrossel",
+      "arquivo": ".claude/skills/marketing/carrossel/SKILL.md",
+      "resumo": "Cria carrossel visual com identidade da marca, HTML, PNG e legenda para redes sociais.",
+      "palavras_chave": [
+        "carrossel",
+        "posts",
+        "visuais",
+        "marketing",
+        "cria",
+        "visual",
+        "identidade",
+        "marca"
+      ],
+      "gatilhos": [
+        "/carrossel"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "copy-vendas",
+      "arquivo": ".claude/skills/marketing/copy-vendas/SKILL.md",
+      "resumo": "Escreve copy de vendas de alta conversao usando metodologias classicas (Schwartz, Ogilvy, AIDA, PAS, BAB, FAB, 4Ps, 4Us).",
+      "palavras_chave": [
+        "copy-vendas",
+        "copy",
+        "vendas",
+        "alta",
+        "conversao",
+        "marketing",
+        "escreve",
+        "usando"
+      ],
+      "gatilhos": [
+        "/copy-vendas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "cro",
+      "arquivo": ".claude/skills/marketing/cro/SKILL.md",
+      "resumo": "Auditoria e otimização de taxa de conversão (Conversion Rate Optimization) para páginas de captura, landing pages, páginas de vendas, pricing e checkouts.",
+      "palavras_chave": [
+        "cro",
+        "otimização",
+        "taxa",
+        "conversão",
+        "marketing",
+        "auditoria",
+        "conversion",
+        "rate"
+      ],
+      "gatilhos": [
+        "/cro"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "free-tool-strategy",
+      "arquivo": ".claude/skills/marketing/free-tool-strategy/SKILL.md",
+      "resumo": "Planeja ferramentas gratuitas como motor de marketing e aquisição de clientes (Engineering as Marketing).",
+      "palavras_chave": [
+        "free-tool-strategy",
+        "engenharia",
+        "como",
+        "marketing",
+        "ferramentas",
+        "gratuitas",
+        "planeja",
+        "motor"
+      ],
+      "gatilhos": [
+        "/free-tool-strategy"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "funil-experimentos",
+      "arquivo": ".claude/skills/marketing/funil-experimentos/SKILL.md",
+      "resumo": "Mapeia um funil de aquisição e define eventos, hipóteses e experimentos com critérios de decisão.",
+      "palavras_chave": [
+        "funil-experimentos",
+        "medir-funil",
+        "marketing",
+        "vendas",
+        "funil",
+        "analytics",
+        "mapeia",
+        "aquisição"
+      ],
+      "gatilhos": [
+        "/funil-experimentos"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "lead-magnets",
+      "arquivo": ".claude/skills/marketing/lead-magnets/SKILL.md",
+      "resumo": "Planeja e otimiza iscas digitais (lead magnets) de alta conversão para captura de e-mails e prospecção qualificada.",
+      "palavras_chave": [
+        "lead-magnets",
+        "planejamento",
+        "iscas",
+        "digitais",
+        "alta",
+        "conversão",
+        "marketing",
+        "planeja"
+      ],
+      "gatilhos": [
+        "/lead-magnets"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "marketing-psychology",
+      "arquivo": ".claude/skills/marketing/marketing-psychology/SKILL.md",
+      "resumo": "Aplica princípios de psicologia comportamental, vieses cognitivos e modelos mentais ao marketing.",
+      "palavras_chave": [
+        "marketing-psychology",
+        "psicologia",
+        "comportamental",
+        "vieses",
+        "conversão",
+        "marketing",
+        "aplica",
+        "princípios"
+      ],
+      "gatilhos": [
+        "/marketing-psychology"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "producthunt",
+      "arquivo": ".claude/skills/marketing/producthunt/SKILL.md",
+      "resumo": "Playbook de lançamento e tração no Product Hunt para micro-SaaS, ferramentas e produtos digitais.",
+      "palavras_chave": [
+        "producthunt",
+        "playbook",
+        "lançamento",
+        "product",
+        "hunt",
+        "marketing",
+        "tração",
+        "micro-saas"
+      ],
+      "gatilhos": [
+        "/producthunt"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "publicar-tema",
+      "arquivo": ".claude/skills/marketing/publicar-tema/SKILL.md",
+      "resumo": "Prepara artigo, carrossel e legendas coerentes a partir de um tema, mantendo os artefatos em rascunho para revisão.",
+      "palavras_chave": [
+        "publicar-tema",
+        "pipeline",
+        "conteúdo",
+        "seo",
+        "redes",
+        "sociais",
+        "marketing",
+        "prepara"
+      ],
+      "gatilhos": [
+        "/publicar-tema"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "responder-avaliacoes",
+      "arquivo": ".claude/skills/marketing/responder-avaliacoes/SKILL.md",
+      "resumo": "Redige respostas específicas para avaliações do Perfil da Empresa no Google, sem inventar experiências do cliente.",
+      "palavras_chave": [
+        "responder-avaliacoes",
+        "respostas",
+        "pras",
+        "avaliações",
+        "google",
+        "marketing",
+        "redige",
+        "específicas"
+      ],
+      "gatilhos": [
+        "/responder-avaliacoes"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "seo",
+      "arquivo": ".claude/skills/marketing/seo/SKILL.md",
+      "resumo": "Planeja SEO local e orgânico, conteúdo, mensuração, presença em buscas com IA e mídia paga conforme o objetivo.",
+      "palavras_chave": [
+        "seo",
+        "completo",
+        "geo",
+        "google",
+        "ads",
+        "marketing",
+        "planeja",
+        "local"
+      ],
+      "gatilhos": [
+        "/seo"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "analise-mercado",
+      "arquivo": ".claude/skills/mercado/analise-mercado/SKILL.md",
+      "resumo": "Analisa mercado, concorrência e oportunidades.",
+      "palavras_chave": [
+        "analise-mercado",
+        "análise",
+        "completa",
+        "mercado",
+        "concorrência",
+        "analisa",
+        "oportunidades",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/analise-mercado"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "mercado"
+    },
+    {
+      "nome": "customer-research",
+      "arquivo": ".claude/skills/mercado/customer-research/SKILL.md",
+      "resumo": "Conduz e sintetiza pesquisas de clientes, entrevistas de validação, mapeamento de dores reais e análise de Voz do Cliente (Voice of Customer - VoC).",
+      "palavras_chave": [
+        "customer-research",
+        "pesquisa",
+        "clientes",
+        "voz",
+        "cliente",
+        "voc",
+        "mercado",
+        "conduz"
+      ],
+      "gatilhos": [
+        "/customer-research"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "mercado"
+    },
+    {
+      "nome": "abrir",
+      "arquivo": ".claude/skills/nucleo/abrir/SKILL.md",
+      "resumo": "Abre uma sessão de trabalho carregando a memória do negócio (empresa, preferências, estratégia, identidade) e devolve um resumo curto pro usuário.",
+      "palavras_chave": [
+        "abrir",
+        "abertura",
+        "sessão",
+        "nucleo",
+        "abre",
+        "trabalho",
+        "carregando",
+        "memória"
+      ],
+      "gatilhos": [
+        "/abrir"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "atualizar",
+      "arquivo": ".claude/skills/nucleo/atualizar/SKILL.md",
+      "resumo": "Varre o projeto e atualiza os arquivos de contexto (`sistema/memoria/empresa.md`, `sistema/memoria/preferencias.md`, `sistema/memoria/estrategia.md`, `CLAUDE.md`.",
+      "palavras_chave": [
+        "atualizar",
+        "varredura",
+        "atualização",
+        "contexto",
+        "nucleo",
+        "varre",
+        "projeto",
+        "atualiza"
+      ],
+      "gatilhos": [
+        "/atualizar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "mapear-rotinas",
+      "arquivo": ".claude/skills/nucleo/mapear-rotinas/SKILL.md",
+      "resumo": "Mapeia tarefas repetitivas que o usuário faz no dia a dia e gera skills personalizadas pra automatizá-las.",
+      "palavras_chave": [
+        "mapear-rotinas",
+        "mapeamento",
+        "tarefas",
+        "repetitivas",
+        "skills",
+        "nucleo",
+        "mapeia",
+        "usuário"
+      ],
+      "gatilhos": [
+        "/mapear-rotinas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "novo-projeto",
+      "arquivo": ".claude/skills/nucleo/novo-projeto/SKILL.md",
+      "resumo": "Cria uma pasta de projeto nova com `CLAUDE.md` dedicado, depois de uma entrevista curta sobre o projeto (cliente, objetivo, entregas previstas).",
+      "palavras_chave": [
+        "novo-projeto",
+        "pasta",
+        "projeto",
+        "novo",
+        "contexto",
+        "dedicado",
+        "nucleo",
+        "cria"
+      ],
+      "gatilhos": [
+        "/novo-projeto"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "projeto",
+      "arquivo": ".claude/skills/nucleo/projeto/SKILL.md",
+      "resumo": "Gestao de projeto com sprints, tarefas, prazos e acompanhamento.",
+      "palavras_chave": [
+        "projeto",
+        "gestao",
+        "nucleo",
+        "sprints",
+        "tarefas",
+        "prazos",
+        "acompanhamento",
+        "cria"
+      ],
+      "gatilhos": [
+        "/projeto"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "salvar",
+      "arquivo": ".claude/skills/nucleo/salvar/SKILL.md",
+      "resumo": "Salva o trabalho do ReoliOS no GitHub (commit + push).",
+      "palavras_chave": [
+        "salvar",
+        "github",
+        "nucleo",
+        "salva",
+        "trabalho",
+        "commit",
+        "push",
+        "primeira"
+      ],
+      "gatilhos": [
+        "/salvar"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "obsidian-forge",
+      "arquivo": ".claude/skills/obsidian/obsidian-forge/SKILL.md",
+      "resumo": "Conduz planejamento estratégico e metas de negócio dentro do Obsidian.",
+      "palavras_chave": [
+        "obsidian-forge",
+        "forge-negocio",
+        "obsidian",
+        "negocio",
+        "metas",
+        "conduz",
+        "planejamento",
+        "estratégico"
+      ],
+      "gatilhos": [
+        "/obsidian-forge"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "obsidian"
+    },
+    {
+      "nome": "obsidian-librarian",
+      "arquivo": ".claude/skills/obsidian/obsidian-librarian/SKILL.md",
+      "resumo": "Organiza, audita e mantém o vault do Obsidian limpo e navegável.",
+      "palavras_chave": [
+        "obsidian-librarian",
+        "bibliotecario-obsidian",
+        "obsidian",
+        "segundo-cerebro",
+        "organiza",
+        "audita",
+        "mantém",
+        "vault"
+      ],
+      "gatilhos": [
+        "/obsidian-librarian"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "obsidian"
+    },
+    {
+      "nome": "analisar-dados",
+      "arquivo": ".claude/skills/operacao/analisar-dados/SKILL.md",
+      "resumo": "Analisa um arquivo de dados (CSV, Excel, TXT, JSON) e gera um resumo executivo com os principais insights, tendências e recomendações.",
+      "palavras_chave": [
+        "analisar-dados",
+        "análise",
+        "arquivo",
+        "operacao",
+        "analisa",
+        "dados",
+        "csv",
+        "excel"
+      ],
+      "gatilhos": [
+        "/analisar-dados"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "apresentacao-pptx",
+      "arquivo": ".claude/skills/operacao/apresentacao-pptx/SKILL.md",
+      "resumo": "Gera e estrutura apresentações comerciais, pitch decks para investidores e relatórios executivos em formato PowerPoint nativo (.pptx).",
+      "palavras_chave": [
+        "apresentacao-pptx",
+        "geração",
+        "apresentações",
+        "executivas",
+        "pptx",
+        "operacao",
+        "gera",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/apresentacao-pptx"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "comercial",
+      "arquivo": ".claude/skills/operacao/comercial/SKILL.md",
+      "resumo": "Conduz o processo comercial completo: descoberta, qualificação, proposta, negociação e fechamento.",
+      "palavras_chave": [
+        "comercial",
+        "processo",
+        "completo",
+        "operacao",
+        "conduz",
+        "descoberta",
+        "qualificação",
+        "proposta"
+      ],
+      "gatilhos": [
+        "/comercial"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "domain-hunter",
+      "arquivo": ".claude/skills/operacao/domain-hunter/SKILL.md",
+      "resumo": "Caça, pesquisa e valida domínios estratégicos para novos projetos, SaaS e landing pages.",
+      "palavras_chave": [
+        "domain-hunter",
+        "caçador",
+        "validador",
+        "domínios",
+        "estratégicos",
+        "operacao",
+        "caça",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/domain-hunter"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "email-profissional",
+      "arquivo": ".claude/skills/operacao/email-profissional/SKILL.md",
+      "resumo": "Rascunha um email profissional a partir de um contexto livre.",
+      "palavras_chave": [
+        "email-profissional",
+        "rascunho",
+        "email",
+        "operacao",
+        "rascunha",
+        "profissional",
+        "partir",
+        "contexto"
+      ],
+      "gatilhos": [
+        "/email-profissional"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "pesquisar",
+      "arquivo": ".claude/skills/operacao/pesquisar/SKILL.md",
+      "resumo": "Pesquisa profunda sobre qualquer tema de negócio: mercado, concorrência, tendências, tecnologias, público-alvo, oportunidades.",
+      "palavras_chave": [
+        "pesquisar",
+        "pesquisa",
+        "profunda",
+        "mercado",
+        "negócio",
+        "operacao",
+        "sobre",
+        "qualquer"
+      ],
+      "gatilhos": [
+        "/pesquisar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "proposta",
+      "arquivo": ".claude/skills/operacao/proposta/SKILL.md",
+      "resumo": "Gera proposta comercial completa em HTML pronta pra enviar ao cliente.",
+      "palavras_chave": [
+        "proposta",
+        "comercial",
+        "profissional",
+        "operacao",
+        "gera",
+        "completa",
+        "html",
+        "pronta"
+      ],
+      "gatilhos": [
+        "/proposta"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "saas-financials",
+      "arquivo": ".claude/skills/operacao/saas-financials/SKILL.md",
+      "resumo": "Consultor financeiro e modelador de métricas para SaaS, produtos digitais e assinaturas.",
+      "palavras_chave": [
+        "saas-financials",
+        "modelagem",
+        "financeira",
+        "métricas",
+        "negócio",
+        "saas",
+        "operacao",
+        "consultor"
+      ],
+      "gatilhos": [
+        "/saas-financials"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "stripe",
+      "arquivo": ".claude/skills/pagamento/stripe/SKILL.md",
+      "resumo": "Integra pagamentos com Stripe.",
+      "palavras_chave": [
+        "stripe",
+        "integração",
+        "completa",
+        "pagamento",
+        "integra",
+        "pagamentos",
+        "cria",
+        "checkout"
+      ],
+      "gatilhos": [
+        "/stripe"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "pagamento"
+    },
+    {
+      "nome": "otimizar",
+      "arquivo": ".claude/skills/performance/otimizar/SKILL.md",
+      "resumo": "Otimiza performance de frontend.",
+      "palavras_chave": [
+        "otimizar",
+        "performance",
+        "otimização",
+        "completa",
+        "otimiza",
+        "frontend",
+        "lighthouse",
+        "core"
+      ],
+      "gatilhos": [
+        "/otimizar",
+        "/performance"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "performance"
+    },
+    {
+      "nome": "testar",
+      "arquivo": ".claude/skills/qualidade/testar/SKILL.md",
+      "resumo": "Cria suite de testes completa.",
+      "palavras_chave": [
+        "testar",
+        "suite",
+        "completa",
+        "testes",
+        "qualidade",
+        "cria",
+        "unit",
+        "tests"
+      ],
+      "gatilhos": [
+        "/testar"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "qualidade"
+    },
+    {
+      "nome": "ai-seo",
+      "arquivo": ".claude/skills/seo/ai-seo/SKILL.md",
+      "resumo": "Otimiza conteúdos e sites para motores de resposta com Inteligência Artificial (GEO - Generative Engine Optimization).",
+      "palavras_chave": [
+        "ai-seo",
+        "generative",
+        "engine",
+        "optimization",
+        "geo",
+        "busca",
+        "seo",
+        "otimiza"
+      ],
+      "gatilhos": [
+        "/ai-seo"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "seo"
+    },
+    {
+      "nome": "seo-cluster",
+      "arquivo": ".claude/skills/seo/seo-cluster/SKILL.md",
+      "resumo": "Planeja arquitetura de conteúdo semântico em modelo Hub-and-Spoke (Página Pilar + Satélites).",
+      "palavras_chave": [
+        "seo-cluster",
+        "arquitetura",
+        "conteúdo",
+        "semântico",
+        "hub-and-spoke",
+        "seo",
+        "planeja",
+        "modelo"
+      ],
+      "gatilhos": [
+        "/seo-cluster"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "seo"
+    },
+    {
+      "nome": "seo-tecnico",
+      "arquivo": ".claude/skills/seo/seo-tecnico/SKILL.md",
+      "resumo": "Implementa SEO técnico completo.",
+      "palavras_chave": [
+        "seo-tecnico",
+        "seo",
+        "técnico",
+        "completo",
+        "implementa",
+        "sitemap",
+        "robots",
+        "txt"
+      ],
+      "gatilhos": [
+        "/seo-tecnico"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "seo"
+    },
+    {
+      "nome": "docs-api",
+      "arquivo": ".claude/skills/sistema/docs-api/SKILL.md",
+      "resumo": "Cria documentação completa, API REST e guides interativos para o ReoliOS.",
+      "palavras_chave": [
+        "docs-api",
+        "documentação",
+        "api",
+        "sistema",
+        "cria",
+        "completa",
+        "rest",
+        "guides"
+      ],
+      "gatilhos": [
+        "/docs-api"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "funil",
+      "arquivo": ".claude/skills/sistema/funil/SKILL.md",
+      "resumo": "Monta funil de vendas completo: captura, nutrição e conversão.",
+      "palavras_chave": [
+        "funil",
+        "vendas",
+        "completo",
+        "sistema",
+        "monta",
+        "captura",
+        "nutrição",
+        "conversão"
+      ],
+      "gatilhos": [
+        "/funil"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "gemini-optimizer",
+      "arquivo": ".claude/skills/sistema/gemini-optimizer/SKILL.md",
+      "resumo": "Otimizações específicas para execução no Gemini CLI.",
+      "palavras_chave": [
+        "gemini-optimizer",
+        "otimização",
+        "avançada",
+        "gemini",
+        "cli",
+        "sistema",
+        "otimizações",
+        "específicas"
+      ],
+      "gatilhos": [
+        "/gemini-optimizer"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "guia",
+      "arquivo": ".claude/skills/sistema/guia/SKILL.md",
+      "resumo": "Guia completo do ReoliOS para novos usuarios.",
+      "palavras_chave": [
+        "guia",
+        "completo",
+        "sistema",
+        "novos",
+        "usuarios",
+        "explica",
+        "como",
+        "quais"
+      ],
+      "gatilhos": [
+        "/guia"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "instalar",
+      "arquivo": ".claude/skills/sistema/instalar/SKILL.md",
+      "resumo": "Configura o ReoliOS a partir do perfil da empresa e registra memória, preferências, estratégia e identidade visual.",
+      "palavras_chave": [
+        "instalar",
+        "instalação",
+        "inicial",
+        "sistema",
+        "configura",
+        "partir",
+        "perfil",
+        "empresa"
+      ],
+      "gatilhos": [
+        "/instalar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "legal",
+      "arquivo": ".claude/skills/sistema/legal/SKILL.md",
+      "resumo": "Gera documentos legais para produtos digitais: Termos de Uso, Politica de Privacidade, contratos de prestacao de servico.",
+      "palavras_chave": [
+        "legal",
+        "documentos",
+        "legais",
+        "negocio",
+        "sistema",
+        "gera",
+        "produtos",
+        "digitais"
+      ],
+      "gatilhos": [
+        "/legal"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "skill-creator",
+      "arquivo": ".claude/skills/sistema/skill-creator/SKILL.md",
+      "resumo": "Cria novas skills profissionais para o ReoliOS fazendo engenharia reversa de casos reais, bibliotecas ou repositórios open-source do GitHub.",
+      "palavras_chave": [
+        "skill-creator",
+        "criação",
+        "engenharia",
+        "reversa",
+        "skills",
+        "sistema",
+        "cria",
+        "novas"
+      ],
+      "gatilhos": [
+        "/skill-creator"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "cold-email",
+      "arquivo": ".claude/skills/vendas-atendimento/cold-email/SKILL.md",
+      "resumo": "Escreve e-mails de prospecção ativa B2B (cold outbound) e sequências de follow-up que geram respostas reais de tomadores de decisão.",
+      "palavras_chave": [
+        "cold-email",
+        "prospecção",
+        "ativa",
+        "b2b",
+        "alta",
+        "conversão",
+        "vendas",
+        "escreve"
+      ],
+      "gatilhos": [
+        "/cold-email"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "cold-outreach-linkedin",
+      "arquivo": ".claude/skills/vendas-atendimento/cold-outreach-linkedin/SKILL.md",
+      "resumo": "Geração de abordagens hiper-personalizadas para prospecção B2B no LinkedIn.",
+      "palavras_chave": [
+        "cold-outreach-linkedin",
+        "prospecção",
+        "hiper-personalizada",
+        "linkedin",
+        "vendas",
+        "geração",
+        "abordagens",
+        "hiper-personalizadas"
+      ],
+      "gatilhos": [
+        "/cold-outreach-linkedin"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "cs-onboarding",
+      "arquivo": ".claude/skills/vendas-atendimento/cs-onboarding/SKILL.md",
+      "resumo": "Automação de onboarding de novos clientes com checklist de entrega e health score.",
+      "palavras_chave": [
+        "cs-onboarding",
+        "onboarding",
+        "health",
+        "score",
+        "automação",
+        "novos",
+        "clientes",
+        "checklist"
+      ],
+      "gatilhos": [
+        "/cs-onboarding"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "estrategia-pricing",
+      "arquivo": ".claude/skills/vendas-atendimento/estrategia-pricing/SKILL.md",
+      "resumo": "Precificação de produtos, SaaS e serviços de consultoria.",
+      "palavras_chave": [
+        "estrategia-pricing",
+        "copy",
+        "tela",
+        "pricing",
+        "vendas",
+        "precificação",
+        "produtos",
+        "saas"
+      ],
+      "gatilhos": [
+        "/estrategia-pricing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "lead-scraper",
+      "arquivo": ".claude/skills/vendas-atendimento/lead-scraper/SKILL.md",
+      "resumo": "Pesquisa empresas B2B em fontes permitidas, registrando origem e elegibilidade de contato.",
+      "palavras_chave": [
+        "lead-scraper",
+        "prospecção",
+        "ativa",
+        "b2b",
+        "contatos",
+        "locais",
+        "vendas",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/lead-scraper"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "offers",
+      "arquivo": ".claude/skills/vendas-atendimento/offers/SKILL.md",
+      "resumo": "Construção de ofertas de altíssimo valor percebido e irresistíveis (Grand Slam Offers de Alex Hormozi).",
+      "palavras_chave": [
+        "offers",
+        "design",
+        "ofertas",
+        "irrecusáveis",
+        "grand",
+        "slam",
+        "vendas",
+        "construção"
+      ],
+      "gatilhos": [
+        "/offers"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "pipeline-forecasting",
+      "arquivo": ".claude/skills/vendas-atendimento/pipeline-forecasting/SKILL.md",
+      "resumo": "Analisa pipeline e estima receita com probabilidades calibradas pelo histórico da empresa.",
+      "palavras_chave": [
+        "pipeline-forecasting",
+        "pipeline",
+        "forecasting",
+        "probabilidade",
+        "vendas",
+        "analisa",
+        "estima",
+        "receita"
+      ],
+      "gatilhos": [
+        "/pipeline-forecasting"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "qualificacao-leads",
+      "arquivo": ".claude/skills/vendas-atendimento/qualificacao-leads/SKILL.md",
+      "resumo": "Qualifica leads B2B com critérios explícitos de aderência, momento e evidência.",
+      "palavras_chave": [
+        "qualificacao-leads",
+        "scoring-leads",
+        "vendas",
+        "b2b",
+        "leads",
+        "qualifica",
+        "critérios",
+        "explícitos"
+      ],
+      "gatilhos": [
+        "/qualificacao-leads"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "whatsapp-atendimento",
+      "arquivo": ".claude/skills/vendas-atendimento/whatsapp-atendimento/SKILL.md",
+      "resumo": "Scripts e fluxos de atendimento de alta conversão no WhatsApp.",
+      "palavras_chave": [
+        "whatsapp-atendimento",
+        "atendimento",
+        "via",
+        "whatsapp",
+        "vendas",
+        "scripts",
+        "fluxos",
+        "alta"
+      ],
+      "gatilhos": [
+        "/whatsapp-atendimento"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "viral-copy",
+      "arquivo": ".claude/skills/viral-copy/SKILL.md",
+      "resumo": "Escreve copy de produto viral usando os princípios de Marc Lou (@marclou).",
+      "palavras_chave": [
+        "viral-copy",
+        "copy",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "escreve",
+        "produto"
+      ],
+      "gatilhos": [
+        "/viral-copy"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-copy"
+    },
+    {
+      "nome": "viral-landing",
+      "arquivo": ".claude/skills/viral-landing/SKILL.md",
+      "resumo": "Cria landing pages virais usando os 32 princípios de produto viral de Marc Lou (@marclou).",
+      "palavras_chave": [
+        "viral-landing",
+        "landing",
+        "page",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "cria"
+      ],
+      "gatilhos": [
+        "/viral-landing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-landing"
+    },
+    {
+      "nome": "viral-pricing",
+      "arquivo": ".claude/skills/viral-pricing/SKILL.md",
+      "resumo": "Estrutura precificação viral usando os princípios de Marc Lou (@marclou).",
+      "palavras_chave": [
+        "viral-pricing",
+        "precificação",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "pricing",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/viral-pricing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-pricing"
+    }
+  ]
+}

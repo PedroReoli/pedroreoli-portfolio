@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Histórico de Posts ReoliOS",
+  "description": "Dados estruturados de posts criados e agendados no ReoliOS",
+  "posts": [
+    {
+      "id": "post-001",
+      "data": "2026-08-26",
+      "cliente": "Empresa Principal",
+      "redeSocial": "Instagram",
+      "titulo": "Exemplo de Post ReoliOS",
+      "legenda": "Sua empresa inteira rodando no terminal com ReoliOS.",
+      "status": "publicado",
+      "midia": "carrossel_1080x1350.png"
+    }
+  ]
+}

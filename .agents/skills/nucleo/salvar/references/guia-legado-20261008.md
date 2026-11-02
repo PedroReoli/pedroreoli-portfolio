@@ -1,0 +1,78 @@
+# Legado arquivado: nucleo/salvar
+
+> Snapshot integral pré-modernização da skill. Preservado para continuidade e comparação; pode conter comandos, métricas ou premissas desatualizados. **Não seguir em conflito com SKILL.md atual.**
+
+---
+
+---
+tipo: skill
+nome: Salvar no GitHub
+name: salvar
+aliases:
+  - salvar
+  - /salvar
+  - Salvar no GitHub
+tags:
+  - h4
+  - skill
+  - nucleo
+  - reolios
+camada: 3_folha
+dominio: gestao
+categoria: nucleo
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Nucleo]]'
+description: >
+  Salva o trabalho do ReoliOS no GitHub (commit + push). Na primeira vez
+  configura o repositório remoto. Use quando o usuário disser "salvar", "salva
+  no github", "commit", "push", "/salvar" ou pedir backup do trabalho.
+---
+
+# Salvar no GitHub
+
+Skill de uma função só: garantir que o trabalho do usuário está no GitHub. Fácil pra quem nunca usou git.
+
+## Workflow
+
+### Primeira vez (repositório não inicializado)
+
+Detectar com `git rev-parse --is-inside-work-tree`. Se falhar:
+
+1. Perguntar:
+   > "Esse é o primeiro syncar. Você já tem um repositório criado no GitHub pra esse workspace?
+   > 1. Sim, me passa a URL (ex: https://github.com/usuario/nome.git)
+   > 2. Não, vou criar agora — me dá um nome pro repositório (ex: meu-ReoliOS)"
+
+2. **Se opção 1:** inicializar Git, revisar arquivos e `.gitignore`, selecionar somente arquivos próprios para versionamento, criar commit, configurar remoto e enviar. Não usar `git add .` antes de verificar segredos e arquivos privados.
+
+3. **Se opção 2:** verificar se o `gh` CLI está instalado (`gh --version`). 
+   - Se sim: rodar `git init`, criar commit inicial, e `gh repo create <nome> --private --source=. --push`.
+   - Se não: instruir o usuário a instalar `gh` (https://cli.github.com/) ou criar o repo manualmente em github.com/new e voltar com a URL.
+
+### Commits seguintes (já configurado)
+
+1. Rodar `git status`. Se não tiver mudanças, responder "Tá tudo sincronizado, sem mudança nova" e parar.
+
+2. Mostrar o `git status` curto e revisar diff, novos arquivos, `.privado/`, credenciais e dados de clientes antes de selecionar o commit. Use a descrição do usuário se fornecida; senão, gere mensagem fiel ao diff.
+
+3. Se o usuário fornecer mensagem, usar. Se não, gerar uma mensagem baseada nos arquivos alterados (1 linha, formato: "Atualiza X" ou "Adiciona Y" ou "Cria proposta pra cliente Z").
+
+4. Adicione arquivos explicitamente após a revisão → `git diff --cached` → `git commit -m "<mensagem>"` → `git push`, respeitando a autorização para envio remoto.
+
+5. Confirmar com link do repositório (extrair de `git remote get-url origin`):
+   > "Sincronizado. Ver no GitHub: <URL>"
+
+## Regras
+
+- Nunca usar `--force` sem o usuário pedir explicitamente
+- Nunca rodar `git reset --hard` ou outras destrutivas sem confirmação clara
+- Se o push falhar por divergência (alguém comitou no remoto), avisar o usuário e oferecer `git pull --rebase` antes de tentar de novo
+- Se o usuário ainda não tiver `git` configurado (`user.name` / `user.email`), perguntar e configurar com `git config --global` na primeira vez
+- Não altere identidade Git global sem escolha explícita do usuário; prefira configuração local do repositório.
+
+<!-- vault-navigation:start -->
+## Navegação
+- [[hubs/skills/Skills - Nucleo|Skills - Nucleo]]
+<!-- vault-navigation:end -->

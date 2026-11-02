@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Histórico de Copys ReoliOS",
+  "description": "Dados estruturados de textos de vendas e copys geradas pelo ReoliOS",
+  "copys": [
+    {
+      "id": "copy-001",
+      "data": "2026-08-26",
+      "cliente": "Empresa Principal",
+      "framework": "PAS",
+      "objetivo": "Conversão de Vendas",
+      "headline": "Você cansou de ser dev solo e fazer todo o trabalho manual?",
+      "conteudo": "O ReoliOS coloca marketing, ads, copy e SEO no seu terminal...",
+      "cta": "Saiba mais"
+    }
+  ]
+}

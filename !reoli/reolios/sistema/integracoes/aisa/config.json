@@ -1,0 +1,37 @@
+{
+  "name": "aisa-reoli-integration",
+  "version": "1.0.0",
+  "description": "Configuração de integração AIsa com a Reoli Suite",
+  "aisa": {
+    "cli_version": "0.6.1",
+    "auth_method": "stored_key",
+    "key_path": "~/.aisa/key",
+    "endpoints": {
+      "chat": "https://api.aisa.one/v1/chat/completions",
+      "models": "https://api.aisa.one/v1/models",
+      "data_apis": "https://api.aisa.one/apis/v1",
+      "mcp": "https://tools.aisa.one/mcp"
+    }
+  },
+  "reoli_suite": {
+    "version": "1.5.0",
+    "modules": {
+      "reolicode": {
+        "path": "../../../ReoliCode",
+        "cli": "reolicode"
+      },
+      "reolios": {
+        "path": "../../..",
+        "cli": "reoli"
+      }
+    }
+  },
+  "security": {
+    "note": "API key armazenada em ~/.aisa/key via aisa login. NUNCA commitar keys no repositório.",
+    "gitignore": [
+      "*.key",
+      ".env",
+      "secrets/"
+    ]
+  }
+}

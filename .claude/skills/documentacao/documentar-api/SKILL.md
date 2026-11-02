@@ -1,0 +1,285 @@
+---
+tipo: skill
+nome: Documentação completa de APIs
+name: documentar-api
+aliases:
+  - documentar-api
+  - /documentar-api
+  - Documentação completa de APIs
+tags:
+  - h4
+  - skill
+  - documentacao
+  - reolios
+camada: 3_folha
+dominio: operacao
+categoria: documentacao
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Documentacao]]'
+description: >
+  Cria documentação completa de APIs. Gera OpenAPI/Swagger, README, guides,
+  exemplos e referência técnica. Use quando pedir "documentar API", "gerar
+  docs", "Swagger", "OpenAPI", "/docs-api" ou "/documentar".
+---
+
+# Documentação completa de APIs
+
+Gera documentação profissional de APIs: OpenAPI, README, guides e referência.
+
+## Dependências
+
+- **Input:** projeto/servidor da API
+- **Output:** `docs/` ou `projetos/<nome>/docs/`
+
+---
+
+## Workflow
+
+### Passo 1 — Análise da API
+
+Perguntar ao usuário:
+1. Qual a API que precisa documentar?
+2. Qual a stack? (Express, FastAPI, NestJS, etc)
+3. Tem endpoints definidos ou precisa mapear?
+4. Quer documento completo ou específico?
+
+### Passo 2 — Especificação OpenAPI
+
+Gerar arquivo `openapi.yaml` com:
+
+```yaml
+openapi: 3.0.3
+info:
+  title: [Nome da API]
+  description: [Descrição do que a API faz]
+  version: 1.0.0
+  contact:
+    name: [Nome]
+    email: [Email]
+    url: [Website]
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development
+  - url: https://api.exemplo.com
+    description: Production
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+
+paths:
+  /users:
+    get:
+      summary: Listar usuários
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Não autenticado
+```
+
+### Passo 3 — Documentação por Endpoint
+
+Para cada endpoint, documentar:
+
+```
+### [Método] /rota
+
+**Descrição:** O que essa rota faz
+
+**Autenticação:** Sim/Não
+
+**Parâmetros:**
+| Nome | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| id   | string | Sim | ID do recurso |
+
+**Body (se aplicável):**
+```json
+{
+  "campo": "valor"
+}
+```
+
+**Respostas:**
+- `200` - Sucesso
+- `400` - Erro de validação
+- `401` - Não autenticado
+- `403` - Sem permissão
+- `500` - Erro interno
+
+**Exemplo de resposta:**
+```json
+{
+  "data": {}
+}
+```
+
+**Exemplo de uso:**
+```bash
+curl -X GET "https://api.exemplo.com/recurso" \
+  -H "Authorization: Bearer TOKEN"
+```
+```
+
+### Passo 4 — README Completo
+
+Gerar `README.md` com:
+
+```markdown
+# [Nome da API]
+
+[Descrição breve]
+
+## 🚀 Quick Start
+
+### Pré-requisitos
+- Node.js 18+
+- PostgreSQL 14+
+
+### Instalação
+\`\`\`bash
+npm install
+cp .env.example .env
+\`\`\`
+
+### Variáveis de Ambiente
+\`\`\`
+DATABASE_URL=
+JWT_SECRET=
+PORT=3000
+\`\`\`
+
+### Rodar
+\`\`\`bash
+npm run dev
+\`\`\`
+
+## 📚 Endpoints
+
+### Autenticação
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | /auth/register | Criar conta |
+| POST | /auth/login | Login |
+| POST | /auth/refresh | Renovar token |
+
+### Usuários
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | /users | Listar usuários |
+| POST | /users | Criar usuário |
+| GET | /users/:id | Buscar usuário |
+| PUT | /users/:id | Atualizar |
+| DELETE | /users/:id | Deletar |
+
+## 🔐 Autenticação
+
+A API usa JWT. Para autenticar:
+
+\`\`\`bash
+curl -H "Authorization: Bearer SEU_TOKEN" \
+  https://api.exemplo.com/protected
+\`\`\`
+
+## 🧪 Testes
+
+\`\`\`bash
+npm test
+\`\`\`
+
+## 📦 Deploy
+
+[Instruções de deploy]
+
+## 📄 Licença
+
+MIT
+```
+
+### Passo 5 — Guides
+
+Criar guides adicionais:
+
+```
+docs/
+├── README.md           ← visão geral
+├── authentication.md   ← como autenticar
+├── errors.md          ← códigos de erro
+├── rate-limiting.md   ← limites de uso
+├── webhooks.md        ← se aplicável
+└── examples/
+    ├── node.js.md
+    ├── python.md
+    └── curl.md
+```
+
+---
+
+## Estrutura de Entrega
+
+```
+projetos/<nome>/
+├── docs/
+│   ├── README.md
+│   ├── openapi.yaml
+│   ├── authentication.md
+│   ├── errors.md
+│   ├── rate-limiting.md
+│   └── examples/
+│       ├── node.md
+│       ├── python.md
+│       └── curl.md
+└── README.md (atualizado com link pros docs)
+```
+
+---
+
+## Regras
+
+- Documentar TODOS os endpoints, sem exceção
+- Exemplos completos e testáveis
+- Manter documentação atualizada com código
+- Seguir padrão OpenAPI 3.0
+- Incluir erros possíveis em cada endpoint
+- Documentar autenticação claramente
+- Dar exemplos em múltiplas linguagens
+- Versionar quando API mudar significativamente
+
+<!-- vault-navigation:start -->
+## Navegação
+- [[hubs/skills/Skills - Documentacao|Skills - Documentacao]]
+<!-- vault-navigation:end -->

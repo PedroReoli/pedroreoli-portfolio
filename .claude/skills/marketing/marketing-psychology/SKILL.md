@@ -1,0 +1,93 @@
+---
+tipo: skill
+nome: Psicologia Comportamental & Vieses de Conversão
+name: marketing-psychology
+aliases:
+  - marketing-psychology
+  - /marketing-psychology
+  - Psicologia Comportamental & Vieses de Conversão
+tags:
+  - h4
+  - skill
+  - marketing
+  - reolios
+camada: 3_folha
+dominio: marketing
+categoria: marketing
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Marketing]]'
+description: >
+  Aplica princípios de psicologia comportamental, vieses cognitivos e modelos
+  mentais ao marketing. Use para calibrar decisões de compra, ancoragem de
+  preço, aversão à perda, prova social, escassez, efeito chamariz (decoy effect)
+  e redução de atrito psicológico em páginas de vendas e anúncios.
+---
+
+# Psicologia Comportamental & Vieses de Conversão
+
+Avalie como a apresentação da oferta afeta compreensão e decisão. Trate hipóteses comportamentais como algo a testar com público real; não prometa eliminar objeções.
+
+---
+
+## 🧭 Contexto do Negócio
+
+Antes de sugerir gatilhos:
+1. Consulte `sistema/memoria/empresa.md` para entender quem é o público e o estágio de consciência.
+2. Identifique onde o princípio será aplicado:
+   - Na página de checkout / pricing?
+   - Na headline da landing page?
+   - No e-mail de vendas / proposta comercial?
+
+---
+
+## 🧠 Os 8 Vieses Cognitivos Mais Poderosos em Marketing
+
+### 1. Ancoragem de Preço (Price Anchoring)
+- A primeira informação que o cliente vê define a régua de valor.
+- **Aplicação:** Mostre primeiro a alternativa cara (ex: *"Contratar uma agência custa R$ 8.000/mês"*) antes de revelar o seu preço de R$ 997/mês.
+
+### 2. Aversão à Perda (Loss Aversion)
+- O ser humano sente o dobro de dor ao perder algo do que ao ganhar algo de mesmo valor.
+- **Aplicação:** *"Você está perdendo R$ 1.500 toda semana por não auditar seu banco de dados"* converte mais do que *"Ganhe R$ 1.500 a mais por semana"*.
+
+### 3. Efeito Chamariz (The Decoy Effect)
+- Uma terceira opção assimétrica faz com que o plano mais caro pareça uma barganha óbvia.
+- **Aplicação (Trio de Planos):**
+  - Básico: R$ 50/mês (sem recursos avançados)
+  - Pro (Chamariz): R$ 90/mês (quase o mesmo preço do VIP)
+  - Ilimitado (VIP): R$ 100/mês (todos os recursos) → hipótese de preferência a validar com dados reais.
+
+### 4. Paradoxo da Escolha (Hick's Law)
+- Quanto mais opções você dá ao usuário, menor é a chance de ele comprar alguma coisa.
+- **Aplicação:** Reduza a página a UM único botão de ação principal. Remova links externos, menus complexos e formulários com mais de 3 opções.
+
+### 5. Prova Social Específica (Social Proof)
+- Prova genérica (*"Temos muitos clientes felizes"*) gera ceticismo. Prova específica (*"94 desenvolvedores reduziram 3h de debug por dia"*) gera credibilidade imediata.
+- **Aplicação:** Use prints reais de conversas no WhatsApp/Slack, nomes reais e métricas concretas.
+
+### 6. Reciprocidade
+- Quando alguém recebe algo valioso sem pedir nada em troca, cria-se uma obrigação moral de retribuir.
+- **Aplicação:** Entregue ferramentas gratuitas, templates e auditorias gratuitas (lead magnets) antes de fazer o pitch do serviço.
+
+### 7. Escassez e Urgência Genuínas
+- Escassez falsa (*"Restam 2 vagas"* que nunca acabam) queima a reputação. Escassez real gera ação rápida.
+- **Aplicação:** *"Atendo no máximo 3 projetos simultâneos para manter o código impecável — próxima vaga abre apenas em novembro."*
+
+### 8. Teoria dos "Trabalhos a Fazer" (Jobs to Be Done)
+- O cliente não compra uma furadeira de 6mm; ele compra um buraco na parede para pendurar a foto do filho.
+- **Aplicação:** Fale do resultado final alcançado, nunca do método ou da linguagem de programação.
+
+---
+
+## 📋 Como Implementar no ReoliOS
+Ao analisar uma copy ou página:
+1. Identifique quais 2 ou 3 vieses se encaixam perfeitamente na oferta.
+2. Reescreva a seção aplicando a técnica (com antes e depois).
+3. Garanta que a ética e a verdade da empresa sejam respeitadas.
+
+<!-- vault-navigation:start -->
+## Navegação
+- [[hubs/skills/Skills - Marketing|Skills - Marketing]]
+<!-- vault-navigation:end -->

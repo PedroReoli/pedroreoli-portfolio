@@ -1,0 +1,2705 @@
+{
+  "versao": 2,
+  "gerado_em": "2026-10-09T20:25:12.089Z",
+  "base": ".agents/skills",
+  "politica": "Selecione por intenção no catálogo híbrido. Abra apenas a skill escolhida e as memórias estritamente necessárias.",
+  "raiz_instalada_memorias": ".agents/memory/",
+  "total": 128,
+  "colisoes_de_alias": {},
+  "nomes_divergentes": [],
+  "skills": [
+    {
+      "nome": "abrir",
+      "arquivo": ".agents/skills/nucleo/abrir/SKILL.md",
+      "resumo": "Use esta skill para abrir contexto correto de projeto, nota ou rotina ReoliOS sem presumir acesso e sem modificar arquivos. Use para tarefas de abrir e quando o usuário solicitar /abrir. Leitura nunca deve criar/reorganizar projetos automaticamente.",
+      "palavras_chave": [
+        "abrir",
+        "abertura",
+        "sessão",
+        "nucleo",
+        "abre",
+        "trabalho",
+        "carregando",
+        "memória"
+      ],
+      "gatilhos": [
+        "/abrir"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "adr",
+      "arquivo": ".agents/skills/dev/adr/SKILL.md",
+      "resumo": "Gera e mantém Architecture Decision Records (ADRs) leves para documentar decisões técnicas, mudanças estruturais e escolhas de design no projeto. Use quando decidir adoção de banco de dados, frameworks, estratégias de cache ou refatorações de grande impacto.",
+      "palavras_chave": [
+        "adr",
+        "architecture",
+        "decision",
+        "records",
+        "registros",
+        "decisão",
+        "técnica",
+        "dev"
+      ],
+      "gatilhos": [
+        "/adr"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "ai-seo",
+      "arquivo": ".agents/skills/seo/ai-seo/SKILL.md",
+      "resumo": "Otimiza conteúdos e sites para motores de resposta com Inteligência Artificial (GEO - Generative Engine Optimization). Use para fazer seu site e marca serem encontrados em busca tradicional e experiências com IA, com medição e fontes.",
+      "palavras_chave": [
+        "ai-seo",
+        "generative",
+        "engine",
+        "optimization",
+        "geo",
+        "busca",
+        "seo",
+        "otimiza"
+      ],
+      "gatilhos": [
+        "/ai-seo"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "seo"
+    },
+    {
+      "nome": "analisar-dados",
+      "arquivo": ".agents/skills/operacao/analisar-dados/SKILL.md",
+      "resumo": "Use esta skill para analisar dados observados para responder pergunta operacional, distinguindo erro de coleta, correlação e causalidade. Use para tarefas de analisar dados e quando o usuário solicitar /analisar-dados. Não criar painel com números de exemplo apresentados como resultados reais.",
+      "palavras_chave": [
+        "analisar-dados",
+        "análise",
+        "arquivo",
+        "operacao",
+        "analisa",
+        "dados",
+        "csv",
+        "excel"
+      ],
+      "gatilhos": [
+        "/analisar-dados"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "analise-mercado",
+      "arquivo": ".agents/skills/mercado/analise-mercado/SKILL.md",
+      "resumo": "Investiga mercados, concorrentes, segmentos, modelos comerciais, preços e oportunidades para apoiar posicionamento, entrada em mercado ou lançamento de produto. Usa evidências com origem, escopo, data e grau de confiança. Use em \"analisar mercado\", \"benchmark de concorrentes\", \"TAM SAM SOM\", \"/analise-mercado\" ou \"/mercado\".",
+      "palavras_chave": [
+        "analise-mercado",
+        "análise",
+        "completa",
+        "mercado",
+        "concorrência",
+        "analisa",
+        "oportunidades",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/analise-mercado",
+        "/mercado"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "mercado"
+    },
+    {
+      "nome": "anuncio-google",
+      "arquivo": ".agents/skills/ads/anuncio-google/SKILL.md",
+      "resumo": "Planeja campanhas Search e gera CSV para Google Ads Editor com grupos, anúncios e negativas. Use quando pedirem campanha Google Ads ou /anuncio-google; valide o formato na versão atual do Editor.",
+      "palavras_chave": [
+        "anuncio-google",
+        "estrutura",
+        "campanha",
+        "google",
+        "ads",
+        "planeja",
+        "campanhas",
+        "search"
+      ],
+      "gatilhos": [
+        "/anuncio-google"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "ads"
+    },
+    {
+      "nome": "apresentacao-pptx",
+      "arquivo": ".agents/skills/operacao/apresentacao-pptx/SKILL.md",
+      "resumo": "Use esta skill para produzir apresentação executiva coerente com fatos e acessível, distinguindo roteiro de arquivo PPTX efetivamente criado. Use para tarefas de apresentacao pptx e quando o usuário solicitar /apresentacao-pptx. Não declarar que criou slides ou exportou PDF se não há ferramenta real de geração/verificação.",
+      "palavras_chave": [
+        "apresentacao-pptx",
+        "geração",
+        "apresentações",
+        "executivas",
+        "pptx",
+        "operacao",
+        "gera",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/apresentacao-pptx"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "aprovar-post",
+      "arquivo": ".agents/skills/marketing/aprovar-post/SKILL.md",
+      "resumo": "Revisa conteúdo e, somente com autorizações separadas por efeito, publica nos canais configurados registrando resultado por canal. Use para aprovação editorial ou publicação solicitada via /aprovar-post; aprovação do texto não autoriza commit, push, deploy nem postagem.",
+      "palavras_chave": [
+        "aprovar-post",
+        "pipeline",
+        "aprovação",
+        "publicação",
+        "automática",
+        "marketing",
+        "publica",
+        "conteúdo"
+      ],
+      "gatilhos": [
+        "/aprovar-post"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "artigo-autoridade-linkedin",
+      "arquivo": ".agents/skills/autoridade-carreira/artigo-autoridade-linkedin/SKILL.md",
+      "resumo": "Use esta skill para produzir artigo técnico autoral para LinkedIn com posicionamento e referências checáveis. Use para tarefas de artigo autoridade linkedin e quando o usuário solicitar /artigo-autoridade-linkedin. Artigo não substitui revisão técnica nem publicação; não copiar textos de terceiros.",
+      "palavras_chave": [
+        "artigo",
+        "linkedin",
+        "newsletter",
+        "autoridade",
+        "thought-leadership",
+        "conteúdo",
+        "carreira",
+        "posicionamento",
+        "seo",
+        "distribuicao"
+      ],
+      "gatilhos": [
+        "/artigo-autoridade-linkedin"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "artigos-longos",
+      "arquivo": ".agents/skills/conteudo-criativos/artigos-longos/SKILL.md",
+      "resumo": "Use esta skill para escrever artigos completos com argumento, evidência e contribuição original, otimizados para compreensão antes de algoritmo. Use para tarefas de artigos longos e quando o usuário solicitar /artigos-longos. Não gerar conteúdo em escala sem valor nem reproduzir texto protegido de fontes.",
+      "palavras_chave": [
+        "artigos-longos",
+        "artigo",
+        "pilar",
+        "guia",
+        "completo",
+        "3000",
+        "palavras",
+        "conteudo"
+      ],
+      "gatilhos": [
+        "/artigos-longos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "atualizar",
+      "arquivo": ".agents/skills/nucleo/atualizar/SKILL.md",
+      "resumo": "Use esta skill para atualizar informação existente com comparação prévia, preservando histórico e dependências. Use para tarefas de atualizar e quando o usuário solicitar /atualizar. Atualização sem confirmar alvo/versionamento não autoriza substituição em massa.",
+      "palavras_chave": [
+        "atualizar",
+        "varredura",
+        "atualização",
+        "contexto",
+        "nucleo",
+        "varre",
+        "projeto",
+        "atualiza"
+      ],
+      "gatilhos": [
+        "/atualizar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "audit",
+      "arquivo": ".agents/skills/dev/audit/SKILL.md",
+      "resumo": "Audita defensivamente código, APIs e infraestrutura em busca de vulnerabilidades, com escopo autorizado, achados reproduzíveis e correções verificáveis. Use para revisão de segurança ou pentest explicitamente autorizado; não use para testes funcionais comuns de API.",
+      "palavras_chave": [
+        "audit",
+        "audit-security",
+        "auditoria",
+        "completa",
+        "segurança",
+        "dev",
+        "audita",
+        "apis"
+      ],
+      "gatilhos": [
+        "/audit-security",
+        "/audit"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "auditar-mcp",
+      "arquivo": ".agents/skills/dev/auditar-mcp/SKILL.md",
+      "resumo": "Audita ferramentas MCP, transporte e autorização com testes de abuso. Use para revisar um servidor MCP existente antes de conectá-lo a dados reais.",
+      "palavras_chave": [
+        "auditar-mcp",
+        "seguranca-mcp",
+        "dev",
+        "mcp",
+        "integracao",
+        "audita",
+        "ferramentas",
+        "transporte"
+      ],
+      "gatilhos": [
+        "/auditar-mcp"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "auth-seguranca",
+      "arquivo": ".agents/skills/dev-eng/auth-seguranca/SKILL.md",
+      "resumo": "Padrões e práticas de autenticação (JWT, OAuth, RBAC).",
+      "palavras_chave": [
+        "auth-seguranca",
+        "autenticação",
+        "autorização",
+        "implementação",
+        "dev",
+        "padrões",
+        "práticas",
+        "jwt"
+      ],
+      "gatilhos": [
+        "/auth-seguranca"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "automacao-local",
+      "arquivo": ".agents/skills/automacao/automacao-local/SKILL.md",
+      "resumo": "Use esta skill para planejar automações locais em Windows/Linux/macOS sem elevar privilégios nem agendar tarefas fora do controle do usuário. Use para tarefas de automacao local e quando o usuário solicitar /automacao-local. Não alterar registro, Agendador, startup ou aplicativos sem consentimento e rollback.",
+      "palavras_chave": [
+        "automacao-local",
+        "tarefa-agendada",
+        "automacao",
+        "windows",
+        "agendamento",
+        "planeja",
+        "implementa",
+        "rotinas"
+      ],
+      "gatilhos": [
+        "/automacao-local"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/automacoes.md"
+      ],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "avaliacao-desempenho",
+      "arquivo": ".agents/skills/gestao-lideranca/avaliacao-desempenho/SKILL.md",
+      "resumo": "Use esta skill para apoiar avaliação de desempenho com critérios claros, evidências observáveis e feedback justo. Use para tarefas de avaliacao desempenho e quando o usuário solicitar /avaliacao-desempenho. Não substituir decisão de RH nem inferir atributos pessoais protegidos a partir de mensagens.",
+      "palavras_chave": [
+        "avaliacao-desempenho",
+        "avaliação",
+        "desempenho",
+        "modelo",
+        "completo",
+        "gestao",
+        "prepara",
+        "evidências"
+      ],
+      "gatilhos": [
+        "/avaliacao-desempenho"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "avaliar-agentes-ia",
+      "arquivo": ".agents/skills/dev/avaliar-agentes-ia/SKILL.md",
+      "resumo": "Define avaliações reproduzíveis para roteamento, extração e decisões de agentes. Use quando houver alucinação, classificação inconsistente ou decisão automatizada sem medição.",
+      "palavras_chave": [
+        "avaliar-agentes-ia",
+        "avaliar-agentes",
+        "evals-agentes",
+        "dev",
+        "avaliacao",
+        "typesafe",
+        "define",
+        "avaliações"
+      ],
+      "gatilhos": [
+        "/avaliar-agentes",
+        "/avaliar-agentes-ia"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "carrossel",
+      "arquivo": ".agents/skills/marketing/carrossel/SKILL.md",
+      "resumo": "Cria carrossel visual com identidade da marca, HTML, PNG e legenda para redes sociais. Use para post visual, conteúdo de Instagram ou /carrossel.",
+      "palavras_chave": [
+        "carrossel",
+        "posts",
+        "visuais",
+        "marketing",
+        "cria",
+        "visual",
+        "identidade",
+        "marca"
+      ],
+      "gatilhos": [
+        "/carrossel"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "carrossel-instagram",
+      "arquivo": ".agents/skills/conteudo-criativos/carrossel-instagram/SKILL.md",
+      "resumo": "Use esta skill para montar carrossel instrutivo ou comercial legível em celular com narrativa, hierarquia, direitos de imagem e acessibilidade. Use para tarefas de carrossel instagram e quando o usuário solicitar /carrossel-instagram. Roteiro por slides não equivale a imagens geradas; usar ferramentas de arte somente se disponíveis.",
+      "palavras_chave": [
+        "carrossel-instagram",
+        "instagram-carousel",
+        "instagram",
+        "carrossel",
+        "design",
+        "copy",
+        "planeja",
+        "redige"
+      ],
+      "gatilhos": [
+        "/carrossel-instagram"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "changelog-release-notes",
+      "arquivo": ".agents/skills/dev-eng/changelog-release-notes/SKILL.md",
+      "resumo": "Geração de release notes e changelogs a partir de commits convencionais do Git.",
+      "palavras_chave": [
+        "changelog-release-notes",
+        "changelog",
+        "release",
+        "notes",
+        "automáticos",
+        "dev",
+        "documentacao",
+        "geração"
+      ],
+      "gatilhos": [
+        "/changelog-release-notes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "ci-cd",
+      "arquivo": ".agents/skills/devops/ci-cd/SKILL.md",
+      "resumo": "Cria pipelines CI/CD completas com GitHub Actions. Automatiza build, testes, deploy e notificações. Use quando pedir \"ci cd\", \"github actions\", \"pipeline\", \"automação deploy\", \"/ci-cd\" ou \"/pipeline\".",
+      "palavras_chave": [
+        "ci-cd",
+        "pipelines",
+        "completas",
+        "devops",
+        "cria",
+        "github",
+        "actions",
+        "automatiza"
+      ],
+      "gatilhos": [
+        "/ci-cd"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "cicd",
+      "arquivo": ".agents/skills/dev-eng/cicd/SKILL.md",
+      "resumo": "Criar pipeline CI/CD completo com GitHub Actions.",
+      "palavras_chave": [
+        "cicd",
+        "pipeline",
+        "github",
+        "actions",
+        "dev",
+        "criar",
+        "completo"
+      ],
+      "gatilhos": [
+        "/cicd"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "claude-creators",
+      "arquivo": ".agents/skills/conteudo-criativos/claude-creators/SKILL.md",
+      "resumo": "Use esta skill para transformar ideia criativa em instruções e entregáveis portáveis, sem exigir recurso exclusivo do Claude. Use para tarefas de claude creators e quando o usuário solicitar /claude-creators. Uma skill livre deve funcionar em agentes compatíveis; menção à marca no nome não limita o uso.",
+      "palavras_chave": [
+        "claude-creators",
+        "uso",
+        "avançado",
+        "claude",
+        "creators",
+        "conteudo",
+        "code",
+        "criação"
+      ],
+      "gatilhos": [
+        "/claude-creators"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "code-architecture-auditor",
+      "arquivo": ".agents/skills/dev/code-architecture-auditor/SKILL.md",
+      "resumo": "Audita arquitetura, acoplamento, duplicação e organização de uma codebase. Produz evidências e plano antes de alterar código. Use para auditoria arquitetural, componentes extensos ou revisão de modularidade.",
+      "palavras_chave": [
+        "code-architecture-auditor",
+        "auditor",
+        "arquitetura",
+        "código",
+        "modularização",
+        "dev",
+        "audita",
+        "acoplamento"
+      ],
+      "gatilhos": [
+        "/code-architecture-auditor"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "cold-email",
+      "arquivo": ".agents/skills/vendas-atendimento/cold-email/SKILL.md",
+      "resumo": "Use esta skill para planejar abordagem comercial por e-mail com relevância real, base legal, autenticação de domínio e controle de descadastro. Use para tarefas de cold email e quando o usuário solicitar /cold-email. Skill produz mensagens e fluxo autorizado; não dispara e-mail em massa por conta própria.",
+      "palavras_chave": [
+        "cold-email",
+        "prospecção",
+        "ativa",
+        "b2b",
+        "alta",
+        "conversão",
+        "vendas",
+        "escreve"
+      ],
+      "gatilhos": [
+        "/cold-email"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "cold-outreach-linkedin",
+      "arquivo": ".agents/skills/vendas-atendimento/cold-outreach-linkedin/SKILL.md",
+      "resumo": "Use esta skill para criar abordagem individual e relevante no LinkedIn sem scraping ou automação de atividade proibidos. Use para tarefas de cold outreach linkedin e quando o usuário solicitar /cold-outreach-linkedin. Rascunho de convite não é convite enviado; respeitar as regras da plataforma.",
+      "palavras_chave": [
+        "cold-outreach-linkedin",
+        "prospecção",
+        "hiper-personalizada",
+        "linkedin",
+        "vendas",
+        "geração",
+        "abordagens",
+        "hiper-personalizadas"
+      ],
+      "gatilhos": [
+        "/cold-outreach-linkedin"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "comercial",
+      "arquivo": ".agents/skills/operacao/comercial/SKILL.md",
+      "resumo": "Use esta skill para apoiar negociação e funil comercial com informações comprovadas, cálculos consistentes e cadência respeitosa. Use para tarefas de comercial e quando o usuário solicitar /comercial. Não prometer retorno financeiro nem enviar proposta/contato automaticamente.",
+      "palavras_chave": [
+        "comercial",
+        "processo",
+        "completo",
+        "operacao",
+        "conduz",
+        "descoberta",
+        "qualificação",
+        "proposta"
+      ],
+      "gatilhos": [
+        "/comercial"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "contrato-freelancer",
+      "arquivo": ".agents/skills/legal/contrato-freelancer/SKILL.md",
+      "resumo": "Geração e revisão de contratos de prestação de serviços freelancer/PJ com cláusulas de PI, LGPD, escopo, pagamento e rescisão.",
+      "palavras_chave": [
+        "contrato-freelancer",
+        "contrato",
+        "freelancer",
+        "seguro",
+        "juridico",
+        "geração",
+        "revisão",
+        "contratos"
+      ],
+      "gatilhos": [
+        "/contrato-freelancer"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "copy-textos",
+      "arquivo": ".agents/skills/conteudo-criativos/copy-textos/SKILL.md",
+      "resumo": "Use esta skill para redigir mensagens persuasivas ou informativas com clareza, destinatário e provas verdadeiras. Use para tarefas de copy textos e quando o usuário solicitar /copy-textos. Copy não autoriza afirmar conversão garantida nem usar experiência inventada do usuário.",
+      "palavras_chave": [
+        "copy",
+        "copywriting",
+        "textos",
+        "landing-page",
+        "email",
+        "anuncios",
+        "voz",
+        "autenticidade",
+        "substanciacao",
+        "anti-slop"
+      ],
+      "gatilhos": [
+        "/copy-textos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "copy-vendas",
+      "arquivo": ".agents/skills/marketing/copy-vendas/SKILL.md",
+      "resumo": "Escreve e revisa copy de vendas transparente com frameworks adequados ao funil e afirmações sustentadas por provas fornecidas. Use para landing page, headline, VSL ou carta de vendas via /copy-vendas; não invente resultado, urgência, escassez, depoimento ou garantia.",
+      "palavras_chave": [
+        "copy-vendas",
+        "copy",
+        "vendas",
+        "alta",
+        "conversao",
+        "marketing",
+        "escreve",
+        "usando"
+      ],
+      "gatilhos": [
+        "/copy-vendas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "criador-sop",
+      "arquivo": ".agents/skills/gestao-lideranca/criador-sop/SKILL.md",
+      "resumo": "Use esta skill para criar procedimentos operacionais padronizados que possam ser executados, auditados e corrigidos. Use para tarefas de criador sop e quando o usuário solicitar /criador-sop. SOP não autoriza executar procedimento nem exige automatização de tudo.",
+      "palavras_chave": [
+        "criador-sop",
+        "criador",
+        "sop",
+        "procedimento",
+        "operacional",
+        "gestao",
+        "documenta",
+        "gatilho"
+      ],
+      "gatilhos": [
+        "/criador-sop"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "criar-api",
+      "arquivo": ".agents/skills/dev/criar-api/SKILL.md",
+      "resumo": "Cria APIs completas do zero. Pergunta a stack preferida (Node.js, Python, Go, etc), estrutura o projeto, define rotas, autenticação, banco de dados e documentação. Use quando o usuário pedir \"criar API\", \"montar backend\", \"desenvolver API REST\", \"/criar-api\" ou \"/backend\".",
+      "palavras_chave": [
+        "criar-api",
+        "cria",
+        "api",
+        "completa",
+        "qualquer",
+        "stack",
+        "dev",
+        "apis"
+      ],
+      "gatilhos": [
+        "/criar-api"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "cro",
+      "arquivo": ".agents/skills/marketing/cro/SKILL.md",
+      "resumo": "Auditoria e otimização de taxa de conversão (Conversion Rate Optimization) para páginas de captura, landing pages, páginas de vendas, pricing e checkouts. Use para identificar fricções, aumentar a conversão e melhorar a clareza da proposta de valor.",
+      "palavras_chave": [
+        "cro",
+        "otimização",
+        "taxa",
+        "conversão",
+        "marketing",
+        "auditoria",
+        "conversion",
+        "rate"
+      ],
+      "gatilhos": [
+        "/cro"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "cs-onboarding",
+      "arquivo": ".agents/skills/vendas-atendimento/cs-onboarding/SKILL.md",
+      "resumo": "Use esta skill para planejar onboarding de cliente, adoção e health score com evidências e métricas normalizadas. Use para tarefas de cs onboarding e quando o usuário solicitar /cs-onboarding. Score proposto não deve ser apresentado como diagnóstico real sem dados observados e validação.",
+      "palavras_chave": [
+        "cs-onboarding",
+        "onboarding",
+        "health",
+        "score",
+        "automação",
+        "novos",
+        "clientes",
+        "checklist"
+      ],
+      "gatilhos": [
+        "/cs-onboarding"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "cta-conversao",
+      "arquivo": ".agents/skills/conteudo-criativos/cta-conversao/SKILL.md",
+      "resumo": "Use esta skill para criar CTAs coerentes com o estágio do usuário, reduzindo ambiguidade e engano. Use para tarefas de cta conversao e quando o usuário solicitar /cta-conversao. CTA não deve esconder destino, preço, assinatura ou permissão pedida.",
+      "palavras_chave": [
+        "cta-conversao",
+        "cta",
+        "call",
+        "action",
+        "alta",
+        "conversão",
+        "conteudo",
+        "redige"
+      ],
+      "gatilhos": [
+        "/cta-conversao"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "curriculo",
+      "arquivo": ".agents/skills/autoridade-carreira/curriculo/SKILL.md",
+      "resumo": "Use esta skill para adaptar currículo a uma vaga real com evidências da experiência e sem adicionar competências inventadas. Use para tarefas de curriculo e quando o usuário solicitar /curriculo. Não criar histórico profissional, certificado, idiomas ou resultados inexistentes; candidatura só com autorização.",
+      "palavras_chave": [
+        "curriculo",
+        "currículo",
+        "cv",
+        "resume",
+        "ats",
+        "carreira",
+        "vagas",
+        "auditoria"
+      ],
+      "gatilhos": [
+        "/curriculo"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "curso-online",
+      "arquivo": ".agents/skills/autoridade-carreira/curso-online/SKILL.md",
+      "resumo": "Use esta skill para estruturar curso digital pedagógico com objetivos, exemplos, avaliação e direitos claros. Use para tarefas de curso online e quando o usuário solicitar /curso-online. Não vender ou publicar curso sem conteúdo concluído e revisão de direitos/licenças.",
+      "palavras_chave": [
+        "curso-online",
+        "estrutura",
+        "curso",
+        "online",
+        "módulos",
+        "aulas",
+        "carreira",
+        "planeja"
+      ],
+      "gatilhos": [
+        "/curso-online"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "customer-research",
+      "arquivo": ".agents/skills/mercado/customer-research/SKILL.md",
+      "resumo": "Planeja entrevistas não indutivas e analisa feedback, transcrições, tickets, avaliações e relatos de clientes com evidência rastreável e consentimento apropriado. Use em \"pesquisa com clientes\", \"voz do cliente\", \"entrevistas de validação\", \"customer-research\" ou \"/customer-research\".",
+      "palavras_chave": [
+        "customer-research",
+        "pesquisa",
+        "clientes",
+        "voz",
+        "cliente",
+        "voc",
+        "mercado",
+        "conduz"
+      ],
+      "gatilhos": [
+        "/customer-research"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "mercado"
+    },
+    {
+      "nome": "cyber-defense",
+      "arquivo": ".agents/skills/dev/cyber-defense/SKILL.md",
+      "resumo": "Proteção ativa, hardening de servidores e aplicação de contra-medidas contra ataques cibernéticos. Analisa código contra injeção SQL, IDOR, SSRF, vazamento de chaves e ataques de força bruta. Use quando pedir \"segurança cibernética\", \"proteger contra ataques\", \"hardening\", \"blindar sistema\", \"cyber defense\", \"cybersec\", \"/cyber-defense\" ou \"/proteger\".",
+      "palavras_chave": [
+        "cyber-defense",
+        "defesa",
+        "cibernética",
+        "ativa",
+        "hardening",
+        "sistema",
+        "dev",
+        "proteção"
+      ],
+      "gatilhos": [
+        "/cyber-defense"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "dashboard-semanal",
+      "arquivo": ".agents/skills/gestao-lideranca/dashboard-semanal/SKILL.md",
+      "resumo": "Use esta skill para organizar indicadores de desempenho semanal a partir de dados rastreáveis e datas compatíveis. Use para tarefas de dashboard semanal e quando o usuário solicitar /dashboard-semanal. Painel não é fonte de dados nem substitui interpretação de sazonalidade/causalidade.",
+      "palavras_chave": [
+        "dashboard-semanal",
+        "dashboard",
+        "semanal",
+        "gestão",
+        "líder",
+        "equipe",
+        "pequena",
+        "gestao"
+      ],
+      "gatilhos": [
+        "/dashboard-semanal"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "deepthink",
+      "arquivo": ".agents/skills/autoridade-carreira/deepthink/SKILL.md",
+      "resumo": "Use esta skill para analisar decisão complexa por alternativas, critérios e hipóteses, sem simular reflexão privada ou veracidade infalível. Use para tarefas de deepthink e quando o usuário solicitar /deepthink. Não representar probabilidades arbitrárias como calibração nem extrapolar expertise profissional específica.",
+      "palavras_chave": [
+        "deepthink",
+        "framework",
+        "pensar",
+        "mais",
+        "fundo",
+        "sobre",
+        "carreira",
+        "examina"
+      ],
+      "gatilhos": [
+        "/deepthink"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "deploy",
+      "arquivo": ".agents/skills/devops/deploy/SKILL.md",
+      "resumo": "Cria scripts e configurações para deploy. Vercel, Railway, AWS, Docker, Fly.io. Use quando pedir \"deploy\", \"production\", \"hosting\", \"/deploy\" ou \"/publicar\".",
+      "palavras_chave": [
+        "deploy",
+        "configuração",
+        "completa",
+        "devops",
+        "cria",
+        "scripts",
+        "configurações",
+        "vercel"
+      ],
+      "gatilhos": [
+        "/deploy"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "design-dna",
+      "arquivo": ".agents/skills/frontend/design-dna/SKILL.md",
+      "resumo": "Extrai, estrutura e aplica o DNA visual de referências (prints, imagens, URLs) em sistemas de design e componentes UI.",
+      "palavras_chave": [
+        "design-dna",
+        "extração",
+        "aplicação",
+        "identidade",
+        "visual",
+        "frontend",
+        "extrai",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/design-dna"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "docs-api",
+      "arquivo": ".agents/skills/sistema/docs-api/SKILL.md",
+      "resumo": "Documenta APIs e SDKs reais do ReoliOS a partir de contratos e código observados, distinguindo interfaces publicadas de propostas design-first. Use para referência de API ou guia de integração; não use para implementar uma API nova.",
+      "palavras_chave": [
+        "docs-api",
+        "documentação",
+        "api",
+        "sistema",
+        "cria",
+        "completa",
+        "rest",
+        "guides"
+      ],
+      "gatilhos": [
+        "/docs-api"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "documentacao-checklists",
+      "arquivo": ".agents/skills/gestao-lideranca/documentacao-checklists/SKILL.md",
+      "resumo": "Use esta skill para produzir documentação e checklists com ações verificáveis, responsáveis e evidência de conclusão. Use para tarefas de documentacao checklists e quando o usuário solicitar /documentacao-checklists. Checkbox marcado pela IA não é prova de execução física ou validação de terceiros.",
+      "palavras_chave": [
+        "documentacao-checklists",
+        "sop",
+        "processos",
+        "equipe",
+        "gestao",
+        "cria",
+        "checklists",
+        "execução"
+      ],
+      "gatilhos": [
+        "/documentacao-checklists"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "documentar-api",
+      "arquivo": ".agents/skills/documentacao/documentar-api/SKILL.md",
+      "resumo": "Cria documentação completa de APIs. Gera OpenAPI/Swagger, README, guides, exemplos e referência técnica. Use quando pedir \"documentar API\", \"gerar docs\", \"Swagger\", \"OpenAPI\", \"/docs-api\" ou \"/documentar\".",
+      "palavras_chave": [
+        "documentar-api",
+        "documentação",
+        "completa",
+        "apis",
+        "documentacao",
+        "cria",
+        "gera",
+        "openapi"
+      ],
+      "gatilhos": [
+        "/documentar-api"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "documentacao"
+    },
+    {
+      "nome": "domain-hunter",
+      "arquivo": ".agents/skills/operacao/domain-hunter/SKILL.md",
+      "resumo": "Use esta skill para pesquisar nomes de domínios com critérios de marca e disponibilidade confirmada por consulta real. Use para tarefas de domain hunter e quando o usuário solicitar /domain-hunter. Aparência livre do domínio ou nome gerado não prova disponibilidade de registro nem ausência de marca.",
+      "palavras_chave": [
+        "domain-hunter",
+        "caçador",
+        "validador",
+        "domínios",
+        "estratégicos",
+        "operacao",
+        "caça",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/domain-hunter"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "email",
+      "arquivo": ".agents/skills/comunicacao/email/SKILL.md",
+      "resumo": "Projeta e implementa e-mail transacional com templates seguros, idempotência, entrega observável e provedores como Resend ou SendGrid. Use para recibos, alertas, boas-vindas e redefinição de senha; não use para newsletter ou marketing em massa.",
+      "palavras_chave": [
+        "email",
+        "sistema",
+        "completo",
+        "transacional",
+        "comunicacao",
+        "cria",
+        "resend",
+        "sendgrid"
+      ],
+      "gatilhos": [
+        "/email"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "comunicacao"
+    },
+    {
+      "nome": "email-profissional",
+      "arquivo": ".agents/skills/operacao/email-profissional/SKILL.md",
+      "resumo": "Use esta skill para redigir e-mails profissionais adequados ao destinatário e objetivo, com conteúdo verificável e revisão de privacidade. Use para tarefas de email profissional e quando o usuário solicitar /email-profissional. Rascunho não equivale a mensagem enviada ou entregue; /email lida com infraestrutura transacional.",
+      "palavras_chave": [
+        "email-profissional",
+        "rascunho",
+        "email",
+        "operacao",
+        "rascunha",
+        "profissional",
+        "partir",
+        "contexto"
+      ],
+      "gatilhos": [
+        "/email-profissional"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "estimativa-prazos",
+      "arquivo": ".agents/skills/dev-eng/estimativa-prazos/SKILL.md",
+      "resumo": "Cálculo e estimativa realista de prazos de desenvolvimento.",
+      "palavras_chave": [
+        "estimativa-prazos",
+        "estimativa",
+        "prazo",
+        "desenvolvimento",
+        "dev",
+        "cálculo",
+        "realista",
+        "prazos"
+      ],
+      "gatilhos": [
+        "/estimativa-prazos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "estrategia-pricing",
+      "arquivo": ".agents/skills/vendas-atendimento/estrategia-pricing/SKILL.md",
+      "resumo": "Use esta skill para definir preço e embalagem comercial por segmento, margem, disposição a pagar e cenário de mercado. Use para tarefas de estrategia pricing e quando o usuário solicitar /estrategia-pricing. Não dar preço universal ou reajuste obrigatório sem contrato, mercado e contexto.",
+      "palavras_chave": [
+        "estrategia-pricing",
+        "copy",
+        "tela",
+        "pricing",
+        "vendas",
+        "precificação",
+        "produtos",
+        "saas"
+      ],
+      "gatilhos": [
+        "/estrategia-pricing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "estrutura-palestra",
+      "arquivo": ".agents/skills/autoridade-carreira/estrutura-palestra/SKILL.md",
+      "resumo": "Use esta skill para criar palestra com objetivo de audiência, narrativa oral, evidências e plano de tempo realista. Use para tarefas de estrutura palestra e quando o usuário solicitar /estrutura-palestra. Não criar falsa biografia do palestrante nem inventar pesquisa usada como argumento.",
+      "palavras_chave": [
+        "estrutura-palestra",
+        "estrutura",
+        "palestra",
+        "framework",
+        "tedx",
+        "carreira",
+        "organiza",
+        "tese"
+      ],
+      "gatilhos": [
+        "/estrutura-palestra"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "framework-thought-leadership",
+      "arquivo": ".agents/skills/autoridade-carreira/framework-thought-leadership/SKILL.md",
+      "resumo": "Use esta skill para desenvolver linha editorial autoral baseada em experiência verificável e perspectivas originais. Use para tarefas de framework thought leadership e quando o usuário solicitar /framework-thought-leadership. Não criar autoridade fictícia por repetição de conteúdo ou atribuir credenciais não existentes.",
+      "palavras_chave": [
+        "framework-thought-leadership",
+        "framework",
+        "thought",
+        "leadership",
+        "carreira",
+        "transforma",
+        "experiência",
+        "profissional"
+      ],
+      "gatilhos": [
+        "/framework-thought-leadership"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "free-tool-strategy",
+      "arquivo": ".agents/skills/marketing/free-tool-strategy/SKILL.md",
+      "resumo": "Planeja ferramentas gratuitas como motor de marketing e aquisição de clientes (Engineering as Marketing). Use para idealizar calculadoras, mini-geradores, testes interativos e ferramentas utilitárias que geram tráfego orgânico, backlinks e leads qualificados para o seu negócio principal.",
+      "palavras_chave": [
+        "free-tool-strategy",
+        "engenharia",
+        "como",
+        "marketing",
+        "ferramentas",
+        "gratuitas",
+        "planeja",
+        "motor"
+      ],
+      "gatilhos": [
+        "/free-tool-strategy"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "frontend",
+      "arquivo": ".agents/skills/dev/frontend/SKILL.md",
+      "resumo": "Cria interfaces frontend completas. Pergunta a stack (React, Vue, Svelte, Next.js, etc), componentiza, aplica design system e entrega código production- ready. Integra com frontend-design skill do Claude Code para design de alta qualidade. Use quando o usuário pedir \"criar frontend\", \"desenvolver tela\", \"montar interface\", \"fazer componente\", \"/frontend\" ou \"/ui\".",
+      "palavras_chave": [
+        "frontend",
+        "cria",
+        "interfaces",
+        "completas",
+        "dev",
+        "pergunta",
+        "stack",
+        "react"
+      ],
+      "gatilhos": [
+        "/frontend"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "frontend-design",
+      "arquivo": ".agents/skills/frontend/frontend-design/SKILL.md",
+      "resumo": "Cria interfaces com direção visual, acessibilidade e teste responsivo. Use em páginas, componentes e revisão visual de frontend.",
+      "palavras_chave": [
+        "frontend-design",
+        "design",
+        "intencional",
+        "interfaces",
+        "frontend",
+        "cria",
+        "direção",
+        "visual"
+      ],
+      "gatilhos": [
+        "/frontend-design"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "funil",
+      "arquivo": ".agents/skills/sistema/funil/SKILL.md",
+      "resumo": "Monta funil de vendas completo: captura, nutrição e conversão. Define cada etapa com copy, páginas, emails e métricas. Integra com as outras skills (landing page, email, ads). Use quando o usuário pedir \"funil de vendas\", \"funil pra\", \"estratégia de conversão\", \"como converter mais\", \"jornada do cliente\", \"/funil\".",
+      "palavras_chave": [
+        "funil",
+        "vendas",
+        "completo",
+        "sistema",
+        "monta",
+        "captura",
+        "nutrição",
+        "conversão"
+      ],
+      "gatilhos": [
+        "/funil"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "funil-experimentos",
+      "arquivo": ".agents/skills/marketing/funil-experimentos/SKILL.md",
+      "resumo": "Mapeia um funil de aquisição e define eventos, hipóteses e experimentos com critérios de decisão. Use quando pedir melhoria de conversão, análise de gargalos ou teste de ofertas.",
+      "palavras_chave": [
+        "funil-experimentos",
+        "medir-funil",
+        "marketing",
+        "vendas",
+        "funil",
+        "analytics",
+        "mapeia",
+        "aquisição"
+      ],
+      "gatilhos": [
+        "/funil-experimentos"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "gemini-optimizer",
+      "arquivo": ".agents/skills/sistema/gemini-optimizer/SKILL.md",
+      "resumo": "Otimizações específicas para execução no Gemini CLI. Inclui compactação estratégica de contexto, loops de verificação autônoma e prevenção de alucinações. Use quando pedir \"otimizar gemini\", \"gemini cli\", \"compactar contexto\", \"gemini-optimizer\" ou \"/gemini-opt\".",
+      "palavras_chave": [
+        "gemini-optimizer",
+        "otimização",
+        "avançada",
+        "gemini",
+        "cli",
+        "sistema",
+        "otimizações",
+        "específicas"
+      ],
+      "gatilhos": [
+        "/gemini-optimizer"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "geo-citabilidade",
+      "arquivo": ".agents/skills/geo/geo-citabilidade/SKILL.md",
+      "resumo": "Audita e otimiza páginas web, artigos e landing pages para citação direta em buscas com IA. Avalia rastreabilidade, utilidade original e afirmações com evidência; use para auditoria GEO de uma URL e consultas específicas.",
+      "palavras_chave": [
+        "geo-citabilidade",
+        "geo",
+        "generative-engine-optimization",
+        "seo",
+        "ai-search",
+        "audita",
+        "otimiza",
+        "páginas"
+      ],
+      "gatilhos": [
+        "/geo",
+        "/geo-citabilidade"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "geo"
+    },
+    {
+      "nome": "git-worktrees",
+      "arquivo": ".agents/skills/dev/git-worktrees/SKILL.md",
+      "resumo": "Configura e opera Git Worktrees para isolamento seguro de desenvolvimento. Permite que o agente crie features e faça testes pesados em pastas separadas sem arriscar o branch principal do usuário. Use quando pedir \"worktree\", \"isolar branch\", \"trabalhar em branch separada\", \"git worktree\" ou \"/worktree\".",
+      "palavras_chave": [
+        "git-worktrees",
+        "isolamento",
+        "seguro",
+        "workspace",
+        "dev",
+        "configura",
+        "opera",
+        "git"
+      ],
+      "gatilhos": [
+        "/git-worktrees"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "github-pro",
+      "arquivo": ".agents/skills/devops/github-pro/SKILL.md",
+      "resumo": "Operação avançada e automação profissional do GitHub para agentes de IA. Use para configurar e debugar GitHub Actions (CI/CD), criar releases automáticas, gerenciar secrets, operar o GitHub CLI (gh), gerenciar branches/PRs e garantir segurança de repositórios privados e públicos.",
+      "palavras_chave": [
+        "github-pro",
+        "operação",
+        "automação",
+        "avançada",
+        "github",
+        "devops",
+        "profissional",
+        "agentes"
+      ],
+      "gatilhos": [
+        "/github-pro"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "devops"
+    },
+    {
+      "nome": "guia",
+      "arquivo": ".agents/skills/sistema/guia/SKILL.md",
+      "resumo": "Guia completo do ReoliOS para novos usuarios. Explica o que e, como usar, quais skills existem, e como comecar. Use quando pedir \"guia\", \"help\", \"ajuda\", \"como usar\", \"inicio\", /guia ou /help.",
+      "palavras_chave": [
+        "guia",
+        "completo",
+        "sistema",
+        "novos",
+        "usuarios",
+        "explica",
+        "como",
+        "quais"
+      ],
+      "gatilhos": [
+        "/guia"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "impeccable",
+      "arquivo": ".agents/skills/impeccable/SKILL.md",
+      "resumo": "Use esta skill para revisar qualidade de interfaces e conteúdos por critério funcional, legibilidade e acessibilidade com evidência visual. Use para tarefas de impeccable e quando o usuário solicitar /impeccable. Impecável não significa pixel-perfect sem referência nem liberdade para alterar projeto sem testes.",
+      "palavras_chave": [
+        "impeccable",
+        "qualidade",
+        "frontend",
+        "planeja",
+        "audita",
+        "refina",
+        "interfaces",
+        "sites"
+      ],
+      "gatilhos": [
+        "/impeccable"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "impeccable"
+    },
+    {
+      "nome": "instabio",
+      "arquivo": ".agents/skills/autoridade-carreira/instabio/SKILL.md",
+      "resumo": "Use esta skill para escrever bio de Instagram clara, verdadeira e adequada ao público e espaço disponível. Use para tarefas de instabio e quando o usuário solicitar /instabio. Não assumir disponibilidade de @username, links ou características de conta sem verificação.",
+      "palavras_chave": [
+        "instabio",
+        "bio",
+        "posicionamento",
+        "instagram",
+        "carreira",
+        "escreve",
+        "público",
+        "oferta"
+      ],
+      "gatilhos": [
+        "/instabio"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "instalar",
+      "arquivo": ".agents/skills/sistema/instalar/SKILL.md",
+      "resumo": "Configura o ReoliOS a partir do perfil da empresa e registra memória, preferências, estratégia e identidade visual. Use no primeiro setup ou ao executar /instalar.",
+      "palavras_chave": [
+        "instalar",
+        "instalação",
+        "inicial",
+        "sistema",
+        "configura",
+        "partir",
+        "perfil",
+        "empresa"
+      ],
+      "gatilhos": [
+        "/instalar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "integrar-apis-brasileiras",
+      "arquivo": ".agents/skills/dev/integrar-apis-brasileiras/SKILL.md",
+      "resumo": "Integra consultas brasileiras como CNPJ e CEP com contrato, proveniência e tratamento de falhas. Use quando implementar validação cadastral ou enriquecimento por APIs brasileiras.",
+      "palavras_chave": [
+        "integrar-apis-brasileiras",
+        "apis-brasileiras",
+        "consulta-cnpj-cep",
+        "dev",
+        "brasil",
+        "api",
+        "cnpj",
+        "cep"
+      ],
+      "gatilhos": [
+        "/apis-brasileiras",
+        "/integrar-apis-brasileiras"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "lead-magnets",
+      "arquivo": ".agents/skills/marketing/lead-magnets/SKILL.md",
+      "resumo": "Planeja e otimiza iscas digitais (lead magnets) de alta conversão para captura de e-mails e prospecção qualificada. Use para criar checklists, templates, planilhas, calculadoras ou mini-recursos gratuitos que transformam visitantes em leads prontos para comprar.",
+      "palavras_chave": [
+        "lead-magnets",
+        "planejamento",
+        "iscas",
+        "digitais",
+        "alta",
+        "conversão",
+        "marketing",
+        "planeja"
+      ],
+      "gatilhos": [
+        "/lead-magnets"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "lead-scraper",
+      "arquivo": ".agents/skills/vendas-atendimento/lead-scraper/SKILL.md",
+      "resumo": "Use esta skill para construir lista de leads legalmente obtidos com origem verificável e minimização de dados. Use para tarefas de lead scraper e quando o usuário solicitar /lead-scraper. Não contornar login, robots, CAPTCHA, APIs ou termos de plataforma; não fazer scraping proibido de LinkedIn.",
+      "palavras_chave": [
+        "lead-scraper",
+        "prospecção",
+        "ativa",
+        "b2b",
+        "contatos",
+        "locais",
+        "vendas",
+        "pesquisa"
+      ],
+      "gatilhos": [
+        "/lead-scraper"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "legal",
+      "arquivo": ".agents/skills/sistema/legal/SKILL.md",
+      "resumo": "Gera documentos legais para produtos digitais: Termos de Uso, Politica de Privacidade, contratos de prestacao de servico. Adaptados a LGPD e ao contexto do negocio. Use quando o usuario pedir termos de uso, politica de privacidade, contrato, LGPD, /legal.",
+      "palavras_chave": [
+        "legal",
+        "documentos",
+        "legais",
+        "negocio",
+        "sistema",
+        "gera",
+        "produtos",
+        "digitais"
+      ],
+      "gatilhos": [
+        "/legal"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "lgpd",
+      "arquivo": ".agents/skills/legal/lgpd/SKILL.md",
+      "resumo": "Implementa compliance LGPD completo. Analisa coleta de dados, cria políticas, define bases legais, cria documentos necessários e orienta sobre direitos dos titulares. Use quando pedir \"LGPD\", \"privacidade\", \"compliance\", \"dados pessoais\", \"/lgpd\".",
+      "palavras_chave": [
+        "lgpd",
+        "compliance",
+        "completo",
+        "legal",
+        "implementa",
+        "analisa",
+        "coleta",
+        "dados"
+      ],
+      "gatilhos": [
+        "/lgpd"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "llmstxt-generator",
+      "arquivo": ".agents/skills/geo/llmstxt-generator/SKILL.md",
+      "resumo": "Gera e valida arquivos llms.txt e llms-full.txt para sites e documentações. Organiza links públicos para ferramentas que adotem essa convenção opcional. Use quando o usuário pedir um índice llms.txt para documentação existente.",
+      "palavras_chave": [
+        "llmstxt-generator",
+        "llms-txt",
+        "gerar-llmstxt",
+        "seo",
+        "geo",
+        "ai-crawlers",
+        "gera",
+        "valida"
+      ],
+      "gatilhos": [
+        "/llms-txt",
+        "/llmstxt-generator"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "geo"
+    },
+    {
+      "nome": "mapeamento-processos",
+      "arquivo": ".agents/skills/gestao-lideranca/mapeamento-processos/SKILL.md",
+      "resumo": "Use esta skill para modelar processo as-is e to-be com fluxos reais, decisões, gargalos e métricas. Use para tarefas de mapeamento processos e quando o usuário solicitar /mapeamento-processos. Mapa de processo não comprova execução nem obriga automação.",
+      "palavras_chave": [
+        "mapeamento-processos",
+        "organização",
+        "processos",
+        "líder",
+        "equipe",
+        "pequena",
+        "gestao",
+        "mapeia"
+      ],
+      "gatilhos": [
+        "/mapeamento-processos"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "mapear-rotinas",
+      "arquivo": ".agents/skills/nucleo/mapear-rotinas/SKILL.md",
+      "resumo": "Use esta skill para mapear rotinas e cadências existentes, separando frequência observada de propostas de automatização. Use para tarefas de mapear rotinas e quando o usuário solicitar /mapear-rotinas. Mapa de rotinas não agenda tarefas sem solicitação explícita.",
+      "palavras_chave": [
+        "mapear-rotinas",
+        "mapeamento",
+        "tarefas",
+        "repetitivas",
+        "skills",
+        "nucleo",
+        "mapeia",
+        "usuário"
+      ],
+      "gatilhos": [
+        "/mapear-rotinas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "marketing-psychology",
+      "arquivo": ".agents/skills/marketing/marketing-psychology/SKILL.md",
+      "resumo": "Aplica princípios de psicologia comportamental, vieses cognitivos e modelos mentais ao marketing. Use para calibrar decisões de compra, ancoragem de preço, aversão à perda, prova social, escassez, efeito chamariz (decoy effect) e redução de atrito psicológico em páginas de vendas e anúncios.",
+      "palavras_chave": [
+        "marketing-psychology",
+        "psicologia",
+        "comportamental",
+        "vieses",
+        "conversão",
+        "marketing",
+        "aplica",
+        "princípios"
+      ],
+      "gatilhos": [
+        "/marketing-psychology"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "mcp-builder",
+      "arquivo": ".agents/skills/dev/mcp-builder/SKILL.md",
+      "resumo": "Desenvolvimento e arquitetura de servidores MCP (Model Context Protocol) em TypeScript ou Python. Use para criar ferramentas customizadas que conectam Claude Code, Gemini CLI, Cursor e Antigravity a bancos de dados, APIs de terceiros, sistemas legados e ferramentas do seu negócio.",
+      "palavras_chave": [
+        "mcp-builder",
+        "desenvolvimento",
+        "servidores",
+        "mcp",
+        "model",
+        "context",
+        "protocol",
+        "dev"
+      ],
+      "gatilhos": [
+        "/mcp-builder"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "modelar-db",
+      "arquivo": ".agents/skills/database/modelar-db/SKILL.md",
+      "resumo": "Modela entidades, relações, índices e migrações, priorizando o ORM e banco já adotados pelo projeto. Use para desenho de schema, integridade ou migrations e para Prisma quando ele estiver presente; não use para consulta ou troubleshooting operacional genérico de banco.",
+      "palavras_chave": [
+        "modelar-db",
+        "modelagem",
+        "banco",
+        "dados",
+        "database",
+        "modela",
+        "bancos",
+        "prisma"
+      ],
+      "gatilhos": [
+        "/modelar-db"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "database"
+    },
+    {
+      "nome": "n8n-workflow-gen",
+      "arquivo": ".agents/skills/automacao/n8n-workflow-gen/SKILL.md",
+      "resumo": "Desenha workflows n8n e valida o JSON na versão alvo antes de chamar de importável.",
+      "palavras_chave": [
+        "n8n-workflow-gen",
+        "geração",
+        "workflows",
+        "n8n",
+        "automacao",
+        "desenha",
+        "valida",
+        "json"
+      ],
+      "gatilhos": [
+        "/n8n-workflow-gen"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "n8n-zapier",
+      "arquivo": ".agents/skills/automacao/n8n-zapier/SKILL.md",
+      "resumo": "Use esta skill para projetar automação n8n/Zapier conforme plano, nodes e licenças realmente disponíveis, com tratamento de falha e dados. Use para tarefas de n8n zapier e quando o usuário solicitar /n8n-zapier. A descrição do fluxo não confirma publicação; usar /n8n-workflow-gen para contrato JSON quando necessário.",
+      "palavras_chave": [
+        "n8n-zapier",
+        "n8n",
+        "zapier",
+        "automacao",
+        "criação",
+        "integração",
+        "fluxos",
+        "no-code"
+      ],
+      "gatilhos": [
+        "/n8n-zapier"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "novo-projeto",
+      "arquivo": ".agents/skills/nucleo/novo-projeto/SKILL.md",
+      "resumo": "Use esta skill para criar novo projeto no lugar correto com estrutura mínima, metadados verificáveis e sem sobrescrever conteúdo. Use para tarefas de novo projeto e quando o usuário solicitar /novo-projeto. Não iniciar repositório Git ou copiar templates com secrets sem autorização.",
+      "palavras_chave": [
+        "novo-projeto",
+        "pasta",
+        "projeto",
+        "novo",
+        "contexto",
+        "dedicado",
+        "nucleo",
+        "cria"
+      ],
+      "gatilhos": [
+        "/novo-projeto"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "obsidian-forge",
+      "arquivo": ".agents/skills/obsidian/obsidian-forge/SKILL.md",
+      "resumo": "Use esta skill para criar notas estruturadas e conectadas no vault existente, com propriedades reais e vínculos úteis. Use para tarefas de obsidian forge e quando o usuário solicitar /obsidian-forge. Não criar organização paralela nem impor pasta-modelo sem confirmar preferência e estrutura do vault.",
+      "palavras_chave": [
+        "obsidian-forge",
+        "forge-negocio",
+        "obsidian",
+        "negocio",
+        "metas",
+        "conduz",
+        "planejamento",
+        "estratégico"
+      ],
+      "gatilhos": [
+        "/obsidian-forge"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "obsidian"
+    },
+    {
+      "nome": "obsidian-librarian",
+      "arquivo": ".agents/skills/obsidian/obsidian-librarian/SKILL.md",
+      "resumo": "Use esta skill para curar e organizar vault Obsidian com MOCs, índices e links preservados sem perda de notas. Use para tarefas de obsidian librarian e quando o usuário solicitar /obsidian-librarian. Curadoria não equivale a reorganização destrutiva; não mover arquivos por categoria automaticamente.",
+      "palavras_chave": [
+        "obsidian-librarian",
+        "bibliotecario-obsidian",
+        "obsidian",
+        "segundo-cerebro",
+        "organiza",
+        "audita",
+        "mantém",
+        "vault"
+      ],
+      "gatilhos": [
+        "/obsidian-librarian"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "obsidian"
+    },
+    {
+      "nome": "offers",
+      "arquivo": ".agents/skills/vendas-atendimento/offers/SKILL.md",
+      "resumo": "Use esta skill para estruturar oferta de alto valor com entregável comprovável, preço claro e risco controlado. Use para tarefas de offers e quando o usuário solicitar /offers. Framework de venda não autoriza promessas irreais de resultado ou garantias impossíveis.",
+      "palavras_chave": [
+        "offers",
+        "design",
+        "ofertas",
+        "irrecusáveis",
+        "grand",
+        "slam",
+        "vendas",
+        "construção"
+      ],
+      "gatilhos": [
+        "/offers"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "okrs",
+      "arquivo": ".agents/skills/gestao-lideranca/okrs/SKILL.md",
+      "resumo": "Use esta skill para definir OKRs coerentes com resultado real e horizonte, sem pontuação universal de sucesso. Use para tarefas de okrs e quando o usuário solicitar /okrs. OKR não substitui meta contratual/SLA nem avaliação individual isolada.",
+      "palavras_chave": [
+        "okrs",
+        "objetivos",
+        "resultados-chave",
+        "gestao",
+        "define",
+        "resultados",
+        "mensuráveis",
+        "linha"
+      ],
+      "gatilhos": [
+        "/okrs"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "otimizacao-linkedin",
+      "arquivo": ".agents/skills/autoridade-carreira/otimizacao-linkedin/SKILL.md",
+      "resumo": "Use esta skill para otimizar perfil profissional a partir de histórico real e objetivo de carreira, sem autoaplicação não autorizada. Use para tarefas de otimizacao linkedin e quando o usuário solicitar /otimizacao-linkedin. Não fazer scraping, automação de plataforma, envio de convite ou candidatura sem autorização e meio permitido.",
+      "palavras_chave": [
+        "linkedin",
+        "perfil",
+        "otimização",
+        "headline",
+        "about",
+        "recruiter",
+        "boolean",
+        "ats",
+        "curriculo",
+        "posicionamento"
+      ],
+      "gatilhos": [
+        "/otimizacao-linkedin"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "otimizar",
+      "arquivo": ".agents/skills/performance/otimizar/SKILL.md",
+      "resumo": "Otimiza performance de frontend. Lighthouse, Core Web Vitals, bundle size, images, caching. Use quando pedir \"performance\", \"otimizar\", \"lighthouse\", \"/performance\" ou \"/speed\".",
+      "palavras_chave": [
+        "otimizar",
+        "performance",
+        "otimização",
+        "completa",
+        "otimiza",
+        "frontend",
+        "lighthouse",
+        "core"
+      ],
+      "gatilhos": [
+        "/performance",
+        "/otimizar"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "performance"
+    },
+    {
+      "nome": "personal-branding-x",
+      "arquivo": ".agents/skills/autoridade-carreira/personal-branding-x/SKILL.md",
+      "resumo": "Use esta skill para planejar marca pessoal para X/Twitter com posicionamento verificável e conversas autênticas. Use para tarefas de personal branding x e quando o usuário solicitar /personal-branding-x. Não automatizar engajamento inautêntico nem publicar sem autorização.",
+      "palavras_chave": [
+        "x",
+        "twitter",
+        "personal-branding",
+        "autoridade",
+        "conteúdo",
+        "editorial",
+        "posicionamento",
+        "long-form",
+        "threads",
+        "anti-spam"
+      ],
+      "gatilhos": [
+        "/personal-branding-x"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "pesquisar",
+      "arquivo": ".agents/skills/operacao/pesquisar/SKILL.md",
+      "resumo": "Investiga perguntas de mercado, tecnologia, concorrentes e decisões de negócio com fontes oficiais, GitHub, Reddit, fóruns e dados verificáveis. Use em pesquisas, comparações, checagem de afirmações, estado da arte e diagnóstico de evidências; /pesquisar. Não usar para responder consultas triviais com fonte única suficiente.",
+      "palavras_chave": [
+        "pesquisar",
+        "pesquisa",
+        "profunda",
+        "mercado",
+        "negócio",
+        "operacao",
+        "sobre",
+        "qualquer"
+      ],
+      "gatilhos": [
+        "/pesquisar"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "pipeline-forecasting",
+      "arquivo": ".agents/skills/vendas-atendimento/pipeline-forecasting/SKILL.md",
+      "resumo": "Use esta skill para projetar previsões de vendas por estágios com histórico, intervalos e riscos de oportunidade. Use para tarefas de pipeline forecasting e quando o usuário solicitar /pipeline-forecasting. Previsão não é faturamento realizado e probabilidades de estágio não são universais.",
+      "palavras_chave": [
+        "pipeline-forecasting",
+        "pipeline",
+        "forecasting",
+        "probabilidade",
+        "vendas",
+        "analisa",
+        "estima",
+        "receita"
+      ],
+      "gatilhos": [
+        "/pipeline-forecasting"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "planejamento-semanal",
+      "arquivo": ".agents/skills/autoridade-carreira/planejamento-semanal/SKILL.md",
+      "resumo": "Use esta skill para planejar semana com capacidade e prioridades reais, incluindo execução, descanso e monitoramento de pendências. Use para tarefas de planejamento semanal e quando o usuário solicitar /planejamento-semanal. Não criar eventos/lembretes sem pedido explícito nem confundir planejamento com tarefas executadas.",
+      "palavras_chave": [
+        "planejamento-semanal",
+        "planejamento",
+        "semanal",
+        "weekly",
+        "planning",
+        "carreira",
+        "organiza",
+        "semana"
+      ],
+      "gatilhos": [
+        "/planejamento-semanal"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "planejamento-sprint",
+      "arquivo": ".agents/skills/dev-eng/planejamento-sprint/SKILL.md",
+      "resumo": "Estruturação de tarefas, backlog e refinamento de sprint.",
+      "palavras_chave": [
+        "planejamento-sprint",
+        "planejamento",
+        "sprint",
+        "solo",
+        "dev",
+        "estruturação",
+        "tarefas",
+        "backlog"
+      ],
+      "gatilhos": [
+        "/planejamento-sprint"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "planilhas-inteligentes",
+      "arquivo": ".agents/skills/automacao/planilhas-inteligentes/SKILL.md",
+      "resumo": "Use esta skill para construir planilhas auditáveis com fórmulas reproduzíveis, importação validada e automação segura. Use para tarefas de planilhas inteligentes e quando o usuário solicitar /planilhas-inteligentes. Planilha não é banco transacional; não inventar valores, não expor dados sensíveis em compartilhamentos.",
+      "palavras_chave": [
+        "planilhas-inteligentes",
+        "criação",
+        "planilhas",
+        "inteligentes",
+        "automacao",
+        "modela",
+        "revisa",
+        "operação"
+      ],
+      "gatilhos": [
+        "/planilhas-inteligentes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "posts-creatoria",
+      "arquivo": ".agents/skills/autoridade-carreira/posts-creatoria/SKILL.md",
+      "resumo": "Use esta skill para criar posts autorais com formatos adaptados a objetivos e canal, preservando precisão e voz do usuário. Use para tarefas de posts creatoria e quando o usuário solicitar /posts-creatoria. Rascunho não é publicação nem prova de resultado de marketing.",
+      "palavras_chave": [
+        "posts-creatoria",
+        "estratégia",
+        "posicionamento",
+        "como",
+        "creator",
+        "carreira",
+        "converte",
+        "aprendizagem"
+      ],
+      "gatilhos": [
+        "/posts-creatoria"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "prd-user-stories",
+      "arquivo": ".agents/skills/dev-eng/prd-user-stories/SKILL.md",
+      "resumo": "Estruturação de PRDs, user stories e priorização RICE a partir de briefings.",
+      "palavras_chave": [
+        "prd-user-stories",
+        "prds",
+        "user",
+        "stories",
+        "ágeis",
+        "produto",
+        "dev",
+        "estruturação"
+      ],
+      "gatilhos": [
+        "/prd-user-stories"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "precificacao",
+      "arquivo": ".agents/skills/autoridade-carreira/precificacao/SKILL.md",
+      "resumo": "Use esta skill para definir faixa de preço de serviço/produto com custo, valor, margem e comparáveis reais, incluindo hipóteses e riscos. Use para tarefas de precificacao e quando o usuário solicitar /precificacao. Não emitir cotação definitiva sem dados de custo, escopo, contrato, impostos e validação de mercado.",
+      "palavras_chave": [
+        "precificação",
+        "preço",
+        "serviços",
+        "consultoria",
+        "freelancer",
+        "honorários",
+        "piso-economico",
+        "margem",
+        "pacotes",
+        "orçamento"
+      ],
+      "gatilhos": [
+        "/precificacao"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "autoridade-carreira"
+    },
+    {
+      "nome": "producthunt",
+      "arquivo": ".agents/skills/marketing/producthunt/SKILL.md",
+      "resumo": "Planeja lançamento transparente no Product Hunt para produtos digitais, com cronograma, tagline, comentário do maker, assets e respostas. Use quando preparar ou revisar um lançamento; valide regras e limites atuais da plataforma e não prometa ranking.",
+      "palavras_chave": [
+        "producthunt",
+        "playbook",
+        "lançamento",
+        "product",
+        "hunt",
+        "marketing",
+        "tração",
+        "micro-saas"
+      ],
+      "gatilhos": [
+        "/producthunt"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "projeto",
+      "arquivo": ".agents/skills/nucleo/projeto/SKILL.md",
+      "resumo": "Use esta skill para manter estado de um projeto: propósito, escopo, decisões, cronograma, backlog e evidências. Use para tarefas de projeto e quando o usuário solicitar /projeto. Documento do projeto não transforma tarefas não confirmadas em feitas.",
+      "palavras_chave": [
+        "projeto",
+        "gestao",
+        "nucleo",
+        "sprints",
+        "tarefas",
+        "prazos",
+        "acompanhamento",
+        "cria"
+      ],
+      "gatilhos": [
+        "/projeto"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md"
+      ],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "proposta",
+      "arquivo": ".agents/skills/operacao/proposta/SKILL.md",
+      "resumo": "Use esta skill para criar proposta comercial técnica com escopo, condições e investimento consistentes com negociação real. Use para tarefas de proposta e quando o usuário solicitar /proposta. Proposta é rascunho até aprovação; não criar contrato ou obrigação vinculante sem validação.",
+      "palavras_chave": [
+        "proposta",
+        "comercial",
+        "profissional",
+        "operacao",
+        "gera",
+        "completa",
+        "html",
+        "pronta"
+      ],
+      "gatilhos": [
+        "/proposta"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "publicar-tema",
+      "arquivo": ".agents/skills/marketing/publicar-tema/SKILL.md",
+      "resumo": "Prepara, em rascunho, somente os formatos solicitados de um tema — artigo, carrossel ou legendas — preservando fontes e revisão. Use para conteúdo multicanal ou /publicar-tema; não publique nem gere canais não pedidos.",
+      "palavras_chave": [
+        "publicar-tema",
+        "pipeline",
+        "conteúdo",
+        "seo",
+        "redes",
+        "sociais",
+        "marketing",
+        "prepara"
+      ],
+      "gatilhos": [
+        "/publicar-tema"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "qualificacao-leads",
+      "arquivo": ".agents/skills/vendas-atendimento/qualificacao-leads/SKILL.md",
+      "resumo": "Use esta skill para qualificar leads por adequação, intenção e timing usando critérios explícitos sem discriminação ou nota fabricada. Use para tarefas de qualificacao leads e quando o usuário solicitar /qualificacao-leads. Não criar dados ausentes sobre prospect nem enviar mensagem sem autorização.",
+      "palavras_chave": [
+        "qualificacao-leads",
+        "scoring-leads",
+        "vendas",
+        "b2b",
+        "leads",
+        "qualifica",
+        "critérios",
+        "explícitos"
+      ],
+      "gatilhos": [
+        "/qualificacao-leads"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "relatorio-ads",
+      "arquivo": ".agents/skills/ads/relatorio-ads/SKILL.md",
+      "resumo": "Analisa exportações de Google Ads e Meta Ads e produz relatório semanal com métricas verificadas, alertas e ações. Use para relatório de campanhas, performance de anúncios ou /relatorio-ads.",
+      "palavras_chave": [
+        "relatorio-ads",
+        "relatório",
+        "semanal",
+        "google",
+        "ads",
+        "meta",
+        "analisa",
+        "exportações"
+      ],
+      "gatilhos": [
+        "/relatorio-ads"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "ads"
+    },
+    {
+      "nome": "responder-avaliacoes",
+      "arquivo": ".agents/skills/marketing/responder-avaliacoes/SKILL.md",
+      "resumo": "Redige respostas específicas para avaliações do Perfil da Empresa no Google, sem inventar experiências do cliente. Use para responder avaliação ou review.",
+      "palavras_chave": [
+        "responder-avaliacoes",
+        "respostas",
+        "pras",
+        "avaliações",
+        "google",
+        "marketing",
+        "redige",
+        "específicas"
+      ],
+      "gatilhos": [
+        "/responder-avaliacoes"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "rotinas-repetitivas",
+      "arquivo": ".agents/skills/automacao/rotinas-repetitivas/SKILL.md",
+      "resumo": "Use esta skill para identificar e automatizar tarefas repetitivas de forma segura, medindo tempo economizado e custos reais. Use para tarefas de rotinas repetitivas e quando o usuário solicitar /rotinas-repetitivas. Não automatizar operação irreversível antes de observar a rotina e conseguir rollback.",
+      "palavras_chave": [
+        "rotinas-repetitivas",
+        "mapear-automacoes",
+        "automacao",
+        "operacao",
+        "inventaria",
+        "rotinas",
+        "prioriza",
+        "automações"
+      ],
+      "gatilhos": [
+        "/rotinas-repetitivas"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/automacoes.md"
+      ],
+      "categoria": "automacao"
+    },
+    {
+      "nome": "saas-financials",
+      "arquivo": ".agents/skills/operacao/saas-financials/SKILL.md",
+      "resumo": "Use esta skill para modelar MRR, ARR, churn, margem, CAC, LTV e cenários SaaS sem misturar receita, caixa e lucro. Use para tarefas de saas financials e quando o usuário solicitar /saas-financials. Heurísticas de crescimento/churn não são benchmarks universais nem recomendação de investimento definitiva.",
+      "palavras_chave": [
+        "saas-financials",
+        "modelagem",
+        "financeira",
+        "métricas",
+        "negócio",
+        "saas",
+        "operacao",
+        "consultor"
+      ],
+      "gatilhos": [
+        "/saas-financials"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "operacao"
+    },
+    {
+      "nome": "salvar",
+      "arquivo": ".agents/skills/nucleo/salvar/SKILL.md",
+      "resumo": "Salva decisões e resultados em arquivo local identificado, confirmando escrita, destino e privacidade. Use quando o usuário pedir persistência local ou /salvar; commit, push, nuvem e publicação são operações separadas que exigem pedido explícito.",
+      "palavras_chave": [
+        "salvar",
+        "github",
+        "nucleo",
+        "salva",
+        "trabalho",
+        "commit",
+        "push",
+        "primeira"
+      ],
+      "gatilhos": [
+        "/salvar"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "nucleo"
+    },
+    {
+      "nome": "scroll-craft",
+      "arquivo": ".agents/skills/frontend/scroll-craft/SKILL.md",
+      "resumo": "Engenharia de landing pages cinematográficas e experiências orientadas a scroll com 8 gramáticas visuais e verificação via browser headless.",
+      "palavras_chave": [
+        "scroll-craft",
+        "engenharia",
+        "experiências",
+        "orientadas",
+        "scroll",
+        "frontend",
+        "landing",
+        "pages"
+      ],
+      "gatilhos": [
+        "/scroll-craft"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "security",
+      "arquivo": ".agents/skills/dev/security/SKILL.md",
+      "resumo": "Implementa segurança completa em APIs e sistemas. Baseado no OWASP Top 10, cobre autenticação JWT, autorização, proteção contra SQL injection, XSS, CSRF, rate limiting, headers de segurança e mais. Use quando pedir \"segurança\", \"implementar auth\", \"proteger API\", \"/security\" ou \"/auth-seguro\".",
+      "palavras_chave": [
+        "security",
+        "implementação",
+        "completa",
+        "segurança",
+        "dev",
+        "implementa",
+        "apis",
+        "sistemas"
+      ],
+      "gatilhos": [
+        "/security"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "dev"
+    },
+    {
+      "nome": "seo",
+      "arquivo": ".agents/skills/marketing/seo/SKILL.md",
+      "resumo": "Planeja SEO local e orgânico, conteúdo, mensuração, presença em buscas com IA e mídia paga conforme o objetivo. Use para SEO, GEO, palavras-chave, Perfil da Empresa no Google ou análise de demanda.",
+      "palavras_chave": [
+        "seo",
+        "completo",
+        "geo",
+        "google",
+        "ads",
+        "marketing",
+        "planeja",
+        "local"
+      ],
+      "gatilhos": [
+        "/seo"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md",
+        "sistema/memoria/estrategia.md",
+        "sistema/memoria/preferencias.md"
+      ],
+      "categoria": "marketing"
+    },
+    {
+      "nome": "seo-cluster",
+      "arquivo": ".agents/skills/seo/seo-cluster/SKILL.md",
+      "resumo": "Planeja arquitetura de conteúdo semântico em modelo Hub-and-Spoke (Página Pilar + Satélites). Conecta tópicos por intenção de busca para dominar palavras-chave no Google e motores de IA. Use quando pedir \"topic cluster\", \"cluster de conteúdo\", \"página pilar\", \"hub and spoke\", \"arquitetura de conteúdo\", \"seo cluster\" ou \"/seo-cluster\".",
+      "palavras_chave": [
+        "seo-cluster",
+        "arquitetura",
+        "conteúdo",
+        "semântico",
+        "hub-and-spoke",
+        "seo",
+        "planeja",
+        "modelo"
+      ],
+      "gatilhos": [
+        "/seo-cluster"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "seo"
+    },
+    {
+      "nome": "seo-tecnico",
+      "arquivo": ".agents/skills/seo/seo-tecnico/SKILL.md",
+      "resumo": "Implementa SEO técnico completo. Sitemap, robots.txt, meta tags, structured data, Open Graph, schema.org. Use quando pedir \"seo\", \"sitemap\", \"robots\", \"meta tags\", \"/seo-tecnico\" ou \"/seo\".",
+      "palavras_chave": [
+        "seo-tecnico",
+        "seo",
+        "técnico",
+        "completo",
+        "implementa",
+        "sitemap",
+        "robots",
+        "txt"
+      ],
+      "gatilhos": [
+        "/seo-tecnico"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "seo"
+    },
+    {
+      "nome": "skill-creator",
+      "arquivo": ".agents/skills/sistema/skill-creator/SKILL.md",
+      "resumo": "Cria novas skills profissionais para o ReoliOS fazendo engenharia reversa de casos reais, bibliotecas ou repositórios open-source do GitHub. Use quando pedir \"criar nova skill\", \"fazer skill para...\", \"engenharia reversa de repo\", \"skill-creator\" ou \"/criar-skill\".",
+      "palavras_chave": [
+        "skill-creator",
+        "criação",
+        "engenharia",
+        "reversa",
+        "skills",
+        "sistema",
+        "cria",
+        "novas"
+      ],
+      "gatilhos": [
+        "/skill-creator"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "sistema"
+    },
+    {
+      "nome": "skill-optimizer",
+      "arquivo": ".agents/skills/dev/skill-optimizer/SKILL.md",
+      "resumo": "Otimiza prompts, instruções de sistema e arquivos SKILL.md para máxima clareza, ativação precisa e menor consumo de tokens. Use quando pedir \"otimizar skill\", \"reduzir tokens de prompt\", \"melhorar instrução\", \"skill- optimizer\" ou \"/otimizar-skill\".",
+      "palavras_chave": [
+        "skill-optimizer",
+        "otimizador",
+        "prompts",
+        "economia",
+        "tokens",
+        "dev",
+        "otimiza",
+        "instruções"
+      ],
+      "gatilhos": [
+        "/skill-optimizer"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "stripe",
+      "arquivo": ".agents/skills/pagamento/stripe/SKILL.md",
+      "resumo": "Integra pagamentos com Stripe. Cria checkout, assinaturas, webhooks e gestão de clientes. Use quando pedir \"stripe\", \"pagamento\", \"checkout\", \"assinatura\", \"/stripe\" ou \"/pagamento\".",
+      "palavras_chave": [
+        "stripe",
+        "integração",
+        "completa",
+        "pagamento",
+        "integra",
+        "pagamentos",
+        "cria",
+        "checkout"
+      ],
+      "gatilhos": [
+        "/stripe"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "pagamento"
+    },
+    {
+      "nome": "subagentes",
+      "arquivo": ".agents/skills/dev/subagentes/SKILL.md",
+      "resumo": "Orquestra e despacha sub-agentes especializados em paralelo para tarefas complexas de pesquisa, auditoria, testes ou processamento em lote. Use quando pedir \"despachar subagente\", \"rodar agentes em paralelo\", \"subagents\", \"orquestrar agentes\" ou \"/subagentes\".",
+      "palavras_chave": [
+        "subagentes",
+        "orquestração",
+        "agentes",
+        "especialistas",
+        "dev",
+        "orquestra",
+        "despacha",
+        "sub-agentes"
+      ],
+      "gatilhos": [
+        "/subagentes"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev"
+    },
+    {
+      "nome": "taste-skill",
+      "arquivo": ".agents/skills/frontend/taste-skill/SKILL.md",
+      "resumo": "Define preferências visuais de variação, movimento e densidade antes de criar frontend. Use quando o usuário pedir calibração de estilo ou revisão de consistência visual.",
+      "palavras_chave": [
+        "taste-skill",
+        "calibrador",
+        "gosto",
+        "estético",
+        "anti-slop",
+        "frontend",
+        "define",
+        "preferências"
+      ],
+      "gatilhos": [
+        "/taste-skill"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "frontend"
+    },
+    {
+      "nome": "termos-privacidade",
+      "arquivo": ".agents/skills/legal/termos-privacidade/SKILL.md",
+      "resumo": "Redige minutas de Termos de Uso e Política de Privacidade a partir do tratamento real de dados. Use em rascunhos para SaaS ou comércio eletrônico, com lacunas para revisão jurídica.",
+      "palavras_chave": [
+        "termos-privacidade",
+        "termos",
+        "uso",
+        "privacidade",
+        "lgpd",
+        "juridico",
+        "redige",
+        "minutas"
+      ],
+      "gatilhos": [
+        "/termos-privacidade"
+      ],
+      "memorias_necessarias": [
+        "sistema/memoria/empresa.md"
+      ],
+      "categoria": "legal"
+    },
+    {
+      "nome": "testar",
+      "arquivo": ".agents/skills/qualidade/testar/SKILL.md",
+      "resumo": "Cria suite de testes completa. Unit tests, integration tests, coverage. Usa Jest, Vitest ou Pytest. Use quando pedir \"testar\", \"tests\", \"jest\", \"vitest\", \"cobertura\", \"/testar\" ou \"/tests\".",
+      "palavras_chave": [
+        "testar",
+        "suite",
+        "completa",
+        "testes",
+        "qualidade",
+        "cria",
+        "unit",
+        "tests"
+      ],
+      "gatilhos": [
+        "/testar"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "qualidade"
+    },
+    {
+      "nome": "testes-unitarios",
+      "arquivo": ".agents/skills/dev-eng/testes-unitarios/SKILL.md",
+      "resumo": "Framework de escrita e execução de testes unitários.",
+      "palavras_chave": [
+        "testes-unitarios",
+        "testes",
+        "unitários",
+        "framework",
+        "escrita",
+        "dev",
+        "execução"
+      ],
+      "gatilhos": [
+        "/testes-unitarios"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "dev-eng"
+    },
+    {
+      "nome": "twitter-threads",
+      "arquivo": ".agents/skills/conteudo-criativos/twitter-threads/SKILL.md",
+      "resumo": "Use esta skill para criar threads que sustentem uma tese com evidência, ritmo e contexto próprio de X/Twitter. Use para tarefas de twitter threads e quando o usuário solicitar /twitter-threads. Rascunho não equivale a threads publicadas ou respostas automatizadas.",
+      "palavras_chave": [
+        "twitter-threads",
+        "criador",
+        "thread",
+        "twitter",
+        "conteudo",
+        "roteiros",
+        "virais",
+        "formato"
+      ],
+      "gatilhos": [
+        "/twitter-threads"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "vaga-atrativa",
+      "arquivo": ".agents/skills/gestao-lideranca/vaga-atrativa/SKILL.md",
+      "resumo": "Use esta skill para criar descrição de vaga clara, inclusiva e verdadeira, separando requisitos essenciais de desejáveis. Use para tarefas de vaga atrativa e quando o usuário solicitar /vaga-atrativa. Não publicar anúncio ou prometer salário/benefício que empresa não autorizou.",
+      "palavras_chave": [
+        "vaga-atrativa",
+        "descrição",
+        "vaga",
+        "atrativa",
+        "gestao",
+        "redige",
+        "anúncio",
+        "responsabilidades"
+      ],
+      "gatilhos": [
+        "/vaga-atrativa"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "gestao-lideranca"
+    },
+    {
+      "nome": "viral-copy",
+      "arquivo": ".agents/skills/viral-copy/SKILL.md",
+      "resumo": "Use esta skill para construir copy de alta atenção com prova, clareza e medição, sem confundir viralidade com qualidade. Use para tarefas de viral copy e quando o usuário solicitar /viral-copy. Não garantir viralização nem fabricar números para parecer convincente.",
+      "palavras_chave": [
+        "viral-copy",
+        "copy",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "escreve",
+        "produto"
+      ],
+      "gatilhos": [
+        "/viral-copy"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-copy"
+    },
+    {
+      "nome": "viral-landing",
+      "arquivo": ".agents/skills/viral-landing/SKILL.md",
+      "resumo": "Use esta skill para planejar landing page com oferta verdadeira, acessibilidade, confiança e medição. Use para tarefas de viral landing e quando o usuário solicitar /viral-landing. Landing não pode esconder preço, termos ou necessidade de dados pessoais.",
+      "palavras_chave": [
+        "viral-landing",
+        "landing",
+        "page",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "cria"
+      ],
+      "gatilhos": [
+        "/viral-landing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-landing"
+    },
+    {
+      "nome": "viral-pricing",
+      "arquivo": ".agents/skills/viral-pricing/SKILL.md",
+      "resumo": "Use esta skill para criar página de preços transparente com planos comparáveis, limites e unidade econômica sustentável. Use para tarefas de viral pricing e quando o usuário solicitar /viral-pricing. Não usar regras universais de preço/free tier nem criar garantias que o negócio não concedeu.",
+      "palavras_chave": [
+        "viral-pricing",
+        "precificação",
+        "viral",
+        "marc",
+        "lou",
+        "principles",
+        "pricing",
+        "estrutura"
+      ],
+      "gatilhos": [
+        "/viral-pricing"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "viral-pricing"
+    },
+    {
+      "nome": "webhook",
+      "arquivo": ".agents/skills/comunicacao/webhook/SKILL.md",
+      "resumo": "Implementa entrega e recepção assíncrona de webhooks com verificação de assinatura, idempotência, retries e observabilidade. Use para eventos Stripe, GitHub, Meta ou integrações orientadas a eventos; não use para APIs síncronas genéricas.",
+      "palavras_chave": [
+        "webhook",
+        "gestão",
+        "completa",
+        "webhooks",
+        "comunicacao",
+        "cria",
+        "gerencia",
+        "recebe"
+      ],
+      "gatilhos": [
+        "/webhook"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "comunicacao"
+    },
+    {
+      "nome": "whatsapp-atendimento",
+      "arquivo": ".agents/skills/vendas-atendimento/whatsapp-atendimento/SKILL.md",
+      "resumo": "Use esta skill para apoiar atendimento via WhatsApp Business com respostas corretas, autorização, templates e escalonamento. Use para tarefas de whatsapp atendimento e quando o usuário solicitar /whatsapp-atendimento. Não fazer disparo em massa nem simular envio; distinguir atendimento humano de automação aprovada.",
+      "palavras_chave": [
+        "whatsapp-atendimento",
+        "atendimento",
+        "via",
+        "whatsapp",
+        "vendas",
+        "scripts",
+        "fluxos",
+        "alta"
+      ],
+      "gatilhos": [
+        "/whatsapp-atendimento"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "vendas-atendimento"
+    },
+    {
+      "nome": "youtube-roteiros",
+      "arquivo": ".agents/skills/conteudo-criativos/youtube-roteiros/SKILL.md",
+      "resumo": "Use esta skill para criar roteiros de vídeo com narrativa, demonstração, timing e precisão factual, preservando voz do apresentador. Use para tarefas de youtube roteiros e quando o usuário solicitar /youtube-roteiros. Roteiro textual não é vídeo gravado, legendado ou publicado.",
+      "palavras_chave": [
+        "youtube-roteiros",
+        "roteiro",
+        "vídeo",
+        "educativo",
+        "youtube",
+        "conteudo",
+        "estruturação",
+        "vídeos"
+      ],
+      "gatilhos": [
+        "/youtube-roteiros"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "youtube-script-seo",
+      "arquivo": ".agents/skills/conteudo-criativos/youtube-script-seo/SKILL.md",
+      "resumo": "Use esta skill para otimizar título, descrição, capítulos e roteiro de YouTube por relevância e metadata verdadeiros. Use para tarefas de youtube script seo e quando o usuário solicitar /youtube-script-seo. Metadados corretos não garantem ranking, recomendação ou performance do vídeo.",
+      "palavras_chave": [
+        "youtube-script-seo",
+        "roteirização",
+        "youtube",
+        "seo",
+        "conteudo",
+        "técnica",
+        "vídeos",
+        "longos"
+      ],
+      "gatilhos": [
+        "/youtube-script-seo"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    },
+    {
+      "nome": "youtube-video-oferta",
+      "arquivo": ".agents/skills/conteudo-criativos/youtube-video-oferta/SKILL.md",
+      "resumo": "Use esta skill para planejar vídeo de oferta transparente que demonstra valor real e reduz objeções sem manipulação. Use para tarefas de youtube video oferta e quando o usuário solicitar /yt-oferta. Não prometer depoimentos nem garantia de vendas e não gravar/publicar sem autorização.",
+      "palavras_chave": [
+        "youtube-video-oferta",
+        "yt-oferta",
+        "roteiro-youtube-oferta",
+        "youtube",
+        "roteiro",
+        "vendas",
+        "roteiriza",
+        "vídeos"
+      ],
+      "gatilhos": [
+        "/yt-oferta",
+        "/youtube-video-oferta"
+      ],
+      "memorias_necessarias": [],
+      "categoria": "conteudo-criativos"
+    }
+  ]
+}

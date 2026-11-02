@@ -1,0 +1,9 @@
+{
+  "name": "Reoli",
+  "version": "2.1.0",
+  "updatedAt": "2026-10-16T03:25:37.557Z",
+  "components": {
+    "rules": true,
+    "skills": true
+  }
+}

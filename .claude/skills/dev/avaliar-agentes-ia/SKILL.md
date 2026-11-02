@@ -1,0 +1,42 @@
+---
+tipo: skill
+nome: Avaliar decisões de agentes de IA
+name: avaliar-agentes-ia
+aliases: [avaliar-agentes-ia, /avaliar-agentes, evals-agentes]
+tags: [skill, dev, ia, avaliacao, typesafe, reolios]
+camada: 3_folha
+dominio: tecnologia
+categoria: dev
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Dev]]'
+description: >
+  Define avaliações reproduzíveis para roteamento, extração e decisões de agentes.
+  Use quando houver alucinação, classificação inconsistente ou decisão automatizada sem medição.
+---
+
+# Avaliar decisões de agentes de IA
+
+## Entrada
+
+Receba decisão exata, consequências de erro, entradas reais anonimizadas, respostas esperadas e ação posterior. Exemplo: “Classificar tickets entre cobrança, suporte e nenhum; nunca abrir reembolso automaticamente”.
+
+## Processo
+
+1. Separe fatos observados, regras determinísticas e julgamento semântico. Faça regras exatas em código. Para julgamento, formule uma pergunta estreita com estado suficiente e respostas definidas.
+2. Escolha representação de acordo com a decisão: conjunto exclusivo (Choice), condição binária (Noul) ou grau ordinal (Score), se usar TypeSafe/Jev. Inclua `nenhuma das opções` quando possível. Não use probabilidade como autorização.
+3. Crie conjunto de avaliação com casos comuns, ambíguos, adversariais, campos ausentes e mudanças de contexto. Mantenha conjunto de validação fora dos exemplos usados para ajustar a pergunta.
+4. Meça por classe: precisão, cobertura, falsos positivos, falsos negativos e custo do erro. Compare com regra simples ou sistema atual. Calibre limiares com dados do domínio; não copie números de exemplos de documentação.
+5. Avalie o fluxo inteiro: entrada → julgamento tipado → regra de composição → ação. Schema válido impede formato ruim, mas não comprova verdade factual.
+6. Encaminhe casos de baixa evidência ou alto impacto para revisão humana; guarde decisão, fonte, versão da pergunta e resultado observado para nova avaliação.
+
+## Saída esperada
+
+Entregue ficha `decisão | estados de entrada | respostas permitidas | política de ação | amostra | métricas | falhas | próximo teste`. Exemplo: `ticket de cobrança | texto + contrato | cobrança/suporte/nenhum | rascunho apenas | 120 tickets rotulados | precisão por classe | 4 falsos positivos | revisar critérios`.
+
+## Fontes
+
+- [TypeSafe: índice de documentação](https://docs.typesafe.ai/llms.txt), especialmente primitives, state e confidence.
+- [TypeSafe: skill oficial](https://raw.githubusercontent.com/typesafe-ai/skills/main/skills/typesafe-ai/SKILL.md).
+- [OWASP: excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/).

@@ -1,79 +1,52 @@
-import React, { Suspense, useEffect, useRef } from "react"
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom"
-import HomePage from "./pages/HomePage"
-import ProjectsPage from "./pages/ProjectsPage"
-import MediaBlogPage from "./pages/MediaBlogPage"
-import NotFoundPage from "./pages/NotFoundPage"
-import { LanguageProvider } from "./i18n/LanguageContext"
-import { AnimatePresence, domAnimation, LazyMotion, MotionConfig } from "framer-motion"
-import ScrollToTop from "./components/atoms/ScrollToTop"
-import LanguageNotice from "./components/atoms/LanguageNotice"
-import SiteHeader from "./components/organisms/SiteHeader"
-import ContentBoundary from "./components/molecules/ContentBoundary"
-import ContentStatus from "./components/molecules/ContentStatus"
-import PageTransition from "./components/atoms/PageTransition"
+import React from 'react';
+import { LanguageProvider } from '@/context/LanguageContext';
+import { RouterProvider, useRouter } from '@/context/RouterContext';
+import { SkipLink } from '@/components/layout/SkipLink';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { HomePage } from '@/pages/HomePage';
+import { ProjectsPage } from '@/pages/ProjectsPage';
+import { MediaPage } from '@/pages/MediaPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
-const RoutedApp: React.FC = () => {
-  const location = useLocation()
-  const firstPath = useRef(location.pathname)
-  const hasNavigated = useRef(false)
-  const focusOnMount = hasNavigated.current || firstPath.current !== location.pathname
-  useEffect(() => {
-    if (firstPath.current !== location.pathname) hasNavigated.current = true
-  }, [location.pathname])
+const AppContent: React.FC = () => {
+  const { pathname } = useRouter();
+
+  const renderCurrentRoute = () => {
+    switch (pathname) {
+      case '/':
+        return <HomePage />;
+      case '/projetos':
+        return <ProjectsPage />;
+      case '/midia-blog':
+        return <MediaPage />;
+      case '/404':
+        return <NotFoundPage />;
+      default:
+        return <NotFoundPage />;
+    }
+  };
 
   return (
-    <>
-      <LanguageNotice />
-      <SiteHeader />
-      <AnimatePresence mode="wait">
-        <PageTransition key={location.pathname}>
-          <ScrollToTop renderedPath={location.pathname} focusOnMount={focusOnMount} />
-          <ContentBoundary fallback={<ContentStatus status="error" />}>
-            <Suspense fallback={<ContentStatus status="loading" />}>
-              <Routes location={location}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/projetos" element={<ProjectsPage />} />
-                <Route
-                  path="/projetos=corporativos"
-                  element={<Navigate to="/projetos?tipo=corporativo" replace />}
-                />
-                <Route
-                  path="/projetos=coprporativos"
-                  element={<Navigate to="/projetos?tipo=corporativo" replace />}
-                />
-                <Route
-                  path="/projetos=gerais"
-                  element={<Navigate to="/projetos?tipo=gerais" replace />}
-                />
-                <Route path="/midia-blog" element={<MediaBlogPage />} />
-                <Route path="/midia-e-blog" element={<Navigate to="/midia-blog" replace />} />
-                <Route path="/dossie-tecnico" element={<Navigate to="/" replace />} />
-                <Route path="/dossie" element={<Navigate to="/" replace />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </Suspense>
-          </ContentBoundary>
-        </PageTransition>
-      </AnimatePresence>
-    </>
-  )
-}
+    <div className="min-h-screen flex flex-col bg-paper text-ink font-sans selection:bg-signal selection:text-white">
+      <SkipLink />
+      <Header />
+      <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+        {renderCurrentRoute()}
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <LazyMotion features={domAnimation} strict>
-        {/* Cada animação usa o hook reativo local. O modo "user" do Framer 11
-            captura a preferência na montagem e não acompanha mudanças em tempo real. */}
-        <MotionConfig reducedMotion="never">
-          <BrowserRouter>
-            <RoutedApp />
-          </BrowserRouter>
-        </MotionConfig>
-      </LazyMotion>
+      <RouterProvider>
+        <AppContent />
+      </RouterProvider>
     </LanguageProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,16 +1,96 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "./styles/foundation.css";
-@import "./styles/scrollbar.css";
-@import "./styles/sections.css";
-@import "./styles/about-section.css";
-@import "./styles/archive.css";
-@import "./styles/project-viewer.css";
-@import "./styles/states.css";
-@import "./styles/responsive.css";
-@import "./styles/home-layout.css";
-@import "./styles/accessibility.css";
-@import "./styles/motion.css";
-@import "./styles/home-scenes.css";
+@layer base {
+  :root {
+    --color-paper: #F4F0E7;
+    --color-paper-light: #FBF9F4;
+    --color-paper-muted: #EDE8DC;
+    --color-ink: #182033;
+    --color-ink-soft: #3D465B;
+    --color-ink-muted: #687188;
+    --color-line: #D7D0C2;
+    --color-signal: #FF5A36;
+    --color-cobalt: #315EFB;
+    --color-mint: #B9E8D0;
+    --color-mint-dark: #246549;
+    --color-sun: #FFD166;
+  }
+
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Accessible focus rings */
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt, #315EFB);
+    outline-offset: 3px;
+  }
+
+  /* Dialog modal overscroll containment as required by modern web guidance */
+  dialog:modal {
+    overscroll-behavior: contain;
+  }
+  dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgba(24, 32, 51, 0.75);
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Editorial layout utilities */
+.container-editorial {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-editorial {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-editorial {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Subtle editorial paper grain texture */
+.paper-pattern {
+  background-color: var(--color-paper, #F4F0E7);
+  background-image: radial-gradient(var(--color-line, #D7D0C2) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Editorial line separator */
+.editorial-line {
+  height: 1px;
+  background-color: var(--color-line, #D7D0C2);
+  width: 100%;
+}

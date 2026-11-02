@@ -1,0 +1,74 @@
+---
+tipo: skill
+nome: Gerador e Validador de llms.txt para Projetos Web
+name: llmstxt-generator
+aliases:
+  - llmstxt-generator
+  - /llms-txt
+  - gerar-llmstxt
+tags:
+  - h4
+  - skill
+  - seo
+  - geo
+  - ai-crawlers
+  - reolios
+camada: 3_folha
+dominio: marketing
+categoria: geo
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - SEO]]'
+description: >
+  Gera e valida arquivos llms.txt e llms-full.txt para sites e documentações.
+  Organiza links públicos para ferramentas que adotem essa convenção opcional.
+  Use quando o usuário pedir um índice llms.txt para documentação existente.
+---
+
+# Gerador e Validador de llms.txt
+
+`llms.txt` é uma convenção opcional de navegação. Não substitui `robots.txt`, sitemap, HTML rastreável ou autorização. O Google declara que não usa esse arquivo para inclusão nas experiências de IA da Busca.
+
+---
+
+## 📐 Estrutura Padrão de um `llms.txt`
+
+Se solicitado, publique na raiz pública do site (`public/llms.txt` ou equivalente), após verificar quais páginas são públicas e canônicas:
+
+```markdown
+# [Nome do Produto ou Empresa]
+
+> [Resumo em uma frase do que o produto/serviço faz e para quem se destina.]
+
+## Documentação & Páginas Principais
+- [Visão Geral](https://seusite.com.br/): Apresentação do produto, proposta de valor e casos de uso.
+- [Recursos & Funcionalidades](https://seusite.com.br/features): Lista detalhada de capacidades.
+- [Preços & Planos](https://seusite.com.br/pricing): Tabela de planos e modelo de contratação.
+- [Documentação Técnica](https://seusite.com.br/docs): Guias de instalação e referência de APIs.
+
+## Informações Corporativas
+- [Sobre a Empresa](https://seusite.com.br/sobre): Missão, fundadores e credenciais.
+- [Políticas de Privacidade](https://seusite.com.br/privacidade): Conformidade com a LGPD e termos de uso.
+
+## Opcional
+- [llms-full.txt](https://seusite.com.br/llms-full.txt): Apenas se solicitado, a partir de conteúdo público com licença compatível.
+```
+
+---
+
+## 🔍 Regras de Ouro
+1. **Links Diretos para Markdown ou Páginas Leves:** Evite direcionar para páginas pesadas com JavaScript client-side rendering complexo.
+2. **Sem Jargões ou Promessas Vagas:** O leitor é um modelo de linguagem que precisa de fatos, contratos de API e propostas claras.
+3. **Mantenha curto:** Inclua só páginas necessárias para navegação; não há limite normativo de 500 linhas nem handshake universal.
+
+## Briefing, validação e saída
+
+**Entrada de exemplo:** “Crie `public/llms.txt` para `https://exemplo.com/docs`, apontando para instalação e referência pública da API”. Receba domínio, público, páginas canônicas e objetivo do índice.
+
+1. Verifique URL, título, resposta HTTP, canonical e caráter público de cada link. Se estiver offline, marque links como não verificados.
+2. Exclua segredos, endpoints privados, dados de clientes e conteúdo sem direito de publicação.
+3. Entregue o arquivo Markdown e um resumo `links verificados | links pendentes | fonte das páginas | data da revisão`.
+4. Não atribua ganho de ranking ou citação ao arquivo sem medição.
+
+**Fonte:** [Google Search Central, guia de otimização para IA](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), seção sobre `llms.txt`.

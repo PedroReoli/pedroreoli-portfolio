@@ -1,0 +1,68 @@
+---
+tipo: skill
+nome: Calibrador de Gosto Estético & Anti-Slop
+name: taste-skill
+aliases:
+  - taste-skill
+  - /taste-skill
+  - Calibrador de Gosto Estético & Anti-Slop
+tags:
+  - h4
+  - skill
+  - frontend
+  - reolios
+camada: 3_folha
+dominio: tecnologia
+categoria: frontend
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Frontend]]'
+description: >
+  Define preferências visuais de variação, movimento e densidade antes de criar frontend.
+  Use quando o usuário pedir calibração de estilo ou revisão de consistência visual.
+---
+
+# Calibrador de Gosto Estético & Anti-Slop
+
+Os três controles abaixo registram preferências de projeto, não notas objetivas de qualidade. Compare alternativas na interface real.
+
+---
+
+## 1. Os 3 Diais de Calibração (Escala 1 a 10)
+
+O usuário ou o contexto podem definir os diales no início da instrução. Exemplo: `[Design Variance: 8 | Motion: 5 | Visual Density: 3]`.
+
+### Dial 1: Design Variance (Variância de Design)
+- **1-3 (Seguro / Corporativo)**: Layouts tradicionais em grade, hierarquia padrão, zero risco visual. Ideal para dashboards bancários e termos de uso.
+- **4-7 (Moderno / Polido)**: Layouts assimétricos pontuais, misturas de tipografia elegantes, excelente uso de espaço negativo. Ideal para Landing Pages SaaS B2B premium.
+- **8-10 (Experimental / Artístico)**: Quebra de grid, overlapping de elementos, tipografia gigante sobreposta, efeitos de mistura de camadas (mix-blend-mode). Ideal para marcas criativas e agências.
+
+### Dial 2: Motion Intensity (Intensidade de Animações)
+- **1-2 (Estático)**: Sem animações além de transições nativas de hover de 150ms.
+- **3-6 (Micro-interações Elegantes)**: Transições sutis de entrada (`fade-in-up`), botões com animação de expansão, accordions suaves com spring.
+- **7-10 (Cinematográfico)**: Paralaxe no scroll, animações em cascata (`stagger`), física de molas (framer-motion springs), elementos que reagem à posição do cursor.
+
+### Dial 3: Visual Density (Densidade Visual)
+- **1-3 (Minimalista Espacial)**: Poucos elementos por tela, margens enormes, foco total na tipografia e no produto.
+- **4-7 (Equilibrado)**: Densidade comercial padrão de e-commerces e SaaS.
+- **8-10 (Denso / Informacional)**: Alta densidade de dados, múltiplos widgets estilo Bloomberg / IDE / Painéis analíticos.
+
+---
+
+## 2. Regras de Gosto & Acabamento
+
+1. **Superfícies:** escolha contraste e separação conforme conteúdo e identidade; blur e textura são opcionais.
+2. **Movimento:** reduza ou remova animações não essenciais sob `prefers-reduced-motion`.
+3. **Interação:** dê feedback visual em hover, foco por teclado e estado ativo sem depender só de cor.
+
+## Briefing e saída
+
+**Entrada de exemplo:** “Tela de relatórios B2B, densa, sem animação, seguindo nosso design guide”. Registre três controles, referência da marca e componentes existentes. Entregue tokens ou decisões visuais concretas, captura em largura estreita e larga, checagem de contraste e lista de ajustes. Se o usuário não indicar números, infira somente a direção necessária e registre a escolha.
+
+**Fonte:** [MDN: preferência por movimento reduzido](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion).
+
+<!-- vault-navigation:start -->
+## Navegação
+- [[hubs/skills/Skills - Frontend|Skills - Frontend]]
+<!-- vault-navigation:end -->

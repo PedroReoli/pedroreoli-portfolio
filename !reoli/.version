@@ -1,0 +1,17 @@
+{
+  "name": "Reoli Suite",
+  "version": "2.1.0",
+  "updatedAt": "2026-10-05T19:32:11.117Z",
+  "modules": {
+    "reolicode": {
+      "installed": true,
+      "version": "1.5.0",
+      "path": "!reoli/rules"
+    },
+    "reolios": {
+      "installed": true,
+      "version": "1.6.0",
+      "path": "!reoli/reolios"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+---
+tipo: skill
+nome: Contrato de Freelancer Seguro
+name: contrato-freelancer
+aliases:
+  - contrato-freelancer
+  - /contrato-freelancer
+  - Contrato de Freelancer Seguro
+tags:
+  - h4
+  - skill
+  - juridico
+  - reolios
+camada: 3_folha
+dominio: juridico
+categoria: legal
+subtipo: skill
+hierarquia: 4
+h: 4
+hub_pai: '[[hubs/skills/Skills - Legal]]'
+description: >
+  Geração e revisão de contratos de prestação de serviços freelancer/PJ com cláusulas de PI, LGPD, escopo, pagamento e rescisão.
+---
+
+# Contrato de Freelancer Seguro
+
+Prepare uma minuta negociável a partir das condições reais das partes. Não apresente a minuta como proteção jurídica garantida.
+
+---
+
+## 🧭 Contexto do Negócio
+
+Antes de gerar ou revisar, consulte:
+1. `sistema/memoria/empresa.md` — detalhes do prestador de serviço e natureza do trabalho.
+2. `sistema/memoria/preferencias.md` — tom do contrato (mais formal vs. moderno/simples).
+3. Dados essenciais do projeto (se não fornecidos, solicite):
+   - Qualificações completas (Contratante e Contratado).
+   - Objeto do contrato (Escopo de trabalho).
+   - Valores, prazos e condições de pagamento.
+   - Prazos de entrega e validade do contrato.
+
+---
+
+## 📐 Frameworks e Componentes Essenciais
+
+### 1. Escopo de Trabalho Claro
+Define exatamente o que será entregue, limitando as revisões e o que NÃO está incluso.
+- **Dica:** Use tabelas ou listas para facilitar a leitura.
+- **Alteração de escopo:** descreva procedimento, responsável pela aprovação e preço somente quando acordados.
+
+### 2. Cláusulas de Pagamento e Multas
+Defina as datas, o meio de pagamento e a penalidade para atrasos.
+- **Inadimplência:** registre encargos aprovados pelas partes; não imponha percentuais como regra universal.
+
+### 3. Propriedade Intelectual (PI)
+Deixe claro quem é o dono do código/design/texto criado.
+- **Cessão:** documente exatamente o que será transferido, quando e quais componentes preexistentes ou de terceiros ficam excluídos.
+
+### 4. Confidencialidade (NDA) e LGPD
+Assegura que dados sensíveis não serão vazados.
+- **LGPD:** "Ambas as partes se comprometem a tratar os dados pessoais envolvidos neste contrato em conformidade com a Lei nº 13.709/2018 (LGPD)."
+
+### 5. Rescisão
+Regras para cancelar o contrato sem dor de cabeça.
+- **Aviso prévio:** negocie prazo e efeitos sobre entregas em andamento, acesso e pagamentos.
+
+---
+
+## 📋 Checklist de Revisão de Contrato
+
+- [ ] As partes estão devidamente qualificadas (CNPJ/CPF, Endereço, Representantes)?
+- [ ] O escopo de trabalho detalha prazos de entrega e limites de alteração?
+- [ ] Há cláusula clara sobre o formato, data e penalidades de pagamento?
+- [ ] A titularidade da Propriedade Intelectual está bem definida?
+- [ ] O contrato contém disposições sobre Confidencialidade e LGPD?
+- [ ] As condições de rescisão e foro de eleição estão estipulados?
+
+---
+
+## 📤 Formato de Saída (Output)
+
+Ao ser acionado, entregue sempre:
+1. **O Contrato (Draft):** O modelo completo do contrato em Markdown.
+2. **Alertas Jurídicos:** Destaques sobre cláusulas que precisam da atenção do usuário (ex: taxas de multa padrão do mercado).
+3. **Anexo de Escopo:** Um template de anexo onde o usuário pode detalhar entregáveis específicos.
+
+**Briefing de exemplo:** “Site institucional por preço fechado, duas revisões, código e imagens fornecidos por partes diferentes, pagamento em três marcos”. Entregue minuta, quadro de decisões pendentes e matriz `cláusula | dado fornecido | hipótese | validação jurídica`. Não invente foro, multa, SLA ou base legal de tratamento. A publicação ou assinatura exige revisão jurídica adequada ao caso.
+
+<!-- vault-navigation:start -->
+## Navegação
+- [[hubs/skills/Skills - Legal|Skills - Legal]]
+<!-- vault-navigation:end -->

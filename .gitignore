@@ -1,21 +1,25 @@
+# Arquivos locais e segredos
+.env
+.env.*
+!.env.example
+
+# Dependencias e artefatos que uma nova implementacao pode gerar
 node_modules/
 dist/
+build/
+coverage/
 *.tsbuildinfo
-vite.config.js
-vite.config.d.ts
-.playwright-cli/
-.env
-.env.local
+
+# Temporarios de ferramentas
 .vercel/
+.playwright-cli/
+.playwright-mcp/
+output/
+temp/
+tmp/
 
-/.agents/
-/.claude/
-/!reoli/
-/.privado/
-/.playwright-mcp/
-
-/output/
-/taste-skill-temp/
-/temp/
-/temp_skills/
-/temp_stitch/
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
