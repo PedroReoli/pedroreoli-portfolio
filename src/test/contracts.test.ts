@@ -166,5 +166,15 @@ describe('Content Contract & Asset Integrity Tests', () => {
     interfaceContentRaw.footer.contacts.forEach((contact) => {
       expect(permittedColors.has(contact.color), `${contact.label} must use the approved palette`).toBe(true);
     });
+
+    const stylesDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../styles');
+    const styles = fs.readdirSync(stylesDir)
+      .filter((file) => file.endsWith('.css'))
+      .map((file) => fs.readFileSync(path.join(stylesDir, file), 'utf8'))
+      .join('\n');
+
+    expect(styles).not.toMatch(/rgba?\(49\s*,\s*94\s*,\s*251/i);
+    expect(styles).not.toMatch(/rgba?\(98\s*,\s*217\s*,\s*255/i);
+    expect(styles).toContain('--color-accent-ink: #c93618');
   });
 });

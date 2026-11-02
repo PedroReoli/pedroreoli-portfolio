@@ -4,6 +4,7 @@ import { useMemo, useRef } from 'react'
 import type { Group, Mesh } from 'three'
 import { MathUtils } from 'three'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { palette } from '@/theme/palette'
 
 function OrbitalCore({ reducedMotion }: { reducedMotion: boolean }) {
   const group = useRef<Group>(null)
@@ -37,8 +38,8 @@ function OrbitalCore({ reducedMotion }: { reducedMotion: boolean }) {
         <mesh ref={core} castShadow>
           <icosahedronGeometry args={[1.32, 2]} />
           <MeshDistortMaterial
-            color="#ff5a36"
-            emissive="#7a1607"
+            color={palette.accent}
+            emissive={palette.accentEmissive}
             emissiveIntensity={0.55}
             roughness={0.28}
             metalness={0.72}
@@ -50,21 +51,21 @@ function OrbitalCore({ reducedMotion }: { reducedMotion: boolean }) {
 
       <mesh rotation={[Math.PI / 2.8, 0.3, 0]}>
         <torusGeometry args={[2.15, 0.035, 12, 160]} />
-        <meshStandardMaterial color="#f4f0e7" emissive="#f4f0e7" emissiveIntensity={1.7} />
+        <meshStandardMaterial color={palette.paper} emissive={palette.paper} emissiveIntensity={1.7} />
       </mesh>
       <mesh rotation={[Math.PI / 2.2, -0.42, Math.PI / 2]}>
         <torusGeometry args={[1.78, 0.02, 10, 140]} />
-        <meshStandardMaterial color="#ff5a36" emissive="#ff5a36" emissiveIntensity={1.4} />
+        <meshStandardMaterial color={palette.accent} emissive={palette.accent} emissiveIntensity={1.4} />
       </mesh>
       <mesh rotation={[0.25, 0.9, 0.5]}>
         <torusGeometry args={[2.62, 0.012, 8, 160]} />
-        <meshBasicMaterial color="#77736c" transparent opacity={0.72} />
+        <meshBasicMaterial color={palette.neutral} transparent opacity={0.72} />
       </mesh>
 
       {particles.map((particle, index) => (
         <mesh key={index} position={particle.position} scale={particle.scale}>
           <sphereGeometry args={[1, 8, 8]} />
-          <meshBasicMaterial color={index % 4 === 0 ? '#ff5a36' : '#f4f0e7'} />
+          <meshBasicMaterial color={index % 4 === 0 ? palette.accent : palette.paper} />
         </mesh>
       ))}
     </group>
@@ -84,9 +85,9 @@ export function HeroScene({ topLabel, bottomLabel }: { topLabel: string; bottomL
       >
         <AdaptiveDpr pixelated />
         <ambientLight intensity={0.42} />
-        <directionalLight position={[3, 5, 4]} intensity={3.2} color="#f4f0e7" />
-        <pointLight position={[-3, -1, 3]} intensity={22} distance={8} color="#f4f0e7" />
-        <pointLight position={[3, 1, 3]} intensity={20} distance={7} color="#ff5a36" />
+        <directionalLight position={[3, 5, 4]} intensity={3.2} color={palette.paper} />
+        <pointLight position={[-3, -1, 3]} intensity={22} distance={8} color={palette.paper} />
+        <pointLight position={[3, 1, 3]} intensity={20} distance={7} color={palette.accent} />
         <OrbitalCore reducedMotion={reducedMotion} />
       </Canvas>
       <div className="hero-scene__hud hero-scene__hud--top">{topLabel}</div>
