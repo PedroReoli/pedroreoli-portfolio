@@ -154,8 +154,8 @@ describe('Content Contract & Asset Integrity Tests', () => {
     });
   });
 
-  it('limits authored interface colors to neutrals and one orange accent', () => {
-    const permittedColors = new Set(['#FF5A36', '#182033', '#111010']);
+  it('limits authored interface colors to neutrals and one violet accent', () => {
+    const permittedColors = new Set(['#8B5CF6', '#182033', '#111010']);
 
     technologyContentRaw.groups.forEach((group) => {
       group.tools.forEach((tool) => {
@@ -175,6 +175,7 @@ describe('Content Contract & Asset Integrity Tests', () => {
 
     expect(styles).not.toMatch(/rgba?\(49\s*,\s*94\s*,\s*251/i);
     expect(styles).not.toMatch(/rgba?\(98\s*,\s*217\s*,\s*255/i);
-    expect(styles).toContain('--color-accent-ink: #c93618');
+    expect(styles).toContain('--color-accent-ink: #6d28d9');
+    expect(styles).not.toMatch(/#ff5a36|#c93618|rgba?\(255\s*,\s*90\s*,\s*54/i);
   });
 });

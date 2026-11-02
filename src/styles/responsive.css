@@ -5,7 +5,7 @@
   .mobile-menu.is-open { transform: none; visibility: visible; }
   .mobile-menu nav { display: grid; height: 100%; align-content: center; }
   .mobile-menu a { display: grid; grid-template-columns: 50px 1fr; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line-dark); font-family: var(--font-display); font-size: clamp(2rem,8vw,4.5rem); text-transform: uppercase; }
-  .mobile-menu a span { color: var(--orange); font-family: var(--font-sans); font-size: .65rem; }
+  .mobile-menu a span { color: var(--accent); font-family: var(--font-sans); font-size: .65rem; }
   .hero__content { grid-template-columns: 1fr 1fr; }
   .hero h1 { font-size: clamp(5rem,11vw,8rem); }
   .about__grid { grid-template-columns: .9fr 1.1fr; gap: 50px; }

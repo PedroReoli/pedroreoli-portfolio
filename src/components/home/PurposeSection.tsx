@@ -14,7 +14,7 @@ export function PurposeSection() {
   return (
     <section ref={sectionRef} id={purpose.id} className="purpose-section">
       <div className="shell">
-        <div className="section-kicker section-kicker--orange" data-reveal>
+        <div className="section-kicker section-kicker--accent" data-reveal>
           <span>{purpose.sectionNumber}</span><p>{copy.eyebrow}</p><p>{purpose.metadata}</p>
         </div>
         <div className="purpose-section__grid">

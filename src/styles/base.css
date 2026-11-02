@@ -5,8 +5,8 @@
   --color-paper-raised: #fbf9f5;
   --color-ink: #171717;
   --color-muted: #595959;
-  --color-accent: #ff5a36;
-  --color-accent-ink: #c93618;
+  --color-accent: #8b5cf6;
+  --color-accent-ink: #6d28d9;
   --night: var(--color-bg);
   --night-soft: var(--color-surface);
   --paper: var(--color-paper);
@@ -15,7 +15,7 @@
   --ink-soft: var(--color-muted);
   --line-dark: rgba(243, 239, 231, 0.17);
   --line-light: rgba(23, 23, 23, 0.18);
-  --orange: var(--color-accent);
+  --accent: var(--color-accent);
   --font-sans: 'Instrument Sans Variable', Arial, sans-serif;
   --font-display: 'Instrument Sans Variable', Arial, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
@@ -32,20 +32,20 @@ svg { flex: 0 0 auto; }
 p, h1, h2, h3, h4, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
-::selection { background: var(--orange); color: var(--night); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+::selection { background: var(--accent); color: var(--night); }
 .shell { width: min(100% - 48px, 1480px); margin-inline: auto; }
-.section-light { --orange: var(--color-accent-ink); background: var(--paper); color: var(--ink); }
+.section-light { --accent: var(--color-accent-ink); background: var(--paper); color: var(--ink); }
 .section-dark { background: var(--night); color: var(--paper); }
 h1, h2, h3, .brand__name, .contact-grid strong, .mobile-menu a { font-stretch: 78%; }
 .overline { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .section-kicker { display: grid; grid-template-columns: 64px 1fr auto; gap: 20px; align-items: center; min-height: 68px; border-bottom: 1px solid var(--line-light); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.section-kicker > span { color: var(--orange); }
+.section-kicker > span { color: var(--accent); }
 .section-kicker p:last-child { color: var(--ink-soft); text-align: right; }
 .section-kicker--dark { border-color: var(--line-dark); }
 .section-kicker--dark p:last-child { color: rgba(244,240,231,.52); }
-.section-kicker--orange { border-color: rgba(7,11,20,.28); }
-.section-kicker--orange > span { color: var(--night); }
+.section-kicker--accent { border-color: rgba(7,11,20,.28); }
+.section-kicker--accent > span { color: var(--night); }
 .text-link { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .text-link svg { width: 18px; transition: transform .25s ease; }
 .text-link:hover svg { transform: translate(4px, 4px); }
