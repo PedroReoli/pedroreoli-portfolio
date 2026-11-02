@@ -17,22 +17,10 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
         return
       }
 
-      elements.forEach((element) => {
-        gsap.fromTo(
-          element,
-          { opacity: 0, y: 42 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: element,
-              start: 'top 88%',
-              once: true,
-            },
-          },
-        )
+      ScrollTrigger.batch(elements, {
+        start: 'top 90%',
+        once: true,
+        onEnter: (batch) => gsap.fromTo(batch, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: .68, stagger: .07, ease: 'power3.out', overwrite: true }),
       })
     },
     { scope, dependencies: [reducedMotion] },

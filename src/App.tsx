@@ -6,6 +6,7 @@ import { HomePage } from '@/pages/HomePage'
 import { ProjectsPage } from '@/pages/ProjectsPage'
 import { MediaPage } from '@/pages/MediaPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
+import { LazyMotion, MotionConfig, domAnimation, m, AnimatePresence } from 'motion/react'
 
 function AppRoute() {
   const { pathname } = useRouter()
@@ -19,14 +20,32 @@ function AppRoute() {
   return (
     <div className="app-shell">
       <Header />
-      <main id="main-content" tabIndex={-1}>{pages[pathname] ?? <NotFoundPage />}</main>
+      <AnimatePresence mode="wait" initial={false}>
+        <m.main
+          id="main-content"
+          key={pathname}
+          tabIndex={-1}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.18 }}
+        >
+          {pages[pathname] ?? <NotFoundPage />}
+        </m.main>
+      </AnimatePresence>
       <Footer />
     </div>
   )
 }
 
 export function App() {
-  return <LanguageProvider><RouterProvider><AppRoute /></RouterProvider></LanguageProvider>
+  return (
+    <MotionConfig reducedMotion="user">
+      <LazyMotion features={domAnimation} strict>
+        <LanguageProvider><RouterProvider><AppRoute /></RouterProvider></LanguageProvider>
+      </LazyMotion>
+    </MotionConfig>
+  )
 }
 
 export default App

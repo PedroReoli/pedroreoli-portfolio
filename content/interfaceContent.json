@@ -17,11 +17,11 @@
     "home": {
       "pt": {
         "title": "Engenheiro de Software Full Stack & Arquiteto de Sistemas",
-        "description": "Portfólio de Pedro Lucas Reis. Engenheiro de Software Full Stack especializado em arquiteturas web de alta densidade, sistemas distribuídos e engenharia de agentes de IA."
+        "description": "Portfólio de Pedro Lucas Reis, engenheiro Full Stack com foco em frontend, ERPs, SaaS, integrações e IA aplicada."
       },
       "en": {
         "title": "Full Stack Software Engineer & Systems Architect",
-        "description": "Portfolio of Pedro Lucas Reis. Full Stack Software Engineer specializing in high-density frontend architectures, distributed systems, and AI agents."
+        "description": "Portfolio of Pedro Lucas Reis, a Full Stack engineer focused on frontend, ERP systems, SaaS, integrations and applied AI."
       }
     },
     "projects": {
@@ -45,23 +45,23 @@
     "actionHref": "#projetos-selecionados",
     "actionIcon": "arrow-up-right",
     "scene": { "topLabel": "SYS / 00.19", "bottomLabel": "INTERFACE · SYSTEMS · AI" },
-    "pt": { "eyebrow": "Portfólio", "role": "Engenheiro de Software Full Stack", "statement": "Eu transformo sistemas complexos em produtos digitais claros, rápidos e memoráveis.", "availability": "Disponível para projetos selecionados", "scroll": "Desça para explorar", "action": "Ver projetos", "actionShort": "Projetos" },
-    "en": { "eyebrow": "Portfolio", "role": "Full Stack Software Engineer", "statement": "I turn complex systems into clear, fast and memorable digital products.", "availability": "Available for select projects", "scroll": "Scroll to explore", "action": "See the work", "actionShort": "Work" }
+    "pt": { "eyebrow": "Portfólio", "role": "Engenheiro de Software Full Stack", "statement": "Transformo sistemas complexos em produtos claros, rápidos e prontos para operar.", "availability": "Disponível para projetos selecionados", "scroll": "Desça para explorar", "action": "Ver projetos", "actionShort": "Projetos" },
+    "en": { "eyebrow": "Portfolio", "role": "Full Stack Software Engineer", "statement": "I turn complex systems into clear, fast products built for real operations.", "availability": "Available for select projects", "scroll": "Scroll to explore", "action": "See the work", "actionShort": "Work" }
   },
   "about": {
     "id": "sobre",
     "sectionNumber": "02",
     "portrait": { "src": "/eu-profissional.png", "width": 1254, "height": 1254, "name": "Pedro Lucas Reis" },
     "pt": {
-      "eyebrow": "Sobre mim", "location": "Volta Redonda / Brasil", "portraitAlt": "Retrato de Pedro Lucas Reis, Engenheiro de Software Full Stack", "portraitRole": "Engenheiro de software", "areas": "Full Stack / Arquitetura / IA", "title": "Quem eu sou", "summary": "Sou engenheiro Full Stack, com foco em frontend. Trabalho em ERPs, SaaS e integrações, do primeiro fluxo à operação.", "statsLabel": "Destaques da carreira"
+      "eyebrow": "Sobre mim", "location": "Volta Redonda / Brasil", "portraitAlt": "Retrato de Pedro Lucas Reis, Engenheiro de Software Full Stack", "portraitRole": "Engenheiro de software", "areas": "Full Stack / Arquitetura / IA", "title": "Quem eu sou", "summary": "Engenheiro Full Stack com foco em frontend, ERPs e SaaS. Projeto interfaces, APIs e integrações do primeiro fluxo à produção.", "statsLabel": "Destaques da carreira"
     },
     "en": {
-      "eyebrow": "About", "location": "Volta Redonda / Brazil", "portraitAlt": "Portrait of Pedro Lucas Reis, Full Stack Software Engineer", "portraitRole": "Software engineer", "areas": "Full Stack / Architecture / AI", "title": "Who I am", "summary": "I'm a Full Stack engineer with a focus on frontend. I build ERP systems, SaaS products and integrations, from the first workflow to production.", "statsLabel": "Career highlights"
+      "eyebrow": "About", "location": "Volta Redonda / Brazil", "portraitAlt": "Portrait of Pedro Lucas Reis, Full Stack Software Engineer", "portraitRole": "Software engineer", "areas": "Full Stack / Architecture / AI", "title": "Who I am", "summary": "Full Stack engineer focused on frontend, ERP systems and SaaS. I design interfaces, APIs and integrations from the first workflow to production.", "statsLabel": "Career highlights"
     },
     "stats": [
       { "value": "04", "pt": "anos de experiência", "en": "years of experience" },
-      { "value": "10+", "pt": "produtos digitais", "en": "digital products" },
-      { "value": "20+", "pt": "organizações atendidas", "en": "organizations served" },
+      { "value": "70%", "pt": "menos tempo de desenvolvimento", "en": "less development time" },
+      { "value": "40%", "pt": "menos tempo de carregamento", "en": "faster page loads" },
       { "value": "500+", "pt": "componentes de Design System", "en": "Design System components" }
     ]
   },
@@ -168,8 +168,8 @@
     "id": "stack",
     "sectionNumber": "04",
     "titleAccent": "STACK.",
-    "pt": { "eyebrow": "Ferramentas de produção", "title": "MINHA", "description": "Frontend, APIs, cloud e ferramentas de IA que uso no trabalho.", "ariaLabel": "Stack de tecnologia" },
-    "en": { "eyebrow": "Production toolkit", "title": "MY", "description": "Frontend, APIs, cloud and AI tools used in my work.", "ariaLabel": "Technology stack" }
+    "pt": { "eyebrow": "Ferramentas de produção", "title": "MINHA", "description": "Interfaces, APIs, cloud e IA — em produção.", "ariaLabel": "Stack de tecnologia" },
+    "en": { "eyebrow": "Production toolkit", "title": "MY", "description": "Interfaces, APIs, cloud and AI — in production.", "ariaLabel": "Technology stack" }
   },
   "languageNotice": {
     "icon": "check",
@@ -196,12 +196,12 @@
     "ctaHref": "mailto:pedrosousa2160@gmail.com",
     "backToTopIcon": "arrow-up",
     "contacts": [
-      { "label": "E-mail", "href": "mailto:pedrosousa2160@gmail.com", "icon": "mail", "color": "#8B5CF6", "external": false, "detail": { "pt": "Enviar e-mail", "en": "Send an email" } },
-      { "label": "WhatsApp", "href": "https://wa.me/5524993264040", "icon": "whatsapp", "color": "#8B5CF6", "external": true, "detail": { "pt": "Enviar mensagem", "en": "Send a message" } },
+      { "label": "E-mail", "href": "mailto:pedrosousa2160@gmail.com", "icon": "mail", "color": "#2DD4BF", "external": false, "detail": { "pt": "Enviar e-mail", "en": "Send an email" } },
+      { "label": "WhatsApp", "href": "https://wa.me/5524993264040", "icon": "whatsapp", "color": "#2DD4BF", "external": true, "detail": { "pt": "Enviar mensagem", "en": "Send a message" } },
       { "label": "GitHub", "href": "https://github.com/PedroReoli", "icon": "github", "color": "#182033", "external": true, "detail": { "pt": "Código e repositórios", "en": "Code and repositories" } },
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/", "icon": "linkedin", "color": "#8B5CF6", "external": true, "detail": { "pt": "Trajetória profissional", "en": "Professional experience" } }
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/", "icon": "linkedin", "color": "#2DD4BF", "external": true, "detail": { "pt": "Trajetória profissional", "en": "Professional experience" } }
     ],
-    "pt": { "emailDetail": "Enviar e-mail", "whatsappDetail": "Enviar mensagem", "githubDetail": "Código e repositórios", "linkedinDetail": "Trajetória profissional", "eyebrow": "Contato", "description": "Para projetos de software, colaboração técnica e oportunidades de trabalho.", "prompt": "Conte o que você tem em mente.", "ctaFirst": "VAMOS", "ctaSecond": "CONVERSAR.", "linksLabel": "Contato e redes sociais", "externalLabel": " (abre em nova aba)", "backToTop": "Voltar ao topo" },
-    "en": { "emailDetail": "Send an email", "whatsappDetail": "Send a message", "githubDetail": "Code and repositories", "linkedinDetail": "Professional experience", "eyebrow": "Contact", "description": "For software projects, technical collaboration and career opportunities.", "prompt": "Tell me what you have in mind.", "ctaFirst": "LET'S", "ctaSecond": "TALK.", "linksLabel": "Contact and social profiles", "externalLabel": " (opens in a new tab)", "backToTop": "Back to top" }
+    "pt": { "emailDetail": "Enviar e-mail", "whatsappDetail": "Enviar mensagem", "githubDetail": "Código e repositórios", "linkedinDetail": "Trajetória profissional", "eyebrow": "Contato", "description": "Projetos de software, colaboração técnica e oportunidades.", "prompt": "Tem um produto ou desafio técnico?", "ctaFirst": "VAMOS", "ctaSecond": "CONVERSAR.", "linksLabel": "Contato e redes sociais", "externalLabel": " (abre em nova aba)", "backToTop": "Voltar ao topo" },
+    "en": { "emailDetail": "Send an email", "whatsappDetail": "Send a message", "githubDetail": "Code and repositories", "linkedinDetail": "Professional experience", "eyebrow": "Contact", "description": "Software projects, technical collaboration and opportunities.", "prompt": "Building a product or facing a technical challenge?", "ctaFirst": "LET'S", "ctaSecond": "TALK.", "linksLabel": "Contact and social profiles", "externalLabel": " (opens in a new tab)", "backToTop": "Back to top" }
   }
 }

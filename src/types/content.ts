@@ -499,6 +499,7 @@ export interface TechnologyTool {
   icon: string;
   color: string;
   image?: string;
+  source: 'simple-icons' | 'brand-asset' | 'concept';
 }
 
 export interface TechnologyGroup {

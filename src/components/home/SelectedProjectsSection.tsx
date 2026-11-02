@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReveal } from '@/hooks/useReveal'
+import { m } from 'motion/react'
 
 function AchillesArtwork({ project, language }: { project: (typeof homeContent.featuredProjects)[number]; language: 'pt' | 'en' }) {
   if (project.visual !== 'agent') return null
@@ -38,7 +39,7 @@ export function SelectedProjectsSection() {
 
         <div className="project-showcase">
           {homeContent.featuredProjects.map((project, index) => (
-            <article className={`project-card project-card--${index + 1}`} key={project.number} data-reveal>
+            <m.article className={`project-card project-card--${index + 1}`} key={project.number} data-reveal whileHover={{ y: -5 }} transition={{ duration: 0.22 }}>
               <a href={project.href} target={project.external ? '_blank' : undefined} rel={project.external ? 'noreferrer' : undefined}>
                 <div className="project-card__visual">
                   {project.visual === 'image' ? (
@@ -50,13 +51,11 @@ export function SelectedProjectsSection() {
                   <div className="project-card__meta"><span>{project.category[language]}</span><span>{project.year}</span></div>
                   <h3>{project.title}</h3>
                   <p>{project.description[language]}</p>
-                  <ul aria-label={interfaceContent.featuredProject[language].technologiesLabel}>
-                    {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
-                  </ul>
+                  <p className="project-card__technologies" aria-label={interfaceContent.featuredProject[language].technologiesLabel}>{project.technologies.join(' · ')}</p>
                   <span className="project-card__action">{project.action[language]}<ArrowUpRight aria-hidden="true" /></span>
                 </div>
               </a>
-            </article>
+            </m.article>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
-import { lazy, Suspense, useEffect, useRef } from 'react'
+import { lazy, Suspense, useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
@@ -14,14 +15,11 @@ export function HeroSection() {
   const hero = interfaceContent.hero
   const copy = hero[language]
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!sectionRef.current || reducedMotion) return
-    const context = gsap.context(() => {
       gsap.from('[data-hero-line]', { yPercent: 115, duration: 1, stagger: 0.08, ease: 'power4.out' })
       gsap.from('[data-hero-meta]', { opacity: 0, y: 14, duration: 0.7, stagger: 0.06, delay: 0.45 })
-    }, sectionRef)
-    return () => context.revert()
-  }, [reducedMotion])
+  }, { scope: sectionRef, dependencies: [reducedMotion] })
 
   return (
     <section ref={sectionRef} id={hero.id} className="hero">

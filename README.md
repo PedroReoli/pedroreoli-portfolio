@@ -1,6 +1,6 @@
 # Pedro Reoli — Portfolio
 
-Portfolio autoral bilíngue construído com React, TypeScript, Vite e uma cena 3D procedural. A direção visual combina tons neutros com um único destaque violeta (`#8B5CF6`).
+Portfolio autoral bilíngue construído com React, TypeScript, Vite e uma cena 3D procedural. A direção visual combina tons neutros com um único destaque teal elétrico (`#2DD4BF`).
 
 ## Executar localmente
 

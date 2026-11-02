@@ -3,6 +3,7 @@ export const palette = {
   surface: '#111216',
   paper: '#f3efe7',
   neutral: '#77736c',
-  accent: '#8b5cf6',
-  accentEmissive: '#2e1065',
+  accent: '#2dd4bf',
+  accentInk: '#0f766e',
+  accentEmissive: '#064e3b',
 } as const

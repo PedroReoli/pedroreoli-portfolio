@@ -4,48 +4,48 @@
       "number": "01",
       "title": { "pt": "Interfaces", "en": "Interfaces" },
       "tools": [
-        { "name": "React", "icon": "react", "color": "#8B5CF6" },
-        { "name": "TypeScript", "icon": "typescript", "color": "#8B5CF6" },
-        { "name": "Next.js", "icon": "nextjs", "color": "#182033" },
-        { "name": "Angular", "icon": "angular", "color": "#8B5CF6" },
-        { "name": "Tailwind", "icon": "tailwind", "color": "#8B5CF6" },
-        { "name": "Design System", "icon": "component", "color": "#182033" }
+        { "name": "React", "icon": "react", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "TypeScript", "icon": "typescript", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Next.js", "icon": "nextjs", "color": "#182033", "source": "simple-icons" },
+        { "name": "Angular", "icon": "angular", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Tailwind", "icon": "tailwind", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Design System", "icon": "component", "color": "#182033", "source": "concept" }
       ]
     },
     {
       "number": "02",
       "title": { "pt": "Back-end", "en": "Back-end" },
       "tools": [
-        { "name": "Node.js", "icon": "nodejs", "color": "#8B5CF6" },
-        { "name": "NestJS", "icon": "nestjs", "color": "#8B5CF6" },
-        { "name": "Express", "icon": "express", "color": "#111010" },
-        { "name": "Fastify", "icon": "fastify", "color": "#111010" },
-        { "name": "PostgreSQL", "icon": "postgresql", "color": "#8B5CF6" },
-        { "name": "Supabase", "icon": "supabase", "color": "#8B5CF6" }
+        { "name": "Node.js", "icon": "nodejs", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "NestJS", "icon": "nestjs", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Express", "icon": "express", "color": "#111010", "source": "simple-icons" },
+        { "name": "Fastify", "icon": "fastify", "color": "#111010", "source": "simple-icons" },
+        { "name": "PostgreSQL", "icon": "postgresql", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Supabase", "icon": "supabase", "color": "#2DD4BF", "source": "simple-icons" }
       ]
     },
     {
       "number": "03",
       "title": { "pt": "Cloud & apps", "en": "Cloud & apps" },
       "tools": [
-        { "name": "AWS", "icon": "aws", "color": "#8B5CF6" },
-        { "name": "API Gateway", "icon": "api-gateway", "color": "#8B5CF6" },
-        { "name": "Docker", "icon": "docker", "color": "#8B5CF6" },
-        { "name": "Actions", "icon": "github-actions", "color": "#8B5CF6" },
-        { "name": "Tauri", "icon": "tauri", "color": "#8B5CF6" },
-        { "name": ".NET", "icon": "dotnet", "color": "#8B5CF6" }
+        { "name": "AWS", "icon": "aws", "color": "#2DD4BF", "source": "brand-asset" },
+        { "name": "API Gateway", "icon": "api-gateway", "color": "#2DD4BF", "source": "brand-asset" },
+        { "name": "Docker", "icon": "docker", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Actions", "icon": "github-actions", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Tauri", "icon": "tauri", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": ".NET", "icon": "dotnet", "color": "#2DD4BF", "source": "simple-icons" }
       ]
     },
     {
       "number": "04",
       "title": { "pt": "IA & APIs", "en": "AI & APIs" },
       "tools": [
-        { "name": "OpenAI", "icon": "openai", "color": "#8B5CF6" },
-        { "name": "Claude", "icon": "claude", "image": "/brands/claude.svg", "color": "#8B5CF6" },
-        { "name": "Gemini", "icon": "gemini", "color": "#8B5CF6" },
-        { "name": "MCP", "icon": "network", "color": "#8B5CF6" },
-        { "name": "JWT / RBAC", "icon": "jwt", "color": "#8B5CF6" },
-        { "name": "GraphQL", "icon": "graphql", "color": "#8B5CF6" }
+        { "name": "OpenAI", "icon": "openai", "color": "#2DD4BF", "source": "brand-asset" },
+        { "name": "Claude", "icon": "claude", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "Gemini", "icon": "gemini", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "MCP", "icon": "mcp", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "JWT", "icon": "jwt", "color": "#2DD4BF", "source": "simple-icons" },
+        { "name": "GraphQL", "icon": "graphql", "color": "#2DD4BF", "source": "simple-icons" }
       ]
     }
   ]
