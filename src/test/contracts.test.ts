@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import siteContentRaw from '../../content/siteContent.json';
 import interfaceContentRaw from '../../content/interfaceContent.json';
@@ -77,7 +78,7 @@ describe('Content Contract & Asset Integrity Tests', () => {
   });
 
   it('validates all referenced local assets exist in public/', () => {
-    const publicDir = path.resolve(__dirname, '../../public');
+    const publicDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../public');
 
     const checkFile = (relativeUrl: string) => {
       if (!relativeUrl || relativeUrl.startsWith('http') || relativeUrl.startsWith('mailto') || relativeUrl.startsWith('#')) return;

@@ -297,7 +297,7 @@ export const Icon: React.FC<IconProps> = ({
   const Component = iconRegistry[name];
 
   if (!Component) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (import.meta.env.DEV) {
       console.error(`[IconRegistry] Icon ID "${name}" is not registered in iconRegistry.`);
     }
     // Fallback indicator so layout does not break

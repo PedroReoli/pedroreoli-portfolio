@@ -44,8 +44,9 @@
     "location": "Volta Redonda, BR",
     "actionHref": "#projetos-selecionados",
     "actionIcon": "arrow-up-right",
-    "pt": { "eyebrow": "Portfólio", "role": "Engenheiro de Software Full Stack", "action": "Ver projetos", "actionShort": "Projetos" },
-    "en": { "eyebrow": "Portfolio", "role": "Full Stack Software Engineer", "action": "See the work", "actionShort": "Work" }
+    "scene": { "topLabel": "SYS / 00.19", "bottomLabel": "INTERFACE · SYSTEMS · AI" },
+    "pt": { "eyebrow": "Portfólio", "role": "Engenheiro de Software Full Stack", "statement": "Eu transformo sistemas complexos em produtos digitais claros, rápidos e memoráveis.", "availability": "Disponível para projetos selecionados", "scroll": "Desça para explorar", "action": "Ver projetos", "actionShort": "Projetos" },
+    "en": { "eyebrow": "Portfolio", "role": "Full Stack Software Engineer", "statement": "I turn complex systems into clear, fast and memorable digital products.", "availability": "Available for select projects", "scroll": "Scroll to explore", "action": "See the work", "actionShort": "Work" }
   },
   "about": {
     "id": "sobre",

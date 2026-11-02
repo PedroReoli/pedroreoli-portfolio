@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState, useMemo } from 'react';
 import type { Language, LocalizedString } from '@/types/content';
 
 interface LanguageContextType {
@@ -23,18 +23,18 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return 'pt';
   });
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {
       // ignore storage errors
     }
-  };
+  }, []);
 
-  const toggleLanguage = () => {
+  const toggleLanguage = useCallback(() => {
     setLanguage(language === 'pt' ? 'en' : 'pt');
-  };
+  }, [language, setLanguage]);
 
   useEffect(() => {
     document.documentElement.lang = language === 'en' ? 'en' : 'pt-BR';
@@ -55,7 +55,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       toggleLanguage,
       t,
     }),
-    [language, t]
+    [language, setLanguage, toggleLanguage, t]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

@@ -93,8 +93,9 @@ export interface InterfaceContent {
     location: string;
     actionHref: string;
     actionIcon: string;
-    pt: { eyebrow: string; role: string; action: string; actionShort: string };
-    en: { eyebrow: string; role: string; action: string; actionShort: string };
+    scene: { topLabel: string; bottomLabel: string };
+    pt: { eyebrow: string; role: string; statement: string; availability: string; scroll: string; action: string; actionShort: string };
+    en: { eyebrow: string; role: string; statement: string; availability: string; scroll: string; action: string; actionShort: string };
   };
   about: {
     id: string;

@@ -15,8 +15,7 @@ describe('Application Rendering & Integration Tests', () => {
     expect(screen.getByText('Pular para o conteúdo')).toBeInTheDocument();
 
     // Brand in Header
-    expect(screen.getByText('Pedro')).toBeInTheDocument();
-    expect(screen.getByText('Reoli')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Ir para o início' })).toHaveTextContent('Pedro Reoli');
 
     // Hero Section
     expect(screen.getAllByText('Engenheiro de Software Full Stack')[0]).toBeInTheDocument();
@@ -24,7 +23,7 @@ describe('Application Rendering & Integration Tests', () => {
 
     // About Section
     expect(screen.getByText('Quem eu sou')).toBeInTheDocument();
-    expect(screen.getByText('04')).toBeInTheDocument();
+    expect(screen.getAllByText('04')[0]).toBeInTheDocument();
     expect(screen.getByText('anos de experiência')).toBeInTheDocument();
 
     // Selected Projects Section
