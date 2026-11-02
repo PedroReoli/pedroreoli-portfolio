@@ -26,7 +26,7 @@ export function StackSection() {
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
                 {group.tools.map((tool) => (
-                  <li key={tool.name} style={{ '--tool-color': tool.color } as React.CSSProperties}>
+                  <li key={tool.name}>
                     <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={22} /></span>
                     <strong>{tool.name}</strong><i />
                   </li>

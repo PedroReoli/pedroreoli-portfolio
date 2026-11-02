@@ -50,15 +50,15 @@ function OrbitalCore({ reducedMotion }: { reducedMotion: boolean }) {
 
       <mesh rotation={[Math.PI / 2.8, 0.3, 0]}>
         <torusGeometry args={[2.15, 0.035, 12, 160]} />
-        <meshStandardMaterial color="#62d9ff" emissive="#62d9ff" emissiveIntensity={2.5} />
+        <meshStandardMaterial color="#f4f0e7" emissive="#f4f0e7" emissiveIntensity={1.7} />
       </mesh>
       <mesh rotation={[Math.PI / 2.2, -0.42, Math.PI / 2]}>
         <torusGeometry args={[1.78, 0.02, 10, 140]} />
-        <meshStandardMaterial color="#f4f0e7" emissive="#315efb" emissiveIntensity={1.2} />
+        <meshStandardMaterial color="#ff5a36" emissive="#ff5a36" emissiveIntensity={1.4} />
       </mesh>
       <mesh rotation={[0.25, 0.9, 0.5]}>
         <torusGeometry args={[2.62, 0.012, 8, 160]} />
-        <meshBasicMaterial color="#45516d" transparent opacity={0.72} />
+        <meshBasicMaterial color="#77736c" transparent opacity={0.72} />
       </mesh>
 
       {particles.map((particle, index) => (
@@ -85,7 +85,7 @@ export function HeroScene({ topLabel, bottomLabel }: { topLabel: string; bottomL
         <AdaptiveDpr pixelated />
         <ambientLight intensity={0.42} />
         <directionalLight position={[3, 5, 4]} intensity={3.2} color="#f4f0e7" />
-        <pointLight position={[-3, -1, 3]} intensity={28} distance={8} color="#315efb" />
+        <pointLight position={[-3, -1, 3]} intensity={22} distance={8} color="#f4f0e7" />
         <pointLight position={[3, 1, 3]} intensity={20} distance={7} color="#ff5a36" />
         <OrbitalCore reducedMotion={reducedMotion} />
       </Canvas>

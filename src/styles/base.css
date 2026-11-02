@@ -8,9 +8,6 @@
   --line-dark: rgba(244, 240, 231, 0.17);
   --line-light: rgba(24, 32, 51, 0.18);
   --orange: #ff5a36;
-  --blue: #315efb;
-  --cyan: #62d9ff;
-  --mint: #b9e8d0;
   --font-sans: Arial, Helvetica, sans-serif;
   --font-display: 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
@@ -27,7 +24,7 @@ svg { flex: 0 0 auto; }
 p, h1, h2, h3, h4, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
 ::selection { background: var(--orange); color: white; }
 .shell { width: min(100% - 48px, 1480px); margin-inline: auto; }
 .section-light { background: var(--paper); color: var(--ink); }

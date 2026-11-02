@@ -153,4 +153,18 @@ describe('Content Contract & Asset Integrity Tests', () => {
       expect(exp.highlights.en.length).toBeGreaterThan(0);
     });
   });
+
+  it('limits authored interface colors to neutrals and one orange accent', () => {
+    const permittedColors = new Set(['#FF5A36', '#182033', '#111010']);
+
+    technologyContentRaw.groups.forEach((group) => {
+      group.tools.forEach((tool) => {
+        expect(permittedColors.has(tool.color), `${tool.name} must use the approved palette`).toBe(true);
+      });
+    });
+
+    interfaceContentRaw.footer.contacts.forEach((contact) => {
+      expect(permittedColors.has(contact.color), `${contact.label} must use the approved palette`).toBe(true);
+    });
+  });
 });

@@ -18,7 +18,7 @@
 .menu-trigger { display: none; }
 .menu-trigger svg { width: 20px; }
 .mobile-menu { display: none; }
-.contact-section { position: relative; overflow: hidden; padding: 50px 0 30px; background: var(--blue); color: white; }
+.contact-section { position: relative; overflow: hidden; padding: 50px 0 30px; background: var(--night); color: white; border-top: 1px solid var(--line-dark); }
 .contact-section::before { content: ''; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px); background-size: 80px 80px; }
 .contact-section .shell { position: relative; }
 .contact-section__main { padding: clamp(70px, 12vw, 170px) 0 90px; }
@@ -30,7 +30,7 @@
 .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.28); border-bottom: 1px solid rgba(255,255,255,.28); }
 .contact-grid a { position: relative; display: grid; min-height: 170px; align-content: space-between; padding: 25px; border-right: 1px solid rgba(255,255,255,.28); transition: background .25s ease; }
 .contact-grid a:last-child { border-right: 0; }
-.contact-grid a:hover { background: var(--contact-color); color: white; }
+.contact-grid a:hover { background: var(--orange); color: white; }
 .contact-grid span { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
 .contact-grid strong { font-family: var(--font-display); font-size: 1.7rem; text-transform: uppercase; }
 .contact-grid svg { position: absolute; right: 22px; bottom: 22px; width: 20px; }

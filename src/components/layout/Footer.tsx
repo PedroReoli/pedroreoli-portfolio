@@ -33,7 +33,6 @@ export function Footer() {
               href={contact.href}
               target={contact.external ? '_blank' : undefined}
               rel={contact.external ? 'noreferrer' : undefined}
-              style={{ '--contact-color': contact.color } as React.CSSProperties}
             >
               <span>{contact.detail[language]}</span>
               <strong>{contact.label}</strong>

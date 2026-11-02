@@ -4,48 +4,48 @@
       "number": "01",
       "title": { "pt": "Interfaces", "en": "Interfaces" },
       "tools": [
-        { "name": "React", "icon": "react", "color": "#087ea4" },
-        { "name": "TypeScript", "icon": "typescript", "color": "#3178c6" },
-        { "name": "Next.js", "icon": "nextjs", "color": "#111010" },
-        { "name": "Angular", "icon": "angular", "color": "#dd0031" },
-        { "name": "Tailwind", "icon": "tailwind", "color": "#06b6d4" },
-        { "name": "Design System", "icon": "component", "color": "#514c47" }
+        { "name": "React", "icon": "react", "color": "#FF5A36" },
+        { "name": "TypeScript", "icon": "typescript", "color": "#FF5A36" },
+        { "name": "Next.js", "icon": "nextjs", "color": "#182033" },
+        { "name": "Angular", "icon": "angular", "color": "#FF5A36" },
+        { "name": "Tailwind", "icon": "tailwind", "color": "#FF5A36" },
+        { "name": "Design System", "icon": "component", "color": "#182033" }
       ]
     },
     {
       "number": "02",
       "title": { "pt": "Back-end", "en": "Back-end" },
       "tools": [
-        { "name": "Node.js", "icon": "nodejs", "color": "#339933" },
-        { "name": "NestJS", "icon": "nestjs", "color": "#e0234e" },
+        { "name": "Node.js", "icon": "nodejs", "color": "#FF5A36" },
+        { "name": "NestJS", "icon": "nestjs", "color": "#FF5A36" },
         { "name": "Express", "icon": "express", "color": "#111010" },
         { "name": "Fastify", "icon": "fastify", "color": "#111010" },
-        { "name": "PostgreSQL", "icon": "postgresql", "color": "#4169e1" },
-        { "name": "Supabase", "icon": "supabase", "color": "#3ecf8e" }
+        { "name": "PostgreSQL", "icon": "postgresql", "color": "#FF5A36" },
+        { "name": "Supabase", "icon": "supabase", "color": "#FF5A36" }
       ]
     },
     {
       "number": "03",
       "title": { "pt": "Cloud & apps", "en": "Cloud & apps" },
       "tools": [
-        { "name": "AWS", "icon": "aws", "color": "#d97706" },
-        { "name": "API Gateway", "icon": "api-gateway", "color": "#ff4f8b" },
-        { "name": "Docker", "icon": "docker", "color": "#2496ed" },
-        { "name": "Actions", "icon": "github-actions", "color": "#2088ff" },
-        { "name": "Tauri", "icon": "tauri", "color": "#168a96" },
-        { "name": ".NET", "icon": "dotnet", "color": "#512bd4" }
+        { "name": "AWS", "icon": "aws", "color": "#FF5A36" },
+        { "name": "API Gateway", "icon": "api-gateway", "color": "#FF5A36" },
+        { "name": "Docker", "icon": "docker", "color": "#FF5A36" },
+        { "name": "Actions", "icon": "github-actions", "color": "#FF5A36" },
+        { "name": "Tauri", "icon": "tauri", "color": "#FF5A36" },
+        { "name": ".NET", "icon": "dotnet", "color": "#FF5A36" }
       ]
     },
     {
       "number": "04",
       "title": { "pt": "IA & APIs", "en": "AI & APIs" },
       "tools": [
-        { "name": "OpenAI", "icon": "openai", "color": "#087f5b" },
-        { "name": "Claude", "icon": "claude", "image": "/brands/claude.svg", "color": "#b45309" },
-        { "name": "Gemini", "icon": "gemini", "color": "#1a73e8" },
-        { "name": "MCP", "icon": "network", "color": "#705cf6" },
-        { "name": "JWT / RBAC", "icon": "jwt", "color": "#6b21a8" },
-        { "name": "GraphQL", "icon": "graphql", "color": "#e10098" }
+        { "name": "OpenAI", "icon": "openai", "color": "#FF5A36" },
+        { "name": "Claude", "icon": "claude", "image": "/brands/claude.svg", "color": "#FF5A36" },
+        { "name": "Gemini", "icon": "gemini", "color": "#FF5A36" },
+        { "name": "MCP", "icon": "network", "color": "#FF5A36" },
+        { "name": "JWT / RBAC", "icon": "jwt", "color": "#FF5A36" },
+        { "name": "GraphQL", "icon": "graphql", "color": "#FF5A36" }
       ]
     }
   ]
