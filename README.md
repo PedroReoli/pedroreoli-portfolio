@@ -1,12 +1,29 @@
-# Pedro Reoli — conteúdo e assets para reconstrução
+# Pedro Reoli — Portfolio
 
-Este repositório está intencionalmente sem implementação frontend.
+Portfolio autoral bilíngue construído com React, TypeScript, Vite e uma cena 3D procedural. A direção visual combina tons neutros com um único destaque laranja (`#FF5A36`).
 
-## Entradas disponíveis
+## Executar localmente
 
-- `PROMPT-REDESIGN.md`: briefing completo para a nova implementação.
-- `content/`: conteúdo estruturado em JSON.
-- `public/`: imagens e assets preservados.
-- `AGENTS.md` e diretórios de governança: regras do projeto.
+```bash
+npm install
+npm run dev
+```
 
-Não use o histórico Git ou artefatos antigos como referência visual. A nova interface deve ser criada do zero.
+## Verificações
+
+```bash
+npm run lint
+npm test
+npm run build
+npm audit --audit-level=high
+```
+
+## Arquitetura
+
+- `content/`: fonte de verdade em JSON para textos, links, imagens, ícones, projetos, stack e metadados.
+- `src/components/`: componentes editoriais, layout e uma única cena WebGL carregada sob demanda.
+- `src/styles/`: tokens, layout, páginas e responsividade.
+- `public/`: assets locais referenciados pelos arquivos JSON.
+- `src/test/`: contratos de conteúdo, integridade de assets e testes de renderização.
+
+O frontend respeita preferência por movimento reduzido, navegação por teclado, idiomas PT/EN e rotas dedicadas para projetos e notas.
