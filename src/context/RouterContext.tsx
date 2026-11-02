@@ -91,6 +91,17 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  useEffect(() => {
+    if (!window.location.hash) return;
+
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'instant' });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname]);
+
   const value = useMemo(
     () => ({
       pathname,

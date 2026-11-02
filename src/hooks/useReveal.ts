@@ -13,16 +13,16 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
     () => {
       const elements = gsap.utils.toArray<HTMLElement>('[data-reveal]')
       if (reducedMotion) {
-        gsap.set(elements, { autoAlpha: 1, y: 0 })
+        gsap.set(elements, { opacity: 1, y: 0 })
         return
       }
 
       elements.forEach((element) => {
         gsap.fromTo(
           element,
-          { autoAlpha: 0, y: 42 },
+          { opacity: 0, y: 42 },
           {
-            autoAlpha: 1,
+            opacity: 1,
             y: 0,
             duration: 0.8,
             ease: 'power3.out',
