@@ -68,8 +68,8 @@ export function PurposeSection() {
               alt={copy.imageAlt}
               loading="lazy"
             />
-            {/* The headline lives on top of the photo and rises out of it. */}
-            <figcaption className="purpose-section__overlay">
+            {/* The headline lives as a small speech bubble over the photo. */}
+            <figcaption className="purpose-section__overlay purpose-section__bubble">
               <h2>
                 {copy.title}
                 <em>{copy.titleAccent}</em>

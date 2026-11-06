@@ -424,15 +424,57 @@
    mas continua nítida (9,1:1 medido no branco do slide). */
 .purpose-section__media.is-revealed img { filter: saturate(.85) contrast(1) brightness(.76); }
 
-/* "VOZ / para todos." rises into the photo, the photo recedes behind it. */
-.purpose-section__overlay { position: absolute; inset: auto 0 0; z-index: 2; padding: clamp(14px, 2.2vh, 26px) clamp(16px, 2vw, 26px); }
-.purpose-section__overlay h2 { margin: 0; color: #f5f3ef; font-family: var(--font-display); font-size: clamp(2.6rem, 3.9vw, 4.2rem); line-height: .86; letter-spacing: -.06em; text-transform: uppercase; text-shadow: 0 6px 28px rgba(0, 0, 0, .75); }
-.purpose-section__overlay h2 em { display: block; color: var(--accent); font-family: var(--font-serif); font-style: italic; font-weight: 400; text-transform: none; }
-.purpose-section__overlay h2,
-.purpose-section__overlay h2 em { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
-.purpose-section__overlay h2 em { transition-delay: .12s; }
-.purpose-section__media.is-revealed .purpose-section__overlay h2,
-.purpose-section__media.is-revealed .purpose-section__overlay h2 em { opacity: 1; transform: none; }
+/* "VOZ / para todos." is a small speech bubble beside the subject's mouth. */
+.purpose-section__bubble {
+  position: absolute;
+  inset: auto 10% 14% auto;
+  max-width: 60%;
+  z-index: 2;
+  padding: clamp(8px, 1.2vh, 14px) clamp(12px, 1.6vw, 20px);
+  border-radius: 18px 18px 18px 4px;
+  background: rgba(5, 6, 9, .82);
+  border: 1px solid rgba(255, 201, 0, .35);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .6);
+  backdrop-filter: blur(6px);
+}
+.purpose-section__bubble::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  bottom: -9px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(5, 6, 9, .82);
+}
+.purpose-section__bubble h2 {
+  margin: 0;
+  color: #f5f3ef;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.4vw, 1.5rem);
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+.purpose-section__bubble h2 em {
+  display: inline;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+}
+.purpose-section__bubble h2,
+.purpose-section__bubble h2 em {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.purpose-section__bubble h2 em { transition-delay: .12s; }
+.purpose-section__media.is-revealed .purpose-section__bubble h2,
+.purpose-section__media.is-revealed .purpose-section__bubble h2 em { opacity: 1; transform: none; }
 
 .purpose-section__copy { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(12px, 1.8vh, 20px); max-width: 560px; padding: clamp(16px, 2vw, 26px); border-radius: var(--radius-md); background: radial-gradient(120% 100% at 0% 50%, rgba(8, 9, 11, .82) 0%, rgba(8, 9, 11, .55) 62%, transparent 100%); }
 .purpose-section__copy p { margin: 0; font-size: clamp(.98rem, 1.1vw, 1.06rem); line-height: 1.55; }
@@ -610,10 +652,7 @@
   border: 1px solid rgba(255, 201, 0, 0.25) !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.65) !important;
 }
-/* Headline contrast is owned by the media gradient, not by a global dim on the photo. */
-.purpose-section__overlay h2 {
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55) !important;
-}
+/* Headline (speech bubble) keeps its own contrast; no forced text-shadow. */
 .purpose-section__credit {
   color: rgba(245, 243, 239, 0.65) !important;
 }
