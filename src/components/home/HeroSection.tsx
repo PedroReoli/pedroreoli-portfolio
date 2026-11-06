@@ -125,10 +125,11 @@ export function HeroSection() {
             <span className="hero__dot">.</span>
           </h1>
 
-          {/* Subtitle: A creative space for designers, artists... */}
-          <p className="hero__editorial-sub" data-hero-meta>
-            {copy.statement}
-          </p>
+          {copy.statement && (
+            <p className="hero__editorial-sub" data-hero-meta>
+              {copy.statement}
+            </p>
+          )}
         </div>
 
         {/* BOTTOM ACTION BUTTONS: Exactly 2 buttons (Ver projetos + Currículo) */}
