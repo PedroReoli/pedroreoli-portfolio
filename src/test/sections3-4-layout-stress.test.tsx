@@ -150,8 +150,10 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
       expect(railCss).toMatch(/\.project-rail\s*\{[^}]*max-height:\s*none/)
       expect(homeCss).not.toMatch(/\.project-showcase\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/)
 
-      // 2. Rows alternate sides and keep an editorial min height
-      expect(railCss).toMatch(/\.project-rail__item\s*\{[^}]*min-height:\s*clamp\(420px,\s*62svh,\s*640px\)/)
+      // 2. Rows alternate sides; the card is an object with capped width, not a
+      //    full-bleed panel (Pedro: "o projeto tá muito grande", "mais delicado").
+      expect(railCss).toMatch(/\.project-rail__item\s*\{[^}]*min-height:\s*auto/)
+      expect(railCss).toMatch(/\.project-rail__card\s*\{[^}]*width:\s*min\(100%,\s*940px\)/)
       expect(railCss).toMatch(/\.project-rail__item--align-right/)
       expect(railCss).toMatch(/\.project-rail__item--align-left/)
 
