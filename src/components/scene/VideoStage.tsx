@@ -34,6 +34,11 @@ export function VideoStage() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const activeClipRef = useRef<SceneClip | null>(null)
   const resetPhotoRef = useRef(false)
+  // The clip must play to holdAt before another one replaces it, otherwise the
+  // gesture is cut in the first second and the page looks like a still image swap.
+  const playingClipRef = useRef<string | null>(null)
+  const pendingClipRef = useRef<string | null>(null)
+  const finishedRef = useRef(false)
 
   // 1. Detection of Mobile <= 768px
   useEffect(() => {
@@ -112,7 +117,13 @@ export function VideoStage() {
         : undefined
 
       if (clip && progress > 0.55 && goingDown) {
-        setActiveClipId((prev) => (prev === clip.id ? prev : clip.id))
+        const running = playingClipRef.current
+        if (!running || finishedRef.current) {
+          setActiveClipId((prev) => (prev === clip.id ? prev : clip.id))
+        } else if (running !== clip.id) {
+          // Another transition is already running: let it finish first.
+          pendingClipRef.current = clip.id
+        }
       } else if (!goingDown) {
         // Scrolling back up always shows the section freeze frame instead of
         // rewinding the clip (and never leaves the photo overlay on screen).
@@ -156,6 +167,9 @@ export function VideoStage() {
     resetPhotoRef.current = true
 
     if (isStaticOnly || !activeClip) {
+      playingClipRef.current = null
+      finishedRef.current = false
+      pendingClipRef.current = null
       if (videoRef.current) {
         videoRef.current.pause()
       }
@@ -165,7 +179,10 @@ export function VideoStage() {
     const video = videoRef.current
     if (!video) return
 
-    // <source> children changed: the browser only re-reads them after load()
+    playingClipRef.current = activeClip.id
+    finishedRef.current = false
+    pendingClipRef.current = null
+
     video.load()
     video.currentTime = 0
     const playPromise = video.play()
@@ -192,6 +209,12 @@ export function VideoStage() {
     // Check holdAt freeze
     if (typeof clip.holdAt === 'number' && current >= clip.holdAt) {
       video.pause()
+      finishedRef.current = true
+      const queued = pendingClipRef.current
+      if (queued) {
+        pendingClipRef.current = null
+        setActiveClipId(queued)
+      }
     }
 
     // Check markers (e.g. pedro-photo for Section 2 crossfade)
@@ -247,19 +270,18 @@ export function VideoStage() {
       />
 
       {/* 2. Video Player Layer (Only rendered if video playback is allowed and functional) */}
-      {!isPosterOnly && activeClip && (
+      {!isStaticOnly && (
         <video
           ref={videoRef}
           className="video-stage__video"
+          data-active={activeClip && !clipFailed ? 'true' : 'false'}
+          src={activeClip?.src ?? undefined}
           muted
           playsInline
           preload="auto"
           onTimeUpdate={handleTimeUpdate}
           onError={handleVideoError}
-        >
-          {activeClip.webm && <source src={activeClip.webm} type="video/webm" />}
-          <source src={activeClip.src} type="video/mp4" />
-        </video>
+        />
       )}
 
       {/* 3. Pedro Professional Crossfade Overlay (Activated by clip markers in Section 2) */}

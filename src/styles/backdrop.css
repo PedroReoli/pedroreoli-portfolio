@@ -139,3 +139,6 @@
 /* Real-photo beat of section 2: driven by the clip markers, never inline styles. */
 .video-stage__pedro-overlay { opacity: 0; }
 .video-stage__pedro-overlay[data-visible='true'] { opacity: 1; }
+
+/* The <video> stays mounted (no decoder churn); it is just hidden without a clip. */
+.video-stage__video[data-active='false'] { opacity: 0; }
