@@ -399,72 +399,7 @@
   font-style: italic;
   font-weight: 400;
 }
-.hero__dock {
-  position: fixed;
-  right: clamp(14px, 2.2vw, 32px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  pointer-events: auto;
-}
-.hero__dock-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #f5f3ef;
-}
-.hero__dock-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  background: #08090b;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
-}
-.hero__dock-avatar-inner {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-}
-.hero__dock-avatar-initials {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #ffc900;
-}
-.hero__dock-count {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: rgba(245, 243, 239, 0.9);
-}
-.hero__dock-btn {
-  background: transparent;
-  border: none;
-  color: rgba(245, 243, 239, 0.85);
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.hero__dock-btn:hover {
-  color: #ffc900;
-  transform: scale(1.18);
-}
-.hero__dock-icon-active {
-  color: #ffc900;
-}
+/* hero dock removed */
 
 /* Unified Dark Theme for About Section */
 .about.section-light {
