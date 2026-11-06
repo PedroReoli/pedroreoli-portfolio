@@ -1,0 +1,142 @@
+/* ==========================================================================
+   S3 — TRÊS CARDS DE PROJETO (sem imagem, sem fonte gigante)
+   ========================================================================== */
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  list-style: none;
+  padding: 0;
+  margin: clamp(16px, 3vh, 34px) 0 0;
+  flex: 1;
+  min-height: 0;
+  align-content: start;
+}
+
+.project-card {
+  display: flex;
+  min-width: 0;
+}
+
+.project-card > a {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vh, 14px);
+  width: 100%;
+  padding: clamp(16px, 1.6vw, 22px);
+  border: 1px solid rgba(245, 243, 239, 0.14);
+  border-radius: var(--radius-md);
+  background: #131419;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 20px 48px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.project-card > a:hover {
+  border-color: rgba(255, 201, 0, 0.42);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 26px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.project-card__top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-card__index {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.project-card__meta {
+  color: rgba(245, 243, 239, 0.74);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-card__year {
+  margin-left: auto;
+  color: rgba(245, 243, 239, 0.74);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Título do tamanho de título de card, não de pôster. */
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.5vw, 1.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin: 0;
+}
+
+.project-card__desc {
+  font-size: clamp(0.82rem, 0.92vw, 0.92rem);
+  line-height: 1.55;
+  color: rgba(245, 243, 239, 0.76);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-card__tech li {
+  padding: 3px 7px;
+  border: 1px solid rgba(255, 201, 0, 0.28);
+  border-radius: var(--radius-xs);
+  color: var(--accent);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+  color: var(--accent);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-card__action svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 1024px) {
+  .project-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .project-cards {
+    grid-template-columns: 1fr;
+  }
+}

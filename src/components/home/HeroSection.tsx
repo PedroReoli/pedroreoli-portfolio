@@ -1,21 +1,13 @@
 import { useRef, useCallback, useState, useEffect } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
 import { ArrowUpRight, ArrowDownRight, FileDown } from 'lucide-react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 export function HeroSection() {
   const { language } = useLanguage()
-  const reducedMotion = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
-  const bgRef = useRef<HTMLDivElement>(null)
   const hero = interfaceContent.hero
   const copy = hero[language]
-  // Decide o lado dos CTAs: fora do busto quando a tela dá largura, abaixo do
-  // título quando não dá. Sem estado de React: quem decide é o CSS.
-  const heroSideRef = useRef<HTMLElement>(null)
 
   const [downloading, setDownloading] = useState(false)
   const downloadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -25,50 +17,6 @@ export function HeroSection() {
       if (downloadTimeoutRef.current) clearTimeout(downloadTimeoutRef.current)
     }
   }, [])
-
-  // Interactive subtle 3D parallax on Pedro's marble bust
-  const handlePointerMove = useCallback(
-    (e: React.PointerEvent<HTMLElement>) => {
-      if (reducedMotion || !bgRef.current) return
-      const { innerWidth, innerHeight } = window
-      const x = (e.clientX / innerWidth - 0.5) * 16
-      const y = (e.clientY / innerHeight - 0.5) * 16
-      bgRef.current.style.transform = `scale(1.02) translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`
-    },
-    [reducedMotion],
-  )
-
-  const handlePointerLeave = useCallback(() => {
-    if (!bgRef.current) return
-    bgRef.current.style.transform = 'scale(1) translate3d(0, 0, 0)'
-  }, [])
-
-  useGSAP(
-    () => {
-      if (!sectionRef.current || reducedMotion) return
-      gsap.from('[data-hero-meta]', {
-        opacity: 0,
-        y: -14,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: 'power2.out',
-      })
-      gsap.from('[data-hero-bg]', {
-        scale: 1.08,
-        opacity: 0,
-        duration: 1.4,
-        ease: 'power3.out',
-      })
-      gsap.from('[data-hero-actions]', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        delay: 0.35,
-        ease: 'power2.out',
-      })
-    },
-    { scope: sectionRef, dependencies: [reducedMotion] },
-  )
 
   const handleDownloadResume = useCallback(() => {
     setDownloading(true)
@@ -90,28 +38,10 @@ export function HeroSection() {
 
   return (
     <section
-      ref={(node) => {
-        sectionRef.current = node
-        heroSideRef.current = node
-      }}
+      ref={sectionRef}
       id={hero.id}
       className="hero hero--fullscreen"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
     >
-      {/* PEDRO LUCAS REIS MARBLE BUST BACKGROUND IN LOWER HALF */}
-      <div className="hero__background-wrap" aria-hidden="true">
-        <div ref={bgRef} className="hero__background-inner" data-hero-bg>
-          <img
-            src="/images/pedro-bust-cyber.jpg"
-            alt=""
-            className="hero__background-img"
-            loading="eager"
-          />
-        </div>
-        <div className="hero__vignette-overlay" />
-      </div>
-
       <div className="shell hero__shell">
         {/* TOP EDITORIAL CONTENT: Eyebrow + Headline + Subtitle (Above statue) */}
         <div className="hero__header-content">

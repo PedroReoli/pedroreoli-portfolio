@@ -34,9 +34,12 @@ function AppRoute() {
           {pages[pathname] ?? <NotFoundPage />}
         </m.main>
       </AnimatePresence>
-      <div className="app-footer">
-        <Footer />
-      </div>
+      {/* Na home o rodapé é o último quadro da fita; nas outras páginas ele fecha normalmente. */}
+      {pathname !== '/' && (
+        <div className="app-footer">
+          <Footer />
+        </div>
+      )}
     </div>
   )
 }

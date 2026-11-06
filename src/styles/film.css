@@ -1,0 +1,155 @@
+/* ==========================================================================
+   FILM TRACK — uma rolagem = um frame (scrub de verdade, sem paralaxe)
+   ==========================================================================
+   Duas camadas independentes:
+   1. .film-track  — a fita. Um slide por seção, cada um com uma tela de rolagem.
+      O quadro fica preso (sticky) enquanto aquele trecho passa e mostra o frame
+      exato pedido pelo scroll.
+   2. .film-content — os textos. Cada painel fica preso na mesma tela, no seu
+      trecho, e entra sozinho — não é uma pilha rolando sobre a fita.
+   Nada de camada `position: fixed` de fundo: era ela que fazia parecer que as
+   seções estavam embaixo da hero.
+   ========================================================================== */
+
+/* A home inteira tem uma tela por seção (o rodapé incluído). É essa altura que dá
+   percurso para o track ficar preso — sem ela, tudo gruda em zero e o vídeo sai da
+   tela conforme a página rola. */
+.home {
+  position: relative;
+  height: calc(100svh * var(--film-count, 7));
+}
+
+.film-track {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  z-index: 0;
+}
+
+/* O track inteiro já está preso na viewport: o slide empilha todos os quadros no
+   mesmo lugar e a troca é por opacidade. Se o slide ganhar altura própria, o quadro
+   sai da tela — foi o que apagou o vídeo das seções 2 a 6. */
+.film-slide {
+  position: absolute;
+  inset: 0;
+  height: 100svh;
+  pointer-events: none;
+}
+
+.film-slide__sticky {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--color-bg, #050609);
+}
+
+.film-slide__poster,
+.film-slide__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* O clipe é 16:9 e o busto está enquadrado nele: no desktop cabe inteiro, sem
+     recorte de rosto. Em tela estreita o cover preenche e corta as laterais. */
+  object-fit: contain;
+  object-position: center bottom;
+  /* Nenhum translate/scale aqui: era isso que virava o "feed de paralaxe". */
+  transform: none;
+}
+
+.film-slide__video {
+  opacity: 0;
+  transition: opacity 0.18s linear;
+}
+
+.film-slide__video[data-active='true'] {
+  opacity: 1;
+}
+
+/* O pôster fica acima do vídeo só até existir frame real; depois sai de cena.
+   (Z-index negativo dentro do slide fazia o pôster pintar POR CIMA do vídeo.) */
+.film-slide__poster {
+  z-index: 1;
+  transition: opacity 0.18s linear;
+}
+
+.film-slide[data-frame-ready='true'] .film-slide__poster {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   TEXTO — um painel por trecho da fita, preso na mesma tela
+   -------------------------------------------------------------------------- */
+
+/* A camada de texto tem a mesma altura da fita (uma tela por seção) e só o
+   painel do trecho atual fica visível — senão o rodapé entrava por cima do quadro. */
+.film-content {
+  position: absolute;
+  inset: 0;
+  height: calc(100svh * var(--film-count, 7));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.film-panel {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s linear;
+}
+
+.film-panel[data-visible='true'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.film-panel > section {
+  position: relative;
+  height: 100svh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--header-height, 72px);
+  padding-bottom: clamp(16px, 2vh, 28px);
+  box-sizing: border-box;
+}
+
+/* O hero mantém a composição própria, com o busto inteiro na tela. */
+.film-panel > #hero {
+  justify-content: flex-start;
+  padding-top: calc(var(--header-height, 68px) + 8px);
+}
+
+/* Projetos: conteúdo centrado, sem meia tela vazia embaixo dos cards. */
+.film-panel > #projetos-selecionados > .shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(10px, 1.8vh, 20px);
+}
+
+.film-panel > #projetos-selecionados .project-cards {
+  flex: 0 1 auto;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .film-slide__poster,
+  .film-slide__video {
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+/* O rodapé é o último quadro: não tem altura própria de seção nem borda de tela. */
+.film-panel .contact-section--embedded {
+  height: 100svh;
+  min-height: 100svh;
+  border-top: 0;
+}

@@ -19,7 +19,7 @@ function computeClamp(minPx: number, preferredVal: number, maxPx: number): numbe
 
 describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
   const homeCss = fs.readFileSync(path.join(projectRoot, 'src/styles/home.css'), 'utf-8')
-  const railCss = fs.readFileSync(path.join(projectRoot, 'src/styles/projects-rail.css'), 'utf-8')
+  const cardsCss = fs.readFileSync(path.join(projectRoot, 'src/styles/projects-cards.css'), 'utf-8')
   const responsiveCss = fs.readFileSync(path.join(projectRoot, 'src/styles/responsive.css'), 'utf-8')
 
   describe('Suite 1: Projects Section Compactness & Image Integrity', () => {
@@ -44,140 +44,39 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
       expect(heading?.textContent).toMatch(/projetos\./i)
     })
 
-    it('renders Card 1 (Autocom3) with pristine image attributes, eager loading, async decoding, and valid disk assets', () => {
+    it('renderiza um card por projeto, sem imagem e sem artefato de mídia', () => {
       const { container } = render(
         <LanguageProvider>
           <SelectedProjectsSection />
         </LanguageProvider>
       )
 
-      const card1 = container.querySelector('.project-card--1')
-      expect(card1).not.toBeNull()
+      const cards = container.querySelectorAll('.project-cards > .project-card')
+      expect(cards.length).toBe(homeContent.featuredProjects.length)
+      // Pedro: "tirar a imagem dessa seção e deixar os cards dos três projetos"
+      expect(container.querySelector('.project-card__visual')).toBeNull()
+      expect(container.querySelector('.project-cards img')).toBeNull()
+      expect(container.querySelector('.agent-art')).toBeNull()
 
-      const project1 = homeContent.featuredProjects[0]
-      const title = card1?.querySelector('h3')
-      expect(title).toHaveTextContent(project1.title)
-
-      const indexBadge = card1?.querySelector('.project-card__index')
-      expect(indexBadge).toHaveTextContent(project1.number)
-
-      const visual = card1?.querySelector('.project-card__visual')
-      expect(visual).not.toBeNull()
-
-      const img = visual?.querySelector('img')
-      expect(img).not.toBeNull()
-      expect(img).toHaveAttribute('loading', 'eager')
-      expect(img).toHaveAttribute('decoding', 'async')
-
-      const alt = img?.getAttribute('alt')
-      expect(alt).toBeTruthy()
-      expect(alt).toBe('Interface do painel de operações da Autocom3')
-
-      // Validate source path and physical asset existence on disk
-      const src = img?.getAttribute('src')
-      expect(src).toBe('/portfolio-autocom3/01-painel-operacoes-visao-geral.png')
-      const physicalSrcPath = path.join(projectRoot, 'public', src!)
-      expect(fs.existsSync(physicalSrcPath)).toBe(true)
-
-      // Validate srcSet variants and physical existence of each WebP asset
-      const srcSet = img?.getAttribute('srcSet')
-      expect(srcSet).toBeTruthy()
-      const srcSetEntries = srcSet!.split(',').map((entry) => entry.trim().split(' ')[0])
-      expect(srcSetEntries.length).toBeGreaterThanOrEqual(3)
-      srcSetEntries.forEach((assetPath) => {
-        const physicalAssetPath = path.join(projectRoot, 'public', assetPath)
-        expect(fs.existsSync(physicalAssetPath)).toBe(true)
+      homeContent.featuredProjects.forEach((project, index) => {
+        const card = cards[index]
+        expect(card.querySelector('h3')).toHaveTextContent(project.title)
+        expect(card.querySelector('.project-card__index')).toHaveTextContent(project.number)
+        expect(card.querySelector('.project-card__meta')).toHaveTextContent(project.category.pt)
+        expect(card.querySelectorAll('.project-card__tech li').length).toBe(project.technologies.length)
+        expect(card.querySelector('.project-card__action')).toHaveTextContent(project.action.pt)
+        expect(card.querySelector('a')).toHaveAttribute('href', project.href)
       })
-
-      // Action link
-      const action = card1?.querySelector('.project-card__action')
-      expect(action).toHaveTextContent('Explorar interfaces')
     })
 
-    it('renders Card 2 (Achilles) with interactive artwork, scaled radar circles, core badge, and step badges', () => {
-      const { container } = render(
-        <LanguageProvider>
-          <SelectedProjectsSection />
-        </LanguageProvider>
-      )
-
-      const card2 = container.querySelector('.project-card--2')
-      expect(card2).not.toBeNull()
-
-      const project2 = homeContent.featuredProjects[1]
-      const title = card2?.querySelector('h3')
-      expect(title).toHaveTextContent(project2.title)
-
-      const visual = card2?.querySelector('.project-card__visual')
-      expect(visual).not.toBeNull()
-
-      const artwork = visual?.querySelector('.agent-art')
-      expect(artwork).not.toBeNull()
-      expect(artwork).toHaveAttribute('role', 'img')
-      expect(artwork?.getAttribute('aria-label')).toBe('Diagrama do agente de navegador Achilles')
-
-      // Radar circles
-      const radar = artwork?.querySelector('.agent-art__radar')
-      expect(radar).not.toBeNull()
-      const radarSpans = radar?.querySelectorAll('span')
-      expect(radarSpans?.length).toBe(3)
-
-      // Core badge
-      const core = artwork?.querySelector('.agent-art__core')
-      expect(core).toHaveTextContent('A')
-
-      // Step badges (01, 02, 03)
-      const steps = artwork?.querySelector('.agent-art__steps')
-      expect(steps).not.toBeNull()
-      const stepBadges = steps?.querySelectorAll('span')
-      expect(stepBadges?.length).toBe(3)
-      expect(stepBadges?.[0]).toHaveTextContent('01')
-      expect(stepBadges?.[1]).toHaveTextContent('02')
-      expect(stepBadges?.[2]).toHaveTextContent('03')
-
-      // Action link to external GitHub
-      const action = card2?.querySelector('.project-card__action')
-      expect(action).toHaveTextContent('Ver no GitHub')
-      const anchor = card2?.querySelector('a')
-      expect(anchor).toHaveAttribute('href', project2.href)
-      expect(anchor).toHaveAttribute('target', '_blank')
+    it('mantém a tipografia dos cards em escala de card, não de pôster', () => {
+      // Pedro: "fontes tão muito grandes, a imagem não dá pra ver direito"
+      expect(cardsCss).toMatch(/\.project-card h3\s*\{[^}]*font-size:\s*clamp\(1\.35rem,/)
+      expect(cardsCss).toMatch(/\.project-cards\s*\{[^}]*grid-template-columns:\s*repeat\(3,/)
+      expect(cardsCss).not.toMatch(/font-size:\s*clamp\(2\.2rem/)
     })
 
-    it('verifies the alternating project rail replaced the 2-column grid, keeping 16:10 media and editorial scale', () => {
-      // 1. Rail is a vertical flex column, not a 2-column grid (Pedro: "ao invés de grid")
-      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*display:\s*flex/)
-      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*flex-direction:\s*column/)
-      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*max-height:\s*none/)
-      expect(homeCss).not.toMatch(/\.project-showcase\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/)
-
-      // 2. Rows alternate sides; the card is an object with capped width, not a
-      //    full-bleed panel (Pedro: "o projeto tá muito grande", "mais delicado").
-      expect(railCss).toMatch(/\.project-rail__item\s*\{[^}]*min-height:\s*auto/)
-      expect(railCss).toMatch(/\.project-rail__card\s*\{[^}]*width:\s*min\(100%,\s*940px\)/)
-      expect(railCss).toMatch(/\.project-rail__item--align-right/)
-      expect(railCss).toMatch(/\.project-rail__item--align-left/)
-
-      // 2. Visual container has strict 16:10 aspect ratio and max-height clamp not exceeding 230px
-      expect(homeCss).toMatch(/\.project-card__visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*10/)
-      expect(homeCss).toMatch(/\.project-card__visual\s*\{[^}]*max-height:\s*230px/)
-      expect(homeCss).toMatch(/\.project-card--2\s+\.project-card__visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*10/)
-      expect(homeCss).toMatch(/\.project-card--2\s+\.project-card__visual\s*\{[^}]*max-height:\s*230px/)
-
-      // 3. Image presentation: object-fit cover and object-position top center to preserve dashboard headers
-      expect(homeCss).toMatch(/\.project-card__visual\s+img\s*\{[^}]*object-fit:\s*cover/)
-      expect(homeCss).toMatch(/\.project-card__visual\s+img\s*\{[^}]*object-position:\s*top\s+center/)
-
-      // 4. Compact typography scales
-      expect(homeCss).toMatch(/\.work-section__heading\s+h2\s*\{[^}]*font-size:\s*clamp\(2\.4rem,\s*4\.5vw,\s*4\.2rem\)/)
-      expect(homeCss).toMatch(/\.project-card\s+h3\s*\{[^}]*font-size:\s*clamp\(1\.5rem,\s*2\.2vw,\s*2\.4rem\)/)
-
-      // 5. Scaled Achilles radar and core artwork
-      expect(homeCss).toMatch(/\.agent-art__radar\s*\{[^}]*width:\s*160px;\s*height:\s*160px;/)
-      expect(homeCss).toMatch(/\.agent-art__core\s*\{[^}]*width:\s*58px;\s*height:\s*58px;/)
-      expect(homeCss).toMatch(/\.agent-art__steps\s+span\s*\{[^}]*width:\s*24px;\s*height:\s*24px;/)
-    })
-
-    it('renders English localization correctly with updated action links and alt texts', () => {
+    it('localiza os cards em inglês', () => {
       localStorage.setItem('pedroreoli_language', 'en')
       const { container } = render(
         <LanguageProvider>
@@ -185,13 +84,10 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
         </LanguageProvider>
       )
 
-      const card1 = container.querySelector('.project-card--1')
-      expect(card1?.querySelector('img')).toHaveAttribute('alt', 'Autocom3 operations dashboard interface')
-      expect(card1?.querySelector('.project-card__action')).toHaveTextContent('Explore the interfaces')
-
-      const card2 = container.querySelector('.project-card--2')
-      expect(card2?.querySelector('.agent-art')).toHaveAttribute('aria-label', 'Achilles browser agent system diagram')
-      expect(card2?.querySelector('.project-card__action')).toHaveTextContent('View on GitHub')
+      const first = container.querySelector('.project-cards > .project-card')
+      expect(first?.querySelector('.project-card__action')).toHaveTextContent(
+        homeContent.featuredProjects[0].action.en
+      )
 
       localStorage.removeItem('pedroreoli_language')
     })

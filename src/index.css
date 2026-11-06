@@ -1,7 +1,8 @@
 @import './styles/base.css';
 @import './styles/layout.css';
 @import './styles/backdrop.css';
+@import './styles/film.css';
 @import './styles/home.css';
-@import './styles/projects-rail.css';
+@import './styles/projects-cards.css';
 @import './styles/pages.css';
 @import './styles/responsive.css';

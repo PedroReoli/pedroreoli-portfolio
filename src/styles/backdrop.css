@@ -1,147 +1,62 @@
-﻿/* ==========================================================================
-   VIDEO STAGE BACKDROP & SCENE OVERLAYS (S1-S6 Global Video Wallpaper)
+/* ==========================================================================
+   LEGIBILIDADE SOBRE O FRAME
+   O vídeo é o fundo de todas as seções (film track). Aqui só o piso de contraste
+   local: nada de camada fixa, nada de opacity global no palco.
    ========================================================================== */
 
-.video-stage {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  background: #050609;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
-
-/* No global stage attenuation: the take is the background of the whole page. */
-
-/* 1. Base Poster Layer & Video Player Layer */
-.video-stage__poster,
-.video-stage__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-  transform: translateY(14%) scale(1.08);
-  filter: contrast(1.05) brightness(0.98);
-  transition: opacity 0.5s ease-out;
-}
-
-@media (min-width: 1200px) {
-  .video-stage__poster,
-  .video-stage__video {
-    transform: translateY(10%) scale(1.06);
-  }
-}
-
-@media (max-width: 768px) {
-  .video-stage__poster,
-  .video-stage__video {
-    transform: translateY(18%) scale(1.22);
-  }
-}
-
-/* 2. Pedro Real Photo Crossfade Overlay (Section 2 - About) */
-.video-stage__pedro-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-  z-index: 2;
-}
-
-.video-stage__pedro-img {
-  max-width: clamp(280px, 38vw, 480px);
-  max-height: clamp(340px, 48vh, 560px);
-  object-fit: cover;
-  border-radius: var(--radius-lg, 24px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 201, 0, 0.35);
-}
-
-/* 3. Global Readability Scrims & Tint Overlay */
-.video-stage__scrim {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  background:
-    radial-gradient(circle at 50% 50%, transparent 40%, rgba(8, 9, 11, 0.55) 75%, #08090b 100%),
-    linear-gradient(to bottom, rgba(8, 9, 11, 0.4) 0%, transparent 20%, transparent 80%, #08090b 100%);
-}
-
-/* Section-specific scrim adjustments via data-section attribute */
-.video-stage[data-section="hero"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 50% 50%, transparent 45%, rgba(8, 9, 11, 0.45) 80%, #08090b 100%),
-    linear-gradient(to bottom, rgba(8, 9, 11, 0.35) 0%, transparent 35%, transparent 75%, #08090b 100%);
-}
-
-.video-stage[data-section="sobre"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 75% 50%, transparent 35%, rgba(8, 9, 11, 0.6) 75%, #08090b 100%),
-    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.5) 20%, rgba(8, 9, 11, 0.5) 80%, #08090b 100%);
-}
-
-.video-stage[data-section="projetos-selecionados"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, #08090b 100%),
-    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.6) 15%, rgba(8, 9, 11, 0.6) 85%, #08090b 100%);
-}
-
-.video-stage[data-section="stack"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, #08090b 100%),
-    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.65) 15%, rgba(8, 9, 11, 0.65) 85%, #08090b 100%);
-}
-
-.video-stage[data-section="proposito"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, #08090b 100%),
-    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.5) 20%, rgba(8, 9, 11, 0.5) 80%, #08090b 100%);
-}
-
-.video-stage[data-section="experiencia"] .video-stage__scrim {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, #08090b 100%),
-    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.7) 15%, rgba(8, 9, 11, 0.7) 85%, #08090b 100%);
-}
-
-/* Page content sits above VideoStage. The stage itself belongs to <body>, outside
-   this context, so it paints below every section (footer included). */
-.home {
+.film-panel > section > .shell {
   position: relative;
-  z-index: 1;
 }
 
-/* Footer is a sibling of <main> in App, so it needs its own layer above the stage. */
-.app-footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* The take is the background of every section: nothing paints its own panel.
-   Legibility comes from local scrims, never from a section-wide fill. */
-.home:has(.video-stage) .section-panel {
-  background-color: transparent !important;
-}
-.home:has(.video-stage) .hero__background-wrap {
-  opacity: 0;
+/* Piso atrás do texto: gradiente local, nunca um painel de seção. Fica em z-index
+   negativo dentro do próprio shell, então escurece o vídeo e não o conteúdo. */
+.film-panel > section > .shell::before {
+  content: '';
+  position: absolute;
+  inset: -10px -26px;
+  z-index: -1;
   pointer-events: none;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    to right,
+    rgba(5, 6, 9, 0.92) 0%,
+    rgba(5, 6, 9, 0.8) 45%,
+    rgba(5, 6, 9, 0.35) 78%,
+    rgba(5, 6, 9, 0) 100%
+  );
 }
 
-/* Real-photo beat of section 2: driven by the clip markers, never inline styles. */
-.video-stage__pedro-overlay { opacity: 0; }
-.video-stage__pedro-overlay[data-visible='true'] { opacity: 1; }
+/* No hero o busto é o protagonista: nenhum piso por cima do círculo. */
+.film-panel > #hero > .shell::before {
+  display: none;
+}
 
-/* The <video> stays mounted (no decoder churn); it is just hidden without a clip. */
-.video-stage__video[data-active='false'] { opacity: 0; }
+/* Seções de conteúdo centralizado: piso uniforme, um pouco mais leve. */
+.film-panel > #projetos-selecionados > .shell::before,
+.film-panel > #stack > .shell::before,
+.film-panel > #experiencia > .shell::before,
+.film-panel > #proposito > .shell::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 6, 9, 0.86) 0%,
+    rgba(5, 6, 9, 0.74) 55%,
+    rgba(5, 6, 9, 0.66) 100%
+  );
+  inset: -10px -24px;
+}
 
-/* Once a real frame is on screen the still poster steps back, never battles it. */
-.video-stage__poster[data-dimmed='true'] { opacity: 0; }
+/* Sobre: o texto fica em cima do braço do busto, então o piso vai mais fundo à
+   direita, onde está a coluna narrativa. */
+.film-panel > #sobre > .shell::before {
+  background: linear-gradient(
+    to right,
+    rgba(5, 6, 9, 0.4) 0%,
+    rgba(5, 6, 9, 0.82) 38%,
+    rgba(5, 6, 9, 0.9) 100%
+  );
+}
+
+/* Rodapé: piso próprio, sem depender da cor de fundo da seção. */
+.film-panel .contact-section--embedded > .shell::before {
+  display: none;
+}

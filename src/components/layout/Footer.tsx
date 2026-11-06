@@ -2,13 +2,13 @@ import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { interfaceContent, siteContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 
-export function Footer() {
+export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
   const { language } = useLanguage()
   const footer = interfaceContent.footer
   const copy = footer[language]
 
   return (
-    <footer id={footer.id} className="contact-section">
+    <footer id={footer.id} className={embedded ? 'contact-section contact-section--embedded' : 'contact-section'}>
       <div className="shell">
         <div className="section-kicker section-kicker--dark">
           <span>{footer.sectionNumber}</span>

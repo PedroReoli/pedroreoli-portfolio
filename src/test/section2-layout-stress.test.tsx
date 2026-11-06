@@ -1,5 +1,5 @@
 ﻿import { describe, it, expect } from 'vitest'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -87,7 +87,7 @@ describe('Challenger 2 â€” Section 2 Layout, Visual & Responsive Stress Tes
       expect(homeCss).toMatch(/\.art-frame__plaque::after[^}]*border-radius:\s*50%/)
     })
 
-    it('renders all art frame DOM elements and verifies pointer tilt event interaction', () => {
+    it('renderiza só a plaquinha do retrato: o rosto real vem do vídeo de fundo', () => {
       render(
         <LanguageProvider>
           <AboutSection />
@@ -96,45 +96,19 @@ describe('Challenger 2 â€” Section 2 Layout, Visual & Responsive Stress Tes
 
       const frame = document.querySelector('.art-frame') as HTMLDivElement
       expect(frame).not.toBeNull()
+      expect(frame).toHaveClass('art-frame--plaque-only', 'art-frame')
       expect(document.querySelector('.art-frame__fillet')).not.toBeNull()
-      expect(document.querySelector('.art-frame__mat')).not.toBeNull()
-      const canvas = document.querySelector('.art-frame__canvas')
-      expect(canvas).not.toBeNull()
-      expect(canvas?.querySelector('img')).not.toBeNull()
-      expect(document.querySelector('.art-frame__glare')).not.toBeNull()
 
-      // Plaque content
+      // Pedro: "na segunda seção tem a minha imagem no fundo, ela se repete duas vezes"
+      expect(document.querySelector('.art-frame__mat')).toBeNull()
+      expect(document.querySelector('.art-frame__canvas')).toBeNull()
+      expect(document.querySelector('.art-frame img')).toBeNull()
+
+      // Plaque content (a identificação editorial da obra continua)
       const plaque = document.querySelector('.art-frame__plaque')
       expect(plaque).not.toBeNull()
       expect(plaque).toHaveTextContent('Pedro Lucas Reis')
       expect(plaque).toHaveTextContent('CAT. 02')
-
-      // Mock getBoundingClientRect on frame
-      frame.getBoundingClientRect = () => ({
-        left: 100,
-        top: 100,
-        width: 400,
-        height: 500,
-        right: 500,
-        bottom: 600,
-        x: 100,
-        y: 100,
-        toJSON: () => {},
-      })
-
-      // Simulate mouse pointer moving across the frame
-      fireEvent.pointerMove(frame, { clientX: 350, clientY: 250 })
-      expect(frame.style.getPropertyValue('--tilt-x')).toBeTruthy()
-      expect(frame.style.getPropertyValue('--tilt-y')).toBeTruthy()
-      expect(frame.style.getPropertyValue('--glare-x')).toBeTruthy()
-      expect(frame.style.getPropertyValue('--glare-y')).toBeTruthy()
-
-      // Simulate pointer leave: smoothly resets to default neutral orientation
-      fireEvent.pointerLeave(frame)
-      expect(frame.style.getPropertyValue('--tilt-x')).toBe('0')
-      expect(frame.style.getPropertyValue('--tilt-y')).toBe('0')
-      expect(frame.style.getPropertyValue('--glare-x')).toBe('35%')
-      expect(frame.style.getPropertyValue('--glare-y')).toBe('35%')
     })
   })
 
