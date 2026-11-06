@@ -135,3 +135,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
+/* Real-photo beat of section 2: driven by the clip markers, never inline styles. */
+.video-stage__pedro-overlay { opacity: 0; }
+.video-stage__pedro-overlay[data-visible='true'] { opacity: 1; }

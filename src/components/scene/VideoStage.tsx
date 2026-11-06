@@ -63,8 +63,12 @@ export function VideoStage() {
     }
   }, [])
 
-  // 3. Static Only check: reduced motion, save data, mobile <= 768px, or video error
-  const isStaticOnly = reducedMotion || saveData || isMobile
+  // 3. Static Only check: data saver or narrow screens only.
+  // The backdrop video is the product itself, not decoration, so it keeps running when
+  // the OS asks for reduced motion. Windows with "animation effects" off makes every
+  // Chromium report prefers-reduced-motion: reduce, and gating the video on that left
+  // the site swapping still frames instead of playing the statue animation.
+  const isStaticOnly = saveData || isMobile
 
   // 4. Section + clip tracking driven by scroll position.
   // The outgoing clip runs during the last stretch of the current section and
@@ -227,6 +231,7 @@ export function VideoStage() {
       aria-hidden="true"
       data-section={currentSection}
       data-clip={activeClipId ?? 'none'}
+      data-reduced-motion={reducedMotion ? 'true' : 'false'}
       data-failed={failedClips.join(',') || 'none'}
       data-mode={isPosterOnly ? 'poster' : 'video'}
     >
@@ -260,9 +265,7 @@ export function VideoStage() {
       {/* 3. Pedro Professional Crossfade Overlay (Activated by clip markers in Section 2) */}
       <div
         className="video-stage__pedro-overlay"
-        style={{
-          opacity: showPedroPhoto ? 1 : 0,
-        }}
+        data-visible={showPedroPhoto && activeClip && !isPosterOnly ? 'true' : 'false'}
       >
         <img
           src="/eu-profissional.png"
