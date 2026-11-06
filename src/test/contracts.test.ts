@@ -192,7 +192,10 @@ describe('Content Contract & Asset Integrity Tests', () => {
     expect(styles).not.toMatch(/rgba?\(49\s*,\s*94\s*,\s*251/i);
     expect(styles).not.toMatch(/rgba?\(98\s*,\s*217\s*,\s*255/i);
     expect(styles).toMatch(/--color-accent:\s*(#ffc900|#fbbf24)/);
-    expect(styles).toMatch(/--color-accent-ink:\s*(#08090b|#b45309)/);
+    // --color-accent-ink é tinta (texto amarelo legível sobre papel): #7a5c00.
+    // --color-on-accent é o preenchimento escuro usado SOBRE o amarelo.
+    expect(styles).toMatch(/--color-accent-ink:\s*#7a5c00/);
+    expect(styles).toMatch(/--color-on-accent:\s*#08090b/);
     expect(styles).toMatch(/--color-accent-emissive:\s*(#ffc900|#78350f)/);
     expect(styles).not.toMatch(/#2dd4bf|rgba?\(45\s*,\s*212\s*,\s*191/i);
     expect(styles).not.toMatch(/#8b5cf6|#6d28d9|rgba?\(139\s*,\s*92\s*,\s*246/i);
