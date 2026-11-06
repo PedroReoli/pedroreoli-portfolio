@@ -7,7 +7,11 @@
   --color-muted: #7e7b74;
   --color-accent: #ffc900;
   --color-accent-secondary: #ffc900;
-  --color-accent-ink: #08090b;
+/* --color-accent-ink é tinta, não preenchimento: serve para usar o amarelo
+   como TEXTO sobre papel claro (#7a5c00 ≈ 4,9:1). O preenchimento amarelo com
+   texto escuro usa --color-on-accent. */
+  --color-accent-ink: #7a5c00;
+  --color-on-accent: #08090b;
   --color-accent-emissive: #ffc900;
   --accent-glow: rgba(255, 201, 0, 0.28);
   --header-height: 76px;
@@ -53,7 +57,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 ::selection { background: var(--accent); color: var(--night); }
 .shell { width: min(100% - 48px, 1480px); margin-inline: auto; }
-.section-light { --accent: var(--color-accent-ink); background: var(--paper); color: var(--ink); }
+/* Seções novas são todas transparentes sobre o vídeo, então nenhuma pode
+   reapontar --accent para tinta escura: o amarelo é texto sobre fundo escuro. */
+.section-light { background: var(--paper); color: var(--ink); }
 .section-dark { background: var(--night); color: var(--paper); }
 h1, h2, h3, .brand__name, .contact-grid strong, .mobile-menu a { font-stretch: 78%; }
 .overline { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
