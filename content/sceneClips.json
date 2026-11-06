@@ -18,7 +18,7 @@
       "from": "sobre",
       "to": "projetos-selecionados",
       "src": "/media/backdrop/02-about-to-projects.mp4",
-      "holdAt": 7.78,
+      "holdAt": 7.77,
       "duration": 7.85,
       "poster": "/media/backdrop/03-projects-poster.png",
       "markers": [
@@ -37,8 +37,8 @@
       "from": "projetos-selecionados",
       "to": "stack",
       "src": "/media/backdrop/03-projects-to-stack.mp4",
-      "holdAt": 7.75,
-      "duration": 8,
+      "holdAt": 7.77,
+      "duration": 7.85,
       "poster": "/media/backdrop/03-projects-poster.png"
     },
     {
@@ -46,8 +46,8 @@
       "from": "stack",
       "to": "proposito",
       "src": "/media/backdrop/04-stack-to-purpose.mp4",
-      "holdAt": 7.75,
-      "duration": 8,
+      "holdAt": 7.77,
+      "duration": 7.85,
       "poster": "/media/backdrop/03-projects-poster.png"
     },
     {
@@ -55,8 +55,8 @@
       "from": "proposito",
       "to": "experiencia",
       "src": "/media/backdrop/05-purpose-to-experience.mp4",
-      "holdAt": 7.75,
-      "duration": 8,
+      "holdAt": 7.77,
+      "duration": 7.85,
       "poster": "/media/backdrop/03-projects-poster.png"
     },
     {
@@ -64,8 +64,8 @@
       "from": "experiencia",
       "to": "experiencia",
       "src": "/media/backdrop/06-experience-loop.mp4",
-      "holdAt": 4,
-      "duration": 5,
+      "holdAt": 7.77,
+      "duration": 7.85,
       "poster": "/media/backdrop/03-projects-poster.png"
     }
   ]
