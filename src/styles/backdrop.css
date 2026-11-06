@@ -139,3 +139,6 @@
 
 /* The <video> stays mounted (no decoder churn); it is just hidden without a clip. */
 .video-stage__video[data-active='false'] { opacity: 0; }
+
+/* Once a real frame is on screen the still poster steps back, never battles it. */
+.video-stage__poster[data-dimmed='true'] { opacity: 0; }

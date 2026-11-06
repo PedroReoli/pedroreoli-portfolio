@@ -107,20 +107,23 @@ export function VideoStage() {
   const posterSrc = posterFallbackActive ? DEFAULT_FALLBACK_POSTER : basePoster
 
   // Load the clip the scroll asks for, then keep it paused: scroll is the clock.
+  // "clip failed" is not "clip hidden": the failed clip stays mounted so its current
+  // frame remains on screen instead of leaving a black hole where the backdrop was.
+  const clipMounted = Boolean(activeClip) && !clipFailed && !isStaticOnly
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !clipVisible || !activeClip) return
+    if (!video || !clipMounted || !activeClip) return
     if (video.getAttribute('src') !== activeClip.src) video.src = activeClip.src
     video.pause()
     loadedRef.current = video
     video.currentTime = targetTimeRef.current
     // activeClip is the only re-load trigger; the time itself lives in the rAF loop.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeClip?.src, clipVisible])
+  }, [activeClip?.src, clipMounted])
 
   // Ease the visible frame toward the scroll target in both directions.
   useEffect(() => {
-    if (!clipVisible) return
+    if (!clipMounted) return
     let raf = 0
     const tick = () => {
       const video = loadedRef.current
@@ -134,7 +137,7 @@ export function VideoStage() {
     }
     raf = window.requestAnimationFrame(tick)
     return () => window.cancelAnimationFrame(raf)
-  }, [clipVisible])
+  }, [clipMounted])
 
   const handleVideoError = useCallback(() => {
     const failedId = activeClipId
@@ -165,6 +168,7 @@ export function VideoStage() {
         alt=""
         loading="eager"
         decoding="async"
+        data-dimmed={clipMounted ? 'true' : 'false'}
       />
 
       {!isStaticOnly && (
@@ -172,7 +176,7 @@ export function VideoStage() {
           ref={videoRef}
           className="video-stage__video"
           data-active={clipVisible ? 'true' : 'false'}
-          src={clipVisible ? activeClip?.src : undefined}
+          src={clipMounted ? activeClip?.src : undefined}
           muted
           playsInline
           preload="auto"
