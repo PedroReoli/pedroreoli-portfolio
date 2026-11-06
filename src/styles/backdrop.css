@@ -11,6 +11,18 @@
   pointer-events: none;
   overflow: hidden;
   background: #08090b;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* The statue is the protagonist in the hero; in the content sections it recedes
+   so the type stays readable and the page still "breathes" the video. */
+.video-stage[data-section="sobre"],
+.video-stage[data-section="projetos-selecionados"],
+.video-stage[data-section="stack"],
+.video-stage[data-section="proposito"],
+.video-stage[data-section="experiencia"] {
+  opacity: 0.45;
 }
 
 /* 1. Base Poster Layer & Video Player Layer */

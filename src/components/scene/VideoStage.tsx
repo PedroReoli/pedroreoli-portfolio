@@ -25,7 +25,7 @@ export function VideoStage() {
     const conn = (navigator as unknown as { connection?: { saveData?: boolean } }).connection
     return Boolean(conn?.saveData)
   })
-  const [videoError, setVideoError] = useState<boolean>(false)
+  const [failedClips, setFailedClips] = useState<string[]>([])
   const [currentSection, setCurrentSection] = useState<string>('hero')
   const [activeClipId, setActiveClipId] = useState<string | null>(null)
   const [posterFallbackActive, setPosterFallbackActive] = useState<boolean>(false)
@@ -64,73 +64,84 @@ export function VideoStage() {
   }, [])
 
   // 3. Static Only check: reduced motion, save data, mobile <= 768px, or video error
-  const isStaticOnly = reducedMotion || saveData || isMobile || videoError
+  const isStaticOnly = reducedMotion || saveData || isMobile
 
-  // 4. Section tracking via IntersectionObserver
+  // 4. Section + clip tracking driven by scroll position.
+  // The outgoing clip runs during the last stretch of the current section and
+  // freezes on the poster frame once the next section fills the screen.
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const visibleRatios = new Map<string, number>()
+    let frame = 0
+    let lastScrollY = window.scrollY
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          visibleRatios.set(entry.target.id, entry.intersectionRatio)
-        })
+    const update = () => {
+      frame = 0
+      const vh = window.innerHeight
+      const y = window.scrollY
+      const mid = y + vh / 2
+      const goingDown = y >= lastScrollY
+      lastScrollY = y
 
-        let bestId = 'hero'
-        let maxRatio = 0
-        SECTION_IDS.forEach((id) => {
-          const ratio = visibleRatios.get(id) || 0
-          if (ratio > maxRatio) {
-            maxRatio = ratio
-            bestId = id
-          }
-        })
-
-        if (maxRatio > 0.15) {
-          setCurrentSection(bestId)
+      let index = 0
+      let sectionTop = 0
+      let sectionHeight = vh
+      SECTION_IDS.forEach((id, i) => {
+        const el = document.getElementById(id)
+        if (!el) return
+        const top = el.offsetTop
+        const height = el.offsetHeight
+        if (mid >= top && mid < top + height) {
+          index = i
+          sectionTop = top
+          sectionHeight = height
         }
+      })
 
-        // Transition trigger: run the clip N -> N+1 as soon as the next section
-        // starts entering the viewport, so the animation happens while scrolling
-        // from one section to the next (and freezes when the section fills the screen).
-        const bestIndex = SECTION_IDS.indexOf(bestId as (typeof SECTION_IDS)[number])
-        const nextId = SECTION_IDS[bestIndex + 1]
-        const prevId = SECTION_IDS[bestIndex - 1]
-        const nextRatio = nextId ? visibleRatios.get(nextId) ?? 0 : 0
-        const prevRatio = prevId ? visibleRatios.get(prevId) ?? 0 : 0
+      const currentId = SECTION_IDS[index]
+      const nextId = SECTION_IDS[index + 1]
+      setCurrentSection(currentId)
 
-        if (nextId && nextRatio > 0.04 && maxRatio < 0.92) {
-          const clip = sceneClips.clips.find((c) => c.from === bestId && c.to === nextId)
-          if (clip) setActiveClipId(clip.id)
-        } else if (prevId && prevRatio > 0.04 && maxRatio < 0.92) {
-          // Scrolling back up: hold the poster instead of rewinding the clip.
-          setActiveClipId(null)
-        }
-      },
-      {
-        root: null,
-        threshold: [0.04, 0.15, 0.35, 0.5, 0.75, 0.92],
-      },
-    )
+      const progress = sectionHeight > 0 ? (mid - sectionTop) / sectionHeight : 1
+      const clip = nextId
+        ? sceneClips.clips.find((c) => c.from === currentId && c.to === nextId)
+        : undefined
 
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
+      if (clip && progress > 0.55 && goingDown) {
+        setActiveClipId((prev) => (prev === clip.id ? prev : clip.id))
+      } else if (!goingDown && progress < 0.45) {
+        // Scrolling back up: the freeze frame replaces the clip instead of rewinding it.
+        setActiveClipId((prev) => (prev === null ? prev : null))
+      }
+    }
 
-    return () => observer.disconnect()
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   // 5. Derived clip and poster from the transition in progress
   const activeClip: SceneClip | null =
     sceneClips.clips.find((c) => c.id === activeClipId) || null
 
+  // A missing clip only disables that clip; the others keep working.
+  const clipFailed = activeClip ? failedClips.includes(activeClip.id) : false
+  const isPosterOnly = isStaticOnly || clipFailed
+
+  const arrivingClip = sceneClips.clips.find((c) => c.to === currentSection)
   const basePoster =
     currentSection === 'hero'
       ? sceneClips.heroPoster || DEFAULT_FALLBACK_POSTER
-      : activeClip?.poster || DEFAULT_FALLBACK_POSTER
+      : arrivingClip?.poster || DEFAULT_FALLBACK_POSTER
 
   const posterSrc = posterFallbackActive ? DEFAULT_FALLBACK_POSTER : basePoster
 
@@ -154,9 +165,9 @@ export function VideoStage() {
     video.currentTime = 0
     const playPromise = video.play()
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        setVideoError(true)
-      })
+      // A blocked autoplay is transient, not a broken asset: keep the video mounted
+      // (poster stays behind it) and try again on the next clip change.
+      playPromise.catch(() => {})
     }
   }, [activeClip, isStaticOnly])
 
@@ -195,8 +206,11 @@ export function VideoStage() {
   }, [])
 
   const handleVideoError = useCallback(() => {
-    // Video failed (file missing or decoding error) -> fallback to poster immediately
-    setVideoError(true)
+    // This clip's file is missing or undecodable -> poster for this clip only.
+    const failedId = activeClipRef.current?.id
+    if (failedId) {
+      setFailedClips((prev) => (prev.includes(failedId) ? prev : [...prev, failedId]))
+    }
   }, [])
 
   const handlePosterError = useCallback(() => {
@@ -212,7 +226,8 @@ export function VideoStage() {
       aria-hidden="true"
       data-section={currentSection}
       data-clip={activeClipId ?? 'none'}
-      data-mode={isStaticOnly ? 'poster' : 'video'}
+      data-failed={failedClips.join(',') || 'none'}
+      data-mode={isPosterOnly ? 'poster' : 'video'}
     >
       {/* 1. Base Poster Layer (Always available as background/fallback) */}
       <img
@@ -226,7 +241,7 @@ export function VideoStage() {
       />
 
       {/* 2. Video Player Layer (Only rendered if video playback is allowed and functional) */}
-      {!isStaticOnly && activeClip && (
+      {!isPosterOnly && activeClip && (
         <video
           ref={videoRef}
           className="video-stage__video"

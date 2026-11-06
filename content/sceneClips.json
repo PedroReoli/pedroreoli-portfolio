@@ -1,7 +1,7 @@
-﻿{
+{
   "version": 1,
   "basePath": "/media/backdrop",
-  "heroPoster": "/media/backdrop/01-hero-poster.webp",
+  "heroPoster": "/media/backdrop/01-hero-poster.png",
   "fallbackPoster": "/images/pedro-bust-cyber.jpg",
   "clips": [
     {
@@ -9,27 +9,21 @@
       "from": "hero",
       "to": "sobre",
       "src": "/media/backdrop/01-hero-to-about.mp4",
-      "webm": "/media/backdrop/01-hero-to-about.webm",
-      "holdAt": 6.2,
-      "duration": 8.0,
-      "poster": "/media/backdrop/02-about-poster.webp",
-      "markers": [
-        { "name": "pedro-photo", "at": 3.4 },
-        { "name": "statue-back", "at": 5.1 }
-      ]
+      "holdAt": 7.75,
+      "duration": 7.85,
+      "poster": "/media/backdrop/02-about-poster.png"
     },
     {
       "id": "about-to-projects",
       "from": "sobre",
       "to": "projetos-selecionados",
       "src": "/media/backdrop/02-about-to-projects.mp4",
-      "webm": "/media/backdrop/02-about-to-projects.webm",
-      "holdAt": 8.0,
-      "duration": 9.0,
-      "poster": "/media/backdrop/03-projects-poster.webp",
+      "holdAt": 7.75,
+      "duration": 8.0,
+      "poster": "/media/backdrop/02-about-poster.png",
       "markers": [
-        { "name": "pedro-photo", "at": 3.0 },
-        { "name": "statue-back", "at": 5.5 }
+        { "name": "pedro-photo", "at": 1.2 },
+        { "name": "statue-back", "at": 5.2 }
       ]
     },
     {
@@ -37,40 +31,36 @@
       "from": "projetos-selecionados",
       "to": "stack",
       "src": "/media/backdrop/03-projects-to-stack.mp4",
-      "webm": "/media/backdrop/03-projects-to-stack.webm",
-      "holdAt": 8.0,
-      "duration": 9.0,
-      "poster": "/media/backdrop/04-stack-poster.webp"
+      "holdAt": 7.75,
+      "duration": 8.0,
+      "poster": "/media/backdrop/02-about-poster.png"
     },
     {
       "id": "stack-to-purpose",
       "from": "stack",
       "to": "proposito",
       "src": "/media/backdrop/04-stack-to-purpose.mp4",
-      "webm": "/media/backdrop/04-stack-to-purpose.webm",
-      "holdAt": 6.5,
-      "duration": 7.5,
-      "poster": "/media/backdrop/05-purpose-poster.webp"
+      "holdAt": 7.75,
+      "duration": 8.0,
+      "poster": "/media/backdrop/02-about-poster.png"
     },
     {
       "id": "purpose-to-experience",
       "from": "proposito",
       "to": "experiencia",
       "src": "/media/backdrop/05-purpose-to-experience.mp4",
-      "webm": "/media/backdrop/05-purpose-to-experience.webm",
-      "holdAt": 6.5,
-      "duration": 7.5,
-      "poster": "/media/backdrop/06-experience-poster.webp"
+      "holdAt": 7.75,
+      "duration": 8.0,
+      "poster": "/media/backdrop/02-about-poster.png"
     },
     {
       "id": "experience-loop",
       "from": "experiencia",
       "to": "experiencia",
       "src": "/media/backdrop/06-experience-loop.mp4",
-      "webm": "/media/backdrop/06-experience-loop.webm",
-      "holdAt": 4.5,
+      "holdAt": 4.0,
       "duration": 5.0,
-      "poster": "/media/backdrop/06-experience-poster.webp"
+      "poster": "/media/backdrop/02-about-poster.png"
     }
   ]
 }
