@@ -14,19 +14,33 @@ import type { SceneClip } from '@/types/content'
  */
 export const STEP_PX = 120
 
-/** 24fps source: one frame of the clip is 1/24s of its hold. */
-const FPS = 24
-
 export function effectiveHold(clip: SceneClip): number {
   return Math.min(clip.holdAt, clip.duration)
 }
 
 export interface Gate {
   clip: SceneClip
-  /** Frame count for this gate, at least 1. */
+  /** Frame count for this gate (one scroll step per frame). */
   steps: number
   /** Scroll distance covered by the gate. */
   span: number
+  /** Scroll distance that moves exactly one frame. */
+  frameStep?: number
+  /** Seconds of clip per scroll step (the clip is sampled, not played). */
+  timePerStep?: number
+}
+
+/**
+ * Quantos frames o clipe pode mostrar no percurso que ele tem.
+ *
+ * A técnica de scroll-scrubbing (Apple, GSAP `scrub`) não tenta exibir os 188 frames
+ * de um clipe de 7,85s dentro de 900px de rolagem — isso daria 20 frames por tico de
+ * roda, que é o "escorrega" que o Pedro viu. O clipe é AMOSTRADO: o scroll escolhe um
+ * frame a cada STEP_PX, e esse frame vale `hold / steps` segundos. Assim um tico de
+ * roda move um frame só, e voltar devolve o mesmo frame.
+ */
+export function stepsForSpan(span: number): number {
+  return Math.max(2, Math.round(span / STEP_PX))
 }
 
 export interface FrameState {
@@ -71,11 +85,11 @@ export function buildGates(anchors: SceneAnchor[]): Gate[] {
     const next = anchors[index + 1]
     const span = Math.max(STEP_PX, (next ? next.y : anchor.y + window.innerHeight) - anchor.y)
     const hold = effectiveHold(anchor.clip)
-    // A gate never shows more frames than it has scroll room for, and never fewer
-    // than the clip's own frame count so the whole clip is reachable.
-    const clipFrames = Math.max(1, Math.round(hold * FPS))
-    const steps = Math.max(1, Math.min(clipFrames, Math.round(span / STEP_PX)))
-    return { clip: anchor.clip, steps, span }
+    // Passo de scroll -> passo de frame. O clipe é amostrado: `steps` é quantos frames
+    // cabem no percurso, não quantos o arquivo tem. Um tico de roda (~STEP_PX) muda um
+    // frame; é exatamente o "cada scrollagem move um frame" pedido.
+    const steps = stepsForSpan(span)
+    return { clip: anchor.clip, steps, span, frameStep: span / steps, timePerStep: hold / steps }
   })
 }
 

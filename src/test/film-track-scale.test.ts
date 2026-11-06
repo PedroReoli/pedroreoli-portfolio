@@ -81,7 +81,9 @@ describe('Film track — escala de viewport real', () => {
     const built = buildGates(
       sceneClips.clips.map((clip, index) => ({ clip, y: index * window.innerHeight })),
     )
-    // 800px de trilho com passo de 120px = ~7 frames por clipe.
+    // O clipe é AMOSTRADO no percurso: um passo de scroll (~STEP_PX) = um frame. Foi
+    // isso que o Pedro pediu ("cada scrollagem move um frame"); mapear os 188 frames
+    // do arquivo em 900px fazia um tico de roda consumir ~1s de vídeo.
     expect(built[0].steps).toBe(Math.round(window.innerHeight / STEP_PX))
     const lastFrameOfFirst = frameAt(built, window.innerHeight - 1)
     expect(lastFrameOfFirst.clip?.id).toBe(sceneClips.clips[0].id)
