@@ -33,6 +33,7 @@ export function VideoStage() {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const activeClipRef = useRef<SceneClip | null>(null)
+  const resetPhotoRef = useRef(false)
 
   // 1. Detection of Mobile <= 768px
   useEffect(() => {
@@ -136,7 +137,7 @@ export function VideoStage() {
   // 6. Synchronize ref and video playback when clip changes
   useEffect(() => {
     activeClipRef.current = activeClip
-    setShowPedroPhoto(false)
+    resetPhotoRef.current = true
 
     if (isStaticOnly || !activeClip) {
       if (videoRef.current) {
@@ -166,6 +167,11 @@ export function VideoStage() {
     if (!video || !clip) return
 
     const current = video.currentTime
+
+    if (resetPhotoRef.current) {
+      resetPhotoRef.current = false
+      setShowPedroPhoto(false)
+    }
 
     // Check holdAt freeze
     if (typeof clip.holdAt === 'number' && current >= clip.holdAt) {
