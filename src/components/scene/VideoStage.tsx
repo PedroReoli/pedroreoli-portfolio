@@ -109,8 +109,9 @@ export function VideoStage() {
 
       if (clip && progress > 0.55 && goingDown) {
         setActiveClipId((prev) => (prev === clip.id ? prev : clip.id))
-      } else if (!goingDown && progress < 0.45) {
-        // Scrolling back up: the freeze frame replaces the clip instead of rewinding it.
+      } else if (!goingDown) {
+        // Scrolling back up always shows the section freeze frame instead of
+        // rewinding the clip (and never leaves the photo overlay on screen).
         setActiveClipId((prev) => (prev === null ? prev : null))
       }
     }

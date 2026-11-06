@@ -19,6 +19,7 @@ function computeClamp(minPx: number, preferredVal: number, maxPx: number): numbe
 
 describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
   const homeCss = fs.readFileSync(path.join(projectRoot, 'src/styles/home.css'), 'utf-8')
+  const railCss = fs.readFileSync(path.join(projectRoot, 'src/styles/projects-rail.css'), 'utf-8')
   const responsiveCss = fs.readFileSync(path.join(projectRoot, 'src/styles/responsive.css'), 'utf-8')
 
   describe('Suite 1: Projects Section Compactness & Image Integrity', () => {
@@ -142,11 +143,17 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
       expect(anchor).toHaveAttribute('target', '_blank')
     })
 
-    it('verifies CSS rules enforce compact projects showcase, 16:10 visual aspect ratio, max-height clamp, and top-center alignment', () => {
-      // 1. Projects showcase container limits height to 480px and uses balanced 2-column layout
-      expect(homeCss).toMatch(/\.project-showcase\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/)
-      expect(homeCss).toMatch(/\.project-showcase\s*\{[^}]*max-height:\s*480px/)
-      expect(homeCss).toMatch(/\.project-showcase\s*\{[^}]*gap:\s*18px/)
+    it('verifies the alternating project rail replaced the 2-column grid, keeping 16:10 media and editorial scale', () => {
+      // 1. Rail is a vertical flex column, not a 2-column grid (Pedro: "ao invés de grid")
+      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*display:\s*flex/)
+      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*flex-direction:\s*column/)
+      expect(railCss).toMatch(/\.project-rail\s*\{[^}]*max-height:\s*none/)
+      expect(homeCss).not.toMatch(/\.project-showcase\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/)
+
+      // 2. Rows alternate sides and keep an editorial min height
+      expect(railCss).toMatch(/\.project-rail__item\s*\{[^}]*min-height:\s*clamp\(420px,\s*62svh,\s*640px\)/)
+      expect(railCss).toMatch(/\.project-rail__item--align-right/)
+      expect(railCss).toMatch(/\.project-rail__item--align-left/)
 
       // 2. Visual container has strict 16:10 aspect ratio and max-height clamp not exceeding 230px
       expect(homeCss).toMatch(/\.project-card__visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*10/)
@@ -266,7 +273,7 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
       })
     })
 
-    it('verifies CSS rules enforce compact chip height clamp <= 32px, 20px icon container, and micro radii', () => {
+    it('verifies CSS rules enforce compact cards, larger titles/icons and 2-line labels', () => {
       // 1. Stack grid has 4 columns and flex min-height: 0
       expect(homeCss).toMatch(/\.stack-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/)
       expect(homeCss).toMatch(/\.stack-grid\s*\{[^}]*min-height:\s*0/)

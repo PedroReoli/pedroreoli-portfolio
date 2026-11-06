@@ -44,7 +44,6 @@
   .about__col-frame { order: 1; }
   .about__col-narrative { order: 2; }
   .art-frame { max-width: 400px; margin-inline: auto; transform: none !important; }
-  .project-showcase { grid-template-columns: 1fr; max-height: none; }
   .project-card--2 { display: grid; grid-template-columns: 1fr 1fr; }
   .project-card--2 > a { display: contents; }
   .stack-grid { grid-template-columns: repeat(2,1fr); }

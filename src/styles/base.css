@@ -25,6 +25,10 @@
   --line-dark: rgba(245, 243, 239, 0.12);
   --line-light: rgba(8, 9, 11, 0.12);
   --accent: var(--color-accent);
+  --focus-ring-color: #ffc900;
+  --focus-ring-halo: #08090b;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
   --font-sans: 'Instrument Sans Variable', Arial, sans-serif;
   --font-display: 'Instrument Sans Variable', Arial, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
@@ -42,7 +46,11 @@ svg { flex: 0 0 auto; }
 p, h1, h2, h3, h4, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  box-shadow: 0 0 0 2px var(--focus-ring-halo);
+}
 ::selection { background: var(--accent); color: var(--night); }
 .shell { width: min(100% - 48px, 1480px); margin-inline: auto; }
 .section-light { --accent: var(--color-accent-ink); background: var(--paper); color: var(--ink); }
