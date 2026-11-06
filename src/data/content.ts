@@ -1,9 +1,10 @@
-import siteContentRaw from '@content/siteContent.json';
+﻿import siteContentRaw from '@content/siteContent.json';
 import interfaceContentRaw from '@content/interfaceContent.json';
 import homeContentRaw from '@content/homeContent.json';
 import projectsContentRaw from '@content/projectsContent.json';
 import mediaContentRaw from '@content/mediaContent.json';
 import technologyContentRaw from '@content/technologyContent.json';
+import sceneClipsRaw from '@content/sceneClips.json';
 
 import type {
   SiteContent,
@@ -12,6 +13,7 @@ import type {
   ProjectsContent,
   MediaContent,
   TechnologyContent,
+  SceneClipsContent,
   Language,
   LocalizedString,
 } from '@/types/content';
@@ -22,6 +24,7 @@ export const homeContent = homeContentRaw as unknown as HomeContent;
 export const projectsContent = projectsContentRaw as ProjectsContent;
 export const mediaContent = mediaContentRaw as MediaContent;
 export const technologyContent = technologyContentRaw as TechnologyContent;
+export const sceneClips = sceneClipsRaw as SceneClipsContent;
 
 export function getLocalized(item: LocalizedString, lang: Language): string {
   if (!item) return '';

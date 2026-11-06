@@ -511,3 +511,28 @@ export interface TechnologyGroup {
 export interface TechnologyContent {
   groups: TechnologyGroup[];
 }
+
+export interface SceneClipMarker {
+  name: string;
+  at: number;
+}
+
+export interface SceneClip {
+  id: string;
+  from: string;
+  to: string;
+  src: string;
+  webm?: string;
+  holdAt: number;
+  duration: number;
+  poster: string;
+  markers?: SceneClipMarker[];
+}
+
+export interface SceneClipsContent {
+  version: number;
+  basePath: string;
+  heroPoster: string;
+  fallbackPoster?: string;
+  clips: SceneClip[];
+}
