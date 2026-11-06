@@ -62,3 +62,18 @@
 .not-found nav a:last-child { background: var(--paper); color: var(--night); }
 .not-found nav svg { width: 17px; }
 
+
+
+/* Inner Pages Luxury Dark Overrides */
+.archive-page { background: #08090b !important; }
+.archive-hero { background: #08090b !important; color: #f5f3ef !important; }
+.archive-hero p { color: #ffc900 !important; }
+.archive-tabs button { border-color: rgba(245, 243, 239, 0.14) !important; color: rgba(245, 243, 239, 0.65) !important; }
+.archive-tabs button[aria-selected='true'] { background: #ffc900 !important; border-color: #ffc900 !important; color: #08090b !important; }
+.gallery-grid button { background: #111216 !important; border: 1px solid rgba(245, 243, 239, 0.08) !important; }
+.independent-grid a, .notes-grid a { background: rgba(17, 18, 22, 0.7) !important; border: 1px solid rgba(245, 243, 239, 0.1) !important; border-radius: var(--radius-lg) !important; }
+.independent-grid a:hover, .notes-grid a:hover { background: #ffc900 !important; color: #08090b !important; }
+.independent-grid span, .notes-grid span { color: #ffc900 !important; }
+.not-found { background: #08090b !important; color: #f5f3ef !important; }
+.not-found > .shell > span { color: #ffc900 !important; }
+.not-found h1 em { color: #ffc900 !important; }

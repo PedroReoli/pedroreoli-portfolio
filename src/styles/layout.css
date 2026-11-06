@@ -8,6 +8,7 @@
   width: 100%;
   pointer-events: none;
 }
+.site-header__left { display: flex; align-items: center; gap: 12px; }
 .site-header__inner {
   pointer-events: auto;
   min-height: 56px;
@@ -54,7 +55,8 @@
   background: #ffd326;
   color: var(--color-ink);
 }
-.menu-trigger { display: none; }
+.menu-trigger { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(245, 243, 239, 0.15); background: rgba(245, 243, 239, 0.04); cursor: pointer; color: #f5f3ef; transition: all .2s ease; }
+.menu-trigger:hover { border-color: #ffc900; color: #ffc900; background: rgba(255, 201, 0, 0.12); }
 .menu-trigger svg { width: 20px; }
 .mobile-menu { display: none; }
 section, footer { scroll-margin-top: 0; }
