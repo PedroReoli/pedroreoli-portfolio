@@ -512,11 +512,6 @@ export interface TechnologyContent {
   groups: TechnologyGroup[];
 }
 
-export interface SceneClipMarker {
-  name: string;
-  at: number;
-}
-
 export interface SceneClip {
   id: string;
   from: string;
@@ -526,7 +521,6 @@ export interface SceneClip {
   holdAt: number;
   duration: number;
   poster: string;
-  markers?: SceneClipMarker[];
 }
 
 export interface SceneClipsContent {
