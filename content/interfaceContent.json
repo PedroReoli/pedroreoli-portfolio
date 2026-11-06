@@ -1,16 +1,52 @@
 {
   "homeStructure": {
-    "intro": ["hero", "about"],
-    "sections": ["selectedProjects", "stack", "purpose", "experience"],
+    "intro": [
+      "hero",
+      "about"
+    ],
+    "sections": [
+      "selectedProjects",
+      "stack",
+      "purpose",
+      "experience"
+    ],
     "footer": "contact",
     "scenes": [
-      { "id": "hero", "background": "#182033", "steps": 1 },
-      { "id": "sobre", "background": "#F4F0E7", "steps": 1 },
-      { "id": "projetos-selecionados", "background": "#182033", "steps": 3 },
-      { "id": "stack", "background": "#F4F0E7", "steps": 1 },
-      { "id": "proposito", "background": "#182033", "steps": 1 },
-      { "id": "experiencia", "background": "#182033", "steps": 5 },
-      { "id": "contato", "background": "#182033", "steps": 1 }
+      {
+        "id": "hero",
+        "background": "#182033",
+        "steps": 1
+      },
+      {
+        "id": "sobre",
+        "background": "#F4F0E7",
+        "steps": 1
+      },
+      {
+        "id": "projetos-selecionados",
+        "background": "#182033",
+        "steps": 3
+      },
+      {
+        "id": "stack",
+        "background": "#F4F0E7",
+        "steps": 1
+      },
+      {
+        "id": "proposito",
+        "background": "#182033",
+        "steps": 1
+      },
+      {
+        "id": "experiencia",
+        "background": "#182033",
+        "steps": 5
+      },
+      {
+        "id": "contato",
+        "background": "#182033",
+        "steps": 1
+      }
     ]
   },
   "seo": {
@@ -25,44 +61,120 @@
       }
     },
     "projects": {
-      "pt": { "title": "Projetos selecionados", "description": "Uma seleção de produtos digitais e sistemas construídos por Pedro Reoli." },
-      "en": { "title": "Selected Work", "description": "A selection of software products and systems built by Pedro Reoli." }
+      "pt": {
+        "title": "Projetos selecionados",
+        "description": "Uma seleção de produtos digitais e sistemas construídos por Pedro Reoli."
+      },
+      "en": {
+        "title": "Selected Work",
+        "description": "A selection of software products and systems built by Pedro Reoli."
+      }
     },
     "media": {
-      "pt": { "title": "Notas & Mídia", "description": "Código aberto, documentação e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis." },
-      "en": { "title": "Notes & Media", "description": "Open-source code, documentation and press coverage about software engineer Pedro Lucas Reis." }
+      "pt": {
+        "title": "Notas & Mídia",
+        "description": "Código aberto, documentação e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
+      },
+      "en": {
+        "title": "Notes & Media",
+        "description": "Open-source code, documentation and press coverage about software engineer Pedro Lucas Reis."
+      }
     },
     "notFound": {
-      "pt": { "title": "404 | Página Não Encontrada", "description": "A página que você está procurando não existe ou foi movida." },
-      "en": { "title": "404 | Page Not Found", "description": "The page you are looking for does not exist or has moved." }
+      "pt": {
+        "title": "404 | Página Não Encontrada",
+        "description": "A página que você está procurando não existe ou foi movida."
+      },
+      "en": {
+        "title": "404 | Page Not Found",
+        "description": "The page you are looking for does not exist or has moved."
+      }
     }
   },
   "hero": {
     "id": "hero",
     "sectionNumber": "01",
-    "name": { "accessible": "Pedro Reoli", "firstLine": "PEDRO", "secondLine": "REOLI" },
+    "name": {
+      "accessible": "Pedro Reoli",
+      "firstLine": "PEDRO",
+      "secondLine": "REOLI"
+    },
     "location": "Volta Redonda, BR",
     "actionHref": "#projetos-selecionados",
     "actionIcon": "arrow-up-right",
-    "scene": { "topLabel": "SYS / 00.19", "bottomLabel": "INTERFACE · SYSTEMS · AI" },
-    "pt": { "eyebrow": "Portfólio", "role": "Engenheiro de Software Full Stack", "statement": "Transformo sistemas complexos em produtos claros, rápidos e prontos para operar.", "availability": "Disponível para projetos selecionados", "scroll": "Desça para explorar", "action": "Ver projetos", "actionShort": "Projetos" },
-    "en": { "eyebrow": "Portfolio", "role": "Full Stack Software Engineer", "statement": "I turn complex systems into clear, fast products built for real operations.", "availability": "Available for select projects", "scroll": "Scroll to explore", "action": "See the work", "actionShort": "Work" }
+    "scene": {
+      "topLabel": "SYS / 00.19",
+      "bottomLabel": "INTERFACE · SYSTEMS · AI"
+    },
+    "pt": {
+      "eyebrow": "Portfólio",
+      "role": "Engenheiro de Software Full Stack",
+      "statement": "",
+      "availability": "Disponível para projetos selecionados",
+      "scroll": "Desça para explorar",
+      "action": "Ver projetos",
+      "actionShort": "Projetos"
+    },
+    "en": {
+      "eyebrow": "Portfolio",
+      "role": "Full Stack Software Engineer",
+      "statement": "",
+      "availability": "Available for select projects",
+      "scroll": "Scroll to explore",
+      "action": "See the work",
+      "actionShort": "Work"
+    }
   },
   "about": {
     "id": "sobre",
     "sectionNumber": "02",
-    "portrait": { "src": "/eu-profissional.png", "width": 1254, "height": 1254, "name": "Pedro Lucas Reis" },
+    "portrait": {
+      "src": "/eu-profissional.png",
+      "width": 1254,
+      "height": 1254,
+      "name": "Pedro Lucas Reis"
+    },
     "pt": {
-      "eyebrow": "Sobre mim", "location": "Volta Redonda / Brasil", "portraitAlt": "Retrato de Pedro Lucas Reis, Engenheiro de Software Full Stack", "portraitRole": "Engenheiro de software", "areas": "Full Stack / Arquitetura / IA", "title": "Quem eu sou", "summary": "Engenheiro Full Stack com foco em frontend, ERPs e SaaS. Projeto interfaces, APIs e integrações do primeiro fluxo à produção.", "statsLabel": "Destaques da carreira"
+      "eyebrow": "Sobre mim",
+      "location": "Volta Redonda / Brasil",
+      "portraitAlt": "Retrato de Pedro Lucas Reis, Engenheiro de Software Full Stack",
+      "portraitRole": "Engenheiro de software",
+      "areas": "Full Stack / Arquitetura / IA",
+      "title": "Quem eu sou",
+      "summary": "Engenheiro Full Stack com foco em frontend, ERPs e SaaS. Projeto interfaces, APIs e integrações do primeiro fluxo à produção.",
+      "statsLabel": "Destaques da carreira"
     },
     "en": {
-      "eyebrow": "About", "location": "Volta Redonda / Brazil", "portraitAlt": "Portrait of Pedro Lucas Reis, Full Stack Software Engineer", "portraitRole": "Software engineer", "areas": "Full Stack / Architecture / AI", "title": "Who I am", "summary": "Full Stack engineer focused on frontend, ERP systems and SaaS. I design interfaces, APIs and integrations from the first workflow to production.", "statsLabel": "Career highlights"
+      "eyebrow": "About",
+      "location": "Volta Redonda / Brazil",
+      "portraitAlt": "Portrait of Pedro Lucas Reis, Full Stack Software Engineer",
+      "portraitRole": "Software engineer",
+      "areas": "Full Stack / Architecture / AI",
+      "title": "Who I am",
+      "summary": "Full Stack engineer focused on frontend, ERP systems and SaaS. I design interfaces, APIs and integrations from the first workflow to production.",
+      "statsLabel": "Career highlights"
     },
     "stats": [
-      { "value": "04", "pt": "anos de experiência", "en": "years of experience" },
-      { "value": "70%", "pt": "menos tempo de desenvolvimento", "en": "less development time" },
-      { "value": "40%", "pt": "menos tempo de carregamento", "en": "faster page loads" },
-      { "value": "500+", "pt": "componentes de Design System", "en": "Design System components" }
+      {
+        "value": "04",
+        "pt": "anos de experiência",
+        "en": "years of experience"
+      },
+      {
+        "value": "70%",
+        "pt": "menos tempo de desenvolvimento",
+        "en": "less development time"
+      },
+      {
+        "value": "40%",
+        "pt": "menos tempo de carregamento",
+        "en": "faster page loads"
+      },
+      {
+        "value": "500+",
+        "pt": "componentes de Design System",
+        "en": "Design System components"
+      }
     ]
   },
   "purpose": {
@@ -78,18 +190,59 @@
     },
     "articleHref": "https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/",
     "actionIcon": "arrow-up-right",
-    "pt": { "eyebrow": "Tecnologia com propósito", "imageAlt": "Pedro apresentando o projeto FalaAtípica no UniFOA", "imageCategory": "Tecnologia assistiva", "imageContext": "Apresentação / UniFOA", "title": "VOZ", "titleAccent": "para todos.", "summary": "Plataforma de Tecnologia Assistiva concebida por Pedro no UniFOA para apoiar crianças com atraso na fala e desenvolvimento atípico. Conecta famílias e fonoaudiólogos através de pranchas interativas de CAA e telemetria clínica.", "action": "Conhecer a história" },
-    "en": { "eyebrow": "Technology with purpose", "imageAlt": "Pedro presenting the FalaAtípica project at UniFOA", "imageCategory": "Assistive technology", "imageContext": "Presentation / UniFOA", "title": "VOICE", "titleAccent": "for all.", "summary": "Assistive Technology platform created by Pedro at UniFOA to empower children with speech delays and atypical communication. Bridges families and speech therapists through interactive AAC boards and clinical telemetry.", "action": "Read the story" }
+    "pt": {
+      "eyebrow": "Tecnologia com propósito",
+      "imageAlt": "Pedro apresentando o projeto FalaAtípica no UniFOA",
+      "imageCategory": "Tecnologia assistiva",
+      "imageContext": "Apresentação / UniFOA",
+      "title": "VOZ",
+      "titleAccent": "para todos.",
+      "summary": "Plataforma de Tecnologia Assistiva concebida por Pedro no UniFOA para apoiar crianças com atraso na fala e desenvolvimento atípico. Conecta famílias e fonoaudiólogos através de pranchas interativas de CAA e telemetria clínica.",
+      "action": "Conhecer a história"
+    },
+    "en": {
+      "eyebrow": "Technology with purpose",
+      "imageAlt": "Pedro presenting the FalaAtípica project at UniFOA",
+      "imageCategory": "Assistive technology",
+      "imageContext": "Presentation / UniFOA",
+      "title": "VOICE",
+      "titleAccent": "for all.",
+      "summary": "Assistive Technology platform created by Pedro at UniFOA to empower children with speech delays and atypical communication. Bridges families and speech therapists through interactive AAC boards and clinical telemetry.",
+      "action": "Read the story"
+    }
   },
   "projectsPage": {
-    "pt": { "eyebrow": "Trabalhos selecionados", "title": "PROJETOS", "description": "Explore interfaces corporativas e ferramentas independentes." },
-    "en": { "eyebrow": "Selected work", "title": "WORK", "description": "Explore enterprise interfaces and independent tools." }
+    "pt": {
+      "eyebrow": "Trabalhos selecionados",
+      "title": "PROJETOS",
+      "description": "Explore interfaces corporativas e ferramentas independentes."
+    },
+    "en": {
+      "eyebrow": "Selected work",
+      "title": "WORK",
+      "description": "Explore enterprise interfaces and independent tools."
+    }
   },
   "projectCategories": {
-    "label": { "pt": "Categorias de projetos", "en": "Project categories" },
+    "label": {
+      "pt": "Categorias de projetos",
+      "en": "Project categories"
+    },
     "items": [
-      { "id": "corporativo", "label": { "pt": "Corporativo", "en": "Enterprise" } },
-      { "id": "gerais", "label": { "pt": "Independentes", "en": "Independent" } }
+      {
+        "id": "corporativo",
+        "label": {
+          "pt": "Corporativo",
+          "en": "Enterprise"
+        }
+      },
+      {
+        "id": "gerais",
+        "label": {
+          "pt": "Independentes",
+          "en": "Independent"
+        }
+      }
     ]
   },
   "corporateProjects": {
@@ -97,36 +250,117 @@
     "period": "2024 / 2026",
     "title": "AUTOCOM3",
     "galleryIcon": "expand",
-    "pt": { "sectionLabel": "Projetos corporativos", "category": "Software corporativo", "description": "Propostas, licenciamento e gestão de catálogo em uma plataforma corporativa.", "overviewAction": "Ampliar painel de operações na galeria", "galleryAction": "Ampliar imagem na galeria" },
-    "en": { "sectionLabel": "Enterprise projects", "category": "Enterprise software", "description": "Proposals, licensing and catalog management in one corporate platform.", "overviewAction": "View operations dashboard in gallery", "galleryAction": "View image in gallery" }
+    "pt": {
+      "sectionLabel": "Projetos corporativos",
+      "category": "Software corporativo",
+      "description": "Propostas, licenciamento e gestão de catálogo em uma plataforma corporativa.",
+      "overviewAction": "Ampliar painel de operações na galeria",
+      "galleryAction": "Ampliar imagem na galeria"
+    },
+    "en": {
+      "sectionLabel": "Enterprise projects",
+      "category": "Enterprise software",
+      "description": "Proposals, licensing and catalog management in one corporate platform.",
+      "overviewAction": "View operations dashboard in gallery",
+      "galleryAction": "View image in gallery"
+    }
   },
   "independentProjects": {
     "id": "gerais-projects",
     "externalIcon": "arrow-up-right",
-    "pt": { "sectionLabel": "Projetos independentes", "title": "Ferramentas independentes", "description": "Abra o repositório de cada projeto no GitHub.", "externalLabel": "Abre no GitHub em nova aba" },
-    "en": { "sectionLabel": "Independent projects", "title": "Independent tools", "description": "Open each project's repository on GitHub.", "externalLabel": "Opens on GitHub in a new tab" }
+    "pt": {
+      "sectionLabel": "Projetos independentes",
+      "title": "Ferramentas independentes",
+      "description": "Abra o repositório de cada projeto no GitHub.",
+      "externalLabel": "Abre no GitHub em nova aba"
+    },
+    "en": {
+      "sectionLabel": "Independent projects",
+      "title": "Independent tools",
+      "description": "Open each project's repository on GitHub.",
+      "externalLabel": "Opens on GitHub in a new tab"
+    }
   },
   "notFound": {
     "brand": "PEDRO REOLI",
     "homePath": "/",
     "projectsPath": "/projetos",
     "projectsIcon": "arrow-up-right",
-    "pt": { "label": "Página não encontrada", "titleFirst": "FORA", "titleSecond": "DE ROTA.", "description": "Este endereço não está disponível. Você pode voltar ao início ou conhecer meus projetos.", "navLabel": "Continuar navegando", "homeAction": "Voltar ao início", "projectsAction": "Ver projetos" },
-    "en": { "label": "Page not found", "titleFirst": "OFF", "titleSecond": "ROUTE.", "description": "This address is unavailable. You can return home or explore my work.", "navLabel": "Continue browsing", "homeAction": "Back home", "projectsAction": "View projects" }
+    "pt": {
+      "label": "Página não encontrada",
+      "titleFirst": "FORA",
+      "titleSecond": "DE ROTA.",
+      "description": "Este endereço não está disponível. Você pode voltar ao início ou conhecer meus projetos.",
+      "navLabel": "Continuar navegando",
+      "homeAction": "Voltar ao início",
+      "projectsAction": "Ver projetos"
+    },
+    "en": {
+      "label": "Page not found",
+      "titleFirst": "OFF",
+      "titleSecond": "ROUTE.",
+      "description": "This address is unavailable. You can return home or explore my work.",
+      "navLabel": "Continue browsing",
+      "homeAction": "Back home",
+      "projectsAction": "View projects"
+    }
   },
   "selectedProjects": {
     "id": "projetos-selecionados",
     "sectionNumber": "03",
     "morePath": "/projetos",
-    "icons": { "previous": "chevron-left", "next": "chevron-right", "scroll": "chevron-down" },
-    "pt": { "moreStep": "MAIS PROJETOS", "eyebrow": "Trabalhos selecionados", "title": "Projetos", "previous": "Projeto anterior", "navigation": "Navegação dos projetos", "next": "Próximo projeto", "moreAction": "Ver mais projetos", "scrollNext": "Role para a próxima seção", "scrollNavigate": "Role para navegar" },
-    "en": { "moreStep": "MORE PROJECTS", "eyebrow": "Selected work", "title": "Projects", "previous": "Previous project", "navigation": "Projects navigation", "next": "Next project", "moreAction": "See more projects", "scrollNext": "Scroll for next section", "scrollNavigate": "Scroll to navigate" }
+    "icons": {
+      "previous": "chevron-left",
+      "next": "chevron-right",
+      "scroll": "chevron-down"
+    },
+    "pt": {
+      "moreStep": "MAIS PROJETOS",
+      "eyebrow": "Trabalhos selecionados",
+      "title": "Projetos",
+      "previous": "Projeto anterior",
+      "navigation": "Navegação dos projetos",
+      "next": "Próximo projeto",
+      "moreAction": "Ver mais projetos",
+      "scrollNext": "Role para a próxima seção",
+      "scrollNavigate": "Role para navegar"
+    },
+    "en": {
+      "moreStep": "MORE PROJECTS",
+      "eyebrow": "Selected work",
+      "title": "Projects",
+      "previous": "Previous project",
+      "navigation": "Projects navigation",
+      "next": "Next project",
+      "moreAction": "See more projects",
+      "scrollNext": "Scroll for next section",
+      "scrollNavigate": "Scroll to navigate"
+    }
   },
   "featuredProject": {
     "actionIcon": "arrow-up-right",
-    "agent": { "name": "ACHILLES", "subtitle": "Autonomous Browser Agent" },
-    "pt": { "agentAlt": "Diagrama do agente de navegador Achilles", "agentKicker": "AGENTE LOCAL / CDP", "observe": "OBSERVAR", "decide": "DECIDIR", "operate": "OPERAR", "technologiesLabel": "Tecnologias do projeto", "externalLabel": "Abre em nova aba" },
-    "en": { "agentAlt": "Achilles browser agent system diagram", "agentKicker": "LOCAL AGENT / CDP", "observe": "OBSERVE", "decide": "DECIDE", "operate": "OPERATE", "technologiesLabel": "Project technologies", "externalLabel": "Opens in a new tab" }
+    "agent": {
+      "name": "ACHILLES",
+      "subtitle": "Autonomous Browser Agent"
+    },
+    "pt": {
+      "agentAlt": "Diagrama do agente de navegador Achilles",
+      "agentKicker": "AGENTE LOCAL / CDP",
+      "observe": "OBSERVAR",
+      "decide": "DECIDIR",
+      "operate": "OPERAR",
+      "technologiesLabel": "Tecnologias do projeto",
+      "externalLabel": "Abre em nova aba"
+    },
+    "en": {
+      "agentAlt": "Achilles browser agent system diagram",
+      "agentKicker": "LOCAL AGENT / CDP",
+      "observe": "OBSERVE",
+      "decide": "DECIDE",
+      "operate": "OPERATE",
+      "technologiesLabel": "Project technologies",
+      "externalLabel": "Opens in a new tab"
+    }
   },
   "mediaArchive": {
     "feature": {
@@ -142,34 +376,124 @@
     },
     "referenceCount": "03",
     "referenceIcon": "arrow-up-right",
-    "pt": { "eyebrow": "Imprensa / Código / Referências", "title": "NOTAS", "description": "Uma reportagem e referências para conhecer meus projetos por dentro.", "pressLabel": "Na imprensa", "pressTitle": "FalaAtípica em destaque no UniFOA.", "pressAction": "Ler reportagem", "imageAlt": "Pedro apresentando o FalaAtípica", "referencesTitle": "Por dentro do código", "referencesCount": "referências", "externalLabel": "Abre em nova aba" },
-    "en": { "eyebrow": "Press / Code / References", "title": "NOTES", "description": "A press feature and references to explore my projects in more detail.", "pressLabel": "In the press", "pressTitle": "FalaAtípica featured by UniFOA.", "pressAction": "Read article", "imageAlt": "Pedro presenting FalaAtípica", "referencesTitle": "Inside the code", "referencesCount": "references", "externalLabel": "Opens in a new tab" }
+    "pt": {
+      "eyebrow": "Imprensa / Código / Referências",
+      "title": "NOTAS",
+      "description": "Uma reportagem e referências para conhecer meus projetos por dentro.",
+      "pressLabel": "Na imprensa",
+      "pressTitle": "FalaAtípica em destaque no UniFOA.",
+      "pressAction": "Ler reportagem",
+      "imageAlt": "Pedro apresentando o FalaAtípica",
+      "referencesTitle": "Por dentro do código",
+      "referencesCount": "referências",
+      "externalLabel": "Abre em nova aba"
+    },
+    "en": {
+      "eyebrow": "Press / Code / References",
+      "title": "NOTES",
+      "description": "A press feature and references to explore my projects in more detail.",
+      "pressLabel": "In the press",
+      "pressTitle": "FalaAtípica featured by UniFOA.",
+      "pressAction": "Read article",
+      "imageAlt": "Pedro presenting FalaAtípica",
+      "referencesTitle": "Inside the code",
+      "referencesCount": "references",
+      "externalLabel": "Opens in a new tab"
+    }
   },
   "contentStatus": {
     "retryIcon": "rotate-cw",
     "homePath": "/",
     "contactHref": "#contato",
-    "pt": { "pageError": "Não foi possível carregar esta página.", "sectionError": "Não foi possível carregar este conteúdo.", "unavailable": "Conteúdo indisponível", "guidance": "Confira sua conexão e tente novamente. Se o problema continuar, use outro link do menu.", "retry": "Tentar novamente", "home": "Voltar ao início", "contact": "Ir para contato", "loadingPage": "Carregando página", "loadingSection": "Carregando seções do portfólio" },
-    "en": { "pageError": "This page couldn't load.", "sectionError": "This content couldn't load.", "unavailable": "Content unavailable", "guidance": "Check your connection and try again. If the problem continues, use another link in the menu.", "retry": "Try again", "home": "Back to home", "contact": "Get in touch", "loadingPage": "Loading page", "loadingSection": "Loading portfolio sections" }
+    "pt": {
+      "pageError": "Não foi possível carregar esta página.",
+      "sectionError": "Não foi possível carregar este conteúdo.",
+      "unavailable": "Conteúdo indisponível",
+      "guidance": "Confira sua conexão e tente novamente. Se o problema continuar, use outro link do menu.",
+      "retry": "Tentar novamente",
+      "home": "Voltar ao início",
+      "contact": "Ir para contato",
+      "loadingPage": "Carregando página",
+      "loadingSection": "Carregando seções do portfólio"
+    },
+    "en": {
+      "pageError": "This page couldn't load.",
+      "sectionError": "This content couldn't load.",
+      "unavailable": "Content unavailable",
+      "guidance": "Check your connection and try again. If the problem continues, use another link in the menu.",
+      "retry": "Try again",
+      "home": "Back to home",
+      "contact": "Get in touch",
+      "loadingPage": "Loading page",
+      "loadingSection": "Loading portfolio sections"
+    }
   },
   "projectViewer": {
-    "icons": { "close": "close", "previous": "arrow-left", "next": "arrow-right", "external": "external-link" },
-    "pt": { "close": "Fechar galeria", "error": "Não foi possível carregar esta imagem. Veja outra captura ou abra o arquivo original.", "loading": "Carregando imagem", "previous": "Imagem anterior", "next": "Próxima imagem", "openAria": "Abrir original em nova aba", "open": "Abrir original" },
-    "en": { "close": "Close gallery", "error": "This image couldn't load. Try another image or open the original.", "loading": "Loading image", "previous": "Previous image", "next": "Next image", "openAria": "Open original in a new tab", "open": "Open original" }
+    "icons": {
+      "close": "close",
+      "previous": "arrow-left",
+      "next": "arrow-right",
+      "external": "external-link"
+    },
+    "pt": {
+      "close": "Fechar galeria",
+      "error": "Não foi possível carregar esta imagem. Veja outra captura ou abra o arquivo original.",
+      "loading": "Carregando imagem",
+      "previous": "Imagem anterior",
+      "next": "Próxima imagem",
+      "openAria": "Abrir original em nova aba",
+      "open": "Abrir original"
+    },
+    "en": {
+      "close": "Close gallery",
+      "error": "This image couldn't load. Try another image or open the original.",
+      "loading": "Loading image",
+      "previous": "Previous image",
+      "next": "Next image",
+      "openAria": "Open original in a new tab",
+      "open": "Open original"
+    }
   },
   "experience": {
     "id": "experiencia",
     "sectionNumber": "06",
-    "icons": { "scroll": "arrow-down", "chapter": "arrow-up-right" },
-    "pt": { "eyebrow": "Experiência", "title": "TRAJETÓRIA.", "scrollHint": "Role por cada capítulo", "chaptersLabel": "Capítulos da trajetória", "end": "Fim da trajetória", "continue": "Continue rolando" },
-    "en": { "eyebrow": "Experience", "title": "JOURNEY.", "scrollHint": "Scroll through each chapter", "chaptersLabel": "Career chapters", "end": "End of journey", "continue": "Keep scrolling" }
+    "icons": {
+      "scroll": "arrow-down",
+      "chapter": "arrow-up-right"
+    },
+    "pt": {
+      "eyebrow": "Experiência",
+      "title": "TRAJETÓRIA.",
+      "scrollHint": "Role por cada capítulo",
+      "chaptersLabel": "Capítulos da trajetória",
+      "end": "Fim da trajetória",
+      "continue": "Continue rolando"
+    },
+    "en": {
+      "eyebrow": "Experience",
+      "title": "JOURNEY.",
+      "scrollHint": "Scroll through each chapter",
+      "chaptersLabel": "Career chapters",
+      "end": "End of journey",
+      "continue": "Keep scrolling"
+    }
   },
   "stack": {
     "id": "stack",
     "sectionNumber": "04",
     "titleAccent": "STACK.",
-    "pt": { "eyebrow": "Ferramentas de produção", "title": "MINHA", "description": "Interfaces, APIs, cloud e IA — em produção.", "ariaLabel": "Stack de tecnologia" },
-    "en": { "eyebrow": "Production toolkit", "title": "MY", "description": "Interfaces, APIs, cloud and AI — in production.", "ariaLabel": "Technology stack" }
+    "pt": {
+      "eyebrow": "Ferramentas de produção",
+      "title": "MINHA",
+      "description": "Interfaces, APIs, cloud e IA — em produção.",
+      "ariaLabel": "Stack de tecnologia"
+    },
+    "en": {
+      "eyebrow": "Production toolkit",
+      "title": "MY",
+      "description": "Interfaces, APIs, cloud and AI — in production.",
+      "ariaLabel": "Technology stack"
+    }
   },
   "languageNotice": {
     "icon": "check",
@@ -177,18 +501,67 @@
     "en": "Language: English"
   },
   "header": {
-    "brand": { "first": "Pedro", "last": "Reoli", "homePath": "/" },
+    "brand": {
+      "first": "Pedro",
+      "last": "Reoli",
+      "homePath": "/"
+    },
     "skipHref": "#main-content",
     "contactHref": "mailto:pedrosousa2160@gmail.com",
     "menuIcon": "menu",
     "closeIcon": "close",
     "navigation": [
-      { "path": "/", "icon": "home", "label": { "pt": "Início", "en": "Home" } },
-      { "path": "/projetos", "icon": "briefcase", "label": { "pt": "Projetos", "en": "Work" } },
-      { "path": "/midia-blog", "icon": "file-text", "label": { "pt": "Notas", "en": "Notes" } }
+      {
+        "path": "/",
+        "icon": "home",
+        "label": {
+          "pt": "Início",
+          "en": "Home"
+        }
+      },
+      {
+        "path": "/projetos",
+        "icon": "briefcase",
+        "label": {
+          "pt": "Projetos",
+          "en": "Work"
+        }
+      },
+      {
+        "path": "/midia-blog",
+        "icon": "file-text",
+        "label": {
+          "pt": "Notas",
+          "en": "Notes"
+        }
+      }
     ],
-    "pt": { "home": "Início", "work": "Projetos", "notes": "Notas", "skip": "Pular para o conteúdo", "homeAria": "Ir para o início", "siteLinks": "Links do site", "switchLanguage": "Mudar idioma para inglês", "contact": "Vamos conversar", "closeMenu": "Fechar menu", "openMenu": "Abrir menu", "mobileNavigation": "Navegação mobile" },
-    "en": { "home": "Home", "work": "Work", "notes": "Notes", "skip": "Skip to content", "homeAria": "Go to home", "siteLinks": "Site links", "switchLanguage": "Switch language to Portuguese", "contact": "Let's talk", "closeMenu": "Close menu", "openMenu": "Open menu", "mobileNavigation": "Mobile navigation" }
+    "pt": {
+      "home": "Início",
+      "work": "Projetos",
+      "notes": "Notas",
+      "skip": "Pular para o conteúdo",
+      "homeAria": "Ir para o início",
+      "siteLinks": "Links do site",
+      "switchLanguage": "Mudar idioma para inglês",
+      "contact": "Vamos conversar",
+      "closeMenu": "Fechar menu",
+      "openMenu": "Abrir menu",
+      "mobileNavigation": "Navegação mobile"
+    },
+    "en": {
+      "home": "Home",
+      "work": "Work",
+      "notes": "Notes",
+      "skip": "Skip to content",
+      "homeAria": "Go to home",
+      "siteLinks": "Site links",
+      "switchLanguage": "Switch language to Portuguese",
+      "contact": "Let's talk",
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu",
+      "mobileNavigation": "Mobile navigation"
+    }
   },
   "footer": {
     "id": "contato",
@@ -196,12 +569,78 @@
     "ctaHref": "mailto:pedrosousa2160@gmail.com",
     "backToTopIcon": "arrow-up",
     "contacts": [
-      { "label": "E-mail", "href": "mailto:pedrosousa2160@gmail.com", "icon": "mail", "color": "#FBBF24", "external": false, "detail": { "pt": "Enviar e-mail", "en": "Send an email" } },
-      { "label": "WhatsApp", "href": "https://wa.me/5524993264040", "icon": "whatsapp", "color": "#FBBF24", "external": true, "detail": { "pt": "Enviar mensagem", "en": "Send a message" } },
-      { "label": "GitHub", "href": "https://github.com/PedroReoli", "icon": "github", "color": "#182033", "external": true, "detail": { "pt": "Código e repositórios", "en": "Code and repositories" } },
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/", "icon": "linkedin", "color": "#FBBF24", "external": true, "detail": { "pt": "Trajetória profissional", "en": "Professional experience" } }
+      {
+        "label": "E-mail",
+        "href": "mailto:pedrosousa2160@gmail.com",
+        "icon": "mail",
+        "color": "#FBBF24",
+        "external": false,
+        "detail": {
+          "pt": "Enviar e-mail",
+          "en": "Send an email"
+        }
+      },
+      {
+        "label": "WhatsApp",
+        "href": "https://wa.me/5524993264040",
+        "icon": "whatsapp",
+        "color": "#FBBF24",
+        "external": true,
+        "detail": {
+          "pt": "Enviar mensagem",
+          "en": "Send a message"
+        }
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/PedroReoli",
+        "icon": "github",
+        "color": "#182033",
+        "external": true,
+        "detail": {
+          "pt": "Código e repositórios",
+          "en": "Code and repositories"
+        }
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/",
+        "icon": "linkedin",
+        "color": "#FBBF24",
+        "external": true,
+        "detail": {
+          "pt": "Trajetória profissional",
+          "en": "Professional experience"
+        }
+      }
     ],
-    "pt": { "emailDetail": "Enviar e-mail", "whatsappDetail": "Enviar mensagem", "githubDetail": "Código e repositórios", "linkedinDetail": "Trajetória profissional", "eyebrow": "Contato", "description": "Projetos de software, colaboração técnica e oportunidades.", "prompt": "Tem um produto ou desafio técnico?", "ctaFirst": "VAMOS", "ctaSecond": "CONVERSAR.", "linksLabel": "Contato e redes sociais", "externalLabel": " (abre em nova aba)", "backToTop": "Voltar ao topo" },
-    "en": { "emailDetail": "Send an email", "whatsappDetail": "Send a message", "githubDetail": "Code and repositories", "linkedinDetail": "Professional experience", "eyebrow": "Contact", "description": "Software projects, technical collaboration and opportunities.", "prompt": "Building a product or facing a technical challenge?", "ctaFirst": "LET'S", "ctaSecond": "TALK.", "linksLabel": "Contact and social profiles", "externalLabel": " (opens in a new tab)", "backToTop": "Back to top" }
+    "pt": {
+      "emailDetail": "Enviar e-mail",
+      "whatsappDetail": "Enviar mensagem",
+      "githubDetail": "Código e repositórios",
+      "linkedinDetail": "Trajetória profissional",
+      "eyebrow": "Contato",
+      "description": "Projetos de software, colaboração técnica e oportunidades.",
+      "prompt": "Tem um produto ou desafio técnico?",
+      "ctaFirst": "VAMOS",
+      "ctaSecond": "CONVERSAR.",
+      "linksLabel": "Contato e redes sociais",
+      "externalLabel": " (abre em nova aba)",
+      "backToTop": "Voltar ao topo"
+    },
+    "en": {
+      "emailDetail": "Send an email",
+      "whatsappDetail": "Send a message",
+      "githubDetail": "Code and repositories",
+      "linkedinDetail": "Professional experience",
+      "eyebrow": "Contact",
+      "description": "Software projects, technical collaboration and opportunities.",
+      "prompt": "Building a product or facing a technical challenge?",
+      "ctaFirst": "LET'S",
+      "ctaSecond": "TALK.",
+      "linksLabel": "Contact and social profiles",
+      "externalLabel": " (opens in a new tab)",
+      "backToTop": "Back to top"
+    }
   }
 }
