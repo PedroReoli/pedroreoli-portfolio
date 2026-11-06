@@ -1,7 +1,7 @@
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { ArrowUpRight, Play, ArrowDownRight } from 'lucide-react'
+import { ArrowUpRight, ArrowDownRight, FileDown } from 'lucide-react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -14,6 +14,15 @@ export function HeroSection() {
   const hero = interfaceContent.hero
   const copy = hero[language]
 
+  const [downloading, setDownloading] = useState(false)
+  const downloadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (downloadTimeoutRef.current) clearTimeout(downloadTimeoutRef.current)
+    }
+  }, [])
+
   // Interactive subtle 3D parallax on Pedro's marble bust
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLElement>) => {
@@ -21,7 +30,7 @@ export function HeroSection() {
       const { innerWidth, innerHeight } = window
       const x = (e.clientX / innerWidth - 0.5) * 16
       const y = (e.clientY / innerHeight - 0.5) * 16
-      bgRef.current.style.transform = `scale(1.03) translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`
+      bgRef.current.style.transform = `scale(1.02) translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`
     },
     [reducedMotion],
   )
@@ -34,24 +43,23 @@ export function HeroSection() {
   useGSAP(
     () => {
       if (!sectionRef.current || reducedMotion) return
-      gsap.from('[data-hero-line]', {
-        yPercent: 100,
+      gsap.from('[data-hero-meta]', {
         opacity: 0,
-        duration: 1.1,
-        stagger: 0.1,
-        ease: 'power4.out',
+        y: -14,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power2.out',
       })
       gsap.from('[data-hero-bg]', {
-        scale: 1.1,
+        scale: 1.08,
         opacity: 0,
-        duration: 1.5,
+        duration: 1.4,
         ease: 'power3.out',
       })
-      gsap.from('[data-hero-meta]', {
+      gsap.from('[data-hero-actions]', {
         opacity: 0,
         y: 20,
         duration: 0.8,
-        stagger: 0.08,
         delay: 0.35,
         ease: 'power2.out',
       })
@@ -59,10 +67,23 @@ export function HeroSection() {
     { scope: sectionRef, dependencies: [reducedMotion] },
   )
 
+  const handleDownloadResume = useCallback(() => {
+    setDownloading(true)
+    if (downloadTimeoutRef.current) clearTimeout(downloadTimeoutRef.current)
+    downloadTimeoutRef.current = setTimeout(() => {
+      setDownloading(false)
+    }, 2000)
+  }, [])
+
   const resumeHref =
     language === 'pt'
       ? '/resume/Pedro_Lucas_Reis_Frontend.pdf'
       : '/resume/Pedro_Lucas_Reis_Fullstack.pdf'
+
+  const downloadFilename =
+    language === 'pt'
+      ? 'Pedro_Lucas_Reis_Curriculo.pdf'
+      : 'Pedro_Lucas_Reis_Resume.pdf'
 
   return (
     <section
@@ -72,7 +93,7 @@ export function HeroSection() {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      {/* PEDRO LUCAS REIS MARBLE BUST BACKGROUND */}
+      {/* PEDRO LUCAS REIS MARBLE BUST BACKGROUND IN LOWER HALF */}
       <div className="hero__background-wrap" aria-hidden="true">
         <div ref={bgRef} className="hero__background-inner" data-hero-bg>
           <img
@@ -86,54 +107,70 @@ export function HeroSection() {
       </div>
 
       <div className="shell hero__shell">
-        {/* TOP EYEBROW - CREATIVE ENGINEERING ━ */}
-        <div className="hero__top-meta" data-hero-meta>
-          <span className="hero__eyebrow-text">
-            {language === 'pt' ? 'ENGENHARIA & SISTEMAS' : 'SOFTWARE & AI ARCHITECTURE'}
-          </span>
-          <span className="hero__eyebrow-dash" aria-hidden="true" />
-        </div>
-
-        {/* HERO CENTER HEADLINE - REAL PEDRO REOLI */}
-        <div className="hero__center-content">
-          <p className="hero__editorial-role" data-hero-meta>
-            {copy.role}
-          </p>
-
-          <h1 className="hero__headline" aria-label="Pedro Lucas Reis — Full Stack & AI Systems Architect">
-            <span className="hero__line">
-              <span data-hero-line>{hero.name.firstLine}</span>
+        {/* TOP EDITORIAL CONTENT: Eyebrow + Headline + Subtitle (Above statue) */}
+        <div className="hero__header-content">
+          {/* Eyebrow: CREATIVE STUDIO ━━ */}
+          <div className="hero__eyebrow" data-hero-meta>
+            <span className="hero__eyebrow-text">
+              {copy.role}
             </span>
-            <span className="hero__line hero__line--accent">
-              <span data-hero-line>{hero.name.secondLine}</span>
+            <span className="hero__eyebrow-dash" aria-hidden="true" />
+          </div>
+
+          {/* Headline: Design Beyond Limits. */}
+          <h1 className="hero__headline" data-hero-meta aria-label="Pedro Reoli">
+            <span className="hero__headline-name">
+              <span data-hero-line>PEDRO</span> <span data-hero-line>REOLI</span>
             </span>
+            <span className="hero__dot">.</span>
           </h1>
 
+          {/* Subtitle: A creative space for designers, artists... */}
           <p className="hero__editorial-sub" data-hero-meta>
             {copy.statement}
           </p>
         </div>
 
-        {/* BOTTOM ACTION BUTTONS */}
-        <div className="hero__bottom-bar">
-          <div className="hero__actions-group" data-hero-meta>
+        {/* BOTTOM ACTION BUTTONS: Exactly 2 buttons (Ver projetos + Currículo) */}
+        <div className="hero__bottom-bar" data-hero-actions>
+          <div className="hero__actions-group">
+            {/* Primary Action: Ver projetos */}
             <a className="hero__btn-primary" href={hero.actionHref}>
               <span>{copy.action}</span>
               <ArrowUpRight aria-hidden="true" />
             </a>
+
+            {/* Secondary Action: Currículo (sem a palavra ATS) */}
             <a
               className="hero__btn-secondary"
               href={resumeHref}
+              download={downloadFilename}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={language === 'pt' ? 'Ver Currículo ATS' : 'View ATS Resume'}
+              onClick={handleDownloadResume}
+              aria-label={
+                language === 'pt'
+                  ? 'Baixar currículo (PDF)'
+                  : 'Download resume (PDF)'
+              }
             >
-              <Play className="hero__btn-play-icon" aria-hidden="true" />
-              <span>{language === 'pt' ? 'Currículo ATS' : 'ATS Resume'}</span>
+              <FileDown
+                className="hero__btn-icon"
+                aria-hidden="true"
+              />
+              <span>
+                {downloading
+                  ? language === 'pt'
+                    ? 'Baixando...'
+                    : 'Downloading...'
+                  : language === 'pt'
+                    ? 'Currículo'
+                    : 'Resume'}
+              </span>
             </a>
           </div>
 
-          <a className="hero__scroll-indicator" href="#sobre" data-hero-meta>
+          <a className="hero__scroll-indicator" href="#sobre" aria-label={copy.scroll}>
             <span>{copy.scroll}</span>
             <ArrowDownRight aria-hidden="true" />
           </a>

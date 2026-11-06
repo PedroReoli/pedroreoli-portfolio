@@ -6,10 +6,10 @@
       "category": { "pt": "Software corporativo", "en": "Enterprise system" },
       "year": "2024 / 26",
       "description": {
-        "pt": "Frontend e integrações para propostas, licenciamento e catálogo.",
-        "en": "Frontend and integrations for proposals, licensing and catalog management."
+        "pt": "Ecossistema ERP com mais de 100 páginas corporativas e governança de Design System com 500+ componentes em React, Next.js e TypeScript. Redução de 70% no tempo de desenvolvimento de novas telas e ganho de 40% na velocidade de carregamento em plataformas usadas por 20+ organizações.",
+        "en": "Enterprise ERP ecosystem encompassing 100+ corporate modules and a unified Design System of 500+ components in React, Next.js, and TypeScript. Cut new feature development time by 70% and slashed page load latency by 40% across platforms serving 20+ operational organizations."
       },
-      "technologies": ["React", "TypeScript", "Clean Architecture"],
+      "technologies": ["React", "Next.js", "TypeScript", "Node.js / NestJS", "PostgreSQL", "AWS", "Design System"],
       "action": { "pt": "Explorar interfaces", "en": "Explore the interfaces" },
       "actionIcon": "arrow-up-right",
       "visual": "image",
@@ -27,10 +27,10 @@
       "category": { "pt": "Agentes autônomos", "en": "Autonomous agents" },
       "year": "2026",
       "description": {
-        "pt": "Agente local para automatizar navegadores com CDP e ferramentas observáveis.",
-        "en": "A local agent for browser automation with CDP and observable tools."
+        "pt": "Motor de automação híbrida (Web via CDP e Desktop Windows nativo via UIA) para agentes autônomos de IA via Model Context Protocol (MCP). Apresenta Reader Mode semântico via AXTree com 92.2% de economia de tokens de contexto e suíte de auditoria defensiva de QA.",
+        "en": "Hybrid automation engine (Web CDP & native Windows Desktop via UIA) for autonomous AI agents powered by the Model Context Protocol (MCP). Features a semantic AXTree Reader Mode delivering 92.2% context token savings alongside a defensive QA audit suite."
       },
-      "technologies": ["CDP Protocol", "TypeScript", "Node.js"],
+      "technologies": ["CDP Protocol", "Windows UIA", "Model Context Protocol (MCP)", "TypeScript", "Node.js"],
       "action": { "pt": "Ver no GitHub", "en": "View on GitHub" },
       "actionIcon": "arrow-up-right",
       "visual": "agent",

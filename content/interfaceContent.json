@@ -78,8 +78,8 @@
     },
     "articleHref": "https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/",
     "actionIcon": "arrow-up-right",
-    "pt": { "eyebrow": "Tecnologia com propósito", "imageAlt": "Pedro apresentando o projeto FalaAtípica no UniFOA", "imageCategory": "Tecnologia assistiva", "imageContext": "Apresentação / UniFOA", "title": "Comunicação", "titleAccent": "mais acessível.", "summary": "O FalaAtípica aproxima famílias, crianças e profissionais da fala por meio de uma comunicação mais clara.", "action": "Conhecer a história" },
-    "en": { "eyebrow": "Technology with purpose", "imageAlt": "Pedro presenting the FalaAtípica project at UniFOA", "imageCategory": "Assistive technology", "imageContext": "Presentation / UniFOA", "title": "Communication", "titleAccent": "made accessible.", "summary": "FalaAtípica brings families, children and speech professionals closer through clearer communication.", "action": "Read the story" }
+    "pt": { "eyebrow": "Tecnologia com propósito", "imageAlt": "Pedro apresentando o projeto FalaAtípica no UniFOA", "imageCategory": "Tecnologia assistiva", "imageContext": "Apresentação / UniFOA", "title": "VOZ", "titleAccent": "para todos.", "summary": "Plataforma de Tecnologia Assistiva concebida por Pedro no UniFOA para apoiar crianças com atraso na fala e desenvolvimento atípico. Conecta famílias e fonoaudiólogos através de pranchas interativas de CAA e telemetria clínica.", "action": "Conhecer a história" },
+    "en": { "eyebrow": "Technology with purpose", "imageAlt": "Pedro presenting the FalaAtípica project at UniFOA", "imageCategory": "Assistive technology", "imageContext": "Presentation / UniFOA", "title": "VOICE", "titleAccent": "for all.", "summary": "Assistive Technology platform created by Pedro at UniFOA to empower children with speech delays and atypical communication. Bridges families and speech therapists through interactive AAC boards and clinical telemetry.", "action": "Read the story" }
   },
   "projectsPage": {
     "pt": { "eyebrow": "Trabalhos selecionados", "title": "PROJETOS", "description": "Explore interfaces corporativas e ferramentas independentes." },

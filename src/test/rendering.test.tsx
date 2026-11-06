@@ -1,6 +1,28 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { App } from '../App';
+
+class IntersectionObserverMock {
+  root = null;
+  rootMargin = '';
+  thresholds = [];
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+  takeRecords = vi.fn().mockReturnValue([]);
+}
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: IntersectionObserverMock,
+});
+
+Object.defineProperty(global, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: IntersectionObserverMock,
+});
 
 describe('Application Rendering & Integration Tests', () => {
   beforeEach(() => {
@@ -37,8 +59,8 @@ describe('Application Rendering & Integration Tests', () => {
     expect(screen.getAllByText('TypeScript')[0]).toBeInTheDocument();
 
     // Purpose Section
-    expect(screen.getByText('Comunicação')).toBeInTheDocument();
-    expect(screen.getByText('mais acessível.')).toBeInTheDocument();
+    expect(screen.getByText('VOZ')).toBeInTheDocument();
+    expect(screen.getByText('para todos.')).toBeInTheDocument();
 
     // Experience Section
     expect(screen.getByText('TRAJETÓRIA.')).toBeInTheDocument();
@@ -64,6 +86,8 @@ describe('Application Rendering & Integration Tests', () => {
     expect(screen.getAllByText('Full Stack Software Engineer')[0]).toBeInTheDocument();
     expect(screen.getByText('Who I am')).toBeInTheDocument();
     expect(screen.getByText('years of experience')).toBeInTheDocument();
+    expect(screen.getByText('VOICE')).toBeInTheDocument();
+    expect(screen.getByText('for all.')).toBeInTheDocument();
     expect(screen.getByText('JOURNEY.')).toBeInTheDocument();
     expect(screen.getByText("LET'S")).toBeInTheDocument();
     expect(screen.getByText('TALK.')).toBeInTheDocument();
@@ -110,5 +134,24 @@ describe('Application Rendering & Integration Tests', () => {
 
     expect(screen.getByText('NOTAS')).toBeInTheDocument();
     expect(window.location.pathname).toBe('/midia-blog');
+  });
+
+  it('renders and verifies both Hero action buttons: Ver projetos and Curriculo (without ATS label)', () => {
+    const { container } = render(<App />);
+    const heroSection = container.querySelector('#hero') as HTMLElement;
+    expect(heroSection).toBeInTheDocument();
+
+    // 1. Primary Action: Ver projetos
+    const projectsBtn = within(heroSection).getByRole('link', { name: /ver projetos/i });
+    expect(projectsBtn).toBeInTheDocument();
+    expect(projectsBtn).toHaveAttribute('href', '#projetos-selecionados');
+
+    // 2. Download Resume button (without ATS in label)
+    const resumeBtn = within(heroSection).getByRole('link', { name: /baixar currículo \(pdf\)/i });
+    expect(resumeBtn).toBeInTheDocument();
+    expect(resumeBtn).toHaveAttribute('href', '/resume/Pedro_Lucas_Reis_Frontend.pdf');
+    expect(resumeBtn).toHaveAttribute('download', 'Pedro_Lucas_Reis_Curriculo.pdf');
+    expect(resumeBtn).toHaveTextContent('Currículo');
+    expect(resumeBtn).not.toHaveTextContent(/ats/i);
   });
 });

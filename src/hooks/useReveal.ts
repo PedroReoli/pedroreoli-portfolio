@@ -11,16 +11,29 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
 
   useGSAP(
     () => {
-      const elements = gsap.utils.toArray<HTMLElement>('[data-reveal]')
+      if (!scope.current) return
+      const elements = gsap.utils.toArray<HTMLElement>('[data-reveal]', scope.current)
+
       if (reducedMotion) {
-        gsap.set(elements, { opacity: 1, y: 0 })
+        gsap.set(elements, { opacity: 1, y: 0, clearProps: 'all' })
         return
       }
 
+      // Initial clean state to avoid FOUC without layout shift
+      gsap.set(elements, { opacity: 0, y: 24 })
+
       ScrollTrigger.batch(elements, {
-        start: 'top 90%',
+        start: 'top 85%',
         once: true,
-        onEnter: (batch) => gsap.fromTo(batch, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: .68, stagger: .07, ease: 'power3.out', overwrite: true }),
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.62,
+            stagger: 0.1,
+            ease: 'power3.out',
+            overwrite: 'auto',
+          }),
       })
     },
     { scope, dependencies: [reducedMotion] },

@@ -23,7 +23,10 @@ output/
 temp/
 tmp/
 
-# Sistema operacional e editores
+# Pessoal e sensivel
+Sobre Mim.md
+*.personal.md
+
 .DS_Store
 Thumbs.db
 .vscode/

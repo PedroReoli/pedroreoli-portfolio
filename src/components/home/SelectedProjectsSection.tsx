@@ -39,30 +39,58 @@ export function SelectedProjectsSection() {
 
         <div className="project-showcase">
           {homeContent.featuredProjects.map((project, index) => (
-            <m.article className={`project-card project-card--${index + 1}`} key={project.number} data-reveal whileHover={{ y: -5 }} transition={{ duration: 0.22 }}>
-              <a href={project.href} target={project.external ? '_blank' : undefined} rel={project.external ? 'noreferrer' : undefined}>
-                <div className="project-card__visual">
-                  {project.visual === 'image' ? (
-                    <img
-                      src={project.image}
-                      srcSet={project.imageSrcSet}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                      alt={project.imageAlt[language]}
-                      loading="eager"
-                      decoding="async"
-                    />
-                  ) : <AchillesArtwork project={project} language={language} />}
-                  <span className="project-card__index">{project.number}</span>
-                </div>
-                <div className="project-card__body">
-                  <div className="project-card__meta"><span>{project.category[language]}</span><span>{project.year}</span></div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description[language]}</p>
-                  <p className="project-card__technologies" aria-label={interfaceContent.featuredProject[language].technologiesLabel}>{project.technologies.join(' · ')}</p>
-                  <span className="project-card__action">{project.action[language]}<ArrowUpRight aria-hidden="true" /></span>
-                </div>
-              </a>
-            </m.article>
+            <div
+              key={project.number}
+              className="project-card-reveal-wrapper"
+              data-reveal
+            >
+              <m.article
+                className={`project-card project-card--${index + 1}`}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.22 }}
+              >
+                <a href={project.href} target={project.external ? '_blank' : undefined} rel={project.external ? 'noreferrer' : undefined}>
+                  <div className="project-card__visual">
+                    {project.visual === 'image' ? (
+                      <div className="project-card__image-container">
+                        <div className="project-card__frame-bar" aria-hidden="true">
+                          <span className="frame-dot frame-dot--close" />
+                          <span className="frame-dot frame-dot--min" />
+                          <span className="frame-dot frame-dot--max" />
+                          <span className="frame-bar-title">{project.title.toLowerCase()}.corp.internal</span>
+                        </div>
+                        <picture>
+                          <source
+                            type="image/webp"
+                            srcSet={project.imageSrcSet}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                          />
+                          <img
+                            src={project.image}
+                            srcSet={project.imageSrcSet}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                            alt={project.imageAlt[language]}
+                            width={2880}
+                            height={1800}
+                            loading="eager"
+                            decoding="async"
+                          />
+                        </picture>
+                        <div className="project-card__vignette" aria-hidden="true" />
+                      </div>
+                    ) : <AchillesArtwork project={project} language={language} />}
+                    <span className="project-card__index">{project.number}</span>
+                  </div>
+                  <div className="project-card__body">
+                    <div className="project-card__meta"><span>{project.category[language]}</span><span>{project.year}</span></div>
+                    <h3>{project.title}</h3>
+                    <p>{project.description[language]}</p>
+                    <p className="project-card__technologies" aria-label={interfaceContent.featuredProject[language].technologiesLabel}>{project.technologies.join(' · ')}</p>
+                    <span className="project-card__action">{project.action[language]}<ArrowUpRight aria-hidden="true" /></span>
+                  </div>
+                </a>
+              </m.article>
+            </div>
           ))}
         </div>
       </div>

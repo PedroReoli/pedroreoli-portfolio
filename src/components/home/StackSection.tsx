@@ -23,7 +23,7 @@ export function StackSection() {
         </div>
         <div className="stack-grid" aria-label={copy.ariaLabel}>
           {technologyContent.groups.map((group) => (
-            <article key={group.number} data-reveal>
+            <article key={group.number} data-reveal className="stack-column-revealed">
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
                 {group.tools.map((tool) => (

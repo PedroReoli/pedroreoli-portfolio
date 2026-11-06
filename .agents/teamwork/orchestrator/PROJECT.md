@@ -1,32 +1,60 @@
-# Project: Pedro Reoli Portfolio Refinement
+# Project: Pedro Reoli Portfolio Layout Revision & Design Refinement
 
 ## Architecture
-- Framework: Vite + React with Tailwind CSS
-- Key Modules:
-  * Components: `src/components/` (sections, layout components, icons)
-  * Data/Content: `content/*.json`
-  * Styles & Tokens: `src/index.css` & `tailwind.config.js`
-  * Layout & Sections: Hero, About, SelectedProjects, Stack, Purpose, Experience/Trajectory, Footer
+- Framework: React 19 + Vite + TypeScript
+- Styling: Vanilla CSS architecture (`src/styles/base.css`, `layout.css`, `home.css`, `responsive.css`)
+- Animation: motion/react (v14.9), GSAP (ScrollTrigger), CSS transforms
+- Content: JSON-based single source of truth (`content/*.json`)
+- Page Structure (`HomePage.tsx`):
+  1. HeroSection (`#hero`)
+  2. AboutSection (`#sobre`)
+  3. SelectedProjectsSection (`#projetos-selecionados` / `#projetos`) — Projects section
+  4. StackSection (`#stack`)
+  5. PurposeSection (`#proposito`)
+  6. ExperienceSection (`#experiencia`)
+  7. Footer (`#contato`)
 
 ## Feature Inventory
 | # | Feature | Description | Milestone | Source |
 |---|---------|-------------|-----------|--------|
-| 1 | R1: Rounded Layouts & Transitions | Implement rounded borders, island envelopes, bridge connectors, and curved dark footer dome | M3 | ORIGINAL_REQUEST §R1 |
-| 2 | R2: Tech Icons Fidelity & Fixes | Replace incorrect/broken tech stack icons with high-fidelity official icons in Icon.tsx & content/*.json | M1 | ORIGINAL_REQUEST §R2 |
-| 3 | R3: FalaAtípica Grayscale Removal | Remove black & white / grayscale filter from FalaAtípica project card/image | M1 | ORIGINAL_REQUEST §R3 |
-| 4 | R4: Trajectory Storytelling | Redesign Trajectory section into interconnected sequential storytelling timeline | M2 | ORIGINAL_REQUEST §R4 |
-| 5 | R5: Global Color Palette Harmonization | Standardize color palette across backgrounds, borders, typography, and accents | M3 | ORIGINAL_REQUEST §R5 |
+| 1 | F1: Hero Fixed Navigation | Fixed navigation bar active during Hero visibility | M1 | ORIGINAL_REQUEST §R1 |
+| 2 | F2: Post-Hero Secondary Nav | Sleek sticky secondary nav that slides/fades in when scroll leaves Hero | M1 | ORIGINAL_REQUEST §R1 |
+| 3 | F3: 3 ATS Functional Buttons | 3 ATS buttons in Hero actions: Resume Download, Copy Contact, ATS Profile | M2 | ORIGINAL_REQUEST §R2 |
+| 4 | F4: Scroll Emergence Animations | Scroll-triggered reveal animations for Projects (3rd) and Stack (4th) sections | M3 | ORIGINAL_REQUEST §R3 |
+| 5 | F5: Project Card Framing & Format | Fixed image framing with <picture> WebP, window chrome bar, and hover peek | M3 | ORIGINAL_REQUEST §R4 |
+| 6 | F6: Detailed Project Stories | Rich, quantifiable narratives for Autocom3, Achilles, Organon from Sobre Mim.md | M2 | ORIGINAL_REQUEST §R4 |
+| 7 | F7: Compact 4th Section Layout | Tighter vertical footprint in StackSection with +30% larger icons and +24% titles | M3 | ORIGINAL_REQUEST §R5 |
+| 8 | F8: 5th Section Typographical Fix | Unaccented title ("VOZ / para todos.") eliminating font line-height/accent defect | M2 | ORIGINAL_REQUEST §R5 |
+| 9 | F9: Alternating Vertical Timeline | Trajectory section as alternating vertical timeline with spine and station nodes | M4 | ORIGINAL_REQUEST §R6 |
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 0 | Survey & Research | 2 Explorers research layouts, components, icons, styles, and dependencies | none | DONE |
-| 1 | Icons & Media Polish (Worker 1) | Fix tech icons in Icon.tsx & content/*.json; remove FalaAtípica grayscale filter | M0 | DONE |
-| 2 | Trajectory Storytelling (Worker 2) | Redesign Trajectory section with sequential interconnected storytelling layout | M0 | DONE |
-| 3 | Palette & Section Transitions (Worker 3) | Harmonize global color palette, rounded container layouts, and section transitions | M0, M1, M2 | DONE |
-| 4 | Gate Verification | Gate verification across automated builds, tests, and requirements compliance | M1, M2, M3 | DONE |
+| 1 | M1: Navigation & Header System | Dual-bar navigation (Hero fixed + post-hero secondary sticky bar) | none | DONE |
+| 2 | M2: Hero ATS & Content Enrichment | 3 ATS buttons, Sobre Mim.md project descriptions, unaccented Purpose title | none | DONE |
+| 3 | M3: Projects & Stack Polish | Project image framing/picture format, scroll emergence animations, compact stack layout | none | DONE |
+| 4 | M4: Alternating Vertical Timeline | Trajectory as vertical alternating timeline with glowing spine and node connectors | none | DONE |
+| 5 | M5: Final E2E Test Pass & Audit | 100% pass across E2E test tiers 1-4, lint, typecheck, build, and forensic integrity | M1, M2, M3, M4 | DONE |
 
-## Code Layout & Verified Boundaries
-- Worker 1: `src/components/common/Icon.tsx`, `content/technologyContent.json`, `src/components/home/PurposeSection.tsx`, `src/pages/MediaPage.tsx`
-- Worker 2: `src/components/home/ExperienceSection.tsx`
-- Worker 3: `src/pages/HomePage.tsx`, `src/components/home/HeroSection.tsx`, `src/components/home/AboutSection.tsx`, `src/components/home/SelectedProjectsSection.tsx`, `src/components/home/StackSection.tsx`, `src/components/layout/Footer.tsx`, `src/components/common/Footer.tsx`, `src/index.css`, `content/interfaceContent.json`
+## Interface Contracts & File Write Ownership
+### M1: Navigation & Header System
+- Files owned exclusively: `src/components/layout/Header.tsx`, `src/styles/layout.css`
+- Interface: Renders Hero bar during Hero visibility, transitions smoothly to compact Secondary Bar when `isPastHero === true`. RTL-compliant single link for brand at scroll 0.
+
+### M2: Hero ATS & Content Enrichment
+- Files owned exclusively: `src/components/home/HeroSection.tsx`, `content/homeContent.json`, `content/projectsContent.json`, `content/interfaceContent.json`, `src/test/rendering.test.tsx`
+- Interface: Exposes 3 ATS buttons in Hero actions. Supplies enriched project descriptions and unaccented Purpose title (`VOZ / para todos.`). Updates `rendering.test.tsx` title assertion.
+
+### M3: Projects & Stack Polish
+- Files owned exclusively: `src/components/home/SelectedProjectsSection.tsx`, `src/components/home/StackSection.tsx`, `src/hooks/useReveal.ts`, `src/styles/home.css`
+- Interface: Renders `<picture>` with WebP + fallback PNG in project card visual. Integrates scroll emergence without transform collisions. Enforces compact 100svh stack layout with enlarged icons/titles.
+
+### M4: Alternating Vertical Timeline
+- Files owned exclusively: `src/components/home/ExperienceSection.tsx`, `src/styles/responsive.css`
+- Interface: Renders alternating vertical timeline with central Cyber Gold spine, station nodes, and mobile fold (<900px), preserving 100% of historical milestones, companies, roles, and tags.
+
+## Code Layout
+- Components: `src/components/layout/`, `src/components/home/`, `src/components/common/`
+- Styles: `src/styles/base.css`, `layout.css`, `home.css`, `responsive.css`
+- Content: `content/homeContent.json`, `interfaceContent.json`, `projectsContent.json`
+- Tests: `src/test/`

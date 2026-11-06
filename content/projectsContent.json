@@ -27,10 +27,10 @@
     {
       "number": "01",
       "title": "Achilles CDP Agent",
-      "category": { "pt": "Agentes & browser", "en": "Agents & browser" },
+      "category": { "pt": "Agentes & Automação", "en": "Agents & Automation" },
       "description": {
-        "pt": "Operação local de navegadores com CDP e ferramentas determinísticas.",
-        "en": "Local browser operation through CDP and deterministic tools."
+        "pt": "Motor de automação híbrida (Web via CDP e Desktop Windows nativo via UIA) para agentes autônomos de IA via Model Context Protocol (MCP). Apresenta Reader Mode semântico via AXTree com 92.2% de economia de tokens de contexto e suíte de auditoria defensiva de QA.",
+        "en": "Hybrid automation engine (Web CDP & native Windows Desktop via UIA) for autonomous AI agents powered by the Model Context Protocol (MCP). Features a semantic AXTree Reader Mode delivering 92.2% context token savings alongside a defensive QA audit suite."
       },
       "icon": "arrow-up-right",
       "href": "https://github.com/PedroReoli/Achilles-CDP-Agent"
@@ -38,10 +38,10 @@
     {
       "number": "02",
       "title": "Organon",
-      "category": { "pt": "Conhecimento local-first", "en": "Local-first knowledge" },
+      "category": { "pt": "Business OS & Agentes", "en": "Business OS & Agents" },
       "description": {
-        "pt": "Planejamento e conhecimento conectados em um ambiente privado.",
-        "en": "Planning and knowledge connected in a private environment."
+        "pt": "Business OS e cockpit multi-agente Local-First de alta performance. Conta com isolamento de sessões com Git Worktrees, 18 canais IPC, telemetria em tempo real, editor TipTap modular, transcrição local via Whisper AI e servidor MCP nativo.",
+        "en": "High-performance Local-First Business OS and multi-agent cockpit. Features session isolation via Git Worktrees, 18 IPC channels, real-time telemetry, TipTap modular editor, local Whisper AI transcription, and native MCP server integration."
       },
       "icon": "arrow-up-right",
       "href": "https://github.com/PedroReoli/organon"
@@ -51,11 +51,22 @@
       "title": "GeoAmbiental VR",
       "category": { "pt": "Computação espacial", "en": "Spatial computing" },
       "description": {
-        "pt": "Experiência imersiva para leitura e exploração ambiental.",
-        "en": "An immersive experience for environmental exploration."
+        "pt": "Experiência de computação espacial e realidade virtual em Unity/C# voltada à visualização imersiva de topografia e conscientização ambiental interativa.",
+        "en": "Spatial computing and virtual reality experience built in Unity/C# designed for immersive 3D topographical exploration and interactive environmental education."
       },
       "icon": "arrow-up-right",
       "href": "https://github.com/PedroReoli/GeoAmbientalVR"
+    },
+    {
+      "number": "04",
+      "title": "Domus / Propose-SaaS",
+      "category": { "pt": "SaaS & Arquitetura", "en": "SaaS & Architecture" },
+      "description": {
+        "pt": "Gerador NoCode de propostas comerciais corporativas com editor visual drag-and-drop e renderização dinâmica baseada em JSON Schema. Arquitetura full-stack integrada a bancos relacionais e gateways de faturamento.",
+        "en": "NoCode commercial proposal generator featuring a drag-and-drop visual builder and dynamic JSON Schema rendering engine. Full-stack architecture integrated with relational databases and billing gateways."
+      },
+      "icon": "arrow-up-right",
+      "href": "https://github.com/PedroReoli"
     }
   ]
 }
