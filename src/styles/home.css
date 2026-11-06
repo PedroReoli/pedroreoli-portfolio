@@ -420,7 +420,9 @@
 .purpose-section__media::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(8, 9, 11, .9) 0%, rgba(8, 9, 11, .52) 26%, transparent 52%); }
 /* Photo recedes instead of disappearing under the headline. */
 .purpose-section__media img { transition: filter .9s ease; }
-.purpose-section__media.is-revealed img { filter: saturate(.85) contrast(1); }
+/* A foto escurece o suficiente para o título vencer o pixel mais claro dela,
+   mas continua nítida (9,1:1 medido no branco do slide). */
+.purpose-section__media.is-revealed img { filter: saturate(.85) contrast(1) brightness(.76); }
 
 /* "VOZ / para todos." rises into the photo, the photo recedes behind it. */
 .purpose-section__overlay { position: absolute; inset: auto 0 0; z-index: 2; padding: clamp(14px, 2.2vh, 26px) clamp(16px, 2vw, 26px); }
@@ -432,7 +434,7 @@
 .purpose-section__media.is-revealed .purpose-section__overlay h2,
 .purpose-section__media.is-revealed .purpose-section__overlay h2 em { opacity: 1; transform: none; }
 
-.purpose-section__copy { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(12px, 1.8vh, 20px); max-width: 560px; }
+.purpose-section__copy { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(12px, 1.8vh, 20px); max-width: 560px; padding: clamp(16px, 2vw, 26px); border-radius: var(--radius-md); background: radial-gradient(120% 100% at 0% 50%, rgba(8, 9, 11, .82) 0%, rgba(8, 9, 11, .55) 62%, transparent 100%); }
 .purpose-section__copy p { margin: 0; font-size: clamp(.98rem, 1.1vw, 1.06rem); line-height: 1.55; }
 .purpose-section__copy a { display: inline-flex; align-items: center; gap: 18px; min-height: 46px; padding: 0 18px; border-radius: var(--radius-sm); background: var(--night); color: var(--paper); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .purpose-section__credit { display: flex; gap: 18px; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .72; }
@@ -616,16 +618,17 @@
   color: rgba(245, 243, 239, 0.65) !important;
 }
 
-/* Contact Section & Footer */
+/* Contact Section & Footer — transparent: o take é o fundo (piso em layout.css) */
 .contact-section {
-  background: #08090b !important;
+  background: transparent !important;
   border-top: 1px solid rgba(245, 243, 239, 0.08) !important;
 }
 .contact-grid {
   border: 1px solid rgba(245, 243, 239, 0.14) !important;
+  background: rgba(8, 9, 11, 0.55) !important;
 }
 .contact-grid a {
-  background: rgba(17, 18, 22, 0.65) !important;
+  background: rgba(17, 18, 22, 0.55) !important;
   border-right: 1px solid rgba(245, 243, 239, 0.14) !important;
 }
 .contact-grid a:hover {

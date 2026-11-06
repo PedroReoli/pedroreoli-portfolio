@@ -1,6 +1,15 @@
 .skip-link { position: fixed; z-index: 1000; top: 12px; left: 12px; padding: 12px 18px; background: var(--paper); color: var(--night); transform: translateY(-180%); }
 .skip-link:focus { transform: none; }
 
+/* App shell é o stacking context da página inteira (header, main e rodapé).
+   Sem ele, o <footer> também fica no root e o palco fixo do vídeo (z-index 0,
+   criado por :focus-visible/transform) pode pintar por cima do rodapé. */
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+}
+
 /* Accessible brand hidden visually - Sem Pedro Reoli na navbar */
 .brand--sr-only {
   position: absolute;
@@ -256,7 +265,13 @@
 .mobile-menu { display: none; }
 section, footer { scroll-margin-top: 0; }
 .section-kicker { min-height: 48px; }
-.contact-section { position: relative; height: 100svh; min-height: 100svh; padding-top: var(--header-height, 72px); padding-bottom: 0; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; background: var(--night); color: white; border-top: 1px solid var(--line-dark); }
+/* Rodapé transparente: o take é o fundo da página inteira. O texto fica sobre um
+   piso local (::after), não sobre um painel opaco de seção. */
+.contact-section { position: relative; z-index: 1; height: 100svh; min-height: 100svh; padding-top: var(--header-height, 72px); padding-bottom: 0; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; background: transparent; color: white; border-top: 1px solid var(--line-dark); }
+/* Piso de legibilidade: fica ATRÁS do conteúdo (z-index negativo), senão o
+   próprio escurecimento pinta por cima do texto e apaga o rodapé inteiro. */
+.contact-section > .shell { z-index: 1; }
+.contact-section::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, rgba(8, 9, 11, .74) 0%, rgba(8, 9, 11, .62) 45%, rgba(8, 9, 11, .86) 100%); }
 .contact-section::before { content: ''; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px); background-size: 80px 80px; }
 .contact-section > .shell { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: clamp(14px, 2vh, 24px); min-height: 0; }
 .contact-section__main { padding: clamp(16px, 2.5vh, 32px) 0 clamp(12px, 2vh, 20px); }
