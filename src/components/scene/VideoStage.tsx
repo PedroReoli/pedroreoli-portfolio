@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import { sceneClips } from '@/data/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import type { SceneClip } from '@/types/content'
@@ -89,7 +90,11 @@ export function VideoStage() {
     }
   }, [])
 
-  useScrollScene(SECTION_IDS, { enabled: !isStaticOnly, onSample: handleSample })
+  useScrollScene(SECTION_IDS, {
+    enabled: !isStaticOnly,
+    frozen: reducedMotion,
+    onSample: handleSample,
+  })
 
   const activeClip: SceneClip | null = useMemo(
     () => sceneClips.clips.find((c) => c.id === activeClipId) || null,
@@ -107,23 +112,20 @@ export function VideoStage() {
   const posterSrc = posterFallbackActive ? DEFAULT_FALLBACK_POSTER : basePoster
 
   // Load the clip the scroll asks for, then keep it paused: scroll is the clock.
-  // "clip failed" is not "clip hidden": the failed clip stays mounted so its current
-  // frame remains on screen instead of leaving a black hole where the backdrop was.
-  const clipMounted = Boolean(activeClip) && !clipFailed && !isStaticOnly
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !clipMounted || !activeClip) return
+    if (!video || !clipVisible || !activeClip) return
     if (video.getAttribute('src') !== activeClip.src) video.src = activeClip.src
     video.pause()
     loadedRef.current = video
     video.currentTime = targetTimeRef.current
     // activeClip is the only re-load trigger; the time itself lives in the rAF loop.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeClip?.src, clipMounted])
+  }, [activeClip?.src, clipVisible])
 
   // Ease the visible frame toward the scroll target in both directions.
   useEffect(() => {
-    if (!clipMounted) return
+    if (!clipVisible) return
     let raf = 0
     const tick = () => {
       const video = loadedRef.current
@@ -137,7 +139,7 @@ export function VideoStage() {
     }
     raf = window.requestAnimationFrame(tick)
     return () => window.cancelAnimationFrame(raf)
-  }, [clipMounted])
+  }, [clipVisible])
 
   const handleVideoError = useCallback(() => {
     const failedId = activeClipId
@@ -150,7 +152,7 @@ export function VideoStage() {
     if (!posterFallbackActive) setPosterFallbackActive(true)
   }, [posterFallbackActive])
 
-  return (
+  const stage = (
     <div
       className="video-stage"
       aria-hidden="true"
@@ -163,20 +165,21 @@ export function VideoStage() {
       <img
         key={posterSrc}
         className="video-stage__poster"
+        data-dimmed={clipVisible ? 'true' : 'false'}
         src={posterSrc}
         onError={handlePosterError}
         alt=""
         loading="eager"
         decoding="async"
-        data-dimmed={clipMounted ? 'true' : 'false'}
       />
 
+      {/* Reduced motion freezes the take on one frame instead of following the scroll. */}
       {!isStaticOnly && (
         <video
           ref={videoRef}
           className="video-stage__video"
           data-active={clipVisible ? 'true' : 'false'}
-          src={clipMounted ? activeClip?.src : undefined}
+          src={clipVisible ? activeClip?.src : undefined}
           muted
           playsInline
           preload="auto"
@@ -194,4 +197,9 @@ export function VideoStage() {
       <div className="video-stage__scrim" />
     </div>
   )
+
+  // The stage lives on <body>, outside the page stacking context, so it can sit
+  // behind every section AND the footer without fighting their z-index.
+  if (typeof document === 'undefined') return stage
+  return createPortal(stage, document.body)
 }

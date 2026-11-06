@@ -83,14 +83,16 @@ export function sampleScene(ranges: SceneRange[], sectionIds: readonly string[],
 }
 
 /**
- * Wires the scroll to the scene. Playback stays paused forever: `onTime` receives the
+ * Wires the scroll to the scene. Playback stays paused forever: `onSample` receives the
  * frame that the scroll asks for, and the component eases the <video> toward it.
+ * With `frozen` the take stops following the scroll and holds the first frame, so
+ * nothing on screen moves for people who asked for less motion.
  */
 export function useScrollScene(
   sectionIds: readonly string[],
-  options: { enabled: boolean; onSample: (sample: SceneSample) => void },
+  options: { enabled: boolean; frozen?: boolean; onSample: (sample: SceneSample) => void },
 ) {
-  const { enabled, onSample } = options
+  const { enabled, frozen = false, onSample } = options
   const sampleRef = useRef(onSample)
 
   useEffect(() => {
@@ -100,20 +102,23 @@ export function useScrollScene(
   useEffect(() => {
     if (!enabled || typeof window === 'undefined') return
 
-    let ranges = buildRanges()
+    const ranges = buildRanges()
     let frame = 0
 
     const emit = () => {
       frame = 0
-      sampleRef.current(sampleScene(ranges, sectionIds, window.scrollY))
+      const y = frozen ? ranges[0]?.start ?? 0 : window.scrollY
+      sampleRef.current(sampleScene(ranges, sectionIds, y))
     }
 
     const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(emit)
+      if (frame) return
+      frame = window.requestAnimationFrame(emit)
     }
 
     const onResize = () => {
-      ranges = buildRanges()
+      // Ranges are rebuilt lazily: same sections, new document height.
+      ranges.splice(0, ranges.length, ...buildRanges())
       onScroll()
     }
 
@@ -129,5 +134,5 @@ export function useScrollScene(
       window.clearTimeout(remeasure)
       if (frame) window.cancelAnimationFrame(frame)
     }
-  }, [enabled, sectionIds])
+  }, [enabled, frozen, sectionIds])
 }

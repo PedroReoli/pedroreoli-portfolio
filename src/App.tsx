@@ -25,6 +25,7 @@ function AppRoute() {
           id="main-content"
           key={pathname}
           tabIndex={-1}
+          className="app-main"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -33,7 +34,9 @@ function AppRoute() {
           {pages[pathname] ?? <NotFoundPage />}
         </m.main>
       </AnimatePresence>
-      <Footer />
+      <div className="app-footer">
+        <Footer />
+      </div>
     </div>
   )
 }
