@@ -27,8 +27,8 @@ export function StackSection() {
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
                 {group.tools.map((tool) => (
-                  <m.li key={tool.name} whileHover={{ y: -3 }} transition={{ duration: 0.18 }}>
-                    <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={22} /></span>
+                  <m.li key={tool.name} whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
+                    <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
                     <strong>{tool.name}</strong>
                   </m.li>
                 ))}

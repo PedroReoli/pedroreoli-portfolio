@@ -43,7 +43,14 @@ export function SelectedProjectsSection() {
               <a href={project.href} target={project.external ? '_blank' : undefined} rel={project.external ? 'noreferrer' : undefined}>
                 <div className="project-card__visual">
                   {project.visual === 'image' ? (
-                    <img src={project.image} srcSet={project.imageSrcSet} sizes="(max-width: 800px) 100vw, 65vw" alt={project.imageAlt[language]} />
+                    <img
+                      src={project.image}
+                      srcSet={project.imageSrcSet}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                      alt={project.imageAlt[language]}
+                      loading="eager"
+                      decoding="async"
+                    />
                   ) : <AchillesArtwork project={project} language={language} />}
                   <span className="project-card__index">{project.number}</span>
                 </div>

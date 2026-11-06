@@ -1,27 +1,29 @@
-:root {
-  --color-bg: #090a0d;
+﻿:root {
+  --color-bg: #08090b;
   --color-surface: #111216;
-  --color-paper: #f3efe7;
-  --color-paper-raised: #fbf9f5;
-  --color-ink: #171717;
-  --color-muted: #595959;
-  --color-accent: #2dd4bf;
-  --color-accent-ink: #0f766e;
-  --color-accent-emissive: #064e3b;
-  --accent-glow: rgba(45, 212, 191, 0.22);
+  --color-paper: #f5f3ef;
+  --color-paper-raised: #fcfaf7;
+  --color-ink: #08090b;
+  --color-muted: #7e7b74;
+  --color-accent: #ffc900;
+  --color-accent-secondary: #ffc900;
+  --color-accent-ink: #08090b;
+  --color-accent-emissive: #ffc900;
+  --accent-glow: rgba(255, 201, 0, 0.28);
+  --header-height: 76px;
   --radius-xs: 8px;
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 26px;
-  --radius-xl: 34px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
   --night: var(--color-bg);
   --night-soft: var(--color-surface);
   --paper: var(--color-paper);
   --paper-light: var(--color-paper-raised);
   --ink: var(--color-ink);
   --ink-soft: var(--color-muted);
-  --line-dark: rgba(243, 239, 231, 0.17);
-  --line-light: rgba(23, 23, 23, 0.18);
+  --line-dark: rgba(245, 243, 239, 0.12);
+  --line-light: rgba(8, 9, 11, 0.12);
   --accent: var(--color-accent);
   --font-sans: 'Instrument Sans Variable', Arial, sans-serif;
   --font-display: 'Instrument Sans Variable', Arial, sans-serif;
@@ -31,7 +33,7 @@
 html { scroll-behavior: smooth; background: var(--night); }
 body { margin: 0; min-width: 320px; background: var(--night); color: var(--paper); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 body[data-menu-open='true'] { overflow: hidden; }
-section, footer { scroll-margin-top: 72px; }
+section, footer { scroll-margin-top: var(--header-height, 72px); }
 button, a { font: inherit; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; }
@@ -62,3 +64,5 @@ h1, h2, h3, .brand__name, .contact-grid strong, .mobile-menu a { font-stretch: 7
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
+
+

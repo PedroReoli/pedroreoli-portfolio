@@ -196,10 +196,10 @@
     "ctaHref": "mailto:pedrosousa2160@gmail.com",
     "backToTopIcon": "arrow-up",
     "contacts": [
-      { "label": "E-mail", "href": "mailto:pedrosousa2160@gmail.com", "icon": "mail", "color": "#2DD4BF", "external": false, "detail": { "pt": "Enviar e-mail", "en": "Send an email" } },
-      { "label": "WhatsApp", "href": "https://wa.me/5524993264040", "icon": "whatsapp", "color": "#2DD4BF", "external": true, "detail": { "pt": "Enviar mensagem", "en": "Send a message" } },
+      { "label": "E-mail", "href": "mailto:pedrosousa2160@gmail.com", "icon": "mail", "color": "#FBBF24", "external": false, "detail": { "pt": "Enviar e-mail", "en": "Send an email" } },
+      { "label": "WhatsApp", "href": "https://wa.me/5524993264040", "icon": "whatsapp", "color": "#FBBF24", "external": true, "detail": { "pt": "Enviar mensagem", "en": "Send a message" } },
       { "label": "GitHub", "href": "https://github.com/PedroReoli", "icon": "github", "color": "#182033", "external": true, "detail": { "pt": "Código e repositórios", "en": "Code and repositories" } },
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/", "icon": "linkedin", "color": "#2DD4BF", "external": true, "detail": { "pt": "Trajetória profissional", "en": "Professional experience" } }
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/", "icon": "linkedin", "color": "#FBBF24", "external": true, "detail": { "pt": "Trajetória profissional", "en": "Professional experience" } }
     ],
     "pt": { "emailDetail": "Enviar e-mail", "whatsappDetail": "Enviar mensagem", "githubDetail": "Código e repositórios", "linkedinDetail": "Trajetória profissional", "eyebrow": "Contato", "description": "Projetos de software, colaboração técnica e oportunidades.", "prompt": "Tem um produto ou desafio técnico?", "ctaFirst": "VAMOS", "ctaSecond": "CONVERSAR.", "linksLabel": "Contato e redes sociais", "externalLabel": " (abre em nova aba)", "backToTop": "Voltar ao topo" },
     "en": { "emailDetail": "Send an email", "whatsappDetail": "Send a message", "githubDetail": "Code and repositories", "linkedinDetail": "Professional experience", "eyebrow": "Contact", "description": "Software projects, technical collaboration and opportunities.", "prompt": "Building a product or facing a technical challenge?", "ctaFirst": "LET'S", "ctaSecond": "TALK.", "linksLabel": "Contact and social profiles", "externalLabel": " (opens in a new tab)", "backToTop": "Back to top" }

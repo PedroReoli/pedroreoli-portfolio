@@ -1,9 +1,11 @@
-export const palette = {
-  background: '#090a0d',
+﻿export const palette = {
+  background: '#08090b',
   surface: '#111216',
-  paper: '#f3efe7',
-  neutral: '#77736c',
-  accent: '#2dd4bf',
-  accentInk: '#0f766e',
-  accentEmissive: '#064e3b',
+  paper: '#f5f3ef',
+  paperRaised: '#fcfaf7',
+  neutral: '#7e7b74',
+  accent: '#ffc900',
+  accentSecondary: '#ffc900',
+  accentInk: '#08090b',
+  accentEmissive: '#ffc900',
 } as const

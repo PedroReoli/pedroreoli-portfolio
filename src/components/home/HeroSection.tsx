@@ -1,61 +1,142 @@
-import { lazy, Suspense, useRef } from 'react'
+﻿import { useRef, useCallback } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Play } from 'lucide-react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-
-const HeroScene = lazy(() => import('@/components/scene/HeroScene').then((module) => ({ default: module.HeroScene })))
 
 export function HeroSection() {
   const { language } = useLanguage()
   const reducedMotion = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
+  const bgRef = useRef<HTMLDivElement>(null)
   const hero = interfaceContent.hero
   const copy = hero[language]
 
-  useGSAP(() => {
-    if (!sectionRef.current || reducedMotion) return
-      gsap.from('[data-hero-line]', { yPercent: 115, duration: 1, stagger: 0.08, ease: 'power4.out' })
-      gsap.from('[data-hero-meta]', { opacity: 0, y: 14, duration: 0.7, stagger: 0.06, delay: 0.45 })
-  }, { scope: sectionRef, dependencies: [reducedMotion] })
+  // Interactive subtle 3D parallax on the full-screen bust background
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent<HTMLElement>) => {
+      if (reducedMotion || !bgRef.current) return
+      const { innerWidth, innerHeight } = window
+      const x = (e.clientX / innerWidth - 0.5) * 16
+      const y = (e.clientY / innerHeight - 0.5) * 16
+      bgRef.current.style.transform = `scale(1.04) translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`
+    },
+    [reducedMotion],
+  )
+
+  const handlePointerLeave = useCallback(() => {
+    if (!bgRef.current) return
+    bgRef.current.style.transform = 'scale(1) translate3d(0, 0, 0)'
+  }, [])
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current || reducedMotion) return
+      gsap.from('[data-hero-line]', {
+        yPercent: 110,
+        duration: 1.1,
+        stagger: 0.1,
+        ease: 'power4.out',
+      })
+      gsap.from('[data-hero-bg]', {
+        scale: 1.12,
+        opacity: 0,
+        duration: 1.6,
+        ease: 'power3.out',
+      })
+      gsap.from('[data-hero-meta]', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.08,
+        delay: 0.4,
+        ease: 'power2.out',
+      })
+    },
+    { scope: sectionRef, dependencies: [reducedMotion] },
+  )
+
+  const resumeHref =
+    language === 'pt'
+      ? '/resume/Pedro_Lucas_Reis_Frontend.pdf'
+      : '/resume/Pedro_Lucas_Reis_Fullstack.pdf'
 
   return (
-    <section ref={sectionRef} id={hero.id} className="hero">
-      <div className="hero__grid" aria-hidden="true" />
+    <section
+      ref={sectionRef}
+      id={hero.id}
+      className="hero hero--fullscreen"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+    >
+      {/* FULL BACKGROUND MASTER IMAGE */}
+      <div className="hero__background-wrap" aria-hidden="true">
+        <div ref={bgRef} className="hero__background-inner" data-hero-bg>
+          <img
+            src="/images/pedro-bust-cyber.jpg"
+            alt=""
+            className="hero__background-img"
+            loading="eager"
+          />
+        </div>
+        <div className="hero__vignette-overlay" />
+      </div>
+
       <div className="shell hero__shell">
-        <div className="hero__meta" data-hero-meta>
-          <span>{copy.eyebrow} / {hero.sectionNumber}</span>
-          <span className="hero__status"><i />{copy.availability}</span>
-          <span>{hero.location}</span>
+        {/* TOP EYEBROW / STUDIO HEADING */}
+        <div className="hero__top-meta" data-hero-meta>
+          <span className="hero__eyebrow-text">CREATIVE STUDIO</span>
+          <span className="hero__eyebrow-dash" aria-hidden="true" />
         </div>
 
-        <div className="hero__content">
-          <div className="hero__copy">
-            <p className="hero__role" data-hero-meta>{copy.role}</p>
-            <h1 aria-label={hero.name.accessible}>
-              <span className="hero__line"><span data-hero-line>{hero.name.firstLine}</span></span>
-              <span className="hero__line hero__line--accent"><span data-hero-line>{hero.name.secondLine}</span></span>
-            </h1>
-            <p className="hero__statement" data-hero-meta>{copy.statement}</p>
-            <a className="hero__cta" href={hero.actionHref} data-hero-meta>
-              <span>{copy.action}</span><ArrowUpRight aria-hidden="true" />
+                {/* HERO CENTER HEADLINE */}
+        <div className="hero__center-content">
+          <p className="hero__editorial-role" data-hero-meta>
+            {copy.role}
+          </p>
+
+          <h1 className="hero__headline" aria-label={hero.name.accessible}>
+            <span className="hero__line">
+              <span data-hero-line>{hero.name.firstLine}</span>
+            </span>
+            <span className="hero__line hero__line--accent">
+              <span data-hero-line>{hero.name.secondLine}</span>
+            </span>
+          </h1>
+
+          <p className="hero__editorial-sub" data-hero-meta>
+            {copy.statement}
+          </p>
+        </div>
+
+        {/* HERO BOTTOM ACTIONS & METRICS DOCK */}
+        <div className="hero__bottom-bar">
+          <div className="hero__actions-group" data-hero-meta>
+            <a className="hero__btn-primary" href={hero.actionHref}>
+              <span>{copy.action}</span>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a
+              className="hero__btn-secondary"
+              href={resumeHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={language === 'pt' ? 'Ver Currículo ATS' : 'View ATS Resume'}
+            >
+              <Play className="hero__btn-play-icon" aria-hidden="true" />
+              <span>{language === 'pt' ? 'Currículo ATS' : 'ATS Resume'}</span>
             </a>
           </div>
 
-          <div className="hero__visual" data-hero-meta>
-            <Suspense fallback={<div className="hero-scene hero-scene--fallback" aria-hidden="true"><span /></div>}>
-              <HeroScene topLabel={hero.scene.topLabel} bottomLabel={hero.scene.bottomLabel} />
-            </Suspense>
-          </div>
+          <a className="hero__scroll-indicator" href="#sobre" data-hero-meta>
+            <span>{copy.scroll}</span>
+            <ArrowDownRight aria-hidden="true" />
+          </a>
         </div>
-
-        <a className="hero__scroll" href="#sobre" data-hero-meta>
-          <span>{copy.scroll}</span>
-          <ArrowDownRight aria-hidden="true" />
-        </a>
       </div>
     </section>
   )
 }
+

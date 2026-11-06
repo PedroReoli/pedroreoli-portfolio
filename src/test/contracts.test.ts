@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -126,6 +126,19 @@ describe('Content Contract & Asset Integrity Tests', () => {
         });
       }
     });
+
+    // Featured projects images
+    homeContentRaw.featuredProjects.forEach((proj) => {
+      if (proj.visual === 'image' && 'image' in proj && proj.image) {
+        checkFile(String(proj.image));
+        if ('imageSrcSet' in proj && proj.imageSrcSet) {
+          proj.imageSrcSet.split(',').forEach((entry) => {
+            const src = entry.trim().split(' ')[0];
+            checkFile(src);
+          });
+        }
+      }
+    });
   });
 
   it('contains complete PT and EN texts for all localized fields', () => {
@@ -155,17 +168,19 @@ describe('Content Contract & Asset Integrity Tests', () => {
     });
   });
 
-  it('limits authored interface colors to neutrals and one teal accent', () => {
-    const permittedColors = new Set(['#2DD4BF', '#182033', '#111010']);
+  it('limits authored interface colors to neutrals and one solar amber accent', () => {
+    const permittedColors = new Set(['#FBBF24', '#B45309', '#78350F', '#182033', '#111010']);
 
     technologyContentRaw.groups.forEach((group) => {
       group.tools.forEach((tool) => {
-        expect(permittedColors.has(tool.color), `${tool.name} must use the approved palette`).toBe(true);
+        const colorUpper = (tool.color || '').toUpperCase();
+        expect(permittedColors.has(colorUpper) || permittedColors.has(tool.color), `${tool.name} must use the approved palette`).toBe(true);
       });
     });
 
     interfaceContentRaw.footer.contacts.forEach((contact) => {
-      expect(permittedColors.has(contact.color), `${contact.label} must use the approved palette`).toBe(true);
+      const colorUpper = (contact.color || '').toUpperCase();
+      expect(permittedColors.has(colorUpper) || permittedColors.has(contact.color), `${contact.label} must use the approved palette`).toBe(true);
     });
 
     const stylesDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../styles');
@@ -176,8 +191,12 @@ describe('Content Contract & Asset Integrity Tests', () => {
 
     expect(styles).not.toMatch(/rgba?\(49\s*,\s*94\s*,\s*251/i);
     expect(styles).not.toMatch(/rgba?\(98\s*,\s*217\s*,\s*255/i);
-    expect(styles).toContain('--color-accent-ink: #0f766e');
+    expect(styles).toMatch(/--color-accent:\s*(#ffc900|#fbbf24)/);
+    expect(styles).toMatch(/--color-accent-ink:\s*(#08090b|#b45309)/);
+    expect(styles).toMatch(/--color-accent-emissive:\s*(#ffc900|#78350f)/);
+    expect(styles).not.toMatch(/#2dd4bf|rgba?\(45\s*,\s*212\s*,\s*191/i);
     expect(styles).not.toMatch(/#8b5cf6|#6d28d9|rgba?\(139\s*,\s*92\s*,\s*246/i);
     expect(styles).not.toMatch(/#ff5a36|#c93618|rgba?\(255\s*,\s*90\s*,\s*54/i);
   });
 });
+
