@@ -27,6 +27,7 @@ export function VideoStage() {
   })
   const [videoError, setVideoError] = useState<boolean>(false)
   const [currentSection, setCurrentSection] = useState<string>('hero')
+  const [activeClipId, setActiveClipId] = useState<string | null>(null)
   const [posterFallbackActive, setPosterFallbackActive] = useState<boolean>(false)
   const [showPedroPhoto, setShowPedroPhoto] = useState<boolean>(false)
 
@@ -89,10 +90,27 @@ export function VideoStage() {
         if (maxRatio > 0.15) {
           setCurrentSection(bestId)
         }
+
+        // Transition trigger: run the clip N -> N+1 as soon as the next section
+        // starts entering the viewport, so the animation happens while scrolling
+        // from one section to the next (and freezes when the section fills the screen).
+        const bestIndex = SECTION_IDS.indexOf(bestId as (typeof SECTION_IDS)[number])
+        const nextId = SECTION_IDS[bestIndex + 1]
+        const prevId = SECTION_IDS[bestIndex - 1]
+        const nextRatio = nextId ? visibleRatios.get(nextId) ?? 0 : 0
+        const prevRatio = prevId ? visibleRatios.get(prevId) ?? 0 : 0
+
+        if (nextId && nextRatio > 0.04 && maxRatio < 0.92) {
+          const clip = sceneClips.clips.find((c) => c.from === bestId && c.to === nextId)
+          if (clip) setActiveClipId(clip.id)
+        } else if (prevId && prevRatio > 0.04 && maxRatio < 0.92) {
+          // Scrolling back up: hold the poster instead of rewinding the clip.
+          setActiveClipId(null)
+        }
       },
       {
         root: null,
-        threshold: [0.15, 0.35, 0.5, 0.75],
+        threshold: [0.04, 0.15, 0.35, 0.5, 0.75, 0.92],
       },
     )
 
@@ -104,11 +122,9 @@ export function VideoStage() {
     return () => observer.disconnect()
   }, [])
 
-  // 5. Derived clip and poster from currentSection
+  // 5. Derived clip and poster from the transition in progress
   const activeClip: SceneClip | null =
-    currentSection === 'hero'
-      ? null
-      : sceneClips.clips.find((c) => c.to === currentSection) || null
+    sceneClips.clips.find((c) => c.id === activeClipId) || null
 
   const basePoster =
     currentSection === 'hero'
@@ -120,6 +136,7 @@ export function VideoStage() {
   // 6. Synchronize ref and video playback when clip changes
   useEffect(() => {
     activeClipRef.current = activeClip
+    setShowPedroPhoto(false)
 
     if (isStaticOnly || !activeClip) {
       if (videoRef.current) {
@@ -131,6 +148,8 @@ export function VideoStage() {
     const video = videoRef.current
     if (!video) return
 
+    // <source> children changed: the browser only re-reads them after load()
+    video.load()
     video.currentTime = 0
     const playPromise = video.play()
     if (playPromise !== undefined) {
@@ -186,6 +205,7 @@ export function VideoStage() {
       className="video-stage"
       aria-hidden="true"
       data-section={currentSection}
+      data-clip={activeClipId ?? 'none'}
       data-mode={isStaticOnly ? 'poster' : 'video'}
     >
       {/* 1. Base Poster Layer (Always available as background/fallback) */}

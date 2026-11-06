@@ -29,7 +29,7 @@ export function StackSection() {
                 {group.tools.map((tool) => (
                   <m.li key={tool.name} whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
                     <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
-                    <strong>{tool.name}</strong>
+                    <strong className="stack-grid__label">{tool.name}</strong>
                   </m.li>
                 ))}
               </ul>
