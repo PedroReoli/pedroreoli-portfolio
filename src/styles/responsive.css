@@ -135,7 +135,7 @@
   width: 100%;
   height: auto;
   min-height: 100svh;
-  background: rgba(8, 9, 11, 0.6);
+  background: transparent;
   color: var(--paper);
   box-sizing: border-box;
   overflow: visible;

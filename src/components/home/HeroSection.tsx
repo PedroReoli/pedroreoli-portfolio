@@ -13,6 +13,9 @@ export function HeroSection() {
   const bgRef = useRef<HTMLDivElement>(null)
   const hero = interfaceContent.hero
   const copy = hero[language]
+  // Decide o lado dos CTAs: fora do busto quando a tela dá largura, abaixo do
+  // título quando não dá. Sem estado de React: quem decide é o CSS.
+  const heroSideRef = useRef<HTMLElement>(null)
 
   const [downloading, setDownloading] = useState(false)
   const downloadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -87,7 +90,10 @@ export function HeroSection() {
 
   return (
     <section
-      ref={sectionRef}
+      ref={(node) => {
+        sectionRef.current = node
+        heroSideRef.current = node
+      }}
       id={hero.id}
       className="hero hero--fullscreen"
       onPointerMove={handlePointerMove}
@@ -132,8 +138,8 @@ export function HeroSection() {
           )}
         </div>
 
-        {/* BOTTOM ACTION BUTTONS: Exactly 2 buttons (Ver projetos + Currículo) */}
-        <div className="hero__bottom-bar" data-hero-actions>
+        {/* AÇÕES: exatamente 2 botões (Ver projetos + Currículo), fora do círculo */}
+        <div className="hero__actions-dock" data-hero-actions>
           <div className="hero__actions-group">
             {/* Primary Action: Ver projetos */}
             <a className="hero__btn-primary" href={hero.actionHref}>
@@ -170,7 +176,9 @@ export function HeroSection() {
               </span>
             </a>
           </div>
+        </div>
 
+        <div className="hero__scroll-dock">
           <a className="hero__scroll-indicator" href="#sobre" aria-label={copy.scroll}>
             <span>{copy.scroll}</span>
             <ArrowDownRight aria-hidden="true" />

@@ -182,10 +182,10 @@
     "sectionNumber": "05",
     "metadata": "FalaAtípica / UniFOA / 2026",
     "media": {
-      "src": "/TCC-img2.png",
-      "srcSet": "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
+      "src": "/media/stories/fala-atipica-480.jpg",
+      "srcSet": "/media/stories/fala-atipica-portrait-462.webp 462w",
       "type": "image/webp",
-      "width": 1280,
+      "width": 462,
       "height": 577
     },
     "articleHref": "https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/",
@@ -368,7 +368,7 @@
       "actionIcon": "external-link",
       "image": {
         "src": "/TCC-img2.png",
-        "srcSet": "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-1280.webp 1280w",
+        "srcSet": "/media/stories/fala-atipica-640.webp 640w, /media/stories/fala-atipica-960.webp 960w",
         "type": "image/webp",
         "width": 1280,
         "height": 577
