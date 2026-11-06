@@ -35,6 +35,23 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
             overwrite: 'auto',
           }),
       })
+
+      ScrollTrigger.refresh()
+
+      // Safety net: arriving by anchor, reload or deep link used to leave whole
+      // blocks at opacity 0, which reads as a black screen with empty panels.
+      // Anything already on screen gets its final state after a moment.
+      const safety = window.setTimeout(() => {
+        elements.forEach((el) => {
+          if (Number.parseFloat(getComputedStyle(el).opacity) > 0.01) return
+          const rect = el.getBoundingClientRect()
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, overwrite: 'auto' })
+          }
+        })
+      }, 1200)
+
+      return () => window.clearTimeout(safety)
     },
     { scope, dependencies: [reducedMotion] },
   )

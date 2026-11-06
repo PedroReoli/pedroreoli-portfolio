@@ -34,11 +34,10 @@ export function VideoStage() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const activeClipRef = useRef<SceneClip | null>(null)
   const resetPhotoRef = useRef(false)
-  // The clip must play to holdAt before another one replaces it, otherwise the
-  // gesture is cut in the first second and the page looks like a still image swap.
-  const playingClipRef = useRef<string | null>(null)
-  const pendingClipRef = useRef<string | null>(null)
-  const finishedRef = useRef(false)
+  // Scroll-scrubbed playback: the video never plays on its own. Scroll position
+  // sets a target time and a rAF loop eases the current frame toward it.
+  const targetTimeRef = useRef(0)
+  const scrubRafRef = useRef(0)
 
   // 1. Detection of Mobile <= 768px
   useEffect(() => {
@@ -82,15 +81,12 @@ export function VideoStage() {
     if (typeof window === 'undefined') return
 
     let frame = 0
-    let lastScrollY = window.scrollY
 
     const update = () => {
       frame = 0
-      const vh = window.innerHeight
       const y = window.scrollY
-      const mid = y + vh / 2
-      const goingDown = y >= lastScrollY
-      lastScrollY = y
+      const vh = window.innerHeight
+      const mid = y + 1
 
       let index = 0
       let sectionTop = 0
@@ -111,22 +107,25 @@ export function VideoStage() {
       const nextId = SECTION_IDS[index + 1]
       setCurrentSection(currentId)
 
-      const progress = sectionHeight > 0 ? (mid - sectionTop) / sectionHeight : 1
-      const clip = nextId
+      // Progress measured from the section top, so a section starts on its poster.
+      const progress = sectionHeight > 0 ? Math.min(1, Math.max(0, (y - sectionTop) / sectionHeight)) : 1
+      const outgoing = nextId
         ? sceneClips.clips.find((c) => c.from === currentId && c.to === nextId)
         : undefined
+      const arriving = sceneClips.clips.find((c) => c.to === currentId)
 
-      if (clip && progress > 0.55 && goingDown) {
-        const running = playingClipRef.current
-        if (!running || finishedRef.current) {
-          setActiveClipId((prev) => (prev === clip.id ? prev : clip.id))
-        } else if (running !== clip.id) {
-          // Another transition is already running: let it finish first.
-          pendingClipRef.current = clip.id
-        }
-      } else if (!goingDown) {
-        // Scrolling back up always shows the section freeze frame instead of
-        // rewinding the clip (and never leaves the photo overlay on screen).
+      // First half of the section: the previous clip stays frozen on its last
+      // frame. Second half: the outgoing clip is scrubbed forward by the scroll.
+      const scrub = Math.min(1, Math.max(0, (progress - 0.5) / 0.5))
+
+      if (outgoing && progress >= 0.5) {
+        targetTimeRef.current = scrub * outgoing.holdAt
+        setActiveClipId((prev) => (prev === outgoing.id ? prev : outgoing.id))
+      } else if (arriving) {
+        targetTimeRef.current = arriving.holdAt
+        setActiveClipId((prev) => (prev === arriving.id ? prev : arriving.id))
+      } else {
+        targetTimeRef.current = 0
         setActiveClipId((prev) => (prev === null ? prev : null))
       }
     }
@@ -166,32 +165,40 @@ export function VideoStage() {
     activeClipRef.current = activeClip
     resetPhotoRef.current = true
 
-    if (isStaticOnly || !activeClip) {
-      playingClipRef.current = null
-      finishedRef.current = false
-      pendingClipRef.current = null
-      if (videoRef.current) {
-        videoRef.current.pause()
-      }
-      return
-    }
-
     const video = videoRef.current
     if (!video) return
 
-    playingClipRef.current = activeClip.id
-    finishedRef.current = false
-    pendingClipRef.current = null
+    // Never autoplay: the frame only moves with the scroll.
+    video.pause()
 
-    video.load()
-    video.currentTime = 0
-    const playPromise = video.play()
-    if (playPromise !== undefined) {
-      // A blocked autoplay is transient, not a broken asset: keep the video mounted
-      // (poster stays behind it) and try again on the next clip change.
-      playPromise.catch(() => {})
+    if (isStaticOnly || !activeClip) return
+
+    if (video.getAttribute('src') !== activeClip.src) {
+      video.src = activeClip.src
     }
+    video.load()
+    video.currentTime = targetTimeRef.current
   }, [activeClip, isStaticOnly])
+
+  // 6b. Ease the current frame toward the scroll target (scrub, not playback).
+  useEffect(() => {
+    if (isStaticOnly) return
+    const tick = () => {
+      const video = videoRef.current
+      if (video && video.readyState >= 1) {
+        const target = targetTimeRef.current
+        const delta = target - video.currentTime
+        if (Math.abs(delta) > 0.02) {
+          video.currentTime = video.currentTime + delta * 0.2
+        }
+      }
+      scrubRafRef.current = window.requestAnimationFrame(tick)
+    }
+    scrubRafRef.current = window.requestAnimationFrame(tick)
+    return () => {
+      if (scrubRafRef.current) window.cancelAnimationFrame(scrubRafRef.current)
+    }
+  }, [isStaticOnly])
 
   // 7. Video TimeUpdate handling (freeze at holdAt + markers)
   const handleTimeUpdate = useCallback(() => {
@@ -206,16 +213,8 @@ export function VideoStage() {
       setShowPedroPhoto(false)
     }
 
-    // Check holdAt freeze
-    if (typeof clip.holdAt === 'number' && current >= clip.holdAt) {
-      video.pause()
-      finishedRef.current = true
-      const queued = pendingClipRef.current
-      if (queued) {
-        pendingClipRef.current = null
-        setActiveClipId(queued)
-      }
-    }
+    // Clock hands are the scroll, not the media: the element stays paused.
+    if (!video.paused) video.pause()
 
     // Check markers (e.g. pedro-photo for Section 2 crossfade)
     if (clip.markers && clip.markers.length > 0) {

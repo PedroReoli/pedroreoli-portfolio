@@ -143,6 +143,34 @@ export function AboutSection() {
         { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.08, ease: 'power3.out' },
         '-=0.25'
       )
+      // Same safety net as useReveal: the single timeline above only fires when the
+      // trigger crosses 80%, so a jump straight into the section left 10 nodes at
+      // opacity 0 (heading, summary, pills, CTA, plaque).
+      const targets = [
+        '[data-about-kicker]',
+        '[data-about-frame]',
+        '[data-about-img]',
+        '[data-about-plaque]',
+        '[data-about-eyebrow]',
+        '[data-about-heading]',
+        '[data-about-summary]',
+        '[data-about-pills]',
+        '[data-about-action]',
+        '[data-about-stat]',
+      ]
+      const safety = window.setTimeout(() => {
+        targets.forEach((selector) => {
+          gsap.utils.toArray<HTMLElement>(selector, sectionRef.current).forEach((el) => {
+            if (Number.parseFloat(getComputedStyle(el).opacity) > 0.01) return
+            const rect = el.getBoundingClientRect()
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              gsap.to(el, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.4, overwrite: 'auto' })
+            }
+          })
+        })
+      }, 1200)
+
+      return () => window.clearTimeout(safety)
     },
     { scope: sectionRef, dependencies: [reducedMotion, language] }
   )
