@@ -1,19 +1,18 @@
-import { useRef } from 'react'
-import { Sparkles, CheckCircle2, ArrowDown } from 'lucide-react'
+﻿import { useRef } from 'react'
+import { CheckCircle2, ArrowDown } from 'lucide-react'
 import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
-import { useReveal } from '@/hooks/useReveal'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { m } from 'motion/react'
 
 export function ExperienceSection() {
   const { language } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
-  useReveal(sectionRef)
+  const reducedMotion = useReducedMotion()
 
   const section = interfaceContent.experience
   const copy = section[language]
   const items = homeContent.experienceItems
-
 
   return (
     <section ref={sectionRef} id={section.id} className="experience-section section-dark">
@@ -68,17 +67,23 @@ export function ExperienceSection() {
                 {/* Horizontal Connector Stem */}
                 <div className="timeline-v__connector" aria-hidden="true" />
 
-                {/* Trajectory Milestone Card Wrapper for Scroll Reveal */}
-                <div className="timeline-card-reveal-wrapper" data-reveal>
+                {/* Individual Card Scroll Reveal with motion */}
+                <div className="timeline-card-reveal-wrapper">
                   <m.article
                     className="timeline-card timeline-v__card"
+                    initial={reducedMotion ? false : { opacity: 0, y: 28 }}
+                    whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     whileHover={{ y: -4 }}
-                    transition={{ duration: 0.22 }}
+                    transition={{
+                      duration: 0.52,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: reducedMotion ? 0 : 0.08,
+                    }}
                   >
-                    {/* Top Bar with Number and Period */}
+                    {/* Top Bar with Number (No Sparkles icon) and Period */}
                     <div className="timeline-card__top">
                       <span className="timeline-card__chapter">
-                        <Sparkles size={11} aria-hidden="true" />
                         #{chapterNum}
                       </span>
                       <span className="timeline-card__period">{item.period[language]}</span>

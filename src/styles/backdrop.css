@@ -1,0 +1,125 @@
+﻿/* ==========================================================================
+   VIDEO STAGE BACKDROP & SCENE OVERLAYS (S1-S6 Global Video Wallpaper)
+   ========================================================================== */
+
+.video-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: #08090b;
+}
+
+/* 1. Base Poster Layer & Video Player Layer */
+.video-stage__poster,
+.video-stage__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(14%) scale(1.08);
+  filter: contrast(1.05) brightness(0.98);
+  transition: opacity 0.5s ease-out;
+}
+
+@media (min-width: 1200px) {
+  .video-stage__poster,
+  .video-stage__video {
+    transform: translateY(10%) scale(1.06);
+  }
+}
+
+@media (max-width: 768px) {
+  .video-stage__poster,
+  .video-stage__video {
+    transform: translateY(18%) scale(1.22);
+  }
+}
+
+/* 2. Pedro Real Photo Crossfade Overlay (Section 2 - About) */
+.video-stage__pedro-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 2;
+}
+
+.video-stage__pedro-img {
+  max-width: clamp(280px, 38vw, 480px);
+  max-height: clamp(340px, 48vh, 560px);
+  object-fit: cover;
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 201, 0, 0.35);
+}
+
+/* 3. Global Readability Scrims & Tint Overlay */
+.video-stage__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 40%, rgba(8, 9, 11, 0.55) 75%, #08090b 100%),
+    linear-gradient(to bottom, rgba(8, 9, 11, 0.4) 0%, transparent 20%, transparent 80%, #08090b 100%);
+}
+
+/* Section-specific scrim adjustments via data-section attribute */
+.video-stage[data-section="hero"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 45%, rgba(8, 9, 11, 0.45) 80%, #08090b 100%),
+    linear-gradient(to bottom, rgba(8, 9, 11, 0.35) 0%, transparent 35%, transparent 75%, #08090b 100%);
+}
+
+.video-stage[data-section="sobre"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 75% 50%, transparent 35%, rgba(8, 9, 11, 0.6) 75%, #08090b 100%),
+    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.5) 20%, rgba(8, 9, 11, 0.5) 80%, #08090b 100%);
+}
+
+.video-stage[data-section="projetos-selecionados"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, #08090b 100%),
+    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.6) 15%, rgba(8, 9, 11, 0.6) 85%, #08090b 100%);
+}
+
+.video-stage[data-section="stack"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, #08090b 100%),
+    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.65) 15%, rgba(8, 9, 11, 0.65) 85%, #08090b 100%);
+}
+
+.video-stage[data-section="proposito"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, #08090b 100%),
+    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.5) 20%, rgba(8, 9, 11, 0.5) 80%, #08090b 100%);
+}
+
+.video-stage[data-section="experiencia"] .video-stage__scrim {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, #08090b 100%),
+    linear-gradient(to bottom, #08090b 0%, rgba(8, 9, 11, 0.7) 15%, rgba(8, 9, 11, 0.7) 85%, #08090b 100%);
+}
+
+/* Page content sits above VideoStage */
+.home {
+  position: relative;
+  z-index: 1;
+}
+
+/* When VideoStage is active on home, let the video show through the hero section */
+.home:has(.video-stage) .hero {
+  background: transparent;
+}
+.home:has(.video-stage) .hero__background-wrap {
+  opacity: 0;
+  pointer-events: none;
+}

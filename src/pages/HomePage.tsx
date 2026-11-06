@@ -1,5 +1,6 @@
-import { useRef } from 'react'
+﻿import { useRef } from 'react'
 import { SEO } from '@/components/common/SEO'
+import { VideoStage } from '@/components/scene/VideoStage'
 import { HeroSection } from '@/components/home/HeroSection'
 import { AboutSection } from '@/components/home/AboutSection'
 import { SelectedProjectsSection } from '@/components/home/SelectedProjectsSection'
@@ -14,6 +15,7 @@ export function HomePage() {
   return (
     <div ref={rootRef} className="home" data-reduced-motion={reducedMotion ? 'true' : 'false'}>
       <SEO pageKey="home" />
+      <VideoStage />
       <HeroSection />
       <AboutSection />
       <SelectedProjectsSection />
