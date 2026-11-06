@@ -92,7 +92,10 @@ export function VideoStage() {
 
   useScrollScene(SECTION_IDS, {
     enabled: !isStaticOnly,
-    frozen: reducedMotion,
+    // The backdrop is the take itself, not decoration: it must keep following the
+    // scroll even when the OS asks for less motion, otherwise every frame freezes
+    // (Pedro's Windows ships with animation effects off, so all Chromium reports
+    // prefers-reduced-motion: reduce, and the whole scrub used to stop on frame 0).
     onSample: handleSample,
   })
 
