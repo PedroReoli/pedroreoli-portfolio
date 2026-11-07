@@ -17,8 +17,21 @@ e a câmera não se move.
 
 | Arquivo | Papel |
 |---|---|
-| `busto-v1.jpg` | busto canônico — modo estátua (mármore + óculos amarelos + círculo amarelo) |
-| `rosto-normal.jpg` | **falta** — o Pedro sem efeito de estátua, mesmo enquadramento, para a transição |
+| `busto-v1.jpg` | busto canônico — modo estátua (mármore + óculos amarelos + círculo amarelo), 2K |
+| `rosto-normal.jpg` | Pedro sem efeito de estátua, mesmo enquadramento/círculo — 2K |
+| `03-estatua-para-rosto.mp4` | transição estátua → rosto normal, 1920×1080, 3.71s, 1.27 MB |
+
+### Sobre `03-estatua-para-rosto.mp4`
+O Veo entregou oito segundos, mas medindo frame a frame o trecho de **3.2s a 6.6s**
+derivava para um homem barbudo e sem camisa (mesmo defeito de antes, agora no meio do
+clipe) e voltava ao Pedro só no fim. Foi cortado:
+
+- **0 → 2.6s** — Veo original: o mármore derrete e a pele do Pedro aparece (o rosto nunca muda)
+- **2.1 → 2.7s** — crossfade de 0,6s
+- **2.6 → 3.71s** — still de `rosto-normal.jpg` (o frame que o Veo pedia como último)
+
+Custo do descarte: ~30% do clipe original. **Regra:** qualquer clipe cujo frame do meio
+derive é cortado ou refeito — identidade no meio do movimento vale o mesmo que no começo.
 
 ## Como o `busto-v1.jpg` foi gerado
 
