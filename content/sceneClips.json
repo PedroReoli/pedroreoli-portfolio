@@ -9,8 +9,8 @@
       "from": "hero",
       "to": "sobre",
       "src": "/media/backdrop/01-hero-to-about.mp4",
-      "holdAt": 3.63,
-      "duration": 3.71,
+      "holdAt": 3.13,
+      "duration": 3.21,
       "poster": "/media/backdrop/02-about-poster.png"
     },
     {
