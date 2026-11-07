@@ -381,7 +381,7 @@
   z-index: 2;
   padding: clamp(8px, 1.2vh, 14px) clamp(12px, 1.6vw, 20px);
   border-radius: 18px 18px 18px 4px;
-  background: rgba(5, 6, 9, .82);
+  background: rgba(6, 10, 14, .82);
   border: 1px solid rgba(255, 201, 0, .35);
   box-shadow: 0 8px 26px rgba(0, 0, 0, .6);
   backdrop-filter: blur(6px);
@@ -395,7 +395,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid rgba(5, 6, 9, .82);
+  border-top: 10px solid rgba(6, 10, 14, .82);
 }
 .purpose-section__bubble h2 {
   margin: 0;

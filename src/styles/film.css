@@ -40,7 +40,7 @@
   position: relative;
   height: 100svh;
   overflow: hidden;
-  background: var(--color-bg, #050609);
+  background: var(--color-bg, #060a0e);
 }
 
 .film-slide__poster,
@@ -179,13 +179,15 @@
    ("06 EXPERIÊNCIA") saía em top: -426px — exatamente o "não vejo o topo da sessão 6".
    Aqui o painel alinha pelo topo e o que não couber rola dentro dele, em vez de
    desaparecer. */
+/* BUG: "chego na sessão de experiência e fico preso, não consigo rolar de volta".
+   O painel da Experiência é mais alto que uma viewport e eu tinha dado a ele
+   `overflow-y: auto` + `overscroll-behavior: contain`. A roda entrava no scroll
+   interno dele e nunca mais voltava para a página — medido: pageY travado em 4545
+   enquanto só o painel rolava. Agora o painel NÃO rola: a roda continua sendo da
+   página, e o conteúdo é comprimido para caber na tela (regras abaixo). */
 .film-panel > #experiencia {
   justify-content: flex-start;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* a rolagem interna não deve mover o frame de trás */
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
+  overflow: hidden;
 }
 
 .film-panel > #experiencia > .shell {
@@ -200,15 +202,175 @@
   height: auto;
   min-height: 0;
   flex: 0 0 auto;
-  margin-top: clamp(24px, 4vh, 56px);
-  padding-top: clamp(20px, 3vh, 36px);
-  padding-bottom: clamp(20px, 3vh, 36px);
+  margin-top: clamp(6px, 1vh, 14px);
+  padding-top: clamp(4px, 1vh, 12px);
+  padding-bottom: clamp(6px, 1.2vh, 14px);
 }
 
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__headline {
-  font-size: clamp(2rem, 5.5vw, 4.4rem);
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+}
+
+.film-panel > #experiencia footer.contact-section--embedded .contact-section__main {
+  padding-top: 0;
+}
+
+.film-panel > #experiencia footer.contact-section--embedded .contact-section__description,
+.film-panel > #experiencia footer.contact-section--embedded .contact-section__prompt {
+  display: none;
 }
 
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__main {
   padding-bottom: clamp(8px, 1.4vh, 16px);
+}
+
+/* --------------------------------------------------------------------------
+   S6 cabe numa tela — sem scroll interno
+   --------------------------------------------------------------------------
+   A timeline alternada ocupava 1645px e o rodapé mais 517px (2362px numa viewport
+   de 900). Eu resolvia isso com scroll interno, que é exatamente o que prendia a
+   roda ("chego na experiência e fico preso"). Agora o painel não rola: a rodapé
+   encolhe e a timeline fica com a altura que sobra, com os cards comprimidos. */
+.film-panel > #experiencia > .shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(4px, 0.8vh, 10px);
+  height: 100%;
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.film-panel > #experiencia .experience-header {
+  flex: 0 0 auto;
+  padding: clamp(0px, 0.4vh, 6px) 0;
+}
+
+.film-panel > #experiencia .timeline-v {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(4px, 0.8vh, 12px) 0;
+  /* A timeline é mais alta que a sobra do painel: rola na HORIZONTAL (eixo do
+     tempo), nunca na vertical — scroll vertical era o que prendia a roda. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+/* O 5º card caía atrás do rodapé porque o grid crescia além da sobra do painel.
+   O teto abaixo mantém a timeline dentro da área dela; o que não couber aparece
+   rolando na horizontal, no eixo do tempo. */
+.film-panel > #experiencia .timeline-v {
+  max-height: 100%;
+  scroll-snap-type: x proximity;
+}
+
+.film-panel > #experiencia .timeline-v__item {
+  margin-bottom: clamp(6px, 1vh, 12px);
+}
+
+/* Duas colunas de cards em vez de alternância de página inteira. A timeline antiga
+   tem max-width 1200px e padding lateral; aqui ela usa a largura toda do painel. */
+.film-panel > #experiencia .timeline-v {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  /* 3 colunas: 5 marcos cabem em 2 linhas dentro da sobra do painel. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: clamp(8px, 1vw, 16px);
+  align-content: start;
+}
+
+.film-panel > #experiencia .timeline-v__item {
+  display: flex;
+  width: auto;
+}
+
+.film-panel > #experiencia .timeline-v__item--left,
+.film-panel > #experiencia .timeline-v__item--right {
+  justify-content: stretch;
+  align-items: flex-start;
+}
+
+/* Os cards têm largura fixa pelas regras antigas da timeline alternada; dentro do
+   grid eles precisam esticar para a coluna, senão um monta em cima do outro. */
+/* .timeline-card-wrapper tem width e flex-basis fixos em clamp(320px,23vw,396px)
+   no home.css; dentro do grid da fita isso segurava o card em 252px. */
+.film-panel > #experiencia .timeline-card-reveal-wrapper {
+  width: 100%;
+  max-width: none;
+  flex: 1 1 100%;
+}
+
+.film-panel > #experiencia .timeline-v__item > * {
+  width: 100%;
+  max-width: none;
+  flex: 1 1 auto;
+}
+
+.film-panel > #experiencia .timeline-card {
+  padding: clamp(8px, 1vh, 12px);
+}
+
+.film-panel > #experiencia .timeline-card__desc {
+  font-size: clamp(0.7rem, 0.76vw, 0.8rem);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.film-panel > #experiencia .timeline-card__heading h3 {
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+}
+
+.film-panel > #experiencia .timeline-card__heading h4 {
+  font-size: 0.6rem;
+}
+
+.film-panel > #experiencia .timeline-card__top {
+  padding-bottom: 4px;
+}
+
+.film-panel > #experiencia .timeline__tech {
+  font-size: 0.56rem;
+}
+
+.film-panel > #experiencia .timeline-card__highlights {
+  display: none;
+}
+
+.film-panel > #experiencia .experience-header__main h2 {
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+}
+
+/* A timeline alternada tinha padding de meia página em cada item e uma spine
+   central com nós. No grid de 2 colunas isso vira sangria e linhas soltas, então
+   aqui a alternância e a spine são desligadas — o card é só o card. */
+.film-panel > #experiencia .timeline-v__item--left,
+.film-panel > #experiencia .timeline-v__item--right {
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: stretch;
+}
+
+.film-panel > #experiencia .timeline-v__spine,
+.film-panel > #experiencia .timeline-v__spine-glow,
+.film-panel > #experiencia .timeline-v__node,
+.film-panel > #experiencia .timeline-v__connector,
+.film-panel > #experiencia .timeline-v__station {
+  display: none;
+}
+
+/* Cada card começa no topo da célula, sem altura herdada de card vizinho. */
+.film-panel > #experiencia .timeline-card-reveal-wrapper {
+  height: auto;
+  align-self: start;
 }
