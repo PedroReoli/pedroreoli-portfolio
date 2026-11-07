@@ -42,14 +42,20 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     // emenda a tela ficava preta por um instante — o "não está fluido" que o Pedro viu.
     const OVERLAP = 220
     let opacity = 1
-    if (active) {
-      // Só quem entra faz fade: 0 -> 1 nos primeiros OVERLAP px da própria janela.
-      if (index > 0) {
-        const fadeIn = (y - start) / OVERLAP
-        if (fadeIn < 1) opacity = Math.max(0, fadeIn)
-      }
-    } else {
-      opacity = 0
+    // Quem entra sobe de 0 a 1 nos primeiros OVERLAP px da própria janela.
+    if (index > 0) {
+      const fadeIn = (y - start) / OVERLAP
+      if (fadeIn < 1) opacity = Math.min(1, Math.max(0, fadeIn))
+    }
+    // Quem NÃO está mais ativo só continua a imagem cheia enquanto o próximo ainda
+    // está subindo (`index + 1`). Sem esta cláusula o clipe que sai desligava no mesmo
+    // tick em que o próximo marcava 0, e a fronteira 5→6 piscava preto — o vídeo não
+    // trocava visivelmente e o topo da seção 6 sumia.
+    if (!active) {
+      const covering = index + 1
+      const nextStart = covering * window.innerHeight
+      const stillCovered = y >= nextStart && y < nextStart + OVERLAP
+      opacity = stillCovered ? 1 : 0
     }
     video.dataset.active = active ? 'true' : 'false'
     video.style.opacity = String(opacity)
@@ -60,13 +66,21 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     root.dataset.clipActive = active ? 'true' : 'false'
     root.dataset.frameReady = active ? 'true' : 'false'
 
-    // O painel de texto do mesmo trecho entra junto com o frame — inclusive quando este
-    // slide está saindo, senão o texto nunca apareceria no trecho em que o frame ainda é
-    // o dele.
+    // O painel de texto do mesmo trecho entra junto com o frame. O que sai recebe um
+    // handoff CURTO: ele só precisa cobrir o instante em que o vídeo ainda está
+    // misturando. Se ficar os 220px inteiros do crossfade, o texto da seção anterior
+    // continua por cima da próxima — era parte do "não vejo a troca nem o topo da S6".
+    const HANDOFF = 90
     document.querySelectorAll<HTMLElement>('[data-film-panel]').forEach((panel) => {
       const slot = Number(panel.dataset.filmPanel)
-      const on = y >= slot * window.innerHeight && y < (slot + 1) * window.innerHeight
-      panel.dataset.visible = on ? 'true' : 'false'
+      const startSlot = slot * window.innerHeight
+      const inSlot = y >= startSlot && y < startSlot + window.innerHeight
+      // Quem está saindo continua visível (e por cima) durante o handoff; quem entra
+      // aparece quando a fatia dele começa.
+      const leaving = y >= startSlot + window.innerHeight && y < startSlot + window.innerHeight + HANDOFF
+      panel.dataset.visible = inSlot || leaving ? 'true' : 'false'
+      if (leaving) panel.dataset.leaving = 'true'
+      else delete panel.dataset.leaving
     })
 
     if (!active) return

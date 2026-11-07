@@ -1,14 +1,17 @@
 /* ==========================================================================
-   S3 — TRÊS CARDS DE PROJETO (sem imagem, sem fonte gigante)
+   S3 — CARDS DE PROJETO EM GLASSMORPHISM
+   Pedro: "quero esses cards do projeto com glassmorphism". Vidro sobre o vídeo:
+   fundo translúcido + backdrop-filter + borda clara. Sem fundo opaco, senão o
+   busto do Pedro (que está mostrando os projetos) some atrás de três retângulos.
    ========================================================================== */
 
 .project-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 1.6vw, 24px);
+  gap: clamp(10px, 1.2vw, 18px);
   list-style: none;
   padding: 0;
-  margin: clamp(16px, 3vh, 34px) 0 0;
+  margin: clamp(14px, 2.4vh, 26px) 0 0;
   flex: 1;
   min-height: 0;
   align-content: start;
@@ -22,21 +25,38 @@
 .project-card > a {
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1.2vh, 14px);
+  gap: clamp(6px, 0.9vh, 10px);
   width: 100%;
-  padding: clamp(16px, 1.6vw, 22px);
-  border: 1px solid rgba(245, 243, 239, 0.14);
+  padding: clamp(14px, 1.4vw, 18px);
+  border: 1px solid rgba(245, 243, 239, 0.18);
   border-radius: var(--radius-md);
-  background: #131419;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 20px 48px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  /* O vidro: fundo quase transparente + blur do que está atrás (o frame do vídeo).
+     O piso de 0,42 existe para manter o texto em AA sobre o mármore claro. */
+  background: linear-gradient(
+    145deg,
+    rgba(20, 22, 28, 0.62) 0%,
+    rgba(8, 10, 14, 0.5) 100%
+  );
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 18px 44px -22px rgba(0, 0, 0, 0.85);
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
 .project-card > a:hover {
-  border-color: rgba(255, 201, 0, 0.42);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 26px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 201, 0, 0.5);
+  background: linear-gradient(
+    145deg,
+    rgba(26, 28, 36, 0.7) 0%,
+    rgba(10, 12, 17, 0.58) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 22px 52px -22px rgba(0, 0, 0, 0.9);
 }
 
 .project-card__top {

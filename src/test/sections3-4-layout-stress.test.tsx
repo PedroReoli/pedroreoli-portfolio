@@ -37,7 +37,9 @@ describe('Sections 3 & 4 Layout Stress & Compactness Test Suite', () => {
       const kicker = section?.querySelector('.section-kicker')
       expect(kicker).not.toBeNull()
       expect(kicker).toHaveTextContent('03')
-      expect(kicker).toHaveTextContent('02')
+      // Pedro pediu 3 cards: o contador do kicker acompanha a lista de projetos.
+      expect(kicker).toHaveTextContent(String(homeContent.featuredProjects.length).padStart(2, '0'))
+      expect(homeContent.featuredProjects.length).toBe(3)
 
       const heading = section?.querySelector('.work-section__heading h2')
       expect(heading).not.toBeNull()

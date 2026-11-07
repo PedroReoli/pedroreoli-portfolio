@@ -161,3 +161,33 @@
   min-height: 100svh;
   border-top: 0;
 }
+
+/* O painel que está saindo fica ABAIXO do que entra: os dois ficam visíveis durante o
+   handoff, e quem manda na leitura é a seção nova. Sem isso o texto anterior cobria o
+   topo da seção seguinte por ~220px de rolagem — o "não vejo o topo da S6". */
+.film-panel[data-leaving='true'] {
+  z-index: 1;
+}
+
+.film-panel:not([data-leaving='true']) {
+  z-index: 2;
+}
+
+/* BUG 5→6 — topo da S6 fora da tela.
+   A timeline da Experiência é mais alta que uma viewport; com `justify-content:
+   center` e `overflow: hidden` o excesso era cortado nas DUAS pontas, e o kicker
+   ("06 EXPERIÊNCIA") saía em top: -426px — exatamente o "não vejo o topo da sessão 6".
+   Aqui o painel alinha pelo topo e o que não couber rola dentro dele, em vez de
+   desaparecer. */
+.film-panel > #experiencia {
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* a rolagem interna não deve mover o frame de trás */
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.film-panel > #experiencia > .shell {
+  flex: 0 0 auto;
+}

@@ -3,14 +3,28 @@
     {
       "number": "01",
       "title": "Autocom3",
-      "category": { "pt": "Software corporativo", "en": "Enterprise system" },
+      "category": {
+        "pt": "Software corporativo",
+        "en": "Enterprise system"
+      },
       "year": "2024 / 26",
       "description": {
         "pt": "Ecossistema ERP com mais de 100 páginas corporativas e governança de Design System com 500+ componentes em React, Next.js e TypeScript. Redução de 70% no tempo de desenvolvimento de novas telas e ganho de 40% na velocidade de carregamento em plataformas usadas por 20+ organizações.",
         "en": "Enterprise ERP ecosystem encompassing 100+ corporate modules and a unified Design System of 500+ components in React, Next.js, and TypeScript. Cut new feature development time by 70% and slashed page load latency by 40% across platforms serving 20+ operational organizations."
       },
-      "technologies": ["React", "Next.js", "TypeScript", "Node.js / NestJS", "PostgreSQL", "AWS", "Design System"],
-      "action": { "pt": "Explorar interfaces", "en": "Explore the interfaces" },
+      "technologies": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js / NestJS",
+        "PostgreSQL",
+        "AWS",
+        "Design System"
+      ],
+      "action": {
+        "pt": "Explorar interfaces",
+        "en": "Explore the interfaces"
+      },
       "actionIcon": "arrow-up-right",
       "visual": "image",
       "image": "/portfolio-autocom3/01-painel-operacoes-visao-geral.png",
@@ -24,34 +38,103 @@
     {
       "number": "02",
       "title": "Achilles",
-      "category": { "pt": "Agentes autônomos", "en": "Autonomous agents" },
+      "category": {
+        "pt": "Agentes autônomos",
+        "en": "Autonomous agents"
+      },
       "year": "2026",
       "description": {
         "pt": "Motor de automação híbrida (Web via CDP e Desktop Windows nativo via UIA) para agentes autônomos de IA via Model Context Protocol (MCP). Apresenta Reader Mode semântico via AXTree com 92.2% de economia de tokens de contexto e suíte de auditoria defensiva de QA.",
         "en": "Hybrid automation engine (Web CDP & native Windows Desktop via UIA) for autonomous AI agents powered by the Model Context Protocol (MCP). Features a semantic AXTree Reader Mode delivering 92.2% context token savings alongside a defensive QA audit suite."
       },
-      "technologies": ["CDP Protocol", "Windows UIA", "Model Context Protocol (MCP)", "TypeScript", "Node.js"],
-      "action": { "pt": "Ver no GitHub", "en": "View on GitHub" },
+      "technologies": [
+        "CDP Protocol",
+        "Windows UIA",
+        "Model Context Protocol (MCP)",
+        "TypeScript",
+        "Node.js"
+      ],
+      "action": {
+        "pt": "Ver no GitHub",
+        "en": "View on GitHub"
+      },
       "actionIcon": "arrow-up-right",
       "visual": "agent",
       "artwork": {
         "name": "ACHILLES",
         "subtitle": "Autonomous Browser Agent",
-        "kicker": { "pt": "AGENTE LOCAL / CDP", "en": "LOCAL AGENT / CDP" },
-        "alt": { "pt": "Diagrama do agente de navegador Achilles", "en": "Achilles browser agent system diagram" },
+        "kicker": {
+          "pt": "AGENTE LOCAL / CDP",
+          "en": "LOCAL AGENT / CDP"
+        },
+        "alt": {
+          "pt": "Diagrama do agente de navegador Achilles",
+          "en": "Achilles browser agent system diagram"
+        },
         "steps": [
-          { "number": "01", "label": { "pt": "OBSERVAR", "en": "OBSERVE" } },
-          { "number": "02", "label": { "pt": "DECIDIR", "en": "DECIDE" } },
-          { "number": "03", "label": { "pt": "OPERAR", "en": "OPERATE" }, "accent": true }
+          {
+            "number": "01",
+            "label": {
+              "pt": "OBSERVAR",
+              "en": "OBSERVE"
+            }
+          },
+          {
+            "number": "02",
+            "label": {
+              "pt": "DECIDIR",
+              "en": "DECIDE"
+            }
+          },
+          {
+            "number": "03",
+            "label": {
+              "pt": "OPERAR",
+              "en": "OPERATE"
+            },
+            "accent": true
+          }
         ]
       },
       "href": "https://github.com/PedroReoli/Achilles-CDP-Agent",
+      "external": true
+    },
+    {
+      "number": "03",
+      "title": "Organon",
+      "category": {
+        "pt": "Business OS & Agentes",
+        "en": "Business OS & Agents"
+      },
+      "year": "2026",
+      "description": {
+        "pt": "Business OS e cockpit multi-agente Local-First de alta performance. Conta com isolamento de sessões com Git Worktrees, 18 canais IPC, telemetria em tempo real, editor TipTap modular, transcrição local via Whisper AI e servidor MCP nativo.",
+        "en": "High-performance Local-First Business OS and multi-agent cockpit. Features session isolation via Git Worktrees, 18 IPC channels, real-time telemetry, TipTap modular editor, local Whisper AI transcription, and native MCP server integration."
+      },
+      "technologies": [
+        "TypeScript",
+        "Node.js",
+        "MCP",
+        "Git Worktrees",
+        "Whisper AI",
+        "TipTap"
+      ],
+      "action": {
+        "pt": "Ver no GitHub",
+        "en": "View on GitHub"
+      },
+      "actionIcon": "arrow-up-right",
+      "visual": "agent",
+      "href": "https://github.com/PedroReoli/organon",
       "external": true
     }
   ],
   "experienceItems": [
     {
-      "period": { "pt": "Out/2025 / Presente", "en": "Oct/2025 / Present" },
+      "period": {
+        "pt": "Out/2025 / Presente",
+        "en": "Oct/2025 / Present"
+      },
       "company": "Domus | Sua Solução Digital",
       "role": {
         "pt": "Engenheiro Full Stack (Autônomo / Freelance)",
@@ -73,10 +156,23 @@
           "Scalable architecture featuring REST APIs, caching, modern authentication, and managed databases."
         ]
       },
-      "technologies": ["React", "Next.js", "TypeScript", "Node.js", "Express", "Fastify", "PostgreSQL", "Supabase", "AI Applied"]
+      "technologies": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "Fastify",
+        "PostgreSQL",
+        "Supabase",
+        "AI Applied"
+      ]
     },
     {
-      "period": { "pt": "Nov/2025 / Presente", "en": "Nov/2025 / Present" },
+      "period": {
+        "pt": "Nov/2025 / Presente",
+        "en": "Nov/2025 / Present"
+      },
       "company": "SIVIS Tecnologia",
       "role": {
         "pt": "Engenheiro Full Stack (Frontend & Integrações)",
@@ -98,10 +194,21 @@
           "Architectural reorganization and refactoring focused on production usability and speed."
         ]
       },
-      "technologies": ["React", "Next.js", "Angular", "TypeScript", "REST APIs", "Web Performance", "Enterprise Systems"]
+      "technologies": [
+        "React",
+        "Next.js",
+        "Angular",
+        "TypeScript",
+        "REST APIs",
+        "Web Performance",
+        "Enterprise Systems"
+      ]
     },
     {
-      "period": { "pt": "Nov/2024 / Presente", "en": "Nov/2024 / Present" },
+      "period": {
+        "pt": "Nov/2024 / Presente",
+        "en": "Nov/2024 / Present"
+      },
       "company": "Autocom3 Tecnologia",
       "role": {
         "pt": "Engenheiro de Software Full Stack",
@@ -125,10 +232,24 @@
           "Performance optimization achieving up to 40% faster load times across ERP systems."
         ]
       },
-      "technologies": ["React", "Next.js", "TypeScript", "NestJS", "Node.js", "C# / .NET", "PostgreSQL", "AWS", "Tauri", "Design Systems"]
+      "technologies": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "NestJS",
+        "Node.js",
+        "C# / .NET",
+        "PostgreSQL",
+        "AWS",
+        "Tauri",
+        "Design Systems"
+      ]
     },
     {
-      "period": { "pt": "Jun/2024 / Dez/2024", "en": "Jun/2024 / Dec/2024" },
+      "period": {
+        "pt": "Jun/2024 / Dez/2024",
+        "en": "Jun/2024 / Dec/2024"
+      },
       "company": "UniFOA / SEBRAE (EvaTech)",
       "role": {
         "pt": "Mentor de Tecnologia & Inteligência Artificial",
@@ -149,15 +270,33 @@
         ]
       },
       "technologies": [
-        { "pt": "Inteligência Artificial", "en": "Artificial Intelligence" },
-        { "pt": "Prototipação", "en": "Prototyping" },
-        { "pt": "Inclusão Digital", "en": "Digital Inclusion" },
-        { "pt": "Educação Tecnológica", "en": "Technology Education" },
-        { "pt": "Mentoria", "en": "Mentoring" }
+        {
+          "pt": "Inteligência Artificial",
+          "en": "Artificial Intelligence"
+        },
+        {
+          "pt": "Prototipação",
+          "en": "Prototyping"
+        },
+        {
+          "pt": "Inclusão Digital",
+          "en": "Digital Inclusion"
+        },
+        {
+          "pt": "Educação Tecnológica",
+          "en": "Technology Education"
+        },
+        {
+          "pt": "Mentoria",
+          "en": "Mentoring"
+        }
       ]
     },
     {
-      "period": { "pt": "Ago/2022 / Jun/2024", "en": "Aug/2022 / Jun/2024" },
+      "period": {
+        "pt": "Ago/2022 / Jun/2024",
+        "en": "Aug/2022 / Jun/2024"
+      },
       "company": "SIVIS Tecnologia",
       "role": {
         "pt": "Engenheiro Full Stack Júnior",
@@ -179,7 +318,15 @@
           "Relational database modeling and querying with PostgreSQL and MySQL."
         ]
       },
-      "technologies": ["React", "TypeScript", "C#", "PHP", "PostgreSQL", "MySQL", "REST APIs"]
+      "technologies": [
+        "React",
+        "TypeScript",
+        "C#",
+        "PHP",
+        "PostgreSQL",
+        "MySQL",
+        "REST APIs"
+      ]
     }
   ]
 }

@@ -31,28 +31,33 @@
   display: none;
 }
 
-/* Seções de conteúdo centralizado: piso uniforme, um pouco mais leve. */
+/* Seções de conteúdo centralizado (S3/S4/S5/S6): o Pedro pediu "o fundo deles nas
+   imagens" — transparente sobre o vídeo. Aqui o piso é só um halo local atrás do
+   texto, não uma faixa que cobre a tela inteira: escurece o suficiente para AA e
+   deixa o busto visível nas bordas. */
 .film-panel > #projetos-selecionados > .shell::before,
 .film-panel > #stack > .shell::before,
 .film-panel > #experiencia > .shell::before,
 .film-panel > #proposito > .shell::before {
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 6, 9, 0.86) 0%,
-    rgba(5, 6, 9, 0.74) 55%,
-    rgba(5, 6, 9, 0.66) 100%
+  background: radial-gradient(
+    ellipse 82% 78% at 50% 50%,
+    rgba(5, 6, 9, 0.82) 0%,
+    rgba(5, 6, 9, 0.7) 55%,
+    rgba(5, 6, 9, 0.3) 82%,
+    rgba(5, 6, 9, 0) 100%
   );
-  inset: -10px -24px;
+  inset: -12px -32px;
 }
 
-/* Sobre: o texto fica em cima do braço do busto, então o piso vai mais fundo à
-   direita, onde está a coluna narrativa. */
+/* Sobre: texto centralizado em cima do busto — piso radial mais fechado no meio e
+   quase transparente nas bordas, para o rosto aparecer sem perder contraste. */
 .film-panel > #sobre > .shell::before {
-  background: linear-gradient(
-    to right,
-    rgba(5, 6, 9, 0.4) 0%,
-    rgba(5, 6, 9, 0.82) 38%,
-    rgba(5, 6, 9, 0.9) 100%
+  background: radial-gradient(
+    ellipse 70% 72% at 50% 50%,
+    rgba(5, 6, 9, 0.9) 0%,
+    rgba(5, 6, 9, 0.8) 58%,
+    rgba(5, 6, 9, 0.34) 84%,
+    rgba(5, 6, 9, 0) 100%
   );
 }
 
