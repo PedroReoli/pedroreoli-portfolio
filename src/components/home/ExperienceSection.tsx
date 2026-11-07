@@ -4,6 +4,7 @@ import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { m } from 'motion/react'
+import { Footer } from '@/components/layout/Footer'
 
 export function ExperienceSection() {
   const { language } = useLanguage()
@@ -124,6 +125,11 @@ export function ExperienceSection() {
             )
           })}
         </div>
+
+        {/* O rodapé/contato vive DENTRO deste painel: são 6 seções e 6 clipes, e um
+            painel extra faria o rodapé começar no maxScroll, roubando o espaço de
+            rolagem da Experiência (bug 5→6). */}
+        <Footer embedded />
       </div>
     </section>
   )

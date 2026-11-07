@@ -8,7 +8,6 @@ import { SelectedProjectsSection } from '@/components/home/SelectedProjectsSecti
 import { StackSection } from '@/components/home/StackSection'
 import { PurposeSection } from '@/components/home/PurposeSection'
 import { ExperienceSection } from '@/components/home/ExperienceSection'
-import { Footer } from '@/components/layout/Footer'
 
 /** Uma seção por slide, na mesma ordem dos clipes: o frame debaixo acompanha o texto. */
 const SECTIONS = [
@@ -34,16 +33,17 @@ export function HomePage() {
         ))}
       </div>
 
-      {/* Os textos entram por cima, cada um no seu trecho da fita. */}
+      {/* Os textos entram por cima, cada um no seu trecho da fita.
+          Painéis = clipes, um para um: eram 7 painéis para 6 clipes, então o painel
+          do rodapé começava exatamente no maxScroll e a seção 6 ficava espremida
+          sem espaço de troca — o "não vejo o topo da S6 nem a troca". O rodapé agora
+          mora dentro do painel da Experiência. */}
       <div className="film-content">
         {SECTIONS.map((Section, index) => (
           <div key={index} className="film-panel" data-film-panel={index}>
             <Section />
           </div>
         ))}
-        <div className="film-panel" data-film-panel={SECTIONS.length}>
-          <Footer embedded />
-        </div>
       </div>
     </div>
   )

@@ -191,3 +191,24 @@
 .film-panel > #experiencia > .shell {
   flex: 0 0 auto;
 }
+
+/* Rodapé dentro do painel da Experiência: ele é o fecho da última tela, não uma
+   tela inteira por si. Antes herdava 100svh e empurrava o contato 1885px para
+   baixo da área rolável — ficava inalcançável. Aqui ele vira um bloco compacto
+   no fim do painel. */
+.film-panel > #experiencia footer.contact-section--embedded {
+  height: auto;
+  min-height: 0;
+  flex: 0 0 auto;
+  margin-top: clamp(24px, 4vh, 56px);
+  padding-top: clamp(20px, 3vh, 36px);
+  padding-bottom: clamp(20px, 3vh, 36px);
+}
+
+.film-panel > #experiencia footer.contact-section--embedded .contact-section__headline {
+  font-size: clamp(2rem, 5.5vw, 4.4rem);
+}
+
+.film-panel > #experiencia footer.contact-section--embedded .contact-section__main {
+  padding-bottom: clamp(8px, 1.4vh, 16px);
+}
