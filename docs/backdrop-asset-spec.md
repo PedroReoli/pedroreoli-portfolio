@@ -69,14 +69,40 @@ Estado medido dos 6 clipes instalados:
 
 ## Regenerar um clipe isolado
 
+Os scripts estão **versionados** em `flow/v3/` (commit `48d72a4`). Rode sempre da raiz do repo.
+
 ```bash
-# 1. edite só a entrada do clipe desejado em flow/v3/render-all.mjs
-node flow/v3/render-all.mjs          # regera os 6 (ou comente os outros)
-node flow/v3/validate.mjs <arquivo>  # confere
-node flow/v3/install.mjs             # copia para public/media/backdrop + posters
+# 1. regera SÓ o clipe pedido (não toca nos outros cinco)
+node flow/v3/render-one.mjs 03
+
+# 2. confere o resultado antes de instalar
+node flow/v3/validate.mjs flow/v3/out/03-projects-to-stack.mp4
+
+# 3. copia para public/media/backdrop + gera o poster
+node flow/v3/install.mjs
+
+# alternativa: regerar a cadeia inteira
+node flow/v3/render-all.mjs
 ```
 
 Se um clipe falhar, os outros cinco continuam válidos — basta refazer aquele.
+
+### Dependências
+
+`sharp`, `ffmpeg-static` e `ffprobe-static` estão em `devDependencies`.
+Em um clone limpo, rode `npm install` antes.
+
+### Arquivos
+
+| arquivo | papel |
+|---|---|
+| `chain.mjs` | composição dos frames (círculo e fundo fixos) |
+| `render-one.mjs` | regera **1** clipe (`node flow/v3/render-one.mjs 03`) |
+| `render-all.mjs` | regera os 6 |
+| `validate.mjs` | guardrail PASS/FAIL de um clipe |
+| `install.mjs` | copia `out/` para `public/media` + posters |
+| `state.json` | estado por clipe |
+| `ref-statue-1920.jpg` / `ref-real-1920.jpg` | referências canônicas |
 
 ## Descartado
 
