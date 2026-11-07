@@ -17,25 +17,30 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     const video = document.querySelector<HTMLVideoElement>(`[data-film-slide][data-clip="${clip.id}"] [data-film-frame]`)
     const root = document.querySelector<HTMLElement>(`[data-film-slide][data-clip="${clip.id}"]`)
     if (!video || !root) return
-    // Cada slide só está em cena durante a própria tela de rolagem: antes dela o
-    // frame é 0, depois dela segura o último. O clipe troca exatamente no slide
-    // seguinte — e é isso que faz a fita andar frame a frame, sem paralaxe.
+
     const start = index * window.innerHeight
     const y = window.scrollY
-    // O último slide segura o frame também durante o painel de contato.
+    // A janela dura exatamente um viewport: o slide entra quando a fatia dele começa e
+    // sai quando a próxima começa. Com folga de 1.5x uma seção mostrava dois quadros ao
+    // mesmo tempo — o fundo do slide que saía vazava por baixo do texto da próxima, que
+    // é o que o Pedro viu como "imagem repetida na segunda seção". O último clipe segura
+    // o frame até o fim da página, porque o painel de contato é o quadro final da fita.
     const isLast = index === sceneClips.clips.length - 1
-    const tail = isLast ? window.innerHeight * 2.5 : window.innerHeight * 1.5
-    const active = y >= start - 2 && y < start + tail
+    const end = isLast ? Number.POSITIVE_INFINITY : start + window.innerHeight
+    const active = y >= start && y < end
     video.dataset.active = active ? 'true' : 'false'
     root.dataset.frameReady = active ? 'true' : 'false'
-    if (!active) return
 
-    // O painel de texto do mesmo trecho entra junto com o frame.
+    // O painel de texto do mesmo trecho entra junto com o frame — inclusive quando este
+    // slide está saindo, senão o texto nunca apareceria no trecho em que o frame ainda é
+    // o dele.
     document.querySelectorAll<HTMLElement>('[data-film-panel]').forEach((panel) => {
       const slot = Number(panel.dataset.filmPanel)
       const on = y >= slot * window.innerHeight && y < (slot + 1) * window.innerHeight
       panel.dataset.visible = on ? 'true' : 'false'
     })
+
+    if (!active) return
 
     video.pause()
     if (video.readyState >= 1) video.currentTime = state.time
