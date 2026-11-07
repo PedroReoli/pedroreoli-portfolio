@@ -112,6 +112,21 @@
 .film-panel[data-visible='true'] {
   opacity: 1;
   visibility: visible;
+  /* O painel é sticky e ocupa 100svh inteiro. Com pointer-events:auto ele cobria
+     a viewport toda e engolia o gesto de rolagem — no último painel (Experiência /
+     Contato) a página prendia e não subia mais. O painel em si fica transparente
+     ao ponteiro e só os filhos interativos o reativam. */
+  pointer-events: none;
+}
+
+/* Filhos interativos continuam clicáveis (os links do contato, por exemplo). */
+.film-panel[data-visible='true'] > section,
+.film-panel[data-visible='true'] a,
+.film-panel[data-visible='true'] button,
+.film-panel[data-visible='true'] input,
+.film-panel[data-visible='true'] textarea,
+.film-panel[data-visible='true'] select,
+.film-panel[data-visible='true'] [tabindex]:not([tabindex='-1']) {
   pointer-events: auto;
 }
 
