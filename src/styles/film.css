@@ -65,9 +65,8 @@
      um transition aqui brigaria com o valor escrito a cada scroll e criaria lag. */
 }
 
-.film-slide__video[data-active='true'] {
-  opacity: 1;
-}
+/* Sem `opacity: 1` aqui. O valor vem do JS (rampa de crossfade) como estilo inline;
+   travar 1 no ativo no CSS brigava com a rampa e matava o fade. */
 
 /* O poster existe só para o primeiro frame. Ele fica visível APENAS no slide ativo:
    os slides empilham no mesmo ponto, então o poster de um slide inativo pintava por

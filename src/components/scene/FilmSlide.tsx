@@ -29,25 +29,27 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     const end = isLast ? Number.POSITIVE_INFINITY : start + window.innerHeight
     const active = y >= start && y < end
 
-    // Fluidez: em vez de cortar seco na fronteira, os dois clipes se misturam numa
-    // banda de sobreposição curta (os últimos ~220px de cada janela). O que está
-    // saindo desce de opacidade enquanto o próximo sobe, então a passagem é um
-    // crossfade e não um "clique" de troca. Fora dessa banda o comportamento é
-    // idêntico ao binário (um só clipe visível, sem dois bustos).
+    // FLUIDEZ — como a passagem entre clipes funciona agora.
+    //
+    // Cada clipe é dono da própria janela e fica em opacidade 1 durante TODA ela.
+    // A única coisa que mistura é o clipe ENTRANDO: nos primeiros OVERLAP px da
+    // janela dele ele sobe de 0 a 1, por cima do anterior, que continua em 1 por
+    // baixo. Resultado: na fronteira sempre existe imagem cheia (nunca os dois em
+    // zero), e a troca é um dissolve de verdade em vez de um piscar para preto.
+    //
+    // A tentativa anterior fazia o clipe SAIR apagar antes da borda, e o entrar só
+    // começar depois: nas duas pontas da janela a opacidade ia a 0, então bem na
+    // emenda a tela ficava preta por um instante — o "não está fluido" que o Pedro viu.
     const OVERLAP = 220
-    // Crossfade: a opacidade desce 1->0 enquanto o clipe sai (fim da janela) e sobe
-    // 0->1 enquanto entra (início da janela). Como a janela de um termina onde a do
-    // próximo começa, as duas rampas se cruzam na borda — é uma passagem suave, não
-    // um corte seco.
-    let opacity = 0
+    let opacity = 1
     if (active) {
-      if (isLast) {
-        opacity = 1
-      } else {
-        const fadeOut = Math.max(0, Math.min(1, (end - y) / OVERLAP))
-        const fadeIn = Math.max(0, Math.min(1, (y - start) / OVERLAP))
-        opacity = Math.min(fadeOut, fadeIn)
+      // Só quem entra faz fade: 0 -> 1 nos primeiros OVERLAP px da própria janela.
+      if (index > 0) {
+        const fadeIn = (y - start) / OVERLAP
+        if (fadeIn < 1) opacity = Math.max(0, fadeIn)
       }
+    } else {
+      opacity = 0
     }
     video.dataset.active = active ? 'true' : 'false'
     video.style.opacity = String(opacity)
