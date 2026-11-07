@@ -58,6 +58,9 @@
 }
 
 .film-slide__video {
+  /* Acima do pôster: o pôster é só reserva para o primeiro frame. Com o vídeo em
+     `auto` (abaixo do `z-index: 1` do pôster) o quadro nunca aparecia. */
+  z-index: 1;
   opacity: 0;
   transition: opacity 0.18s linear;
 }
@@ -66,15 +69,20 @@
   opacity: 1;
 }
 
-/* O pôster fica acima do vídeo só até existir frame real; depois sai de cena.
-   (Z-index negativo dentro do slide fazia o pôster pintar POR CIMA do vídeo.) */
+/* O poster existe só para o primeiro frame. Ele fica visível APENAS no slide ativo:
+   os slides empilham no mesmo ponto, então o poster de um slide inativo pintava por
+   cima do clipe atual — era isso que fazia o busto errado dominar a hero, por mais que
+   o vídeo do slide da vez estivesse certo. Fica abaixo do vídeo. */
 .film-slide__poster {
-  z-index: 1;
+  z-index: 0;
+  opacity: 0;
   transition: opacity 0.18s linear;
 }
 
-.film-slide[data-frame-ready='true'] .film-slide__poster {
-  opacity: 0;
+/* Só o clipe em cena pode mostrar o próprio poster, e ele sai de cena assim que o
+   vídeo entrega o primeiro frame. */
+.film-slide[data-clip-active='true'][data-frame-ready='false'] .film-slide__poster {
+  opacity: 1;
 }
 
 /* --------------------------------------------------------------------------

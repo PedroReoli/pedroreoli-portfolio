@@ -29,6 +29,11 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     const end = isLast ? Number.POSITIVE_INFINITY : start + window.innerHeight
     const active = y >= start && y < end
     video.dataset.active = active ? 'true' : 'false'
+    // O pôster de um slide inativo PRECISA ficar escondido: os slides empilham no mesmo
+    // ponto, então o pôster de um slide futuro pinta por cima do clipe atual. Era isso
+    // que fazia o busto errado (e depois o pôster) dominar a hero, por mais que o clipe
+    // estivesse certo. Só o slide ativo pode mostrar o próprio pôster.
+    root.dataset.clipActive = active ? 'true' : 'false'
     root.dataset.frameReady = active ? 'true' : 'false'
 
     // O painel de texto do mesmo trecho entra junto com o frame — inclusive quando este
