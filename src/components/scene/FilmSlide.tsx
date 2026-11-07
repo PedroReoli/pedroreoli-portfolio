@@ -28,7 +28,29 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     const isLast = index === sceneClips.clips.length - 1
     const end = isLast ? Number.POSITIVE_INFINITY : start + window.innerHeight
     const active = y >= start && y < end
+
+    // Fluidez: em vez de cortar seco na fronteira, os dois clipes se misturam numa
+    // banda de sobreposição curta (os últimos ~220px de cada janela). O que está
+    // saindo desce de opacidade enquanto o próximo sobe, então a passagem é um
+    // crossfade e não um "clique" de troca. Fora dessa banda o comportamento é
+    // idêntico ao binário (um só clipe visível, sem dois bustos).
+    const OVERLAP = 220
+    // Crossfade: a opacidade desce 1->0 enquanto o clipe sai (fim da janela) e sobe
+    // 0->1 enquanto entra (início da janela). Como a janela de um termina onde a do
+    // próximo começa, as duas rampas se cruzam na borda — é uma passagem suave, não
+    // um corte seco.
+    let opacity = 0
+    if (active) {
+      if (isLast) {
+        opacity = 1
+      } else {
+        const fadeOut = Math.max(0, Math.min(1, (end - y) / OVERLAP))
+        const fadeIn = Math.max(0, Math.min(1, (y - start) / OVERLAP))
+        opacity = Math.min(fadeOut, fadeIn)
+      }
+    }
     video.dataset.active = active ? 'true' : 'false'
+    video.style.opacity = String(opacity)
     // O pôster de um slide inativo PRECISA ficar escondido: os slides empilham no mesmo
     // ponto, então o pôster de um slide futuro pinta por cima do clipe atual. Era isso
     // que fazia o busto errado (e depois o pôster) dominar a hero, por mais que o clipe

@@ -58,11 +58,11 @@
 }
 
 .film-slide__video {
-  /* Acima do pôster: o pôster é só reserva para o primeiro frame. Com o vídeo em
-     `auto` (abaixo do `z-index: 1` do pôster) o quadro nunca aparecia. */
+  /* Acima do pôster: o pôster é só reserva para o primeiro frame. */
   z-index: 1;
   opacity: 0;
-  transition: opacity 0.18s linear;
+  /* A opacidade é a rampa do scroll (crossfade na borda), não um transition:
+     um transition aqui brigaria com o valor escrito a cada scroll e criaria lag. */
 }
 
 .film-slide__video[data-active='true'] {
@@ -76,7 +76,6 @@
 .film-slide__poster {
   z-index: 0;
   opacity: 0;
-  transition: opacity 0.18s linear;
 }
 
 /* Só o clipe em cena pode mostrar o próprio poster, e ele sai de cena assim que o
@@ -106,7 +105,9 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.28s linear;
+  /* O texto entra junto com o quadro, com o mesmo easing — mas um toque mais longo
+     para a leitura não parecer que "pulou" junto com o corte do vídeo. */
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s linear;
 }
 
 .film-panel[data-visible='true'] {
