@@ -1,0 +1,10 @@
+# intermediários de render — não versionar
+out/
+tmp/
+# mídias soltas de inspeção
+*.jpg
+*.png
+*.mp4
+# exceto as referências canônicas, que o pipeline precisa
+!ref-statue-1920.jpg
+!ref-real-1920.jpg

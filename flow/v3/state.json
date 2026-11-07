@@ -1,0 +1,13 @@
+{
+  "clips": [
+    { "id": "01-hero-to-about",          "mode": "real",   "status": "pending", "file": null, "attempts": 0 },
+    { "id": "02-about-to-projects",      "mode": "statue", "status": "pending", "file": null, "attempts": 0 },
+    { "id": "03-projects-to-stack",      "mode": "statue", "status": "pending", "file": null, "attempts": 0 },
+    { "id": "04-stack-to-purpose",       "mode": "statue", "status": "pending", "file": null, "attempts": 0 },
+    { "id": "05-purpose-to-experience",  "mode": "statue", "status": "pending", "file": null, "attempts": 0 },
+    { "id": "06-experience-loop",        "mode": "real",   "status": "pending", "file": null, "attempts": 0 }
+  ],
+  "rejected": [
+    { "file": "flow/v3/REJEITADO-rosto-errado-real.jpg", "reason": "rosto nao era o do Pedro (nariz/mandibula/barba diferentes)" }
+  ]
+}
