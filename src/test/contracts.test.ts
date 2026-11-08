@@ -201,5 +201,12 @@ describe('Content Contract & Asset Integrity Tests', () => {
     expect(styles).not.toMatch(/#8b5cf6|#6d28d9|rgba?\(139\s*,\s*92\s*,\s*246/i);
     expect(styles).not.toMatch(/#ff5a36|#c93618|rgba?\(255\s*,\s*90\s*,\s*54/i);
   });
+
+  it('declares the cyan ocean #2596be as the canonical background color token', () => {
+    const baseCss = fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../styles/base.css'), 'utf8');
+    expect(baseCss).toMatch(/--color-bg:\s*#2596be;/);
+    const indexHtml = fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../index.html'), 'utf8');
+    expect(indexHtml).toMatch(/<meta name="theme-color" content="#2596be" \/>/);
+  });
 });
 

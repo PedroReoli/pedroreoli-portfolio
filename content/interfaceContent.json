@@ -14,7 +14,7 @@
     "scenes": [
       {
         "id": "hero",
-        "background": "#182033",
+        "background": "#2596be",
         "steps": 1
       },
       {
@@ -24,7 +24,7 @@
       },
       {
         "id": "projetos-selecionados",
-        "background": "#182033",
+        "background": "#2596be",
         "steps": 3
       },
       {
@@ -34,17 +34,17 @@
       },
       {
         "id": "proposito",
-        "background": "#182033",
+        "background": "#2596be",
         "steps": 1
       },
       {
         "id": "experiencia",
-        "background": "#182033",
+        "background": "#2596be",
         "steps": 5
       },
       {
         "id": "contato",
-        "background": "#182033",
+        "background": "#2596be",
         "steps": 1
       }
     ]
