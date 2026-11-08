@@ -44,6 +44,34 @@ flow/*zoom*
 flow/*-f0*.jpg
 flow/v3/out/
 flow/v3/tmp/
+flow/real-cut.png
+flow/*-check*
+flow/*-dossie*
+flow/*-face*
+flow/*-statue*
+flow/*-edit*
+flow/*-cut*
+flow/*-alpha*
+flow/*-fixed*
+flow/*-marble*
+flow/*-mask*
+flow/*-sujeito*
+flow/*-flat*
+flow/*-encaixe*
+flow/*-rostos*
+flow/*-sheet*
+flow/*-bust*
+flow/*-1920*
+flow/v6*
+flow/v7*
+flow/v8*
+flow/v10b.mjs
+flow/v10c.mjs
+flow/v10d.mjs
+flow/v10-FINAL.png
+flow/v11-FINAL.png
+flow/v14-FINAL.png
+flow/v15-FINAL.png
 
 # Backup de assets anterior ao reset: NAO versionar como fonte, mas tambem nao
 # e lixo — guarda a unica copia de busto-v1.jpg, rosto-normal.jpg e do clipe
