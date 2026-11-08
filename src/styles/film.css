@@ -279,55 +279,155 @@
 }
 
 .film-panel > #experiencia .timeline-v {
-  flex: 1 1 auto;
-  min-height: 0;
+  /* cresce com o conteúdo (5 linhas ≈ 421px). Com `flex: 1 1 auto` e
+     `min-height: 0` o container era espremido a 341px e a linha #05 caía por
+     cima do bloco de contato. */
+  flex: 0 0 auto;
+  min-height: 421px;
   margin: 0;
   padding: clamp(4px, 0.8vh, 12px) 0;
-  /* A timeline é mais alta que a sobra do painel: rola na HORIZONTAL (eixo do
-     tempo), nunca na vertical — scroll vertical era o que prendia a roda. */
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-}
-
-/* O 5º card caía atrás do rodapé porque o grid crescia além da sobra do painel.
-   O teto abaixo mantém a timeline dentro da área dela; o que não couber aparece
-   rolando na horizontal, no eixo do tempo. */
-.film-panel > #experiencia .timeline-v {
-  max-height: 100%;
-  scroll-snap-type: x proximity;
+  /* Timeline VERTICAL: não rola em nenhum eixo (scroll vertical prendia a roda). */
+  overflow: visible;
+  scrollbar-width: none;
 }
 
 .film-panel > #experiencia .timeline-v__item {
   margin-bottom: clamp(6px, 1vh, 12px);
 }
 
-/* Duas colunas de cards em vez de alternância de página inteira. A timeline antiga
-   tem max-width 1200px e padding lateral; aqui ela usa a largura toda do painel. */
+/* TIMELINE de verdade: trilha vertical central, um nó por capítulo e os cards
+   alternando de lado. Antes isto era um grid de 3 colunas sem spine nem nós, que
+   lê como "cartões" e não como linha do tempo — foi o que o Pedro apontou.
+   Caber numa tela vem de gaps e tipos comprimidos, nunca de esconder a trilha. */
 .film-panel > #experiencia .timeline-v {
+  position: relative;
   display: grid;
   width: 100%;
   max-width: none;
   margin: 0;
   padding-left: 0;
   padding-right: 0;
-  /* 3 colunas: 5 marcos cabem em 2 linhas dentro da sobra do painel. */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* coluna esquerda | eixo | coluna direita */
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
   grid-auto-rows: auto;
-  gap: clamp(8px, 1vw, 16px);
+  gap: clamp(4px, 0.9vh, 10px) 0;
+  /* start, e não center: a timeline só recebe a sobra do shell (~340px). Com center
+     a primeira e a última linha saem da área e o card #01 nascia em y=-16. */
   align-content: start;
 }
 
-.film-panel > #experiencia .timeline-v__item {
-  display: flex;
-  width: auto;
+/* A trilha: linha contínua passando por todos os nós. */
+.film-panel > #experiencia .timeline-v__spine {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(to bottom,
+    rgba(255, 201, 0, 0) 0%,
+    rgba(255, 201, 0, 0.45) 8%,
+    rgba(255, 201, 0, 0.45) 92%,
+    rgba(255, 201, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
+.film-panel > #experiencia .timeline-v__spine-glow {
+  display: block;
+  position: absolute;
+  inset: 0 -4px;
+  background: linear-gradient(to bottom,
+    rgba(255, 201, 0, 0) 0%,
+    rgba(255, 201, 0, 0.22) 50%,
+    rgba(255, 201, 0, 0) 100%);
+  filter: blur(4px);
+}
+
+/* Cada item ocupa a linha inteira; o card vai para um dos lados do eixo. */
+.film-panel > #experiencia .timeline-v__item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  align-items: center;
+  margin-bottom: 0;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.film-panel > #experiencia .timeline-v__item--left .timeline-card-reveal-wrapper {
+  grid-column: 1;
+  justify-self: stretch;
+}
+
+.film-panel > #experiencia .timeline-v__item--right .timeline-card-reveal-wrapper {
+  grid-column: 3;
+  justify-self: stretch;
+}
+
+/* Nó central: anel amarelo + núcleo, na mesma linha do card. */
+.film-panel > #experiencia .timeline-v__node {
+  display: grid;
+  grid-column: 2;
+  justify-self: center;
+  place-items: center;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--accent, #ffc900);
+  background: var(--color-bg, #060a0e);
+  box-shadow: 0 0 12px rgba(255, 201, 0, 0.55);
+  z-index: 2;
+}
+
+.film-panel > #experiencia .timeline-v__node-core {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent, #ffc900);
+}
+
+.film-panel > #experiencia .timeline-v__node-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 201, 0, 0.35);
+}
+
+.film-panel > #experiencia .timeline-v__node-pulse {
+  display: none;
+}
+
+/* Haste horizontal ligando o eixo ao card. */
+.film-panel > #experiencia .timeline-v__connector {
+  display: block;
+  grid-column: 2;
+  justify-self: center;
+  position: relative;
+  z-index: 1;
+  height: 1px;
+  width: 50%;
+  background: linear-gradient(90deg, rgba(255, 201, 0, 0.55), rgba(255, 201, 0, 0.08));
+  pointer-events: none;
+}
+
+.film-panel > #experiencia .timeline-v__item--left .timeline-v__connector {
+  justify-self: start;
+  background: linear-gradient(270deg, rgba(255, 201, 0, 0.55), rgba(255, 201, 0, 0.08));
+}
+
+.film-panel > #experiencia .timeline-v__item--right .timeline-v__connector {
+  justify-self: end;
+}
+
+/* Este bloco declarava `display: flex` DEPOIS da regra de grid, e como flex ignora
+   `grid-column`, todo card caía na coluna 3 (direita). A grade é quem posiciona. */
 .film-panel > #experiencia .timeline-v__item--left,
 .film-panel > #experiencia .timeline-v__item--right {
   justify-content: stretch;
-  align-items: flex-start;
 }
 
 /* Os cards têm largura fixa pelas regras antigas da timeline alternada; dentro do
@@ -351,24 +451,24 @@
 }
 
 .film-panel > #experiencia .timeline-card__desc {
-  font-size: clamp(0.7rem, 0.76vw, 0.8rem);
-  line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  /* 1 linha: com 2 o card ia a 130px e a timeline estourava a tela. */
+  font-size: 0.68rem;
+  line-height: 1.3;
+  display: block;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .film-panel > #experiencia .timeline-card__heading h3 {
-  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-size: clamp(0.86rem, 1vw, 1rem);
+  line-height: 1.15;
 }
-
 .film-panel > #experiencia .timeline-card__heading h4 {
-  font-size: 0.6rem;
+  font-size: 0.56rem;
+  line-height: 1.2;
 }
-
 .film-panel > #experiencia .timeline-card__top {
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .film-panel > #experiencia .timeline__tech {
@@ -383,20 +483,15 @@
   font-size: clamp(1.7rem, 3vw, 2.8rem);
 }
 
-/* A timeline alternada tinha padding de meia página em cada item e uma spine
-   central com nós. No grid de 2 colunas isso vira sangria e linhas soltas, então
-   aqui a alternância e a spine são desligadas — o card é só o card. */
+/* A trilha e os nós NÃO são escondidos: eles são a timeline. (Antes estas regras
+   desligavam spine/nós, e o resultado lê como uma grade de cards — foi o que o
+   Pedro apontou.) Só a estação antiga, que não é mais usada, continua oculta. */
 .film-panel > #experiencia .timeline-v__item--left,
 .film-panel > #experiencia .timeline-v__item--right {
   padding-left: 0;
   padding-right: 0;
-  justify-content: stretch;
 }
 
-.film-panel > #experiencia .timeline-v__spine,
-.film-panel > #experiencia .timeline-v__spine-glow,
-.film-panel > #experiencia .timeline-v__node,
-.film-panel > #experiencia .timeline-v__connector,
 .film-panel > #experiencia .timeline-v__station {
   display: none;
 }
@@ -414,4 +509,46 @@
 .film-panel > section > .shell > * {
   opacity: 0;
   transform: translate3d(0, 10px, 0);
+}
+
+/* --------------------------------------------------------------------------
+   TIMELINE (S6) — caber sem rolar
+   --------------------------------------------------------------------------
+   Medido: o painel da Experiência dá ~341px à timeline. Cinco marcos com número,
+   título, cargo, descrição e stack não cabem ali em card normal.
+   NÃO usar scroll interno: a timeline já foi um scroller vertical, e era ela que
+   engolia a roda da página. A saída é compactar o conteúdo do card — os campos
+   longos (descrição e stack) saem daqui porque já aparecem no projeto/notas; o
+   que fica é número, período, empresa e cargo, que é o que uma linha do tempo
+   precisa mostrar. */
+.film-panel > #experiencia .timeline-v {
+  overflow: visible;
+  align-content: start;
+}
+
+.film-panel > #experiencia .timeline-card {
+  min-height: 0;
+  justify-content: flex-start;
+  padding: 6px 10px;
+}
+
+.film-panel > #experiencia .timeline-card__heading { margin-top: 2px; }
+.film-panel > #experiencia .timeline-card__top { padding-bottom: 1px; }
+
+/* Descrição e stack saem do card: sozinhos somavam ~60px por linha × 5 linhas,
+   e é isso que estourava a tela. */
+.film-panel > #experiencia .timeline-card__desc,
+.film-panel > #experiencia .timeline-card__footer,
+.film-panel > #experiencia .timeline-card__highlights {
+  display: none;
+}
+
+.film-panel > #experiencia .timeline-card__heading h3 {
+  font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+  line-height: 1.1;
+}
+
+.film-panel > #experiencia .timeline-card__heading h4 {
+  font-size: 0.58rem;
+  line-height: 1.2;
 }
