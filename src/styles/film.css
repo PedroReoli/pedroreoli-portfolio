@@ -507,69 +507,137 @@
   transform: translate3d(0, 10px, 0);
 }
 /* --------------------------------------------------------------------------
-   TIMELINE (S6) — conteúdo completo, com a seção mais alta
+   TIMELINE (S6) — prévia da direção aprovada
    --------------------------------------------------------------------------
-   Pedro: "os cards têm que ter mais conteúdo" e "o tamanho da sessão de
-   experiência tem que ser mais alto". Antes a seção tinha UMA tela só e eu
-   escondia descrição, destaques e stack para caber — era o que deixava o card
-   vazio.
-   Agora a Experiência ocupa 1.7 telas de rolagem (TALL_SLICES em slices.ts), o
-   painel acompanha essa altura, e o card mostra tudo: número, período, empresa,
-   cargo, descrição, destaques e stack.
-   Nada de scroll interno na timeline: ela já foi um scroller e prendia a roda. */
+   Pedro aprovou (card approve_direction): timeline vertical, trilha central e cards
+   alternados no desktop; no celular a trilha vai para a esquerda; conteúdo completo
+   (período, cargo, empresa, descrição, destaques, tecnologias); seção cresce com o
+   conteúdo e há espaço entre capítulos.
+   Referências do UI-Scout que orientaram os números: codepen.io/agn35 (espaço),
+   codepen.io/htmlcodex (card) e flowbite (semântica).
+
+   Medido ANTES desta rodada: os 5 capítulos ocupavam 1146px com apenas 8px de
+   respiro entre eles — era esse aperto que fazia a seção parecer ruim, não a
+   estrutura. Aqui o espaço entre capítulos passa a ser explícito e a fatia da
+   Experiência cresce (TALL_SLICES em slices.ts) para caber sem comprimir.
+
+   Nada de scroll interno: a timeline já foi um scroller e prendia a roda da página.
+   Nada de `transition`/`@keyframes`: no Windows do Pedro o base.css zera os dois. */
+
 .film-panel > #experiencia {
-  /* a fatia da Experiência ocupa 1.7 tela: painel, seção e shell acompanham, senão
-     o sticky de 100svh cortava a metade de baixo da timeline. */
-  height: calc(100svh * 1.7);
-  min-height: calc(100svh * 1.7);
+  height: calc(100svh * 2.3);
+  min-height: calc(100svh * 2.3);
   position: relative;
 }
 
 .film-panel > #experiencia > section {
-  height: calc(100svh * 1.7);
-  min-height: calc(100svh * 1.7);
+  height: calc(100svh * 2.3);
+  min-height: calc(100svh * 2.3);
   justify-content: flex-start;
-  padding-top: calc(var(--header-height, 72px) + clamp(6px, 1vh, 14px));
+  padding-top: calc(var(--header-height, 72px) + clamp(8px, 1.2vh, 18px));
 }
 
 .film-panel > #experiencia .timeline-v {
   overflow: visible;
   align-content: start;
+  /* O respiro entre capítulos é o que a referência #1 tem e faltava aqui. */
+  row-gap: clamp(18px, 3.2vh, 40px);
 }
 
+/* --------------------------------------------------------------------------
+   Card — hierarquia de leitura, na ordem aprovada:
+   período → cargo → empresa → descrição → destaques → stack
+   -------------------------------------------------------------------------- */
 .film-panel > #experiencia .timeline-card {
   min-height: 0;
   justify-content: flex-start;
-  padding: clamp(9px, 1.1vh, 14px) 12px;
+  padding: clamp(14px, 1.8vh, 22px) clamp(14px, 1.2vw, 20px);
+  /* Canto levemente assimétrico (referência #2), apontando para o nó. */
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 4px;
 }
 
-.film-panel > #experiencia .timeline-card__heading { margin-top: 3px; }
-.film-panel > #experiencia .timeline-card__top { padding-bottom: 2px; }
+.film-panel > #experiencia .timeline-v__item--right .timeline-card {
+  border-radius: var(--radius-md) var(--radius-md) 4px var(--radius-md);
+}
 
-/* Descrição, destaques e stack voltam: é o conteúdo que Pedro pediu. */
+/* Período em pílula: é o marcador temporal, primeiro na leitura. */
+.film-panel > #experiencia .timeline-card__top {
+  padding-bottom: 0;
+  margin-bottom: clamp(6px, 0.9vh, 10px);
+  align-items: center;
+}
+
+.film-panel > #experiencia .timeline-card__period {
+  padding: 3px 9px;
+  border: 1px solid rgba(255, 201, 0, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 201, 0, 0.1);
+  color: rgba(255, 201, 0, 0.95);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.film-panel > #experiencia .timeline-card__chapter {
+  font-size: 0.58rem;
+  color: rgba(245, 243, 239, 0.5);
+}
+
+.film-panel > #experiencia .timeline-card__heading {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Cargo é o maior elemento; empresa vem abaixo com destaque. */
+/* No markup h3 é a EMPRESA e h4 é o CARGO. A hierarquia aprovada pede
+   cargo primeiro (maior) e empresa abaixo em destaque, então a ordem visual é
+   invertida aqui — sem mexer no HTML, que é conteúdo real. */
+.film-panel > #experiencia .timeline-card__heading h4 {
+  order: 1;
+  font-size: clamp(0.98rem, 1.2vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--paper, #f5f3ef);
+}
+
+.film-panel > #experiencia .timeline-card__heading h3 {
+  order: 2;
+  margin-top: 3px;
+  font-size: clamp(0.78rem, 0.92vw, 0.9rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent, #ffc900);
+}
+
 .film-panel > #experiencia .timeline-card__desc {
   display: block;
-  margin-top: 4px;
-  font-size: clamp(0.7rem, 0.8vw, 0.8rem);
-  line-height: 1.4;
+  margin-top: clamp(6px, 0.9vh, 10px);
+  font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+  line-height: 1.5;
+  color: rgba(245, 243, 239, 0.78);
 }
 
 .film-panel > #experiencia .timeline-card__highlights {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin: 6px 0 0;
+  gap: clamp(4px, 0.6vh, 7px);
+  margin: clamp(8px, 1.2vh, 14px) 0 0;
   padding: 0;
   list-style: none;
 }
 
 .film-panel > #experiencia .timeline-card__highlights li {
   display: flex;
-  gap: 6px;
+  gap: 7px;
   align-items: flex-start;
-  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
-  line-height: 1.4;
-  color: rgba(245, 243, 239, 0.8);
+  font-size: clamp(0.68rem, 0.76vw, 0.76rem);
+  line-height: 1.45;
+  color: rgba(245, 243, 239, 0.82);
 }
 
 .film-panel > #experiencia .timeline-card__highlights .highlight-icon {
@@ -580,21 +648,95 @@
 
 .film-panel > #experiencia .timeline-card__footer {
   display: block;
-  margin-top: 8px;
+  margin-top: clamp(8px, 1.2vh, 12px);
+  padding-top: clamp(6px, 1vh, 10px);
+  border-top: 1px solid rgba(245, 243, 239, 0.1);
 }
 
 .film-panel > #experiencia .timeline__tech {
   font-size: 0.56rem;
-  line-height: 1.5;
-  color: rgba(255, 201, 0, 0.85);
+  line-height: 1.6;
+  color: rgba(255, 201, 0, 0.82);
 }
 
-.film-panel > #experiencia .timeline-card__heading h3 {
-  font-size: clamp(0.95rem, 1.15vw, 1.12rem);
-  line-height: 1.1;
-}
+/* --------------------------------------------------------------------------
+   Celular — trilha à esquerda, cards em 100%, sem alternância e sem colapsar
+   (Pedro quer ver o conteúdo, não esconder atrás de toggle).
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Cabeçalho em coluna: o kicker (3 colunas) prendia o contador a 83px e ele
+     subia por cima do título "TRAJETÓRIA". */
+  /* Medido: o .section-kicker ficava com height:1px e os filhos transbordavam
+     por cima do H2 "TRAJETÓRIA". Ele precisa de altura própria e de o contador
+     ocupar a linha inteira. */
+  .film-panel > #experiencia .section-kicker {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 12px;
+    align-items: center;
+    height: auto;
+    min-height: 44px;
+    padding-bottom: 8px;
+  }
 
-.film-panel > #experiencia .timeline-card__heading h4 {
-  font-size: 0.58rem;
-  line-height: 1.25;
+  .film-panel > #experiencia .section-kicker__num,
+  .film-panel > #experiencia .section-kicker__eyebrow {
+    line-height: 1.4;
+  }
+
+  .film-panel > #experiencia .experience-kicker__counter {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .film-panel > #experiencia .experience-header {
+    padding-top: 8px;
+  }
+
+  .film-panel > #experiencia .experience-header__main h2 {
+    font-size: clamp(1.6rem, 8.5vw, 2.1rem);
+    line-height: 1.05;
+  }
+
+  .film-panel > #experiencia .timeline-v {
+    /* coluna do eixo (28px) + cards */
+    grid-template-columns: 28px minmax(0, 1fr);
+    row-gap: clamp(14px, 2.6vh, 24px);
+  }
+
+  .film-panel > #experiencia .timeline-v__spine {
+    left: 13px;
+    margin-left: 0;
+  }
+
+  .film-panel > #experiencia .timeline-v__item {
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .film-panel > #experiencia .timeline-v__node {
+    grid-column: 1;
+    justify-self: start;
+    margin-left: 7px;
+    margin-top: 14px;
+  }
+
+  /* Haste some no celular: o nó já está encostado no card. */
+  .film-panel > #experiencia .timeline-v__connector {
+    display: none;
+  }
+
+  .film-panel > #experiencia .timeline-v__item--left .timeline-card-reveal-wrapper,
+  .film-panel > #experiencia .timeline-v__item--right .timeline-card-reveal-wrapper {
+    grid-column: 2;
+    justify-self: stretch;
+  }
+
+  .film-panel > #experiencia .timeline-card {
+    border-radius: var(--radius-md);
+  }
+
+  .film-panel > #experiencia .timeline-v__item--right .timeline-card {
+    border-radius: var(--radius-md);
+  }
 }

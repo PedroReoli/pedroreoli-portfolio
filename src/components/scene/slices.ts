@@ -14,7 +14,7 @@
 
 /** Quantas telas de rolagem cada fatia ocupa, por id de clipe. */
 export const TALL_SLICES: Record<string, number> = {
-  'experience-loop': 1.7,
+  'experience-loop': 2.3,
 }
 
 export function sliceWeight(clipId: string | undefined): number {
