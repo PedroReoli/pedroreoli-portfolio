@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { sceneClips } from '@/data/content'
 import type { SceneClip } from '@/types/content'
 import { useFrameScroll, effectiveHold, type FrameState } from './useFrameScroll'
@@ -13,6 +13,86 @@ import { sliceStart, sliceHeight } from './slices'
  */
 export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
   const [videoReady, setVideoReady] = useState(false)
+  const isHero = index === 0
+  const heroVisualRef = useRef<HTMLDivElement>(null)
+
+  // Surgimento cinematográfico da imagem da hero ao carregar a página
+  useEffect(() => {
+    if (!isHero) return
+    const el = heroVisualRef.current
+    if (!el) return
+
+    // Se a página já foi rolada além da hero no momento do mount, mantém assentado
+    if (typeof window !== 'undefined' && window.scrollY > 20) {
+      el.style.opacity = '1'
+      el.style.transform = 'none'
+      el.style.filter = 'none'
+      return
+    }
+
+    const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const duration = reduce ? 600 : 1400
+    const startY = reduce ? 12 : 32
+    const startScale = reduce ? 1.03 : 1.08
+    const startBlur = reduce ? 8 : 22
+    const startBrightness = reduce ? 1.1 : 1.25
+
+    let rafId = 0
+    let startTime: number | null = null
+
+    // Estado inicial de materialização cinematográfica
+    el.style.opacity = '0'
+    el.style.transform = `translate3d(0, ${startY}px, 0) scale(${startScale})`
+    el.style.filter = `blur(${startBlur}px) brightness(${startBrightness})`
+    el.style.willChange = 'transform, opacity, filter'
+
+    const step = (now: number) => {
+      if (!startTime) startTime = now
+      const elapsed = now - startTime
+      const progress = Math.min(1, elapsed / duration)
+
+      // Quartic ease-out para assentamento orgânico e suave
+      const ease = 1 - Math.pow(1 - progress, 4)
+
+      const opacity = ease
+      const translateY = (startY * (1 - ease)).toFixed(1)
+      const scale = (startScale - (startScale - 1) * ease).toFixed(4)
+      const blur = (startBlur * (1 - ease)).toFixed(1)
+      const brightness = (1 + (startBrightness - 1) * (1 - ease)).toFixed(2)
+
+      el.style.opacity = String(opacity)
+      el.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`
+      el.style.filter = Number(blur) < 0.3 ? 'none' : `blur(${blur}px) brightness(${brightness})`
+
+      if (progress < 1 && window.scrollY <= 10) {
+        rafId = requestAnimationFrame(step)
+      } else {
+        el.style.opacity = '1'
+        el.style.transform = 'none'
+        el.style.filter = 'none'
+        el.style.willChange = ''
+      }
+    }
+
+    rafId = requestAnimationFrame(step)
+
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        cancelAnimationFrame(rafId)
+        el.style.opacity = '1'
+        el.style.transform = 'none'
+        el.style.filter = 'none'
+        el.style.willChange = ''
+        window.removeEventListener('scroll', onScroll)
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [isHero])
 
   const show = useCallback((state: FrameState) => {
     // Only this slide writes: every slide listens to the scroll, so a global pass
@@ -171,26 +251,34 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
   useFrameScroll(show, index)
 
   return (
-    <div className="film-slide" data-film-slide data-clip={clip.id} aria-hidden="true">
+    <div
+      className={`film-slide ${isHero ? 'film-slide--hero' : ''}`}
+      data-film-slide
+      data-clip={clip.id}
+      aria-hidden="true"
+    >
       <div className="film-slide__sticky">
-        <img
-          className="film-slide__poster"
-          src={index === 0 ? sceneClips.heroPoster : clip.poster}
-          alt=""
-          loading={index < 2 ? 'eager' : 'lazy'}
-          decoding="async"
-        />
-        <video
-          className="film-slide__video"
-          data-film-frame={clip.id}
-          data-active="false"
-          src={clip.src}
-          muted
-          playsInline
-          preload="auto"
-          onLoadedData={() => setVideoReady(true)}
-          onCanPlay={() => setVideoReady(true)}
-        />
+        {isHero && <div className="hero-cyber-aura" aria-hidden="true" />}
+        <div ref={isHero ? heroVisualRef : undefined} className="film-slide__visual">
+          <img
+            className="film-slide__poster"
+            src={index === 0 ? sceneClips.heroPoster : clip.poster}
+            alt=""
+            loading={index < 2 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+          <video
+            className="film-slide__video"
+            data-film-frame={clip.id}
+            data-active="false"
+            src={clip.src}
+            muted
+            playsInline
+            preload="auto"
+            onLoadedData={() => setVideoReady(true)}
+            onCanPlay={() => setVideoReady(true)}
+          />
+        </div>
       </div>
     </div>
   )

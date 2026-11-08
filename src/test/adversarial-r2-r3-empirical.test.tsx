@@ -117,6 +117,22 @@ describe('Adversarial Verification Suite: R2 (Transitions & Backdrops) & R3 (Exp
       expect(slide.dataset.frameReady).toBe('true')
       vi.useRealTimers()
     })
+
+    it('verifies hero entrance structure and aura overlay in FilmSlide', () => {
+      const { container } = render(
+        <FilmSlide clip={sceneClipsJson.clips[0] as SceneClip} index={0} />
+      )
+      const heroSlide = container.querySelector('.film-slide--hero')
+      expect(heroSlide).not.toBeNull()
+
+      const aura = heroSlide?.querySelector('.hero-cyber-aura')
+      expect(aura).not.toBeNull()
+
+      const visual = heroSlide?.querySelector('.film-slide__visual')
+      expect(visual).not.toBeNull()
+      expect(visual?.querySelector('.film-slide__poster')).not.toBeNull()
+      expect(visual?.querySelector('.film-slide__video')).not.toBeNull()
+    })
   })
 
   describe('2. R2: Reverse Scroll Overlap & Hold Frame Behavior', () => {
