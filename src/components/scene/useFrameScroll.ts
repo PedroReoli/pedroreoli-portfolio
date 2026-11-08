@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { sceneClips } from '@/data/content'
 import type { SceneClip } from '@/types/content'
+import { sliceStart, sliceHeight } from './slices'
 
 /**
  * One scroll = one frame.
@@ -56,6 +57,8 @@ export interface FrameState {
 export interface SceneAnchor {
   clip: SceneClip
   y: number
+  /** Altura da fatia, quando conhecida sem depender do próximo anchor. */
+  span?: number
 }
 
 /**
@@ -74,7 +77,11 @@ export function measureAnchors(): SceneAnchor[] {
     // `offsetTop` de um elemento sticky colapsa para 0 quando ele já gruda, então a
     // posição na fita vem da soma com o offsetParent (os slides têm o mesmo pai).
     const parentTop = slide.offsetParent instanceof HTMLElement ? slide.offsetParent.offsetTop : 0
-    const y = Math.max(0, slides.indexOf(slide) * window.innerHeight + trackTop + parentTop)
+    // Fatias têm alturas diferentes (a Experiência é mais alta): o começo de cada uma
+    // vem de sliceStart, não de `índice × viewport`. Era daí que vinha o desalinho
+    // entre o frame do vídeo e o painel de texto.
+    const ids = slides.map((s) => s.dataset.clip ?? '')
+    const y = Math.max(0, sliceStart(ids, slides.indexOf(slide), window.innerHeight) + trackTop + parentTop)
     anchors.push({ clip, y })
   })
   return anchors
@@ -83,7 +90,10 @@ export function measureAnchors(): SceneAnchor[] {
 export function buildGates(anchors: SceneAnchor[]): Gate[] {
   return anchors.map((anchor, index) => {
     const next = anchors[index + 1]
-    const span = Math.max(STEP_PX, (next ? next.y : anchor.y + window.innerHeight) - anchor.y)
+    // A fatia mais alta (Experiência) informa a própria altura; as demais seguem a
+  // distância até o próximo anchor.
+  const fallback = (next ? next.y : anchor.y + window.innerHeight) - anchor.y
+  const span = Math.max(STEP_PX, anchor.span ?? fallback)
     const hold = effectiveHold(anchor.clip)
     // Passo de scroll -> passo de frame. O clipe é amostrado: `steps` é quantos frames
     // cabem no percurso, não quantos o arquivo tem. Um tico de roda (~STEP_PX) muda um
@@ -139,10 +149,13 @@ export function useFrameScroll(
     // that single viewport of scroll, so a step of STEP_PX is a step of frames.
     const clip = sceneClips.clips[clipIndex]
     if (!clip) return
-    const gates = buildGates([{ clip, y: 0 }])
+    const ids = sceneClips.clips.map((c) => c.id)
+    const span = sliceHeight(ids, clipIndex, window.innerHeight)
+    const gates = buildGates([{ clip, y: 0, span }])
 
     const write = () => {
-      const local = window.scrollY - clipIndex * window.innerHeight
+      // deslocamento relativo ao COMEÇO da fatia desta seção (alturas variam)
+      const local = window.scrollY - sliceStart(ids, clipIndex, window.innerHeight)
       handlerRef.current(frameAt(gates, local))
     }
 

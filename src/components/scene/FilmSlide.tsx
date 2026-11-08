@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { sceneClips } from '@/data/content'
 import type { SceneClip } from '@/types/content'
 import { useFrameScroll, type FrameState } from './useFrameScroll'
+import { sliceStart, sliceHeight } from './slices'
 
 /**
  * A fita. Cada seção é um slide preso na viewport; a página rola a fita e o slide
@@ -18,7 +19,9 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     const root = document.querySelector<HTMLElement>(`[data-film-slide][data-clip="${clip.id}"]`)
     if (!video || !root) return
 
-    const start = index * window.innerHeight
+    const ids = sceneClips.clips.map((c) => c.id)
+    const start = sliceStart(ids, index, window.innerHeight)
+    const sliceH = sliceHeight(ids, index, window.innerHeight)
     const y = window.scrollY
     // A janela dura exatamente um viewport: o slide entra quando a fatia dele começa e
     // sai quando a próxima começa. Com folga de 1.5x uma seção mostrava dois quadros ao
@@ -26,7 +29,7 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     // é o que o Pedro viu como "imagem repetida na segunda seção". O último clipe segura
     // o frame até o fim da página, porque o painel de contato é o quadro final da fita.
     const isLast = index === sceneClips.clips.length - 1
-    const end = isLast ? Number.POSITIVE_INFINITY : start + window.innerHeight
+    const end = isLast ? Number.POSITIVE_INFINITY : start + sliceH
     const active = y >= start && y < end
 
     // FLUIDEZ — como a passagem entre clipes funciona agora.
@@ -53,7 +56,7 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     // trocava visivelmente e o topo da seção 6 sumia.
     if (!active) {
       const covering = index + 1
-      const nextStart = covering * window.innerHeight
+      const nextStart = sliceStart(ids, covering, window.innerHeight)
       const stillCovered = y >= nextStart && y < nextStart + OVERLAP
       opacity = stillCovered ? 1 : 0
     }
@@ -87,8 +90,8 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
 
     document.querySelectorAll<HTMLElement>('[data-film-panel]').forEach((panel) => {
       const slot = Number(panel.dataset.filmPanel)
-      const startSlot = slot * window.innerHeight
-      const endSlot = startSlot + window.innerHeight
+      const startSlot = sliceStart(ids, slot, window.innerHeight)
+      const endSlot = startSlot + sliceHeight(ids, slot, window.innerHeight)
       // Entra nos primeiros ENTER_PX da fatia; continua 1 até começar a sair.
       const entering = smoothstep((y - startSlot) / ENTER_PX)
       const leaving = smoothstep((y - (endSlot - EXIT_PX)) / EXIT_PX)

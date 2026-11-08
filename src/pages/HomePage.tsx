@@ -8,6 +8,7 @@ import { SelectedProjectsSection } from '@/components/home/SelectedProjectsSecti
 import { StackSection } from '@/components/home/StackSection'
 import { PurposeSection } from '@/components/home/PurposeSection'
 import { ExperienceSection } from '@/components/home/ExperienceSection'
+import { FilmTrackHeight } from '@/components/scene/FilmTrackHeight'
 
 /** Uma seção por slide, na mesma ordem dos clipes: o frame debaixo acompanha o texto. */
 const SECTIONS = [
@@ -25,6 +26,10 @@ export function HomePage() {
   return (
     <div ref={rootRef} className="home">
       <SEO pageKey="home" />
+
+      {/* A altura da fita vem das fatias reais (a Experiência ocupa mais de uma tela),
+          em vez do `--film-count: 7` fixo do CSS. */}
+      <FilmTrackHeight />
 
       {/* A fita: uma tela de rolagem por slide. Fica presa atrás do texto. */}
       <div className="film-track">

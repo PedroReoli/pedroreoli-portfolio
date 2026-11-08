@@ -475,10 +475,6 @@
   font-size: 0.56rem;
 }
 
-.film-panel > #experiencia .timeline-card__highlights {
-  display: none;
-}
-
 .film-panel > #experiencia .experience-header__main h2 {
   font-size: clamp(1.7rem, 3vw, 2.8rem);
 }
@@ -510,17 +506,32 @@
   opacity: 0;
   transform: translate3d(0, 10px, 0);
 }
-
 /* --------------------------------------------------------------------------
-   TIMELINE (S6) — caber sem rolar
+   TIMELINE (S6) — conteúdo completo, com a seção mais alta
    --------------------------------------------------------------------------
-   Medido: o painel da Experiência dá ~341px à timeline. Cinco marcos com número,
-   título, cargo, descrição e stack não cabem ali em card normal.
-   NÃO usar scroll interno: a timeline já foi um scroller vertical, e era ela que
-   engolia a roda da página. A saída é compactar o conteúdo do card — os campos
-   longos (descrição e stack) saem daqui porque já aparecem no projeto/notas; o
-   que fica é número, período, empresa e cargo, que é o que uma linha do tempo
-   precisa mostrar. */
+   Pedro: "os cards têm que ter mais conteúdo" e "o tamanho da sessão de
+   experiência tem que ser mais alto". Antes a seção tinha UMA tela só e eu
+   escondia descrição, destaques e stack para caber — era o que deixava o card
+   vazio.
+   Agora a Experiência ocupa 1.7 telas de rolagem (TALL_SLICES em slices.ts), o
+   painel acompanha essa altura, e o card mostra tudo: número, período, empresa,
+   cargo, descrição, destaques e stack.
+   Nada de scroll interno na timeline: ela já foi um scroller e prendia a roda. */
+.film-panel > #experiencia {
+  /* a fatia da Experiência ocupa 1.7 tela: painel, seção e shell acompanham, senão
+     o sticky de 100svh cortava a metade de baixo da timeline. */
+  height: calc(100svh * 1.7);
+  min-height: calc(100svh * 1.7);
+  position: relative;
+}
+
+.film-panel > #experiencia > section {
+  height: calc(100svh * 1.7);
+  min-height: calc(100svh * 1.7);
+  justify-content: flex-start;
+  padding-top: calc(var(--header-height, 72px) + clamp(6px, 1vh, 14px));
+}
+
 .film-panel > #experiencia .timeline-v {
   overflow: visible;
   align-content: start;
@@ -529,26 +540,61 @@
 .film-panel > #experiencia .timeline-card {
   min-height: 0;
   justify-content: flex-start;
-  padding: 6px 10px;
+  padding: clamp(9px, 1.1vh, 14px) 12px;
 }
 
-.film-panel > #experiencia .timeline-card__heading { margin-top: 2px; }
-.film-panel > #experiencia .timeline-card__top { padding-bottom: 1px; }
+.film-panel > #experiencia .timeline-card__heading { margin-top: 3px; }
+.film-panel > #experiencia .timeline-card__top { padding-bottom: 2px; }
 
-/* Descrição e stack saem do card: sozinhos somavam ~60px por linha × 5 linhas,
-   e é isso que estourava a tela. */
-.film-panel > #experiencia .timeline-card__desc,
-.film-panel > #experiencia .timeline-card__footer,
+/* Descrição, destaques e stack voltam: é o conteúdo que Pedro pediu. */
+.film-panel > #experiencia .timeline-card__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+  line-height: 1.4;
+}
+
 .film-panel > #experiencia .timeline-card__highlights {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.film-panel > #experiencia .timeline-card__highlights li {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
+  line-height: 1.4;
+  color: rgba(245, 243, 239, 0.8);
+}
+
+.film-panel > #experiencia .timeline-card__highlights .highlight-icon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--accent, #ffc900);
+}
+
+.film-panel > #experiencia .timeline-card__footer {
+  display: block;
+  margin-top: 8px;
+}
+
+.film-panel > #experiencia .timeline__tech {
+  font-size: 0.56rem;
+  line-height: 1.5;
+  color: rgba(255, 201, 0, 0.85);
 }
 
 .film-panel > #experiencia .timeline-card__heading h3 {
-  font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.15vw, 1.12rem);
   line-height: 1.1;
 }
 
 .film-panel > #experiencia .timeline-card__heading h4 {
   font-size: 0.58rem;
-  line-height: 1.2;
+  line-height: 1.25;
 }
