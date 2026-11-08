@@ -8,7 +8,7 @@ const S  = p('flow/v5/poses/statue.jpg')
 const A  = p('flow/v5/poses/pose-A-1920.jpg')      // 3/4 esquerda
 const C  = p('flow/v5/poses/pose-C-1920.jpg')      // pensativo (mão no rosto) ✅ aprovado
 const BT = p('flow/v5/poses/pose-BOLT-1920.jpg')   // pose do Bolt (raio) ✅ novo
-const R  = p('flow/v5/poses/real-aligned.jpg')
+const R  = p('flow/v5/poses/real-final.jpg')
 
 const clips = [
   // 01 Hero: estátua -> Pedro real
