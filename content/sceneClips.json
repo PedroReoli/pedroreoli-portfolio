@@ -11,7 +11,7 @@
       "src": "/media/backdrop/01-hero-to-about.mp4",
       "holdAt": 6.42,
       "duration": 6.5,
-      "poster": "/media/backdrop/02-about-poster.png"
+      "poster": "/media/backdrop/01-hero-poster.png"
     },
     {
       "id": "about-to-projects",
@@ -20,7 +20,7 @@
       "src": "/media/backdrop/02-about-to-projects.mp4",
       "holdAt": 6.42,
       "duration": 6.5,
-      "poster": "/media/backdrop/03-projects-poster.png"
+      "poster": "/media/backdrop/02-about-poster.png"
     },
     {
       "id": "projects-to-stack",
@@ -29,7 +29,7 @@
       "src": "/media/backdrop/03-projects-to-stack.mp4",
       "holdAt": 6.92,
       "duration": 7,
-      "poster": "/media/backdrop/04-stack-poster.png"
+      "poster": "/media/backdrop/03-projects-poster.png"
     },
     {
       "id": "stack-to-purpose",
@@ -38,7 +38,7 @@
       "src": "/media/backdrop/04-stack-to-purpose.mp4",
       "holdAt": 6.92,
       "duration": 7,
-      "poster": "/media/backdrop/05-purpose-poster.png"
+      "poster": "/media/backdrop/04-stack-poster.png"
     },
     {
       "id": "purpose-to-experience",
@@ -47,7 +47,7 @@
       "src": "/media/backdrop/05-purpose-to-experience.mp4",
       "holdAt": 6.92,
       "duration": 7,
-      "poster": "/media/backdrop/06-experience-poster.png"
+      "poster": "/media/backdrop/05-purpose-poster.png"
     },
     {
       "id": "experience-loop",

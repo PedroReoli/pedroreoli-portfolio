@@ -263,7 +263,6 @@
 .menu-trigger:hover { border-color: #ffc900; color: #ffc900; background: rgba(255, 201, 0, 0.12); }
 .menu-trigger svg { width: 20px; }
 .mobile-menu { display: none; }
-section, footer { scroll-margin-top: 0; }
 .section-kicker { min-height: 48px; }
 /* Rodapé transparente: o take é o fundo da página inteira. O texto fica sobre um
    piso local (::after), não sobre um painel opaco de seção. */
