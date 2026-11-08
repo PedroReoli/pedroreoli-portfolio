@@ -32,13 +32,13 @@
   border-radius: var(--radius-md);
   /* O vidro: fundo quase transparente + blur do que está atrás (o frame do vídeo).
      O piso de 0,42 existe para manter o texto em AA sobre o mármore claro. */
-  background: linear-gradient(
-    145deg,
-    rgba(20, 22, 28, 0.62) 0%,
-    rgba(8, 10, 14, 0.5) 100%
-  );
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  background:
+    var(--glass-grain),
+    linear-gradient(145deg, rgba(20, 22, 28, 0.62) 0%, rgba(8, 10, 14, 0.5) 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: var(--glass-grain-size), auto;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 18px 44px -22px rgba(0, 0, 0, 0.85);
