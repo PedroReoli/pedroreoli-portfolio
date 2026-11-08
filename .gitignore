@@ -32,3 +32,20 @@ Thumbs.db
 .vscode/
 .idea/
 /.agents/teamwork
+
+# --- Pipeline de midia (flow/) -------------------------------------------
+# O que fica versionado: os ENTREGAVEIS aprovados (v9 rosto, v12 composicao,
+# v13 frame final e video) e os scripts .mjs que reprozem cada um.
+# O que fica fora: previews, comparativos, zooms, frames extraidos e saidas de
+# pipeline antigo — todos regeneraveis a partir dos insumos versionados.
+flow/*preview*
+flow/*comparativ*
+flow/*zoom*
+flow/*-f0*.jpg
+flow/v3/out/
+flow/v3/tmp/
+
+# Backup de assets anterior ao reset: NAO versionar como fonte, mas tambem nao
+# e lixo — guarda a unica copia de busto-v1.jpg, rosto-normal.jpg e do clipe
+# cortado. Fica local (e por isso continua fora do repo).
+_assets-backup-pre-reset/
