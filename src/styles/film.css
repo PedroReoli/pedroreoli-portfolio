@@ -97,6 +97,19 @@
   pointer-events: none;
 }
 
+/* --------------------------------------------------------------------------
+   ENTRADA / SAÍDA — dissolução tipo água/fumaça
+   --------------------------------------------------------------------------
+   Pedro: "animações de surgimento e sumir ao trocar de sessões, algo fluido igual
+   água ou fumaça". A troca deixa de ser um fade chapado e passa a ter três
+   camadas somadas, todas em CSS (nada de JS por frame):
+   1. opacidade com curva longa;
+   2. uma máscara radial que abre como líquido — o texto não "aparece", ele
+      condensa do centro para as bordas;
+   3. um desfoque curto + subida de 14px, que dá a sensação de fumaça assentando.
+   A SAÍDA é de propósito mais curta que a entrada: enquanto o painel sai ele ainda
+   pinta por cima do quadro da próxima seção, e uma saída longa virava fantasma.
+   -------------------------------------------------------------------------- */
 .film-panel {
   position: sticky;
   top: 0;
@@ -104,14 +117,36 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  /* O texto entra junto com o quadro, com o mesmo easing — mas um toque mais longo
-     para a leitura não parecer que "pulou" junto com o corte do vídeo. */
-  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s linear;
+  filter: blur(10px);
+  transform: translate3d(0, 14px, 0);
+  -webkit-mask-image: radial-gradient(ellipse 120% 108% at 50% 52%, #000 42%, rgba(0, 0, 0, 0) 100%);
+  mask-image: radial-gradient(ellipse 120% 108% at 50% 52%, #000 42%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  transition:
+    opacity 0.42s cubic-bezier(0.4, 0, 1, 1),
+    filter 0.42s cubic-bezier(0.4, 0, 1, 1),
+    transform 0.42s cubic-bezier(0.4, 0, 1, 1),
+    -webkit-mask-size 0.42s cubic-bezier(0.4, 0, 1, 1),
+    mask-size 0.42s cubic-bezier(0.4, 0, 1, 1),
+    visibility 0.3s linear;
+  will-change: opacity, filter, transform;
 }
 
 .film-panel[data-visible='true'] {
   opacity: 1;
   visibility: visible;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-mask-size: 175% 175%;
+  mask-size: 175% 175%;
+  transition:
+    opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    -webkit-mask-size 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    mask-size 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear;
   /* O painel é sticky e ocupa 100svh inteiro. Com pointer-events:auto ele cobria
      a viewport toda e engolia o gesto de rolagem — no último painel (Experiência /
      Contato) a página prendia e não subia mais. O painel em si fica transparente
@@ -388,4 +423,39 @@
 .film-panel > #experiencia .timeline-card-reveal-wrapper {
   height: auto;
   align-self: start;
+}
+
+/* O conteúdo do painel entra escalonado: primeiro o kicker, depois o título e por
+   fim os cards — a leitura chega na ordem em que se olha a seção. */
+.film-panel > section > .shell > * {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition: opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.film-panel[data-visible='true'] > section > .shell > * {
+  opacity: 1;
+  transform: none;
+}
+
+.film-panel[data-visible='true'] > section > .shell > *:nth-child(1) { transition-delay: 0.02s; }
+.film-panel[data-visible='true'] > section > .shell > *:nth-child(2) { transition-delay: 0.09s; }
+.film-panel[data-visible='true'] > section > .shell > *:nth-child(3) { transition-delay: 0.16s; }
+.film-panel[data-visible='true'] > section > .shell > *:nth-child(4) { transition-delay: 0.23s; }
+.film-panel[data-visible='true'] > section > .shell > *:nth-child(n + 5) { transition-delay: 0.3s; }
+
+/* Com prefers-reduced-motion o Windows do Pedro zera transitions via !important;
+   a régua aqui não pode depender delas, então o estado final é o padrão. */
+@media (prefers-reduced-motion: reduce) {
+  .film-panel {
+    filter: none;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .film-panel > section > .shell > * {
+    opacity: 1;
+    transform: none;
+  }
 }

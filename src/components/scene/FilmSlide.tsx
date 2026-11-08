@@ -70,17 +70,16 @@ export function FilmSlide({ clip, index }: { clip: SceneClip; index: number }) {
     // handoff CURTO: ele só precisa cobrir o instante em que o vídeo ainda está
     // misturando. Se ficar os 220px inteiros do crossfade, o texto da seção anterior
     // continua por cima da próxima — era parte do "não vejo a troca nem o topo da S6".
-    const HANDOFF = 90
+    // O painel de texto do mesmo trecho entra junto com o frame. O que sai NÃO pode
+    // ficar por cima do próximo: com 90px de handoff os dois ficavam visíveis ao
+    // mesmo tempo e a S2 aparecia fantasma sobre a S3. Agora a fatia é exclusiva —
+    // só um painel por vez — e a fluidez vem da própria animação de entrada/saída.
     document.querySelectorAll<HTMLElement>('[data-film-panel]').forEach((panel) => {
       const slot = Number(panel.dataset.filmPanel)
       const startSlot = slot * window.innerHeight
       const inSlot = y >= startSlot && y < startSlot + window.innerHeight
-      // Quem está saindo continua visível (e por cima) durante o handoff; quem entra
-      // aparece quando a fatia dele começa.
-      const leaving = y >= startSlot + window.innerHeight && y < startSlot + window.innerHeight + HANDOFF
-      panel.dataset.visible = inSlot || leaving ? 'true' : 'false'
-      if (leaving) panel.dataset.leaving = 'true'
-      else delete panel.dataset.leaving
+      panel.dataset.visible = inSlot ? 'true' : 'false'
+      delete panel.dataset.leaving
     })
 
     if (!active) return

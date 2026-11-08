@@ -15,6 +15,15 @@
   --color-accent-emissive: #ffc900;
   --accent-glow: rgba(255, 201, 0, 0.28);
   --header-height: 76px;
+  /* Vidro canônico — um só lugar para o glassmorphism de todos os cards.
+     Foto/take de fundo aparece através dele; o piso de 0.46 garante AA. */
+  --glass-fill: linear-gradient(150deg, rgba(18, 20, 26, 0.6) 0%, rgba(8, 10, 14, 0.46) 100%);
+  --glass-fill-hover: linear-gradient(150deg, rgba(26, 28, 36, 0.7) 0%, rgba(10, 12, 17, 0.56) 100%);
+  --glass-blur: blur(16px) saturate(1.15);
+  --glass-edge: 1px solid rgba(245, 243, 239, 0.16);
+  --glass-edge-hover: 1px solid rgba(255, 201, 0, 0.44);
+  --glass-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  --glass-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.85);
   --radius-xs: 8px;
   --radius-sm: 14px;
   --radius-md: 20px;
