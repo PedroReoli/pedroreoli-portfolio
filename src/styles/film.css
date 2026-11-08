@@ -450,15 +450,6 @@
   padding: clamp(8px, 1vh, 12px);
 }
 
-.film-panel > #experiencia .timeline-card__desc {
-  /* 1 linha: com 2 o card ia a 130px e a timeline estourava a tela. */
-  font-size: 0.68rem;
-  line-height: 1.3;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .film-panel > #experiencia .timeline-card__heading h3 {
   font-size: clamp(0.86rem, 1vw, 1rem);
   line-height: 1.15;
@@ -739,4 +730,121 @@
   .film-panel > #experiencia .timeline-v__item--right .timeline-card {
     border-radius: var(--radius-md);
   }
+}
+
+/* --------------------------------------------------------------------------
+   CORREÇÕES DA REVISÃO (prévia 4f59c6d)
+   --------------------------------------------------------------------------
+   Três problemas apontados na revisão visual. Todos com causa medida:
+
+   1) NÓS EM ELIPSE — o `.timeline-v__node` declarava width/height 12px, mas sendo
+      item de grid ele era ESTICADO pela célula: media 56px de largura no desktop e
+      28px no mobile, com 12px de altura. `border-radius: 50%` em 56×12 desenha
+      justamente a elipse preta com halo que apareceu nas capturas.
+      Correção: travar nos dois eixos (min/max/width/height) e não deixar o grid
+      esticar. O mesmo para o anel interno.
+
+   2) DESCRIÇÃO TRUNCADA — havia `white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis` na descrição do card (herança de quando a seção
+      precisava caber em uma tela). Isso cortava com "..." em TODOS os capítulos no
+      mobile e em pelo menos um no desktop. Correção: quebra natural e altura
+      automática — o Pedro pediu conteúdo completo.
+
+   3) LEGIBILIDADE — a trilha passa pelo rosto e o mármore compete com o texto.
+      O scrim local já previsto no token do projeto é aplicado ao card, sem tocar
+      em mídia e sem inventar direção nova. */
+
+/* 1) Nó circular de verdade, nos dois eixos. */
+.film-panel > #experiencia .timeline-v__node {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  max-width: 12px;
+  min-height: 12px;
+  max-height: 12px;
+  align-self: center;
+  justify-self: center;
+  flex: 0 0 12px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.film-panel > #experiencia .timeline-v__node-ring {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  border-radius: 50%;
+}
+
+.film-panel > #experiencia .timeline-v__node-core {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* O halo vinha do box-shadow de 12px, que num elemento esticado virava mancha.
+   Menor e mais discreto, como ponto de trilha. */
+.film-panel > #experiencia .timeline-v__node {
+  box-shadow: 0 0 6px rgba(255, 201, 0, 0.45);
+}
+
+/* 2) Descrição completa, com quebra natural e altura automática. */
+.film-panel > #experiencia .timeline-card__desc {
+  display: block;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-overflow: clip;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+  height: auto;
+  max-height: none;
+  font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+  line-height: 1.5;
+}
+
+/* Os destaques seguem o mesmo princípio: altura natural, sem corte. */
+.film-panel > #experiencia .timeline-card__highlights li {
+  white-space: normal;
+  overflow: visible;
+  height: auto;
+}
+
+.film-panel > #experiencia .timeline-card {
+  height: auto;
+  max-height: none;
+}
+
+/* 3) Legibilidade: o card ganha piso de scrim local (token do projeto,
+   rgba(8, 9, 11, .72)) para o texto não brigar com o mármore atrás. A trilha
+   central passa atrás do card, não por cima do texto. */
+.film-panel > #experiencia .timeline-card {
+  background:
+    var(--glass-grain),
+    linear-gradient(150deg, rgba(8, 9, 11, 0.82) 0%, rgba(8, 9, 11, 0.72) 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: var(--glass-grain-size), auto;
+}
+
+.film-panel > #experiencia .timeline-v__spine {
+  z-index: 0;
+}
+
+.film-panel > #experiencia .timeline-v__item {
+  z-index: 1;
+}
+
+.film-panel > #experiencia .timeline-card-reveal-wrapper,
+.film-panel > #experiencia .timeline-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* A trilha no desktop é um fio fino; o brilho dela não deve cruzar o card. */
+.film-panel > #experiencia .timeline-v__spine-glow {
+  opacity: 0.55;
 }
