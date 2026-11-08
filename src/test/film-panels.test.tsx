@@ -49,4 +49,33 @@ describe('Film strip — um painel por clipe', () => {
     expect((hostPanel as HTMLElement).dataset.filmPanel).toBe(String(sceneClips.clips.length - 1))
     expect(container.querySelectorAll('footer').length).toBe(1)
   })
+
+  it('a seção 07 contato possui conteúdo completo (kicker 07, prompt, headline, descrição e contatos)', () => {
+    const { container } = renderHome()
+    const footer = container.querySelector('footer#contato')
+    expect(footer).not.toBeNull()
+
+    // Kicker 07
+    const kicker = footer?.querySelector('.section-kicker')
+    expect(kicker?.textContent).toContain('07')
+
+    // Prompt & Headline & Descrição
+    const prompt = footer?.querySelector('.contact-section__prompt')
+    expect(prompt).not.toBeNull()
+    expect(prompt?.textContent?.trim().length).toBeGreaterThan(0)
+
+    const headline = footer?.querySelector('.contact-section__headline')
+    expect(headline).not.toBeNull()
+
+    const desc = footer?.querySelector('.contact-section__description')
+    expect(desc).not.toBeNull()
+    expect(desc?.textContent?.trim().length).toBeGreaterThan(0)
+
+    // Grid de contatos e botão voltar ao topo
+    const links = footer?.querySelectorAll('.contact-grid a')
+    expect(links?.length).toBe(4)
+
+    const backToTop = footer?.querySelector('.contact-section__bottom button')
+    expect(backToTop).not.toBeNull()
+  })
 })

@@ -134,13 +134,10 @@ describe('travamento de scroll após a S5 (fatia alta vs painel)', () => {
   const SEC = '.film-panel > #experiencia'
 
   it('o PAINEL acompanha a altura da fatia, não fica preso em 100svh', () => {
-    // Causa do "não consigo scrollar depois da sessão 5": a seção tinha 2.3 telas
-    // mas o painel que a contém continuava com `height: 100svh` da regra base.
-    // O sticky ficava preso em 900px com 1170px de conteúdo transbordando, e a roda
-    // parava no meio da seção.
+    // A fatia alta garante percurso completo para a timeline e o bloco de contato.
     const panelRules = rules(PANEL).join('\n')
-    expect(panelRules).toMatch(/height:\s*calc\(100svh \* 2\.3\)/)
-    expect(panelRules).toMatch(/min-height:\s*calc\(100svh \* 2\.3\)/)
+    expect(panelRules).toMatch(/height:\s*calc\(100svh \* 3\.3\)/)
+    expect(panelRules).toMatch(/min-height:\s*calc\(100svh \* 3\.3\)/)
   })
 
   it('a seção da Experiência e o painel declaram a MESMA altura', () => {
@@ -153,6 +150,6 @@ describe('travamento de scroll após a S5 (fatia alta vs painel)', () => {
 
   it('a fatia alta continua batendo com TALL_SLICES', () => {
     // Se mudar a altura no CSS sem mudar slices.ts, o frame e o painel desalinham.
-    expect(TALL_SLICES['experience-loop']).toBe(2.3)
+    expect(TALL_SLICES['experience-loop']).toBe(3.3)
   })
 })

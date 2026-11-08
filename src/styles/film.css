@@ -79,7 +79,8 @@
 
 /* Só o clipe em cena pode mostrar o próprio poster, e ele sai de cena assim que o
    vídeo entrega o primeiro frame. */
-.film-slide[data-clip-active='true'][data-frame-ready='false'] .film-slide__poster {
+.film-slide[data-clip-active='true'][data-frame-ready='false'] .film-slide__poster,
+.film-slide[data-clip-active='true'] .film-slide__poster {
   opacity: 1;
 }
 
@@ -149,8 +150,6 @@
 
 .film-panel > section {
   position: relative;
-  height: 100svh;
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -158,6 +157,13 @@
   padding-top: var(--header-height, 72px);
   padding-bottom: clamp(16px, 2vh, 28px);
   box-sizing: border-box;
+}
+
+@media (min-width: 1101px) {
+  .film-panel > section {
+    height: 100svh;
+    min-height: 100svh;
+  }
 }
 
 /* O hero mantém a composição própria, com o busto inteiro na tela. */
@@ -226,34 +232,33 @@
   flex: 0 0 auto;
 }
 
-/* Rodapé dentro do painel da Experiência: ele é o fecho da última tela, não uma
-   tela inteira por si. Antes herdava 100svh e empurrava o contato 1885px para
-   baixo da área rolável — ficava inalcançável. Aqui ele vira um bloco compacto
-   no fim do painel. */
+/* Rodapé dentro do painel da Experiência: fecha a narrativa como a seção 07 Contato,
+   com altura de tela cheia, tipografia íntegra e sem cortes de texto. */
 .film-panel > #experiencia footer.contact-section--embedded {
   height: auto;
-  min-height: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 0 0 auto;
-  margin-top: clamp(6px, 1vh, 14px);
-  padding-top: clamp(4px, 1vh, 12px);
-  padding-bottom: clamp(6px, 1.2vh, 14px);
+  margin-top: clamp(24px, 4vh, 48px);
+  padding-top: clamp(20px, 3vh, 36px);
+  padding-bottom: clamp(24px, 4vh, 48px);
+  box-sizing: border-box;
 }
 
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__headline {
-  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-size: clamp(2.2rem, 5.5vw, 4.4rem);
 }
 
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__main {
-  padding-top: 0;
+  padding-top: clamp(6px, 1vh, 12px);
+  padding-bottom: clamp(12px, 2vh, 20px);
 }
 
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__description,
 .film-panel > #experiencia footer.contact-section--embedded .contact-section__prompt {
-  display: none;
-}
-
-.film-panel > #experiencia footer.contact-section--embedded .contact-section__main {
-  padding-bottom: clamp(8px, 1.4vh, 16px);
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
@@ -267,9 +272,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: clamp(4px, 0.8vh, 10px);
-  height: 100%;
-  min-height: 0;
+  gap: clamp(8px, 1.4vh, 16px);
+  min-height: 100%;
+  height: auto;
   padding-bottom: 0;
 }
 
@@ -350,7 +355,7 @@
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   margin-bottom: 0;
   width: 100%;
   position: relative;
@@ -376,6 +381,7 @@
   position: relative;
   width: 12px;
   height: 12px;
+  margin-top: clamp(14px, 1.8vh, 22px);
   border-radius: 50%;
   border: 2px solid var(--accent, #ffc900);
   background: var(--color-bg, #060a0e);
@@ -406,6 +412,8 @@
   display: block;
   grid-column: 2;
   justify-self: center;
+  align-self: start;
+  margin-top: calc(clamp(14px, 1.8vh, 22px) + 5px);
   position: relative;
   z-index: 1;
   height: 1px;
@@ -460,10 +468,6 @@
 }
 .film-panel > #experiencia .timeline-card__top {
   padding-bottom: 2px;
-}
-
-.film-panel > #experiencia .timeline__tech {
-  font-size: 0.56rem;
 }
 
 .film-panel > #experiencia .experience-header__main h2 {
@@ -521,20 +525,15 @@
    por baixo — a fatia declarada no JS (2.3 telas) nunca batia com a caixa real, e a
    roda travava no meio da seção. Aqui o painel passa a ter a mesma altura da fatia. */
 .film-panel:has(> #experiencia) {
-  height: calc(100svh * 2.3);
-  min-height: calc(100svh * 2.3);
+  height: calc(100svh * 3.3);
+  min-height: calc(100svh * 3.3);
   position: relative;
 }
 
 .film-panel > #experiencia {
-  height: calc(100svh * 2.3);
-  min-height: calc(100svh * 2.3);
+  height: calc(100svh * 3.3);
+  min-height: calc(100svh * 3.3);
   position: relative;
-}
-
-.film-panel > #experiencia > section {
-  height: calc(100svh * 2.3);
-  min-height: calc(100svh * 2.3);
   justify-content: flex-start;
   padding-top: calc(var(--header-height, 72px) + clamp(8px, 1.2vh, 18px));
 }
@@ -575,14 +574,14 @@
   border-radius: 999px;
   background: rgba(255, 201, 0, 0.1);
   color: rgba(255, 201, 0, 0.95);
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
 
 .film-panel > #experiencia .timeline-card__chapter {
-  font-size: 0.58rem;
-  color: rgba(245, 243, 239, 0.5);
+  font-size: 0.68rem;
+  color: rgba(245, 243, 239, 0.65);
 }
 
 .film-panel > #experiencia .timeline-card__heading {
@@ -637,7 +636,7 @@
   display: flex;
   gap: 7px;
   align-items: flex-start;
-  font-size: clamp(0.68rem, 0.76vw, 0.76rem);
+  font-size: clamp(0.72rem, 0.8vw, 0.8rem);
   line-height: 1.45;
   color: rgba(245, 243, 239, 0.82);
 }
@@ -656,9 +655,9 @@
 }
 
 .film-panel > #experiencia .timeline__tech {
-  font-size: 0.56rem;
+  font-size: 0.66rem;
   line-height: 1.6;
-  color: rgba(255, 201, 0, 0.82);
+  color: rgba(255, 201, 0, 0.88);
 }
 
 /* --------------------------------------------------------------------------
@@ -719,7 +718,7 @@
   .film-panel > #experiencia .timeline-v__node {
     grid-column: 1;
     justify-self: start;
-    margin-left: 7px;
+    margin-left: 8px;
     margin-top: 14px;
   }
 
@@ -773,7 +772,7 @@
   max-width: 12px;
   min-height: 12px;
   max-height: 12px;
-  align-self: center;
+  align-self: start;
   justify-self: center;
   flex: 0 0 12px;
   box-sizing: border-box;

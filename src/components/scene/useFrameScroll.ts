@@ -82,7 +82,8 @@ export function measureAnchors(): SceneAnchor[] {
     // entre o frame do vídeo e o painel de texto.
     const ids = slides.map((s) => s.dataset.clip ?? '')
     const y = Math.max(0, sliceStart(ids, slides.indexOf(slide), window.innerHeight) + trackTop + parentTop)
-    anchors.push({ clip, y })
+    const span = sliceHeight(ids, slides.indexOf(slide), window.innerHeight)
+    anchors.push({ clip, y, span })
   })
   return anchors
 }
@@ -150,8 +151,7 @@ export function useFrameScroll(
     const clip = sceneClips.clips[clipIndex]
     if (!clip) return
     const ids = sceneClips.clips.map((c) => c.id)
-    const span = sliceHeight(ids, clipIndex, window.innerHeight)
-    const gates = buildGates([{ clip, y: 0, span }])
+    let gates = buildGates([{ clip, y: 0, span: sliceHeight(ids, clipIndex, window.innerHeight) }])
 
     const write = () => {
       // deslocamento relativo ao COMEÇO da fatia desta seção (alturas variam)
@@ -159,15 +159,33 @@ export function useFrameScroll(
       handlerRef.current(frameAt(gates, local))
     }
 
-    const remeasure = () => write()
+    let rafId = 0
+    const onScroll = () => {
+      if (typeof window.requestAnimationFrame !== 'function') {
+        write()
+        return
+      }
+      if (rafId) return
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0
+        write()
+      })
+    }
+
+    const remeasure = () => {
+      const span = sliceHeight(ids, clipIndex, window.innerHeight)
+      gates = buildGates([{ clip, y: 0, span }])
+      write()
+    }
 
     write()
-    window.addEventListener('scroll', write, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', remeasure)
     const late = window.setTimeout(remeasure, 300)
 
     return () => {
-      window.removeEventListener('scroll', write)
+      if (rafId) window.cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', remeasure)
       window.clearTimeout(late)
     }

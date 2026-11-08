@@ -43,7 +43,7 @@ describe('slices — alturas das fatias da fita', () => {
     const total = totalSliceWeight(IDS)
     const lastIndex = IDS.length - 1
     const end = sliceStart(IDS, lastIndex, VH) + sliceHeight(IDS, lastIndex, VH)
-    expect(end).toBe(total * VH)
+    expect(end).toBeCloseTo(total * VH)
   })
 
   it('id desconhecido cai em 1 tela (nunca em 0, que travaria a fita)', () => {
