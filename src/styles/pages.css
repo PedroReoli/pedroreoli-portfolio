@@ -33,7 +33,10 @@
 .independent-grid svg { position: absolute; right: 20px; bottom: 20px; width: 20px; }
 .project-modal { width: min(94vw, 1400px); max-width: none; padding: 0; overflow:hidden; border: 1px solid var(--line-dark); border-radius:var(--radius-lg); background: var(--night); color: white; }
 .project-modal::backdrop { background: rgba(2,4,8,.88); backdrop-filter: blur(8px); }
-.project-modal > img { width: 100%; max-height: 78vh; object-fit: contain; }
+.project-modal > img,
+.project-modal__img { width: 100%; max-height: 78vh; object-fit: contain; transition: opacity 0.25s ease-out; }
+.project-modal__img.is-loading { opacity: 0.6; }
+.project-modal__img.is-loaded { opacity: 1; }
 .project-modal__close { position: absolute; z-index: 2; top: 14px; right: 14px; display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid var(--line-dark); background: rgba(7,11,20,.8); color: white; cursor: pointer; }
 .project-modal__close svg { width: 20px; }
 .project-modal__controls { display: flex; align-items: center; justify-content: center; gap: 30px; min-height: 70px; }
