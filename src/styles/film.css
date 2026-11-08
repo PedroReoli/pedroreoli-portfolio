@@ -515,6 +515,17 @@
    Nada de scroll interno: a timeline já foi um scroller e prendia a roda da página.
    Nada de `transition`/`@keyframes`: no Windows do Pedro o base.css zera os dois. */
 
+/* CAUSA do travamento após a S5: a seção da Experiência media 2070px (2.3 telas)
+   mas o PAINEL que a contém continuava em `height: 100svh` por causa da regra base
+   `.film-panel`. O sticky ficava preso em 900px com 1170px de conteúdo transbordando
+   por baixo — a fatia declarada no JS (2.3 telas) nunca batia com a caixa real, e a
+   roda travava no meio da seção. Aqui o painel passa a ter a mesma altura da fatia. */
+.film-panel:has(> #experiencia) {
+  height: calc(100svh * 2.3);
+  min-height: calc(100svh * 2.3);
+  position: relative;
+}
+
 .film-panel > #experiencia {
   height: calc(100svh * 2.3);
   min-height: calc(100svh * 2.3);

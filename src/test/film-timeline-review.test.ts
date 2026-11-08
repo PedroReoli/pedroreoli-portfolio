@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
+import { TALL_SLICES } from '../components/scene/slices'
 
 /**
  * Regressões da revisão visual da Trajetória.
@@ -125,5 +126,33 @@ describe('legibilidade com scrim local', () => {
   it('a trilha fica atrás do card e não cruza o texto', () => {
     expect(rules(SPINE).join('\n')).toMatch(/z-index:\s*0/)
     expect(rules(CARD).join('\n')).toMatch(/z-index:\s*2/)
+  })
+})
+
+describe('travamento de scroll após a S5 (fatia alta vs painel)', () => {
+  const PANEL = '.film-panel:has(> #experiencia)'
+  const SEC = '.film-panel > #experiencia'
+
+  it('o PAINEL acompanha a altura da fatia, não fica preso em 100svh', () => {
+    // Causa do "não consigo scrollar depois da sessão 5": a seção tinha 2.3 telas
+    // mas o painel que a contém continuava com `height: 100svh` da regra base.
+    // O sticky ficava preso em 900px com 1170px de conteúdo transbordando, e a roda
+    // parava no meio da seção.
+    const panelRules = rules(PANEL).join('\n')
+    expect(panelRules).toMatch(/height:\s*calc\(100svh \* 2\.3\)/)
+    expect(panelRules).toMatch(/min-height:\s*calc\(100svh \* 2\.3\)/)
+  })
+
+  it('a seção da Experiência e o painel declaram a MESMA altura', () => {
+    const secRules = rules(SEC).join('\n')
+    const panelRules = rules(PANEL).join('\n')
+    const altura = (css: string) => (css.match(/height:\s*calc\(100svh \* ([\d.]+)\)/) ?? [])[1]
+    expect(altura(panelRules)).toBeDefined()
+    expect(altura(secRules)).toBe(altura(panelRules))
+  })
+
+  it('a fatia alta continua batendo com TALL_SLICES', () => {
+    // Se mudar a altura no CSS sem mudar slices.ts, o frame e o painel desalinham.
+    expect(TALL_SLICES['experience-loop']).toBe(2.3)
   })
 })
