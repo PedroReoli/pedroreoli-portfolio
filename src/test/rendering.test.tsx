@@ -156,11 +156,11 @@ describe('Application Rendering & Integration Tests', () => {
     expect(projectsBtn).toBeInTheDocument();
     expect(projectsBtn).toHaveAttribute('href', '#projetos-selecionados');
 
-    // 2. Download Resume button (without ATS in label)
-    const resumeBtn = within(heroSection).getByRole('link', { name: /baixar currículo \(pdf\)/i });
+    // 2. Resume page link (without ATS in label)
+    const resumeBtn = within(heroSection).getByRole('link', { name: /currículo/i });
     expect(resumeBtn).toBeInTheDocument();
-    expect(resumeBtn).toHaveAttribute('href', '/resume/Pedro_Lucas_Reis_Frontend.pdf');
-    expect(resumeBtn).toHaveAttribute('download', 'Pedro_Lucas_Reis_Curriculo.pdf');
+    expect(resumeBtn).toHaveAttribute('href', '/curriculo');
+    expect(resumeBtn).not.toHaveAttribute('download');
     expect(resumeBtn).toHaveTextContent('Currículo');
     expect(resumeBtn).not.toHaveTextContent(/ats/i);
   });

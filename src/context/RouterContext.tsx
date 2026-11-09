@@ -113,10 +113,17 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   return <RouterContext.Provider value={value}>{children}</RouterContext.Provider>;
 };
 
+const defaultRouterContext: RouterContextType = {
+  pathname: '/',
+  search: '',
+  searchParams: new URLSearchParams(),
+  navigate: (to: string) => {
+    if (typeof window !== 'undefined') window.location.href = to;
+  },
+  setSearchParam: () => {},
+};
+
 export function useRouter(): RouterContextType {
   const context = useContext(RouterContext);
-  if (!context) {
-    throw new Error('useRouter must be used within a RouterProvider');
-  }
-  return context;
+  return context ?? defaultRouterContext;
 }

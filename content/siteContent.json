@@ -10,10 +10,12 @@
     "home": "/",
     "projects": "/projetos",
     "media": "/midia-blog",
+    "curriculum": "/curriculo",
     "notFound": "/404",
     "projectCorporate": "/projetos?tipo=corporativo",
     "projectIndependent": "/projetos?tipo=gerais",
     "aliases": [
+      { "from": "/resume", "to": "/curriculo" },
       { "from": "/projetos=corporativos", "to": "/projetos?tipo=corporativo" },
       { "from": "/projetos=coprporativos", "to": "/projetos?tipo=corporativo" },
       { "from": "/projetos=gerais", "to": "/projetos?tipo=gerais" },

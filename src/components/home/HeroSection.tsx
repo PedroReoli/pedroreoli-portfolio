@@ -1,15 +1,29 @@
-import { ArrowDown, ArrowUpRight, FileDown } from 'lucide-react'
-import { interfaceContent, sceneClips } from '@/data/content'
+import { ArrowDown, ArrowUpRight, FileText } from 'lucide-react'
+import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
-import { FilmSlide } from '@/components/scene/FilmSlide'
+import { useRouter } from '@/context/RouterContext'
 
 export function HeroSection() {
   const { language } = useLanguage()
+  const { navigate } = useRouter()
   const hero = interfaceContent.hero
   const copy = hero[language]
-  const resumeHref = language === 'pt' ? '/resume/Pedro_Lucas_Reis_Frontend.pdf' : '/resume/Pedro_Lucas_Reis_Fullstack.pdf'
+
   return (
     <section id={hero.id} className="hero">
+      <div className="hero__background film-media" aria-hidden="true">
+        <img
+          src="/images/hero-bg.png"
+          alt=""
+          className="hero__background-image film-media__poster"
+          width="1672"
+          height="941"
+          fetchPriority="high"
+          loading="eager"
+        />
+        <div className="hero__background-overlay" />
+      </div>
+
       <div className="shell hero__shell">
         <div className="hero__copy">
           <p className="hero__eyebrow">{copy.role}</p>
@@ -20,19 +34,28 @@ export function HeroSection() {
             {language === 'pt' ? 'Interfaces, sistemas e inteligência artificial aplicada.' : 'Interfaces, systems and applied artificial intelligence.'}
           </p>
           <div className="hero__actions-group">
-            <a className="hero__btn-primary" href={hero.actionHref}>{copy.action}<ArrowUpRight size={18} aria-hidden="true" /></a>
-            <a className="hero__btn-secondary" href={resumeHref}
-              download={language === 'pt' ? 'Pedro_Lucas_Reis_Curriculo.pdf' : 'Pedro_Lucas_Reis_Resume.pdf'} target="_blank" rel="noopener noreferrer"
-              aria-label={language === 'pt' ? 'Baixar currículo (PDF)' : 'Download resume (PDF)'}>
-              <FileDown size={18} aria-hidden="true" />{language === 'pt' ? 'Currículo' : 'Resume'}
+            <a className="hero__btn-primary" href={hero.actionHref}>
+              {copy.action}<ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              className="hero__btn-secondary"
+              href="/curriculo"
+              onClick={(e) => {
+                if (navigate) {
+                  e.preventDefault()
+                  navigate('/curriculo')
+                }
+              }}
+              aria-label={language === 'pt' ? 'Ver currículo' : 'View resume'}
+            >
+              <FileText size={18} aria-hidden="true" />
+              {language === 'pt' ? 'Currículo' : 'Resume'}
             </a>
           </div>
         </div>
-        <div className="hero__artwork">
-          <FilmSlide clip={sceneClips.clips[0]} index={0} />
-          <p className="hero__art-caption">{hero.location}<span>{language === 'pt' ? 'Engenharia com identidade.' : 'Engineering with identity.'}</span></p>
-        </div>
-        <a className="hero__scroll-indicator" href="#sobre">{copy.scroll}<ArrowDown size={16} aria-hidden="true" /></a>
+        <a className="hero__scroll-indicator" href="#sobre">
+          {copy.scroll}<ArrowDown size={16} aria-hidden="true" />
+        </a>
       </div>
     </section>
   )

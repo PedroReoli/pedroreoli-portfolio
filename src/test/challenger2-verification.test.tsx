@@ -188,14 +188,13 @@ describe('Challenger 2 — Adversarial A11y, Contracts & Localization Suite', ()
         </LanguageProvider>
       );
 
-      // Button 1: Download resume (without ATS)
-      const downloadLink = screen.getByRole('link', { name: /baixar currículo \(pdf\)/i });
-      expect(downloadLink).toBeInTheDocument();
-      expect(downloadLink).toHaveAttribute('download', 'Pedro_Lucas_Reis_Curriculo.pdf');
-      expect(downloadLink).toHaveAttribute('target', '_blank');
-      expect(downloadLink).toHaveAttribute('rel', 'noopener noreferrer');
-      expect(downloadLink).toHaveTextContent('Currículo');
-      expect(downloadLink).not.toHaveTextContent(/ats/i);
+      // Button 1: Resume page link (without ATS)
+      const resumeLink = screen.getByRole('link', { name: /currículo/i });
+      expect(resumeLink).toBeInTheDocument();
+      expect(resumeLink).toHaveAttribute('href', '/curriculo');
+      expect(resumeLink).not.toHaveAttribute('download');
+      expect(resumeLink).toHaveTextContent('Currículo');
+      expect(resumeLink).not.toHaveTextContent(/ats/i);
 
       // Button 2: Projects link
       const projectsLink = screen.getByRole('link', { name: /ver projetos/i });

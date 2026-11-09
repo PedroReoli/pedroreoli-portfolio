@@ -12,13 +12,11 @@
   .shell { width: calc(100% - 40px); }
   .home > section { padding-block: 64px; }
   .home > .hero { padding-top: 36px; }
-  .hero__shell { grid-template-columns: minmax(0,1fr); gap: 32px; }
-  .hero__headline { font-size: clamp(4.25rem,19vw,7rem); }
-  .hero__eyebrow { margin-bottom: 24px; }
-  .hero__description { margin-top: 24px; }
-  .hero__artwork { margin-left: 0; }
-  .hero__art-caption { font-size: .75rem; }
-  .hero__scroll-indicator { margin-top: 0; }
+  .hero__shell { width: 100%; gap: 24px; }
+  .hero__headline { font-size: clamp(3.5rem,16vw,6.5rem); }
+  .hero__eyebrow { margin-bottom: 20px; }
+  .hero__description { margin-top: 20px; }
+  .hero__scroll-indicator { margin-top: 16px; }
   .about__center, .stack-section__intro, .purpose-section__grid { grid-template-columns: minmax(0,1fr); gap: 32px; }
   .stats-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px 20px; }
   .about__metrics-card { padding-top: 0; }

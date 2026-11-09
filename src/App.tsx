@@ -7,6 +7,7 @@ import { HomePage } from '@/pages/HomePage'
 import { ProjectsPage } from '@/pages/ProjectsPage'
 import { MediaPage } from '@/pages/MediaPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
+import { ResumePage } from '@/pages/ResumePage'
 import { DesignSystemPreview } from '@/components/layout/DesignSystemPreview'
 import { LazyMotion, MotionConfig, domAnimation } from 'motion/react'
 
@@ -23,6 +24,8 @@ function AppRoute() {
     '/projetos': <ProjectsPage />,
     '/midia-blog': <MediaPage />,
     '/notas': <MediaPage />,
+    '/curriculo': <ResumePage />,
+    '/resume': <ResumePage />,
     '/404': <NotFoundPage />,
     ...(import.meta.env.DEV ? { '/design-system': <DesignSystemPreview /> } : {}),
   }

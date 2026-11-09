@@ -5,11 +5,11 @@ import { renderHome } from './home-fixture'
 describe('redimensionamento não reinicia a árvore de leitura', () => {
   it('preserva o mesmo foco em uma ação durante resize e scroll', () => {
     const { container } = renderHome()
-    const resume = container.querySelector<HTMLAnchorElement>('a[download]')!
+    const resume = container.querySelector<HTMLAnchorElement>('.hero__btn-secondary')!
     resume.focus()
     fireEvent.resize(window)
     fireEvent.scroll(window, { target: { scrollY: 4000 } })
     expect(resume).toHaveFocus()
-    expect(container.querySelector('a[download]')).toBe(resume)
+    expect(container.querySelector('.hero__btn-secondary')).toBe(resume)
   })
 })

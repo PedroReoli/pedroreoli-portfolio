@@ -28,6 +28,7 @@ export interface SiteContent {
     home: string;
     projects: string;
     media: string;
+    curriculum?: string;
     notFound: string;
     projectCorporate: string;
     projectIndependent: string;
