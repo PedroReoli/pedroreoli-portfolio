@@ -3,6 +3,7 @@ import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { interfaceContent, siteContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReveal } from '@/hooks/useReveal'
+import { Icon } from '@/components/common/Icon'
 
 export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
   const { language } = useLanguage()
@@ -40,8 +41,13 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
               data-reveal="card"
             >
               <span>{contact.detail[language]}</span>
-              <strong>{contact.label}</strong>
-              <ArrowUpRight aria-hidden="true" />
+              <strong>
+                <span className="contact-grid__icon" aria-hidden="true">
+                  <Icon name={contact.icon} size={18} />
+                </span>
+                {contact.label}
+              </strong>
+              <ArrowUpRight className="contact-grid__arrow" aria-hidden="true" />
             </a>
           ))}
         </nav>

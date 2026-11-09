@@ -7,16 +7,16 @@ import { useReveal } from '@/hooks/useReveal'
 // Seleção editorial da Home: sem promover métricas/destinos públicos não verificados.
 const summaries: Record<string, { pt: string; en: string }> = {
   Autocom3: {
-    pt: 'Interfaces e fluxos corporativos para operações de ERP, com integrações e componentes reutilizáveis.',
-    en: 'Corporate interfaces and workflows for ERP operations, with integrations and reusable components.',
+    pt: 'Ecossistema ERP com 100+ módulos corporativos e governança de Design System de 500+ componentes em React/Next.js.',
+    en: 'Enterprise ERP ecosystem encompassing 100+ corporate modules and a unified Design System of 500+ components in React/Next.js.',
   },
   Achilles: {
-    pt: 'Automação de navegador via Chrome DevTools Protocol, ferramentas MCP e extração semântica de páginas.',
-    en: 'Browser automation through Chrome DevTools Protocol, MCP tools and semantic page extraction.',
+    pt: 'Motor de automação híbrida para agentes de IA via CDP e Windows UIA com Reader Mode semântico sobre AXTree.',
+    en: 'Hybrid automation engine for AI agents via CDP and Windows UIA with semantic AXTree Reader Mode.',
   },
   Organon: {
-    pt: 'Projeto independente de produtividade e organização. Conheça o contexto na seleção de projetos.',
-    en: 'An independent productivity and organization project. Explore its context in the project selection.',
+    pt: 'Business OS Local-First de alta performance com isolamento de sessões via Git Worktrees e servidor MCP nativo.',
+    en: 'High-performance Local-First Business OS with session isolation via Git Worktrees and native MCP server.',
   },
 }
 

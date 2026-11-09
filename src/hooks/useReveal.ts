@@ -6,32 +6,33 @@ function getAnimationKeyframes(type: RevealType): Keyframe[] {
   switch (type) {
     case 'smoke':
       return [
-        { opacity: 0, transform: 'translate3d(0, 24px, 0)', filter: 'blur(10px)' },
+        { opacity: 0, transform: 'translate3d(0, 38px, 0)', filter: 'blur(16px)' },
+        { opacity: 0.8, transform: 'translate3d(0, 8px, 0)', filter: 'blur(3px)', offset: 0.7 },
         { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
       ]
     case 'slide-left':
       return [
-        { opacity: 0, transform: 'translate3d(32px, 0, 0)', filter: 'blur(6px)' },
+        { opacity: 0, transform: 'translate3d(48px, 0, 0)', filter: 'blur(10px)' },
         { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
       ]
     case 'slide-right':
       return [
-        { opacity: 0, transform: 'translate3d(-32px, 0, 0)', filter: 'blur(6px)' },
+        { opacity: 0, transform: 'translate3d(-48px, 0, 0)', filter: 'blur(10px)' },
         { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
       ]
     case 'card':
       return [
-        { opacity: 0, transform: 'translate3d(0, 28px, 0) scale(0.97)', filter: 'blur(6px)' },
+        { opacity: 0, transform: 'translate3d(0, 42px, 0) scale(0.95)', filter: 'blur(10px)' },
         { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0px)' },
       ]
     case 'scale':
       return [
-        { opacity: 0, transform: 'translate3d(0, 16px, 0) scale(0.95)', filter: 'blur(8px)' },
+        { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(0.92)', filter: 'blur(12px)' },
         { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0px)' },
       ]
     default:
       return [
-        { opacity: 0, transform: 'translate3d(0, 16px, 0)', filter: 'blur(4px)' },
+        { opacity: 0, transform: 'translate3d(0, 24px, 0)', filter: 'blur(8px)' },
         { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
       ]
   }
@@ -67,7 +68,7 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
 
         const keyframes = getAnimationKeyframes(type)
         const animation = element.animate(keyframes, {
-          duration: type === 'smoke' ? 680 : 520,
+          duration: type === 'smoke' ? 820 : 640,
           delay,
           easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
           fill: 'none',
@@ -78,7 +79,7 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
           animations.delete(animation)
         }
       })
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' })
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' })
 
     nodes.forEach((node) => observer.observe(node))
 

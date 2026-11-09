@@ -101,6 +101,78 @@ export const projectCases: EditorialCase[] = [
       en: 'The geographic layers are illustrative, as stated in the repository.',
     },
   },
+  {
+    id: 'argos', category: 'gerais', name: 'Argos-Action-1.5B',
+    type: { pt: 'Small Language Model & MCP', en: 'Small Language Model & MCP' },
+    introduction: {
+      pt: 'Edge Policy SLM baseado em Qwen 2.5 1.5B com fine-tuning QLoRA para Computer Use sobre AXTree e emissão de contratos MCP.',
+      en: 'Edge Policy SLM fine-tuned via QLoRA on Qwen 2.5 1.5B for single-turn Computer Use over AXTree emitting MCP contracts.',
+    },
+    contextLabel: { pt: 'Métricas e eficiência', en: 'Metrics & efficiency' },
+    context: {
+      pt: 'Sub-150ms de latência em inferência local, 99.69% de acurácia de ação e -92.2% de tokens em relação ao DOM bruto.',
+      en: 'Sub-150ms local inference latency, 99.69% action accuracy, and 92.2% context token savings vs raw DOM.',
+    },
+    approachLabel: { pt: 'Arquitetura de pesos', en: 'Weight architecture' },
+    approach: {
+      pt: 'Adaptação LoRA em 7 projeções com rank r=16 em BF16 (~36.9MB), dataset sintético estruturado e HuggingFace Hub.',
+      en: 'LoRA adapters across 7 projection modules with r=16 in BF16 (~36.9MB), structured dataset, and HuggingFace Hub delivery.',
+    },
+    diagramLabel: { pt: 'Pipeline agêntico', en: 'Agentic pipeline' },
+    diagram: [
+      { pt: 'AXTree', en: 'AXTree' }, { pt: 'Argos-1.5B', en: 'Argos-1.5B' },
+      { pt: 'Contrato MCP', en: 'MCP Contract' }, { pt: 'UIA / Chrome', en: 'UIA / Chrome' },
+    ],
+    evidence: { href: 'https://huggingface.co/pedroreoli/argos-action-1.5b', label: { pt: 'Modelo no HuggingFace', en: 'HuggingFace Model' } },
+  },
+  {
+    id: 'loog', category: 'corporativo', name: 'Loog Proteção Veicular',
+    type: { pt: 'Plataforma Web & Cotações', en: 'Web Platform & Quotes' },
+    introduction: {
+      pt: 'Portal institucional e motor de captura de cotações para proteção veicular com alta taxa de conversão.',
+      en: 'Institutional portal and conversion-optimized quotation engine for vehicle protection.',
+    },
+    contextLabel: { pt: 'O desafio', en: 'The challenge' },
+    context: {
+      pt: 'Agilizar o funil de simulações com formulário dinâmico, validações em tempo real e tempo de resposta instantâneo.',
+      en: 'Streamline client lead acquisition with dynamic multi-step simulation forms and instant response times.',
+    },
+    approachLabel: { pt: 'Engenharia de entrega', en: 'Delivery engineering' },
+    approach: {
+      pt: 'Arquitetura web moderna com carregamento rápido, SEO técnico, integração a webhooks de CRM e design responsivo.',
+      en: 'Modern responsive architecture, core web vitals optimization, SEO, and CRM webhook integrations.',
+    },
+    diagramLabel: { pt: 'Fluxo comercial', en: 'Business flow' },
+    diagram: [
+      { pt: 'Visitante', en: 'Visitor' }, { pt: 'Simulação', en: 'Simulation' },
+      { pt: 'Webhook CRM', en: 'CRM Webhook' }, { pt: 'Conversão', en: 'Conversion' },
+    ],
+    evidence: { href: 'https://loogprotecaoveicular.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } },
+  },
+  {
+    id: 'nexus', category: 'corporativo', name: 'Nexus Brazil',
+    type: { pt: 'Sistemas & Integrações', en: 'Systems & Integrations' },
+    introduction: {
+      pt: 'Solução corporativa digital e presença institucional conectando serviços e tecnologia de ponta.',
+      en: 'Enterprise digital presence and integration solutions connecting specialized operational services.',
+    },
+    contextLabel: { pt: 'O contexto', en: 'The context' },
+    context: {
+      pt: 'Posicionar a autoridade da marca com layout refinado, alta performance e pontos de contato diretos.',
+      en: 'Strengthen enterprise brand presence with polished visual aesthetics and instant engagement channels.',
+    },
+    approachLabel: { pt: 'Tecnologias', en: 'Technologies' },
+    approach: {
+      pt: 'Desenvolvimento focado em experiência do usuário (UX), acessibilidade e carregamento resiliente.',
+      en: 'Focused user experience, strict semantic structure, accessibility compliance, and fast asset delivery.',
+    },
+    diagramLabel: { pt: 'Estrutura da solução', en: 'Solution architecture' },
+    diagram: [
+      { pt: 'Brand', en: 'Brand' }, { pt: 'Interface', en: 'Interface' },
+      { pt: 'Segurança', en: 'Security' }, { pt: 'Suporte', en: 'Support' },
+    ],
+    evidence: { href: 'https://www.nexusbrazil.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } },
+  },
 ]
 
 export const projectsCopy = {

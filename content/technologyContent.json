@@ -4,48 +4,48 @@
       "number": "01",
       "title": { "pt": "Interfaces", "en": "Interfaces" },
       "tools": [
-        { "name": "React", "icon": "react", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "TypeScript", "icon": "typescript", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Next.js", "icon": "nextjs", "color": "#182033", "source": "simple-icons" },
-        { "name": "Angular", "icon": "angular", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Tailwind", "icon": "tailwind", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Design System", "icon": "component", "color": "#182033", "source": "concept" }
+        { "name": "React", "icon": "react", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Base de 100+ telas corporativas na Autocom3 e apps reativos de alta escala.", "en": "Core foundation for 100+ corporate modules at Autocom3 and high-scale apps." } },
+        { "name": "TypeScript", "icon": "typescript", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Tipagem estrita ponta a ponta garantindo contratos sem quebras.", "en": "End-to-end strict typing enforcing rock-solid schema contracts." } },
+        { "name": "Next.js", "icon": "nextjs", "color": "#182033", "source": "simple-icons", "usage": { "pt": "SSG/SSR performático com App Router e Web Vitals otimizados.", "en": "High-performance SSG/SSR with App Router and optimized Web Vitals." } },
+        { "name": "Angular", "icon": "angular", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Arquitetura corporativa com injeção de dependências e RxJS.", "en": "Enterprise architecture with dependency injection and RxJS streams." } },
+        { "name": "Tailwind", "icon": "tailwind", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Design systems utilitários com tokens de cor e dark mode nativo.", "en": "Utility-first design systems with tokenized themes and native dark mode." } },
+        { "name": "Design System", "icon": "component", "color": "#182033", "source": "concept", "usage": { "pt": "500+ componentes governados com acessibilidade e reuso.", "en": "500+ governed accessible components built for velocity and reusability." } }
       ]
     },
     {
       "number": "02",
-      "title": { "pt": "Back-end", "en": "Back-end" },
+      "title": { "pt": "Back-end & Dados", "en": "Back-end & Data" },
       "tools": [
-        { "name": "Node.js", "icon": "nodejs", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "NestJS", "icon": "nestjs", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Express", "icon": "express", "color": "#111010", "source": "simple-icons" },
-        { "name": "Fastify", "icon": "fastify", "color": "#111010", "source": "simple-icons" },
-        { "name": "PostgreSQL", "icon": "postgresql", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Supabase", "icon": "supabase", "color": "#FBBF24", "source": "simple-icons" }
+        { "name": "Node.js", "icon": "nodejs", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Serviços assíncronos de alta vazão, IPC e integrações corporativas.", "en": "High-throughput asynchronous services, IPC and corporate integrations." } },
+        { "name": "NestJS", "icon": "nestjs", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Arquitetura modular corporativa com controllers, DTOs e Swagger.", "en": "Enterprise modular architecture with controllers, DTOs and Swagger." } },
+        { "name": "C# / .NET", "icon": "csharp", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Microsserviços robustos, integração ERP e processamento de regras.", "en": "Robust microservices, ERP integration and high-performance processing." } },
+        { "name": "Python", "icon": "python", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Fine-tuning QLoRA, scripts de automação, pipelines IA e AXTree.", "en": "QLoRA fine-tuning, automation scripts, AI pipelines and AXTree extraction." } },
+        { "name": "PostgreSQL", "icon": "postgresql", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Modelagem relacional complexa, índices eficientes e integridade ACID.", "en": "Complex relational schemas, high-efficiency indexes and ACID guarantees." } },
+        { "name": "MongoDB / NoSQL", "icon": "mongodb", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Documentos flexíveis, telemetria em tempo real e cache distribuído.", "en": "Flexible document stores, real-time telemetry and distributed cache." } }
       ]
     },
     {
       "number": "03",
-      "title": { "pt": "Cloud & apps", "en": "Cloud & apps" },
+      "title": { "pt": "Cloud, Arquitetura & Qualidade", "en": "Cloud, Architecture & Quality" },
       "tools": [
-        { "name": "AWS", "icon": "aws", "color": "#FBBF24", "source": "brand-asset" },
-        { "name": "API Gateway", "icon": "api-gateway", "color": "#FBBF24", "source": "brand-asset" },
-        { "name": "Docker", "icon": "docker", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Actions", "icon": "github-actions", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Tauri", "icon": "tauri", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": ".NET", "icon": "dotnet", "color": "#FBBF24", "source": "simple-icons" }
+        { "name": "AWS Lambda", "icon": "lambda", "color": "#FBBF24", "source": "brand-asset", "usage": { "pt": "Arquiteturas serverless orientadas a eventos e custo otimizado.", "en": "Event-driven serverless architectures with cost-effective execution." } },
+        { "name": "API Gateway", "icon": "api-gateway", "color": "#FBBF24", "source": "brand-asset", "usage": { "pt": "Roteamento corporativo, autenticação JWT, rate limiting e proxies.", "en": "Enterprise routing, JWT auth layers, rate limiting and service proxies." } },
+        { "name": "Docker", "icon": "docker", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Ambientes isolados e reproduzíveis para desenvolvimento e CI/CD.", "en": "Isolated, reproducible container environments for local dev and CI/CD." } },
+        { "name": "SDD", "icon": "sdd", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Schema-Driven Development: contratos e validações de ponta a ponta.", "en": "Schema-Driven Development: contracts and validations from edge to DB." } },
+        { "name": "Playwright", "icon": "playwright", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Testes E2E resilientes, auditorias de acessibilidade e regressão visual.", "en": "Resilient E2E tests, accessibility auditing and visual regression checks." } },
+        { "name": "GraphQL", "icon": "graphql", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Consultas precisas sem overfetching conectando múltiplos backends.", "en": "Precise querying without overfetching across distributed microservices." } }
       ]
     },
     {
       "number": "04",
-      "title": { "pt": "IA & APIs", "en": "AI & APIs" },
+      "title": { "pt": "IA Aplicada & Agentes", "en": "Applied AI & Agents" },
       "tools": [
-        { "name": "OpenAI", "icon": "openai", "color": "#FBBF24", "source": "brand-asset" },
-        { "name": "Claude", "icon": "claude", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "Gemini", "icon": "gemini", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "MCP", "icon": "mcp", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "JWT", "icon": "jwt", "color": "#FBBF24", "source": "simple-icons" },
-        { "name": "GraphQL", "icon": "graphql", "color": "#FBBF24", "source": "simple-icons" }
+        { "name": "Agentic AI", "icon": "agentic-ai", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Sistemas multi-agentes autônomos com tomada de decisão estruturada.", "en": "Autonomous multi-agent systems with structured decision loops." } },
+        { "name": "MCP", "icon": "mcp", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Model Context Protocol: ferramentas padrão conectando LLMs a IDEs e OS.", "en": "Model Context Protocol: standard toolkits bridging LLMs to IDEs and OS." } },
+        { "name": "RAG", "icon": "rag", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Busca semântica vetorial e contexto confiável sobre bases de dados.", "en": "Vector semantic retrieval and trusted context grounded in private bases." } },
+        { "name": "LLM & Cost Control", "icon": "cost-control", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Redução drástica de tokens (até -92%), cache e orquestração de SLMs.", "en": "Drastic token reduction (up to -92%), caching and SLM edge routing." } },
+        { "name": "Claude & Gemini", "icon": "claude", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Engenharia de prompts avançada, raciocínio longo e function calling.", "en": "Advanced prompt engineering, extended reasoning and structured function calling." } },
+        { "name": "Cursor & Devin", "icon": "cursor", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Workflows hiper-produtivos de pair-programming e automações CLI.", "en": "Hyper-productive pair-programming workflows and CLI automations." } }
       ]
     }
   ]

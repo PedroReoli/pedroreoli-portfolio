@@ -25,12 +25,20 @@ export function StackSection() {
             <article key={group.number} data-reveal className="stack-column-revealed">
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
-                {group.tools.map((tool) => (
-                  <li key={tool.name}>
-                    <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
-                    <strong className="stack-grid__label">{tool.name}</strong>
-                  </li>
-                ))}
+                {group.tools.map((tool) => {
+                  const usageText = (tool as unknown as { usage?: { pt: string; en: string } }).usage?.[language]
+                  return (
+                    <li key={tool.name} tabIndex={0} role="tooltip" aria-label={usageText ? `${tool.name}: ${usageText}` : tool.name}>
+                      <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
+                      <strong className="stack-grid__label">{tool.name}</strong>
+                      {usageText && (
+                        <div className="stack-tooltip" role="note">
+                          {usageText}
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
               </ul>
             </article>
           ))}
