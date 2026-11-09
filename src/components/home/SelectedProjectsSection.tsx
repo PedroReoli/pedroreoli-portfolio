@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
+import { useReveal } from '@/hooks/useReveal'
 
 // Seleção editorial da Home: sem promover métricas/destinos públicos não verificados.
 const summaries: Record<string, { pt: string; en: string }> = {
@@ -30,26 +31,29 @@ export function SelectedProjectsSection() {
   const section = interfaceContent.selectedProjects
   const copy = section[language]
   const projects = homeContent.featuredProjects
+  useReveal(sectionRef)
 
   return (
     <section ref={sectionRef} id={section.id} className="work-section section-dark">
       <div className="shell">
-        <div className="section-kicker section-kicker--dark">
+        <div className="section-kicker section-kicker--dark" data-reveal="smoke">
           <span>{section.sectionNumber}</span>
           <p>{copy.eyebrow}</p>
           <p>{projects.length.toString().padStart(2, '0')}</p>
         </div>
 
-        <div className="work-section__heading">
+        <div className="work-section__heading" data-reveal="smoke">
           <h2>{copy.title}<em>.</em></h2>
           <a href={section.morePath}>{copy.moreAction}<ArrowUpRight aria-hidden="true" /></a>
         </div>
 
         <ul className="home-projects" aria-label={copy.eyebrow}>
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <li
               key={project.number}
               className="home-project"
+              data-reveal="card"
+              data-reveal-delay={String(index * 120)}
             >
               <a
                 href={project.title === 'Organon' ? section.morePath : project.href}

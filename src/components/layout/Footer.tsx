@@ -1,22 +1,26 @@
+import { useRef } from 'react'
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { interfaceContent, siteContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
+import { useReveal } from '@/hooks/useReveal'
 
 export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
   const { language } = useLanguage()
+  const ref = useRef<HTMLElement>(null)
   const footer = interfaceContent.footer
   const copy = footer[language]
+  useReveal(ref)
 
   return (
-    <footer id={footer.id} className={embedded ? 'contact-section contact-section--embedded' : 'contact-section'}>
+    <footer ref={ref} id={footer.id} className={embedded ? 'contact-section contact-section--embedded' : 'contact-section'}>
       <div className="shell">
-        <div className="section-kicker section-kicker--dark">
+        <div className="section-kicker section-kicker--dark" data-reveal="smoke">
           <span>{footer.sectionNumber}</span>
           <p>{copy.eyebrow}</p>
           <p>{siteContent.profile.address.locality} / {siteContent.profile.address.country}</p>
         </div>
 
-        <div className="contact-section__main">
+        <div className="contact-section__main" data-reveal="smoke">
           <p className="contact-section__prompt">{copy.prompt}</p>
           <a className="contact-section__headline" href={footer.ctaHref}>
             <span>{copy.ctaFirst}</span>
@@ -33,6 +37,7 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
               href={contact.href}
               target={contact.external ? '_blank' : undefined}
               rel={contact.external ? 'noreferrer' : undefined}
+              data-reveal="card"
             >
               <span>{contact.detail[language]}</span>
               <strong>{contact.label}</strong>
