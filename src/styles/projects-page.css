@@ -1,7 +1,7 @@
 /* Projetos: superfície e componentes exclusivos desta rota. */
 .projects-page {
   --projects-line: rgba(245, 243, 239, .2);
-  background: var(--color-bg, #08090b);
+  background: var(--color-bg, #04070e);
   color: var(--color-paper, #f5f3ef);
   padding: calc(var(--header-height, 100px) + 3rem) 0 clamp(6rem, 11vw, 10rem);
 }

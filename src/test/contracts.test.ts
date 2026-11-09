@@ -204,9 +204,9 @@ describe('Content Contract & Asset Integrity Tests', () => {
 
   it('keeps the dark editorial background and browser theme consistent', () => {
     const baseCss = fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../styles/base.css'), 'utf8');
-    expect(baseCss).toMatch(/--color-bg:\s*#08090b;/);
+    expect(baseCss).toMatch(/--color-bg:\s*#04070e;/);
     const indexHtml = fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../index.html'), 'utf8');
-    expect(indexHtml).toMatch(/<meta name="theme-color" content="#08090b" \/>/);
+    expect(indexHtml).toMatch(/<meta name="theme-color" content="#04070e" \/>/);
   });
 });
 

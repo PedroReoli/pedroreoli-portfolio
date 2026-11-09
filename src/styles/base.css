@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #08090b;
+  --color-bg: #04070e;
   --color-surface: #111216;
   --color-surface-raised: #191b21;
   --color-paper: #f5f3ef;
@@ -16,9 +16,9 @@
   --color-accent-emissive: #ffc900;
   --accent-glow: rgba(255,201,0,.2);
   --header-height: 100px;
-  --glass-fill: rgba(8,9,11,.82);
-  --glass-fill-hover: rgba(8,9,11,.88);
-  --glass-nav-fill: rgba(8,9,11,.86);
+  --glass-fill: rgba(4,7,14,.82);
+  --glass-fill-hover: rgba(4,7,14,.88);
+  --glass-nav-fill: rgba(4,7,14,.86);
   --glass-fallback: #111216;
   --glass-blur: blur(12px);
   --glass-grain: none;
@@ -42,7 +42,7 @@
   --line-light: rgba(8,9,11,.16);
   --accent: var(--color-accent);
   --focus-ring-color: #ffc900;
-  --focus-ring-halo: #08090b;
+  --focus-ring-halo: #04070e;
   --focus-ring-width: 2px;
   --focus-ring-offset: 3px;
   --font-sans: 'Instrument Sans Variable', Arial, sans-serif;
