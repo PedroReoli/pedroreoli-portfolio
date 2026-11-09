@@ -2,7 +2,22 @@ import { useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
-import { m } from 'motion/react'
+
+// Seleção editorial da Home: sem promover métricas/destinos públicos não verificados.
+const summaries: Record<string, { pt: string; en: string }> = {
+  Autocom3: {
+    pt: 'Interfaces e fluxos corporativos para operações de ERP, com integrações e componentes reutilizáveis.',
+    en: 'Corporate interfaces and workflows for ERP operations, with integrations and reusable components.',
+  },
+  Achilles: {
+    pt: 'Automação de navegador via Chrome DevTools Protocol, ferramentas MCP e extração semântica de páginas.',
+    en: 'Browser automation through Chrome DevTools Protocol, MCP tools and semantic page extraction.',
+  },
+  Organon: {
+    pt: 'Projeto independente de produtividade e organização. Conheça o contexto na seleção de projetos.',
+    en: 'An independent productivity and organization project. Explore its context in the project selection.',
+  },
+}
 
 /**
  * Três cards, nada de imagem: a seção era um screenshot gigante com fonte enorme e
@@ -30,18 +45,16 @@ export function SelectedProjectsSection() {
           <a href={section.morePath}>{copy.moreAction}<ArrowUpRight aria-hidden="true" /></a>
         </div>
 
-        <ul className="project-cards" aria-label={copy.eyebrow}>
+        <ul className="home-projects" aria-label={copy.eyebrow}>
           {projects.map((project) => (
-            <m.li
+            <li
               key={project.number}
-              className="project-card"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
+              className="home-project"
             >
               <a
-                href={project.href}
-                target={project.external ? '_blank' : undefined}
-                rel={project.external ? 'noreferrer' : undefined}
+                href={project.title === 'Organon' ? section.morePath : project.href}
+                target={project.external && project.title !== 'Organon' ? '_blank' : undefined}
+                rel={project.external && project.title !== 'Organon' ? 'noreferrer' : undefined}
               >
                 <div className="project-card__top">
                   <span className="project-card__index">{project.number}</span>
@@ -50,20 +63,20 @@ export function SelectedProjectsSection() {
                 </div>
 
                 <h3>{project.title}</h3>
-                <p className="project-card__desc">{project.description[language]}</p>
+                <p className="project-card__desc">{summaries[project.title]?.[language] ?? project.description[language]}</p>
 
                 <ul className="project-card__tech" aria-label={interfaceContent.featuredProject[language].technologiesLabel}>
-                  {project.technologies.map((tech) => (
+                  {project.technologies.filter(tech => project.title !== 'Achilles' || tech !== 'Windows UIA').map((tech) => (
                     <li key={tech}>{tech}</li>
                   ))}
                 </ul>
 
                 <span className="project-card__action">
-                  {project.action[language]}
+                  {project.title === 'Organon' ? (language === 'pt' ? 'Conhecer projeto' : 'Explore project') : project.action[language]}
                   <ArrowUpRight aria-hidden="true" />
                 </span>
               </a>
-            </m.li>
+            </li>
           ))}
         </ul>
       </div>

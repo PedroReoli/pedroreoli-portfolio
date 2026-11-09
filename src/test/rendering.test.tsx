@@ -98,16 +98,26 @@ describe('Application Rendering & Integration Tests', () => {
     window.history.pushState(null, '', '/projetos');
     render(<App />);
 
-    expect(screen.getByText('PROJETOS')).toBeInTheDocument();
-    expect(screen.getByText('AUTOCOM3')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'PROJETOS' })).toBeInTheDocument();
 
-    // Click on Independent projects tab
-    const indepTab = screen.getByRole('tab', { name: /independentes/i });
-    fireEvent.click(indepTab);
+    // Os filtros são botões de pressão (não abas): estado exposto por aria-pressed.
+    const corporateFilter = screen.getByRole('button', { name: 'Corporativo' });
+    const independentFilter = screen.getByRole('button', { name: 'Independentes' });
+    expect(corporateFilter).toHaveAttribute('aria-pressed', 'true');
+    expect(independentFilter).toHaveAttribute('aria-pressed', 'false');
 
-    expect(screen.getByText('Ferramentas independentes')).toBeInTheDocument();
-    expect(screen.getByText('Achilles CDP Agent')).toBeInTheDocument();
-    expect(screen.getByText('Organon')).toBeInTheDocument();
+    // Case editorial da categoria corporativa (nome real em projectEditorial.ts).
+    expect(screen.getByRole('heading', { name: 'Autocom3', level: 2 })).toBeInTheDocument();
+
+    // Troca de categoria pela barra de filtros editorial
+    fireEvent.click(independentFilter);
+
+    expect(independentFilter).toHaveAttribute('aria-pressed', 'true');
+    expect(corporateFilter).toHaveAttribute('aria-pressed', 'false');
+    expect(window.location.search).toContain('tipo=gerais');
+    expect(screen.getByRole('heading', { name: 'Achilles CDP Agent' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'GeoAmbiental' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Autocom3', level: 2 })).not.toBeInTheDocument();
   });
 
   it('navigates to notes & media page', () => {

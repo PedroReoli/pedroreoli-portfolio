@@ -3,7 +3,6 @@ import { technologyContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReveal } from '@/hooks/useReveal'
 import { Icon } from '@/components/common/Icon'
-import { m } from 'motion/react'
 
 export function StackSection() {
   const { language } = useLanguage()
@@ -27,10 +26,10 @@ export function StackSection() {
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
                 {group.tools.map((tool) => (
-                  <m.li key={tool.name} whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
+                  <li key={tool.name}>
                     <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
                     <strong className="stack-grid__label">{tool.name}</strong>
-                  </m.li>
+                  </li>
                 ))}
               </ul>
             </article>
