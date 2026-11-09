@@ -4,48 +4,216 @@
       "number": "01",
       "title": { "pt": "Interfaces", "en": "Interfaces" },
       "tools": [
-        { "name": "React", "icon": "react", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Base de 100+ telas corporativas na Autocom3 e apps reativos de alta escala.", "en": "Core foundation for 100+ corporate modules at Autocom3 and high-scale apps." } },
-        { "name": "TypeScript", "icon": "typescript", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Tipagem estrita ponta a ponta garantindo contratos sem quebras.", "en": "End-to-end strict typing enforcing rock-solid schema contracts." } },
-        { "name": "Next.js", "icon": "nextjs", "color": "#182033", "source": "simple-icons", "usage": { "pt": "SSG/SSR performático com App Router e Web Vitals otimizados.", "en": "High-performance SSG/SSR with App Router and optimized Web Vitals." } },
-        { "name": "Angular", "icon": "angular", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Arquitetura corporativa com injeção de dependências e RxJS.", "en": "Enterprise architecture with dependency injection and RxJS streams." } },
-        { "name": "Tailwind", "icon": "tailwind", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Design systems utilitários com tokens de cor e dark mode nativo.", "en": "Utility-first design systems with tokenized themes and native dark mode." } },
-        { "name": "Design System", "icon": "component", "color": "#182033", "source": "concept", "usage": { "pt": "500+ componentes governados com acessibilidade e reuso.", "en": "500+ governed accessible components built for velocity and reusability." } }
+        {
+          "name": "React",
+          "icon": "react",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Autocom3 & Propose-SaaS", "en": "Autocom3 & Propose-SaaS" },
+          "usage": { "pt": "Construção de +100 telas de ERP e painéis operacionais com renderização otimizada e estado reativo.", "en": "Building 100+ ERP screens and operations dashboards with optimized rendering and reactive state." }
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Achilles & Ecossistema Autocom3", "en": "Achilles & Autocom3 Ecosystem" },
+          "usage": { "pt": "Tipagem estrita ponta a ponta, validação de schemas em tempo de compilação e zero regressão de contratos.", "en": "End-to-end strict typing, compile-time schema validation and zero regression contracts." }
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs",
+          "color": "#182033",
+          "source": "simple-icons",
+          "where": { "pt": "SIVIS & Módulos Corporativos", "en": "SIVIS & Corporate Modules" },
+          "usage": { "pt": "Aplicações SSR/SSG com App Router, otimização de Web Vitals e carregamento 40% mais veloz.", "en": "SSR/SSG applications via App Router, Web Vitals optimization and 40% faster page loads." }
+        },
+        {
+          "name": "Angular",
+          "icon": "angular",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "SIVIS Tecnologia", "en": "SIVIS Tecnologia" },
+          "usage": { "pt": "Módulos de gestão corporativa complexos com RxJS, injeção de dependências e services desacoplados.", "en": "Complex enterprise management modules with RxJS, dependency injection and decoupled services." }
+        },
+        {
+          "name": "Tailwind",
+          "icon": "tailwind",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Design System & Portfólio", "en": "Design System & Portfolio" },
+          "usage": { "pt": "Padronização de temas, tokens semânticos e UI utilitária sem bundle bloat em produção.", "en": "Theme tokens standardization, semantic color palettes and zero bundle bloat in production." }
+        },
+        {
+          "name": "Design System",
+          "icon": "component",
+          "color": "#182033",
+          "source": "concept",
+          "where": { "pt": "Autocom3 ERP", "en": "Autocom3 ERP" },
+          "usage": { "pt": "Arquitetura e liderança de biblioteca viva com 500+ componentes governados, reduzindo dev em até 70%.", "en": "Architecture and leadership of a 500+ governed component library, slashing dev cycles by up to 70%." }
+        }
       ]
     },
     {
       "number": "02",
       "title": { "pt": "Back-end & Dados", "en": "Back-end & Data" },
       "tools": [
-        { "name": "Node.js", "icon": "nodejs", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Serviços assíncronos de alta vazão, IPC e integrações corporativas.", "en": "High-throughput asynchronous services, IPC and corporate integrations." } },
-        { "name": "NestJS", "icon": "nestjs", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Arquitetura modular corporativa com controllers, DTOs e Swagger.", "en": "Enterprise modular architecture with controllers, DTOs and Swagger." } },
-        { "name": "C# / .NET", "icon": "csharp", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Microsserviços robustos, integração ERP e processamento de regras.", "en": "Robust microservices, ERP integration and high-performance processing." } },
-        { "name": "Python", "icon": "python", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Fine-tuning QLoRA, scripts de automação, pipelines IA e AXTree.", "en": "QLoRA fine-tuning, automation scripts, AI pipelines and AXTree extraction." } },
-        { "name": "PostgreSQL", "icon": "postgresql", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Modelagem relacional complexa, índices eficientes e integridade ACID.", "en": "Complex relational schemas, high-efficiency indexes and ACID guarantees." } },
-        { "name": "MongoDB / NoSQL", "icon": "mongodb", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Documentos flexíveis, telemetria em tempo real e cache distribuído.", "en": "Flexible document stores, real-time telemetry and distributed cache." } }
+        {
+          "name": "Node.js",
+          "icon": "nodejs",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Organon & Achilles CDP", "en": "Organon & Achilles CDP" },
+          "usage": { "pt": "Serviços assíncronos de alta vazão, IPC com 18 canais de eventos e orquestração de subagentes.", "en": "High-throughput async services, 18 IPC event channels and multi-agent subagent orchestration." }
+        },
+        {
+          "name": "NestJS",
+          "icon": "nestjs",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Autocom3 Backend", "en": "Autocom3 Backend" },
+          "usage": { "pt": "Microsserviços corporativos modulares com DTOs tipados, Swagger integrado, guards JWT e RBAC.", "en": "Enterprise modular microservices with typed DTOs, integrated Swagger, JWT guards and RBAC." }
+        },
+        {
+          "name": "C# / .NET",
+          "icon": "csharp",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Autocom3 ERP & GeoAmbiental VR", "en": "Autocom3 ERP & GeoAmbiental VR" },
+          "usage": { "pt": "Processamento de regras fiscais/ERP e simulação 3D em Unity com alta performance de CPU.", "en": "ERP and fiscal rule execution engines plus 3D Unity simulation with high CPU throughput." }
+        },
+        {
+          "name": "Python",
+          "icon": "python",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Pipelines de IA & Pesquisa UniFOA", "en": "AI Pipelines & UniFOA Research" },
+          "usage": { "pt": "Fine-tuning QLoRA de modelos locais, scripts de automação de dados e extração de AXTree semântica.", "en": "QLoRA local fine-tuning, automated data processing scripts and semantic AXTree extraction." }
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "postgresql",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Autocom3 & Propose-SaaS", "en": "Autocom3 & Propose-SaaS" },
+          "usage": { "pt": "Modelagem relacional de catálogo e licenças, índices otimizados, transações ACID e consultas rápidas.", "en": "Relational data modeling for SKUs and licenses, query indexing, ACID transactions and low latency." }
+        },
+        {
+          "name": "MongoDB / NoSQL",
+          "icon": "mongodb",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Organon & Telemetria", "en": "Organon & Telemetry" },
+          "usage": { "pt": "Armazenamento flexível de logs de auditoria, eventos de telemetria e cache de respostas de IA.", "en": "Flexible document storage for audit logs, real-time telemetry events and cached AI responses." }
+        }
       ]
     },
     {
       "number": "03",
       "title": { "pt": "Cloud, Arquitetura & Qualidade", "en": "Cloud, Architecture & Quality" },
       "tools": [
-        { "name": "AWS Lambda", "icon": "lambda", "color": "#FBBF24", "source": "brand-asset", "usage": { "pt": "Arquiteturas serverless orientadas a eventos e custo otimizado.", "en": "Event-driven serverless architectures with cost-effective execution." } },
-        { "name": "API Gateway", "icon": "api-gateway", "color": "#FBBF24", "source": "brand-asset", "usage": { "pt": "Roteamento corporativo, autenticação JWT, rate limiting e proxies.", "en": "Enterprise routing, JWT auth layers, rate limiting and service proxies." } },
-        { "name": "Docker", "icon": "docker", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Ambientes isolados e reproduzíveis para desenvolvimento e CI/CD.", "en": "Isolated, reproducible container environments for local dev and CI/CD." } },
-        { "name": "SDD", "icon": "sdd", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Schema-Driven Development: contratos e validações de ponta a ponta.", "en": "Schema-Driven Development: contracts and validations from edge to DB." } },
-        { "name": "Playwright", "icon": "playwright", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Testes E2E resilientes, auditorias de acessibilidade e regressão visual.", "en": "Resilient E2E tests, accessibility auditing and visual regression checks." } },
-        { "name": "GraphQL", "icon": "graphql", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Consultas precisas sem overfetching conectando múltiplos backends.", "en": "Precise querying without overfetching across distributed microservices." } }
+        {
+          "name": "AWS Lambda",
+          "icon": "lambda",
+          "color": "#FBBF24",
+          "source": "brand-asset",
+          "where": { "pt": "Autocom3 Cloud", "en": "Autocom3 Cloud" },
+          "usage": { "pt": "Execução serverless acionada por eventos, webhooks assíncronos e processamento em lote sem servidores ociosos.", "en": "Event-driven serverless workloads, async webhooks and batch processing without idle server costs." }
+        },
+        {
+          "name": "API Gateway",
+          "icon": "api-gateway",
+          "color": "#FBBF24",
+          "source": "brand-asset",
+          "where": { "pt": "Autocom3 & SIVIS", "en": "Autocom3 & SIVIS" },
+          "usage": { "pt": "Roteamento corporativo de endpoints, autenticação JWT centralizada e controle de taxa (rate limiting).", "en": "Enterprise endpoint routing, unified JWT authentication and strict rate limiting." }
+        },
+        {
+          "name": "Docker",
+          "icon": "docker",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Ambientes de Dev & CI/CD", "en": "Dev Environments & CI/CD" },
+          "usage": { "pt": "Contêineres isolados para bancos locais, microsserviços e pipelines de testes reproduzíveis.", "en": "Isolated containers for local databases, microservices and reproducible test pipelines." }
+        },
+        {
+          "name": "SDD",
+          "icon": "sdd",
+          "color": "#FBBF24",
+          "source": "concept",
+          "where": { "pt": "Governança deste Portfólio & Autocom3", "en": "Portfolio Governance & Autocom3" },
+          "usage": { "pt": "Schema-Driven Development: contratos JSON rigorosos, dados blindados contra regressões e validação prévia.", "en": "Schema-Driven Development: strict JSON contracts, zero regressions and upfront data validation." }
+        },
+        {
+          "name": "Playwright",
+          "icon": "playwright",
+          "color": "#FBBF24",
+          "source": "concept",
+          "where": { "pt": "Achilles QA & Módulos ERP", "en": "Achilles QA & ERP Modules" },
+          "usage": { "pt": "Testes E2E ponta a ponta, testes de estresse de rolagem/layout e auditoria automatizada de acessibilidade.", "en": "Full E2E test suites, scroll/layout stress testing and automated accessibility audits." }
+        },
+        {
+          "name": "GraphQL",
+          "icon": "graphql",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Integrações SIVIS & Domus", "en": "SIVIS & Domus Integrations" },
+          "usage": { "pt": "Agregação de múltiplos serviços em query única, eliminando overfetching em conexões móveis e desktop.", "en": "Aggregating multiple backends in single query trips, eliminating overfetching across web and desktop." }
+        }
       ]
     },
     {
       "number": "04",
       "title": { "pt": "IA Aplicada & Agentes", "en": "Applied AI & Agents" },
       "tools": [
-        { "name": "Agentic AI", "icon": "agentic-ai", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Sistemas multi-agentes autônomos com tomada de decisão estruturada.", "en": "Autonomous multi-agent systems with structured decision loops." } },
-        { "name": "MCP", "icon": "mcp", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Model Context Protocol: ferramentas padrão conectando LLMs a IDEs e OS.", "en": "Model Context Protocol: standard toolkits bridging LLMs to IDEs and OS." } },
-        { "name": "RAG", "icon": "rag", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Busca semântica vetorial e contexto confiável sobre bases de dados.", "en": "Vector semantic retrieval and trusted context grounded in private bases." } },
-        { "name": "LLM & Cost Control", "icon": "cost-control", "color": "#FBBF24", "source": "concept", "usage": { "pt": "Redução drástica de tokens (até -92%), cache e orquestração de SLMs.", "en": "Drastic token reduction (up to -92%), caching and SLM edge routing." } },
-        { "name": "Claude & Gemini", "icon": "claude", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Engenharia de prompts avançada, raciocínio longo e function calling.", "en": "Advanced prompt engineering, extended reasoning and structured function calling." } },
-        { "name": "Cursor & Devin", "icon": "cursor", "color": "#FBBF24", "source": "simple-icons", "usage": { "pt": "Workflows hiper-produtivos de pair-programming e automações CLI.", "en": "Hyper-productive pair-programming workflows and CLI automations." } }
+        {
+          "name": "Agentic AI",
+          "icon": "agentic-ai",
+          "color": "#FBBF24",
+          "source": "concept",
+          "where": { "pt": "Achilles CDP Agent & Organon", "en": "Achilles CDP Agent & Organon" },
+          "usage": { "pt": "Loop autônomo Observar-Decidir-Operar com isolamento em Git Worktrees e execução determinística de tarefas.", "en": "Autonomous Observe-Decide-Operate loop with Git Worktree isolation and deterministic task runs." }
+        },
+        {
+          "name": "MCP",
+          "icon": "mcp",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Achilles & Organon MCP Server", "en": "Achilles & Organon MCP Server" },
+          "usage": { "pt": "Implementação do Model Context Protocol conectando IA a ferramentas de sistema, navegador CDP e automação Windows.", "en": "Model Context Protocol implementation connecting AI to system tools, browser CDP and Windows automations." }
+        },
+        {
+          "name": "RAG",
+          "icon": "rag",
+          "color": "#FBBF24",
+          "source": "concept",
+          "where": { "pt": "FalaAtípica & Cockpit Organon", "en": "FalaAtípica & Organon Cockpit" },
+          "usage": { "pt": "Recuperação semântica vetorial sobre bases de conhecimento privadas para respostas contextualizadas e sem alucinação.", "en": "Vector semantic retrieval over private knowledge bases delivering grounded, hallucination-free answers." }
+        },
+        {
+          "name": "LLM & Cost Control",
+          "icon": "cost-control",
+          "color": "#FBBF24",
+          "source": "concept",
+          "where": { "pt": "Achilles Reader Mode", "en": "Achilles Reader Mode" },
+          "usage": { "pt": "Extração de árvore de acessibilidade (AXTree) reduzindo consumo de tokens em 92.2% em comparação com DOM bruto.", "en": "AXTree semantic parsing cutting token consumption by 92.2% compared to raw DOM trees." }
+        },
+        {
+          "name": "Claude & Gemini",
+          "icon": "claude",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Organon & Mentoria UniFOA", "en": "Organon & UniFOA Mentoring" },
+          "usage": { "pt": "Engenharia de contexto avançada, chamadas estruturadas de ferramentas (function calling) e prompts auditados.", "en": "Advanced context engineering, structured tool calling (function calling) and audited system prompts." }
+        },
+        {
+          "name": "Cursor & Devin",
+          "icon": "cursor",
+          "color": "#FBBF24",
+          "source": "simple-icons",
+          "where": { "pt": "Fluxo Diário de Engenharia", "en": "Daily Engineering Workflow" },
+          "usage": { "pt": "Pair-programming agente com regras de governança, scripts CLI e automação de refatoração contínua.", "en": "Agentic pair-programming with governance rules, CLI scripts and continuous refactoring automation." }
+        }
       ]
     }
   ]

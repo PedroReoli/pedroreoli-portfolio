@@ -27,13 +27,29 @@ export function StackSection() {
               <ul>
                 {group.tools.map((tool) => {
                   const usageText = (tool as unknown as { usage?: { pt: string; en: string } }).usage?.[language]
+                  const whereText = (tool as unknown as { where?: { pt: string; en: string } }).where?.[language]
+                  const ariaDesc = [
+                    tool.name,
+                    whereText ? `(Em: ${whereText})` : '',
+                    usageText ? usageText : ''
+                  ].filter(Boolean).join(' - ')
+
                   return (
-                    <li key={tool.name} tabIndex={0} role="tooltip" aria-label={usageText ? `${tool.name}: ${usageText}` : tool.name}>
+                    <li key={tool.name} tabIndex={0} role="tooltip" aria-label={ariaDesc}>
                       <span className="stack-icon"><Icon name={tool.icon} image={tool.image} size={15} /></span>
                       <strong className="stack-grid__label">{tool.name}</strong>
-                      {usageText && (
+                      {(whereText || usageText) && (
                         <div className="stack-tooltip" role="note">
-                          {usageText}
+                          {whereText && (
+                            <span className="stack-tooltip__where">
+                              {whereText}
+                            </span>
+                          )}
+                          {usageText && (
+                            <span className="stack-tooltip__usage">
+                              {usageText}
+                            </span>
+                          )}
                         </div>
                       )}
                     </li>

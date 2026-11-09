@@ -501,6 +501,8 @@ export interface TechnologyTool {
   color: string;
   image?: string;
   source: 'simple-icons' | 'brand-asset' | 'concept';
+  where?: LocalizedString;
+  usage?: LocalizedString;
 }
 
 export interface TechnologyGroup {
