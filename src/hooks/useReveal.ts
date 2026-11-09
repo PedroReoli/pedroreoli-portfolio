@@ -48,13 +48,8 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
     const root = scope.current
     if (!root || typeof window === 'undefined') return
 
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
     const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
-
-    if (query.matches) {
-      nodes.forEach((el) => el.classList.add('is-revealed'))
-      return
-    }
+    if (!nodes.length) return
 
     if (typeof IntersectionObserver === 'undefined') {
       nodes.forEach((el) => el.classList.add('is-revealed'))
@@ -74,26 +69,16 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
           element.style.transitionDelay = `${delay}ms`
         }
 
-        // Adiciona classe para disparar a transição CSS visível e garantida
         requestAnimationFrame(() => {
           element.classList.add('is-revealed')
         })
       })
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' })
 
     nodes.forEach((node) => observer.observe(node))
 
-    const handleMotionChange = () => {
-      if (query.matches) {
-        nodes.forEach((el) => el.classList.add('is-revealed'))
-      }
-    }
-
-    query.addEventListener('change', handleMotionChange)
-
     return () => {
       observer.disconnect()
-      query.removeEventListener('change', handleMotionChange)
     }
   }, [scope])
 }
