@@ -1,4 +1,4 @@
-﻿export const palette = {
+export const palette = {
   background: '#04070e',
   surface: '#111216',
   paper: '#f5f3ef',
