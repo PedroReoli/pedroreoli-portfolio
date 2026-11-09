@@ -20,10 +20,10 @@ function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialG
 
   return (
     <div className="projects-case__carousel-card">
-      <div className="projects-case__carousel-top">
-        <div>
-          <span className="projects-case__gallery-tag">{group.tag}</span>
+      <div className="projects-case__carousel-header">
+        <div className="projects-case__carousel-headline">
           <h4>{group.title[language]}</h4>
+          <p className="projects-case__carousel-desc">{group.description[language]}</p>
         </div>
         <div className="projects-case__carousel-nav">
           <span className="projects-case__carousel-counter">{currentIndex + 1} / {total}</span>
@@ -35,7 +35,6 @@ function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialG
           </button>
         </div>
       </div>
-      <p className="projects-case__carousel-desc">{group.description[language]}</p>
 
       <div
         className="projects-case__carousel-stage"
