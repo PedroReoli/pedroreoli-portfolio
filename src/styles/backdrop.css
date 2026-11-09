@@ -1,5 +1,4 @@
 /* Atmosfera independente da mídia: nenhuma superfície de leitura depende de um frame. */
 .hero { position: relative; isolation: isolate; }
-.hero::before { content: ''; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 85% 35%, rgba(255,201,0,.055), transparent 55%); }
 .hero__artwork { position: relative; min-width: 0; }
-.hero__artwork::before { content: ''; position: absolute; z-index: -1; inset: 15% 0; border-radius: 50%; background: rgba(255,201,0,.04); }
+
