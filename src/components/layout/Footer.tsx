@@ -43,7 +43,7 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
 
         <div className="contact-section__bottom">
           <p>© {new Date().getFullYear()} {siteContent.legalName}</p>
-          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}>
             {copy.backToTop}<ArrowUp aria-hidden="true" />
           </button>
         </div>

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { LanguageProvider } from '@/context/LanguageContext'
 import { RouterProvider, useRouter } from '@/context/RouterContext'
 import { Header } from '@/components/layout/Header'
@@ -6,40 +7,30 @@ import { HomePage } from '@/pages/HomePage'
 import { ProjectsPage } from '@/pages/ProjectsPage'
 import { MediaPage } from '@/pages/MediaPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
-import { LazyMotion, MotionConfig, domAnimation, m, AnimatePresence } from 'motion/react'
+import { DesignSystemPreview } from '@/components/layout/DesignSystemPreview'
+import { LazyMotion, MotionConfig, domAnimation } from 'motion/react'
 
 function AppRoute() {
   const { pathname } = useRouter()
+  const previous = useRef(pathname)
+  const main = useRef<HTMLElement>(null)
+  useEffect(() => {
+    if (previous.current !== pathname && !window.location.hash) main.current?.focus({ preventScroll: true })
+    previous.current = pathname
+  }, [pathname])
   const pages: Record<string, React.ReactNode> = {
     '/': <HomePage />,
     '/projetos': <ProjectsPage />,
     '/midia-blog': <MediaPage />,
+    '/notas': <MediaPage />,
     '/404': <NotFoundPage />,
+    ...(import.meta.env.DEV ? { '/design-system': <DesignSystemPreview /> } : {}),
   }
-
   return (
     <div className="app-shell">
       <Header />
-      <AnimatePresence mode="wait" initial={false}>
-        <m.main
-          id="main-content"
-          key={pathname}
-          tabIndex={-1}
-          className="app-main"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-        >
-          {pages[pathname] ?? <NotFoundPage />}
-        </m.main>
-      </AnimatePresence>
-      {/* Na home o rodapé é o último quadro da fita; nas outras páginas ele fecha normalmente. */}
-      {pathname !== '/' && (
-        <div className="app-footer">
-          <Footer />
-        </div>
-      )}
+      <main ref={main} id="main-content" tabIndex={-1} className="app-main">{pages[pathname] ?? <NotFoundPage />}</main>
+      <div className="app-footer"><Footer /></div>
     </div>
   )
 }

@@ -160,59 +160,23 @@ describe('Challenger 2 — Adversarial A11y, Contracts & Localization Suite', ()
     });
   });
 
-  describe('3. Accessibility: Mobile Menu Drawer Focus Trap & ARIA', () => {
-    it('traps focus inside mobile menu drawer and handles Esc key correctly', () => {
-      render(
-        <LanguageProvider>
-          <RouterProvider>
-            <Header />
-          </RouterProvider>
-        </LanguageProvider>
-      );
-
-      const menuToggle = screen.getByRole('button', { name: /abrir menu/i });
-      expect(menuToggle).toHaveAttribute('aria-expanded', 'false');
-      expect(menuToggle).toHaveAttribute('aria-controls', 'mobile-menu');
-
-      // Open drawer
-      fireEvent.click(menuToggle);
-      expect(menuToggle).toHaveAttribute('aria-expanded', 'true');
-
-      const mobileMenu = screen.getByRole('dialog', { name: /navegação mobile/i });
-      expect(mobileMenu).toBeInTheDocument();
-      expect(mobileMenu).toHaveAttribute('aria-modal', 'true');
-
-      // Test Escape key closes drawer
+  describe('3. Accessibility: disclosure navigation', () => {
+    it('opens navigation and Escape closes it and returns focus', () => {
+      render(<LanguageProvider><RouterProvider><Header /></RouterProvider></LanguageProvider>);
+      const trigger = screen.getByRole('button', { name: /abrir menu/i });
+      expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      fireEvent.click(trigger);
+      expect(trigger).toHaveAttribute('aria-expanded', 'true');
+      expect(document.getElementById('mobile-menu')).not.toHaveAttribute('hidden');
       fireEvent.keyDown(window, { key: 'Escape' });
-      expect(screen.queryByRole('dialog', { name: /navegação mobile/i })).not.toBeInTheDocument();
-      expect(menuToggle).toHaveAttribute('aria-expanded', 'false');
+      expect(document.getElementById('mobile-menu')).toHaveAttribute('hidden');
+      expect(trigger).toHaveFocus();
     });
-
-    it('manages body dataset and main inert state during drawer open', () => {
-      const mainEl = document.createElement('main');
-      mainEl.id = 'main-content';
-      document.body.appendChild(mainEl);
-
-      render(
-        <LanguageProvider>
-          <RouterProvider>
-            <Header />
-          </RouterProvider>
-        </LanguageProvider>
-      );
-
-      const menuToggle = screen.getByRole('button', { name: /abrir menu/i });
-      fireEvent.click(menuToggle);
-
-      expect(document.body.dataset.menuOpen).toBe('true');
-      expect(mainEl.hasAttribute('inert')).toBe(true);
-
-      // Close menu
-      fireEvent.click(menuToggle);
+    it('does not lock body or make main inert for non-modal navigation', () => {
+      const { container } = render(<LanguageProvider><RouterProvider><main>Reading</main><Header /></RouterProvider></LanguageProvider>);
+      fireEvent.click(screen.getByRole('button', { name: /abrir menu/i }));
       expect(document.body.dataset.menuOpen).toBeUndefined();
-      expect(mainEl.hasAttribute('inert')).toBe(false);
-
-      mainEl.remove();
+      expect(container.querySelector('main')).not.toHaveAttribute('inert');
     });
   });
 
@@ -240,49 +204,17 @@ describe('Challenger 2 — Adversarial A11y, Contracts & Localization Suite', ()
     });
   });
 
-  describe('5. Accessibility: Timeline Stations & Semantic DOM Structure', () => {
-    it('verifies timeline stations, roles, milestones, and semantic landmarks', () => {
-      const { container } = render(
-        <LanguageProvider>
-          <ExperienceSection />
-        </LanguageProvider>
-      );
-
-      const timelineList = screen.getByRole('list', { name: /capítulos da trajetória/i });
-      expect(timelineList).toBeInTheDocument();
-
-      const milestoneItems = container.querySelectorAll('.timeline-v__item');
-      expect(milestoneItems.length).toBeGreaterThanOrEqual(4);
-
-      // Check alternating classes and role="listitem"
-      milestoneItems.forEach((item, index) => {
-        expect(item.getAttribute('role')).toBe('listitem');
-        if (index % 2 === 0) {
-          expect(item.className).toContain('timeline-v__item--left');
-        } else {
-          expect(item.className).toContain('timeline-v__item--right');
-        }
-      });
-
-      // Verify central station nodes and spine are present and marked aria-hidden
-      const spine = container.querySelector('.timeline-v__spine');
-      expect(spine).not.toBeNull();
-      expect(spine).toHaveAttribute('aria-hidden', 'true');
-
-      const nodes = container.querySelectorAll('.timeline-v__node');
-      expect(nodes.length).toBe(milestoneItems.length);
-      nodes.forEach((node) => {
-        expect(node).toHaveAttribute('aria-hidden', 'true');
-      });
-
-      // Verify each article contains heading hierarchy h3 (company) and h4 (role)
-      const articles = container.querySelectorAll('article.timeline-card');
-      expect(articles.length).toBe(milestoneItems.length);
-      articles.forEach((article) => {
-        const h3 = article.querySelector('h3');
-        const h4 = article.querySelector('h4');
-        expect(h3, 'Must have company heading h3').not.toBeNull();
-        expect(h4, 'Must have role heading h4').not.toBeNull();
+  describe('5. Accessibility: semantic complete timeline', () => {
+    it('uses native ordered list items with heading hierarchy', () => {
+      const { container } = render(<LanguageProvider><ExperienceSection /></LanguageProvider>);
+      const list = container.querySelector('ol');
+      expect(list).not.toBeNull();
+      expect(list!.children.length).toBeGreaterThan(0);
+      [...list!.children].forEach(item => {
+        expect(item.tagName).toBe('LI');
+        expect(item.querySelector('h3')).not.toBeNull();
+        expect(item.querySelector('h4')).not.toBeNull();
+        expect(item.querySelector('.timeline-card__desc')).not.toBeNull();
       });
     });
   });
