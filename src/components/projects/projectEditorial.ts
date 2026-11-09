@@ -24,6 +24,14 @@ export interface EditorialScreenshot {
   caption: Localized
 }
 
+export interface EditorialGalleryGroup {
+  id: string
+  title: Localized
+  tag: string
+  description: Localized
+  items: EditorialScreenshot[]
+}
+
 export interface EditorialCase {
   id: string
   category: ProjectCategory
@@ -39,6 +47,7 @@ export interface EditorialCase {
   metrics?: { label: Localized; value: string }[]
   starStories?: EditorialStarStory[]
   architectures?: EditorialArchitecture[]
+  galleryGroups?: EditorialGalleryGroup[]
   gallery?: EditorialScreenshot[]
   evidence?: { href: string; label: Localized }
   note?: Localized
@@ -161,84 +170,128 @@ export const projectCases: EditorialCase[] = [
         },
       },
     ],
-    gallery: [
+    galleryGroups: [
       {
-        src: '/portfolio-autocom3/prints-16x9/sistema-dashboard-geral.png',
-        tag: 'DASHBOARD & KPIS',
-        title: { pt: 'Dashboard Executivo Geral', en: 'Executive Command Center' },
-        caption: { pt: 'Visão gerencial consolidada com indicadores operacionais, certificados a vencer e monitoramento de clientes.', en: 'Consolidated executive metrics, certificate expiration alerts and client deployment tracking.' },
+        id: 'faturamento',
+        title: { pt: 'Gestão Financeira & Faturamento', en: 'Financial Management & Billing' },
+        tag: 'FINANCEIRO & COMPLIANCE',
+        description: {
+          pt: 'Telas de conciliação mensal, auditoria de valores, grupos societários sob a Receita Federal e vínculos com filiais.',
+          en: 'Monthly reconciliation, financial auditing, corporate entities validated with the IRS and branch relations.',
+        },
+        items: [
+          {
+            src: '/portfolio-autocom3/prints-16x9/sistema-faturamento-mensal.png',
+            tag: 'FINANCEIRO & AUDITORIA',
+            title: { pt: 'Faturamento Mensal & Prévia', en: 'Monthly Billing & Audit Preview' },
+            caption: { pt: 'Conciliação contábil entre competências, detecção de divergências e botão de privacidade para mascarar valores.', en: 'Cross-period reconciliation, value discrepancy alerts and privacy toggle to mask sensitive numbers.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-visao-geral.png',
+            tag: 'RECEITA FEDERAL & REDES',
+            title: { pt: 'Grupos de Faturamento Societários', en: 'Corporate Billing Groups' },
+            caption: { pt: 'Centralização de cobrança em CNPJ faturador único com consulta síncrona na Receita Federal e soft delete fiscal.', en: 'Centralized chain billing under a single taxpayer ID with synchronous IRS validation and soft-delete.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-detalhe.png',
+            tag: 'GESTÃO SOCIETÁRIA',
+            title: { pt: 'Dossiê do Grupo & Filiais Vinculadas', en: 'Entity Dossier & Linked Branches' },
+            caption: { pt: 'Gestão detalhada de lojas centralizadas, adimplência contratual e regras unificadas de faturamento.', en: 'Detailed view of managed stores, compliance status and unified multi-branch billing policies.' },
+          },
+        ],
       },
       {
-        src: '/portfolio-autocom3/prints-16x9/sistema-faturamento-mensal.png',
-        tag: 'FINANCEIRO & AUDITORIA',
-        title: { pt: 'Faturamento Mensal & Prévia', en: 'Monthly Billing & Audit Preview' },
-        caption: { pt: 'Conciliação contábil entre competências, detecção de divergências e botão de privacidade para mascarar valores.', en: 'Cross-period reconciliation, value discrepancy alerts and privacy toggle to mask sensitive numbers.' },
+        id: 'licencas',
+        title: { pt: 'Central de Licenças & Redes', en: 'License Hub & Network Hierarchy' },
+        tag: 'LICENCIAMENTO & TERMINAIS',
+        description: {
+          pt: 'Painel mestre SGSH com hierarquia de lojas, classificação por faturamento mensal e dossiê de hardware.',
+          en: 'SGSH master panel with multi-store hierarchy, revenue star ratings and terminal hardware dossier.',
+        },
+        items: [
+          {
+            src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-painel.png',
+            tag: 'LICENCIAMENTO SGSH',
+            title: { pt: 'Central de Licenças SGSH & Estrelas', en: 'SGSH License Hub & Star Ratings' },
+            caption: { pt: 'Listagem determinística com Loja Central no topo, filiais por número e classificação por faturamento mensal.', en: 'Deterministic hierarchy placing Central Store first, branches by number and revenue star ratings.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-detalhe.png',
+            tag: 'TERMINAIS & HARDWARE',
+            title: { pt: 'Dossiê Técnico da Licença', en: 'Technical License Dossier' },
+            caption: { pt: 'Mapeamento de direitos contratuais, identificadores de hardware dos PDVs e suporte a licenças de sistemas legados.', en: 'Contract entitlements, POS hardware IDs and direct download links for legacy system licenses.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/gestao-redes-lojas.png',
+            tag: 'REDES & PARCEIROS',
+            title: { pt: 'Gestão Hierárquica de Redes & Canais', en: 'Multi-Store Chains & Partner Networks' },
+            caption: { pt: 'Estrutura multinível de redes comerciais e canais parceiros white-label vinculados à Autocom3.', en: 'Multilevel commercial hierarchy for retail chains and white-label partner networks.' },
+          },
+        ],
       },
       {
-        src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-visao-geral.png',
-        tag: 'RECEITA FEDERAL & REDES',
-        title: { pt: 'Grupos de Faturamento Societários', en: 'Corporate Billing Groups' },
-        caption: { pt: 'Centralização de cobrança em CNPJ faturador único com consulta síncrona na Receita Federal e soft delete fiscal.', en: 'Centralized chain billing under a single taxpayer ID with synchronous IRS validation and soft-delete.' },
+        id: 'comercial',
+        title: { pt: 'Propostas Comerciais, NoCode & Contratos', en: 'Commercial Proposals, NoCode & Contracts' },
+        tag: 'CRM & CONVERSÃO CONTRATUAL',
+        description: {
+          pt: 'Formulários dinâmicos com prompting para IA, tabela oficial de SKUs, pipeline comercial e emissão de contratos com assinatura digital.',
+          en: 'Dynamic forms with AI prompt structuring, official SKU tables, sales pipeline and digital contract emission.',
+        },
+        items: [
+          {
+            src: '/portfolio-autocom3/prints-16x9/gerador-propostas-comerciais-painel.png',
+            tag: 'OPORTUNIDADES & SKUS',
+            title: { pt: 'Painel de Propostas Comerciais', en: 'Commercial Proposals Dashboard' },
+            caption: { pt: 'Acompanhamento de propostas em aberto, ganhas e perdidas com base no catálogo de SKUs e planos do SGSH.', en: 'Proposals lifecycle tracking connected to official SGSH SKU pricing and system plans.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/gerador-propostas-editor-view.png',
+            tag: 'NO-CODE & IA',
+            title: { pt: 'Formulário NoCode & Editor Dinâmico', en: 'NoCode Dynamic Proposal Form' },
+            caption: { pt: 'Renderização condicional por tipo de operação, sanitização de dados, prompt de IA e conversão contratual SHA-256.', en: 'Conditional form rendering, data sanitization, AI prompts and automated SHA-256 contract generation.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/gestao-contratos-clientes.png',
+            tag: 'JURÍDICO & CONTRATOS',
+            title: { pt: 'Gestão de Contratos & Assinatura', en: 'Contract Lifecycle & Digital Signature' },
+            caption: { pt: 'Emissão e auditoria de minutas contratuais vinculadas às licenças ativas do SGSH com validação jurídica.', en: 'Drafting and audit trail of legal contracts tied to active SGSH licenses with signature compliance.' },
+          },
+        ],
       },
       {
-        src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-detalhe.png',
-        tag: 'GESTÃO SOCIETÁRIA',
-        title: { pt: 'Dossiê do Grupo & Filiais Vinculadas', en: 'Entity Dossier & Linked Branches' },
-        caption: { pt: 'Gestão detalhada de lojas centralizadas, adimplência contratual e regras unificadas de faturamento.', en: 'Detailed view of managed stores, compliance status and unified multi-branch billing policies.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-painel.png',
-        tag: 'LICENCIAMENTO SGSH',
-        title: { pt: 'Central de Licenças SGSH & Estrelas', en: 'SGSH License Hub & Star Ratings' },
-        caption: { pt: 'Listagem determinística com Loja Central no topo, filiais por número e classificação por faturamento mensal.', en: 'Deterministic hierarchy placing Central Store first, branches by number and revenue star ratings.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-detalhe.png',
-        tag: 'TERMINAIS & HARDWARE',
-        title: { pt: 'Dossiê Técnico da Licença', en: 'Technical License Dossier' },
-        caption: { pt: 'Mapeamento de direitos contratuais, identificadores de hardware dos PDVs e suporte a licenças de sistemas legados.', en: 'Contract entitlements, POS hardware IDs and direct download links for legacy system licenses.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/crm-operacoes-comerciais.png',
-        tag: 'CATÁLOGO MODULAR',
-        title: { pt: 'Hub Canônico de Operações & CRM', en: 'Operations Master Hub & CRM' },
-        caption: { pt: 'Mais de 30 ferramentas agrupadas por setor com busca rápida, favoritos no storage e controle restrito por perfis.', en: '30+ departmental tools with instantaneous search, local storage favorites and strict RBAC.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/crm-operacoes-detalhe-registro.png',
-        tag: 'PIPELINE DE VENDAS',
-        title: { pt: 'Dossiê de Lead & Interações', en: 'Lead Dossier & Sales Pipeline' },
-        caption: { pt: 'Histórico de interações, qualificação técnica (PDVs, regime tributário) e trilha de auditoria do funil.', en: 'Interaction records, technical qualifications (POS counts, tax regime) and sales funnel audit logs.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/gerador-propostas-comerciais-painel.png',
-        tag: 'OPORTUNIDADES & SKUS',
-        title: { pt: 'Painel de Propostas Comerciais', en: 'Commercial Proposals Dashboard' },
-        caption: { pt: 'Acompanhamento de propostas em aberto, ganhas e perdidas com base no catálogo de SKUs e planos do SGSH.', en: 'Proposals lifecycle tracking connected to official SGSH SKU pricing and system plans.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/gerador-propostas-editor-view.png',
-        tag: 'NO-CODE & IA',
-        title: { pt: 'Formulário NoCode & Editor Dinâmico', en: 'NoCode Dynamic Proposal Form' },
-        caption: { pt: 'Renderização condicional por tipo de operação, sanitização de dados, prompt de IA e conversão contratual SHA-256.', en: 'Conditional form rendering, data sanitization, AI prompts and automated SHA-256 contract generation.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/central-avisos-comunicados.png',
-        tag: 'BROADCAST & SEFAZ',
-        title: { pt: 'Central de Avisos e Comunicados', en: 'Notification & Broadcast Center' },
-        caption: { pt: 'Comunicados ricos em Markdown para PDVs e retaguarda com segmentação por perfil e agendamento de vigência.', en: 'Rich Markdown announcements for POS and back-office with role segmentation and scheduled visibility.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/gestao-contratos-clientes.png',
-        tag: 'JURÍDICO & CONTRATOS',
-        title: { pt: 'Gestão de Contratos & Assinatura', en: 'Contract Lifecycle & Digital Signature' },
-        caption: { pt: 'Emissão e auditoria de minutas contratuais vinculadas às licenças ativas do SGSH com validação jurídica.', en: 'Drafting and audit trail of legal contracts tied to active SGSH licenses with signature compliance.' },
-      },
-      {
-        src: '/portfolio-autocom3/prints-16x9/gestao-redes-lojas.png',
-        tag: 'REDES & PARCEIROS',
-        title: { pt: 'Gestão Hierárquica de Redes & Canais', en: 'Multi-Store Chains & Partner Networks' },
-        caption: { pt: 'Estrutura multinível de redes comerciais e canais parceiros white-label vinculados à Autocom3.', en: 'Multilevel commercial hierarchy for retail chains and white-label partner networks.' },
+        id: 'operacoes',
+        title: { pt: 'Operações, CRM & Comunicação do Sistema', en: 'Operations, CRM & Broadcast Center' },
+        tag: 'ECOSSISTEMA & PRODUTIVIDADE',
+        description: {
+          pt: 'Cockpit operacional com catálogo de +30 ferramentas, ingestão e qualificação de leads e comunicados em tempo real.',
+          en: 'Operational cockpit with 30+ categorized tools, sales lead tracking and real-time broadcast messaging.',
+        },
+        items: [
+          {
+            src: '/portfolio-autocom3/prints-16x9/sistema-dashboard-geral.png',
+            tag: 'DASHBOARD & KPIS',
+            title: { pt: 'Dashboard Executivo Geral', en: 'Executive Command Center' },
+            caption: { pt: 'Visão gerencial consolidada com indicadores operacionais, certificados a vencer e monitoramento de clientes.', en: 'Consolidated executive metrics, certificate expiration alerts and client deployment tracking.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/crm-operacoes-comerciais.png',
+            tag: 'CATÁLOGO MODULAR',
+            title: { pt: 'Hub Canônico de Operações & CRM', en: 'Operations Master Hub & CRM' },
+            caption: { pt: 'Mais de 30 ferramentas agrupadas por setor com busca rápida, favoritos no storage e controle restrito por perfis.', en: '30+ departmental tools with instantaneous search, local storage favorites and strict RBAC.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/crm-operacoes-detalhe-registro.png',
+            tag: 'PIPELINE DE VENDAS',
+            title: { pt: 'Dossiê de Lead & Interações', en: 'Lead Dossier & Sales Pipeline' },
+            caption: { pt: 'Histórico de interações, qualificação técnica (PDVs, regime tributário) e trilha de auditoria do funil.', en: 'Interaction records, technical qualifications (POS counts, tax regime) and sales funnel audit logs.' },
+          },
+          {
+            src: '/portfolio-autocom3/prints-16x9/central-avisos-comunicados.png',
+            tag: 'BROADCAST & SEFAZ',
+            title: { pt: 'Central de Avisos e Comunicados', en: 'Notification & Broadcast Center' },
+            caption: { pt: 'Comunicados ricos em Markdown para PDVs e retaguarda com segmentação por perfil e agendamento de vigência.', en: 'Rich Markdown announcements for POS and back-office with role segmentation and scheduled visibility.' },
+          },
+        ],
       },
     ],
     evidence: { href: 'https://www.autocom3.com.br/', label: { pt: 'Conhecer a Autocom3', en: 'Visit Autocom3' } },
@@ -324,7 +377,7 @@ export const projectCases: EditorialCase[] = [
     evidence: { href: 'https://huggingface.co/pedroreoli/argos-action-1.5b', label: { pt: 'Modelo no HuggingFace', en: 'HuggingFace Model' } },
   },
   {
-    id: 'loog', category: 'corporativo', name: 'Loog Proteção Veicular',
+    id: 'loog', category: 'gerais', name: 'Loog Proteção Veicular',
     type: { pt: 'Plataforma Web & Cotações', en: 'Web Platform & Quotes' },
     introduction: {
       pt: 'Portal institucional e motor de captura de cotações para proteção veicular com alta taxa de conversão.',
@@ -348,7 +401,7 @@ export const projectCases: EditorialCase[] = [
     evidence: { href: 'https://loogprotecaoveicular.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } },
   },
   {
-    id: 'nexus', category: 'corporativo', name: 'Nexus Brazil',
+    id: 'nexus', category: 'gerais', name: 'Nexus Brazil',
     type: { pt: 'Sistemas & Integrações', en: 'Systems & Integrations' },
     introduction: {
       pt: 'Solução corporativa digital e presença institucional conectando serviços e tecnologia de ponta.',

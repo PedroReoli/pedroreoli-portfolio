@@ -1,12 +1,62 @@
 import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Icon } from '@/components/common/Icon'
 import type { Language } from '@/types/content'
-import type { EditorialCase, EditorialScreenshot } from './projectEditorial'
+import type { EditorialCase, EditorialScreenshot, EditorialGalleryGroup } from './projectEditorial'
 import { projectsCopy } from './projectEditorial'
 
 interface Props {
   project: EditorialCase
   language: Language
+}
+
+function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialGalleryGroup; language: Language; onSelect: (img: EditorialScreenshot) => void }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const total = group.items.length
+  const current = group.items[currentIndex]
+
+  const prev = () => setCurrentIndex((idx) => (idx - 1 + total) % total)
+  const next = () => setCurrentIndex((idx) => (idx + 1) % total)
+
+  return (
+    <div className="projects-case__carousel-card">
+      <div className="projects-case__carousel-top">
+        <div>
+          <span className="projects-case__gallery-tag">{group.tag}</span>
+          <h4>{group.title[language]}</h4>
+        </div>
+        <div className="projects-case__carousel-nav">
+          <span className="projects-case__carousel-counter">{currentIndex + 1} / {total}</span>
+          <button type="button" onClick={prev} aria-label="Imagem anterior" className="projects-case__carousel-btn">
+            <ChevronLeft size={16} />
+          </button>
+          <button type="button" onClick={next} aria-label="Próxima imagem" className="projects-case__carousel-btn">
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+      <p className="projects-case__carousel-desc">{group.description[language]}</p>
+
+      <div
+        className="projects-case__carousel-stage"
+        onClick={() => onSelect(current)}
+        role="button"
+        tabIndex={0}
+        aria-label={`${current.title[language]} - Clique para expandir`}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(current); } }}
+      >
+        <img src={current.src} alt={current.title[language]} loading="lazy" />
+        <span className="projects-case__gallery-zoom">
+          <Icon name="arrow-up-right" size={16} />
+        </span>
+      </div>
+
+      <div className="projects-case__carousel-caption">
+        <strong>{current.title[language]}</strong>
+        <p>{current.caption[language]}</p>
+      </div>
+    </div>
+  )
 }
 
 export function ProjectCase({ project, language }: Props) {
@@ -52,12 +102,15 @@ export function ProjectCase({ project, language }: Props) {
       {project.starStories && project.starStories.length > 0 && (
         <div className="projects-case__star-section">
           <header className="projects-case__sub-header">
-            <h3>{language === 'pt' ? 'Histórias de Impacto STAR' : 'STAR Impact Stories'}</h3>
-            <p>{language === 'pt' ? 'Desafios críticos de arquitetura e soluções em produção' : 'Critical architectural challenges and production solutions'}</p>
+            <h3>{language === 'pt' ? 'Histórias de Desafios & Soluções' : 'Key Challenges & Solutions'}</h3>
+            <p>{language === 'pt' ? 'Desafios críticos de arquitetura e entregas em produção' : 'Critical architecture challenges and production deliverables'}</p>
           </header>
           <div className="projects-case__star-grid">
-            {project.starStories.map((story) => (
-              <div key={story.title.pt} className="projects-case__star-card">
+            {project.starStories.map((story, idx) => (
+              <div
+                key={story.title.pt}
+                className={`projects-case__star-card ${idx === 4 ? 'projects-case__star-card--centered' : ''}`}
+              >
                 <div className="projects-case__star-top">
                   <span className="projects-case__star-tag">{story.tag[language]}</span>
                   <span className="projects-case__star-metric">{story.metric[language]}</span>
@@ -88,35 +141,20 @@ export function ProjectCase({ project, language }: Props) {
         </div>
       )}
 
-      {project.gallery && project.gallery.length > 0 && (
+      {project.galleryGroups && project.galleryGroups.length > 0 && (
         <div className="projects-case__gallery-section">
           <header className="projects-case__sub-header">
-            <h3>{language === 'pt' ? 'Galeria de Telas & Evidências Técnicas (16:9)' : 'Technical 16:9 Screen Gallery & Evidence'}</h3>
-            <p>{language === 'pt' ? '13 capturas de alta resolução com dados sensíveis mascarados' : '13 high-resolution screens with privacy-masked operational data'}</p>
+            <h3>{language === 'pt' ? 'Galeria por Sistemas & Módulos' : 'Systems & Modules Gallery'}</h3>
+            <p>{language === 'pt' ? 'Capturas organizadas por contexto operacional com dados sensíveis mascarados' : 'Screens categorized by business context with privacy-masked operational data'}</p>
           </header>
-          <div className="projects-case__gallery-grid">
-            {project.gallery.map((screen) => (
-              <figure
-                key={screen.src}
-                className="projects-case__gallery-item"
-                onClick={() => setSelectedScreenshot(screen)}
-                tabIndex={0}
-                role="button"
-                aria-label={`${screen.title[language]} - Clique para ampliar`}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedScreenshot(screen); } }}
-              >
-                <div className="projects-case__gallery-thumb">
-                  <img src={screen.src} alt={screen.title[language]} loading="lazy" />
-                  <span className="projects-case__gallery-zoom">
-                    <Icon name="arrow-up-right" size={16} />
-                  </span>
-                </div>
-                <figcaption>
-                  <span className="projects-case__gallery-tag">{screen.tag}</span>
-                  <strong>{screen.title[language]}</strong>
-                  <p>{screen.caption[language]}</p>
-                </figcaption>
-              </figure>
+          <div className="projects-case__carousels-grid">
+            {project.galleryGroups.map((group) => (
+              <GalleryGroupCarousel
+                key={group.id}
+                group={group}
+                language={language}
+                onSelect={(img) => setSelectedScreenshot(img)}
+              />
             ))}
           </div>
         </div>
