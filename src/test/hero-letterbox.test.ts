@@ -1,34 +1,23 @@
-import { readFileSync } from 'node:fs'
-import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
+import sharp from 'sharp'
+import { resolve } from 'node:path'
+import { sceneClips } from '../data/content'
+import { css } from './home-fixture'
 
-const filmCss = readFileSync(resolve(__dirname, '../styles/film.css'), 'utf8')
-
-function ruleBody(source: string, selector: string): string {
-  const start = source.indexOf(selector)
-  if (start < 0) return ''
-  const open = source.indexOf('{', start)
-  return source.slice(open + 1, source.indexOf('}', open))
-}
-
-describe('enquadramento do poster e vídeo', () => {
-  it('preserva contain, posição e escala na regra compartilhada desktop', () => {
-    const body = ruleBody(filmCss, '.film-slide__poster,')
-    expect(body).toMatch(/object-fit:\s*contain/)
-    expect(body).toMatch(/object-position:\s*center bottom/)
-    expect(body).toMatch(/transform:\s*none/)
+describe('superfície visual com geometria deliberada', () => {
+  it.each(sceneClips.clips)('poster $id tem a proporção do palco, sem distorção/crop', async clip => {
+    const metadata = await sharp(resolve(__dirname, '../../public', clip.poster.slice(1))).metadata()
+    expect(metadata.width! / metadata.height!).toBeCloseTo(16 / 9, 3)
+    for (const width of [320, 390, 768, 1886, 1920]) {
+      const stageHeight = width * 9 / 16
+      const scaleX = width / metadata.width!
+      const scaleY = stageHeight / metadata.height!
+      expect(scaleX).toBeCloseTo(scaleY, 6)
+    }
   })
-
-  it('preserva cover e center top no override mobile preexistente', () => {
-    const mobile = filmCss.slice(filmCss.indexOf('@media (max-width: 768px)'))
-    const body = ruleBody(mobile, '.film-slide__poster,')
-    expect(body).toMatch(/object-fit:\s*cover/)
-    expect(body).toMatch(/object-position:\s*center top/)
-  })
-
-  it('preenche as sobras com piso escuro independente do token ciano', () => {
-    const body = ruleBody(filmCss, '.film-slide__sticky {').replace(/\/\*[\s\S]*?\*\//g, '')
-    expect(body).toMatch(/background:\s*#060a0e/)
-    expect(body).not.toMatch(/var\(--color-bg|#2596be/i)
+  it('o palco reserva tamanho antes da carga e possui fundo independente', () => {
+    expect(css('film')).toMatch(/aspect-ratio:\s*16\s*\/\s*9/)
+    expect(css('film')).toMatch(/background:\s*#060a0e/)
+    expect(css('film')).not.toMatch(/#2596be|var\(--color-bg/)
   })
 })
