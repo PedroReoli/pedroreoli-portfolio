@@ -1,0 +1,89 @@
+[
+ {
+  "id": "hero",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "video",
+  "clip": "hero-to-about",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [
+   "hero__background-wrap op=0"
+  ],
+  "invisibleCount": 1
+ },
+ {
+  "id": "sobre",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "video",
+  "clip": "about-to-projects",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [
+   "art-frame__plaque op=0.7911",
+   "about__heading op=0.9044",
+   "about__summary op=0.421",
+   "about__focus-pills op=0",
+   "about__action op=0",
+   "DIV op=0",
+   "DIV op=0",
+   "DIV op=0"
+  ],
+  "invisibleCount": 9
+ },
+ {
+  "id": "projetos-selecionados",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "poster",
+  "clip": "projects-to-stack",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [
+   "project-rail__item project-rail__item--align op=0"
+  ],
+  "invisibleCount": 1
+ },
+ {
+  "id": "stack",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "poster",
+  "clip": "stack-to-purpose",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [],
+  "invisibleCount": 0
+ },
+ {
+  "id": "proposito",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "poster",
+  "clip": "purpose-to-experience",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [
+   "purpose-section__credit op=0.72"
+  ],
+  "invisibleCount": 1
+ },
+ {
+  "id": "experiencia",
+  "stageOpacity": "1",
+  "sectionBg": "rgba(0, 0, 0, 0)",
+  "mode": "poster",
+  "clip": "experience-loop",
+  "videoT": 0,
+  "videoPaused": true,
+  "invisible": [
+   "timeline-v__node-pulse op=0.050989",
+   "timeline-v__node-pulse op=0.050989",
+   "timeline-v__node-pulse op=0.050989",
+   "timeline-v__node-pulse op=0.050989",
+   "timeline-v__node-pulse op=0.050989"
+  ],
+  "invisibleCount": 5
+ }
+]

@@ -1,0 +1,3746 @@
+[
+ {
+  "id": "hero",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 7375
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3600,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4500,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 900,
+    "h": 7375
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3600,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1800,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2700,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2700,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1800,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3600,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3600,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 900,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4500,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4500,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3600,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 7375
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3600,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4500,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 900,
+    "h": 7375
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3600,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1800,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2700,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2700,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1800,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3600,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3600,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 900,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "1440x900",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4500,
+    "h": 7375
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4500,
+     "height": 900,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3600,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2700,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1800,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -900,
+     "height": 900,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1975,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 7545
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 768,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1834,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3126,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4009,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4782,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 768,
+    "h": 7545
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -768,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1066,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2358,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3241,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4014,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1834,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1834,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1066,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1292,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2175,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2948,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3126,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3126,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2358,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1292,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 883,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1656,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4009,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4009,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3241,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2175,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -883,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 773,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "1024x768",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4782,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4782,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4014,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2948,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1656,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -773,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 7545
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 768,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1834,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3126,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4009,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4782,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 768,
+    "h": 7545
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -768,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1066,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2358,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3241,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4014,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1834,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1834,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1066,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1292,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2175,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2948,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3126,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3126,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2358,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1292,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 883,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1656,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4009,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4009,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3241,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2175,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -883,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 773,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "1024x768",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "video",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4782,
+    "h": 7545
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4782,
+     "height": 768,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4014,
+     "height": 1066,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2948,
+     "height": 1292,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1656,
+     "height": 883,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -773,
+     "height": 772,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1995,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 8564
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 1024,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 2138,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3623,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4647,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 5671,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1024,
+    "h": 8564
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1114,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2599,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3623,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4647,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2138,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2138,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1114,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1485,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2509,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3533,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3623,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3623,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2599,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1485,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2048,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4647,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4647,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3623,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2509,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1024,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 5671,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -5671,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4647,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -3533,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -2048,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 8564
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 1024,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 2138,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3623,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4647,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 5671,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 1024,
+    "h": 8564
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1114,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2599,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3623,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4647,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2138,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2138,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1114,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1485,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2509,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3533,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3623,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3623,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2599,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1485,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 2048,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4647,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4647,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3623,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2509,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1024,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "768x1024",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "hero-to-about",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 5671,
+    "h": 8564
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -5671,
+     "height": 1024,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4647,
+     "height": 1114,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -3533,
+     "height": 1485,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -2048,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -1024,
+     "height": 1024,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 1870,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 8855
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 844,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 2007,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3725,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4760,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 5604,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 844,
+    "h": 8855
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -844,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1163,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2881,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3916,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4760,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2007,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2007,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1163,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1718,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2753,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3597,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3725,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3725,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2881,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1718,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1035,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1879,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4760,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4760,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3916,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2753,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1035,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 844,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "390x844",
+  "motion": "no-preference",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "false",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 5604,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -5604,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4760,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -3597,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1879,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -844,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "hero",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "hero",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "1",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 0,
+    "h": 8855
+   },
+   "poster": {
+    "src": "01-hero-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": 0,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 844,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 2007,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 3725,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 4760,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 5604,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(0, 0, 0, 0) 45%, rgba(8, 9, 11, 0.45) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgba(8, 9, "
+  }
+ },
+ {
+  "id": "sobre",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "sobre",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 844,
+    "h": 8855
+   },
+   "poster": {
+    "src": "02-about-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -844,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": 0,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 1163,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 2881,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 3916,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 4760,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 75% 50%, rgba(0, 0, 0, 0) 35%, rgba(8, 9, 11, 0.6) 75%, rgb(8, 9, 11) 100%), linear-gradient(r"
+  }
+ },
+ {
+  "id": "projetos-selecionados",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "projetos-selecionados",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 2007,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -2007,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -1163,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": 0,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 1718,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 2753,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 3597,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.4) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ },
+ {
+  "id": "stack",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "stack",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 3725,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -3725,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -2881,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -1718,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": 0,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 1035,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 1879,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle at 50% 40%, rgba(8, 9, 11, 0.45) 0%, rgba(8, 9, 11, 0.8) 85%, rgb(8, 9, 11) 100%), linear-gradien"
+  }
+ },
+ {
+  "id": "proposito",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "proposito",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 4760,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -4760,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -3916,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -2753,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1035,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": 0,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 844,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.35) 0%, rgba(8, 9, 11, 0.75) 80%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9"
+  }
+ },
+ {
+  "id": "experiencia",
+  "vp": "390x844",
+  "motion": "reduce",
+  "state": {
+   "stage": {
+    "section": "experiencia",
+    "clip": "none",
+    "mode": "poster",
+    "failed": "none",
+    "reduced": "true",
+    "opacity": "0.45",
+    "zIndex": "0",
+    "position": "fixed"
+   },
+   "video": null,
+   "scroll": {
+    "y": 5604,
+    "h": 8855
+   },
+   "poster": {
+    "src": "03-projects-poster.png",
+    "opacity": "1",
+    "objectFit": "contain"
+   },
+   "sections": [
+    {
+     "id": "hero",
+     "top": -5604,
+     "height": 844,
+     "bg": "rgba(0, 0, 0, 0)",
+     "overflow": "hidden",
+     "opacity": "1"
+    },
+    {
+     "id": "sobre",
+     "top": -4760,
+     "height": 1163,
+     "bg": "rgba(8, 9, 11, 0.62)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "projetos-selecionados",
+     "top": -3597,
+     "height": 1717,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "stack",
+     "top": -1879,
+     "height": 1035,
+     "bg": "rgba(8, 9, 11, 0.58)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "proposito",
+     "top": -844,
+     "height": 844,
+     "bg": "rgba(8, 9, 11, 0.86)",
+     "overflow": "visible",
+     "opacity": "1"
+    },
+    {
+     "id": "experiencia",
+     "top": 0,
+     "height": 2341,
+     "bg": "rgb(8, 9, 11)",
+     "overflow": "visible",
+     "opacity": "1"
+    }
+   ],
+   "scrim": "radial-gradient(circle, rgba(8, 9, 11, 0.5) 0%, rgba(8, 9, 11, 0.85) 85%, rgb(8, 9, 11) 100%), linear-gradient(rgb(8, 9,"
+  }
+ }
+]

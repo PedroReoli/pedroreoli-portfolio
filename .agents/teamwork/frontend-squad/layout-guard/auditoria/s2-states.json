@@ -1,0 +1,94 @@
+[
+ {
+  "tag": "a) chegando em S2",
+  "text": "rgba(245, 243, 239, 0.85)",
+  "box": {
+   "x": 664,
+   "y": 399,
+   "w": 620,
+   "h": 61
+  },
+  "stageSection": "sobre",
+  "stageMode": "video",
+  "stageClip": "hero-to-about",
+  "hasVideo": true,
+  "videoT": 1.52,
+  "videoPaused": false,
+  "bg": [
+   29,
+   25,
+   10
+  ],
+  "bgShare": 0.16,
+  "ratio": 10.15
+ },
+ {
+  "tag": "b) depois de 1.5s",
+  "text": "rgba(245, 243, 239, 0.85)",
+  "box": {
+   "x": 664,
+   "y": 395,
+   "w": 620,
+   "h": 61
+  },
+  "stageSection": "sobre",
+  "stageMode": "video",
+  "stageClip": "hero-to-about",
+  "hasVideo": true,
+  "videoT": 3.5,
+  "videoPaused": false,
+  "bg": [
+   29,
+   25,
+   10
+  ],
+  "bgShare": 0.15,
+  "ratio": 11.82
+ },
+ {
+  "tag": "c) voltando por cima",
+  "text": "rgba(245, 243, 239, 0.85)",
+  "box": {
+   "x": 664,
+   "y": 395,
+   "w": 620,
+   "h": 61
+  },
+  "stageSection": "sobre",
+  "stageMode": "video",
+  "stageClip": "none",
+  "hasVideo": false,
+  "videoT": null,
+  "videoPaused": null,
+  "bg": [
+   29,
+   25,
+   10
+  ],
+  "bgShare": 0.15,
+  "ratio": 11.81
+ },
+ {
+  "tag": "d) reload + salto direto",
+  "text": "rgba(245, 243, 239, 0.85)",
+  "box": {
+   "x": 664,
+   "y": 399,
+   "w": 620,
+   "h": 61
+  },
+  "stageSection": "sobre",
+  "stageMode": "video",
+  "stageClip": "none",
+  "hasVideo": false,
+  "videoT": null,
+  "videoPaused": null,
+  "bg": [
+   29,
+   25,
+   10
+  ],
+  "bgShare": 0.16,
+  "ratio": 9.75
+ }
+]

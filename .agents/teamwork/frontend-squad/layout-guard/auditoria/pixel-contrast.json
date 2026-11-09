@@ -1,0 +1,184 @@
+[
+ {
+  "label": "S1 subtitulo",
+  "section": "hero",
+  "meta": {
+   "x": 430,
+   "y": 203,
+   "w": 580,
+   "h": 50,
+   "color": "rgba(245, 243, 239, 0.75)",
+   "fs": "16.56px",
+   "fw": "400",
+   "surface": "rgba(0, 0, 0, 0)",
+   "surfaceFrom": "BODY"
+  },
+  "px": {
+   "bg": [
+    8,
+    9,
+    11
+   ],
+   "bgShare": 0.251,
+   "bgL": 0.0027,
+   "glyphL": 0.4978,
+   "ratio": 10.39
+  }
+ },
+ {
+  "label": "S2 titulo",
+  "section": "sobre",
+  "meta": {
+   "x": 664,
+   "y": 318,
+   "w": 680,
+   "h": 61,
+   "color": "rgb(245, 243, 239)",
+   "fs": "63.36px",
+   "fw": "800",
+   "surface": "rgba(8, 9, 11, 0.62)",
+   "surfaceFrom": "about section-light"
+  },
+  "px": {
+   "bg": [
+    7,
+    9,
+    11
+   ],
+   "bgShare": 0.155,
+   "bgL": 0.0026,
+   "glyphL": 0.8975,
+   "ratio": 18
+  }
+ },
+ {
+  "label": "S2 corpo",
+  "section": "sobre",
+  "meta": {
+   "x": 664,
+   "y": 395,
+   "w": 620,
+   "h": 61,
+   "color": "rgba(245, 243, 239, 0.85)",
+   "fs": "19.84px",
+   "fw": "400",
+   "surface": "rgba(8, 9, 11, 0.62)",
+   "surfaceFrom": "about section-light"
+  },
+  "px": {
+   "bg": [
+    29,
+    25,
+    10
+   ],
+   "bgShare": 0.155,
+   "bgL": 0.0098,
+   "glyphL": 0.6559,
+   "ratio": 11.81
+  }
+ },
+ {
+  "label": "S3 descricao",
+  "section": "projetos-selecionados",
+  "meta": {
+   "x": 77,
+   "y": 446,
+   "w": 513,
+   "h": 133,
+   "color": "rgba(245, 243, 239, 0.82)",
+   "fs": "16.56px",
+   "fw": "400",
+   "surface": "rgba(17, 18, 22, 0.85)",
+   "surfaceFrom": "project-card project-card--1 project-rail__card"
+  },
+  "px": {
+   "bg": [
+    15,
+    16,
+    20
+   ],
+   "bgShare": 0.449,
+   "bgL": 0.0052,
+   "glyphL": 0.5925,
+   "ratio": 11.63
+  }
+ },
+ {
+  "label": "S4 label",
+  "section": "stack",
+  "meta": {
+   "x": 86,
+   "y": 339,
+   "w": 35,
+   "h": 16,
+   "color": "rgb(245, 243, 239)",
+   "fs": "12.96px",
+   "fw": "700",
+   "surface": "rgba(255, 255, 255, 0.03)",
+   "surfaceFrom": "LI"
+  },
+  "px": {
+   "bg": [
+    24,
+    24,
+    27
+   ],
+   "bgShare": 0.529,
+   "bgL": 0.0093,
+   "glyphL": 0.8975,
+   "ratio": 15.99
+  }
+ },
+ {
+  "label": "S5 corpo",
+  "section": "proposito",
+  "meta": {
+   "x": 24,
+   "y": 512,
+   "w": 547,
+   "h": 98,
+   "color": "rgba(245, 243, 239, 0.78)",
+   "fs": "16.32px",
+   "fw": "400",
+   "surface": "rgba(8, 9, 11, 0.86)",
+   "surfaceFrom": "purpose-section"
+  },
+  "px": {
+   "bg": [
+    8,
+    9,
+    10
+   ],
+   "bgShare": 0.446,
+   "bgL": 0.0027,
+   "glyphL": 0.5333,
+   "ratio": 11.07
+  }
+ },
+ {
+  "label": "S6 desc",
+  "section": "experiencia",
+  "meta": {
+   "x": 135,
+   "y": 364,
+   "w": 509,
+   "h": 19,
+   "color": "rgba(244, 240, 231, 0.72)",
+   "fs": "13.44px",
+   "fw": "400",
+   "surface": "rgb(17, 18, 22)",
+   "surfaceFrom": "timeline-card timeline-v__card"
+  },
+  "px": {
+   "bg": [
+    17,
+    18,
+    22
+   ],
+   "bgShare": 0.758,
+   "bgL": 0.0061,
+   "glyphL": 0.4468,
+   "ratio": 8.86
+  }
+ }
+]
