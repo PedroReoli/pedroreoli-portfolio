@@ -14,11 +14,11 @@ describe('Página de Projetos', () => {
     localStorage.clear()
   })
 
-  it('apresenta o case corporativo sem carregar capturas não liberadas', () => {
+  it('apresenta o case corporativo com a galeria técnica autorizada e mascarada', () => {
     const { container } = renderPage()
     expect(screen.getByRole('heading', { name: 'Autocom3', level: 2 })).toBeInTheDocument()
-    expect(screen.getByText('As interfaces não são exibidas aqui para preservar informações corporativas.')).toBeInTheDocument()
-    expect(container.querySelectorAll('img')).toHaveLength(0)
+    expect(screen.getByText(/As capturas acima apresentam dados operacionais fictícios/i)).toBeInTheDocument()
+    expect(container.querySelectorAll('img').length).toBeGreaterThan(0)
     expect(screen.getByRole('link', { name: /Conhecer a Autocom3/ })).toHaveAttribute('href', 'https://www.autocom3.com.br/')
   })
 

@@ -4,6 +4,26 @@ export type ProjectCategory = 'corporativo' | 'gerais'
 
 type Localized = Record<Language, string>
 
+export interface EditorialStarStory {
+  title: Localized
+  tag: Localized
+  metric: Localized
+  summary: Localized
+}
+
+export interface EditorialArchitecture {
+  title: Localized
+  tech: Localized
+  description: Localized
+}
+
+export interface EditorialScreenshot {
+  src: string
+  title: Localized
+  tag: string
+  caption: Localized
+}
+
 export interface EditorialCase {
   id: string
   category: ProjectCategory
@@ -16,6 +36,10 @@ export interface EditorialCase {
   approach: Localized
   diagramLabel: Localized
   diagram: Localized[]
+  metrics?: { label: Localized; value: string }[]
+  starStories?: EditorialStarStory[]
+  architectures?: EditorialArchitecture[]
+  gallery?: EditorialScreenshot[]
   evidence?: { href: string; label: Localized }
   note?: Localized
 }
@@ -23,31 +47,205 @@ export interface EditorialCase {
 // Conteúdo editorial baseado no catálogo existente e nos READMEs públicos.
 export const projectCases: EditorialCase[] = [
   {
-    id: 'autocom3', category: 'corporativo', name: 'Autocom3',
-    type: { pt: 'Software corporativo', en: 'Enterprise software' },
+    id: 'autocom3',
+    category: 'corporativo',
+    name: 'Autocom3',
+    type: { pt: 'Ecossistema ERP & Plataforma Web B2B', en: 'ERP Ecosystem & Enterprise Web Platform' },
     introduction: {
-      pt: 'Interfaces para propostas, licenciamento e gestão de catálogo em uma plataforma corporativa.',
-      en: 'Interfaces for proposals, licensing and catalog management in an enterprise platform.',
+      pt: 'Hub mestre web unificado com 120+ telas, Design System de 500+ componentes, microsserviços locais em NestJS e esteira de automação comercial e fiscal.',
+      en: 'Unified web master hub featuring 120+ operational screens, a 500+ component Design System, local NestJS microservices and commercial/fiscal automation engines.',
     },
-    contextLabel: { pt: 'O contexto', en: 'The context' },
+    contextLabel: { pt: 'O contexto & escopo', en: 'Context & scope' },
     context: {
-      pt: 'Reunir rotinas de operações e áreas diferentes em uma experiência web de gestão.',
-      en: 'Bring operational workflows and different areas together in a web management experience.',
+      pt: 'Unificar rotinas de mais de 30 ferramentas dispersas, faturamento societário, governança de senhas diárias e licenciamento para redes de varejo farmacêutico e geral.',
+      en: 'Consolidate 30+ scattered internal tools, multi-entity corporate billing, daily rotating passwords and license governance for pharmaceutical and retail chains.',
     },
-    approachLabel: { pt: 'As frentes', en: 'The areas' },
+    approachLabel: { pt: 'Arquitetura & Engenharia', en: 'Architecture & Engineering' },
     approach: {
-      pt: 'O trabalho apresentado conecta operações, propostas comerciais, licenças e catálogo.',
-      en: 'The work presented connects operations, commercial proposals, licenses and catalog management.',
+      pt: 'React 18 + TypeScript no Portal Unificado com TanStack Query, microsserviço local NestJS na porta 3789 com interop edge-js, SQL Server particionado e app mobile Expo SDK 54.',
+      en: 'React 18 + TypeScript web platform with TanStack Query caching, local NestJS microservice on port 3789 via edge-js, partitioned SQL Server and Expo SDK 54 mobile app.',
     },
-    diagramLabel: { pt: 'Áreas da plataforma', en: 'Platform areas' },
+    diagramLabel: { pt: 'Pilares da Solução', en: 'Solution pillars' },
     diagram: [
-      { pt: 'Operações', en: 'Operations' },
-      { pt: 'Propostas', en: 'Proposals' },
-      { pt: 'Licenças', en: 'Licensing' },
-      { pt: 'Catálogo', en: 'Catalog' },
+      { pt: 'Portal 120+ Telas', en: '120+ Screens Portal' },
+      { pt: 'Design System 500+', en: 'Design System 500+' },
+      { pt: 'ERP Local NestJS', en: 'Local ERP NestJS' },
+      { pt: 'Mobile B2B Expo', en: 'Mobile B2B Expo' },
+    ],
+    metrics: [
+      { label: { pt: 'Telas operacionais unificadas', en: 'Unified operational screens' }, value: '120+' },
+      { label: { pt: 'Componentes reutilizáveis governados', en: 'Governed reusable components' }, value: '500+' },
+      { label: { pt: 'Tempo de dev de novas telas', en: 'Dev cycle time for new screens' }, value: '-70%' },
+      { label: { pt: 'Latência percebida em telas densas', en: 'Perceived latency on dense views' }, value: '-40%' },
+      { label: { pt: 'Tempo no atendimento de senhas técnicas', en: 'Support time for daily passwords' }, value: '-80%' },
+      { label: { pt: 'Redução de retrabalho na conciliação', en: 'Rework reduction in reconciliation' }, value: '-60%' },
+    ],
+    starStories: [
+      {
+        title: { pt: 'Grupos de Faturamento & Controle Societário', en: 'Billing Groups & Corporate Entity Control' },
+        tag: { pt: 'FINANCEIRO & COMPLIANCE', en: 'FINANCE & COMPLIANCE' },
+        metric: { pt: '-60% de retrabalho', en: '-60% rework' },
+        summary: {
+          pt: 'Centralização de redes e franquias sob CNPJs faturadores únicos, com validação síncrona obrigatória na Receita Federal, prévia analítica com mascaramento de privacidade e prevenção de inadimplência com soft-delete auditado.',
+          en: 'Consolidated commercial chains under single billing entities, requiring synchronous IRS (Receita Federal) validation, analytical previews with privacy toggles, and soft-delete audit trails.',
+        },
+      },
+      {
+        title: { pt: 'Central de Licenças SGSH & Senhas Técnicas Diárias', en: 'SGSH License Hub & Daily Technical Passwords' },
+        tag: { pt: 'SUPORTE & SEGURANÇA', en: 'SUPPORT & SECURITY' },
+        metric: { pt: '-80% no suporte em campo', en: '-80% field support time' },
+        summary: {
+          pt: 'Motor de normalização em lote para migração massiva de licenças legadas, ordenação determinística de redes (Loja Central e filiais), classificação por faturamento (1 a 5 estrelas) e senhas técnicas rotativas com desbloqueio justificado.',
+          en: 'Batch normalization engine for legacy license migration, deterministic network ordering, star-rating by revenue, and daily rotating technical passwords with mandatory unlock justifications.',
+        },
+      },
+      {
+        title: { pt: 'Hub Canônico de Operações & CRM Comercial', en: 'Operations Master Hub & Sales CRM' },
+        tag: { pt: 'OPERAÇÕES & VENDAS', en: 'OPERATIONS & SALES' },
+        metric: { pt: '+40% visibilidade no funil', en: '+40% pipeline visibility' },
+        summary: {
+          pt: 'Catálogo modular (ALL_CARDS) organizando mais de 30 ferramentas com busca instantânea, favoritos e RBAC restrito. Esteira de leads comerciais com alertas sonoros e visuais em tempo real via WebSockets e funil Kanban.',
+          en: 'Modular catalog (ALL_CARDS) centralizing 30+ tools with instant search, favorites and RBAC. Real-time WebSocket lead broadcast with sound/toast alerts and dynamic Kanban funnel.',
+        },
+      },
+      {
+        title: { pt: 'Gerador NoCode de Propostas & Conversão Contratual', en: 'NoCode Proposal Generator & Contract Engine' },
+        tag: { pt: 'COMERCIAL & JURÍDICO', en: 'COMMERCIAL & LEGAL' },
+        metric: { pt: 'De 45 min para < 5 min', en: 'From 45 min to < 5 min' },
+        summary: {
+          pt: 'Interface NoCode dinâmica com 8 categorias canônicas de negociação, catálogo oficial de SKUs, sanitização de tags órfãs, prompting estruturado para IA e geração automática de minutas jurídicas com hash SHA-256 ao fechar.',
+          en: 'Dynamic NoCode form with 8 negotiation categories, official SGSH SKU catalog, prompt structuring for AI, and automated SHA-256 signed legal contracts upon deal closing.',
+        },
+      },
+      {
+        title: { pt: 'Central de Avisos e Comunicados Segmentados', en: 'Broadcast Notification & Alert Center' },
+        tag: { pt: 'COMUNICAÇÃO & SEFAZ', en: 'COMMUNICATION & TAX' },
+        metric: { pt: 'Queda drástica de chamados', en: 'Drastic ticket drop' },
+        summary: {
+          pt: 'Broadcast instantâneo para caixas PDV e retaguarda durante manutenções ou instabilidades da SEFAZ, com editor Markdown, links seguros, agendamento de publicação e segmentação por perfil (Admin, Caixa, Vendedor, Contador).',
+          en: 'Instant broadcast alerts to POS terminals and back-office during tax/SEFAZ maintenance windows, featuring rich Markdown, safe link parsing, scheduled publishing and role-based audience filters.',
+        },
+      },
+    ],
+    architectures: [
+      {
+        title: { pt: 'Portal Unificado (Web Master)', en: 'Unified Portal (Web Master)' },
+        tech: { pt: 'React 18 · TypeScript · Vite · Chakra UI · TanStack Query', en: 'React 18 · TypeScript · Vite · Chakra UI · TanStack Query' },
+        description: {
+          pt: '120+ telas operacionais, governança de Design System atômico, Time to Interactive (TTI) < 1.2s e redução de 60% em requisições de rede com cache inteligente.',
+          en: '120+ operational screens, atomic Design System governance, TTI < 1.2s and 60% network request reduction through smart caching.',
+        },
+      },
+      {
+        title: { pt: 'ERP Desktop Local & Frente de Caixa', en: 'Local Desktop ERP & POS Engine' },
+        tech: { pt: 'React 18 · Electron 28 · NestJS 11 · edge-js · SQL Server', en: 'React 18 · Electron 28 · NestJS 11 · edge-js · SQL Server' },
+        description: {
+          pt: 'Microsserviço embarcado na porta 3789 com pooling MSSQL, bridge C#/FoxPro via edge-js, banco particionado por ano fiscal e regra de soft delete auditada.',
+          en: 'Embedded microservice on port 3789 with MSSQL pooling, C#/FoxPro bridge via edge-js, partitioned multi-database schema by fiscal year and audited soft deletes.',
+        },
+      },
+      {
+        title: { pt: 'Motor de Governança & Releases', en: 'Engineering Governance & Release Engine' },
+        tech: { pt: 'Python 3.11+ · Clean Architecture · Notion API · GPT-4o · Slack', en: 'Python 3.11+ · Clean Architecture · Notion API · GPT-4o · Slack' },
+        description: {
+          pt: 'CLI para registro de demandas e hotfixes com fila offline resiliente, estruturação técnica via LLM e emissão automatizada de notas de versão e changelogs.',
+          en: 'CLI for issue logging and hotfixes with offline resilience queue, LLM-assisted technical scoping and automated changelog generation.',
+        },
+      },
+      {
+        title: { pt: 'Portal do Cliente Mobile B2B', en: 'Mobile B2B Customer Portal' },
+        tech: { pt: 'React Native 0.81 · Expo SDK 54 · Biometria · EAS OTA Updates', en: 'React Native 0.81 · Expo SDK 54 · Biometrics · EAS OTA Updates' },
+        description: {
+          pt: 'App mobile multi-persona para gestores e técnicos com autenticação biométrica (Face ID / Touch ID), tokens criptografados e updates OTA contínuos.',
+          en: 'Multi-persona mobile app for managers and field techs featuring biometric auth (Face ID / Touch ID), encrypted token vault and seamless OTA updates.',
+        },
+      },
+    ],
+    gallery: [
+      {
+        src: '/portfolio-autocom3/prints-16x9/sistema-dashboard-geral.png',
+        tag: 'DASHBOARD & KPIS',
+        title: { pt: 'Dashboard Executivo Geral', en: 'Executive Command Center' },
+        caption: { pt: 'Visão gerencial consolidada com indicadores operacionais, certificados a vencer e monitoramento de clientes.', en: 'Consolidated executive metrics, certificate expiration alerts and client deployment tracking.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/sistema-faturamento-mensal.png',
+        tag: 'FINANCEIRO & AUDITORIA',
+        title: { pt: 'Faturamento Mensal & Prévia', en: 'Monthly Billing & Audit Preview' },
+        caption: { pt: 'Conciliação contábil entre competências, detecção de divergências e botão de privacidade para mascarar valores.', en: 'Cross-period reconciliation, value discrepancy alerts and privacy toggle to mask sensitive numbers.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-visao-geral.png',
+        tag: 'RECEITA FEDERAL & REDES',
+        title: { pt: 'Grupos de Faturamento Societários', en: 'Corporate Billing Groups' },
+        caption: { pt: 'Centralização de cobrança em CNPJ faturador único com consulta síncrona na Receita Federal e soft delete fiscal.', en: 'Centralized chain billing under a single taxpayer ID with synchronous IRS validation and soft-delete.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/grupos-faturamento-detalhe.png',
+        tag: 'GESTÃO SOCIETÁRIA',
+        title: { pt: 'Dossiê do Grupo & Filiais Vinculadas', en: 'Entity Dossier & Linked Branches' },
+        caption: { pt: 'Gestão detalhada de lojas centralizadas, adimplência contratual e regras unificadas de faturamento.', en: 'Detailed view of managed stores, compliance status and unified multi-branch billing policies.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-painel.png',
+        tag: 'LICENCIAMENTO SGSH',
+        title: { pt: 'Central de Licenças SGSH & Estrelas', en: 'SGSH License Hub & Star Ratings' },
+        caption: { pt: 'Listagem determinística com Loja Central no topo, filiais por número e classificação por faturamento mensal.', en: 'Deterministic hierarchy placing Central Store first, branches by number and revenue star ratings.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/central-licencas-sgsh-detalhe.png',
+        tag: 'TERMINAIS & HARDWARE',
+        title: { pt: 'Dossiê Técnico da Licença', en: 'Technical License Dossier' },
+        caption: { pt: 'Mapeamento de direitos contratuais, identificadores de hardware dos PDVs e suporte a licenças de sistemas legados.', en: 'Contract entitlements, POS hardware IDs and direct download links for legacy system licenses.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/crm-operacoes-comerciais.png',
+        tag: 'CATÁLOGO MODULAR',
+        title: { pt: 'Hub Canônico de Operações & CRM', en: 'Operations Master Hub & CRM' },
+        caption: { pt: 'Mais de 30 ferramentas agrupadas por setor com busca rápida, favoritos no storage e controle restrito por perfis.', en: '30+ departmental tools with instantaneous search, local storage favorites and strict RBAC.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/crm-operacoes-detalhe-registro.png',
+        tag: 'PIPELINE DE VENDAS',
+        title: { pt: 'Dossiê de Lead & Interações', en: 'Lead Dossier & Sales Pipeline' },
+        caption: { pt: 'Histórico de interações, qualificação técnica (PDVs, regime tributário) e trilha de auditoria do funil.', en: 'Interaction records, technical qualifications (POS counts, tax regime) and sales funnel audit logs.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/gerador-propostas-comerciais-painel.png',
+        tag: 'OPORTUNIDADES & SKUS',
+        title: { pt: 'Painel de Propostas Comerciais', en: 'Commercial Proposals Dashboard' },
+        caption: { pt: 'Acompanhamento de propostas em aberto, ganhas e perdidas com base no catálogo de SKUs e planos do SGSH.', en: 'Proposals lifecycle tracking connected to official SGSH SKU pricing and system plans.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/gerador-propostas-editor-view.png',
+        tag: 'NO-CODE & IA',
+        title: { pt: 'Formulário NoCode & Editor Dinâmico', en: 'NoCode Dynamic Proposal Form' },
+        caption: { pt: 'Renderização condicional por tipo de operação, sanitização de dados, prompt de IA e conversão contratual SHA-256.', en: 'Conditional form rendering, data sanitization, AI prompts and automated SHA-256 contract generation.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/central-avisos-comunicados.png',
+        tag: 'BROADCAST & SEFAZ',
+        title: { pt: 'Central de Avisos e Comunicados', en: 'Notification & Broadcast Center' },
+        caption: { pt: 'Comunicados ricos em Markdown para PDVs e retaguarda com segmentação por perfil e agendamento de vigência.', en: 'Rich Markdown announcements for POS and back-office with role segmentation and scheduled visibility.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/gestao-contratos-clientes.png',
+        tag: 'JURÍDICO & CONTRATOS',
+        title: { pt: 'Gestão de Contratos & Assinatura', en: 'Contract Lifecycle & Digital Signature' },
+        caption: { pt: 'Emissão e auditoria de minutas contratuais vinculadas às licenças ativas do SGSH com validação jurídica.', en: 'Drafting and audit trail of legal contracts tied to active SGSH licenses with signature compliance.' },
+      },
+      {
+        src: '/portfolio-autocom3/prints-16x9/gestao-redes-lojas.png',
+        tag: 'REDES & PARCEIROS',
+        title: { pt: 'Gestão Hierárquica de Redes & Canais', en: 'Multi-Store Chains & Partner Networks' },
+        caption: { pt: 'Estrutura multinível de redes comerciais e canais parceiros white-label vinculados à Autocom3.', en: 'Multilevel commercial hierarchy for retail chains and white-label partner networks.' },
+      },
     ],
     evidence: { href: 'https://www.autocom3.com.br/', label: { pt: 'Conhecer a Autocom3', en: 'Visit Autocom3' } },
-    note: { pt: 'As interfaces não são exibidas aqui para preservar informações corporativas.', en: 'Interfaces are not shown here to protect business information.' },
+    note: {
+      pt: 'As capturas acima apresentam dados operacionais fictícios e mascarados pelo motor de privacidade para preservar sigilo corporativo.',
+      en: 'The captures above present mock and masked data generated by the privacy engine to protect corporate confidentiality.',
+    },
   },
   {
     id: 'achilles', category: 'gerais', name: 'Achilles CDP Agent',
