@@ -21,7 +21,6 @@ export function HeroSection() {
           fetchPriority="high"
           loading="eager"
         />
-        <div className="hero__background-overlay" />
       </div>
 
       <div className="shell hero__shell">
