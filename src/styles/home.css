@@ -26,9 +26,9 @@
   top: auto !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: min(100%, 1600px) !important;
-  max-width: 1600px !important;
-  height: clamp(580px, 86vh, 980px) !important;
+  width: min(100%, 1320px) !important;
+  max-width: 1320px !important;
+  height: clamp(500px, 76vh, 840px) !important;
   aspect-ratio: auto !important;
   z-index: 0 !important;
   pointer-events: none;
@@ -38,8 +38,8 @@
   box-shadow: none !important;
   outline: none !important;
   overflow: hidden;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 72%, rgba(0, 0, 0, 0.4) 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 72%, rgba(0, 0, 0, 0.4) 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0.35) 86%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0.35) 86%, transparent 100%);
 }
 .hero__background-image {
   display: block;
@@ -55,8 +55,8 @@
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  opacity: 0.92;
-  filter: contrast(1.05) brightness(0.98);
+  opacity: 0.64;
+  filter: contrast(1.02) brightness(0.92);
 }
 .hero__shell {
   position: relative;
