@@ -1,4 +1,4 @@
-﻿.archive-page { padding-top: 72px; background: var(--night); }
+.archive-page { padding-top: 72px; background: var(--night); }
 .archive-hero { padding: 80px 0 70px; background: var(--night); color: var(--paper); }
 .archive-hero .shell { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
 .archive-hero p { grid-column: 1 / -1; color: var(--accent); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
