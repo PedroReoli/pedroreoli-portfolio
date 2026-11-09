@@ -15,7 +15,7 @@ export function PurposeSection() {
       <div className="shell">
         <div className="section-kicker"><p>{copy.eyebrow}</p><p>{purpose.metadata}</p></div>
         <div className="purpose-section__grid">
-          <figure className="purpose-section__media" data-reveal>
+          <figure className="purpose-section__media" data-reveal="scale" data-reveal-delay="100">
             <img
               src={purpose.media.src}
               srcSet={purpose.media.srcSet}
@@ -27,7 +27,7 @@ export function PurposeSection() {
             />
             <figcaption>{copy.imageCategory}<span>{copy.imageContext}</span></figcaption>
           </figure>
-          <div className="purpose-section__copy" data-reveal>
+          <div className="purpose-section__copy" data-reveal="smoke" data-reveal-delay="250">
             <h2><span>{copy.title}</span><em>{copy.titleAccent}</em></h2>
             <p>{copy.summary}</p>
             <a className="text-link" href={purpose.articleHref} target="_blank" rel="noreferrer">

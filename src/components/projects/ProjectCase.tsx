@@ -61,7 +61,29 @@ function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialG
 
 export function ProjectCase({ project, language }: Props) {
   const copy = projectsCopy[language]
-  const [selectedScreenshot, setSelectedScreenshot] = useState<EditorialScreenshot | null>(null)
+  const [modalIndex, setModalIndex] = useState<number | null>(null)
+
+  // Flatten all gallery screenshots across groups for linear lightbox browsing
+  const allScreenshots: EditorialScreenshot[] = project.galleryGroups
+    ? project.galleryGroups.flatMap((g) => g.items)
+    : project.gallery || []
+
+  const selectedScreenshot = modalIndex !== null && allScreenshots[modalIndex] ? allScreenshots[modalIndex] : null
+
+  const handleSelectScreenshot = (img: EditorialScreenshot) => {
+    const idx = allScreenshots.findIndex((s) => s.src === img.src)
+    setModalIndex(idx !== -1 ? idx : 0)
+  }
+
+  const prevModal = () => {
+    if (allScreenshots.length <= 1) return
+    setModalIndex((idx) => (idx !== null ? (idx - 1 + allScreenshots.length) % allScreenshots.length : 0))
+  }
+
+  const nextModal = () => {
+    if (allScreenshots.length <= 1) return
+    setModalIndex((idx) => (idx !== null ? (idx + 1) % allScreenshots.length : 0))
+  }
 
   return (
     <article className="projects-case" id={project.id} aria-labelledby={`${project.id}-title`}>
@@ -153,7 +175,7 @@ export function ProjectCase({ project, language }: Props) {
                 key={group.id}
                 group={group}
                 language={language}
-                onSelect={(img) => setSelectedScreenshot(img)}
+                onSelect={handleSelectScreenshot}
               />
             ))}
           </div>
@@ -166,24 +188,47 @@ export function ProjectCase({ project, language }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label={selectedScreenshot.title[language]}
-          onClick={() => setSelectedScreenshot(null)}
+          onClick={() => setModalIndex(null)}
         >
           <div className="projects-case__modal-content" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className="projects-case__modal-close"
-              onClick={() => setSelectedScreenshot(null)}
+              onClick={() => setModalIndex(null)}
               aria-label="Fechar visualização"
             >
               ✕
             </button>
-            <img src={selectedScreenshot.src} alt={selectedScreenshot.title[language]} />
+            <div className="projects-case__modal-stage">
+              <button
+                type="button"
+                className="projects-case__modal-nav projects-case__modal-nav--prev"
+                onClick={prevModal}
+                aria-label="Imagem anterior"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <img src={selectedScreenshot.src} alt={selectedScreenshot.title[language]} />
+              <button
+                type="button"
+                className="projects-case__modal-nav projects-case__modal-nav--next"
+                onClick={nextModal}
+                aria-label="Próxima imagem"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
             <div className="projects-case__modal-footer">
               <div>
                 <span className="projects-case__gallery-tag">{selectedScreenshot.tag}</span>
                 <h3>{selectedScreenshot.title[language]}</h3>
               </div>
-              <p>{selectedScreenshot.caption[language]}</p>
+              <div className="projects-case__modal-info">
+                <span className="projects-case__modal-counter">
+                  {(modalIndex ?? 0) + 1} / {allScreenshots.length}
+                </span>
+                <p>{selectedScreenshot.caption[language]}</p>
+              </div>
             </div>
           </div>
         </div>

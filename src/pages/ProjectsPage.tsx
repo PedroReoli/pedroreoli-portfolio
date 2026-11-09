@@ -41,7 +41,7 @@ export function ProjectsPage() {
           </nav>
         </div>
 
-        <div className="projects-page__cases">
+        <div key={category} className="projects-page__cases">
           {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
             <div className="projects-page__empty" role="status">
               <p>{copy.empty}</p>

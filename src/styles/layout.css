@@ -49,13 +49,65 @@
 .contact-section__headline svg { width: .65em; height: .65em; }
 .contact-section__description { margin-top: 28px; max-width: 55ch; color: var(--color-text-secondary); }
 .contact-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-.contact-grid a { position: relative; display: grid; gap: 10px; padding: 28px 20px 28px 0; min-width: 0; }
-.contact-grid a span { font-size: .875rem; color: var(--color-text-secondary); }
-.contact-grid a strong { display: inline-flex; align-items: center; gap: 8px; font-size: 1.2rem; font-weight: 500; color: #ffffff; }
-.contact-grid__icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: #ffffff; }
-.contact-grid__icon svg { width: 18px; height: 18px; fill: currentColor; }
-.contact-grid a svg.contact-grid__arrow { position: absolute; top: 30px; right: 20px; width: 18px; height: 18px; color: var(--color-text-secondary); }
-.contact-grid a:hover strong { text-decoration: underline; text-underline-offset: 5px; color: var(--accent); }
+.contact-grid a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 24px 32px 0;
+  min-width: 0;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.contact-grid a span { font-size: .84rem; color: var(--color-text-secondary); }
+.contact-grid a strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+.contact-grid__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-accent, #ffc900);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.contact-grid__icon svg { width: 19px; height: 19px; fill: currentColor; }
+.contact-grid a svg.contact-grid__arrow {
+  position: absolute;
+  top: 34px;
+  right: 20px;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+.contact-grid a:hover {
+  transform: translateY(-2px);
+}
+.contact-grid a:hover strong {
+  color: var(--color-accent, #ffc900);
+}
+.contact-grid a:hover .contact-grid__icon {
+  background: var(--color-accent, #ffc900);
+  color: #08090b;
+  border-color: var(--color-accent, #ffc900);
+  transform: scale(1.05);
+}
+.contact-grid a:hover svg.contact-grid__arrow {
+  color: var(--color-accent, #ffc900);
+  transform: translate(2px, -2px);
+}
 .contact-section__bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 32px; font-size: .875rem; color: var(--color-text-secondary); }
 .contact-section__bottom button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 0; border: 0; background: transparent; }
 .contact-section__bottom svg { width: 16px; }

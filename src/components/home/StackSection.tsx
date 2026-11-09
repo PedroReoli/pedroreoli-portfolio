@@ -21,8 +21,13 @@ export function StackSection() {
           <h2>{copy.title}<em>{section.titleAccent}</em></h2><p>{copy.description}</p>
         </div>
         <div className="stack-grid" aria-label={copy.ariaLabel}>
-          {technologyContent.groups.map((group) => (
-            <article key={group.number} data-reveal className="stack-column-revealed">
+          {technologyContent.groups.map((group, groupIdx) => (
+            <article
+              key={group.number}
+              data-reveal="card"
+              data-reveal-delay={String(150 + groupIdx * 100)}
+              className="stack-column-revealed"
+            >
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>
               <ul>
                 {group.tools.map((tool) => {

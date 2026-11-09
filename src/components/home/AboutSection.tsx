@@ -21,12 +21,16 @@ export function AboutSection() {
 
         <div className="about__center">
           <h2 className="about__heading" data-reveal="smoke">{copy.title}</h2>
-          <p className="about__summary" data-reveal="smoke">{copy.summary}</p>
+          <p className="about__summary" data-reveal="smoke" data-reveal-delay="150">{copy.summary}</p>
 
           <div className="about__metrics-card" aria-label={copy.statsLabel}>
             <div className="stats-grid">
-              {about.stats.map((stat) => (
-                <div key={stat.value} data-reveal="card">
+              {about.stats.map((stat, index) => (
+                <div
+                  key={stat.value}
+                  data-reveal="card"
+                  data-reveal-delay={String(250 + index * 120)}
+                >
                   <strong>{stat.value}</strong>
                   <span>{stat[language]}</span>
                 </div>

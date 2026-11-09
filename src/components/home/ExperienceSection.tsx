@@ -32,6 +32,7 @@ export function ExperienceSection() {
                   className={`timeline-v__item ${sideClass}`}
                   key={item.company + item.period.pt}
                   data-reveal={isEven ? 'slide-right' : 'slide-left'}
+                  data-reveal-delay={String(100 + (index % 4) * 100)}
                 >
                   <div className="timeline-node" aria-hidden="true">
                     <span>{String(index + 1).padStart(2, '0')}</span>

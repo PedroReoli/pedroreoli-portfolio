@@ -21,15 +21,20 @@ export function MediaPage() {
       <div className="notes-page__shell">
         <header className="notes-page__header">
           <p className="notes-page__eyebrow">{copy.eyebrow}</p>
-          <h1>{copy.title}</h1>
-          <p className="notes-page__intro">{editorial.intro}</p>
+          <div className="notes-page__heading">
+            <h1>{copy.title}</h1>
+            <p className="notes-page__intro">{editorial.intro}</p>
+          </div>
         </header>
-        <div className="notes-page__layout">
+
+        <div className="notes-page__navigation">
           <NotesSectionNav label={editorial.indexLabel} sections={[
             ...(hasPress ? [{ id: 'imprensa', label: copy.pressLabel }] : []),
             { id: 'referencias', label: editorial.referencesNav },
           ]} />
-          <div className="notes-page__content">
+        </div>
+
+        <div className="notes-page__content">
             {hasPress && (
               <section id="imprensa" className="notes-page__section" aria-labelledby="notes-press-heading" tabIndex={-1}>
                 <div className="notes-page__section-heading">
@@ -52,7 +57,6 @@ export function MediaPage() {
               )}
             </section>
           </div>
-        </div>
       </div>
     </div>
   )
