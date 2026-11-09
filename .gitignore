@@ -88,3 +88,9 @@ flow/*v12alpha*
 # e lixo — guarda a unica copia de busto-v1.jpg, rosto-normal.jpg e do clipe
 # cortado. Fica local (e por isso continua fora do repo).
 _assets-backup-pre-reset/
+
+# Medidas de emenda entre clipes e pranchas de fronteira: regeneraveis pelos
+# scripts versionados (flow/auditar-fronteiras.mjs, flow/medir-emenda1.mjs).
+flow/cadeia/
+flow/fronteiras/
+flow/emenda1-lado.png
