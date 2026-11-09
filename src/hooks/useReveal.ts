@@ -49,10 +49,17 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
     if (!root || typeof window === 'undefined') return
 
     const query = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (query.matches || typeof IntersectionObserver === 'undefined') return
-
     const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
-    const animations = new Set<Animation>()
+
+    if (query.matches) {
+      nodes.forEach((el) => el.classList.add('is-revealed'))
+      return
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      nodes.forEach((el) => el.classList.add('is-revealed'))
+      return
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -60,43 +67,33 @@ export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
         const element = entry.target
         observer.unobserve(element)
 
-        if (typeof element.animate !== 'function' || query.matches) return
-
-        const type = (element.dataset.reveal || 'default') as RevealType
         const delayStr = element.dataset.revealDelay
         const delay = delayStr ? Math.max(0, parseInt(delayStr, 10)) : 0
 
-        const keyframes = getAnimationKeyframes(type)
-        const animation = element.animate(keyframes, {
-          duration: type === 'smoke' ? 820 : 640,
-          delay,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          fill: 'none',
-        })
-
-        animations.add(animation)
-        animation.onfinish = () => {
-          animations.delete(animation)
+        if (delay > 0) {
+          element.style.transitionDelay = `${delay}ms`
         }
+
+        // Adiciona classe para disparar a transição CSS visível e garantida
+        requestAnimationFrame(() => {
+          element.classList.add('is-revealed')
+        })
       })
-    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' })
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
 
     nodes.forEach((node) => observer.observe(node))
 
-    const stop = () => {
+    const handleMotionChange = () => {
       if (query.matches) {
-        animations.forEach((animation) => animation.cancel())
-        animations.clear()
+        nodes.forEach((el) => el.classList.add('is-revealed'))
       }
     }
 
-    query.addEventListener('change', stop)
+    query.addEventListener('change', handleMotionChange)
 
     return () => {
       observer.disconnect()
-      animations.forEach((animation) => animation.cancel())
-      animations.clear()
-      query.removeEventListener('change', stop)
+      query.removeEventListener('change', handleMotionChange)
     }
   }, [scope])
 }
