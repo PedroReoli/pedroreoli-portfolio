@@ -31,7 +31,11 @@ Sobre Mim.md
 Thumbs.db
 .vscode/
 .idea/
-/.agents/teamwork
+# Documentos do time (.agents/teamwork): o texto entra no repo, a midia nao.
+# Versionado: .md, .json, .txt, .mjs, .diff e .css.
+# Fora: frames e videos, que sao saida reproduzivel dos scripts versionados.
+/.agents/teamwork/**/*.png
+/.agents/teamwork/**/*.mkv
 
 # --- Pipeline de midia (flow/) -------------------------------------------
 # O que fica versionado: os ENTREGAVEIS aprovados (v9 rosto, v12 composicao,
