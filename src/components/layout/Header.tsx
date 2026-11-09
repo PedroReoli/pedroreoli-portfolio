@@ -67,9 +67,6 @@ export function Header() {
             <span aria-hidden="true">{language === 'pt' ? 'PT' : 'EN'}</span>
             <span className="language-switch__next">{language === 'pt' ? 'EN' : 'PT'}</span>
           </button>
-          <a className="header-contact" href={contact} onClick={e => go(e, contact)}>
-            {copy.contact}<ArrowUpRight size={16} aria-hidden="true" />
-          </a>
           <button ref={trigger} className="menu-trigger" type="button" aria-expanded={open}
             aria-controls="mobile-menu" aria-label={open ? copy.closeMenu : copy.openMenu}
             onClick={() => setOpen(value => !value)}>
