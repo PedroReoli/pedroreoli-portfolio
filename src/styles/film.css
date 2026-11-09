@@ -40,7 +40,11 @@
   position: relative;
   height: 100svh;
   overflow: hidden;
-  background: var(--color-bg, #2596be);
+  /* Fallback ESCURO fixo, não `--color-bg`: o token virou `#2596be` (ciano) no
+     commit `c3d6e27`, e qualquer sobra — antes o letterbox, agora uma falha de vídeo —
+     aparecia como faixa azul nas laterais. O enquadramento aprovado é sobre fundo
+     `#060a0e`, então o piso do palco é o escuro, independente do token de tema. */
+  background: #060a0e;
 }
 
 .film-slide__visual {
@@ -74,9 +78,12 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  /* O clipe é 16:9 e o busto está enquadrado nele: no desktop cabe inteiro, sem
-     recorte de rosto. Em tela estreita o cover preenche e corta as laterais. */
-  object-fit: contain;
+  /* CAUSA DAS FAIXAS AZUIS: o clipe é 16:9 e usa `contain`, então em qualquer janela
+     mais larga que 16:9 ele é LETTERBOXADO e as sobras laterais mostram o fundo do
+     container (`--color-bg`) — era isso que aparecia como faixas ciano nas laterais.
+     `cover` preenche a viewport sem sobra. `center bottom` mantém o busto e o círculo
+     como no enquadramento aprovado (o corte acontece só nas laterais vazias). */
+  object-fit: cover;
   object-position: center bottom;
   /* Nenhum translate/scale aqui: era isso que virava o "feed de paralaxe". */
   transform: none;
