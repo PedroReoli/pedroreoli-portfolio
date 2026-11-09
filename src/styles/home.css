@@ -249,9 +249,9 @@
 .purpose-section__media img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  object-position: center 25%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: block;
   border-radius: 20px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
   filter: contrast(1.04);

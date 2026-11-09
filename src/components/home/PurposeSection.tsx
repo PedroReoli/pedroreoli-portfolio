@@ -16,8 +16,15 @@ export function PurposeSection() {
         <div className="section-kicker"><p>{copy.eyebrow}</p><p>{purpose.metadata}</p></div>
         <div className="purpose-section__grid">
           <figure className="purpose-section__media" data-reveal>
-            <img src={purpose.media.src} srcSet={purpose.media.srcSet} sizes="(max-width: 760px) 90vw, 45vw"
-              width="480" height="216" alt={copy.imageAlt} loading="lazy" />
+            <img
+              src={purpose.media.src}
+              srcSet={purpose.media.srcSet}
+              sizes="(max-width: 760px) 90vw, 45vw"
+              width="1280"
+              height="577"
+              alt={copy.imageAlt}
+              loading="lazy"
+            />
             <figcaption>{copy.imageCategory}<span>{copy.imageContext}</span></figcaption>
           </figure>
           <div className="purpose-section__copy" data-reveal>
