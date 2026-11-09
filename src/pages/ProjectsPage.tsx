@@ -1,70 +1,55 @@
-import { useCallback, useState } from 'react'
-import { ArrowUpRight, Expand } from 'lucide-react'
-import { interfaceContent, projectsContent } from '@/data/content'
+import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
+import { useRouter } from '@/context/RouterContext'
 import { SEO } from '@/components/common/SEO'
-import { ProjectViewerModal } from '@/components/projects/ProjectViewerModal'
+import { ProjectCase } from '@/components/projects/ProjectCase'
+import { projectCases, projectsCopy, type ProjectCategory } from '@/components/projects/projectEditorial'
+import '@/styles/projects-page.css'
 
 export function ProjectsPage() {
   const { language } = useLanguage()
-  const [category, setCategory] = useState<'corporativo' | 'gerais'>(() => new URLSearchParams(window.location.search).get('tipo') === 'gerais' ? 'gerais' : 'corporativo')
-  const [viewerIndex, setViewerIndex] = useState<number | null>(null)
-  const setViewer = useCallback((index: number | null) => setViewerIndex(index), [])
+  const { searchParams, setSearchParam } = useRouter()
+  const category: ProjectCategory = searchParams.get('tipo') === 'gerais' ? 'gerais' : 'corporativo'
   const page = interfaceContent.projectsPage[language]
   const categories = interfaceContent.projectCategories
-  const corporate = interfaceContent.corporateProjects
-  const corporateCopy = corporate[language]
-  const independent = interfaceContent.independentProjects[language]
-
-  const selectCategory = (value: 'corporativo' | 'gerais') => {
-    setCategory(value)
-    window.history.replaceState(null, '', `/projetos?tipo=${value}`)
-  }
+  const copy = projectsCopy[language]
+  const cases = projectCases.filter((project) => project.category === category)
 
   return (
-    <div className="archive-page">
+    <div className="projects-page">
       <SEO pageKey="projects" />
-      <header className="archive-hero">
-        <div className="shell">
-          <p>{page.eyebrow}</p><h1>{page.title}</h1><span>{page.description}</span>
-          <div className="archive-tabs" role="tablist" aria-label={categories.label[language]}>
+      <div className="projects-page__shell">
+        <header className="projects-page__header">
+          <p className="projects-page__eyebrow">{page.eyebrow}</p>
+          <div className="projects-page__heading">
+            <h1>{page.title}</h1>
+            <p>{copy.introduction}</p>
+          </div>
+        </header>
+
+        <div className="projects-page__navigation">
+          <div className="projects-page__filters" role="group" aria-label={categories.label[language]}>
             {categories.items.map((item) => (
-              <button key={item.id} type="button" role="tab" aria-selected={category === item.id} onClick={() => selectCategory(item.id as 'corporativo' | 'gerais')}>
+              <button key={item.id} type="button" aria-pressed={category === item.id}
+                onClick={() => setSearchParam('tipo', item.id)}>
                 {item.label[language]}
               </button>
             ))}
           </div>
+          <nav className="projects-page__index" aria-label={copy.index}>
+            {cases.map((project) => <a key={project.id} href={`#${project.id}`}>{project.name}</a>)}
+          </nav>
         </div>
-      </header>
 
-      {category === 'corporativo' ? (
-        <section className="project-archive section-light">
-          <div className="shell">
-            <div className="archive-title"><span>{corporateCopy.sectionLabel} / {corporate.period}</span><h2>{corporate.title}</h2><p>{corporateCopy.description}</p></div>
-            <div className="gallery-grid">
-              {projectsContent.corporateProjectImages.map((image, index) => (
-                <button key={image.src} type="button" className={image.wide ? 'is-wide' : ''} onClick={() => setViewerIndex(index)} aria-label={`${corporateCopy.galleryAction}: ${image.alt[language]}`}>
-                  <img src={image.src} srcSet={image.srcSet} alt={image.alt[language]} loading="lazy" /><span>{image.alt[language]}<Expand /></span>
-                </button>
-              ))}
+        <div className="projects-page__cases">
+          {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
+            <div className="projects-page__empty" role="status">
+              <p>{copy.empty}</p>
+              <button type="button" onClick={() => setSearchParam('tipo', category === 'corporativo' ? 'gerais' : 'corporativo')}>{copy.other}</button>
             </div>
-          </div>
-        </section>
-      ) : (
-        <section className="project-archive section-light">
-          <div className="shell">
-            <div className="archive-title"><span>{independent.sectionLabel}</span><h2>{independent.title}</h2><p>{independent.description}</p></div>
-            <div className="independent-grid">
-              {projectsContent.independentProjects.map((project) => (
-                <a key={project.number} href={project.href} target="_blank" rel="noreferrer">
-                  <span>{project.number} / {project.category[language]}</span><h3>{project.title}</h3><p>{project.description[language]}</p><ArrowUpRight />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-      <ProjectViewerModal images={projectsContent.corporateProjectImages} index={viewerIndex} onChange={setViewer} />
+          )}
+        </div>
+      </div>
     </div>
   )
 }

@@ -35,14 +35,11 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   });
 
   const pathname = useMemo(() => {
-    const qIndex = currentUrl.indexOf('?');
-    const path = qIndex >= 0 ? currentUrl.substring(0, qIndex) : currentUrl;
-    return path || '/';
+    return new URL(currentUrl, window.location.origin).pathname;
   }, [currentUrl]);
 
   const search = useMemo(() => {
-    const qIndex = currentUrl.indexOf('?');
-    return qIndex >= 0 ? currentUrl.substring(qIndex) : '';
+    return new URL(currentUrl, window.location.origin).search;
   }, [currentUrl]);
 
   const searchParams = useMemo(() => new URLSearchParams(search), [search]);
@@ -61,7 +58,7 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const hash = resolved.split('#')[1];
       const element = document.getElementById(hash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
         return;
       }
     }
