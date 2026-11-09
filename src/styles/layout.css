@@ -9,8 +9,8 @@
 .design-system-preview__tokens span { display: block; height: 64px; border: var(--glass-edge); border-radius: 12px; }
 .skip-link { position: fixed; z-index: 200; top: 10px; left: 10px; padding: 12px 18px; border-radius: 8px; background: var(--paper); color: var(--ink); transform: translateY(-180%); }
 .skip-link:focus { transform: none; }
-.site-header { position: sticky; z-index: 100; top: 12px; margin-block: 16px; }
-.site-header__inner { display: flex; align-items: center; gap: 32px; padding: 10px 12px 10px 20px; min-height: 66px; border: var(--glass-edge); border-radius: 22px; background: var(--glass-fallback); box-shadow: var(--glass-shadow); }
+.site-header { position: fixed; z-index: 100; top: 16px; left: 0; right: 0; margin: 0; pointer-events: none; }
+.site-header__inner { display: flex; align-items: center; gap: 32px; padding: 10px 12px 10px 20px; min-height: 66px; border: var(--glass-edge); border-radius: 22px; background: var(--glass-fallback); box-shadow: var(--glass-shadow); pointer-events: auto; }
 .brand { display: inline-flex; gap: 10px; align-items: center; margin-right: auto; min-height: 44px; font-weight: 600; white-space: nowrap; }
 .brand__mark { color: var(--paper); font-size: 1.6rem; letter-spacing: -.08em; }
 .brand__name { font-size: .875rem; }
@@ -24,7 +24,7 @@
 .header-contact { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 10px 18px; border: 1px solid var(--line-dark); border-radius: 12px; font-size: .875rem; font-weight: 600; }
 .header-contact:hover { background: var(--color-surface-raised); }
 .menu-trigger { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: transparent; border: 1px solid #a6a8ae; border-radius: 12px; }
-.mobile-menu { margin-top: 8px; padding: 12px; border-radius: 20px; border: var(--glass-edge); background: var(--glass-fallback); box-shadow: var(--glass-shadow); max-height: calc(100dvh - 120px); overflow-y: auto; }
+.mobile-menu { margin-top: 8px; padding: 12px; border-radius: 20px; border: var(--glass-edge); background: var(--glass-fallback); box-shadow: var(--glass-shadow); max-height: calc(100dvh - 120px); overflow-y: auto; pointer-events: auto; }
 .mobile-menu[hidden] { display: none; }
 .mobile-menu a { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; min-height: 48px; border-radius: 12px; font-size: 1.125rem; }
 .mobile-menu a[aria-current="page"] { color: var(--ink); background: var(--accent); }
@@ -57,7 +57,7 @@
   .header-contact { padding-inline: 12px; }
 }
 @media (max-width: 768px) {
-  .site-header { top: 8px; margin-block: 10px; }
+  .site-header { top: 8px; margin: 0; }
   .site-header__inner { padding: 8px 10px 8px 16px; border-radius: 18px; }
   .brand__name { display: inline; }
   .desktop-nav, .header-contact { display: none; }
