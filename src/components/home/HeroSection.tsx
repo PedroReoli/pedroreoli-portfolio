@@ -16,15 +16,22 @@ export function HeroSection() {
   return (
     <section ref={ref} id={hero.id} className="hero">
       <div className="hero__background film-media" aria-hidden="true">
-        <img
-          src="/images/hero-bg.png"
-          alt=""
-          className="hero__background-image film-media__poster"
-          width="1672"
-          height="941"
-          fetchPriority="high"
-          loading="eager"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/images/hero-bg-480.webp 480w, /images/hero-bg-640.webp 640w, /images/hero-bg-800.webp 800w, /images/hero-bg-1200.webp 1200w, /images/hero-bg-1672.webp 1672w"
+            sizes="(max-width: 1320px) 100vw, 1320px"
+          />
+          <img
+            src="/images/hero-bg.png"
+            alt=""
+            className="hero__background-image film-media__poster"
+            width="1672"
+            height="941"
+            fetchPriority="high"
+            loading="eager"
+          />
+        </picture>
       </div>
 
       <div className="shell hero__shell">

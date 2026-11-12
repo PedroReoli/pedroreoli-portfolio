@@ -11,7 +11,7 @@
 @media (max-width: 768px) {
   .shell { width: calc(100% - 40px); }
   .home > section { padding-block: 64px; }
-  .home > .hero { padding-top: 36px; }
+  .home > .hero { padding-top: 4.75rem; }
   .hero__shell { width: 100%; gap: 24px; }
   .hero__headline { font-size: clamp(3.5rem,16vw,6.5rem); }
   .hero__eyebrow { margin-bottom: 20px; }
