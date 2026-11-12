@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Icon } from '@/components/common/Icon'
 import type { Language } from '@/types/content'
@@ -61,6 +61,7 @@ function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialG
 export function ProjectCase({ project, language }: Props) {
   const copy = projectsCopy[language]
   const [modalIndex, setModalIndex] = useState<number | null>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   // Flatten all gallery screenshots across groups for linear lightbox browsing
   const allScreenshots: EditorialScreenshot[] = project.galleryGroups
@@ -68,6 +69,14 @@ export function ProjectCase({ project, language }: Props) {
     : project.gallery || []
 
   const selectedScreenshot = modalIndex !== null && allScreenshots[modalIndex] ? allScreenshots[modalIndex] : null
+  const modalOpen = selectedScreenshot !== null
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!modalOpen || !dialog) return
+    dialog.showModal()
+    return () => dialog.close()
+  }, [modalOpen])
 
   const handleSelectScreenshot = (img: EditorialScreenshot) => {
     const idx = allScreenshots.findIndex((s) => s.src === img.src)
@@ -182,12 +191,12 @@ export function ProjectCase({ project, language }: Props) {
       )}
 
       {selectedScreenshot && (
-        <div
+        <dialog
+          ref={dialogRef}
           className="projects-case__modal"
-          role="dialog"
-          aria-modal="true"
           aria-label={selectedScreenshot.title[language]}
-          onClick={() => setModalIndex(null)}
+          onCancel={() => setModalIndex(null)}
+          onClick={event => { if (event.target === event.currentTarget) setModalIndex(null) }}
         >
           <div className="projects-case__modal-content" onClick={(e) => e.stopPropagation()}>
             <button
@@ -230,7 +239,7 @@ export function ProjectCase({ project, language }: Props) {
               </div>
             </div>
           </div>
-        </div>
+        </dialog>
       )}
 
       <div className="projects-case__body">

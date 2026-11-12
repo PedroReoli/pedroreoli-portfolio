@@ -7,11 +7,11 @@ const copy = {
   en: { title: 'Contents', overview: 'Overview', results: 'Results', diagram: 'Diagram', challenges: 'Challenges and solutions', architecture: 'Architecture', gallery: 'Gallery', references: 'References and next steps' },
 }
 
-export function ProjectContents({ projects, language, activeTopic }: { projects: EditorialCase[]; language: Language; activeTopic: string }) {
+export function ProjectContents({ projects, language, activeTopic, compact = false, open = true, onNavigate }: { projects: EditorialCase[]; language: Language; activeTopic: string; compact?: boolean; open?: boolean; onNavigate?: () => void }) {
   const text = copy[language]
 
   return (
-    <aside className="projects-contents">
+    <aside className={compact ? 'projects-contents projects-contents--mobile' : 'projects-contents projects-contents--desktop'} id={compact ? 'mobile-project-contents' : undefined} hidden={!open}>
       <nav aria-label={text.title}>
         <p className="projects-contents__title"><List size={17} aria-hidden="true" />{text.title}</p>
         {projects.map(project => {
@@ -34,7 +34,7 @@ export function ProjectContents({ projects, language, activeTopic }: { projects:
               <ul>
                 {topics.filter(topic => topic.visible).map(topic => (
                   <li key={topic.href}>
-                    <a href={topic.href} aria-current={activeTopic === topic.href ? 'location' : undefined}>{topic.label}</a>
+                    <a href={topic.href} onClick={onNavigate} aria-current={activeTopic === topic.href ? 'location' : undefined}>{topic.label}</a>
                   </li>
                 ))}
               </ul>

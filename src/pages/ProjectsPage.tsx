@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { ChevronDown, List } from 'lucide-react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useRouter } from '@/context/RouterContext'
@@ -18,12 +19,17 @@ function subscribeToHash(onChange: () => void) {
 }
 
 const getHash = () => window.location.hash
+const mobileCategoryLabels: Record<string, { pt: string; en: string }> = {
+  ia: { pt: 'IA aplicada', en: 'Applied AI' },
+}
 
 export function ProjectsPage() {
   const { language } = useLanguage()
   const { searchParams, setSearchParam } = useRouter()
   const hash = useSyncExternalStore(subscribeToHash, getHash)
   const casesRef = useRef<HTMLDivElement>(null)
+  const contentsTrigger = useRef<HTMLButtonElement>(null)
+  const [mobileContentsOpen, setMobileContentsOpen] = useState(false)
   const category = resolveProjectCategory(searchParams.get('tipo'), hash)
   const page = interfaceContent.projectsPage[language]
   const categories = interfaceContent.projectCategories
@@ -42,8 +48,8 @@ export function ProjectsPage() {
     let previousHref = ''
     const update = () => {
       frame = 0
-      const headerHeight = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
-      const readingLine = headerHeight + 28
+      const anchorOffset = Number.parseFloat(getComputedStyle(targets[0]).scrollMarginTop) || 0
+      const readingLine = anchorOffset + 12
       let active = targets[0]
       let activeTop = -Infinity
 
@@ -101,6 +107,36 @@ export function ProjectsPage() {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="projects-mobile-controls" onKeyDown={event => {
+        if (event.key === 'Escape' && mobileContentsOpen) {
+          setMobileContentsOpen(false)
+          contentsTrigger.current?.focus()
+        }
+      }}>
+        <div className="projects-mobile-controls__bar">
+          <div className="projects-mobile-controls__category">
+            <select
+              aria-label={categories.label[language]}
+              value={category}
+              onChange={event => {
+                setMobileContentsOpen(false)
+                setSearchParam('tipo', event.target.value)
+                window.scrollTo({ top: 0, behavior: 'instant' })
+              }}
+            >
+              {categories.items.map(item => <option key={item.id} value={item.id}>{(mobileCategoryLabels[item.id] ?? item.label)[language]}</option>)}
+            </select>
+            <ChevronDown size={16} aria-hidden="true" />
+          </div>
+          {cases.length > 0 && (
+            <button ref={contentsTrigger} type="button" aria-controls="mobile-project-contents" aria-expanded={mobileContentsOpen} onClick={() => setMobileContentsOpen(open => !open)}>
+              <List size={16} aria-hidden="true" />{language === 'pt' ? 'Sumário' : 'Contents'}
+            </button>
+          )}
+        </div>
+        {cases.length > 0 && <ProjectContents projects={cases} language={language} activeTopic={activeTopic} compact open={mobileContentsOpen} onNavigate={() => setMobileContentsOpen(false)} />}
       </div>
 
       <div key={category} className="projects-page__layout">
