@@ -4,6 +4,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { useRouter } from '@/context/RouterContext'
 import { SEO } from '@/components/common/SEO'
 import { ProjectCase } from '@/components/projects/ProjectCase'
+import { ProjectContents } from '@/components/projects/ProjectContents'
 import { projectCases, projectsCopy, resolveProjectCategory } from '@/components/projects/projectEditorial'
 import '@/styles/projects-page.css'
 
@@ -49,18 +50,18 @@ export function ProjectsPage() {
               </button>
             ))}
           </div>
-          <nav className="projects-page__index" aria-label={copy.index}>
-            {cases.map((project) => <a key={project.id} href={`#${project.id}`}>{project.name}</a>)}
-          </nav>
         </div>
 
-        <div key={category} className="projects-page__cases">
-          {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
-            <div className="projects-page__empty" role="status">
-              <p>{copy.empty}</p>
-              <button type="button" onClick={() => setSearchParam('tipo', 'corporativo')}>{copy.other}</button>
-            </div>
-          )}
+        <div key={category} className="projects-page__layout">
+          {cases.length > 0 && <ProjectContents projects={cases} language={language} hash={hash} />}
+          <div className="projects-page__cases">
+            {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
+              <div className="projects-page__empty" role="status">
+                <p>{copy.empty}</p>
+                <button type="button" onClick={() => setSearchParam('tipo', 'corporativo')}>{copy.other}</button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

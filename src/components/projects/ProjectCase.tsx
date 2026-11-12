@@ -85,7 +85,7 @@ export function ProjectCase({ project, language }: Props) {
   }
 
   return (
-    <article className="projects-case" id={project.id} aria-labelledby={`${project.id}-title`}>
+    <article className="projects-case" id={project.id} aria-labelledby={`${project.id}-title`} tabIndex={-1}>
       <div className="projects-case__header">
         <div>
           <p className="projects-case__type">{project.type[language]}</p>
@@ -95,7 +95,7 @@ export function ProjectCase({ project, language }: Props) {
       </div>
 
       {project.metrics && project.metrics.length > 0 && (
-        <div className="projects-case__metrics" aria-label={copy.metrics}>
+        <div className="projects-case__metrics" id={`${project.id}-resultados`} tabIndex={-1} aria-label={copy.metrics}>
           {project.metrics.map((m) => (
             <div key={m.value + m.label.pt} className="projects-case__metric-card">
               <span className="projects-case__metric-val">{m.value}</span>
@@ -105,7 +105,7 @@ export function ProjectCase({ project, language }: Props) {
         </div>
       )}
 
-      <div className={`projects-case__visual projects-case__visual--${project.id}`}>
+      <div className={`projects-case__visual projects-case__visual--${project.id}`} id={`${project.id}-diagrama`} tabIndex={-1}>
         <div className="projects-case__visual-head">
           <span>{project.name}</span><span>{copy.diagram}</span>
         </div>
@@ -121,7 +121,7 @@ export function ProjectCase({ project, language }: Props) {
       </div>
 
       {project.starStories && project.starStories.length > 0 && (
-        <div className="projects-case__star-section">
+        <div className="projects-case__star-section" id={`${project.id}-desafios`} tabIndex={-1}>
           <header className="projects-case__sub-header">
             <h3>{language === 'pt' ? 'Histórias de Desafios & Soluções' : 'Key Challenges & Solutions'}</h3>
             <p>{language === 'pt' ? 'Desafios críticos de arquitetura e entregas em produção' : 'Critical architecture challenges and production deliverables'}</p>
@@ -145,7 +145,7 @@ export function ProjectCase({ project, language }: Props) {
       )}
 
       {project.architectures && project.architectures.length > 0 && (
-        <div className="projects-case__arch-section">
+        <div className="projects-case__arch-section" id={`${project.id}-arquitetura`} tabIndex={-1}>
           <header className="projects-case__sub-header">
             <h3>{language === 'pt' ? 'Arquitetura dos 4 Projetos do Ecossistema' : 'Ecosystem Architecture (4 Projects)'}</h3>
             <p>{language === 'pt' ? 'Portal Web, ERP Desktop, Engine de Dev e App Mobile B2B' : 'Web Portal, Desktop ERP, Dev Engine and B2B Mobile App'}</p>
@@ -163,7 +163,7 @@ export function ProjectCase({ project, language }: Props) {
       )}
 
       {project.galleryGroups && project.galleryGroups.length > 0 && (
-        <div className="projects-case__gallery-section">
+        <div className="projects-case__gallery-section" id={`${project.id}-galeria`} tabIndex={-1}>
           <header className="projects-case__sub-header">
             <h3>{language === 'pt' ? 'Galeria por Sistemas & Módulos' : 'Systems & Modules Gallery'}</h3>
             <p>{language === 'pt' ? 'Capturas organizadas por contexto operacional com dados sensíveis mascarados' : 'Screens categorized by business context with privacy-masked operational data'}</p>
@@ -234,16 +234,16 @@ export function ProjectCase({ project, language }: Props) {
       )}
 
       <div className="projects-case__body">
-        <div className="projects-case__detail">
+        <div className="projects-case__detail" id={`${project.id}-contexto`} tabIndex={-1}>
           <h3>{project.contextLabel[language]}</h3>
           <p>{project.context[language]}</p>
         </div>
-        <div className="projects-case__detail">
+        <div className="projects-case__detail" id={`${project.id}-abordagem`} tabIndex={-1}>
           <h3>{project.approachLabel[language]}</h3>
           <p>{project.approach[language]}</p>
         </div>
         {(project.note || project.evidence) && (
-          <div className="projects-case__evidence">
+          <div className="projects-case__evidence" id={`${project.id}-referencias`} tabIndex={-1}>
             {project.note && <p className="projects-case__note">{project.note[language]}</p>}
             {project.evidence?.map(({ href, label }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label[language]} — ${project.name} (${copy.external})`}>

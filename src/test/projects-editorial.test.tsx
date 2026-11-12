@@ -66,13 +66,17 @@ describe('Página de Projetos', () => {
   })
 
   it('abre o Argos direto na categoria de IA e apresenta o escopo dos resultados', () => {
-    window.history.replaceState(null, '', '/projetos?tipo=ia#argos')
+    window.history.replaceState(null, '', '/projetos?tipo=ia#argos-diagrama')
     renderPage()
     expect(screen.getByRole('button', { name: 'Projetos com IA Aplicada' })).toHaveAttribute('aria-pressed', 'true')
     const argos = screen.getByRole('article', { name: 'Argos-Action-1.5B' })
     expect(argos).toHaveAttribute('id', 'argos')
     expect(within(argos).getByText(/132 casos inéditos.*92%.*28 casos/)).toBeInTheDocument()
     expect(within(argos).getByRole('link', { name: /Artigo sobre a avaliação/ })).toHaveAttribute('href', expect.stringContaining('medium.com'))
+    const summary = screen.getByRole('navigation', { name: 'Sumário' })
+    const diagram = within(summary).getByRole('link', { name: 'Diagrama', current: 'location' })
+    expect(diagram).toHaveAttribute('href', '#argos-diagrama')
+    expect(argos.querySelector(diagram.getAttribute('href')!)).toBeInTheDocument()
   })
 })
 

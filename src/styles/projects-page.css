@@ -90,24 +90,80 @@
   font-weight: 600;
 }
 
-.projects-page__index {
+.projects-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.projects-contents {
+  align-self: start;
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--projects-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.projects-contents__title {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.25rem;
-}
-
-.projects-page__index a {
-  display: inline-flex;
   align-items: center;
-  min-height: 38px;
-  color: var(--color-text-secondary, #bfc1c7);
-  text-decoration: none;
-  font-size: 0.84rem;
-  transition: color 0.18s ease;
+  gap: .5rem;
+  padding-bottom: .5rem;
+  color: var(--accent);
+  font-weight: 600;
 }
 
-.projects-page__index a:hover {
-  color: var(--color-accent, #ffc900);
+.projects-contents details {
+  border-top: 1px solid var(--projects-line);
+}
+
+.projects-contents summary {
+  padding-block: .5rem;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+.projects-contents ul {
+  padding: 0 0 .5rem .6rem;
+  list-style: none;
+}
+
+.projects-contents a {
+  display: block;
+  padding: .25rem .4rem;
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  font-size: .8125rem;
+  line-height: 1.35;
+}
+
+.projects-contents a:hover,
+.projects-contents a[aria-current] {
+  color: var(--accent);
+  background: rgba(255, 201, 0, .08);
+}
+
+@media (min-width: 1000px) {
+  .projects-page__layout:has(.projects-contents) {
+    grid-template-columns: minmax(0, 1fr) minmax(186px, 220px);
+    column-gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .projects-contents {
+    position: sticky;
+    top: calc(var(--header-height) + .75rem);
+    grid-column: 2;
+    grid-row: 1;
+    max-height: calc(100dvh - var(--header-height) - 2rem);
+    overflow-y: auto;
+    box-shadow: 0 16px 32px #04070e90;
+  }
+
+  .projects-page__cases {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 
 .projects-page :is(a, button):focus-visible {
@@ -117,6 +173,7 @@
 
 .projects-page__cases {
   display: grid;
+  min-width: 0;
   gap: 0;
   animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -141,6 +198,10 @@
   padding: clamp(2.5rem, 4vw, 3.8rem) 0;
   border-bottom: 1px solid var(--projects-line);
   scroll-margin-top: calc(var(--header-height, 100px) + 1rem);
+}
+
+.projects-case [id] {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
 .projects-case__header {

@@ -514,7 +514,7 @@ export function resolveProjectCategory(type: string | null, hash: string): Proje
   const category = projectCategories.find((item) => item === type)
   if (category) return category
 
-  const linkedProject = projectCases.find((project) => `#${project.id}` === hash)
+  const linkedProject = projectCases.find((project) => hash === `#${project.id}` || hash.startsWith(`#${project.id}-`))
   return linkedProject?.categories[0] ?? (type === 'gerais' ? 'clientes' : 'corporativo')
 }
 
