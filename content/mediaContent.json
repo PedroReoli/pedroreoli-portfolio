@@ -1,4 +1,58 @@
 {
+  "publications": [
+    {
+      "id": "argos-avaliacao",
+      "category": { "pt": "Artigo técnico", "en": "Technical article" },
+      "title": {
+        "pt": "Argos-Action: o que 132 casos inéditos revelaram",
+        "en": "Argos-Action: what 132 unseen cases revealed"
+      },
+      "description": {
+        "pt": "Meu primeiro artigo técnico revisita um erro: a checagem inicial de 100% validava os rótulos gerados. Na avaliação posterior, 92% das respostas do Argos seguiram o schema, ante 0% do modelo base. O Argos falhou em encaminhar os 28 casos que exigiam intervenção humana e indicou execução em todos os cenários com ações destrutivas. Os resultados orientam melhorias no treino e a implementação de bloqueios na camada executora.",
+        "en": "My first technical article revisits a mistake: the initial 100% check validated the generated labels. In the follow-up evaluation, 92% of Argos responses matched the schema, compared with 0% for the base model. Argos failed to escalate any of the 28 cases requiring human intervention and proposed execution in every destructive-action scenario. These results inform training improvements and execution-layer safeguards."
+      },
+      "links": [
+        {
+          "label": { "pt": "Ler no Medium", "en": "Read on Medium" },
+          "href": "https://medium.com/@pedrosousa2160/meu-script-disse-100-ele-s%C3%B3-tinha-validado-o-gerador-d7433b381927"
+        },
+        {
+          "label": { "pt": "Notebook e dados no Kaggle", "en": "Notebook and data on Kaggle" },
+          "href": "https://www.kaggle.com/code/pedroreoli/argos-holdout-v2-eval-of-a-1-5b-ui-action-model"
+        }
+      ]
+    },
+    {
+      "id": "argos-prototipo",
+      "category": { "pt": "Nota de pesquisa", "en": "Research note" },
+      "title": {
+        "pt": "Argos-Action: da árvore de acessibilidade ao conjunto de teste",
+        "en": "Argos-Action: from accessibility trees to the test set"
+      },
+      "description": {
+        "pt": "Experimentei um adaptador LoRA sobre o Qwen2.5-1.5B-Instruct para propor uma ação por vez a partir de uma árvore de acessibilidade. Os fragmentos do dataset sintético tiveram 87,2 tokens em média. Ao encontrar cenários repetidos entre treino e teste, refiz a divisão. O primeiro conjunto revisado ainda cobria cinco cenários, o que motivou uma avaliação posterior mais diversa. O playground ilustra o protocolo com exemplos estáticos.",
+        "en": "I experimented with a LoRA adapter for Qwen2.5-1.5B-Instruct to propose one action at a time from an accessibility tree. The synthetic dataset fragments averaged 87.2 tokens. After finding repeated scenarios across training and testing, I rebuilt the split. The first revised set still covered five scenarios, which prompted a more diverse follow-up evaluation. The playground illustrates the protocol with static examples."
+      },
+      "links": [
+        {
+          "label": { "pt": "Código no GitHub", "en": "Code on GitHub" },
+          "href": "https://github.com/PedroReoli/argos-action"
+        },
+        {
+          "label": { "pt": "Adaptador LoRA", "en": "LoRA adapter" },
+          "href": "https://huggingface.co/pedroreoli/argos-action-1.5b"
+        },
+        {
+          "label": { "pt": "Dataset sintético", "en": "Synthetic dataset" },
+          "href": "https://huggingface.co/datasets/pedroreoli/argos-computer-use-mcp"
+        },
+        {
+          "label": { "pt": "Playground estático", "en": "Static playground" },
+          "href": "https://huggingface.co/spaces/pedroreoli/argos-action-demo"
+        }
+      ]
+    }
+  ],
   "mediaNotes": [
     {
       "number": "01",

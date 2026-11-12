@@ -491,7 +491,16 @@ export interface MediaNote {
   href: string;
 }
 
+export interface TechnicalPublication {
+  id: string;
+  category: LocalizedString;
+  title: LocalizedString;
+  description: LocalizedString;
+  links: { label: LocalizedString; href: string }[];
+}
+
 export interface MediaContent {
+  publications: TechnicalPublication[];
   mediaNotes: MediaNote[];
 }
 

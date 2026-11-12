@@ -19,10 +19,10 @@ function renderPage() {
 describe('Notes editorial experience', () => {
   beforeEach(() => { localStorage.clear(); window.history.replaceState(null, '', '/midia-blog') })
 
-  it('distinguishes press, repository and profile without inventing articles or metadata', () => {
+  it('distinguishes publications, press, repository and profile', () => {
     const { container } = renderPage()
     expect(screen.getByRole('heading', { level: 1, name: 'NOTAS' })).toBeInTheDocument()
-    expect(screen.getAllByRole('article')).toHaveLength(2)
+    expect(screen.getAllByRole('article')).toHaveLength(4)
     const press = screen.getByRole('link', { name: /FalaAtípica em destaque no UniFOA.*Ler reportagem/ })
     expect(press).toHaveAttribute('href', interfaceContent.mediaArchive.feature.href)
     expect(screen.getByRole('link', { name: /Agentes que operam.*Repositório no GitHub/ })).toHaveAttribute('href', 'https://github.com/PedroReoli/Achilles-CDP-Agent')
@@ -33,10 +33,25 @@ describe('Notes editorial experience', () => {
     expect(screen.queryByText('03 referências')).not.toBeInTheDocument()
   })
 
+  it('publishes both Argos entries with their own evidence and deep links', () => {
+    renderPage()
+    const section = screen.getByRole('region', { name: 'Publicações' })
+    const evaluation = within(section).getByRole('article', { name: /132 casos inéditos/ })
+    const prototype = within(section).getByRole('article', { name: /árvore de acessibilidade/ })
+
+    expect(evaluation).toHaveAttribute('id', 'argos-avaliacao')
+    expect(evaluation).toHaveTextContent('92% das respostas')
+    expect(evaluation).toHaveTextContent('os 28 casos')
+    expect(within(evaluation).getByRole('link', { name: 'Ler no Medium' })).toHaveAttribute('href', expect.stringContaining('medium.com/'))
+    expect(within(evaluation).getByRole('link', { name: 'Notebook e dados no Kaggle' })).toHaveAttribute('href', expect.stringContaining('kaggle.com/'))
+    expect(prototype).toHaveTextContent('87,2 tokens')
+    expect(within(prototype).getByRole('link', { name: 'Playground estático' })).toHaveAttribute('href', expect.stringContaining('huggingface.co/spaces/'))
+  })
+
   it('preserves safe external targets and announces their new context', () => {
     const { container } = renderPage()
     const links = container.querySelectorAll<HTMLAnchorElement>('a[target="_blank"]')
-    expect(links).toHaveLength(3)
+    expect(links).toHaveLength(9)
     links.forEach((link) => {
       expect(link.rel).toContain('noopener')
       expect(link.rel).toContain('noreferrer')
@@ -49,6 +64,8 @@ describe('Notes editorial experience', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Change language' }))
     expect(screen.getByRole('heading', { level: 1, name: 'NOTES' })).toBeInTheDocument()
     expect(screen.getByRole('navigation', { name: 'On this page' })).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Publications' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Read on Medium' })).toHaveAttribute('href', mediaContent.publications[0].links[0].href)
     expect(screen.getByText('1 reference')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Agents that operate.*GitHub repository/ })).toHaveAttribute('href', 'https://github.com/PedroReoli/Achilles-CDP-Agent')
     expect(document.title).toContain('Notes & Media')
@@ -70,6 +87,7 @@ describe('Notes editorial experience', () => {
   it('uses native section anchors and moves keyboard focus to the destination', () => {
     renderPage()
     const nav = screen.getByRole('navigation', { name: 'Nesta página' })
+    expect(within(nav).getByRole('link', { name: 'Publicações' })).toHaveAttribute('href', '#publicacoes')
     const link = within(nav).getByRole('link', { name: 'Código e referências' })
     expect(link).toHaveAttribute('href', '#referencias')
     link.focus()

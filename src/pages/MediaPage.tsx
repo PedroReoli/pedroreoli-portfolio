@@ -1,6 +1,7 @@
 import { Icon } from '@/components/common/Icon'
 import { NotesSectionNav } from '@/components/notes/NotesSectionNav'
 import { PressFeature } from '@/components/notes/PressFeature'
+import { PublicationList } from '@/components/notes/PublicationList'
 import { ReferenceList } from '@/components/notes/ReferenceList'
 import { notesCopy, selectPublicReferences } from '@/components/notes/notesEditorial'
 import '@/styles/notes.css'
@@ -15,6 +16,7 @@ export function MediaPage() {
   const editorial = notesCopy[language]
   const { references, profile } = selectPublicReferences(mediaContent.mediaNotes)
   const hasPress = Boolean(archive.feature.href)
+  const { publications } = mediaContent
   return (
     <div className="notes-page">
       <SEO pageKey="media" />
@@ -29,12 +31,21 @@ export function MediaPage() {
 
         <div className="notes-page__navigation">
           <NotesSectionNav label={editorial.indexLabel} sections={[
+            ...(publications.length ? [{ id: 'publicacoes', label: editorial.publicationsTitle }] : []),
             ...(hasPress ? [{ id: 'imprensa', label: copy.pressLabel }] : []),
             { id: 'referencias', label: editorial.referencesNav },
           ]} />
         </div>
 
         <div className="notes-page__content">
+            {publications.length > 0 && (
+              <section id="publicacoes" className="notes-page__section" aria-labelledby="notes-publications-heading" tabIndex={-1}>
+                <div className="notes-page__section-heading">
+                  <h2 id="notes-publications-heading">{editorial.publicationsTitle}</h2>
+                </div>
+                <PublicationList publications={publications} language={language} />
+              </section>
+            )}
             {hasPress && (
               <section id="imprensa" className="notes-page__section" aria-labelledby="notes-press-heading" tabIndex={-1}>
                 <div className="notes-page__section-heading">

@@ -143,6 +143,66 @@
   letter-spacing: 0.05em;
 }
 
+.notes-publications {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.notes-publication {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--notes-line);
+  border-radius: 16px;
+  background: #080d15;
+  scroll-margin-top: calc(var(--header-height, 100px) + 1.5rem);
+}
+
+.notes-publication h3 {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.notes-publication__description {
+  color: var(--color-text-secondary, #bfc1c7);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.notes-publication__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: auto 0 0;
+  padding: 0;
+}
+
+.notes-publication__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(255, 201, 0, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 201, 0, 0.08);
+  color: var(--color-accent, #ffc900);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.notes-publication__links a:hover {
+  background: rgba(255, 201, 0, 0.2);
+  border-color: var(--color-accent, #ffc900);
+}
+
 /* Feature de Imprensa com Estilo de Case */
 .notes-feature {
   background: #080d15;
@@ -382,6 +442,9 @@
     align-items: flex-start;
   }
   .notes-feature__body {
+    grid-template-columns: 1fr;
+  }
+  .notes-publications {
     grid-template-columns: 1fr;
   }
   .notes-references a {

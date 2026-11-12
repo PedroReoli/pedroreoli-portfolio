@@ -15,12 +15,11 @@ export function selectPublicReferences(notes: MediaNote[]) {
   return { references, profile: notes.find((note) => note.href === publicProfileUrl) }
 }
 
-// Local copy while shared content files remain globally owned. No article bodies,
-// private notes, inferred dates or performance claims.
 export const notesCopy = {
   pt: {
-    intro: 'Reportagens e referências públicas para conhecer meu trabalho, das ideias ao código.',
+    intro: 'Artigos técnicos, notas de pesquisa e reportagens sobre meu trabalho, das ideias ao código.',
     indexLabel: 'Nesta página',
+    publicationsTitle: 'Publicações',
     referencesNav: 'Código e referências',
     pressKind: 'Reportagem',
     pressSource: 'UniFOA',
@@ -32,8 +31,9 @@ export const notesCopy = {
     imageUnavailable: 'A imagem não carregou. A reportagem continua disponível no link.',
   },
   en: {
-    intro: 'Press coverage and public references to explore my work, from ideas to code.',
+    intro: 'Technical articles, research notes and press coverage about my work, from ideas to code.',
     indexLabel: 'On this page',
+    publicationsTitle: 'Publications',
     referencesNav: 'Code and references',
     pressKind: 'Press feature',
     pressSource: 'UniFOA',
