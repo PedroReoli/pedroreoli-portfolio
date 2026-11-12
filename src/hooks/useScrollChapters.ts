@@ -3,15 +3,15 @@ import { animate } from 'motion/mini'
 
 type DivRef = RefObject<HTMLDivElement | null>
 
-export function useExperienceTimeline(trackRef: DivRef, pinRef: DivRef, viewportRef: DivRef) {
+export function useScrollChapters(trackRef: DivRef, pinRef: DivRef, viewportRef: DivRef, scrollPerChapter?: number) {
   useLayoutEffect(() => {
     const track = trackRef.current
     const pin = pinRef.current
     const viewport = viewportRef.current
     if (!track || !pin || !viewport || typeof ResizeObserver === 'undefined' || typeof Element.prototype.animate !== 'function') return
 
-    const cards = [...viewport.querySelectorAll<HTMLElement>('.timeline-v__item')]
-    const dates = [...track.querySelectorAll<HTMLElement>('[data-experience-date]')]
+    const cards = [...viewport.querySelectorAll<HTMLElement>('[data-scroll-chapter]')]
+    const markers = [...track.querySelectorAll<HTMLElement>('[data-scroll-chapter-marker]')]
     if (cards.length < 2) return
     const motionPreference = window.matchMedia('(prefers-reduced-motion: no-preference)')
     let distance = 0
@@ -50,9 +50,11 @@ export function useExperienceTimeline(trackRef: DivRef, pinRef: DivRef, viewport
       const outgoing = cards[current]
       const incoming = cards[index]
       outgoing?.removeAttribute('data-current')
-      dates[current]?.removeAttribute('data-current')
+      if (outgoing) outgoing.inert = true
+      markers[current]?.removeAttribute('data-current')
       incoming.setAttribute('data-current', '')
-      dates[index]?.setAttribute('data-current', '')
+      incoming.inert = false
+      markers[index]?.setAttribute('data-current', '')
 
       if (outgoing && withTransition) {
         const direction = index > current ? 1 : -1
@@ -72,19 +74,21 @@ export function useExperienceTimeline(trackRef: DivRef, pinRef: DivRef, viewport
       if (!frame) frame = window.requestAnimationFrame(() => updatePosition())
     }
     const measure = () => {
-      track.classList.toggle('experience-track--pinned', motionPreference.matches)
-      const scrollPerCard = Math.min(520, Math.max(260, viewport.clientWidth * .45))
+      track.classList.toggle('scroll-chapters--pinned', motionPreference.matches)
+      const scrollPerCard = scrollPerChapter ?? Math.min(520, Math.max(260, viewport.clientWidth * .45))
       distance = scrollPerCard * (cards.length - 1)
       stickyTop = Number.parseFloat(getComputedStyle(pin).top)
       pinned = motionPreference.matches && pin.offsetHeight + stickyTop + 8 <= window.innerHeight
-      track.classList.toggle('experience-track--pinned', pinned)
+      track.classList.toggle('scroll-chapters--pinned', pinned)
       if (pinned) {
-        track.style.setProperty('--experience-track-height', `${pin.offsetHeight + distance}px`)
+        track.style.setProperty('--scroll-chapters-height', `${pin.offsetHeight + distance}px`)
         window.cancelAnimationFrame(frame)
         updatePosition(false)
+        cards.forEach((card, index) => { card.inert = index !== current })
       } else {
         stopTransitions()
-        track.style.removeProperty('--experience-track-height')
+        cards.forEach(card => { card.inert = false })
+        track.style.removeProperty('--scroll-chapters-height')
       }
     }
 
@@ -103,10 +107,11 @@ export function useExperienceTimeline(trackRef: DivRef, pinRef: DivRef, viewport
       window.removeEventListener('resize', measure)
       window.cancelAnimationFrame(frame)
       stopTransitions()
+      cards.forEach(card => { card.inert = false })
       cards[current]?.removeAttribute('data-current')
-      dates[current]?.removeAttribute('data-current')
-      track.classList.remove('experience-track--pinned')
-      track.style.removeProperty('--experience-track-height')
+      markers[current]?.removeAttribute('data-current')
+      track.classList.remove('scroll-chapters--pinned')
+      track.style.removeProperty('--scroll-chapters-height')
     }
-  }, [trackRef, pinRef, viewportRef])
+  }, [trackRef, pinRef, viewportRef, scrollPerChapter])
 }

@@ -41,7 +41,7 @@
       {
         "id": "experiencia",
         "background": "#04070e",
-        "steps": 4
+        "steps": 5
       },
       {
         "id": "producao-tecnica-academica",
@@ -168,18 +168,38 @@
       },
       {
         "value": "70%",
-        "pt": "menos tempo de desenvolvimento",
-        "en": "less development time"
+        "pt": "de redução máxima no tempo para criar telas na Autocom3",
+        "en": "maximum reduction in screen development time at Autocom3"
       },
       {
         "value": "40%",
-        "pt": "menos tempo de carregamento",
-        "en": "faster page loads"
+        "pt": "de redução máxima no tempo de carregamento na Autocom3",
+        "en": "maximum reduction in load times at Autocom3"
       },
       {
         "value": "500+",
         "pt": "componentes de Design System",
         "en": "Design System components"
+      },
+      {
+        "value": "120+",
+        "pt": "páginas no Portal Unificado",
+        "en": "pages in the Unified Portal"
+      },
+      {
+        "value": "20+",
+        "pt": "organizações usando os portais da Autocom3",
+        "en": "organizations using Autocom3 portals"
+      },
+      {
+        "value": "20",
+        "pt": "agentes de IA orquestrados ao mesmo tempo",
+        "en": "AI agents orchestrated concurrently"
+      },
+      {
+        "value": "75%",
+        "pt": "menos tempo na triagem de fraudes, na Domus",
+        "en": "less time spent on fraud triage at Domus"
       }
     ]
   },

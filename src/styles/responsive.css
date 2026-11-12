@@ -8,7 +8,7 @@
   .home-project .project-card__action { grid-column: 1/-1; margin-top: 16px; }
   .stack-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 }
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .shell { width: calc(100% - 40px); }
   .home > section { padding-block: 64px; }
   .home > .hero { padding-top: 36px; }
@@ -18,21 +18,26 @@
   .hero__description { margin-top: 20px; }
   .hero__scroll-indicator { margin-top: 16px; }
   .about__center, .stack-section__intro, .purpose-section__grid { grid-template-columns: minmax(0,1fr); gap: 32px; }
-  .stats-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px 20px; }
+  .stats-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .stats-grid > div { display: grid; grid-template-columns: minmax(5.25rem, 28%) minmax(0,1fr); align-items: center; gap: .75rem; padding-block: .55rem; }
+  .stats-grid strong { font-size: clamp(1.85rem, 6vw, 2.75rem); }
+  .stats-grid span { max-width: none; font-size: .875rem; }
+  .about__center { gap: .85rem; padding-top: 1rem; }
+  .about__summary { font-size: 1rem; }
+  .about__shell .section-kicker { padding-block: .65rem; }
   .about__metrics-card { padding-top: 0; }
   .work-section__heading { align-items: start; flex-direction: column; gap: 20px; }
   .home-project > a { display: flex; gap: 0; padding: 24px; }
   .home-project h3 { margin-top: 28px; }
   .home-project .project-card__desc { margin-top: 20px; }
   .home-project .project-card__tech { margin-block: 24px; }
-  .stack-grid { gap: 32px 24px; }
+  .stack-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .stack-grid header { flex-direction: column; gap: 6px; }
   .section-kicker { gap: 16px; align-items: baseline; font-size: .8125rem; }
   .purpose-section__media img { aspect-ratio: 20/9; }
 }
 @media (max-width: 380px) {
   .shell { width: calc(100% - 32px); }
-  .brand__name { display: none; }
   .hero__actions-group { gap: 10px; }
   .hero__btn-primary, .hero__btn-secondary { padding-inline: 16px; }
   .stack-grid { grid-template-columns: 1fr; }

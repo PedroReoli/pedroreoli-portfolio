@@ -452,6 +452,7 @@ export interface ExperienceItem {
     pt: string[];
     en: string[];
   };
+  details?: LocalizedString[];
   technologies: Array<string | LocalizedString>;
 }
 

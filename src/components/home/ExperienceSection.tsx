@@ -1,8 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { X } from 'lucide-react'
 import { homeContent, interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useReveal } from '@/hooks/useReveal'
-import { useExperienceTimeline } from '@/hooks/useExperienceTimeline'
+import { useScrollChapters } from '@/hooks/useScrollChapters'
 
 export function ExperienceSection() {
   const { language } = useLanguage()
@@ -10,16 +11,19 @@ export function ExperienceSection() {
   const trackRef = useRef<HTMLDivElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
+  const detailsRef = useRef<HTMLDialogElement>(null)
+  const [selectedIndex, setSelectedIndex] = useState(0)
   const section = interfaceContent.experience
   const copy = section[language]
   const items = homeContent.experienceItems
+  const selected = items[selectedIndex]
   useReveal(ref)
-  useExperienceTimeline(trackRef, pinRef, viewportRef)
+  useScrollChapters(trackRef, pinRef, viewportRef)
 
   return (
     <section ref={ref} id={section.id} className="experience-section">
-      <div className="experience-track" ref={trackRef}>
-        <div className="shell experience-track__pin" ref={pinRef}>
+      <div className="scroll-chapters experience-track" ref={trackRef}>
+        <div className="shell scroll-chapters__pin experience-track__pin" ref={pinRef}>
           <div className="section-kicker" data-reveal>
             <p>{copy.eyebrow}</p>
           </div>
@@ -30,16 +34,16 @@ export function ExperienceSection() {
 
           <div className="experience-dates" aria-hidden="true">
             {items.map(item => (
-              <span className="experience-dates__date" key={item.period.pt} data-experience-date>
+              <span className="experience-dates__date" key={item.period.pt} data-experience-date data-scroll-chapter-marker>
                 {item.period[language].split(' / ')[0]}
               </span>
             ))}
           </div>
 
-          <div className="experience-track__viewport" ref={viewportRef} data-reveal data-reveal-delay="110">
+          <div className="scroll-chapters__viewport experience-track__viewport" ref={viewportRef} data-reveal data-reveal-delay="110">
             <ol className="timeline-v" aria-label={copy.chaptersLabel}>
-              {items.map(item => (
-                <li className="timeline-v__item" key={item.company + item.period.pt}>
+              {items.map((item, index) => (
+                <li className="timeline-v__item" key={item.company + item.period.pt} data-scroll-chapter>
                   <article className="timeline-card">
                     <header className="timeline-card__heading">
                       <p className="timeline-v__period">{item.period[language]}</p>
@@ -52,6 +56,14 @@ export function ExperienceSection() {
                         <li key={highlight}>{highlight}</li>
                       ))}
                     </ul>
+                    {item.details?.length ? (
+                      <button className="timeline-card__more" type="button" aria-haspopup="dialog" onClick={() => {
+                        setSelectedIndex(index)
+                        detailsRef.current?.showModal()
+                      }}>
+                        {language === 'pt' ? 'Ver mais detalhes' : 'See more details'}
+                      </button>
+                    ) : null}
                   </article>
                 </li>
               ))}
@@ -59,6 +71,16 @@ export function ExperienceSection() {
           </div>
         </div>
       </div>
+      <dialog className="timeline-details" ref={detailsRef} aria-labelledby="timeline-details-title">
+        <div className="timeline-details__header">
+          <h3 id="timeline-details-title">{selected.company}</h3>
+          <button type="button" onClick={() => detailsRef.current?.close()} aria-label={language === 'pt' ? 'Fechar detalhes' : 'Close details'}><X size={20} aria-hidden="true" /></button>
+        </div>
+        <p>{selected.role[language]}</p>
+        <ul>
+          {selected.details?.map(detail => <li key={detail.pt}>{detail[language]}</li>)}
+        </ul>
+      </dialog>
     </section>
   )
 }

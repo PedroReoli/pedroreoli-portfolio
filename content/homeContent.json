@@ -141,6 +141,48 @@
   "experienceItems": [
     {
       "period": {
+        "pt": "Nov/2025 / Presente · Remoto",
+        "en": "Nov/2025 / Present · Remote"
+      },
+      "company": "SIVIS Tecnologia",
+      "role": {
+        "pt": "Engenheiro de Software Freelancer · Frontend e Integrações",
+        "en": "Freelance Software Engineer · Frontend and Integrations"
+      },
+      "description": {
+        "pt": "Evoluo interfaces corporativas em produção e conecto as telas a sistemas de gestão, cobrança e mensageria.",
+        "en": "I improve production business interfaces and connect them to management, billing and messaging systems."
+      },
+      "highlights": {
+        "pt": [
+          "Separei estado, regras e apresentação em componentes TypeScript reutilizáveis.",
+          "Integrei telas em React, Next.js e Angular a APIs REST e serviços externos."
+        ],
+        "en": [
+          "Separated state, business logic and presentation into reusable TypeScript components.",
+          "Integrated React, Next.js and Angular screens with REST APIs and external services."
+        ]
+      },
+      "details": [
+        {
+          "pt": "Refatorei fluxos por etapas para manter a aplicação em funcionamento durante a evolução das telas.",
+          "en": "Refactored workflows in stages to keep the application operational as screens evolved."
+        },
+        {
+          "pt": "Combinei o escopo das entregas remotas, abri PRs para revisão e documentei as mudanças por fluxo.",
+          "en": "Agreed on the scope of remote deliveries, opened pull requests for review and documented changes by workflow."
+        }
+      ],
+      "technologies": [
+        "React",
+        "Next.js",
+        "Angular",
+        "TypeScript",
+        "REST APIs"
+      ]
+    },
+    {
+      "period": {
         "pt": "Out/2025 / Presente · Remoto",
         "en": "Oct/2025 / Present · Remote"
       },
@@ -157,12 +199,12 @@
         "pt": [
           "Criei o Propose, um editor de propostas comerciais que dispensa programação.",
           "Automatizei a detecção de fraudes e reduzi em 75% o tempo de triagem.",
-          "Automatizei cobranças por WhatsApp, e-mail e SMS. A recuperação de inadimplência aumentou 20%."
+          "A cobrança por WhatsApp, e-mail e SMS elevou a recuperação em 20%."
         ],
         "en": [
           "Built Propose, an editor for creating sales proposals without code.",
           "Automated fraud detection and cut triage time by 75%.",
-          "Automated collections over WhatsApp, email and SMS. Debt recovery increased by 20%."
+          "Collections over WhatsApp, email and SMS increased debt recovery by 20%."
         ]
       },
       "technologies": [
@@ -182,6 +224,36 @@
         "n8n",
         "Zapier",
         "Make"
+      ],
+      "details": [
+        {
+          "pt": "Implementei buscas em documentos e dados internos com RAG, usando embeddings, busca vetorial, reranking e banco em grafo.",
+          "en": "Implemented internal document and data search with RAG, using embeddings, vector search, reranking and a graph database."
+        },
+        {
+          "pt": "Integrei Claude, GPT e Gemini a ferramentas via MCP e avaliei as respostas e regressões de prompt com Jev.",
+          "en": "Connected Claude, GPT and Gemini to tools via MCP and used Jev to evaluate outputs and catch prompt regressions."
+        },
+        {
+          "pt": "Montei monitoramento 24/7 com IA e SQL. O tempo gasto em anomalias caiu 70%, e o modelo de churn atingiu 85% de precisão.",
+          "en": "Built 24/7 AI and SQL monitoring. Time spent on anomalies fell 70%, and the churn model reached 85% accuracy."
+        },
+        {
+          "pt": "Criei um assistente que consulta o SQL Server pelo WhatsApp, reduzindo em 80% o tempo gasto em relatórios.",
+          "en": "Built a WhatsApp assistant for querying SQL Server, cutting time spent on reports by 80%."
+        },
+        {
+          "pt": "Integrei CRM, qualificação e agendamento no Zapier. O tempo de qualificação caiu 65%.",
+          "en": "Connected CRM, qualification and scheduling in Zapier. Qualification time fell 65%."
+        },
+        {
+          "pt": "Conectei pedidos, estoque e faturamento entre marketplaces e e-commerce no Make. O processamento manual caiu 80%.",
+          "en": "Connected orders, inventory and invoicing across marketplaces and e-commerce in Make. Manual processing fell 80%."
+        },
+        {
+          "pt": "Entreguei aplicações em React, Next.js e Node.js e desenvolvi um proxy em Go com roteamento, cache e novas tentativas.",
+          "en": "Delivered React, Next.js and Node.js apps and built a Go proxy with routing, caching and retries."
+        }
       ]
     },
     {
@@ -201,12 +273,12 @@
       "highlights": {
         "pt": [
           "Criei um portal com mais de 120 páginas em Next.js.",
-          "Lidero uma biblioteca de 500+ componentes reutilizáveis, que reduziu em até 70% o tempo para criar novas telas.",
+          "Com 500+ componentes reutilizáveis, reduzimos em até 70% o tempo para criar telas.",
           "Otimizei o cache e a busca de dados. O tempo de carregamento caiu em até 40%."
         ],
         "en": [
           "Built a Next.js portal with more than 120 pages.",
-          "Lead a library of 500+ reusable components that cut the time to build new screens by up to 70%.",
+          "Our library of 500+ reusable components cut screen development time by up to 70%.",
           "Improved caching and data fetching, cutting load times by up to 40%."
         ]
       },
@@ -226,6 +298,36 @@
         "Playwright",
         "MCP",
         "Jev"
+      ],
+      "details": [
+        {
+          "pt": "Construí portais para gestão fiscal e XML, autoatendimento e e-commerce B2B, e administração com permissões por área.",
+          "en": "Built portals for tax and XML workflows, self-service and B2B e-commerce, and administration with role-based access."
+        },
+        {
+          "pt": "Com TanStack Query, reduzi em cerca de 60% as requisições repetidas. O tempo até a interface ficar interativa ficou abaixo de 1,2 s.",
+          "en": "Used TanStack Query to cut repeated requests by about 60% and bring time to interactive below 1.2 seconds."
+        },
+        {
+          "pt": "Orquestrei 20 agentes simultâneos com MCP, controle de custo e latência, e avaliações de saídas estruturadas com Jev.",
+          "en": "Orchestrated 20 concurrent agents with MCP, cost and latency controls, and structured-output evaluations in Jev."
+        },
+        {
+          "pt": "Implementei serviços em Node.js, NestJS e C#, com JWT, controle de acesso por função, limites de requisição e webhooks.",
+          "en": "Built services in Node.js, NestJS and C# with JWT, role-based access control, rate limits and webhooks."
+        },
+        {
+          "pt": "Modelei dados em PostgreSQL e SQL Server e publiquei serviços na AWS com API Gateway.",
+          "en": "Modeled data in PostgreSQL and SQL Server and deployed services on AWS with API Gateway."
+        },
+        {
+          "pt": "Participei da migração de apps de Electron para Tauri e escrevi testes ponta a ponta em Playwright para a AC3 Cloud.",
+          "en": "Helped migrate apps from Electron to Tauri and wrote end-to-end Playwright tests for AC3 Cloud."
+        },
+        {
+          "pt": "Mantive aplicações Vue.js de clientes que passaram a ser atendidos pela equipe.",
+          "en": "Maintained customer Vue.js applications that the team took over."
+        }
       ]
     },
     {
@@ -273,6 +375,12 @@
           "pt": "Mentoria",
           "en": "Mentoring"
         }
+      ],
+      "details": [
+        {
+          "pt": "Trabalhei com JavaScript e React nas atividades de desenvolvimento web e com ferramentas de IA nas oficinas.",
+          "en": "Used JavaScript and React for web development activities and AI tools in workshops."
+        }
       ]
     },
     {
@@ -307,6 +415,24 @@
         "PostgreSQL",
         "MySQL",
         "REST APIs"
+      ],
+      "details": [
+        {
+          "pt": "Construí telas e regras para módulos fiscais, financeiros, de estoque, vendas, faturamento, compras, contabilidade e RH.",
+          "en": "Built screens and business rules for tax, finance, inventory, sales, invoicing, purchasing, accounting and HR modules."
+        },
+        {
+          "pt": "Ajudei a migrar partes do frontend de JavaScript para TypeScript, reduzindo erros em tempo de execução nos módulos migrados.",
+          "en": "Helped migrate parts of the frontend from JavaScript to TypeScript, reducing runtime errors in the migrated modules."
+        },
+        {
+          "pt": "Modelei dados e escrevi consultas em PostgreSQL e MySQL. Trabalhei com serviços existentes em C# e PHP.",
+          "en": "Modeled data and wrote PostgreSQL and MySQL queries. Worked with existing C# and PHP services."
+        },
+        {
+          "pt": "Integrei APIs REST de parceiros e participei de revisões de código e programação em dupla.",
+          "en": "Integrated partner REST APIs and took part in code reviews and pair programming."
+        }
       ]
     }
   ]
