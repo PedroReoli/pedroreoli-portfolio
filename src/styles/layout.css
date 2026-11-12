@@ -42,9 +42,9 @@
 .mobile-menu a { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; min-height: 48px; border-radius: 12px; font-size: 1.125rem; }
 .mobile-menu a[aria-current="page"] { color: var(--ink); background: var(--accent); }
 .contact-section { padding-block: clamp(60px, 10vw, 140px) 28px; background: var(--color-bg, #04070e); color: var(--paper); }
-.contact-section__main { padding-block: 56px; max-width: 1050px; }
+.contact-section__main { padding-block: 56px; max-width: 1050px; container-type: inline-size; }
 .contact-section__prompt { color: var(--color-text-secondary); margin-bottom: 24px; }
-.contact-section__headline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 .2em; font-size: clamp(2.4rem, 6.8vw, 7.2rem); line-height: 1.05; letter-spacing: -.06em; font-weight: 600; }
+.contact-section__headline { display: inline-flex; align-items: baseline; gap: .2em; white-space: nowrap; font-size: clamp(1.25rem, 8.2cqi, 6.75rem); line-height: 1.05; letter-spacing: -.06em; font-weight: 600; }
 .contact-section__headline em { font-style: normal; }
 .contact-section__headline svg { width: .65em; height: .65em; }
 .contact-section__description { margin-top: 28px; max-width: 55ch; color: var(--color-text-secondary); }

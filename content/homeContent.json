@@ -150,27 +150,21 @@
         "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "Desenvolvo SaaS e plataformas administrativas do requisito ao deploy, com IA aplicada ao produto.",
-        "en": "I build SaaS products and admin platforms from requirements through deployment, with AI integrated into the product."
+        "pt": "SaaS e automação com IA, do requisito ao deploy.",
+        "en": "SaaS and AI automation, from requirements through deployment."
       },
       "highlights": {
         "pt": [
-          "Construí pipelines de RAG com embeddings, chunking, reranking, bancos vetoriais e bancos em grafo.",
-          "Orquestrei fluxos com Claude, GPT e Gemini usando MCP, tool use e function calling. Usei saídas estruturadas e Jev para avaliar prompts, detectar regressões e rastrear ações, com controles contra prompt injection e de custo e latência.",
-          "No n8n, implementei monitoramento de anomalias com IA e SQL (70% menos tempo de análise), previsão de churn (85% de precisão) e detecção de fraudes (75% menos tempo de triagem).",
-          "Automatizei cobranças por WhatsApp, e-mail e SMS, com 60% menos trabalho operacional e 20% mais recuperação de inadimplência. Um assistente de SQL Server via WhatsApp reduziu em 80% o tempo gasto em relatórios.",
-          "Com Zapier e CRM, reduzi em 65% o tempo de qualificação comercial e em 25% os cancelamentos em fluxos de retenção. No Make, integrei pedidos, estoque e faturamento, com 80% menos processamento manual e 90% menos erros de digitação.",
-          "Apliquei IA à análise de dados em SQL e APIs, com 75% menos tempo de análise e 60% menos esforço em relatórios.",
-          "Entreguei o Propose, um SaaS de propostas com editor drag-and-drop, JSON Schema, PostgreSQL, Supabase e pagamentos. Construí um proxy em Go com roteamento, cache e retentativas."
+          "Pipelines de RAG e agentes com MCP.",
+          "75% menos tempo na triagem de fraudes.",
+          "20% mais recuperação com cobrança automatizada.",
+          "Propose, editor de propostas sem código."
         ],
         "en": [
-          "Built RAG pipelines with embeddings, chunking, reranking, vector databases and graph databases.",
-          "Orchestrated Claude, GPT and Gemini workflows using MCP, tool use and function calling. Used structured outputs and Jev to evaluate prompts, catch regressions and trace actions, with controls for prompt injection, cost and latency.",
-          "Built AI and SQL anomaly monitoring in n8n (70% less analysis time), churn prediction (85% accuracy) and fraud detection (75% less triage time).",
-          "Automated collections through WhatsApp, email and SMS, reducing manual work by 60% and improving recovery by 20%. A SQL Server assistant on WhatsApp reduced reporting time by 80%.",
-          "Used Zapier and CRM workflows to cut sales qualification time by 65% and cancellations by 25%. In Make, integrated orders, inventory and invoicing, reducing manual processing by 80% and data-entry errors by 90%.",
-          "Applied AI to SQL and API data analysis, reducing analysis time by 75% and reporting effort by 60%.",
-          "Delivered Propose, a SaaS proposal builder with a drag-and-drop editor, JSON Schema, PostgreSQL, Supabase and payments. Built a Go proxy for routing, caching and retries."
+          "RAG pipelines and agents using MCP.",
+          "75% less time spent on fraud triage.",
+          "20% better recovery with automated collections.",
+          "Propose, a no-code proposal builder."
         ]
       },
       "technologies": [
@@ -203,25 +197,21 @@
         "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "Referência técnica em Design System, arquitetura frontend e serviços de backend de portais e apps usados por mais de 20 organizações.",
-        "en": "Technical lead for the design system, frontend architecture and backend services behind portals and apps used by more than 20 organizations."
+        "pt": "Portais e apps usados por mais de 20 organizações.",
+        "en": "Portals and apps used by more than 20 organizations."
       },
       "highlights": {
         "pt": [
-          "Lidero um Design System com mais de 500 componentes em React e TypeScript. Reduzi em até 70% o tempo para entregar novas telas, de cerca de três dias a poucas horas.",
-          "Construí o Portal Unificado em Next.js, com mais de 120 páginas, além dos portais Contábil, do Cliente e Administrativo.",
-          "Com TanStack Query, reduzi em cerca de 60% o tráfego de rede repetitivo e melhorei em até 40% o tempo de carregamento, com Time to Interactive abaixo de 1,2 s.",
-          "Orquestrei 20 agentes simultâneos com MCP e tool use. Avaliei saídas estruturadas com Jev e usei banco em grafo, com controle de custo e latência e defesa contra prompt injection.",
-          "Desenvolvi APIs em Node.js, NestJS e C#, com JWT, RBAC, rate limiting e webhooks. Modelei dados em PostgreSQL e SQL Server e fiz deploy na AWS com API Gateway.",
-          "Participei da migração de Electron para Tauri, adicionei testes E2E em Playwright à AC3 Cloud e mantive aplicações Vue.js de clientes."
+          "Design System com 500+ componentes.",
+          "Portal Next.js com 120+ páginas.",
+          "Até 70% menos tempo para entregar telas.",
+          "Até 40% menos tempo de carregamento."
         ],
         "en": [
-          "Lead a React and TypeScript design system with more than 500 components. Cut delivery time for new screens by up to 70%, from about three days to a few hours.",
-          "Built the unified portal in Next.js with more than 120 pages, along with accounting, customer and administrative portals.",
-          "Used TanStack Query to reduce redundant network traffic by about 60% and improve load times by up to 40%, with Time to Interactive under 1.2 s.",
-          "Orchestrated 20 concurrent agents using MCP and tool use. Evaluated structured outputs with Jev and used a graph database, with controls for cost, latency and prompt injection.",
-          "Built APIs in Node.js, NestJS and C# with JWT, RBAC, rate limiting and webhooks. Modeled data in PostgreSQL and SQL Server and deployed to AWS via API Gateway.",
-          "Helped migrate Electron apps to Tauri, added Playwright E2E tests to AC3 Cloud and maintained customer-facing Vue.js applications."
+          "Design system with 500+ components.",
+          "Next.js portal with 120+ pages.",
+          "Up to 70% less time to deliver screens.",
+          "Up to 40% shorter load times."
         ]
       },
       "technologies": [
@@ -253,17 +243,17 @@
         "en": "Technology & AI Mentor"
       },
       "description": {
-        "pt": "Oficinas de IA e prototipação para transformar problemas em projetos.",
-        "en": "AI and prototyping workshops that turn problems into practical projects."
+        "pt": "Seis meses de mentoria em tecnologia e IA.",
+        "en": "Six months mentoring in technology and AI."
       },
       "highlights": {
         "pt": [
-          "Orientei mais de 30 participantes em lógica, desenvolvimento web e IA aplicada ao longo de seis meses.",
-          "Conduzi oficinas de ideação e prototipação prática."
+          "Orientei mais de 30 participantes em lógica, web e IA aplicada.",
+          "Conduzi oficinas de prototipação."
         ],
         "en": [
-          "Mentored more than 30 participants in programming logic, web development and applied AI over six months.",
-          "Led hands-on ideation and prototyping workshops."
+          "Mentored over 30 participants in programming, web development and applied AI.",
+          "Led hands-on prototyping workshops."
         ]
       },
       "technologies": [
@@ -300,19 +290,17 @@
         "en": "Junior Full Stack Engineer"
       },
       "description": {
-        "pt": "Dashboards, rotinas financeiras e integrações para sistemas de associações, clubes e proteção veicular.",
-        "en": "Dashboards, financial workflows and integrations for associations, clubs and vehicle protection programs."
+        "pt": "Software de gestão para associações e clubes.",
+        "en": "Management software for associations and clubs."
       },
       "highlights": {
         "pt": [
-          "Desenvolveu dashboards operacionais, fluxos financeiros e relatórios analíticos em tempo real.",
-          "Integrações com APIs REST e serviços de terceiros (pagamentos, consultas cadastrais, mensageria).",
-          "Modelagem e manutenção de bancos de dados relacionais PostgreSQL e MySQL."
+          "Criei dashboards, relatórios e fluxos financeiros.",
+          "Integrei pagamentos e mantive bancos PostgreSQL e MySQL."
         ],
         "en": [
-          "Built operational dashboards, financial workflows, and real-time analytical reporting.",
-          "Third-party REST API integrations (payment processors, registry services, messaging).",
-          "Relational database modeling and querying with PostgreSQL and MySQL."
+          "Built dashboards, reports and financial workflows.",
+          "Integrated payments and maintained PostgreSQL and MySQL databases."
         ]
       },
       "technologies": [

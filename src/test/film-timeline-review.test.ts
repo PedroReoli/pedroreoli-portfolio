@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { homeContent } from '../data/content'
 import { renderHome, css } from './home-fixture'
 
-describe('trajetória integral, sem cards comprimidos', () => {
+describe('trajetória em cards compactos e com texto completo', () => {
   it('expõe lista ordenada, período, empresa, cargo e todos os destaques', () => {
     const { container } = renderHome()
     const list = container.querySelector('#experiencia ol')

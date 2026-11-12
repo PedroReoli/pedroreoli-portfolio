@@ -27,10 +27,6 @@
   .home-project .project-card__tech { margin-block: 24px; }
   .stack-grid { gap: 32px 24px; }
   .stack-grid header { flex-direction: column; gap: 6px; }
-  .timeline-v::before { left: 20px; }
-  .timeline-node { left: 20px; top: 32px; width: 34px; height: 34px; }
-  .timeline-v__item--left, .timeline-v__item--right { padding-left: 54px; padding-right: 0; justify-content: flex-start; }
-  .timeline-card__highlights { padding-left: 18px; }
   .section-kicker { gap: 16px; align-items: baseline; font-size: .8125rem; }
   .purpose-section__media img { aspect-ratio: 20/9; }
 }
