@@ -59,6 +59,14 @@
           "source": "concept",
           "where": { "pt": "Autocom3", "en": "Autocom3" },
           "usage": { "pt": "Cache e carregamento de dados no Portal Unificado. Cerca de 60% menos tráfego repetitivo e TTI abaixo de 1,2 s.", "en": "Caching and data loading in the unified portal. Around 60% less redundant traffic and TTI under 1.2 s." }
+        },
+        {
+          "name": "Vue.js",
+          "icon": "vue",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "Autocom3", "en": "Autocom3" },
+          "usage": { "pt": "Manutenção de aplicações web de clientes.", "en": "Maintenance of customer-facing web apps." }
         }
       ]
     },
@@ -121,6 +129,46 @@
           "source": "simple-icons",
           "where": { "pt": "Domus", "en": "Domus" },
           "usage": { "pt": "Proxy com roteamento, cache e retentativas.", "en": "Proxy with routing, caching and retries." }
+        },
+        {
+          "name": "Express · Fastify",
+          "icon": "fastify",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "Domus", "en": "Domus" },
+          "usage": { "pt": "Serviços e APIs para aplicações SaaS.", "en": "Services and APIs for SaaS applications." }
+        },
+        {
+          "name": "JWT · RBAC",
+          "icon": "jwt",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "Autocom3", "en": "Autocom3" },
+          "usage": { "pt": "Autenticação e permissões por função em portais de gestão.", "en": "Authentication and role-based access in management portals." }
+        },
+        {
+          "name": "APIs REST · Webhooks",
+          "icon": "network",
+          "source": "concept",
+          "color": "#FBBF24",
+          "where": { "pt": "Autocom3 · SIVIS", "en": "Autocom3 · SIVIS" },
+          "usage": { "pt": "Integrações de cobrança, mensageria e eventos entre serviços.", "en": "Billing, messaging and event integrations between services." }
+        },
+        {
+          "name": "Supabase",
+          "icon": "supabase",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "Propose", "en": "Propose" },
+          "usage": { "pt": "Banco PostgreSQL e integrações do editor de propostas.", "en": "PostgreSQL and integrations for the proposal editor." }
+        },
+        {
+          "name": "MySQL",
+          "icon": "database",
+          "source": "concept",
+          "color": "#FBBF24",
+          "where": { "pt": "SIVIS", "en": "SIVIS" },
+          "usage": { "pt": "Modelagem de dados e consultas em módulos corporativos.", "en": "Data modeling and queries for enterprise modules." }
         }
       ]
     },
@@ -167,6 +215,14 @@
           "source": "simple-icons",
           "where": { "pt": "Autocom3", "en": "Autocom3" },
           "usage": { "pt": "Migração de aplicações desktop de Electron para Tauri.", "en": "Desktop application migration from Electron to Tauri." }
+        },
+        {
+          "name": "Git",
+          "icon": "git",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "SIVIS · Autocom3", "en": "SIVIS · Autocom3" },
+          "usage": { "pt": "Controle de versão, revisão de PRs e trabalho em equipe.", "en": "Version control, pull request reviews and collaboration." }
         }
       ]
     },
@@ -221,6 +277,38 @@
           "source": "concept",
           "where": { "pt": "Domus", "en": "Domus" },
           "usage": { "pt": "Monitoramento com IA e SQL, automação de cobrança, fluxos de CRM e pedidos omnichannel.", "en": "AI and SQL monitoring, collections automation, CRM workflows and omnichannel orders." }
+        },
+        {
+          "name": "Embeddings · Reranking",
+          "icon": "rag",
+          "source": "concept",
+          "color": "#FBBF24",
+          "where": { "pt": "Domus", "en": "Domus" },
+          "usage": { "pt": "Indexação de documentos e reordenação de resultados em buscas com RAG.", "en": "Document indexing and result reranking in RAG search." }
+        },
+        {
+          "name": "Bancos vetoriais e em grafo",
+          "icon": "database",
+          "source": "concept",
+          "color": "#FBBF24",
+          "where": { "pt": "Domus · Autocom3", "en": "Domus · Autocom3" },
+          "usage": { "pt": "Recuperação semântica e consultas que usam relações entre registros.", "en": "Semantic retrieval and queries that use relationships between records." }
+        },
+        {
+          "name": "PyTorch · PEFT",
+          "icon": "pytorch",
+          "source": "simple-icons",
+          "color": "#FBBF24",
+          "where": { "pt": "Argos-Action", "en": "Argos-Action" },
+          "usage": { "pt": "Ajuste leve de um modelo Qwen com LoRA para pesquisa.", "en": "Lightweight LoRA fine-tuning of a Qwen model for research." }
+        },
+        {
+          "name": "Defesa contra prompt injection",
+          "icon": "playwright",
+          "source": "concept",
+          "color": "#FBBF24",
+          "where": { "pt": "Domus · Autocom3", "en": "Domus · Autocom3" },
+          "usage": { "pt": "Validação de entradas e controles para o uso de ferramentas por modelos.", "en": "Input validation and controls for model tool use." }
         }
       ]
     }
