@@ -7,8 +7,7 @@ import '@/styles/resume-page.css'
 export function ResumePage() {
   const { language } = useLanguage()
   const { navigate } = useRouter()
-  const resumeHref = language === 'pt' ? '/resume/Pedro_Lucas_Reis_Frontend.pdf' : '/resume/Pedro_Lucas_Reis_Fullstack.pdf'
-  const downloadName = language === 'pt' ? 'Pedro_Lucas_Reis_Curriculo.pdf' : 'Pedro_Lucas_Reis_Resume.pdf'
+  const resumeHref = '/resume/curriculo.pdf'
 
   useEffect(() => {
     document.title = language === 'pt' ? 'Currículo | Pedro Reoli' : 'Resume | Pedro Reoli'
@@ -34,8 +33,8 @@ export function ResumePage() {
             <h1>{language === 'pt' ? 'Currículo Profissional' : 'Professional Resume'}</h1>
             <p className="resume-page__subtitle">
               {language === 'pt'
-                ? 'Engenheiro de Software Full Stack & Arquiteto de Sistemas.'
-                : 'Full Stack Software Engineer & Systems Architect.'}
+                ? 'Full Stack Developer e AI Engineer · LLMs, RAG e MCP'
+                : 'Full Stack Developer and AI Engineer · LLMs, RAG and MCP'}
             </p>
           </div>
 
@@ -52,7 +51,7 @@ export function ResumePage() {
             <a
               className="resume-page__btn-secondary"
               href={resumeHref}
-              download={downloadName}
+              download="curriculo.pdf"
             >
               <Download size={18} aria-hidden="true" />
               {language === 'pt' ? 'Baixar PDF' : 'Download PDF'}
