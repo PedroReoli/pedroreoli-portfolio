@@ -60,6 +60,15 @@ function GalleryGroupCarousel({ group, language, onSelect }: { group: EditorialG
 
 export function ProjectCase({ project, language }: Props) {
   const copy = projectsCopy[language]
+  const summary = project.quickSummary
+  const evidence = summary?.evidence ?? (project.evidence?.[0] && { ...project.evidence[0], external: true })
+  const otherEvidence = project.evidence?.filter(link => !summary || link.href !== evidence?.href)
+  const detailNote = !summary || evidence ? project.note : undefined
+  const hasDetailEvidence = Boolean(detailNote || otherEvidence?.length)
+  const metrics = project.metrics?.slice(summary ? 2 : 0)
+  const summaryCopy = language === 'pt'
+    ? { title: 'Resumo do case', problem: 'O problema', contribution: 'Minha contribuição', results: 'Resultados', evidence: 'Evidência' }
+    : { title: 'Case summary', problem: 'The problem', contribution: 'My contribution', results: 'Results', evidence: 'Evidence' }
   const [modalIndex, setModalIndex] = useState<number | null>(null)
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -103,9 +112,48 @@ export function ProjectCase({ project, language }: Props) {
         <p className="projects-case__intro">{project.introduction[language]}</p>
       </div>
 
-      {project.metrics && project.metrics.length > 0 && (
-        <div className="projects-case__metrics" id={`${project.id}-resultados`} tabIndex={-1} data-project-topic aria-label={copy.metrics}>
-          {project.metrics.map((m) => (
+      {summary && (
+        <section className="projects-case__summary" aria-labelledby={`${project.id}-summary-title`}>
+          <h3 id={`${project.id}-summary-title`}>{summaryCopy.title}</h3>
+          <dl className="projects-case__summary-details">
+            <div>
+              <dt>{summaryCopy.problem}</dt>
+              <dd>{summary.problem[language]}</dd>
+            </div>
+            <div>
+              <dt>{summaryCopy.contribution}</dt>
+              <dd>{summary.contribution[language]}</dd>
+            </div>
+          </dl>
+          <div className="projects-case__summary-results" id={`${project.id}-resultados`} tabIndex={-1} data-project-topic>
+            <h4>{summaryCopy.results}</h4>
+            {summary.result ? <p>{summary.result[language]}</p> : <dl>
+              {project.metrics?.slice(0, 2).map(metric => (
+                <div key={metric.value}>
+                  <dt>{metric.label[language]}</dt>
+                  <dd>{metric.value}</dd>
+                </div>
+              ))}
+            </dl>}
+          </div>
+          <p className="projects-case__summary-evidence" id={hasDetailEvidence ? undefined : `${project.id}-referencias`} tabIndex={hasDetailEvidence ? undefined : -1} data-project-topic={hasDetailEvidence ? undefined : true}>
+            <strong>{summaryCopy.evidence}</strong>
+            {evidence ? <a
+              href={evidence.href}
+              target={evidence.external ? '_blank' : undefined}
+              rel={evidence.external ? 'noopener noreferrer' : undefined}
+              aria-label={evidence.external ? `${evidence.label[language]} — ${project.name} (${copy.external})` : undefined}
+            >
+              {evidence.label[language]}
+              <Icon name={evidence.external ? 'arrow-up-right' : 'arrow-down'} size={16} />
+            </a> : <span>{project.note?.[language]}</span>}
+          </p>
+        </section>
+      )}
+
+      {metrics && metrics.length > 0 && (
+        <div className="projects-case__metrics" id={summary ? undefined : `${project.id}-resultados`} tabIndex={summary ? undefined : -1} data-project-topic={summary ? undefined : true} aria-label={copy.metrics}>
+          {metrics.map((m) => (
             <div key={m.value + m.label.pt} className="projects-case__metric-card">
               <span className="projects-case__metric-val">{m.value}</span>
               <span className="projects-case__metric-lbl">{m.label[language]}</span>
@@ -251,10 +299,10 @@ export function ProjectCase({ project, language }: Props) {
           <h3>{project.approachLabel[language]}</h3>
           <p>{project.approach[language]}</p>
         </div>
-        {(project.note || project.evidence) && (
+        {hasDetailEvidence && (
           <div className="projects-case__evidence" id={`${project.id}-referencias`} tabIndex={-1} data-project-topic>
-            {project.note && <p className="projects-case__note">{project.note[language]}</p>}
-            {project.evidence?.map(({ href, label }) => (
+            {detailNote && <p className="projects-case__note">{detailNote[language]}</p>}
+            {otherEvidence?.map(({ href, label }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label[language]} — ${project.name} (${copy.external})`}>
                 {label[language]} <Icon name="arrow-up-right" size={20} />
               </a>

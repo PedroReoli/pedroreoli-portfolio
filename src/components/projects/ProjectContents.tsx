@@ -18,14 +18,14 @@ export function ProjectContents({ projects, language, activeTopic, compact = fal
           const isCurrent = activeTopic === `#${project.id}` || activeTopic.startsWith(`#${project.id}-`)
           const topics = [
             { href: `#${project.id}`, label: text.overview, visible: true },
-            { href: `#${project.id}-resultados`, label: text.results, visible: Boolean(project.metrics?.length) },
+            { href: `#${project.id}-resultados`, label: text.results, visible: Boolean(project.quickSummary || project.metrics?.length) },
             { href: `#${project.id}-diagrama`, label: text.diagram, visible: true },
             { href: `#${project.id}-desafios`, label: text.challenges, visible: Boolean(project.starStories?.length) },
             { href: `#${project.id}-arquitetura`, label: text.architecture, visible: Boolean(project.architectures?.length) },
             { href: `#${project.id}-galeria`, label: text.gallery, visible: Boolean(project.galleryGroups?.length) },
             { href: `#${project.id}-contexto`, label: project.contextLabel[language], visible: true },
             { href: `#${project.id}-abordagem`, label: project.approachLabel[language], visible: true },
-            { href: `#${project.id}-referencias`, label: text.references, visible: Boolean(project.note || project.evidence) },
+            { href: `#${project.id}-referencias`, label: text.references, visible: Boolean(project.note || project.evidence || project.quickSummary?.evidence) },
           ]
 
           return (

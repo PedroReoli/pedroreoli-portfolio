@@ -47,6 +47,12 @@ export interface EditorialCase {
   diagramLabel: Localized
   diagram: Localized[]
   metrics?: { label: Localized; value: string }[]
+  quickSummary?: {
+    problem: Localized
+    contribution: Localized
+    result?: Localized
+    evidence?: { href: string; label: Localized; external?: boolean }
+  }
   starStories?: EditorialStarStory[]
   architectures?: EditorialArchitecture[]
   galleryGroups?: EditorialGalleryGroup[]
@@ -66,6 +72,11 @@ export const projectCases: EditorialCase[] = [
       pt: 'Portal Unificado em Next.js com 120+ páginas e um Design System de 500+ componentes. A base atende 20+ organizações em operações comerciais, fiscais e administrativas.',
       en: 'A unified Next.js portal with 120+ pages and a design system with 500+ components. The platform supports commercial, tax, and administrative workflows at 20+ organizations.',
     },
+    quickSummary: {
+      problem: { pt: 'Equipes dependiam de mais de 30 ferramentas separadas para operar o ERP.', en: 'Teams relied on more than 30 separate tools for their ERP workflows.' },
+      contribution: { pt: 'Construí o Portal Unificado em Next.js, liderei o Design System e otimizei o carregamento de dados.', en: 'I built the unified Next.js portal, led the design system, and optimized data loading.' },
+      evidence: { href: '#autocom3-galeria', label: { pt: 'Ver capturas dos módulos', en: 'View module screenshots' } },
+    },
     contextLabel: { pt: 'O contexto & escopo', en: 'Context & scope' },
     context: {
       pt: 'Unificar rotinas de mais de 30 ferramentas dispersas, faturamento societário, governança de senhas diárias e licenciamento para redes de varejo farmacêutico e geral.',
@@ -84,10 +95,10 @@ export const projectCases: EditorialCase[] = [
       { pt: 'Mobile B2B Expo', en: 'Mobile B2B Expo' },
     ],
     metrics: [
+      { label: { pt: 'Menos tempo para criar novas telas', en: 'Less time to build new screens' }, value: '≤ 70%' },
+      { label: { pt: 'Menos tempo de carregamento', en: 'Shorter load times' }, value: '≤ 40%' },
       { label: { pt: 'Telas operacionais unificadas', en: 'Unified operational screens' }, value: '120+' },
       { label: { pt: 'Componentes reutilizáveis governados', en: 'Governed reusable components' }, value: '500+' },
-      { label: { pt: 'Menos tempo para criar novas telas', en: 'Less time to build new screens' }, value: '≤ 70%' },
-      { label: { pt: 'Carregamento mais rápido', en: 'Faster loading' }, value: '≤ 40%' },
       { label: { pt: 'Tempo no atendimento de senhas técnicas', en: 'Support time for daily passwords' }, value: '-80%' },
       { label: { pt: 'Redução de retrabalho na conciliação', en: 'Rework reduction in reconciliation' }, value: '-60%' },
     ],
@@ -305,6 +316,12 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'propose', categories: ['corporativo'], name: 'Propose',
     type: { pt: 'SaaS · Domus', en: 'SaaS · Domus' },
+    quickSummary: {
+      problem: { pt: 'Equipes comerciais precisavam adaptar propostas sem depender de código.', en: 'Sales teams needed to customize proposals without writing code.' },
+      contribution: { pt: 'Construí o editor visual e a renderização de formulários por JSON Schema.', en: 'I built the visual editor and the JSON Schema form renderer.' },
+      result: { pt: 'Um SaaS para criar propostas personalizadas, com pagamentos integrados.', en: 'A SaaS product for creating custom proposals, with integrated payments.' },
+      evidence: { href: '#propose-diagrama', label: { pt: 'Ver componentes da plataforma', en: 'View platform components' } },
+    },
     introduction: {
       pt: 'SaaS de propostas comerciais com editor visual drag-and-drop e renderização de formulários por JSON Schema.',
       en: 'A commercial proposal SaaS with a drag-and-drop visual editor and JSON Schema form rendering.',
@@ -332,6 +349,19 @@ export const projectCases: EditorialCase[] = [
       pt: 'Protótipo aberto de um modelo pequeno que lê a árvore de acessibilidade da interface e propõe uma ação estruturada por vez.',
       en: 'An open research prototype that reads an interface accessibility tree and proposes one structured action at a time.',
     },
+    quickSummary: {
+      problem: { pt: 'Eu precisava medir se um modelo de 1,5 bilhão de parâmetros conseguia seguir o formato de ação e reconhecer quando devia parar.', en: 'I needed to measure whether a 1.5B-parameter model could follow the action format and recognize when to stop.' },
+      contribution: { pt: 'Treinei o adaptador LoRA e comparei suas respostas com o modelo base em 132 casos inéditos.', en: 'I trained the LoRA adapter and compared its responses with the base model on 132 unseen cases.' },
+      evidence: {
+        href: 'https://www.kaggle.com/code/pedroreoli/argos-holdout-v2-eval-of-a-1-5b-ui-action-model',
+        label: { pt: 'Ver notebook e dados da avaliação', en: 'View the evaluation notebook and data' },
+        external: true,
+      },
+    },
+    metrics: [
+      { label: { pt: 'Respostas no formato exigido, frente a 0% do modelo base', en: 'Responses matching the required format, versus 0% for the base model' }, value: '92%' },
+      { label: { pt: 'Casos críticos encaminhados para intervenção humana', en: 'Critical cases escalated for human intervention' }, value: '0 / 28' },
+    ],
     contextLabel: { pt: 'Como avaliei o modelo', en: 'How I evaluated the model' },
     context: {
       pt: 'O primeiro script validava os rótulos do dataset. Na avaliação posterior, em 132 casos inéditos, 92% das respostas do adaptador seguiram o schema, frente a 0% do modelo base. O Argos deixou de escalar para uma pessoa nos 28 casos em que deveria parar.',
@@ -360,6 +390,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'achilles', categories: ['proprios', 'ia'], name: 'Achilles CDP Agent',
     type: { pt: 'Agentes e automação', en: 'Agents and automation' },
+    quickSummary: {
+      problem: { pt: 'Testes de qualidade envolviam fluxos no navegador e no Windows.', en: 'Quality testing involved both browser and Windows workflows.' },
+      contribution: { pt: 'Desenvolvi um servidor MCP em Python com transferência de controle para uma pessoa em etapas de autenticação.', en: 'I built a Python MCP server that hands control to a person during authentication.' },
+      result: { pt: 'Ferramenta de código aberto usada em operações de produto e testes de qualidade.', en: 'An open-source tool used in product operations and quality testing.' },
+    },
     introduction: {
       pt: 'Servidor MCP em Python para automação e QA no navegador e em aplicativos Windows. Projeto pessoal de código aberto, sob licença MIT.',
       en: 'A Python MCP server for browser and Windows app automation and QA. An open-source personal project under the MIT license.',
@@ -384,6 +419,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'organon', categories: ['proprios', 'ia'], name: 'Organon',
     type: { pt: 'Orquestração de agentes · Suíte Reoli', en: 'Agent orchestration · Reoli suite' },
+    quickSummary: {
+      problem: { pt: 'Acompanhar sessões em vários modelos exigia alternar entre ambientes.', en: 'Tracking sessions across models meant switching between workspaces.' },
+      contribution: { pt: 'Desenvolvi um aplicativo desktop local-first com um painel de revisão e aprovação humana.', en: 'I built a local-first desktop app with a human review and approval panel.' },
+      result: { pt: 'Sessões de múltiplos modelos e aprovações reunidas no mesmo ambiente.', en: 'Sessions across multiple models and approvals in one workspace.' },
+    },
     introduction: {
       pt: 'Aplicativo desktop local-first da suíte Reoli para coordenar sessões de trabalho com múltiplos modelos e aprovações humanas.',
       en: 'A local-first desktop application in the Reoli suite for coordinating work sessions across multiple models with human approval.',
@@ -408,6 +448,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'geoambiental', categories: ['proprios'], name: 'GeoAmbiental',
     type: { pt: 'Mapa ambiental interativo', en: 'Interactive environmental map' },
+    quickSummary: {
+      problem: { pt: 'Dados ambientais de Volta Redonda precisavam de uma forma visual de exploração.', en: 'Volta Redonda’s environmental data needed a visual way to explore it.' },
+      contribution: { pt: 'Reuni camadas, detalhes e consultas ao IBGE em uma interface com OpenLayers.', en: 'I combined layers, details and IBGE data queries in an OpenLayers interface.' },
+      result: { pt: 'Mapa interativo com camadas selecionáveis e dados ilustrativos.', en: 'An interactive map with selectable layers and illustrative data.' },
+    },
     introduction: {
       pt: 'Uma aplicação web para explorar camadas ambientais e dados geoespaciais de Volta Redonda.',
       en: 'A web application for exploring environmental layers and geospatial data for Volta Redonda.',
@@ -436,6 +481,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'falaatipica', categories: ['proprios'], name: 'FalaAtípica',
     type: { pt: 'Tecnologia assistiva · TCC UniFOA', en: 'Assistive technology · UniFOA capstone' },
+    quickSummary: {
+      problem: { pt: 'Famílias e profissionais precisavam compartilhar o acompanhamento de crianças com atraso de fala.', en: 'Families and practitioners needed a shared way to support children with speech delays.' },
+      contribution: { pt: 'Concebi, como TCC, módulos para crianças, cuidadores e profissionais.', en: 'For my capstone, I designed modules for children, caregivers and practitioners.' },
+      result: { pt: 'Proposta de plataforma de tecnologia assistiva publicada nos anais do UniFOA.', en: 'An assistive technology platform proposal published in the UniFOA proceedings.' },
+    },
     introduction: {
       pt: 'Projeto acadêmico de uma plataforma que aproxima famílias e profissionais no acompanhamento de crianças com atraso de fala.',
       en: 'An academic platform project that connects families and professionals who support children with speech delays.',
@@ -463,6 +513,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'loog', categories: ['clientes'], name: 'Loog Proteção Veicular',
     type: { pt: 'Plataforma Web & Cotações', en: 'Web Platform & Quotes' },
+    quickSummary: {
+      problem: { pt: 'O portal precisava facilitar o pedido de cotações de proteção veicular.', en: 'The portal needed to make it easier to request vehicle protection quotes.' },
+      contribution: { pt: 'Construí um formulário dinâmico, com validação de dados e integração ao CRM.', en: 'I built a dynamic form with input validation and CRM integration.' },
+      result: { pt: 'Visitantes podem enviar pedidos de cotação pelo site.', en: 'Visitors can submit quote requests through the site.' },
+    },
     introduction: {
       pt: 'Portal institucional e motor de captura de cotações para proteção veicular com alta taxa de conversão.',
       en: 'Institutional portal and conversion-optimized quotation engine for vehicle protection.',
@@ -487,6 +542,11 @@ export const projectCases: EditorialCase[] = [
   {
     id: 'nexus', categories: ['clientes'], name: 'Nexus Brazil',
     type: { pt: 'Sistemas & Integrações', en: 'Systems & Integrations' },
+    quickSummary: {
+      problem: { pt: 'A empresa precisava apresentar seus serviços e facilitar o contato comercial.', en: 'The company needed to explain its services and make sales contact easier.' },
+      contribution: { pt: 'Estruturei a interface, a navegação e os pontos de contato do site institucional.', en: 'I structured the site interface, navigation and contact points.' },
+      result: { pt: 'Site institucional com serviços e canais de contato em um só lugar.', en: 'A company website bringing services and contact channels together.' },
+    },
     introduction: {
       pt: 'Solução corporativa digital e presença institucional conectando serviços e tecnologia de ponta.',
       en: 'Enterprise digital presence and integration solutions connecting specialized operational services.',
