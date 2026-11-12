@@ -28,19 +28,21 @@ export function ExperienceSection() {
             <p className="experience-scroll-hint">{language === 'pt' ? 'Role para percorrer a trajetória' : 'Scroll to explore the timeline'}</p>
           </div>
 
-          <div className="experience-track__viewport" id="experience-viewport" ref={viewportRef}>
+          <div className="experience-dates" aria-hidden="true">
+            {items.map(item => (
+              <span className="experience-dates__date" key={item.period.pt} data-experience-date>
+                {item.period[language].split(' / ')[0]}
+              </span>
+            ))}
+          </div>
+
+          <div className="experience-track__viewport" ref={viewportRef} data-reveal data-reveal-delay="110">
             <ol className="timeline-v" aria-label={copy.chaptersLabel}>
-              {items.map((item, index) => (
-                <li
-                  className="timeline-v__item"
-                  key={item.company + item.period.pt}
-                  data-reveal
-                  data-reveal-delay={110 + Math.min(index, 3) * 55}
-                >
-                  <p className="timeline-v__period">{item.period[language]}</p>
-                  <div className="timeline-v__marker" aria-hidden="true" />
+              {items.map(item => (
+                <li className="timeline-v__item" key={item.company + item.period.pt}>
                   <article className="timeline-card">
                     <header className="timeline-card__heading">
+                      <p className="timeline-v__period">{item.period[language]}</p>
                       <h3>{item.company}</h3>
                       <h4>{item.role[language]}</h4>
                     </header>

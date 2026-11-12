@@ -150,21 +150,19 @@
         "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "SaaS e automação com IA, do requisito ao deploy.",
-        "en": "SaaS and AI automation, from requirements through deployment."
+        "pt": "Desenvolvo sistemas de gestão e automatizo rotinas financeiras e operacionais com IA.",
+        "en": "I build business management software and use AI to automate financial and operational tasks."
       },
       "highlights": {
         "pt": [
-          "Pipelines de RAG e agentes com MCP.",
-          "75% menos tempo na triagem de fraudes.",
-          "20% mais recuperação com cobrança automatizada.",
-          "Propose, editor de propostas sem código."
+          "Criei o Propose, um editor de propostas comerciais que dispensa programação.",
+          "Automatizei a detecção de fraudes e reduzi em 75% o tempo de triagem.",
+          "Automatizei cobranças por WhatsApp, e-mail e SMS. A recuperação de inadimplência aumentou 20%."
         ],
         "en": [
-          "RAG pipelines and agents using MCP.",
-          "75% less time spent on fraud triage.",
-          "20% better recovery with automated collections.",
-          "Propose, a no-code proposal builder."
+          "Built Propose, an editor for creating sales proposals without code.",
+          "Automated fraud detection and cut triage time by 75%.",
+          "Automated collections over WhatsApp, email and SMS. Debt recovery increased by 20%."
         ]
       },
       "technologies": [
@@ -197,21 +195,19 @@
         "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "Portais e apps usados por mais de 20 organizações.",
-        "en": "Portals and apps used by more than 20 organizations."
+        "pt": "Desenvolvo portais de gestão e autoatendimento usados por mais de 20 organizações.",
+        "en": "I build management and self-service portals used by more than 20 organizations."
       },
       "highlights": {
         "pt": [
-          "Design System com 500+ componentes.",
-          "Portal Next.js com 120+ páginas.",
-          "Até 70% menos tempo para entregar telas.",
-          "Até 40% menos tempo de carregamento."
+          "Criei um portal com mais de 120 páginas em Next.js.",
+          "Lidero uma biblioteca de 500+ componentes reutilizáveis, que reduziu em até 70% o tempo para criar novas telas.",
+          "Otimizei o cache e a busca de dados. O tempo de carregamento caiu em até 40%."
         ],
         "en": [
-          "Design system with 500+ components.",
-          "Next.js portal with 120+ pages.",
-          "Up to 70% less time to deliver screens.",
-          "Up to 40% shorter load times."
+          "Built a Next.js portal with more than 120 pages.",
+          "Lead a library of 500+ reusable components that cut the time to build new screens by up to 70%.",
+          "Improved caching and data fetching, cutting load times by up to 40%."
         ]
       },
       "technologies": [
@@ -243,17 +239,17 @@
         "en": "Technology & AI Mentor"
       },
       "description": {
-        "pt": "Seis meses de mentoria em tecnologia e IA.",
-        "en": "Six months mentoring in technology and AI."
+        "pt": "Atuei por seis meses em um programa de inclusão digital do UniFOA e do Sebrae.",
+        "en": "I spent six months mentoring in a digital inclusion program run by UniFOA and Sebrae."
       },
       "highlights": {
         "pt": [
-          "Orientei mais de 30 participantes em lógica, web e IA aplicada.",
-          "Conduzi oficinas de prototipação."
+          "Orientei mais de 30 participantes em lógica de programação, desenvolvimento web e IA.",
+          "Conduzi oficinas em que as pessoas transformavam ideias em protótipos."
         ],
         "en": [
-          "Mentored over 30 participants in programming, web development and applied AI.",
-          "Led hands-on prototyping workshops."
+          "Mentored over 30 participants in programming fundamentals, web development and AI.",
+          "Led hands-on workshops where participants turned ideas into prototypes."
         ]
       },
       "technologies": [
@@ -290,17 +286,17 @@
         "en": "Junior Full Stack Engineer"
       },
       "description": {
-        "pt": "Software de gestão para associações e clubes.",
-        "en": "Management software for associations and clubs."
+        "pt": "Desenvolvi um sistema que associações e clubes usavam para acompanhar operações e cobranças.",
+        "en": "I worked on management software that associations and clubs used to track operations and billing."
       },
       "highlights": {
         "pt": [
-          "Criei dashboards, relatórios e fluxos financeiros.",
-          "Integrei pagamentos e mantive bancos PostgreSQL e MySQL."
+          "Criei painéis e relatórios para acompanhar a operação e os fluxos financeiros.",
+          "Integrei serviços de pagamento e mantive os bancos de dados do sistema."
         ],
         "en": [
-          "Built dashboards, reports and financial workflows.",
-          "Integrated payments and maintained PostgreSQL and MySQL databases."
+          "Built dashboards and reports to track operations and financial workflows.",
+          "Integrated payment services and maintained the system's databases."
         ]
       },
       "technologies": [

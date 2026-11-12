@@ -8,12 +8,14 @@ describe('trajetória em cards compactos e com texto completo', () => {
     const list = container.querySelector('#experiencia ol')
     expect(list).not.toBeNull()
     expect(list?.children).toHaveLength(homeContent.experienceItems.length)
+    const dates = container.querySelectorAll('[data-experience-date]')
+    expect(dates).toHaveLength(homeContent.experienceItems.length)
     homeContent.experienceItems.forEach((item, i) => {
       const row = list!.children[i]
       expect(row).toHaveTextContent(item.period.pt)
       const period = row.querySelector('.timeline-v__period')
       expect(period).toHaveTextContent(item.period.pt)
-      expect(period?.nextElementSibling).toHaveClass('timeline-v__marker')
+      expect(dates[i]).toHaveTextContent(item.period.pt.split(' / ')[0])
       expect(row).toHaveTextContent(item.company)
       expect(row).toHaveTextContent(item.role.pt)
       expect(row).toHaveTextContent(item.description.pt)
