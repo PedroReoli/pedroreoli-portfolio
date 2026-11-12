@@ -11,6 +11,9 @@ describe('trajetória em cards compactos e com texto completo', () => {
     homeContent.experienceItems.forEach((item, i) => {
       const row = list!.children[i]
       expect(row).toHaveTextContent(item.period.pt)
+      const period = row.querySelector('.timeline-v__period')
+      expect(period).toHaveTextContent(item.period.pt)
+      expect(period?.nextElementSibling).toHaveClass('timeline-v__marker')
       expect(row).toHaveTextContent(item.company)
       expect(row).toHaveTextContent(item.role.pt)
       expect(row).toHaveTextContent(item.description.pt)

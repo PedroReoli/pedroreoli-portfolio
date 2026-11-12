@@ -284,13 +284,15 @@
 .purpose-section__copy h2 > * { display: block; }
 .purpose-section__copy p { margin-top: 28px; max-width: 48ch; color: var(--color-text-secondary); font-size: 1.125rem; line-height: 1.7; }
 .purpose-section__copy .text-link { margin-top: 24px; }
+.home > .experience-section { padding-top: 0; }
+
 .experience-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: .75rem;
-  padding-block: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
+  gap: .35rem 1rem;
+  padding-block: clamp(.55rem, 1.5vw, 1.25rem) clamp(.85rem, 2vw, 1.75rem);
 }
 
 .experience-track {
@@ -299,77 +301,60 @@
 
 .experience-track--pinned .experience-track__pin {
   position: sticky;
-  top: calc(var(--header-height) + .75rem);
+  top: var(--header-height);
 }
 
-.experience-track__viewport {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-muted) var(--color-surface);
+.experience-track__pin .section-kicker {
+  padding-block: .55rem;
 }
 
 .experience-track--pinned .experience-track__viewport {
-  scroll-snap-type: none;
-  scrollbar-width: none;
+  overflow: hidden;
 }
 
-.experience-controls {
-  display: flex;
-  gap: .5rem;
+.experience-scroll-hint {
+  display: none;
+  color: var(--color-text-secondary);
+  font-size: .875rem;
 }
 
-.experience-controls button {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line-dark);
-  border-radius: 50%;
-  background: var(--color-surface);
-}
-
-.experience-controls button:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.experience-track--pinned .experience-scroll-hint {
+  display: block;
 }
 
 .timeline-v {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min(94%, 430px);
-  gap: .875rem;
+  gap: 1.25rem;
   list-style: none;
 }
 
+.experience-track--pinned .timeline-v {
+  grid-auto-flow: column;
+  grid-auto-columns: min(100%, 680px);
+}
+
 .timeline-v__item {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
-  padding-top: 1.25rem;
-  scroll-snap-align: start;
 }
 
-.timeline-v__item::before,
-.timeline-v__item::after {
-  content: '';
-  position: absolute;
-}
-
-.timeline-v__item::before {
-  top: 5px;
-  left: 0;
-  right: -.875rem;
+.timeline-v__marker {
+  position: relative;
   height: 1px;
+  margin-block: .55rem .85rem;
   background: var(--line-dark);
 }
 
-.timeline-v__item:last-child::before {
-  right: 0;
+.experience-track--pinned .timeline-v__item:not(:last-child) .timeline-v__marker {
+  margin-right: -1.25rem;
 }
 
-.timeline-v__item::after {
-  top: 0;
-  left: 1rem;
+.timeline-v__marker::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: .25rem;
   width: 11px;
   height: 11px;
   border-radius: 50%;
@@ -377,13 +362,16 @@
 }
 
 .timeline-card {
-  padding: clamp(1rem, 2vw, 1.375rem);
+  flex: 1;
+  min-height: clamp(14rem, 38vh, 22rem);
+  padding: clamp(1rem, 3vw, 2.25rem);
   border: 1px solid var(--line-dark);
   border-radius: var(--radius-md);
   background: var(--color-surface);
 }
 
 .timeline-v__period {
+  padding-inline-start: .25rem;
   color: var(--accent);
   font-size: .8125rem;
   font-weight: 600;
@@ -391,7 +379,7 @@
 
 .timeline-card__heading h3 {
   margin-top: .3rem;
-  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
   font-weight: 600;
   letter-spacing: -.035em;
   line-height: 1.15;
@@ -421,6 +409,41 @@
 
 .timeline-card__highlights li::marker {
   color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .experience-track--pinned .experience-track__pin {
+    top: 4.5rem;
+  }
+}
+
+@media (max-width: 560px) and (max-height: 650px) {
+  .experience-track__pin .section-kicker,
+  .experience-track--pinned .experience-scroll-hint {
+    display: none;
+  }
+
+  .experience-header {
+    padding-block: .4rem .85rem;
+  }
+
+  .timeline-card {
+    padding: .85rem;
+  }
+
+  .timeline-card__heading h3 {
+    font-size: 1.3rem;
+  }
+
+  .timeline-card__heading h4,
+  .timeline-card__desc,
+  .timeline-card__highlights {
+    font-size: .875rem;
+  }
+
+  .timeline-card__highlights {
+    line-height: 1.4;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
