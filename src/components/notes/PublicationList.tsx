@@ -13,11 +13,13 @@ export function PublicationList({ publications, language }: PublicationListProps
   return (
     <div className="notes-publications">
       <span className="sr-only" id="notes-publication-external">{externalLabel}</span>
-      {publications.map(({ id, category, title, description, links }) => (
+      {publications.map(({ id, category, title, highlights, links }) => (
         <article className="notes-publication" id={id} key={id} aria-labelledby={`${id}-title`}>
           <p className="notes-references__category">{category[language]}</p>
           <h3 id={`${id}-title`}>{title[language]}</h3>
-          <p className="notes-publication__description">{description[language]}</p>
+          <ul className="notes-publication__highlights">
+            {highlights.map(highlight => <li key={highlight.pt}>{highlight[language]}</li>)}
+          </ul>
           <ul className="notes-publication__links">
             {links.map(({ href, label }) => (
               <li key={href}>

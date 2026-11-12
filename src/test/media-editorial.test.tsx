@@ -41,7 +41,7 @@ describe('Notes editorial experience', () => {
 
     expect(evaluation).toHaveAttribute('id', 'argos-avaliacao')
     expect(evaluation).toHaveTextContent('92% das respostas')
-    expect(evaluation).toHaveTextContent('os 28 casos')
+    expect(evaluation).toHaveTextContent('nos 28 casos')
     expect(within(evaluation).getByRole('link', { name: 'Ler no Medium' })).toHaveAttribute('href', expect.stringContaining('medium.com/'))
     expect(within(evaluation).getByRole('link', { name: 'Notebook e dados no Kaggle' })).toHaveAttribute('href', expect.stringContaining('kaggle.com/'))
     expect(prototype).toHaveTextContent('87,2 tokens')

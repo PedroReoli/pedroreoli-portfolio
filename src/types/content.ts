@@ -495,7 +495,7 @@ export interface TechnicalPublication {
   id: string;
   category: LocalizedString;
   title: LocalizedString;
-  description: LocalizedString;
+  highlights: LocalizedString[];
   links: { label: LocalizedString; href: string }[];
 }
 

@@ -7,10 +7,12 @@
         "pt": "Argos-Action: o que 132 casos inéditos revelaram",
         "en": "Argos-Action: what 132 unseen cases revealed"
       },
-      "description": {
-        "pt": "Meu primeiro artigo técnico revisita um erro: a checagem inicial de 100% validava os rótulos gerados. Na avaliação posterior, 92% das respostas do Argos seguiram o schema, ante 0% do modelo base. O Argos falhou em encaminhar os 28 casos que exigiam intervenção humana e indicou execução em todos os cenários com ações destrutivas. Os resultados orientam melhorias no treino e a implementação de bloqueios na camada executora.",
-        "en": "My first technical article revisits a mistake: the initial 100% check validated the generated labels. In the follow-up evaluation, 92% of Argos responses matched the schema, compared with 0% for the base model. Argos failed to escalate any of the 28 cases requiring human intervention and proposed execution in every destructive-action scenario. These results inform training improvements and execution-layer safeguards."
-      },
+      "highlights": [
+        { "pt": "O teste inicial de 100% validava os rótulos do dataset.", "en": "The initial 100% check validated the dataset labels." },
+        { "pt": "92% das respostas seguiram o schema, ante 0% do modelo base.", "en": "92% of responses matched the schema, versus 0% for the base model." },
+        { "pt": "O modelo falhou nos 28 casos que exigiam intervenção humana.", "en": "The model failed all 28 cases that required human intervention." },
+        { "pt": "O próximo passo é bloquear ações destrutivas no executor.", "en": "The next step is to block destructive actions at execution time." }
+      ],
       "links": [
         {
           "label": { "pt": "Ler no Medium", "en": "Read on Medium" },
@@ -29,10 +31,12 @@
         "pt": "Argos-Action: da árvore de acessibilidade ao conjunto de teste",
         "en": "Argos-Action: from accessibility trees to the test set"
       },
-      "description": {
-        "pt": "Experimentei um adaptador LoRA sobre o Qwen2.5-1.5B-Instruct para propor uma ação por vez a partir de uma árvore de acessibilidade. Os fragmentos do dataset sintético tiveram 87,2 tokens em média. Ao encontrar cenários repetidos entre treino e teste, refiz a divisão. O primeiro conjunto revisado ainda cobria cinco cenários, o que motivou uma avaliação posterior mais diversa. O playground ilustra o protocolo com exemplos estáticos.",
-        "en": "I experimented with a LoRA adapter for Qwen2.5-1.5B-Instruct to propose one action at a time from an accessibility tree. The synthetic dataset fragments averaged 87.2 tokens. After finding repeated scenarios across training and testing, I rebuilt the split. The first revised set still covered five scenarios, which prompted a more diverse follow-up evaluation. The playground illustrates the protocol with static examples."
-      },
+      "highlights": [
+        { "pt": "Adaptei o Qwen2.5-1.5B com LoRA para propor uma ação por vez.", "en": "Adapted Qwen2.5-1.5B with LoRA to propose one action at a time." },
+        { "pt": "As árvores do dataset sintético tiveram 87,2 tokens em média.", "en": "Synthetic dataset trees averaged 87.2 tokens." },
+        { "pt": "Refiz a divisão após encontrar repetições entre treino e teste.", "en": "Rebuilt the split after finding overlap between training and testing." },
+        { "pt": "O playground mostra exemplos estáticos do protocolo.", "en": "The playground shows static protocol examples." }
+      ],
       "links": [
         {
           "label": { "pt": "Código no GitHub", "en": "Code on GitHub" },
