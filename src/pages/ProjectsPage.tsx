@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useRouter } from '@/context/RouterContext'
@@ -23,11 +23,61 @@ export function ProjectsPage() {
   const { language } = useLanguage()
   const { searchParams, setSearchParam } = useRouter()
   const hash = useSyncExternalStore(subscribeToHash, getHash)
+  const casesRef = useRef<HTMLDivElement>(null)
   const category = resolveProjectCategory(searchParams.get('tipo'), hash)
   const page = interfaceContent.projectsPage[language]
   const categories = interfaceContent.projectCategories
   const copy = projectsCopy[language]
   const cases = projectCases.filter((project) => project.categories.includes(category))
+  const [observedTopic, setObservedTopic] = useState({ category, hash, href: '' })
+  const activeTopic = observedTopic.category === category && observedTopic.hash === hash && observedTopic.href
+    ? observedTopic.href
+    : hash || (cases[0] ? `#${cases[0].id}` : '')
+
+  useEffect(() => {
+    const targets = [...(casesRef.current?.querySelectorAll<HTMLElement>('[data-project-topic]') ?? [])]
+    if (!targets.length) return
+
+    let frame = 0
+    let previousHref = ''
+    const update = () => {
+      frame = 0
+      const headerHeight = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
+      const readingLine = headerHeight + 28
+      let active = targets[0]
+      let activeTop = -Infinity
+
+      for (const target of targets) {
+        const top = target.getBoundingClientRect().top
+        if (top > readingLine) continue
+        if (top > activeTop + 1 || (Math.abs(top - activeTop) <= 1 && `#${target.id}` === hash)) {
+          active = target
+          activeTop = top
+        }
+      }
+
+      const href = `#${active.id}`
+      if (href === previousHref) return
+      previousHref = href
+      setObservedTopic({ category, hash, href })
+    }
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    const resize = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(schedule) : undefined
+    const list = casesRef.current
+    if (list) resize?.observe(list)
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    schedule()
+
+    return () => {
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      resize?.disconnect()
+      window.cancelAnimationFrame(frame)
+    }
+  }, [category, hash])
 
   return (
     <div className="projects-page">
@@ -51,17 +101,17 @@ export function ProjectsPage() {
             ))}
           </div>
         </div>
+      </div>
 
-        <div key={category} className="projects-page__layout">
-          {cases.length > 0 && <ProjectContents projects={cases} language={language} hash={hash} />}
-          <div className="projects-page__cases">
-            {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
-              <div className="projects-page__empty" role="status">
-                <p>{copy.empty}</p>
-                <button type="button" onClick={() => setSearchParam('tipo', 'corporativo')}>{copy.other}</button>
-              </div>
-            )}
-          </div>
+      <div key={category} className="projects-page__layout">
+        {cases.length > 0 && <ProjectContents projects={cases} language={language} activeTopic={activeTopic} />}
+        <div className="projects-page__cases" ref={casesRef}>
+          {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
+            <div className="projects-page__empty" role="status">
+              <p>{copy.empty}</p>
+              <button type="button" onClick={() => setSearchParam('tipo', 'corporativo')}>{copy.other}</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

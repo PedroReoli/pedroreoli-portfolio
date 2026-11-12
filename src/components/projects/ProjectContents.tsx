@@ -7,15 +7,15 @@ const copy = {
   en: { title: 'Contents', overview: 'Overview', results: 'Results', diagram: 'Diagram', challenges: 'Challenges and solutions', architecture: 'Architecture', gallery: 'Gallery', references: 'References and next steps' },
 }
 
-export function ProjectContents({ projects, language, hash }: { projects: EditorialCase[]; language: Language; hash: string }) {
+export function ProjectContents({ projects, language, activeTopic }: { projects: EditorialCase[]; language: Language; activeTopic: string }) {
   const text = copy[language]
 
   return (
     <aside className="projects-contents">
       <nav aria-label={text.title}>
         <p className="projects-contents__title"><List size={17} aria-hidden="true" />{text.title}</p>
-        {projects.map((project, index) => {
-          const isCurrent = hash === `#${project.id}` || hash.startsWith(`#${project.id}-`)
+        {projects.map(project => {
+          const isCurrent = activeTopic === `#${project.id}` || activeTopic.startsWith(`#${project.id}-`)
           const topics = [
             { href: `#${project.id}`, label: text.overview, visible: true },
             { href: `#${project.id}-resultados`, label: text.results, visible: Boolean(project.metrics?.length) },
@@ -29,12 +29,12 @@ export function ProjectContents({ projects, language, hash }: { projects: Editor
           ]
 
           return (
-            <details key={project.id} open={isCurrent || index === 0}>
+            <details key={project.id} open={isCurrent} data-current={isCurrent || undefined}>
               <summary>{project.name}</summary>
               <ul>
                 {topics.filter(topic => topic.visible).map(topic => (
                   <li key={topic.href}>
-                    <a href={topic.href} aria-current={hash === topic.href ? 'location' : undefined}>{topic.label}</a>
+                    <a href={topic.href} aria-current={activeTopic === topic.href ? 'location' : undefined}>{topic.label}</a>
                   </li>
                 ))}
               </ul>
