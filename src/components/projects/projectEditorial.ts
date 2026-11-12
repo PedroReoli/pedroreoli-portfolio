@@ -1,6 +1,8 @@
 import type { Language } from '@/types/content'
 
-export type ProjectCategory = 'corporativo' | 'gerais'
+const projectCategories = ['corporativo', 'ia', 'clientes', 'proprios'] as const
+
+export type ProjectCategory = typeof projectCategories[number]
 
 type Localized = Record<Language, string>
 
@@ -34,7 +36,7 @@ export interface EditorialGalleryGroup {
 
 export interface EditorialCase {
   id: string
-  category: ProjectCategory
+  categories: ProjectCategory[]
   name: string
   type: Localized
   introduction: Localized
@@ -49,7 +51,7 @@ export interface EditorialCase {
   architectures?: EditorialArchitecture[]
   galleryGroups?: EditorialGalleryGroup[]
   gallery?: EditorialScreenshot[]
-  evidence?: { href: string; label: Localized }
+  evidence?: { href: string; label: Localized }[]
   note?: Localized
 }
 
@@ -57,12 +59,12 @@ export interface EditorialCase {
 export const projectCases: EditorialCase[] = [
   {
     id: 'autocom3',
-    category: 'corporativo',
+    categories: ['corporativo'],
     name: 'Autocom3',
     type: { pt: 'Ecossistema ERP & Plataforma Web B2B', en: 'ERP Ecosystem & Enterprise Web Platform' },
     introduction: {
-      pt: 'Hub mestre web unificado com 120+ telas, Design System de 500+ componentes, microsserviços locais em NestJS e esteira de automação comercial e fiscal.',
-      en: 'Unified web master hub featuring 120+ operational screens, a 500+ component Design System, local NestJS microservices and commercial/fiscal automation engines.',
+      pt: 'Portal Unificado em Next.js com 120+ páginas e um Design System de 500+ componentes. A base atende 20+ organizações em operações comerciais, fiscais e administrativas.',
+      en: 'A unified Next.js portal with 120+ pages and a design system with 500+ components. The platform supports commercial, tax, and administrative workflows at 20+ organizations.',
     },
     contextLabel: { pt: 'O contexto & escopo', en: 'Context & scope' },
     context: {
@@ -71,8 +73,8 @@ export const projectCases: EditorialCase[] = [
     },
     approachLabel: { pt: 'Arquitetura & Engenharia', en: 'Architecture & Engineering' },
     approach: {
-      pt: 'React 18 + TypeScript no Portal Unificado com TanStack Query, microsserviço local NestJS na porta 3789 com interop edge-js, SQL Server particionado e app mobile Expo SDK 54.',
-      en: 'React 18 + TypeScript web platform with TanStack Query caching, local NestJS microservice on port 3789 via edge-js, partitioned SQL Server and Expo SDK 54 mobile app.',
+      pt: 'Next.js, React e TypeScript no Portal Unificado, com TanStack Query para carga de dados e cache. Serviços em Node.js, NestJS e C# integram PostgreSQL e SQL Server, com deploy na AWS via API Gateway.',
+      en: 'Next.js, React, and TypeScript power the unified portal, with TanStack Query for data fetching and caching. Node.js, NestJS, and C# services integrate PostgreSQL and SQL Server and deploy to AWS via API Gateway.',
     },
     diagramLabel: { pt: 'Pilares da Solução', en: 'Solution pillars' },
     diagram: [
@@ -84,8 +86,8 @@ export const projectCases: EditorialCase[] = [
     metrics: [
       { label: { pt: 'Telas operacionais unificadas', en: 'Unified operational screens' }, value: '120+' },
       { label: { pt: 'Componentes reutilizáveis governados', en: 'Governed reusable components' }, value: '500+' },
-      { label: { pt: 'Tempo de dev de novas telas', en: 'Dev cycle time for new screens' }, value: '-70%' },
-      { label: { pt: 'Latência percebida em telas densas', en: 'Perceived latency on dense views' }, value: '-40%' },
+      { label: { pt: 'Menos tempo para criar novas telas', en: 'Less time to build new screens' }, value: '≤ 70%' },
+      { label: { pt: 'Carregamento mais rápido', en: 'Faster loading' }, value: '≤ 40%' },
       { label: { pt: 'Tempo no atendimento de senhas técnicas', en: 'Support time for daily passwords' }, value: '-80%' },
       { label: { pt: 'Redução de retrabalho na conciliação', en: 'Rework reduction in reconciliation' }, value: '-60%' },
     ],
@@ -139,7 +141,7 @@ export const projectCases: EditorialCase[] = [
     architectures: [
       {
         title: { pt: 'Portal Unificado (Web Master)', en: 'Unified Portal (Web Master)' },
-        tech: { pt: 'React 18 · TypeScript · Vite · Chakra UI · TanStack Query', en: 'React 18 · TypeScript · Vite · Chakra UI · TanStack Query' },
+        tech: { pt: 'Next.js · React · TypeScript · TanStack Query', en: 'Next.js · React · TypeScript · TanStack Query' },
         description: {
           pt: '120+ telas operacionais, governança de Design System atômico, Time to Interactive (TTI) < 1.2s e redução de 60% em requisições de rede com cache inteligente.',
           en: '120+ operational screens, atomic Design System governance, TTI < 1.2s and 60% network request reduction through smart caching.',
@@ -294,38 +296,117 @@ export const projectCases: EditorialCase[] = [
         ],
       },
     ],
-    evidence: { href: 'https://www.autocom3.com.br/', label: { pt: 'Conhecer a Autocom3', en: 'Visit Autocom3' } },
+    evidence: [{ href: 'https://www.autocom3.com.br/', label: { pt: 'Conhecer a Autocom3', en: 'Visit Autocom3' } }],
     note: {
       pt: 'As capturas acima apresentam dados operacionais fictícios e mascarados pelo motor de privacidade para preservar sigilo corporativo.',
       en: 'The captures above present mock and masked data generated by the privacy engine to protect corporate confidentiality.',
     },
   },
   {
-    id: 'achilles', category: 'gerais', name: 'Achilles CDP Agent',
-    type: { pt: 'Agentes e automação', en: 'Agents and automation' },
+    id: 'propose', categories: ['corporativo'], name: 'Propose',
+    type: { pt: 'SaaS · Domus', en: 'SaaS · Domus' },
     introduction: {
-      pt: 'Automação de navegador para agentes de IA, com integração MCP e leitura semântica de páginas.',
-      en: 'Browser automation for AI agents, with MCP integration and semantic page reading.',
+      pt: 'SaaS de propostas comerciais com editor visual drag-and-drop e renderização de formulários por JSON Schema.',
+      en: 'A commercial proposal SaaS with a drag-and-drop visual editor and JSON Schema form rendering.',
     },
     contextLabel: { pt: 'O contexto', en: 'The context' },
     context: {
-      pt: 'Conectar agentes a uma sessão de navegador usando o Chrome DevTools Protocol.',
-      en: 'Connect agents to a browser session using the Chrome DevTools Protocol.',
+      pt: 'Construí o Propose na Domus para permitir que equipes montem e personalizem propostas sem escrever código.',
+      en: 'I built Propose at Domus to let teams assemble and customize proposals without writing code.',
     },
     approachLabel: { pt: 'A abordagem', en: 'The approach' },
     approach: {
-      pt: 'O projeto reúne uma interface MCP e um modo de leitura que extrai conteúdo estruturado da página.',
-      en: 'The project combines an MCP interface with a reading mode that extracts structured page content.',
+      pt: 'A aplicação integra Next.js, PostgreSQL, Supabase e pagamentos. Usei SSR e SSG conforme as necessidades de cada página.',
+      en: 'The application integrates Next.js, PostgreSQL, Supabase, and payments. I used SSR and SSG according to each page’s needs.',
+    },
+    diagramLabel: { pt: 'Componentes da plataforma', en: 'Platform components' },
+    diagram: [
+      { pt: 'Editor visual', en: 'Visual editor' }, { pt: 'JSON Schema', en: 'JSON Schema' },
+      { pt: 'Propostas', en: 'Proposals' }, { pt: 'Pagamentos', en: 'Payments' },
+    ],
+  },
+  {
+    id: 'argos', categories: ['ia'], name: 'Argos-Action-1.5B',
+    type: { pt: 'Pesquisa aberta · Computer Use', en: 'Open research · Computer Use' },
+    introduction: {
+      pt: 'Protótipo aberto de um modelo pequeno que lê a árvore de acessibilidade da interface e propõe uma ação estruturada por vez.',
+      en: 'An open research prototype that reads an interface accessibility tree and proposes one structured action at a time.',
+    },
+    contextLabel: { pt: 'Como avaliei o modelo', en: 'How I evaluated the model' },
+    context: {
+      pt: 'O primeiro script validava os rótulos do dataset. Na avaliação posterior, em 132 casos inéditos, 92% das respostas do adaptador seguiram o schema, frente a 0% do modelo base. O Argos deixou de escalar para uma pessoa nos 28 casos em que deveria parar.',
+      en: 'The first script checked the dataset labels. In a later evaluation on 132 unseen cases, 92% of the adapter’s responses matched the schema, compared with 0% for the base model. Argos failed to escalate in all 28 cases where it should have stopped.',
+    },
+    approachLabel: { pt: 'Adaptação e integração', en: 'Adaptation and integration' },
+    approach: {
+      pt: 'Treinei um adaptador LoRA sobre Qwen 2.5 1.5B Instruct com dados sintéticos. A saída é JSON estruturado, que uma ponte experimental traduz para MCP. O playground exibe exemplos do protocolo.',
+      en: 'I trained a LoRA adapter on Qwen 2.5 1.5B Instruct using synthetic data. An experimental bridge translates the structured JSON output to MCP. The playground displays protocol examples.',
+    },
+    diagramLabel: { pt: 'Da interface à ação proposta', en: 'From the interface to a proposed action' },
+    diagram: [
+      { pt: 'Objetivo', en: 'Goal' }, { pt: 'AXTree', en: 'AXTree' },
+      { pt: 'Argos-Action', en: 'Argos-Action' }, { pt: 'Ação em JSON', en: 'JSON action' },
+    ],
+    evidence: [
+      { href: 'https://medium.com/@pedrosousa2160/meu-script-disse-100-ele-s%C3%B3-tinha-validado-o-gerador-d7433b381927', label: { pt: 'Artigo sobre a avaliação', en: 'Evaluation article' } },
+      { href: 'https://github.com/PedroReoli/argos-action', label: { pt: 'Código do protótipo', en: 'Prototype code' } },
+      { href: 'https://huggingface.co/pedroreoli/argos-action-1.5b', label: { pt: 'Adaptador LoRA', en: 'LoRA adapter' } },
+    ],
+    note: {
+      pt: 'Os resultados medem formato e escalonamento no conjunto avaliado. Bloqueios no executor e validação ponta a ponta seguem como próximos passos.',
+      en: 'The results measure schema adherence and escalation on the evaluation set. Executor-side safeguards and end-to-end validation are next steps.',
+    },
+  },
+  {
+    id: 'achilles', categories: ['proprios', 'ia'], name: 'Achilles CDP Agent',
+    type: { pt: 'Agentes e automação', en: 'Agents and automation' },
+    introduction: {
+      pt: 'Servidor MCP em Python para automação e QA no navegador e em aplicativos Windows. Projeto pessoal de código aberto, sob licença MIT.',
+      en: 'A Python MCP server for browser and Windows app automation and QA. An open-source personal project under the MIT license.',
+    },
+    contextLabel: { pt: 'O contexto', en: 'The context' },
+    context: {
+      pt: 'Desenvolvi o Achilles como projeto pessoal e o usei em operações de produto e testes de qualidade.',
+      en: 'I developed Achilles as a personal project and used it for product operations and quality assurance.',
+    },
+    approachLabel: { pt: 'A abordagem', en: 'The approach' },
+    approach: {
+      pt: 'Combina CDP e Playwright no Chrome e Edge com UI Automation no Windows. Etapas de login, CAPTCHA e 2FA são entregues a uma pessoa.',
+      en: 'It combines CDP and Playwright on Chrome and Edge with UI Automation on Windows. A person takes over for login, CAPTCHA, and two-factor authentication.',
     },
     diagramLabel: { pt: 'Fluxo conceitual', en: 'Conceptual flow' },
     diagram: [
       { pt: 'Agente', en: 'Agent' }, { pt: 'MCP', en: 'MCP' },
-      { pt: 'Navegador', en: 'Browser' }, { pt: 'Conteúdo', en: 'Content' },
+      { pt: 'Navegador e Windows', en: 'Browser and Windows' }, { pt: 'Supervisão humana', en: 'Human oversight' },
     ],
-    evidence: { href: 'https://github.com/PedroReoli/Achilles-CDP-Agent', label: { pt: 'Código e documentação', en: 'Code and documentation' } },
+    evidence: [{ href: 'https://github.com/PedroReoli/Achilles-CDP-Agent', label: { pt: 'Código e documentação', en: 'Code and documentation' } }],
   },
   {
-    id: 'geoambiental', category: 'gerais', name: 'GeoAmbiental',
+    id: 'organon', categories: ['proprios', 'ia'], name: 'Organon',
+    type: { pt: 'Orquestração de agentes · Suíte Reoli', en: 'Agent orchestration · Reoli suite' },
+    introduction: {
+      pt: 'Aplicativo desktop local-first da suíte Reoli para coordenar sessões de trabalho com múltiplos modelos e aprovações humanas.',
+      en: 'A local-first desktop application in the Reoli suite for coordinating work sessions across multiple models with human approval.',
+    },
+    contextLabel: { pt: 'O contexto', en: 'The context' },
+    context: {
+      pt: 'Centraliza a execução e o acompanhamento de sessões de agentes em um mesmo ambiente de trabalho.',
+      en: 'It brings agent session execution and oversight into one workspace.',
+    },
+    approachLabel: { pt: 'A abordagem', en: 'The approach' },
+    approach: {
+      pt: 'O cockpit reúne a orquestração de sessões com vários modelos e um painel para a pessoa responsável revisar e aprovar ações.',
+      en: 'The cockpit combines multi-model session orchestration with a panel for an operator to review and approve actions.',
+    },
+    diagramLabel: { pt: 'Organização das sessões', en: 'Session organization' },
+    diagram: [
+      { pt: 'Sessão local', en: 'Local session' }, { pt: 'Múltiplos modelos', en: 'Multiple models' },
+      { pt: 'Painel de revisão', en: 'Review panel' }, { pt: 'Aprovação humana', en: 'Human approval' },
+    ],
+    note: { pt: 'Projeto próprio com repositório privado.', en: 'Personal project with a private repository.' },
+  },
+  {
+    id: 'geoambiental', categories: ['proprios'], name: 'GeoAmbiental',
     type: { pt: 'Mapa ambiental interativo', en: 'Interactive environmental map' },
     introduction: {
       pt: 'Uma aplicação web para explorar camadas ambientais e dados geoespaciais de Volta Redonda.',
@@ -346,38 +427,41 @@ export const projectCases: EditorialCase[] = [
       { pt: 'Camadas', en: 'Layers' }, { pt: 'Mapa', en: 'Map' },
       { pt: 'Detalhes', en: 'Details' }, { pt: 'Dados IBGE', en: 'IBGE data' },
     ],
-    evidence: { href: 'https://github.com/PedroReoli/showcase-geoambiental-vr', label: { pt: 'Código e documentação', en: 'Code and documentation' } },
+    evidence: [{ href: 'https://github.com/PedroReoli/showcase-geoambiental-vr', label: { pt: 'Código e documentação', en: 'Code and documentation' } }],
     note: {
       pt: 'As camadas geográficas são ilustrativas, conforme informado no repositório.',
       en: 'The geographic layers are illustrative, as stated in the repository.',
     },
   },
   {
-    id: 'argos', category: 'gerais', name: 'Argos-Action-1.5B',
-    type: { pt: 'Small Language Model & MCP', en: 'Small Language Model & MCP' },
+    id: 'falaatipica', categories: ['proprios'], name: 'FalaAtípica',
+    type: { pt: 'Tecnologia assistiva · TCC UniFOA', en: 'Assistive technology · UniFOA capstone' },
     introduction: {
-      pt: 'Edge Policy SLM baseado em Qwen 2.5 1.5B com fine-tuning QLoRA para Computer Use sobre AXTree e emissão de contratos MCP.',
-      en: 'Edge Policy SLM fine-tuned via QLoRA on Qwen 2.5 1.5B for single-turn Computer Use over AXTree emitting MCP contracts.',
+      pt: 'Projeto acadêmico de uma plataforma que aproxima famílias e profissionais no acompanhamento de crianças com atraso de fala.',
+      en: 'An academic platform project that connects families and professionals who support children with speech delays.',
     },
-    contextLabel: { pt: 'Métricas e eficiência', en: 'Metrics & efficiency' },
+    contextLabel: { pt: 'Origem do projeto', en: 'Project origin' },
     context: {
-      pt: 'Sub-150ms de latência em inferência local, 99.69% de acurácia de ação e -92.2% de tokens em relação ao DOM bruto.',
-      en: 'Sub-150ms local inference latency, 99.69% action accuracy, and 92.2% context token savings vs raw DOM.',
+      pt: 'O trabalho começou como TCC de Sistemas de Informação no UniFOA, com revisão bibliográfica e contato com profissionais.',
+      en: 'The work began as an Information Systems capstone at UniFOA and included a literature review and discussions with practitioners.',
     },
-    approachLabel: { pt: 'Arquitetura de pesos', en: 'Weight architecture' },
+    approachLabel: { pt: 'O que a plataforma propõe', en: 'What the platform proposes' },
     approach: {
-      pt: 'Adaptação LoRA em 7 projeções com rank r=16 em BF16 (~36.9MB), dataset sintético estruturado e HuggingFace Hub.',
-      en: 'LoRA adapters across 7 projection modules with r=16 in BF16 (~36.9MB), structured dataset, and HuggingFace Hub delivery.',
+      pt: 'Módulos para cuidadores, crianças e profissionais, com atividades lúdicas e acompanhamento das interações como complemento ao trabalho terapêutico.',
+      en: 'Modules for caregivers, children, and practitioners combine playful activities and interaction tracking to complement therapy.',
     },
-    diagramLabel: { pt: 'Pipeline agêntico', en: 'Agentic pipeline' },
+    diagramLabel: { pt: 'Participantes e atividades', en: 'Participants and activities' },
     diagram: [
-      { pt: 'AXTree', en: 'AXTree' }, { pt: 'Argos-1.5B', en: 'Argos-1.5B' },
-      { pt: 'Contrato MCP', en: 'MCP Contract' }, { pt: 'UIA / Chrome', en: 'UIA / Chrome' },
+      { pt: 'Criança', en: 'Child' }, { pt: 'Atividades', en: 'Activities' },
+      { pt: 'Família', en: 'Family' }, { pt: 'Profissionais', en: 'Practitioners' },
     ],
-    evidence: { href: 'https://huggingface.co/pedroreoli/argos-action-1.5b', label: { pt: 'Modelo no HuggingFace', en: 'HuggingFace Model' } },
+    evidence: [
+      { href: 'https://conferencias.unifoa.edu.br/tc/article/view/2519', label: { pt: 'Publicação acadêmica', en: 'Academic publication' } },
+      { href: 'https://www.unifoa.edu.br/noticias/egresso-plataforma-apoiar-criancas-fala/', label: { pt: 'Reportagem do UniFOA', en: 'UniFOA coverage' } },
+    ],
   },
   {
-    id: 'loog', category: 'gerais', name: 'Loog Proteção Veicular',
+    id: 'loog', categories: ['clientes'], name: 'Loog Proteção Veicular',
     type: { pt: 'Plataforma Web & Cotações', en: 'Web Platform & Quotes' },
     introduction: {
       pt: 'Portal institucional e motor de captura de cotações para proteção veicular com alta taxa de conversão.',
@@ -398,10 +482,10 @@ export const projectCases: EditorialCase[] = [
       { pt: 'Visitante', en: 'Visitor' }, { pt: 'Simulação', en: 'Simulation' },
       { pt: 'Webhook CRM', en: 'CRM Webhook' }, { pt: 'Conversão', en: 'Conversion' },
     ],
-    evidence: { href: 'https://loogprotecaoveicular.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } },
+    evidence: [{ href: 'https://loogprotecaoveicular.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } }],
   },
   {
-    id: 'nexus', category: 'gerais', name: 'Nexus Brazil',
+    id: 'nexus', categories: ['clientes'], name: 'Nexus Brazil',
     type: { pt: 'Sistemas & Integrações', en: 'Systems & Integrations' },
     introduction: {
       pt: 'Solução corporativa digital e presença institucional conectando serviços e tecnologia de ponta.',
@@ -422,22 +506,30 @@ export const projectCases: EditorialCase[] = [
       { pt: 'Brand', en: 'Brand' }, { pt: 'Interface', en: 'Interface' },
       { pt: 'Segurança', en: 'Security' }, { pt: 'Suporte', en: 'Support' },
     ],
-    evidence: { href: 'https://www.nexusbrazil.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } },
+    evidence: [{ href: 'https://www.nexusbrazil.com.br/', label: { pt: 'Acessar website', en: 'Visit website' } }],
   },
 ]
 
+export function resolveProjectCategory(type: string | null, hash: string): ProjectCategory {
+  const category = projectCategories.find((item) => item === type)
+  if (category) return category
+
+  const linkedProject = projectCases.find((project) => `#${project.id}` === hash)
+  return linkedProject?.categories[0] ?? (type === 'gerais' ? 'clientes' : 'corporativo')
+}
+
 export const projectsCopy = {
   pt: {
-    introduction: 'Sistemas e ferramentas para organizar operações e explorar novas formas de interagir com a tecnologia.',
     index: 'Explorar projetos', diagram: 'Diagrama conceitual', external: 'Abre em nova aba',
+    metrics: 'Resultados do projeto',
     empty: 'Nenhum projeto disponível nesta categoria.',
-    other: 'Ver outra categoria',
+    other: 'Ver projetos corporativos',
   },
   en: {
-    introduction: 'Systems and tools for organizing operations and exploring new ways to interact with technology.',
     index: 'Explore projects', diagram: 'Conceptual diagram', external: 'Opens in a new tab',
+    metrics: 'Project results',
     empty: 'No projects are available in this category.',
-    other: 'View the other category',
+    other: 'View enterprise projects',
   },
 } as const
 

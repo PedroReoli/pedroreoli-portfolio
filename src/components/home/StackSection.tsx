@@ -17,15 +17,16 @@ export function StackSection() {
         <div className="section-kicker" data-reveal>
           <span>{section.sectionNumber}</span><p>{copy.eyebrow}</p><p>{technologyContent.groups.length.toString().padStart(2, '0')}</p>
         </div>
-        <div className="stack-section__intro" data-reveal>
-          <h2>{copy.title}<em>{section.titleAccent}</em></h2><p>{copy.description}</p>
+        <div className="stack-section__intro">
+          <h2 data-reveal>{copy.title}<em>{section.titleAccent}</em></h2>
+          <p data-reveal data-reveal-delay="55">{copy.description}</p>
         </div>
         <div className="stack-grid" aria-label={copy.ariaLabel}>
           {technologyContent.groups.map((group, groupIdx) => (
             <article
               key={group.number}
-              data-reveal="card"
-              data-reveal-delay={String(150 + groupIdx * 100)}
+              data-reveal
+              data-reveal-delay={110 + groupIdx * 55}
               className="stack-column-revealed"
             >
               <header><span>{group.number}</span><h3>{group.title[language]}</h3></header>

@@ -13,23 +13,23 @@ export function AboutSection() {
   return (
     <section ref={ref} id={about.id} className="about section-light about--centered">
       <div className="shell about__shell">
-        <div className="section-kicker" data-reveal="smoke">
+        <div className="section-kicker" data-reveal>
           <span>{about.sectionNumber}</span>
           <p>{copy.eyebrow}</p>
           <p>{copy.location}</p>
         </div>
 
         <div className="about__center">
-          <h2 className="about__heading" data-reveal="smoke">{copy.title}</h2>
-          <p className="about__summary" data-reveal="smoke" data-reveal-delay="150">{copy.summary}</p>
+          <h2 className="about__heading" data-reveal>{copy.title}</h2>
+          <p className="about__summary" data-reveal data-reveal-delay="65">{copy.summary}</p>
 
           <div className="about__metrics-card" aria-label={copy.statsLabel}>
             <div className="stats-grid">
               {about.stats.map((stat, index) => (
                 <div
                   key={stat.value}
-                  data-reveal="card"
-                  data-reveal-delay={String(250 + index * 120)}
+                  data-reveal
+                  data-reveal-delay={130 + index * 55}
                 >
                   <strong>{stat.value}</strong>
                   <span>{stat[language]}</span>

@@ -15,13 +15,13 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
   return (
     <footer ref={ref} id={footer.id} className={embedded ? 'contact-section contact-section--embedded' : 'contact-section'}>
       <div className="shell">
-        <div className="section-kicker section-kicker--dark" data-reveal="smoke">
+        <div className="section-kicker section-kicker--dark" data-reveal>
           <span>{footer.sectionNumber}</span>
           <p>{copy.eyebrow}</p>
           <p>{siteContent.profile.address.locality} / {siteContent.profile.address.country}</p>
         </div>
 
-        <div className="contact-section__main" data-reveal="smoke">
+        <div className="contact-section__main" data-reveal data-reveal-delay="55">
           <p className="contact-section__prompt">{copy.prompt}</p>
           <a className="contact-section__headline" href={footer.ctaHref}>
             <span>{copy.ctaFirst}</span>
@@ -32,13 +32,14 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
         </div>
 
         <nav className="contact-grid" aria-label={copy.linksLabel}>
-          {footer.contacts.map((contact) => (
+          {footer.contacts.map((contact, index) => (
             <a
               key={contact.label}
               href={contact.href}
               target={contact.external ? '_blank' : undefined}
               rel={contact.external ? 'noreferrer' : undefined}
-              data-reveal="card"
+              data-reveal
+              data-reveal-delay={110 + index * 45}
             >
               <span>{contact.detail[language]}</span>
               <strong>
@@ -52,7 +53,7 @@ export function Footer({ embedded = false }: { embedded?: boolean } = {}) {
           ))}
         </nav>
 
-        <div className="contact-section__bottom">
+        <div className="contact-section__bottom" data-reveal data-reveal-delay="110">
           <p>© {new Date().getFullYear()} {siteContent.legalName}</p>
           <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}>
             {copy.backToTop}<ArrowUp aria-hidden="true" />

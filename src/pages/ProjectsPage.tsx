@@ -1,19 +1,32 @@
+import { useSyncExternalStore } from 'react'
 import { interfaceContent } from '@/data/content'
 import { useLanguage } from '@/context/LanguageContext'
 import { useRouter } from '@/context/RouterContext'
 import { SEO } from '@/components/common/SEO'
 import { ProjectCase } from '@/components/projects/ProjectCase'
-import { projectCases, projectsCopy, type ProjectCategory } from '@/components/projects/projectEditorial'
+import { projectCases, projectsCopy, resolveProjectCategory } from '@/components/projects/projectEditorial'
 import '@/styles/projects-page.css'
+
+function subscribeToHash(onChange: () => void) {
+  window.addEventListener('hashchange', onChange)
+  window.addEventListener('popstate', onChange)
+  return () => {
+    window.removeEventListener('hashchange', onChange)
+    window.removeEventListener('popstate', onChange)
+  }
+}
+
+const getHash = () => window.location.hash
 
 export function ProjectsPage() {
   const { language } = useLanguage()
   const { searchParams, setSearchParam } = useRouter()
-  const category: ProjectCategory = searchParams.get('tipo') === 'gerais' ? 'gerais' : 'corporativo'
+  const hash = useSyncExternalStore(subscribeToHash, getHash)
+  const category = resolveProjectCategory(searchParams.get('tipo'), hash)
   const page = interfaceContent.projectsPage[language]
   const categories = interfaceContent.projectCategories
   const copy = projectsCopy[language]
-  const cases = projectCases.filter((project) => project.category === category)
+  const cases = projectCases.filter((project) => project.categories.includes(category))
 
   return (
     <div className="projects-page">
@@ -23,7 +36,7 @@ export function ProjectsPage() {
           <p className="projects-page__eyebrow">{page.eyebrow}</p>
           <div className="projects-page__heading">
             <h1>{page.title}</h1>
-            <p>{copy.introduction}</p>
+            <p>{page.description}</p>
           </div>
         </header>
 
@@ -45,7 +58,7 @@ export function ProjectsPage() {
           {cases.length ? cases.map((project) => <ProjectCase key={project.id} project={project} language={language} />) : (
             <div className="projects-page__empty" role="status">
               <p>{copy.empty}</p>
-              <button type="button" onClick={() => setSearchParam('tipo', category === 'corporativo' ? 'gerais' : 'corporativo')}>{copy.other}</button>
+              <button type="button" onClick={() => setSearchParam('tipo', 'corporativo')}>{copy.other}</button>
             </div>
           )}
         </div>

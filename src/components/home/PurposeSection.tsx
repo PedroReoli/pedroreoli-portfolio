@@ -13,9 +13,9 @@ export function PurposeSection() {
   return (
     <section ref={ref} id={purpose.id} className="purpose-section">
       <div className="shell">
-        <div className="section-kicker"><p>{copy.eyebrow}</p><p>{purpose.metadata}</p></div>
+        <div className="section-kicker" data-reveal><p>{copy.eyebrow}</p><p>{purpose.metadata}</p></div>
         <div className="purpose-section__grid">
-          <figure className="purpose-section__media" data-reveal="scale" data-reveal-delay="100">
+          <figure className="purpose-section__media" data-reveal>
             <img
               src={purpose.media.src}
               srcSet={purpose.media.srcSet}
@@ -27,10 +27,10 @@ export function PurposeSection() {
             />
             <figcaption>{copy.imageCategory}<span>{copy.imageContext}</span></figcaption>
           </figure>
-          <div className="purpose-section__copy" data-reveal="smoke" data-reveal-delay="250">
-            <h2><span>{copy.title}</span><em>{copy.titleAccent}</em></h2>
-            <p>{copy.summary}</p>
-            <a className="text-link" href={purpose.articleHref} target="_blank" rel="noreferrer">
+          <div className="purpose-section__copy">
+            <h2 data-reveal data-reveal-delay="55"><span>{copy.title}</span><em>{copy.titleAccent}</em></h2>
+            <p data-reveal data-reveal-delay="110">{copy.summary}</p>
+            <a className="text-link" href={purpose.articleHref} target="_blank" rel="noreferrer" data-reveal data-reveal-delay="165">
               {copy.action}<ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>

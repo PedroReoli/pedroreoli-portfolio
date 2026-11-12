@@ -11,8 +11,10 @@ describe('Projetos da Home e ferramentas: conteúdo completo', () => {
       expect(cards[i]).toHaveTextContent(project.title)
       expect(cards[i].querySelector('.project-card__desc')?.textContent?.length).toBeGreaterThan(50)
       expect(cards[i].querySelector('.project-card__desc')).not.toHaveTextContent(/92.2%|Windows nativo/)
-      expect(cards[i].querySelector('a')).toHaveAttribute('href', project.title === 'Organon' ? '/projetos' : project.href)
+      expect(cards[i].querySelector('a')).toHaveAttribute('href', project.href)
     })
+    expect(cards[2]).toHaveTextContent('Argos-Action-1.5B')
+    expect(cards[2].querySelector('a')).toHaveAttribute('href', '/projetos?tipo=ia#argos')
   })
   it('expõe todos os grupos e ferramentas com seus ícones', () => {
     const { container } = renderHome()

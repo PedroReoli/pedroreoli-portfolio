@@ -8,7 +8,8 @@
       "selectedProjects",
       "stack",
       "purpose",
-      "experience"
+      "experience",
+      "technicalProduction"
     ],
     "footer": "contact",
     "scenes": [
@@ -40,7 +41,12 @@
       {
         "id": "experiencia",
         "background": "#04070e",
-        "steps": 5
+        "steps": 4
+      },
+      {
+        "id": "producao-tecnica-academica",
+        "background": "#04070e",
+        "steps": 1
       },
       {
         "id": "contato",
@@ -52,12 +58,12 @@
   "seo": {
     "home": {
       "pt": {
-        "title": "Engenheiro de Software Full Stack & Arquiteto de Sistemas",
-        "description": "Portfólio de Pedro Lucas Reis, engenheiro Full Stack com foco em frontend, ERPs, SaaS, integrações e IA aplicada."
+        "title": "Full Stack Developer e AI Engineer",
+        "description": "Portfólio de Pedro Lucas Reis. Desenvolvo aplicações full stack e integro LLMs em produtos com RAG, MCP, tool use e avaliações."
       },
       "en": {
-        "title": "Full Stack Software Engineer & Systems Architect",
-        "description": "Portfolio of Pedro Lucas Reis, a Full Stack engineer focused on frontend, ERP systems, SaaS, integrations and applied AI."
+        "title": "Full Stack Developer and AI Engineer",
+        "description": "Portfolio of Pedro Lucas Reis. I build full-stack applications and integrate LLMs into products using RAG, MCP, tool use and evaluations."
       }
     },
     "projects": {
@@ -73,11 +79,11 @@
     "media": {
       "pt": {
         "title": "Notas & Mídia",
-        "description": "Código aberto, documentação e cobertura na imprensa sobre o engenheiro de software Pedro Lucas Reis."
+        "description": "Artigos técnicos, projetos de código aberto e cobertura na imprensa sobre o trabalho de Pedro Lucas Reis."
       },
       "en": {
         "title": "Notes & Media",
-        "description": "Open-source code, documentation and press coverage about software engineer Pedro Lucas Reis."
+        "description": "Technical articles, open-source projects and press coverage of Pedro Lucas Reis's work."
       }
     },
     "notFound": {
@@ -108,18 +114,18 @@
     },
     "pt": {
       "eyebrow": "Portfólio",
-      "role": "Engenheiro de Software Full Stack",
-      "statement": "",
-      "availability": "Disponível para projetos selecionados",
+      "role": "Full Stack Developer · AI Engineer",
+      "statement": "Desenvolvo produtos web e automatizo fluxos de trabalho com IA.",
+      "availability": "Remoto · Brasil",
       "scroll": "Desça para explorar",
       "action": "Ver projetos",
       "actionShort": "Projetos"
     },
     "en": {
       "eyebrow": "Portfolio",
-      "role": "Full Stack Software Engineer",
-      "statement": "",
-      "availability": "Available for select projects",
+      "role": "Full Stack Developer · AI Engineer",
+      "statement": "I build web products and use AI to automate workflows.",
+      "availability": "Remote · Brazil",
       "scroll": "Scroll to explore",
       "action": "See the work",
       "actionShort": "Work"
@@ -215,12 +221,12 @@
     "pt": {
       "eyebrow": "Trabalhos selecionados",
       "title": "PROJETOS",
-      "description": "Explore interfaces corporativas e ferramentas independentes."
+      "description": "Desenvolvimento full stack e IA aplicada em sistemas corporativos, sites para clientes e projetos próprios."
     },
     "en": {
       "eyebrow": "Selected work",
       "title": "WORK",
-      "description": "Explore enterprise interfaces and independent tools."
+      "description": "Full-stack development and applied AI across enterprise systems, client websites, and personal projects."
     }
   },
   "projectCategories": {
@@ -237,10 +243,24 @@
         }
       },
       {
-        "id": "gerais",
+        "id": "ia",
         "label": {
-          "pt": "Independentes",
-          "en": "Independent"
+          "pt": "Projetos com IA Aplicada",
+          "en": "Applied AI Projects"
+        }
+      },
+      {
+        "id": "clientes",
+        "label": {
+          "pt": "Sites para Clientes",
+          "en": "Client Websites"
+        }
+      },
+      {
+        "id": "proprios",
+        "label": {
+          "pt": "Projetos próprios",
+          "en": "Personal Projects"
         }
       }
     ]

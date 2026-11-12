@@ -9,8 +9,8 @@
       },
       "year": "2024 / 26",
       "description": {
-        "pt": "Ecossistema ERP com mais de 100 páginas corporativas e governança de Design System com 500+ componentes em React, Next.js e TypeScript. Redução de 70% no tempo de desenvolvimento de novas telas e ganho de 40% na velocidade de carregamento em plataformas usadas por 20+ organizações.",
-        "en": "Enterprise ERP ecosystem encompassing 100+ corporate modules and a unified Design System of 500+ components in React, Next.js, and TypeScript. Cut new feature development time by 70% and slashed page load latency by 40% across platforms serving 20+ operational organizations."
+        "pt": "Portal Next.js com 120+ páginas e Design System de 500+ componentes, usado por 20+ organizações. Telas novas em até 70% menos tempo e carregamento até 40% mais rápido.",
+        "en": "A 120+ page Next.js portal and 500+ component design system used by 20+ organizations. New screens took up to 70% less time to build, with up to 40% faster loading."
       },
       "technologies": [
         "React",
@@ -39,20 +39,19 @@
       "number": "02",
       "title": "Achilles",
       "category": {
-        "pt": "Agentes autônomos",
-        "en": "Autonomous agents"
+        "pt": "Automação com MCP",
+        "en": "MCP automation"
       },
       "year": "2026",
       "description": {
-        "pt": "Motor de automação híbrida (Web via CDP e Desktop Windows nativo via UIA) para agentes autônomos de IA via Model Context Protocol (MCP). Apresenta Reader Mode semântico via AXTree com 92.2% de economia de tokens de contexto e suíte de auditoria defensiva de QA.",
-        "en": "Hybrid automation engine (Web CDP & native Windows Desktop via UIA) for autonomous AI agents powered by the Model Context Protocol (MCP). Features a semantic AXTree Reader Mode delivering 92.2% context token savings alongside a defensive QA audit suite."
+        "pt": "Servidor MCP em Python para automação de navegador e aplicativos Windows, com passagem de controle para uma pessoa em etapas de autenticação.",
+        "en": "A Python MCP server for browser and Windows app automation that hands control back to a person at authentication steps."
       },
       "technologies": [
-        "CDP Protocol",
-        "Windows UIA",
-        "Model Context Protocol (MCP)",
-        "TypeScript",
-        "Node.js"
+        "Python",
+        "MCP",
+        "CDP",
+        "Playwright"
       ],
       "action": {
         "pt": "Ver no GitHub",
@@ -101,148 +100,146 @@
     },
     {
       "number": "03",
-      "title": "Organon",
+      "title": "Argos-Action-1.5B",
       "category": {
-        "pt": "Business OS & Agentes",
-        "en": "Business OS & Agents"
+        "pt": "IA aplicada · Pesquisa aberta",
+        "en": "Applied AI · Open research"
       },
       "year": "2026",
       "description": {
-        "pt": "Business OS e cockpit multi-agente Local-First de alta performance. Conta com isolamento de sessões com Git Worktrees, 18 canais IPC, telemetria em tempo real, editor TipTap modular, transcrição local via Whisper AI e servidor MCP nativo.",
-        "en": "High-performance Local-First Business OS and multi-agent cockpit. Features session isolation via Git Worktrees, 18 IPC channels, real-time telemetry, TipTap modular editor, local Whisper AI transcription, and native MCP server integration."
+        "pt": "Protótipo aberto que usa LoRA sobre Qwen 2.5 para propor uma ação estruturada por vez a partir da árvore de acessibilidade da interface.",
+        "en": "An open prototype that uses LoRA on Qwen 2.5 to propose one structured action at a time from the interface accessibility tree."
       },
       "technologies": [
-        "TypeScript",
-        "Node.js",
-        "MCP",
-        "Git Worktrees",
-        "Whisper AI",
-        "TipTap"
+        "Python",
+        "Qwen 2.5",
+        "LoRA",
+        "AXTree",
+        "MCP"
       ],
       "action": {
-        "pt": "Ver no GitHub",
-        "en": "View on GitHub"
+        "pt": "Explorar o projeto",
+        "en": "Explore the project"
       },
       "actionIcon": "arrow-up-right",
       "visual": "agent",
-      "href": "https://github.com/PedroReoli/organon",
-      "external": true
+      "artwork": {
+        "name": "ARGOS",
+        "subtitle": "Computer Use Research",
+        "kicker": { "pt": "PROTÓTIPO ABERTO", "en": "OPEN PROTOTYPE" },
+        "alt": { "pt": "Fluxo do protótipo Argos", "en": "Argos prototype workflow" },
+        "steps": [
+          { "number": "01", "label": { "pt": "LER A AXTREE", "en": "READ THE AXTREE" } },
+          { "number": "02", "label": { "pt": "PROPOR AÇÃO", "en": "PROPOSE ACTION" } },
+          { "number": "03", "label": { "pt": "GERAR JSON", "en": "GENERATE JSON" }, "accent": true }
+        ]
+      },
+      "href": "/projetos?tipo=ia#argos",
+      "external": false
     }
   ],
   "experienceItems": [
     {
       "period": {
-        "pt": "Out/2025 / Presente",
-        "en": "Oct/2025 / Present"
+        "pt": "Out/2025 / Presente · Remoto",
+        "en": "Oct/2025 / Present · Remote"
       },
       "company": "Domus | Sua Solução Digital",
       "role": {
-        "pt": "Engenheiro Full Stack (Autônomo / Freelance)",
-        "en": "Full Stack Engineer (Freelance / Products)"
+        "pt": "Engenheiro de Software Full Stack Pleno · IA aplicada",
+        "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "Produtos SaaS do requisito à produção: interfaces, APIs, dados e IA.",
-        "en": "SaaS products from requirements to production: interfaces, APIs, data and AI."
+        "pt": "Desenvolvo SaaS e plataformas administrativas do requisito ao deploy, com IA aplicada ao produto.",
+        "en": "I build SaaS products and admin platforms from requirements through deployment, with AI integrated into the product."
       },
       "highlights": {
         "pt": [
-          "Desenvolveu o propose-saas: gerador NoCode de propostas comerciais com editor drag-and-drop e renderização dinâmica JSON.",
-          "Ciclo completo de produto: levantamento de requisitos de negócio, arquitetura técnica, frontend, backend, banco de dados e integrações com IA.",
-          "Arquitetura escalável com APIs REST, caching, autenticação e banco de dados relacional gerenciado."
+          "Construí pipelines de RAG com embeddings, chunking, reranking, bancos vetoriais e bancos em grafo.",
+          "Orquestrei fluxos com Claude, GPT e Gemini usando MCP, tool use e function calling. Usei saídas estruturadas e Jev para avaliar prompts, detectar regressões e rastrear ações, com controles contra prompt injection e de custo e latência.",
+          "No n8n, implementei monitoramento de anomalias com IA e SQL (70% menos tempo de análise), previsão de churn (85% de precisão) e detecção de fraudes (75% menos tempo de triagem).",
+          "Automatizei cobranças por WhatsApp, e-mail e SMS, com 60% menos trabalho operacional e 20% mais recuperação de inadimplência. Um assistente de SQL Server via WhatsApp reduziu em 80% o tempo gasto em relatórios.",
+          "Com Zapier e CRM, reduzi em 65% o tempo de qualificação comercial e em 25% os cancelamentos em fluxos de retenção. No Make, integrei pedidos, estoque e faturamento, com 80% menos processamento manual e 90% menos erros de digitação.",
+          "Apliquei IA à análise de dados em SQL e APIs, com 75% menos tempo de análise e 60% menos esforço em relatórios.",
+          "Entreguei o Propose, um SaaS de propostas com editor drag-and-drop, JSON Schema, PostgreSQL, Supabase e pagamentos. Construí um proxy em Go com roteamento, cache e retentativas."
         ],
         "en": [
-          "Built propose-saas: a NoCode commercial proposal generator with drag-and-drop editor and dynamic JSON rendering.",
-          "Complete product lifecycle: business requirements, architecture, frontend, backend, database and AI integrations.",
-          "Scalable architecture featuring REST APIs, caching, modern authentication, and managed databases."
+          "Built RAG pipelines with embeddings, chunking, reranking, vector databases and graph databases.",
+          "Orchestrated Claude, GPT and Gemini workflows using MCP, tool use and function calling. Used structured outputs and Jev to evaluate prompts, catch regressions and trace actions, with controls for prompt injection, cost and latency.",
+          "Built AI and SQL anomaly monitoring in n8n (70% less analysis time), churn prediction (85% accuracy) and fraud detection (75% less triage time).",
+          "Automated collections through WhatsApp, email and SMS, reducing manual work by 60% and improving recovery by 20%. A SQL Server assistant on WhatsApp reduced reporting time by 80%.",
+          "Used Zapier and CRM workflows to cut sales qualification time by 65% and cancellations by 25%. In Make, integrated orders, inventory and invoicing, reducing manual processing by 80% and data-entry errors by 90%.",
+          "Applied AI to SQL and API data analysis, reducing analysis time by 75% and reporting effort by 60%.",
+          "Delivered Propose, a SaaS proposal builder with a drag-and-drop editor, JSON Schema, PostgreSQL, Supabase and payments. Built a Go proxy for routing, caching and retries."
         ]
       },
       "technologies": [
+        "TypeScript",
         "React",
         "Next.js",
-        "TypeScript",
         "Node.js",
-        "Express",
+        "Python",
+        "Go",
         "Fastify",
+        "Express",
         "PostgreSQL",
         "Supabase",
-        "AI Applied"
+        "RAG",
+        "MCP",
+        "Jev",
+        "n8n",
+        "Zapier",
+        "Make"
       ]
     },
     {
       "period": {
-        "pt": "Nov/2025 / Presente",
-        "en": "Nov/2025 / Present"
+        "pt": "Nov/2024 / Presente · Híbrido",
+        "en": "Nov/2024 / Present · Hybrid"
       },
-      "company": "SIVIS Tecnologia",
+      "company": "Autocom3",
       "role": {
-        "pt": "Engenheiro Full Stack (Frontend & Integrações)",
-        "en": "Full Stack Engineer (Frontend & Integrations)"
+        "pt": "Engenheiro de Software Full Stack Pleno · IA aplicada",
+        "en": "Mid-level Full Stack Software Engineer · Applied AI"
       },
       "description": {
-        "pt": "Módulos corporativos e integrações de API com React, Next.js e Angular.",
-        "en": "Enterprise modules and API integrations with React, Next.js and Angular."
+        "pt": "Referência técnica em Design System, arquitetura frontend e serviços de backend de portais e apps usados por mais de 20 organizações.",
+        "en": "Technical lead for the design system, frontend architecture and backend services behind portals and apps used by more than 20 organizations."
       },
       "highlights": {
         "pt": [
-          "Construção e evolução de módulos corporativos de alta fidelidade em React, Next.js e Angular.",
-          "Integrações robustas entre camadas de frontend, gateways corporativos e APIs REST externas.",
-          "Reorganização arquitetural e refatoração com foco em usabilidade e performance em produção."
+          "Lidero um Design System com mais de 500 componentes em React e TypeScript. Reduzi em até 70% o tempo para entregar novas telas, de cerca de três dias a poucas horas.",
+          "Construí o Portal Unificado em Next.js, com mais de 120 páginas, além dos portais Contábil, do Cliente e Administrativo.",
+          "Com TanStack Query, reduzi em cerca de 60% o tráfego de rede repetitivo e melhorei em até 40% o tempo de carregamento, com Time to Interactive abaixo de 1,2 s.",
+          "Orquestrei 20 agentes simultâneos com MCP e tool use. Avaliei saídas estruturadas com Jev e usei banco em grafo, com controle de custo e latência e defesa contra prompt injection.",
+          "Desenvolvi APIs em Node.js, NestJS e C#, com JWT, RBAC, rate limiting e webhooks. Modelei dados em PostgreSQL e SQL Server e fiz deploy na AWS com API Gateway.",
+          "Participei da migração de Electron para Tauri, adicionei testes E2E em Playwright à AC3 Cloud e mantive aplicações Vue.js de clientes."
         ],
         "en": [
-          "Building and evolving high-fidelity enterprise modules in React, Next.js, and Angular.",
-          "Robust integrations between frontend layers, corporate gateways, and external REST APIs.",
-          "Architectural reorganization and refactoring focused on production usability and speed."
+          "Lead a React and TypeScript design system with more than 500 components. Cut delivery time for new screens by up to 70%, from about three days to a few hours.",
+          "Built the unified portal in Next.js with more than 120 pages, along with accounting, customer and administrative portals.",
+          "Used TanStack Query to reduce redundant network traffic by about 60% and improve load times by up to 40%, with Time to Interactive under 1.2 s.",
+          "Orchestrated 20 concurrent agents using MCP and tool use. Evaluated structured outputs with Jev and used a graph database, with controls for cost, latency and prompt injection.",
+          "Built APIs in Node.js, NestJS and C# with JWT, RBAC, rate limiting and webhooks. Modeled data in PostgreSQL and SQL Server and deployed to AWS via API Gateway.",
+          "Helped migrate Electron apps to Tauri, added Playwright E2E tests to AC3 Cloud and maintained customer-facing Vue.js applications."
         ]
       },
       "technologies": [
+        "TypeScript",
         "React",
         "Next.js",
-        "Angular",
-        "TypeScript",
-        "REST APIs",
-        "Web Performance",
-        "Enterprise Systems"
-      ]
-    },
-    {
-      "period": {
-        "pt": "Nov/2024 / Presente",
-        "en": "Nov/2024 / Present"
-      },
-      "company": "Autocom3 Tecnologia",
-      "role": {
-        "pt": "Engenheiro de Software Full Stack",
-        "en": "Full Stack Software Engineer"
-      },
-      "description": {
-        "pt": "Portais e fluxos de ERP com Design System, APIs e controle de acesso.",
-        "en": "ERP portals and workflows with a Design System, APIs and access control."
-      },
-      "highlights": {
-        "pt": [
-          "Liderança e evolução de Design System escalável com mais de 500 componentes reutilizáveis, reduzindo o tempo de dev em até 70%.",
-          "APIs REST em Node.js, NestJS e C#, autenticação JWT, controle de acesso granular RBAC, rate limiting e Webhooks assíncronos orientados a eventos.",
-          "Deploy e infraestrutura em nuvem na AWS (API Gateway, Lambda), além de evolução de aplicações desktop de Electron para Tauri.",
-          "Otimização de performance com redução de até 40% no tempo de carregamento de páginas ERP."
-        ],
-        "en": [
-          "Lead and evolved scalable Design System with 500+ reusable components, cutting dev cycles by up to 70%.",
-          "Engineered REST APIs in Node.js, NestJS, and C# with JWT auth, granular RBAC permissions, rate limiting, and event-driven Webhooks.",
-          "Cloud deployments on AWS (API Gateway), and desktop app modernization from Electron to Tauri.",
-          "Performance optimization achieving up to 40% faster load times across ERP systems."
-        ]
-      },
-      "technologies": [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "NestJS",
+        "TanStack Query",
+        "Vue.js",
         "Node.js",
-        "C# / .NET",
+        "NestJS",
+        "C#",
         "PostgreSQL",
-        "AWS",
+        "SQL Server",
+        "AWS API Gateway",
         "Tauri",
-        "Design Systems"
+        "Playwright",
+        "MCP",
+        "Jev"
       ]
     },
     {
@@ -250,7 +247,7 @@
         "pt": "Jun/2024 / Dez/2024",
         "en": "Jun/2024 / Dec/2024"
       },
-      "company": "UniFOA / SEBRAE (EvaTech)",
+      "company": "EVA.Tech · UniFOA / Sebrae",
       "role": {
         "pt": "Mentor de Tecnologia & Inteligência Artificial",
         "en": "Technology & AI Mentor"
@@ -261,12 +258,12 @@
       },
       "highlights": {
         "pt": [
-          "Capacitou mais de 30 participantes em competências digitais avançadas, ferramentas de IA e desenvolvimento prático.",
-          "Conduziu workshops práticos de ideação, prototipação rápida e implementação orientada a produto."
+          "Orientei mais de 30 participantes em lógica, desenvolvimento web e IA aplicada ao longo de seis meses.",
+          "Conduzi oficinas de ideação e prototipação prática."
         ],
         "en": [
-          "Trained over 30 participants in digital skills, modern AI tooling, and hands-on development.",
-          "Led practical workshops on product ideation, rapid prototyping, and software engineering."
+          "Mentored more than 30 participants in programming logic, web development and applied AI over six months.",
+          "Led hands-on ideation and prototyping workshops."
         ]
       },
       "technologies": [

@@ -1,84 +1,47 @@
-import { useEffect, type RefObject } from 'react'
+import { useLayoutEffect, type RefObject } from 'react'
 
-type RevealType = 'smoke' | 'slide-left' | 'slide-right' | 'card' | 'scale' | 'default'
-
-function getAnimationKeyframes(type: RevealType): Keyframe[] {
-  switch (type) {
-    case 'smoke':
-      return [
-        { opacity: 0, transform: 'translate3d(0, 38px, 0)', filter: 'blur(16px)' },
-        { opacity: 0.8, transform: 'translate3d(0, 8px, 0)', filter: 'blur(3px)', offset: 0.7 },
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
-      ]
-    case 'slide-left':
-      return [
-        { opacity: 0, transform: 'translate3d(48px, 0, 0)', filter: 'blur(10px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
-      ]
-    case 'slide-right':
-      return [
-        { opacity: 0, transform: 'translate3d(-48px, 0, 0)', filter: 'blur(10px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
-      ]
-    case 'card':
-      return [
-        { opacity: 0, transform: 'translate3d(0, 42px, 0) scale(0.95)', filter: 'blur(10px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0px)' },
-      ]
-    case 'scale':
-      return [
-        { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(0.92)', filter: 'blur(12px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0px)' },
-      ]
-    default:
-      return [
-        { opacity: 0, transform: 'translate3d(0, 24px, 0)', filter: 'blur(8px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0px)' },
-      ]
-  }
-}
-
-/**
- * Revelação fluida progressiva por IntersectionObserver e Web Animations API.
- * O conteúdo permanece 100% legível por padrão (sem inline style inicial ocultando texto).
- * A animação é estritamente decorativa e respeita integralmente prefers-reduced-motion.
- */
 export function useReveal<T extends HTMLElement>(scope: RefObject<T | null>) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = scope.current
-    if (!root || typeof window === 'undefined') return
+    if (!root || typeof IntersectionObserver === 'undefined') return
 
     const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
-    if (!nodes.length) return
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) reveal(entry.target)
+      }
+    })
 
-    if (typeof IntersectionObserver === 'undefined') {
-      nodes.forEach((el) => el.classList.add('is-revealed'))
-      return
+    function reveal(node: Element) {
+      node.classList.add('is-revealed')
+      observer.unobserve(node)
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) return
-        const element = entry.target
-        observer.unobserve(element)
+    function revealFocused(event: FocusEvent) {
+      const node = event.target instanceof Element && event.target.closest('[data-reveal]')
+      if (node && root?.contains(node)) {
+        node.classList.add('is-revealed-immediately')
+        reveal(node)
+      }
+    }
 
-        const delayStr = element.dataset.revealDelay
-        const delay = delayStr ? Math.max(0, parseInt(delayStr, 10)) : 0
-
-        if (delay > 0) {
-          element.style.transitionDelay = `${delay}ms`
-        }
-
-        requestAnimationFrame(() => {
-          element.classList.add('is-revealed')
-        })
-      })
-    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' })
-
-    nodes.forEach((node) => observer.observe(node))
+    for (const node of nodes) {
+      const delay = Number(node.dataset.revealDelay)
+      if (Number.isFinite(delay) && delay > 0) {
+        node.style.setProperty('--reveal-delay', `${delay}ms`)
+      }
+      node.classList.add('is-reveal-observed')
+      observer.observe(node)
+    }
+    root.addEventListener('focusin', revealFocused)
 
     return () => {
       observer.disconnect()
+      root.removeEventListener('focusin', revealFocused)
+      for (const node of nodes) {
+        node.classList.remove('is-reveal-observed', 'is-revealed', 'is-revealed-immediately')
+        node.style.removeProperty('--reveal-delay')
+      }
     }
   }, [scope])
 }

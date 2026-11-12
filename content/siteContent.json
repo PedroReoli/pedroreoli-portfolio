@@ -30,15 +30,15 @@
     "linkedin": "https://www.linkedin.com/in/pedro-lucas-reis-a93945171/"
   },
   "profile": {
-    "jobTitle": "Full Stack Software Engineer & Systems Architect",
+    "jobTitle": "Full Stack Developer & AI Engineer",
     "address": { "locality": "Volta Redonda", "region": "RJ", "country": "BR" },
-    "knowsAbout": ["React", "TypeScript", "Node.js", "Next.js", "Clean Architecture", "PostgreSQL", "Docker", "AI Agents", "Model Context Protocol"]
+    "knowsAbout": ["React", "Next.js", "TypeScript", "Python", "C#", "Node.js", "PostgreSQL", "LLMs", "RAG", "Model Context Protocol", "Model Evaluation", "LoRA"]
   },
   "noScript": {
     "label": "Pedro Lucas Reis / Volta Redonda, RJ",
     "titleFirst": "Pedro",
     "titleLast": "Reoli",
-    "role": "Engenheiro de software Full Stack.",
+    "role": "Full Stack Developer e AI Engineer.",
     "description": "A versão interativa deste portfólio precisa de JavaScript. Enquanto isso, você pode entrar em contato ou explorar meu código pelos links abaixo.",
     "navigationLabel": "Contato e código",
     "emailAction": "Enviar e-mail"

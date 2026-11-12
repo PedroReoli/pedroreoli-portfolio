@@ -18,5 +18,5 @@ export function renderHome() {
     </LanguageProvider>
   )
 }
-export const sectionIds = ['hero', 'sobre', 'projetos-selecionados', 'stack', 'proposito', 'experiencia']
+export const sectionIds = ['hero', 'sobre', 'projetos-selecionados', 'stack', 'proposito', 'experiencia', 'producao-tecnica-academica']
 export const css = (name: string) => readFileSync(resolve(__dirname, '../styles', name + '.css'), 'utf8')

@@ -40,7 +40,7 @@ describe('Application Rendering & Integration Tests', () => {
     expect(screen.getByRole('link', { name: 'Ir para o início' })).toHaveTextContent('Pedro Reoli');
 
     // Hero Section
-    expect(screen.getAllByText('Engenheiro de Software Full Stack')[0]).toBeInTheDocument();
+    expect(screen.getByText('Full Stack Developer · AI Engineer')).toBeInTheDocument();
     expect(screen.getByText('PEDRO')).toBeInTheDocument();
 
     // About Section
@@ -49,8 +49,10 @@ describe('Application Rendering & Integration Tests', () => {
     expect(screen.getByText('anos de experiência')).toBeInTheDocument();
 
     // Selected Projects Section
-    expect(screen.getByText('Autocom3')).toBeInTheDocument();
-    expect(screen.getByText('Achilles')).toBeInTheDocument();
+    const selectedProjects = within(screen.getByRole('list', { name: 'Trabalhos selecionados' }));
+    expect(selectedProjects.getByText('Autocom3')).toBeInTheDocument();
+    expect(selectedProjects.getByText('Achilles')).toBeInTheDocument();
+    expect(selectedProjects.getByText('Argos-Action-1.5B')).toBeInTheDocument();
 
     // Stack Section
     expect(screen.getByText('MINHA')).toBeInTheDocument();
@@ -64,7 +66,12 @@ describe('Application Rendering & Integration Tests', () => {
 
     // Experience Section
     expect(screen.getByText('TRAJETÓRIA.')).toBeInTheDocument();
-    expect(screen.getByText('Autocom3 Tecnologia')).toBeInTheDocument();
+    expect(within(screen.getByRole('list', { name: 'Capítulos da trajetória' })).getByRole('heading', { name: 'Autocom3' })).toBeInTheDocument();
+
+    // Technical and academic work
+    const production = within(screen.getByRole('region', { name: 'Produção Técnica e Acadêmica' }));
+    expect(production.getByRole('link', { name: 'Ver a avaliação' })).toHaveAttribute('href', '/notas#argos-avaliacao');
+    expect(production.getByRole('heading', { name: 'FalaAtípica' })).toBeInTheDocument();
 
     // Footer
     expect(screen.getByText('VAMOS')).toBeInTheDocument();
@@ -75,7 +82,7 @@ describe('Application Rendering & Integration Tests', () => {
     render(<App />);
 
     // Initially in Portuguese
-    expect(screen.getAllByText('Engenheiro de Software Full Stack')[0]).toBeInTheDocument();
+    expect(screen.getByText('Desenvolvo produtos web e automatizo fluxos de trabalho com IA.', { exact: false })).toBeInTheDocument();
     expect(document.documentElement.lang).toBe('pt-BR');
 
     // Click language switch button (desktop or mobile)
@@ -83,7 +90,8 @@ describe('Application Rendering & Integration Tests', () => {
     fireEvent.click(langButtons[0]);
 
     // Now in English
-    expect(screen.getAllByText('Full Stack Software Engineer')[0]).toBeInTheDocument();
+    expect(screen.getByText('I build web products and use AI to automate workflows.', { exact: false })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Technical and Academic Work' })).toBeInTheDocument();
     expect(screen.getByText('Who I am')).toBeInTheDocument();
     expect(screen.getByText('years of experience')).toBeInTheDocument();
     expect(screen.getByText('VOICE')).toBeInTheDocument();
@@ -94,7 +102,7 @@ describe('Application Rendering & Integration Tests', () => {
     expect(document.documentElement.lang).toBe('en');
   });
 
-  it('navigates to projects page and filters between corporate and independent', () => {
+  it('navigates to projects page and filters between corporate and applied AI', () => {
     window.history.pushState(null, '', '/projetos');
     render(<App />);
 
@@ -102,21 +110,21 @@ describe('Application Rendering & Integration Tests', () => {
 
     // Os filtros são botões de pressão (não abas): estado exposto por aria-pressed.
     const corporateFilter = screen.getByRole('button', { name: 'Corporativo' });
-    const independentFilter = screen.getByRole('button', { name: 'Independentes' });
+    const aiFilter = screen.getByRole('button', { name: 'Projetos com IA Aplicada' });
     expect(corporateFilter).toHaveAttribute('aria-pressed', 'true');
-    expect(independentFilter).toHaveAttribute('aria-pressed', 'false');
+    expect(aiFilter).toHaveAttribute('aria-pressed', 'false');
 
     // Case editorial da categoria corporativa (nome real em projectEditorial.ts).
     expect(screen.getByRole('heading', { name: 'Autocom3', level: 2 })).toBeInTheDocument();
 
     // Troca de categoria pela barra de filtros editorial
-    fireEvent.click(independentFilter);
+    fireEvent.click(aiFilter);
 
-    expect(independentFilter).toHaveAttribute('aria-pressed', 'true');
+    expect(aiFilter).toHaveAttribute('aria-pressed', 'true');
     expect(corporateFilter).toHaveAttribute('aria-pressed', 'false');
-    expect(window.location.search).toContain('tipo=gerais');
+    expect(window.location.search).toContain('tipo=ia');
     expect(screen.getByRole('heading', { name: 'Achilles CDP Agent' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'GeoAmbiental' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Argos-Action-1.5B' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Autocom3', level: 2 })).not.toBeInTheDocument();
   });
 

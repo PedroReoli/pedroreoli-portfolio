@@ -1,0 +1,42 @@
+{
+  "title": { "pt": "Produção Técnica e Acadêmica", "en": "Technical and Academic Work" },
+  "description": {
+    "pt": "Bacharel em Sistemas de Informação pelo UniFOA, com conclusão em dezembro de 2025.",
+    "en": "Bachelor's degree in Information Systems from UniFOA, completed in December 2025."
+  },
+  "items": [
+    {
+      "category": { "pt": "Artigo técnico · Argos-Action", "en": "Technical article · Argos-Action" },
+      "title": { "pt": "Meu script disse 100%", "en": "My script reported 100%" },
+      "description": {
+        "pt": "O primeiro teste validava os rótulos do dataset. Na avaliação posterior, em 132 casos novos, 92% das respostas do Argos seguiram o schema, contra 0% do modelo base. O modelo deixou de escalar os 28 casos que exigiam intervenção humana.",
+        "en": "The first test validated the dataset labels. In a later evaluation of 132 new cases, 92% of Argos responses matched the schema, compared with 0% for the base model. Argos missed all 28 cases that required human escalation."
+      },
+      "action": { "pt": "Ver a avaliação", "en": "Read about the evaluation" },
+      "href": "/notas#argos-avaliacao",
+      "external": false
+    },
+    {
+      "category": { "pt": "Artigo acadêmico · UniFOA", "en": "Academic paper · UniFOA" },
+      "title": { "pt": "FalaAtípica", "en": "FalaAtípica" },
+      "description": {
+        "pt": "Trabalho de conclusão em Sistemas de Informação sobre tecnologia assistiva para crianças com atraso de fala. O projeto aproxima famílias e profissionais no acompanhamento da comunicação infantil.",
+        "en": "My Information Systems capstone on assistive technology for children with speech delays. The project helps families and professionals work together to support children's communication."
+      },
+      "action": { "pt": "Ler nos anais do UniFOA", "en": "Read in the UniFOA proceedings" },
+      "href": "https://conferencias.unifoa.edu.br/tc/article/view/2519",
+      "external": true
+    },
+    {
+      "category": { "pt": "Extensão universitária · UniFOA e Sebrae", "en": "University outreach · UniFOA and Sebrae" },
+      "title": { "pt": "Mentoria no EVA.Tech", "en": "Mentoring at EVA.Tech" },
+      "description": {
+        "pt": "Seis meses de mentoria para mais de 30 participantes em lógica, desenvolvimento web e IA aplicada, com oficinas de prototipação.",
+        "en": "Six months mentoring more than 30 participants in programming logic, web development and applied AI through hands-on prototyping workshops."
+      },
+      "action": { "pt": "Conhecer o programa", "en": "Explore the program" },
+      "href": "https://www.unifoa.edu.br/wp-content/uploads/2026/03/RELATORIO-SOCIAL-2024_.pdf#page=51",
+      "external": true
+    }
+  ]
+}

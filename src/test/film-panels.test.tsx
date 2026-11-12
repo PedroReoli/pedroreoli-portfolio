@@ -3,7 +3,7 @@ import { homeContent } from '../data/content'
 import { renderHome, sectionIds } from './home-fixture'
 
 describe('Home: leitura em fluxo normal substitui painéis sincronizados', () => {
-  it('monta as seis seções na ordem de leitura do documento', () => {
+  it('monta as seções na ordem de leitura do documento', () => {
     const { container } = renderHome()
     expect([...container.querySelectorAll('.home > section')].map(s => s.id)).toEqual(sectionIds)
     expect(container.querySelector('[data-film-panel], .film-content, .film-track')).toBeNull()

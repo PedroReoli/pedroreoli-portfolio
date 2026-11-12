@@ -14,11 +14,11 @@ export function ExperienceSection() {
   return (
     <section ref={ref} id={section.id} className="experience-section">
       <div className="shell">
-        <div className="section-kicker" data-reveal="smoke">
+        <div className="section-kicker" data-reveal>
           <p>{copy.eyebrow}</p>
           <p>{language === 'pt' ? 'Da ideia à produção' : 'From idea to production'}</p>
         </div>
-        <div className="experience-header" data-reveal="smoke">
+        <div className="experience-header" data-reveal data-reveal-delay="55">
           <h2>{copy.title}</h2>
         </div>
 
@@ -31,8 +31,8 @@ export function ExperienceSection() {
                 <li
                   className={`timeline-v__item ${sideClass}`}
                   key={item.company + item.period.pt}
-                  data-reveal={isEven ? 'slide-right' : 'slide-left'}
-                  data-reveal-delay={String(100 + (index % 4) * 100)}
+                  data-reveal
+                  data-reveal-delay={110 + Math.min(index, 3) * 55}
                 >
                   <div className="timeline-node" aria-hidden="true">
                     <span>{String(index + 1).padStart(2, '0')}</span>

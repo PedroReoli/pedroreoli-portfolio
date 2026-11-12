@@ -5,6 +5,7 @@ import { SelectedProjectsSection } from '@/components/home/SelectedProjectsSecti
 import { StackSection } from '@/components/home/StackSection'
 import { PurposeSection } from '@/components/home/PurposeSection'
 import { ExperienceSection } from '@/components/home/ExperienceSection'
+import { TechnicalProductionSection } from '@/components/home/TechnicalProductionSection'
 
 export function HomePage() {
   return (
@@ -16,6 +17,7 @@ export function HomePage() {
       <StackSection />
       <PurposeSection />
       <ExperienceSection />
+      <TechnicalProductionSection />
     </div>
   )
 }

@@ -29,8 +29,8 @@
       "title": "Achilles CDP Agent",
       "category": { "pt": "Agentes & Automação", "en": "Agents & Automation" },
       "description": {
-        "pt": "Motor de automação híbrida (Web via CDP e Desktop Windows nativo via UIA) para agentes autônomos de IA via Model Context Protocol (MCP). Apresenta Reader Mode semântico via AXTree com 92.2% de economia de tokens de contexto e suíte de auditoria defensiva de QA.",
-        "en": "Hybrid automation engine (Web CDP & native Windows Desktop via UIA) for autonomous AI agents powered by the Model Context Protocol (MCP). Features a semantic AXTree Reader Mode delivering 92.2% context token savings alongside a defensive QA audit suite."
+        "pt": "Servidor MCP em Python para automação e QA no navegador e em aplicativos Windows, com passagem de controle para uma pessoa em etapas de autenticação.",
+        "en": "A Python MCP server for browser and Windows app automation and QA that hands control back to a person at authentication steps."
       },
       "icon": "arrow-up-right",
       "href": "https://github.com/PedroReoli/Achilles-CDP-Agent"
@@ -40,11 +40,11 @@
       "title": "Organon",
       "category": { "pt": "Business OS & Agentes", "en": "Business OS & Agents" },
       "description": {
-        "pt": "Business OS e cockpit multi-agente Local-First de alta performance. Conta com isolamento de sessões com Git Worktrees, 18 canais IPC, telemetria em tempo real, editor TipTap modular, transcrição local via Whisper AI e servidor MCP nativo.",
-        "en": "High-performance Local-First Business OS and multi-agent cockpit. Features session isolation via Git Worktrees, 18 IPC channels, real-time telemetry, TipTap modular editor, local Whisper AI transcription, and native MCP server integration."
+        "pt": "Aplicativo desktop local-first da suíte Reoli para orquestrar sessões com múltiplos modelos e aprovações humanas.",
+        "en": "A local-first desktop application in the Reoli suite for coordinating sessions across multiple models with human approval."
       },
       "icon": "arrow-up-right",
-      "href": "https://github.com/PedroReoli/organon"
+      "href": "/projetos?tipo=proprios#organon"
     },
     {
       "number": "03",
@@ -66,7 +66,7 @@
         "en": "NoCode commercial proposal generator featuring a drag-and-drop visual builder and dynamic JSON Schema rendering engine. Full-stack architecture integrated with relational databases and billing gateways."
       },
       "icon": "arrow-up-right",
-      "href": "https://github.com/PedroReoli"
+      "href": "/projetos?tipo=corporativo#propose"
     }
   ]
 }

@@ -95,7 +95,7 @@ export function ProjectCase({ project, language }: Props) {
       </div>
 
       {project.metrics && project.metrics.length > 0 && (
-        <div className="projects-case__metrics" aria-label="Métricas de impacto">
+        <div className="projects-case__metrics" aria-label={copy.metrics}>
           {project.metrics.map((m) => (
             <div key={m.value + m.label.pt} className="projects-case__metric-card">
               <span className="projects-case__metric-val">{m.value}</span>
@@ -242,15 +242,16 @@ export function ProjectCase({ project, language }: Props) {
           <h3>{project.approachLabel[language]}</h3>
           <p>{project.approach[language]}</p>
         </div>
-        <div className="projects-case__evidence">
-          {project.note && <p className="projects-case__note">{project.note[language]}</p>}
-          {project.evidence && (
-            <a href={project.evidence.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.evidence.label[language]} — ${project.name} (${copy.external})`}>
-              {project.evidence.label[language]} <Icon name="arrow-up-right" size={20} />
-              <span className="sr-only"> ({copy.external})</span>
-            </a>
-          )}
-        </div>
+        {(project.note || project.evidence) && (
+          <div className="projects-case__evidence">
+            {project.note && <p className="projects-case__note">{project.note[language]}</p>}
+            {project.evidence?.map(({ href, label }) => (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label[language]} — ${project.name} (${copy.external})`}>
+                {label[language]} <Icon name="arrow-up-right" size={20} />
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </article>
   )
